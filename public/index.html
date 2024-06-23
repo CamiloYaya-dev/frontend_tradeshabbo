@@ -9,16 +9,35 @@
 </head>
 <body>
     <header class="bg-dark text-white text-center py-3 header-page">
-        <h1>Nexus | Mercado Origins</h1>
+        <img src="furnis/iconos/mercado_origins.png" class="sprite_mercado_origins" alt="icon">
     </header>
     <main class="container my-4">
-        <div class="row mb-4">
-            <div class="col-12">
-                <input type="text" id="search-input" class="form-control buscar-furnis" placeholder="Buscar furnis...">
+        <div class="row">
+            <div class="col-md-2 column">
+                <!-- Contenido de la primera columna -->
+                <img src="furnis/iconos/sprite_hotel_origins.png" class="sprite_hotel_origins" alt="icon">
             </div>
-        </div>
-        <div class="row" id="product-container">
-            <!-- Los productos se cargarán aquí dinámicamente -->
+            <div class="col-md-8 column colum-catalog">
+                <!-- Contenido de la segunda columna -->
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <input type="text" id="search-input" class="form-control buscar-furnis" placeholder="Buscar furnis...">
+                    </div>
+                </div>
+                
+                <div class="row" id="product-container">
+                    
+                </div>
+            </div>
+            <div class="col-md-2 column">
+                <!-- Contenido de la tercera columna -->
+                <div class="online_users">
+                    <div class="online_users_content">
+                        <p class="online_habbo_text_blue ng-binding">Habbos en línea:</p>
+                        <p class="online_habbo_text_white ng-binding">380</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
