@@ -32,13 +32,20 @@ app.get('/images', async (req, res) => {
 app.get('/api/checkin-count', async (req, res) => {
     try {
         let browser;
+        console.log(process.env.NODE_ENV);
         if (process.env.NODE_ENV === 'production') {
+            console.log('Launching Puppeteer with chrome-aws-lambda configuration');
+            const executablePath = await chromium.executablePath;
+
             browser = await puppeteer.launch({
                 args: chromium.args,
-                executablePath: await chromium.executablePath,
+                defaultViewport: chromium.defaultViewport,
+                executablePath: executablePath || '/usr/bin/chromium-browser',
                 headless: chromium.headless,
+                ignoreHTTPSErrors: true,
             });
         } else {
+            console.log('Launching Puppeteer with local Chrome configuration');
             browser = await puppeteer.launch({
                 executablePath: 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe', // Ruta al ejecutable de Chrome en Windows
                 headless: true,
