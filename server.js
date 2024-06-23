@@ -2,8 +2,7 @@ const express = require('express');
 const path = require('path');
 const sequelize = require('./config/database');
 const Image = require('./models/Image');
-const puppeteer = require('puppeteer-core');
-const chromium = require('chrome-aws-lambda');
+const puppeteer = require('puppeteer');
 
 const app = express();
 const port = 3000;
@@ -33,14 +32,13 @@ app.get('/api/checkin-count', async (req, res) => {
     try {
         let browser;
         if (process.env.NODE_ENV === 'production') {
-            console.log('Launching Puppeteer with chrome-aws-lambda configuration');
+            console.log('Launching Puppeteer in production mode');
             browser = await puppeteer.launch({
-                args: chromium.args,
-                executablePath: await chromium.executablePath,
-                headless: chromium.headless,
+                args: ['--no-sandbox', '--disable-setuid-sandbox'],
+                headless: true,
             });
         } else {
-            console.log('Launching Puppeteer with local Chrome configuration');
+            console.log('Launching Puppeteer in development mode');
             browser = await puppeteer.launch({
                 executablePath: 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe', // Ruta al ejecutable de Chrome en Windows
                 headless: true,
