@@ -3,258 +3,301 @@
         "price": 125,
         "icon": "hc",
         "highlight": true,
-        "hot": true
+        "hot": true,
+        "status": "arrow_trend_up"
     },
     "El_Jacuzzy": {
         "price": 25,
         "icon": "hc",
         "highlight": false,
-        "hot": false
+        "hot": false,
+        "status": "arrow_trend_down"
     },
     "Imperiales": {
         "price": 125,
         "icon": "hc",
         "highlight": false,
-        "hot": false
+        "hot": false,
+        "status": "equal"
     },
     "Sofa_Trono_HC": {
         "price": 375,
         "icon": "hc",
         "highlight": true,
-        "hot": true
+        "hot": true,
+        "status": "equal"
     },
     "El_Super_Dado": {
         "price": 625,
         "icon": "hc",
         "highlight": true,
-        "hot": true
+        "hot": true,
+        "status": "arrow_trend_up"
     },
     "La_Cafetera": {
         "price": 125,
         "icon": "hc",
         "highlight": false,
-        "hot": false
+        "hot": false,
+        "status": "equal"
     },
     "Escritorio_HC": {
         "price": 75,
         "icon": "hc",
         "highlight": false,
-        "hot": false
+        "hot": false,
+        "status": "equal"
     },
     "Lampara_HC": {
         "price": 75,
         "icon": "hc",
         "highlight": false,
-        "hot": false
+        "hot": false,
+        "status": "equal"
     },
     "Silla_Majestic": {
         "price": 250,
         "icon": "hc",
         "highlight": true,
-        "hot": true
+        "hot": true,
+        "status": "equal"
     },
     "Mesa_Nordica": {
         "price": 125,
         "icon": "hc",
         "highlight": false,
-        "hot": false
+        "hot": false,
+        "status": "equal"
     },
     "Mesa_HC": {
         "price": 10,
         "icon": "hc",
         "highlight": false,
-        "hot": false
+        "hot": false,
+        "status": "arrow_trend_down"
     },
     "HC_Silla": {
         "price": 10,
         "icon": "hc",
         "highlight": false,
-        "hot": false
+        "hot": false,
+        "status": "arrow_trend_down"
     },
     "Habbocola": {
         "price": 50,
         "icon": "rare",
         "highlight": false,
-        "hot": false
+        "hot": false,
+        "status": "equal"
     },
     "Mesa_Cuadrada_Funky_Naranja": {
         "price": 125,
         "icon": "rare",
         "highlight": false,
-        "hot": false
+        "hot": false,
+        "status": "equal"
     },
     "Mesa_Funky_Naranja": {
         "price": 125,
         "icon": "rare",
         "highlight": false,
-        "hot": false
+        "hot": false,
+        "status": "equal"
     },
     "Mesa_Redonda_Funky_Naranja": {
         "price": 125,
         "icon": "rare",
         "highlight": false,
-        "hot": false
+        "hot": false,
+        "status": "equal"
     },
     "Mesita_Funky_Naranja": {
         "price": 125,
         "icon": "rare",
         "highlight": false,
-        "hot": false
+        "hot": false,
+        "status": "equal"
     },
     "Silla_Funky_Naranja": {
         "price": 125,
         "icon": "rare",
         "highlight": false,
-        "hot": false
+        "hot": false,
+        "status": "equal"
     },
     "Pod_Funky_Naranja": {
         "price": 125,
         "icon": "rare",
         "highlight": false,
-        "hot": false
+        "hot": false,
+        "status": "equal"
     },
     "Pod_Funky_Amarillo": {
         "price": 50,
         "icon": "rare",
         "highlight": false,
-        "hot": false
+        "hot": false,
+        "status": "equal"
     },
     "Pod_Funky_Beige": {
         "price": 50,
         "icon": "rare",
         "highlight": false,
-        "hot": false
+        "hot": false,
+        "status": "equal"
     },
     "Pod_Funky_Verde_Oscuro": {
         "price": 50,
         "icon": "rare",
         "highlight": false,
-        "hot": false
+        "hot": false,
+        "status": "equal"
     },
     "Pod_Funky_Verde": {
         "price": 50,
         "icon": "rare",
         "highlight": false,
-        "hot": false
+        "hot": false,
+        "status": "equal"
     },
     "Mesa_Funky_Amarilla": {
         "price": 50,
         "icon": "rare",
         "highlight": false,
-        "hot": false
+        "hot": false,
+        "status": "equal"
     },
     "Mesa_Funky_Beige": {
         "price": 50,
         "icon": "rare",
         "highlight": false,
-        "hot": false
+        "hot": false,
+        "status": "equal"
     },
     "Mesa_Funky_Verde_Oscuro": {
         "price": 50,
         "icon": "rare",
         "highlight": false,
-        "hot": false
+        "hot": false,
+        "status": "equal"
     },
     "Mesa_Funky_Verde": {
         "price": 50,
         "icon": "rare",
         "highlight": false,
-        "hot": false
+        "hot": false,
+        "status": "equal"
     },
     "Silla_Funky_Amarilla": {
         "price": 50,
         "icon": "rare",
         "highlight": false,
-        "hot": false
+        "hot": false,
+        "status": "equal"
     },
     "Silla_Funky_Beige": {
         "price": 50,
         "icon": "rare",
         "highlight": false,
-        "hot": false
+        "hot": false,
+        "status": "equal"
     },
     "Silla_Funky_Verde_Oscuro": {
         "price": 50,
         "icon": "rare",
         "highlight": false,
-        "hot": false
+        "hot": false,
+        "status": "equal"
     },
     "Silla_Funky_Verde": {
         "price": 50,
         "icon": "rare",
         "highlight": false,
-        "hot": false
+        "hot": false,
+        "status": "equal"
     },
     "Mesa_Cuadrada_Funky_Amarilla": {
         "price": 50,
         "icon": "rare",
         "highlight": false,
-        "hot": false
+        "hot": false,
+        "status": "equal"
     },
     "Mesa_Cuadrada_Funky_Beige": {
         "price": 50,
         "icon": "rare",
         "highlight": false,
-        "hot": false
+        "hot": false,
+        "status": "equal"
     },
     "Mesa_Cuadrada_Funky_Verde_Oscuro": {
         "price": 50,
         "icon": "rare",
         "highlight": false,
-        "hot": false
+        "hot": false,
+        "status": "equal"
     },
     "Mesa_Cuadrada_Funky_Verde": {
         "price": 50,
         "icon": "rare",
         "highlight": false,
-        "hot": false
+        "hot": false,
+        "status": "equal"
     },
     "Mesa_Redonda_Funky_Amarilla": {
         "price": 50,
         "icon": "rare",
         "highlight": false,
-        "hot": false
+        "hot": false,
+        "status": "equal"
     },
     "Mesa_Redonda_Funky_Beige": {
         "price": 50,
         "icon": "rare",
         "highlight": false,
-        "hot": false
+        "hot": false,
+        "status": "equal"
     },
     "Mesa_Redonda_Funky_Verde_Oscuro": {
         "price": 50,
         "icon": "rare",
         "highlight": false,
-        "hot": false
+        "hot": false,
+        "status": "equal"
     },
     "Mesa_Redonda_Funky_Verde": {
         "price": 50,
         "icon": "rare",
         "highlight": false,
-        "hot": false
+        "hot": false,
+        "status": "equal"
     },
     "Mesita_Funky_Amarilla": {
         "price": 50,
         "icon": "rare",
         "highlight": false,
-        "hot": false
+        "hot": false,
+        "status": "equal"
     },
     "Mesita_Funky_Beige": {
         "price": 50,
         "icon": "rare",
         "highlight": false,
-        "hot": false
+        "hot": false,
+        "status": "equal"
     },
     "Mesita_Funky_Verde_Oscuro": {
         "price": 50,
         "icon": "rare",
         "highlight": false,
-        "hot": false
+        "hot": false,
+        "status": "equal"
     },
     "Mesita_Funky_Verde": {
         "price": 50,
         "icon": "rare",
         "highlight": false,
-        "hot": false
+        "hot": false,
+        "status": "equal"
     }
 }

@@ -25,6 +25,10 @@ const Image = sequelize.define('Image', {
     hot: {
         type: DataTypes.STRING,  // Añadir el campo icon
         allowNull: true
+    },
+    status: {
+        type: DataTypes.STRING,  // Añadir el campo icon
+        allowNull: true
     }
 });
 

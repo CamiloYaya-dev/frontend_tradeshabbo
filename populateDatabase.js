@@ -24,7 +24,8 @@ async function populateDatabase() {
                     price: priceInfo.price,
                     icon: priceInfo.icon,
                     highlight: priceInfo.highlight,
-                    hot: priceInfo.hot
+                    hot: priceInfo.hot,
+                    status: priceInfo.status
                 };
             });
         };

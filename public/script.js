@@ -14,6 +14,9 @@ $(document).ready(function() {
                             ${item.icon == "hc" ? `<img src="furnis/iconos/icon_hc.png" class="iconos-hc" alt="icon">` : ''}
                             ${item.icon == "rare" ? `<img src="furnis/iconos/icon_rare.png" class="iconos-rare" alt="icon">` : ''}
                             ${item.hot == 1 ? `<img src="furnis/iconos/hot_sale.png" class="iconos-hot-sale" alt="icon">` : ''}
+                            ${item.status == "arrow_trend_up" ? `<img src="furnis/iconos/arrow_trend_up.png" class="iconos-arrow-trend-up" alt="icon">` : ''}
+                            ${item.status == "arrow_trend_down" ? `<img src="furnis/iconos/arrow_trend_down.png" class="iconos-arrow-trend-down" alt="icon">` : ''}
+                            ${item.status == "equal" ? `<img src="furnis/iconos/equal.png" class="iconos-equal" alt="icon">` : ''}
                             <img src="${item.src}" class="card-img-top" alt="${item.name}">
                             <div class="card-body text-center">
                                 <p class="card-text text-price">

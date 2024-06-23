@@ -40,6 +40,30 @@ body {
     height: 60px;
 }
 
+.iconos-arrow-trend-up {
+    position: absolute;
+    bottom: 100px;
+    right: 10px;
+    width: 70px; /* Ajusta el tamaño del ícono según sea necesario */
+    height: 60px;
+}
+
+.iconos-arrow-trend-down {
+    position: absolute;
+    bottom: 120px;
+    right: 10px;
+    width: 70px; /* Ajusta el tamaño del ícono según sea necesario */
+    height: 40px;
+}
+
+.iconos-equal {
+    position: absolute;
+    bottom: 100px;
+    right: 10px;
+    width: 70px; /* Ajusta el tamaño del ícono según sea necesario */
+    height: 60px;
+}
+
 .header, .main, .footer {
     background: rgba(255, 255, 255, 0.8); /* Fondo blanco con opacidad */
     padding: 20px;
