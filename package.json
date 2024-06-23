@@ -15,9 +15,12 @@
   "description": "",
   "dependencies": {
     "axios": "^1.7.2",
+    "browsers": "^1.0.2",
     "cheerio": "^1.0.0-rc.12",
+    "chrome": "^0.1.0",
     "express": "^4.19.2",
     "fs": "^0.0.1-security",
+    "install": "^0.13.0",
     "path": "^0.12.7",
     "puppeteer": "^22.12.0",
     "sequelize": "^6.37.3",
