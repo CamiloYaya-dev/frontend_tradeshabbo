@@ -50,6 +50,8 @@ app.get('/api/checkin-count', async (req, res) => {
         const checkinCount = await page.$eval('.habbo__origins__checkin__count', el => el.textContent.trim());
         await browser.close();
 
+        console.log(process.env.NODE_ENV);
+        console.log(checkinCount);
         res.json({ count: checkinCount });
     } catch (error) {
         console.error('Error fetching checkin count:', error);
