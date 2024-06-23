@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const sequelize = require('./config/database');
 const Image = require('./models/Image');
+const puppeteer = require('puppeteer');
 const app = express();
 const port = 3000;
 
@@ -22,6 +23,25 @@ app.get('/images', async (req, res) => {
     } catch (error) {
         console.error('Error retrieving images:', error);
         res.status(500).send('Error retrieving images');
+    }
+});
+
+// Nueva ruta para obtener el número de usuarios en línea
+app.get('/api/checkin-count', async (req, res) => {
+    try {
+        const browser = await puppeteer.launch();
+        const page = await browser.newPage();
+        await page.goto('https://origins.habbo.es/');
+
+        const checkinCount = await page.evaluate(() => {
+            return document.querySelector('.habbo__origins__checkin__count').textContent.trim();
+        });
+
+        await browser.close();
+        res.json({ count: checkinCount });
+    } catch (error) {
+        console.error('Error fetching checkin count:', error);
+        res.status(500).send('Error fetching checkin count');
     }
 });
 
