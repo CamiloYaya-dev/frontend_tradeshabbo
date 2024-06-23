@@ -1,7 +1,7 @@
 body {
     font-family: Arial, sans-serif;
     background-size: cover;
-    background-color: #111C24;
+    background: url(https://images.habbo.com/habbo-web/origins-america/es/assets/images/habbo_background.683cff59.gif);
 }
 
 .card-img-top {
@@ -56,14 +56,6 @@ body {
     height: 40px;
 }
 
-.iconos-equal {
-    position: absolute;
-    bottom: 100px;
-    right: 10px;
-    width: 70px; /* Ajusta el tamaño del ícono según sea necesario */
-    height: 60px;
-}
-
 .header, .main, .footer {
     background: rgba(255, 255, 255, 0.8); /* Fondo blanco con opacidad */
     padding: 20px;
@@ -85,11 +77,11 @@ body {
 }
 
 .card {
-    background-color: #161924;
+    background-color: #26627D;
 }
 
 .card-body {
-    background-color: #151722;
+    background-color: #26627D;
 }
 
 .text-name {
@@ -97,11 +89,15 @@ body {
 }
 
 .text-price {
+    font-size: 20px;
+    font-family: fantasy;
     color: #229728;
 }
 
 .header-page {
-    background-color: #111C24 !important;
+    font-family: Arial, sans-serif;
+    background-size: cover;
+    background: url(https://images.habbo.com/habbo-web/origins-america/es/assets/images/habbo_background.683cff59.gif);
 }
 
 .highlight-border {
@@ -111,14 +107,14 @@ body {
 }
 
 .buscar-furnis{
-    background-color: #161924;
-    border-color: #161924;
+    background-color: #26627D;
+    border-color: #26627D;
     color: white;
 }
 
 .buscar-furnis:focus {
-    background-color: #161924;
-    border-color: #161924;
+    background-color: #26627D;
+    border-color: #26627D;
     color: white;
     outline: none; /* Para quitar el borde azul predeterminado en algunos navegadores */
 }
