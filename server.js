@@ -5,6 +5,12 @@ const Image = require('./models/Image');
 const app = express();
 const port = 3000;
 
+// Middleware para añadir el header ngrok-skip-browser-warning
+app.use((req, res, next) => {
+    res.setHeader('ngrok-skip-browser-warning', 'true');
+    next();
+});
+
 // Middleware para servir archivos estáticos
 app.use(express.static('public'));
 
