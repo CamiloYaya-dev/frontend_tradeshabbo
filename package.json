@@ -7,7 +7,7 @@
     "dev": "nodemon server.js",
     "prod": "set NODE_ENV=production && node populateDatabase.js && node server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "echo \"No build step necessary for Node.js server\""
+    "build": "npm install --legacy-peer-deps && echo \"No build step necessary for Node.js server\""
   },
   "keywords": [],
   "author": "",
