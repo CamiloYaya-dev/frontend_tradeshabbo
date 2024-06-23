@@ -1,7 +1,7 @@
 $(document).ready(function() {
-    $.get('/api/checkin-count', function(data) {
+    /*$.get('/api/checkin-count', function(data) {
         $('#online-count').text(data.count);
-    });
+    });*/
     // Cargar productos desde el servidor
     $.getJSON('/images', function(data) {
         var productContainer = $('#product-container');
