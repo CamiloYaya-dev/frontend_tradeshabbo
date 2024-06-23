@@ -2,7 +2,9 @@ const express = require('express');
 const path = require('path');
 const sequelize = require('./config/database');
 const Image = require('./models/Image');
-const puppeteer = require('puppeteer');
+const puppeteer = require('puppeteer-core');
+const chromium = require('chrome-aws-lambda');
+
 const app = express();
 const port = 3000;
 
@@ -26,18 +28,28 @@ app.get('/images', async (req, res) => {
     }
 });
 
-// Nueva ruta para obtener el número de usuarios en línea
+// Ruta para obtener el count de checkin
 app.get('/api/checkin-count', async (req, res) => {
     try {
-        const browser = await puppeteer.launch();
+        let browser;
+        if (process.env.NODE_ENV === 'production') {
+            browser = await puppeteer.launch({
+                args: chromium.args,
+                executablePath: await chromium.executablePath,
+                headless: chromium.headless,
+            });
+        } else {
+            browser = await puppeteer.launch({
+                executablePath: 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe', // Ruta al ejecutable de Chrome en Windows
+                headless: true,
+            });
+        }
+
         const page = await browser.newPage();
-        await page.goto('https://origins.habbo.es/');
-
-        const checkinCount = await page.evaluate(() => {
-            return document.querySelector('.habbo__origins__checkin__count').textContent.trim();
-        });
-
+        await page.goto('https://origins.habbo.es/', { waitUntil: 'networkidle0' });
+        const checkinCount = await page.$eval('.habbo__origins__checkin__count', el => el.textContent.trim());
         await browser.close();
+
         res.json({ count: checkinCount });
     } catch (error) {
         console.error('Error fetching checkin count:', error);
