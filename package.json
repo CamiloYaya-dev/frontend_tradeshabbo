@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node populateDatabase.js && node server.js",
     "dev": "nodemon server.js",
-    "prod": "set NODE_ENV=production node populateDatabase.js && node server.js",
+    "prod": "set NODE_ENV=production npx puppeteer browsers install chrome && node populateDatabase.js && node server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npm install --legacy-peer-deps && echo \"No build step necessary for Node.js server\""
   },
