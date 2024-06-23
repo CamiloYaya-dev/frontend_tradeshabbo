@@ -30,27 +30,17 @@ app.get('/images', async (req, res) => {
 // Ruta para obtener el count de checkin
 app.get('/api/checkin-count', async (req, res) => {
     try {
-        let browser;
-        if (process.env.NODE_ENV === 'production') {
-            console.log('Launching Puppeteer in production mode');
-            browser = await puppeteer.launch({
-                args: ['--no-sandbox', '--disable-setuid-sandbox'],
-                headless: true,
-            });
-        } else {
-            console.log('Launching Puppeteer in development mode');
-            browser = await puppeteer.launch({
-                executablePath: 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe', // Ruta al ejecutable de Chrome en Windows
-                headless: true,
-            });
-        }
+        console.log('Launching Puppeteer');
+        const browser = await puppeteer.launch({
+            args: ['--no-sandbox', '--disable-setuid-sandbox'],
+            headless: true,
+        });
 
         const page = await browser.newPage();
         await page.goto('https://origins.habbo.es/', { waitUntil: 'networkidle0' });
         const checkinCount = await page.$eval('.habbo__origins__checkin__count', el => el.textContent.trim());
         await browser.close();
 
-        console.log(process.env.NODE_ENV);
         console.log(checkinCount);
         res.json({ count: checkinCount });
     } catch (error) {
