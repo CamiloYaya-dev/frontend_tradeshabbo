@@ -55,6 +55,7 @@ app.get('/price-history/:productId', async (req, res) => {
     try {
         const productId = req.params.productId;
         const history = await PriceHistory.findAll({
+            order: [['fecha_precio', 'DESC']],
             where: { productId },
             include: [{
                 model: Image,

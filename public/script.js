@@ -53,8 +53,6 @@ $(document).ready(function() {
             var productId = $(this).data('id');
 
             $.getJSON(`/price-history/${productId}`, function(historyData) {
-                console.log('Historial de precios:', JSON.stringify(historyData, null, 2));
-
                 searchContainer.hide();
                 productContainer.hide();
                 productHistoryContainer.show();
@@ -79,7 +77,6 @@ $(document).ready(function() {
                                 <th class="online_habbo_text_blue">Fecha</th>
                                 <th class="online_habbo_text_blue">Nombre</th>
                                 <th class="online_habbo_text_blue">Precio</th>
-                                <th class="online_habbo_text_blue">Categoria</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -88,8 +85,6 @@ $(document).ready(function() {
                                     <td class="online_habbo_text_white">${new Date(record.fecha_precio).toLocaleDateString()}</td>
                                     <td class="online_habbo_text_white">${record.name}</td>
                                     <td class="online_habbo_text_white">${record.precio}</td>
-                                    <td>${record.icon == "hc" ? `<img src="furnis/iconos/icon_hc.png" class="iconos-hc-historico" alt="icon">` : 
-                                        record.icon == "rare" ? `<img src="furnis/iconos/icon_rare.png" class="iconos-rare-historico" alt="icon">` : ''}</td>
                                 </tr>
                             `).join('')}
                         </tbody>
