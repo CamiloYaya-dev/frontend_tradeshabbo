@@ -1,11 +1,33 @@
 const express = require('express');
 const path = require('path');
+const fs = require('fs');
 const sequelize = require('./config/database');
 const Image = require('./models/Image');
-const puppeteer = require('puppeteer');
+const PriceHistory = require('./models/PriceHistory');
+const axios = require('axios');
+const populateDatabase = require('./populateDatabase');
 
 const app = express();
 const port = 3000;
+
+async function getCatalog() {
+    try {
+        const response_catalog = await axios.get('https://lionfish-cosmic-ideally.ngrok-free.app/habbo-catalog');
+        const prices = response_catalog.data;
+        // Guardar el JSON en la ruta especificada
+        const jsonContent_catalog = JSON.stringify(prices, null, 2);
+        fs.writeFileSync(path.join(__dirname, 'public', 'furnis', 'precios', 'precios.json'), jsonContent_catalog, 'utf8');
+
+        const response = await axios.get('https://lionfish-cosmic-ideally.ngrok-free.app/habbo-price-history');
+        const pricesHistory = response.data;
+        // Guardar el JSON en la ruta especificada
+        const jsonContent_pricesHistory = JSON.stringify(pricesHistory, null, 2);
+        fs.writeFileSync(path.join(__dirname, 'public', 'furnis', 'precios', 'precios_historico.json'), jsonContent_pricesHistory, 'utf8');
+        await populateDatabase(); // Asegúrate de esperar a que la base de datos se poble
+    } catch (error) {
+        console.error('Error fetching and storing prices:', error);
+    }
+}
 
 // Middleware para añadir el header ngrok-skip-browser-warning
 app.use((req, res, next) => {
@@ -19,7 +41,9 @@ app.use(express.static('public'));
 // Ruta para obtener imágenes desde la base de datos
 app.get('/images', async (req, res) => {
     try {
-        const images = await Image.findAll();
+        const images = await Image.findAll({
+            order: [['fecha_creacion', 'DESC']]
+        });
         res.json(images);
     } catch (error) {
         console.error('Error retrieving images:', error);
@@ -27,75 +51,31 @@ app.get('/images', async (req, res) => {
     }
 });
 
-// Ruta para obtener el count de checkin
-app.get('/api/checkin-count', async (req, res) => {
+app.get('/price-history/:productId', async (req, res) => {
     try {
-        console.log('Launching Puppeteer');
-        console.time('Time to fetch checkin count');  // Iniciar medición de tiempo
-        
-        const browser = await puppeteer.launch({
-            args: [
-                '--no-sandbox',
-                '--disable-setuid-sandbox',
-                '--disable-dev-shm-usage',
-                '--disable-accelerated-2d-canvas',
-                '--disable-gpu',
-                '--no-first-run',
-                '--no-zygote',
-                '--single-process',
-                '--disable-background-networking',
-                '--disable-background-timer-throttling',
-                '--disable-backgrounding-occluded-windows',
-                '--disable-breakpad',
-                '--disable-client-side-phishing-detection',
-                '--disable-component-update',
-                '--disable-default-apps',
-                '--disable-domain-reliability',
-                '--disable-features=AudioServiceOutOfProcess',
-                '--disable-hang-monitor',
-                '--disable-ipc-flooding-protection',
-                '--disable-popup-blocking',
-                '--disable-print-preview',
-                '--disable-prompt-on-repost',
-                '--disable-renderer-backgrounding',
-                '--disable-sync',
-                '--force-color-profile=srgb',
-                '--metrics-recording-only',
-                '--no-pings',
-                '--password-store=basic',
-                '--use-mock-keychain',
-            ],
-            headless: true,
+        const productId = req.params.productId;
+        const history = await PriceHistory.findAll({
+            where: { productId },
+            include: [{
+                model: Image,
+                attributes: ['name', 'icon']
+            }]
         });
 
-        const page = await browser.newPage();
-        
-        // Interceptar y abortar solicitudes de recursos de imágenes
-        await page.setRequestInterception(true);
-        page.on('request', request => {
-            const resourceType = request.resourceType();
-            const url = request.url();
-            if (resourceType === 'image' || url.endsWith('.png') || url.endsWith('.jpg') || url.endsWith('.jpeg') || url.endsWith('.gif') || url.endsWith('.css') || url.endsWith('.json') || url.endsWith('.svg') || url.endsWith('.html')) {
-                request.abort();
-            } else {
-                request.continue();
-            }
-        });
-
-        await page.goto('https://origins.habbo.es/', { waitUntil: 'networkidle0' });
-        const htmlContent = await page.content();  // Obtener el contenido HTML
-        console.log(htmlContent);  // Imprimir el contenido HTML en la consola
-
-        const checkinCount = await page.$eval('.habbo__origins__checkin__count', el => el.textContent.trim());
-        await browser.close();
-
-        console.log(checkinCount);
-        console.timeEnd('Time to fetch checkin count');  // Finalizar medición de tiempo
-        res.json({ count: checkinCount });
+        // Transformar los datos para incluir el nombre del producto y el icono en cada registro de historial
+        const historyWithProductName = history.map(record => ({
+            id: record.id,
+            productId: record.productId,
+            fecha_precio: record.fecha_precio,
+            precio: record.precio,
+            name: record.Image.name,
+            icon: record.Image.icon
+        }));
+        console.log(historyWithProductName);
+        res.json(historyWithProductName);
     } catch (error) {
-        console.error('Error fetching checkin count:', error);
-        console.timeEnd('Time to fetch checkin count');  // Finalizar medición de tiempo en caso de error
-        res.status(500).send('Error fetching checkin count');
+        console.error('Error retrieving price history:', error);
+        res.status(500).send('Error retrieving price history');
     }
 });
 
@@ -103,6 +83,7 @@ app.listen(port, async () => {
     try {
         await sequelize.authenticate();
         console.log('Database connected successfully.');
+        await getCatalog(); // Asegúrate de esperar a que el catálogo se obtenga y se guarde antes de continuar
         console.log(`Servidor escuchando en http://localhost:${port}`);
     } catch (error) {
         console.error('Unable to connect to the database:', error);

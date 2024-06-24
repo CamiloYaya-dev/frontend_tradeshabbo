@@ -2,6 +2,11 @@ const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
 
 const Image = sequelize.define('Image', {
+    id: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true
+    },
     name: {
         type: DataTypes.STRING,
         allowNull: false
@@ -27,6 +32,10 @@ const Image = sequelize.define('Image', {
         allowNull: true
     },
     status: {
+        type: DataTypes.STRING,  // Añadir el campo icon
+        allowNull: true
+    },
+    fecha_creacion: {
         type: DataTypes.STRING,  // Añadir el campo icon
         allowNull: true
     }

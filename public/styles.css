@@ -177,3 +177,45 @@ body {
 .ad-space{
     margin-top: 24px;
 }
+
+.price_history {
+    margin-top: 24px;
+    text-align: center;
+    font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+}
+
+.price_history_content {
+    background-color: #335e7a;
+    border: 1px solid #050a0e;
+    border-radius: 15px;
+    box-shadow: 0 2px 3px rgba(6, 19, 25, .7);
+    padding: 12px;
+    font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+}
+
+.table th {
+    border-bottom: none !important;
+    border-top: none !important;
+}
+
+.table td {
+    border-bottom: none !important;
+    border-top: none !important;
+}
+
+.table td, .table th {
+    border-bottom: none !important;
+    border-top: none !important;
+}
+
+.table{
+    border-collapse: separate !important;
+}
+
+.iconos-hc-historico{
+    width: 35px;
+}
+
+.iconos-rare-historico{
+    width: 100px;
+}
