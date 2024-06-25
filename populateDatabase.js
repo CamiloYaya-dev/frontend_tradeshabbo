@@ -31,7 +31,8 @@ async function populateDatabase() {
                     highlight: priceInfo.highlight,
                     hot: priceInfo.hot,
                     status: priceInfo.status,
-                    fecha_creacion: priceInfo.fecha_creacion
+                    fecha_creacion: priceInfo.fecha_creacion,
+                    descripcion: priceInfo.descripcion
                 };
             });
         };

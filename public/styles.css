@@ -219,3 +219,23 @@ body {
 .iconos-rare-historico{
     width: 100px;
 }
+
+.up_price_history{
+    width: 20px;
+}
+
+.down_price_history{
+    width: 20px;
+}
+
+.equal_price_history{
+    width: 35px;
+}
+
+footer {
+    background-color: #335E7A;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 30px;
+}

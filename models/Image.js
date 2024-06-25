@@ -38,6 +38,10 @@ const Image = sequelize.define('Image', {
     fecha_creacion: {
         type: DataTypes.STRING,  // Añadir el campo icon
         allowNull: true
+    },
+    descripcion: {
+        type: DataTypes.STRING,  // Añadir el campo icon
+        allowNull: true
     }
 });
 

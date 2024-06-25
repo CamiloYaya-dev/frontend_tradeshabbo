@@ -3,7 +3,7 @@
     "id": 1,
     "product_id": 1,
     "fecha_precio": "2024-06-24T05:00:00.000Z",
-    "precio": "125.00"
+    "precio": "150.00"
   },
   {
     "id": 2,
@@ -262,5 +262,59 @@
     "product_id": 44,
     "fecha_precio": "2024-06-25T23:24:51.000Z",
     "precio": "35.00"
+  },
+  {
+    "id": 45,
+    "product_id": 1,
+    "fecha_precio": "2024-06-18T23:44:38.000Z",
+    "precio": "50.00"
+  },
+  {
+    "id": 46,
+    "product_id": 1,
+    "fecha_precio": "2024-06-20T23:44:38.000Z",
+    "precio": "100.00"
+  },
+  {
+    "id": 47,
+    "product_id": 1,
+    "fecha_precio": "2024-06-22T23:45:19.000Z",
+    "precio": "125.00"
+  },
+  {
+    "id": 48,
+    "product_id": 5,
+    "fecha_precio": "2024-06-18T23:52:16.000Z",
+    "precio": "50.00"
+  },
+  {
+    "id": 49,
+    "product_id": 5,
+    "fecha_precio": "2024-06-19T23:52:16.000Z",
+    "precio": "150.00"
+  },
+  {
+    "id": 50,
+    "product_id": 5,
+    "fecha_precio": "2024-06-20T23:53:05.000Z",
+    "precio": "400.00"
+  },
+  {
+    "id": 51,
+    "product_id": 5,
+    "fecha_precio": "2024-06-21T23:53:05.000Z",
+    "precio": "500.00"
+  },
+  {
+    "id": 52,
+    "product_id": 9,
+    "fecha_precio": "2024-06-18T23:53:44.000Z",
+    "precio": "100.00"
+  },
+  {
+    "id": 53,
+    "product_id": 9,
+    "fecha_precio": "2024-06-21T23:53:44.000Z",
+    "precio": "200.00"
   }
 ]

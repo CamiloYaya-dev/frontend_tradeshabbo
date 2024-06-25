@@ -51,21 +51,23 @@ $(document).ready(function() {
         $(document).on('click', '.product-link', function(e) {
             e.preventDefault();
             var productId = $(this).data('id');
-
+        
             $.getJSON(`/price-history/${productId}`, function(historyData) {
                 searchContainer.hide();
                 productContainer.hide();
                 productHistoryContainer.show();
                 backButton.show();
-
+        
                 var firstRecord = historyData[0];
+                console.log(firstRecord);
                 var imagePath = '';
                 if (firstRecord.icon === 'hc') {
                     imagePath = `furnis/hc/${firstRecord.name.replace(/ /g, '_')}.png`;
                 } else if (firstRecord.icon === 'rare') {
                     imagePath = `furnis/rares/${firstRecord.name.replace(/ /g, '_')}.png`;
                 }
-
+        
+                var previousPrice = null;
                 var historyContent = `
                     <h3 class="price_history_content online_habbo_text_blue">Historial de Precios</h3>
                     <div class="price-history-image">
@@ -77,22 +79,39 @@ $(document).ready(function() {
                                 <th class="online_habbo_text_blue">Fecha</th>
                                 <th class="online_habbo_text_blue">Nombre</th>
                                 <th class="online_habbo_text_blue">Precio</th>
+                                <th class="online_habbo_text_blue">Tendencia</th>
                             </tr>
                         </thead>
                         <tbody>
-                            ${historyData.map(record =>`
-                                <tr>
-                                    <td class="online_habbo_text_white">${new Date(record.fecha_precio).toLocaleDateString()}</td>
-                                    <td class="online_habbo_text_white">${record.name}</td>
-                                    <td class="online_habbo_text_white">${record.precio}</td>
-                                </tr>
-                            `).join('')}
+                            ${historyData.map(record => {
+                                var trendIcon = '';
+                                if (previousPrice !== null) {
+                                    if (record.precio > previousPrice) {
+                                        trendIcon = '<img class="down_price_history" src="./furnis/iconos/down_price_history.png" alt="down price">';
+                                    } else if (record.precio < previousPrice) {
+                                        trendIcon = '<img class="up_price_history" src="./furnis/iconos/up_price_history.png" alt="up price">';
+                                    }
+                                } else {
+                                    trendIcon = '<img class="equal_price_history" src="./furnis/iconos/equal_price_history.png" alt="equal price">';
+                                }
+                                previousPrice = record.precio;
+        
+                                return `
+                                    <tr>
+                                        <td class="online_habbo_text_white">${new Date(record.fecha_precio).toLocaleDateString()}</td>
+                                        <td class="online_habbo_text_white">${record.name}</td>
+                                        <td class="online_habbo_text_white">${record.precio}</td>
+                                        <td class="online_habbo_text_white">${trendIcon}</td>
+                                    </tr>
+                                `;
+                            }).join('')}
                         </tbody>
                     </table>
+                    <p class="price_history_content online_habbo_text_blue">${firstRecord.descripcion}</p>
                 `;
                 productHistoryContainer.html(historyContent);
             });
-        });
+        });        
 
         // Manejar clic en el botón de regreso para mostrar la lista de productos
         backButton.on('click', function() {

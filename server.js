@@ -59,7 +59,7 @@ app.get('/price-history/:productId', async (req, res) => {
             where: { productId },
             include: [{
                 model: Image,
-                attributes: ['name', 'icon']
+                attributes: ['name', 'icon', 'descripcion']
             }]
         });
 
@@ -70,7 +70,8 @@ app.get('/price-history/:productId', async (req, res) => {
             fecha_precio: record.fecha_precio,
             precio: record.precio,
             name: record.Image.name,
-            icon: record.Image.icon
+            icon: record.Image.icon,
+            descripcion: record.Image.descripcion
         }));
         console.log(historyWithProductName);
         res.json(historyWithProductName);

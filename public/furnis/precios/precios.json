@@ -7,7 +7,8 @@
     "highlight": 1,
     "hot": 1,
     "status": "arrow_trend_up",
-    "fecha_creacion": "2024-06-24T23:19:10.000Z"
+    "fecha_creacion": "2024-06-25T01:19:10.000Z",
+    "descripcion": "Este articulo es un obsequio del habbo club del primer mes"
   },
   {
     "id": 2,
@@ -16,8 +17,9 @@
     "icon": "hc",
     "highlight": 0,
     "hot": 0,
-    "status": "arrow_trend_down",
-    "fecha_creacion": "2024-06-24T23:19:10.000Z"
+    "status": null,
+    "fecha_creacion": "2024-06-24T23:50:57.000Z",
+    "descripcion": "Este articulo es un obsequio del habbo club y aun esta por validar que mes se dará."
   },
   {
     "id": 3,
@@ -27,7 +29,8 @@
     "highlight": 0,
     "hot": 0,
     "status": "",
-    "fecha_creacion": "2024-06-24T23:19:10.000Z"
+    "fecha_creacion": "2024-06-24T23:19:10.000Z",
+    "descripcion": "Este articulo es un obsequio del habbo club y aun esta por validar que mes se dará."
   },
   {
     "id": 4,
@@ -37,7 +40,8 @@
     "highlight": 1,
     "hot": 1,
     "status": "",
-    "fecha_creacion": "2024-06-24T23:19:10.000Z"
+    "fecha_creacion": "2024-06-24T23:19:10.000Z",
+    "descripcion": "Este articulo es un obsequio del habbo club y aun esta por validar que mes se dará."
   },
   {
     "id": 5,
@@ -46,8 +50,9 @@
     "icon": "hc",
     "highlight": 1,
     "hot": 1,
-    "status": "arrow_trend_up",
-    "fecha_creacion": "2024-06-24T23:19:10.000Z"
+    "status": null,
+    "fecha_creacion": "2024-06-24T23:51:12.000Z",
+    "descripcion": "Este articulo es un obsequio del habbo club y aun esta por validar que mes se dará."
   },
   {
     "id": 6,
@@ -57,7 +62,8 @@
     "highlight": 0,
     "hot": 0,
     "status": "",
-    "fecha_creacion": "2024-06-24T23:19:10.000Z"
+    "fecha_creacion": "2024-06-24T23:19:10.000Z",
+    "descripcion": "Este articulo es un obsequio del habbo club y aun esta por validar que mes se dará."
   },
   {
     "id": 7,
@@ -67,7 +73,8 @@
     "highlight": 0,
     "hot": 0,
     "status": "",
-    "fecha_creacion": "2024-06-24T23:19:10.000Z"
+    "fecha_creacion": "2024-06-24T23:19:10.000Z",
+    "descripcion": "Este articulo es un obsequio del habbo club y aun esta por validar que mes se dará."
   },
   {
     "id": 8,
@@ -77,7 +84,8 @@
     "highlight": 0,
     "hot": 0,
     "status": "",
-    "fecha_creacion": "2024-06-24T23:19:10.000Z"
+    "fecha_creacion": "2024-06-24T23:19:10.000Z",
+    "descripcion": "Este articulo es un obsequio del habbo club y aun esta por validar que mes se dará."
   },
   {
     "id": 9,
@@ -87,7 +95,8 @@
     "highlight": 1,
     "hot": 1,
     "status": "",
-    "fecha_creacion": "2024-06-24T23:19:10.000Z"
+    "fecha_creacion": "2024-06-24T23:19:10.000Z",
+    "descripcion": "Este articulo es un obsequio del habbo club y aun esta por validar que mes se dará."
   },
   {
     "id": 10,
@@ -97,7 +106,8 @@
     "highlight": 0,
     "hot": 0,
     "status": "",
-    "fecha_creacion": "2024-06-24T23:19:10.000Z"
+    "fecha_creacion": "2024-06-24T23:19:10.000Z",
+    "descripcion": "Este articulo es un obsequio del habbo club y aun esta por validar que mes se dará."
   },
   {
     "id": 11,
@@ -106,8 +116,9 @@
     "icon": "hc",
     "highlight": 0,
     "hot": 0,
-    "status": "arrow_trend_down",
-    "fecha_creacion": "2024-06-24T23:19:10.000Z"
+    "status": null,
+    "fecha_creacion": "2024-06-24T23:19:10.000Z",
+    "descripcion": "Este articulo es un obsequio del habbo club y aun esta por validar que mes se dará."
   },
   {
     "id": 12,
@@ -116,8 +127,9 @@
     "icon": "hc",
     "highlight": 0,
     "hot": 0,
-    "status": "arrow_trend_down",
-    "fecha_creacion": "2024-06-24T23:19:10.000Z"
+    "status": null,
+    "fecha_creacion": "2024-06-24T23:19:10.000Z",
+    "descripcion": "Este articulo es un obsequio del habbo club y aun esta por validar que mes se dará."
   },
   {
     "id": 13,
@@ -127,7 +139,8 @@
     "highlight": 0,
     "hot": 0,
     "status": "",
-    "fecha_creacion": "2024-06-24T23:19:10.000Z"
+    "fecha_creacion": "2024-06-24T23:19:10.000Z",
+    "descripcion": "Fue el primer rare del hotel, salio a un precio inicial de 50 creditos, estuvo un total de 7 dias en catalogo, desde el 18 de junio de 2024 hasta el 25 de junio de 2024"
   },
   {
     "id": 14,
@@ -137,7 +150,8 @@
     "highlight": 0,
     "hot": 0,
     "status": "",
-    "fecha_creacion": "2024-06-24T23:19:10.000Z"
+    "fecha_creacion": "2024-06-24T23:19:10.000Z",
+    "descripcion": "Este furni hace parte de la categoria FUNKY FRIDAY y solo duraron 24 horas en catalogo a un precio de 6 créditos"
   },
   {
     "id": 15,
@@ -147,7 +161,8 @@
     "highlight": 0,
     "hot": 0,
     "status": "",
-    "fecha_creacion": "2024-06-24T23:19:10.000Z"
+    "fecha_creacion": "2024-06-24T23:19:10.000Z",
+    "descripcion": "Este furni hace parte de la categoria FUNKY FRIDAY y solo duraron 24 horas en catalogo a un precio de 6 créditos"
   },
   {
     "id": 16,
@@ -157,7 +172,8 @@
     "highlight": 0,
     "hot": 0,
     "status": "",
-    "fecha_creacion": "2024-06-24T23:19:10.000Z"
+    "fecha_creacion": "2024-06-24T23:19:10.000Z",
+    "descripcion": "Este furni hace parte de la categoria FUNKY FRIDAY y solo duraron 24 horas en catalogo a un precio de 6 créditos"
   },
   {
     "id": 17,
@@ -167,7 +183,8 @@
     "highlight": 0,
     "hot": 0,
     "status": "",
-    "fecha_creacion": "2024-06-24T23:19:10.000Z"
+    "fecha_creacion": "2024-06-24T23:19:10.000Z",
+    "descripcion": "Este furni hace parte de la categoria FUNKY FRIDAY y solo duraron 24 horas en catalogo a un precio de 6 créditos"
   },
   {
     "id": 18,
@@ -177,7 +194,8 @@
     "highlight": 0,
     "hot": 0,
     "status": "",
-    "fecha_creacion": "2024-06-24T23:19:10.000Z"
+    "fecha_creacion": "2024-06-24T23:19:10.000Z",
+    "descripcion": "Este furni hace parte de la categoria FUNKY FRIDAY y solo duraron 24 horas en catalogo a un precio de 6 créditos"
   },
   {
     "id": 19,
@@ -187,7 +205,8 @@
     "highlight": 0,
     "hot": 0,
     "status": "",
-    "fecha_creacion": "2024-06-24T23:19:10.000Z"
+    "fecha_creacion": "2024-06-24T23:19:10.000Z",
+    "descripcion": "Este furni hace parte de la categoria FUNKY FRIDAY y solo duraron 24 horas en catalogo a un precio de 10 créditos"
   },
   {
     "id": 20,
@@ -197,7 +216,8 @@
     "highlight": 0,
     "hot": 0,
     "status": "",
-    "fecha_creacion": "2024-06-24T23:19:10.000Z"
+    "fecha_creacion": "2024-06-24T23:19:10.000Z",
+    "descripcion": "Este furni hace parte de la categoria FUNKY FRIDAY y solo duraron 24 horas en catalogo a un precio de 10 créditos"
   },
   {
     "id": 21,
@@ -207,7 +227,8 @@
     "highlight": 0,
     "hot": 0,
     "status": "",
-    "fecha_creacion": "2024-06-24T23:19:10.000Z"
+    "fecha_creacion": "2024-06-24T23:19:10.000Z",
+    "descripcion": "Este furni hace parte de la categoria FUNKY FRIDAY y solo duraron 24 horas en catalogo a un precio de 10 créditos"
   },
   {
     "id": 22,
@@ -217,7 +238,8 @@
     "highlight": 0,
     "hot": 0,
     "status": "",
-    "fecha_creacion": "2024-06-24T23:19:10.000Z"
+    "fecha_creacion": "2024-06-24T23:19:10.000Z",
+    "descripcion": "Este furni hace parte de la categoria FUNKY FRIDAY y solo duraron 24 horas en catalogo a un precio de 10 créditos"
   },
   {
     "id": 23,
@@ -227,7 +249,8 @@
     "highlight": 0,
     "hot": 0,
     "status": "",
-    "fecha_creacion": "2024-06-24T23:19:10.000Z"
+    "fecha_creacion": "2024-06-24T23:19:10.000Z",
+    "descripcion": "Este furni hace parte de la categoria FUNKY FRIDAY y solo duraron 24 horas en catalogo a un precio de 10 créditos"
   },
   {
     "id": 24,
@@ -237,7 +260,8 @@
     "highlight": 0,
     "hot": 0,
     "status": "",
-    "fecha_creacion": "2024-06-24T23:19:10.000Z"
+    "fecha_creacion": "2024-06-24T23:19:10.000Z",
+    "descripcion": "Este furni hace parte de la categoria FUNKY FRIDAY y solo duraron 24 horas en catalogo a un precio de 6 créditos"
   },
   {
     "id": 25,
@@ -247,7 +271,8 @@
     "highlight": 0,
     "hot": 0,
     "status": "",
-    "fecha_creacion": "2024-06-24T23:19:10.000Z"
+    "fecha_creacion": "2024-06-24T23:19:10.000Z",
+    "descripcion": "Este furni hace parte de la categoria FUNKY FRIDAY y solo duraron 24 horas en catalogo a un precio de 6 créditos"
   },
   {
     "id": 26,
@@ -257,7 +282,8 @@
     "highlight": 0,
     "hot": 0,
     "status": "",
-    "fecha_creacion": "2024-06-24T23:19:10.000Z"
+    "fecha_creacion": "2024-06-24T23:19:10.000Z",
+    "descripcion": "Este furni hace parte de la categoria FUNKY FRIDAY y solo duraron 24 horas en catalogo a un precio de 6 créditos"
   },
   {
     "id": 27,
@@ -267,7 +293,8 @@
     "highlight": 0,
     "hot": 0,
     "status": "",
-    "fecha_creacion": "2024-06-24T23:19:10.000Z"
+    "fecha_creacion": "2024-06-24T23:19:10.000Z",
+    "descripcion": "Este furni hace parte de la categoria FUNKY FRIDAY y solo duraron 24 horas en catalogo a un precio de 6 créditos"
   },
   {
     "id": 28,
@@ -277,7 +304,8 @@
     "highlight": 0,
     "hot": 0,
     "status": "",
-    "fecha_creacion": "2024-06-24T23:19:10.000Z"
+    "fecha_creacion": "2024-06-24T23:19:10.000Z",
+    "descripcion": "Este furni hace parte de la categoria FUNKY FRIDAY y solo duraron 24 horas en catalogo a un precio de 6 créditos"
   },
   {
     "id": 29,
@@ -287,7 +315,8 @@
     "highlight": 0,
     "hot": 0,
     "status": "",
-    "fecha_creacion": "2024-06-24T23:19:10.000Z"
+    "fecha_creacion": "2024-06-24T23:19:10.000Z",
+    "descripcion": "Este furni hace parte de la categoria FUNKY FRIDAY y solo duraron 24 horas en catalogo a un precio de 6 créditos"
   },
   {
     "id": 30,
@@ -297,7 +326,8 @@
     "highlight": 0,
     "hot": 0,
     "status": "",
-    "fecha_creacion": "2024-06-24T23:19:10.000Z"
+    "fecha_creacion": "2024-06-24T23:19:10.000Z",
+    "descripcion": "Este furni hace parte de la categoria FUNKY FRIDAY y solo duraron 24 horas en catalogo a un precio de 6 créditos"
   },
   {
     "id": 31,
@@ -307,7 +337,8 @@
     "highlight": 0,
     "hot": 0,
     "status": "",
-    "fecha_creacion": "2024-06-24T23:19:10.000Z"
+    "fecha_creacion": "2024-06-24T23:19:10.000Z",
+    "descripcion": "Este furni hace parte de la categoria FUNKY FRIDAY y solo duraron 24 horas en catalogo a un precio de 6 créditos"
   },
   {
     "id": 32,
@@ -317,7 +348,8 @@
     "highlight": 0,
     "hot": 0,
     "status": "",
-    "fecha_creacion": "2024-06-24T23:19:10.000Z"
+    "fecha_creacion": "2024-06-24T23:19:10.000Z",
+    "descripcion": "Este furni hace parte de la categoria FUNKY FRIDAY y solo duraron 24 horas en catalogo a un precio de 6 créditos"
   },
   {
     "id": 33,
@@ -327,7 +359,8 @@
     "highlight": 0,
     "hot": 0,
     "status": "",
-    "fecha_creacion": "2024-06-24T23:19:10.000Z"
+    "fecha_creacion": "2024-06-24T23:19:10.000Z",
+    "descripcion": "Este furni hace parte de la categoria FUNKY FRIDAY y solo duraron 24 horas en catalogo a un precio de 6 créditos"
   },
   {
     "id": 34,
@@ -337,7 +370,8 @@
     "highlight": 0,
     "hot": 0,
     "status": "",
-    "fecha_creacion": "2024-06-24T23:19:10.000Z"
+    "fecha_creacion": "2024-06-24T23:19:10.000Z",
+    "descripcion": "Este furni hace parte de la categoria FUNKY FRIDAY y solo duraron 24 horas en catalogo a un precio de 6 créditos"
   },
   {
     "id": 35,
@@ -347,7 +381,8 @@
     "highlight": 0,
     "hot": 0,
     "status": "",
-    "fecha_creacion": "2024-06-24T23:19:10.000Z"
+    "fecha_creacion": "2024-06-24T23:19:10.000Z",
+    "descripcion": "Este furni hace parte de la categoria FUNKY FRIDAY y solo duraron 24 horas en catalogo a un precio de 6 créditos"
   },
   {
     "id": 36,
@@ -357,7 +392,8 @@
     "highlight": 0,
     "hot": 0,
     "status": "",
-    "fecha_creacion": "2024-06-24T23:19:10.000Z"
+    "fecha_creacion": "2024-06-24T23:19:10.000Z",
+    "descripcion": "Este furni hace parte de la categoria FUNKY FRIDAY y solo duraron 24 horas en catalogo a un precio de 6 créditos"
   },
   {
     "id": 37,
@@ -367,7 +403,8 @@
     "highlight": 0,
     "hot": 0,
     "status": "",
-    "fecha_creacion": "2024-06-24T23:19:10.000Z"
+    "fecha_creacion": "2024-06-24T23:19:10.000Z",
+    "descripcion": "Este furni hace parte de la categoria FUNKY FRIDAY y solo duraron 24 horas en catalogo a un precio de 6 créditos"
   },
   {
     "id": 38,
@@ -377,7 +414,8 @@
     "highlight": 0,
     "hot": 0,
     "status": "",
-    "fecha_creacion": "2024-06-24T23:19:10.000Z"
+    "fecha_creacion": "2024-06-24T23:19:10.000Z",
+    "descripcion": "Este furni hace parte de la categoria FUNKY FRIDAY y solo duraron 24 horas en catalogo a un precio de 6 créditos"
   },
   {
     "id": 39,
@@ -387,7 +425,8 @@
     "highlight": 0,
     "hot": 0,
     "status": "",
-    "fecha_creacion": "2024-06-24T23:19:10.000Z"
+    "fecha_creacion": "2024-06-24T23:19:10.000Z",
+    "descripcion": "Este furni hace parte de la categoria FUNKY FRIDAY y solo duraron 24 horas en catalogo a un precio de 6 créditos"
   },
   {
     "id": 40,
@@ -397,7 +436,8 @@
     "highlight": 0,
     "hot": 0,
     "status": "",
-    "fecha_creacion": "2024-06-24T23:19:10.000Z"
+    "fecha_creacion": "2024-06-24T23:19:10.000Z",
+    "descripcion": "Este furni hace parte de la categoria FUNKY FRIDAY y solo duraron 24 horas en catalogo a un precio de 6 créditos"
   },
   {
     "id": 41,
@@ -407,7 +447,8 @@
     "highlight": 0,
     "hot": 0,
     "status": "",
-    "fecha_creacion": "2024-06-24T23:19:10.000Z"
+    "fecha_creacion": "2024-06-24T23:19:10.000Z",
+    "descripcion": "Este furni hace parte de la categoria FUNKY FRIDAY y solo duraron 24 horas en catalogo a un precio de 6 créditos"
   },
   {
     "id": 42,
@@ -417,7 +458,8 @@
     "highlight": 0,
     "hot": 0,
     "status": "",
-    "fecha_creacion": "2024-06-24T23:19:10.000Z"
+    "fecha_creacion": "2024-06-24T23:19:10.000Z",
+    "descripcion": "Este furni hace parte de la categoria FUNKY FRIDAY y solo duraron 24 horas en catalogo a un precio de 6 créditos"
   },
   {
     "id": 43,
@@ -427,7 +469,8 @@
     "highlight": 0,
     "hot": 0,
     "status": "",
-    "fecha_creacion": "2024-06-24T23:19:10.000Z"
+    "fecha_creacion": "2024-06-24T23:19:10.000Z",
+    "descripcion": "Este furni hace parte de la categoria FUNKY FRIDAY y solo duraron 24 horas en catalogo a un precio de 6 créditos"
   },
   {
     "id": 44,
@@ -437,6 +480,7 @@
     "highlight": 1,
     "hot": 1,
     "status": " ",
-    "fecha_creacion": "2024-06-24T23:34:41.000Z"
+    "fecha_creacion": "2024-06-25T02:34:41.000Z",
+    "descripcion": "Este rare salio el 25 de junio de 2024 y fue el segundo rare en salir, su precio en catalogo era de 35 creditos, duro un total de 7 dias."
   }
 ]
