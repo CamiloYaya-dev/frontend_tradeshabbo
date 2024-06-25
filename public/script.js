@@ -68,6 +68,7 @@ $(document).ready(function() {
                 }
         
                 var previousPrice = null;
+                var actualPrice = true;
                 var historyContent = `
                     <h3 class="price_history_content online_habbo_text_blue">Historial de Precios</h3>
                     <div class="price-history-image">
@@ -86,16 +87,17 @@ $(document).ready(function() {
                             ${historyData.map(record => {
                                 var trendIcon = '';
                                 if (previousPrice !== null) {
-                                    if (record.precio > previousPrice) {
-                                        trendIcon = '<img class="down_price_history" src="./furnis/iconos/down_price_history.png" alt="down price">';
-                                    } else if (record.precio < previousPrice) {
+                                    if (record.precio < previousPrice) {
                                         trendIcon = '<img class="up_price_history" src="./furnis/iconos/up_price_history.png" alt="up price">';
                                     }
-                                } else {
-                                    trendIcon = '<img class="equal_price_history" src="./furnis/iconos/equal_price_history.png" alt="equal price">';
                                 }
+                                if(actualPrice) {
+                                    trendIcon = '<img class="equal_price_history" src="./furnis/iconos/equal_price_history.png" alt="equal price">';
+                                } else if (record.precio > previousPrice) {
+                                    trendIcon = '<img class="down_price_history" src="./furnis/iconos/down_price_history.png" alt="down price">';
+                                } 
                                 previousPrice = record.precio;
-        
+                                actualPrice = false;
                                 return `
                                     <tr>
                                         <td class="online_habbo_text_white">${new Date(record.fecha_precio).toLocaleDateString()}</td>
