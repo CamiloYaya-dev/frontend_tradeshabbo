@@ -69,11 +69,24 @@ body {
     height: 40px;
 }
 
+.iconos-arrow-trend-up-example {
+    height: 15px;
+}
+
+.iconos-arrow-trend-down-example {
+    height: 15px;
+}
+
 .sprite_hotel_origins{
     position: absolute;
     width: auto;
     height: auto;
     left: 20px;
+}
+
+.row_sprite_hotel_origins{
+    width: 166px;
+    height: 214px;
 }
 
 .sprite_trades_habbo_origins{
@@ -133,7 +146,7 @@ body {
 
 .buscar-furnis{
     background-color: #26627D;
-    border-color: #26627D;
+    border-color: #000000;
     color: white;
 }
 
@@ -257,4 +270,13 @@ footer {
     text-align: center;
     padding: 1rem;
     margin-top: 30px;
+}
+
+.price-history-img-funky{
+    width: 100px;
+}
+
+.example_row{
+    padding-left: 20px;
+    width: auto !important;
 }

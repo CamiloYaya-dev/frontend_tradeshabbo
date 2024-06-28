@@ -26,6 +26,7 @@ $(document).ready(function() {
         var productHistoryContainer = $('#product-history-container');
         var backButton = $('#back-button');
         var searchContainer = $('#search-input');
+        var explication_row = $('#explication_row');
         // Función para renderizar los productos
         function renderProducts(products) {
             productContainer.empty();
@@ -93,6 +94,7 @@ $(document).ready(function() {
         
             $.getJSON(`/price-history/${productId}`, function(historyData) {
                 searchContainer.hide();
+                explication_row.hide();
                 productContainer.hide();
                 productHistoryContainer.show();
                 backButton.show();
@@ -102,8 +104,13 @@ $(document).ready(function() {
                 var imagePath = '';
                 if (firstRecord.icon === 'hc') {
                     imagePath = `furnis/hc/${firstRecord.name.replace(/ /g, '_')}.png`;
+                    imageClass = "price-history-img"
                 } else if (firstRecord.icon === 'rare') {
                     imagePath = `furnis/rares/${firstRecord.name.replace(/ /g, '_')}.png`;
+                    imageClass = "price-history-img"
+                } else if (firstRecord.icon === 'funky') {
+                    imagePath = `furnis/rares/${firstRecord.name.replace(/ /g, '_')}.png`;
+                    imageClass = "price-history-img-funky"
                 }
         
                 var previousPrice = null;
@@ -111,7 +118,7 @@ $(document).ready(function() {
                 var historyContent = `
                     <h3 class="price_history_content online_habbo_text_blue">Historial de Precios</h3>
                     <div class="price-history-image">
-                        <img src="${imagePath}" alt="${firstRecord.name}" class="price-history-img">
+                        <img src="${imagePath}" alt="${firstRecord.name}" class="${imageClass}">
                     </div>
                     <table class="table price_history_content">
                         <thead>
@@ -163,6 +170,7 @@ $(document).ready(function() {
             backButton.hide();
             productContainer.show();
             searchContainer.show();
+            explication_row.show();
         });
     });
 });

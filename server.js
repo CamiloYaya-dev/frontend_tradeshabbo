@@ -103,43 +103,74 @@ async function getVipPriceOnDate(date) {
 // Ruta para obtener imágenes desde la base de datos
 app.get('/images', async (req, res) => {
     try {
-        const imagesWithLatestPrice = await Image.findAll({
-            include: [{
-                model: PriceHistory,
-                as: 'priceHistories',
-                attributes: ['fecha_precio'],
-                order: [['fecha_precio', 'DESC']],
-                limit: 1 // Solo necesitamos el registro más reciente
-            }]
-        });
+        // Obtener la fecha actual
+        const today = new Date();
+        today.setHours(0, 0, 0, 0); // Establecer el inicio del día
+        const yesterday = new Date(today);
+        yesterday.setDate(today.getDate() - 7); // Establecer el final del día
 
-        // Ordena las imágenes: primero los hot, luego por la fecha del historial de precios más reciente
-        imagesWithLatestPrice.sort((a, b) => {
-            // Primero, ordena por el campo 'hot'
+        // Obtener todas las imágenes
+        const images = await Image.findAll();
+
+        // Crear un arreglo para almacenar las imágenes con sus últimos precios y estatus calculado
+        const imagesWithDetails = await Promise.all(images.map(async (image) => {
+            // Obtener el historial de precios para la imagen actual de la fecha actual
+            const priceHistory = await PriceHistory.findAll({
+                where: {
+                    productId: image.id,
+                    fecha_precio: {
+                        [Op.gte]: yesterday,
+                        [Op.lt]: new Date(today.getTime() + 24 * 60 * 60 * 1000) // Hasta el final de hoy
+                    }
+                },
+                order: [['fecha_precio', 'DESC']],
+                limit: 2 // Necesitamos los dos últimos precios para calcular el estatus
+            });
+
+            // Calcular el estatus basado en los dos últimos precios
+            let status = '';
+            if (priceHistory.length > 1) {
+                const actualPrice = priceHistory[0].precio;
+                const previousPrice = priceHistory[1].precio;
+
+                if (actualPrice > previousPrice) {
+                    status = 'arrow_trend_up';
+                } else {
+                    status = 'arrow_trend_down';
+                }
+            }
+
+            // Obtener el precio VIP
+            const vip_price = await getVipPrice();
+
+            // Devolver la imagen con el precio VIP y el estatus calculado
+            return {
+                ...image.toJSON(), // Convertir la instancia de Sequelize a objeto JSON
+                vip_price: vip_price,
+                status: status,
+                fecha_precio: priceHistory[0] ? priceHistory[0].fecha_precio : null // Añadir la fecha del precio más reciente
+            };
+        }));
+
+        // Ordenar las imágenes: primero los 'hot', luego por la fecha del historial de precios más reciente
+        imagesWithDetails.sort((a, b) => {
+            // Primero, ordenar por el campo 'hot'
             if (a.hot == 1 && b.hot != 1) return -1;
             if (a.hot != 1 && b.hot == 1) return 1;
 
-            // Si ambos son 'hot' o ambos no son 'hot', ordena por la fecha del historial de precios
-            const dateA = a.priceHistories[0] ? new Date(a.priceHistories[0].fecha_precio) : new Date(0);
-            const dateB = b.priceHistories[0] ? new Date(b.priceHistories[0].fecha_precio) : new Date(0);
+            // Si ambos son 'hot' o ambos no son 'hot', ordenar por la fecha del historial de precios
+            const dateA = a.fecha_precio ? new Date(a.fecha_precio) : new Date(0);
+            const dateB = b.fecha_precio ? new Date(b.fecha_precio) : new Date(0);
             return dateB - dateA;
         });
 
-        // Obtén el precio VIP
-        const vip_price = await getVipPrice();
-
-        // Añadir el campo vip_price a cada imagen
-        const imagesWithVipPrice = imagesWithLatestPrice.map(image => ({
-            ...image.toJSON(), // Convertir la instancia de Sequelize a objeto JSON
-            vip_price: vip_price
-        }));
-
-        res.json(imagesWithVipPrice);
+        res.json(imagesWithDetails);
     } catch (error) {
         console.error('Error retrieving images:', error);
         res.status(500).send('Error retrieving images');
     }
 });
+
 
 app.get('/price-history/:productId', async (req, res) => {
     try {
