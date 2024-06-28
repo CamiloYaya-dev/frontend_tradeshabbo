@@ -69,6 +69,23 @@ $(document).ready(function() {
             renderProducts(filteredProducts);
         });
 
+        // Filtrar productos por categoría al hacer clic en los botones
+        $('.filter-button').on('click', function() {
+            var category = $(this).data('category');
+            if (category === 'all') {
+                renderProducts(data); // Mostrar todos los productos
+            } else {
+                var filteredProducts = data.filter(function(item) {
+                    if (category === 'hot') {
+                        return item.hot == 1;
+                    } else {
+                        return item.icon === category;
+                    }
+                });
+                renderProducts(filteredProducts);
+            }
+        });
+
         // Manejar clic en un producto para mostrar el historial de precios
         $(document).on('click', '.product-link', function(e) {
             e.preventDefault();
