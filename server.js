@@ -12,17 +12,30 @@ const port = 3000;
 
 async function getCatalog() {
     try {
-        const response_catalog = await axios.get('https://lionfish-cosmic-ideally.ngrok-free.app/habbo-catalog');
-        const prices = response_catalog.data;
-        // Guardar el JSON en la ruta especificada
-        const jsonContent_catalog = JSON.stringify(prices, null, 2);
-        fs.writeFileSync(path.join(__dirname, 'public', 'furnis', 'precios', 'precios.json'), jsonContent_catalog, 'utf8');
+        const response_catalog = await axios.get('https://lionfish-cosmic-ideally.ngrok-free.app/habbo-catalog').catch(error => {
+            console.warn('Error fetching catalog, using local file:', error.message);
+            return null; // Retorna null en caso de error
+        });
 
-        const response = await axios.get('https://lionfish-cosmic-ideally.ngrok-free.app/habbo-price-history');
-        const pricesHistory = response.data;
-        // Guardar el JSON en la ruta especificada
-        const jsonContent_pricesHistory = JSON.stringify(pricesHistory, null, 2);
-        fs.writeFileSync(path.join(__dirname, 'public', 'furnis', 'precios', 'precios_historico.json'), jsonContent_pricesHistory, 'utf8');
+        if (response_catalog) {
+            const prices = response_catalog.data;
+            // Guardar el JSON en la ruta especificada
+            const jsonContent_catalog = JSON.stringify(prices, null, 2);
+            fs.writeFileSync(path.join(__dirname, 'public', 'furnis', 'precios', 'precios.json'), jsonContent_catalog, 'utf8');
+        }
+
+        const response_prices = await axios.get('https://lionfish-cosmic-ideally.ngrok-free.app/habbo-price-history').catch(error => {
+            console.warn('Error fetching price history, using local file:', error.message);
+            return null; // Retorna null en caso de error
+        });
+
+        if (response_prices) {
+            const pricesHistory = response_prices.data;
+            // Guardar el JSON en la ruta especificada
+            const jsonContent_pricesHistory = JSON.stringify(pricesHistory, null, 2);
+            fs.writeFileSync(path.join(__dirname, 'public', 'furnis', 'precios', 'precios_historico.json'), jsonContent_pricesHistory, 'utf8');
+        }
+
         await populateDatabase(); // Asegúrate de esperar a que la base de datos se poble
     } catch (error) {
         console.error('Error fetching and storing prices:', error);
