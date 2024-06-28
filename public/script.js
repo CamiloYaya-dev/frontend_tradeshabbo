@@ -26,7 +26,9 @@ $(document).ready(function() {
         var productHistoryContainer = $('#product-history-container');
         var backButton = $('#back-button');
         var searchContainer = $('#search-input');
-        var explication_row = $('#explication_row');
+        var row_explanation_trends = $('#row_explanation_trends');
+        var row_explanation_votes = $('#row_explanation_votes');
+        var filter_tags = $('#filter_tags');
         // Función para renderizar los productos
         function renderProducts(products) {
             productContainer.empty();
@@ -94,7 +96,9 @@ $(document).ready(function() {
         
             $.getJSON(`/price-history/${productId}`, function(historyData) {
                 searchContainer.hide();
-                explication_row.hide();
+                row_explanation_trends.hide();
+                row_explanation_votes.hide();
+                filter_tags.hide();
                 productContainer.hide();
                 productHistoryContainer.show();
                 backButton.show();
@@ -170,7 +174,9 @@ $(document).ready(function() {
             backButton.hide();
             productContainer.show();
             searchContainer.show();
-            explication_row.show();
+            row_explanation_trends.show();
+            row_explanation_votes.show();
+            filter_tags.show();
         });
     });
 });
