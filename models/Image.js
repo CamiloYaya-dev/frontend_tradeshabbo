@@ -20,27 +20,27 @@ const Image = sequelize.define('Image', {
         allowNull: false
     },
     icon: {
-        type: DataTypes.STRING,  // Añadir el campo icon
+        type: DataTypes.STRING,
         allowNull: true
     },
     highlight: {
-        type: DataTypes.STRING,  // Añadir el campo icon
+        type: DataTypes.STRING,
         allowNull: true
     },
     hot: {
-        type: DataTypes.STRING,  // Añadir el campo icon
+        type: DataTypes.STRING,
         allowNull: true
     },
     status: {
-        type: DataTypes.STRING,  // Añadir el campo icon
+        type: DataTypes.STRING,
         allowNull: true
     },
     fecha_creacion: {
-        type: DataTypes.STRING,  // Añadir el campo icon
+        type: DataTypes.STRING,
         allowNull: true
     },
     descripcion: {
-        type: DataTypes.STRING,  // Añadir el campo icon
+        type: DataTypes.STRING,
         allowNull: true
     }
 });

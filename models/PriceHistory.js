@@ -2,7 +2,6 @@ const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
 const Image = require('./Image');
 
-
 const PriceHistory = sequelize.define('PriceHistory', {
     id: {
         type: DataTypes.INTEGER,
@@ -31,6 +30,11 @@ const PriceHistory = sequelize.define('PriceHistory', {
     timestamps: false
 });
 
-PriceHistory.belongsTo(Image, { foreignKey: 'productId' });
+Image.hasMany(PriceHistory, { foreignKey: 'productId', as: 'priceHistories' });
+PriceHistory.belongsTo(Image, { foreignKey: 'productId', as: 'image' });
+
+sequelize.sync({ force: false }).then(() => {
+    console.log('Database & tables created!');
+});
 
 module.exports = PriceHistory;

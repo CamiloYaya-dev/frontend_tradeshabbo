@@ -103,12 +103,33 @@ async function getVipPriceOnDate(date) {
 // Ruta para obtener imágenes desde la base de datos
 app.get('/images', async (req, res) => {
     try {
-        const images = await Image.findAll({
-            order: [['fecha_creacion', 'DESC']]
+        const imagesWithLatestPrice = await Image.findAll({
+            include: [{
+                model: PriceHistory,
+                as: 'priceHistories',
+                attributes: ['fecha_precio'],
+                order: [['fecha_precio', 'DESC']],
+                limit: 1 // Solo necesitamos el registro más reciente
+            }]
         });
-        let vip_price = await getVipPrice();
+
+        // Ordena las imágenes: primero los hot, luego por la fecha del historial de precios más reciente
+        imagesWithLatestPrice.sort((a, b) => {
+            // Primero, ordena por el campo 'hot'
+            if (a.hot == 1 && b.hot != 1) return -1;
+            if (a.hot != 1 && b.hot == 1) return 1;
+
+            // Si ambos son 'hot' o ambos no son 'hot', ordena por la fecha del historial de precios
+            const dateA = a.priceHistories[0] ? new Date(a.priceHistories[0].fecha_precio) : new Date(0);
+            const dateB = b.priceHistories[0] ? new Date(b.priceHistories[0].fecha_precio) : new Date(0);
+            return dateB - dateA;
+        });
+
+        // Obtén el precio VIP
+        const vip_price = await getVipPrice();
+
         // Añadir el campo vip_price a cada imagen
-        const imagesWithVipPrice = images.map(image => ({
+        const imagesWithVipPrice = imagesWithLatestPrice.map(image => ({
             ...image.toJSON(), // Convertir la instancia de Sequelize a objeto JSON
             vip_price: vip_price
         }));
@@ -128,6 +149,7 @@ app.get('/price-history/:productId', async (req, res) => {
             where: { productId },
             include: [{
                 model: Image,
+                as: 'image', // Especifica el alias correcto aquí
                 attributes: ['name', 'icon', 'descripcion']
             }]
         });
@@ -138,9 +160,9 @@ app.get('/price-history/:productId', async (req, res) => {
                 productId: record.productId,
                 fecha_precio: record.fecha_precio,
                 precio: record.precio,
-                name: record.Image.name,
-                icon: record.Image.icon,
-                descripcion: record.Image.descripcion,
+                name: record.image ? record.image.name : null, // Usar el alias correcto aquí
+                icon: record.image ? record.image.icon : null, // Usar el alias correcto aquí
+                descripcion: record.image ? record.image.descripcion : null, // Usar el alias correcto aquí
                 vip_price: vipPriceOnDate
             };
         }));
