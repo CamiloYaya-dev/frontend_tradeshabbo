@@ -16,6 +16,11 @@ body {
     margin-right: 5px;
 }
 
+.price-vip {
+    width: 40px;
+    margin-right: 5px;
+}
+
 .iconos-rare {
     position: absolute;
     top: 10px;

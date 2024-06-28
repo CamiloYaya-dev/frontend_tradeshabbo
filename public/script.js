@@ -5,7 +5,6 @@ $(document).ready(function() {
         var productHistoryContainer = $('#product-history-container');
         var backButton = $('#back-button');
         var searchContainer = $('#search-input');
-
         // Función para renderizar los productos
         function renderProducts(products) {
             productContainer.empty();
@@ -25,6 +24,7 @@ $(document).ready(function() {
                                 <div class="card-body text-center">
                                     <p class="card-text text-price">
                                         <img src="furnis/dinero/credito.png" alt="credito" class="price-icon">${item.price}
+                                        <img src="furnis/dinero/vip.png" alt="vip" class="price-vip">${(item.price / item.vip_price).toFixed(2)}
                                     </p>
                                     <p class="card-text text-name online_habbo_text_white">${item.name}</p>
                                 </div>
@@ -80,30 +80,33 @@ $(document).ready(function() {
                             <tr>
                                 <th class="online_habbo_text_blue">Fecha</th>
                                 <th class="online_habbo_text_blue">Nombre</th>
-                                <th class="online_habbo_text_blue">Precio</th>
+                                <th class="online_habbo_text_blue">Precio <img src="furnis/dinero/credito.png" alt="credito" class="price-icon"></th>
+                                <th class="online_habbo_text_blue">Precio <img src="furnis/dinero/vip.png" alt="vip" class="price-vip"></th>
                                 <th class="online_habbo_text_blue">Tendencia</th>
                             </tr>
                         </thead>
                         <tbody>
-                            ${historyData.map(record => {
+                            ${historyData.map((record, index) => {
+                                const actualPrice = record.precio;
+                                const previousPrice = index > 0 ? historyData[index - 1].precio : null;
+                                const nextPrice = index < historyData.length - 1 ? historyData[index + 1].precio : null;
                                 var trendIcon = '';
-                                if (previousPrice !== null) {
-                                    if (record.precio < previousPrice) {
-                                        trendIcon = '<img class="up_price_history" src="./furnis/iconos/up_price_history.png" alt="up price">';
-                                    }
-                                }
-                                if(actualPrice) {
+                                
+                                if (previousPrice === null || nextPrice === null) {
                                     trendIcon = '<img class="equal_price_history" src="./furnis/iconos/equal_price_history.png" alt="equal price">';
-                                } else if (record.precio > previousPrice) {
-                                    trendIcon = '<img class="down_price_history" src="./furnis/iconos/down_price_history.png" alt="down price">';
-                                } 
-                                previousPrice = record.precio;
-                                actualPrice = false;
+                                } else if (actualPrice > previousPrice && actualPrice < nextPrice) {
+                                    trendIcon = '<img class="down_price_history" src="./furnis/iconos/down_price_history.png" alt="up down price">';
+                                } else if (actualPrice < previousPrice && actualPrice > nextPrice) {
+                                    trendIcon = '<img class="up_price_history" src="./furnis/iconos/up_price_history.png" alt="up price">';
+                                } else {
+                                    trendIcon = '<img class="up_price_history" src="./furnis/iconos/up_price_history.png" alt="up price">';
+                                }
                                 return `
                                     <tr>
                                         <td class="online_habbo_text_white">${new Date(record.fecha_precio).toLocaleDateString()}</td>
                                         <td class="online_habbo_text_white">${record.name}</td>
                                         <td class="online_habbo_text_white">${record.precio}</td>
+                                        <td class="online_habbo_text_white">${(record.precio / record.vip_price).toFixed(2)}</td>
                                         <td class="online_habbo_text_white">${trendIcon}</td>
                                     </tr>
                                 `;

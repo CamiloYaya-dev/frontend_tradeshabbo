@@ -4,6 +4,7 @@ const fs = require('fs');
 const sequelize = require('./config/database');
 const Image = require('./models/Image');
 const PriceHistory = require('./models/PriceHistory');
+const { Op } = require('sequelize');
 const axios = require('axios');
 const populateDatabase = require('./populateDatabase');
 
@@ -51,13 +52,50 @@ app.use((req, res, next) => {
 // Middleware para servir archivos estáticos
 app.use(express.static('public'));
 
+async function getVipPrice() {
+    try {
+        const vipItem = await Image.findOne({ where: { name: 'El Club Sofa' } });
+        return vipItem ? vipItem.price : null; // Asumimos que el campo de precio es 'price'
+    } catch (error) {
+        console.error('Error retrieving VIP price:', error);
+        return null;
+    }
+}
+
+async function getVipPriceOnDate(date) {
+    try {
+        const endOfDay = new Date(date);
+        endOfDay.setUTCHours(23, 59, 59, 999); // Obtener solo la fecha en formato YYYY-MM-DD
+        const vipItemHistory = await PriceHistory.findOne({
+            where: {
+                productId: '1',
+                fecha_precio: {
+                    [Op.lte]: endOfDay
+                }
+            },
+            order: [['fecha_precio', 'DESC']]
+        });
+        return vipItemHistory ? vipItemHistory.precio : null;
+    } catch (error) {
+        console.error('Error retrieving VIP price on date:', error);
+        return null;
+    }
+}
+
 // Ruta para obtener imágenes desde la base de datos
 app.get('/images', async (req, res) => {
     try {
         const images = await Image.findAll({
             order: [['fecha_creacion', 'DESC']]
         });
-        res.json(images);
+        let vip_price = await getVipPrice();
+        // Añadir el campo vip_price a cada imagen
+        const imagesWithVipPrice = images.map(image => ({
+            ...image.toJSON(), // Convertir la instancia de Sequelize a objeto JSON
+            vip_price: vip_price
+        }));
+
+        res.json(imagesWithVipPrice);
     } catch (error) {
         console.error('Error retrieving images:', error);
         res.status(500).send('Error retrieving images');
@@ -75,16 +113,18 @@ app.get('/price-history/:productId', async (req, res) => {
                 attributes: ['name', 'icon', 'descripcion']
             }]
         });
-
-        // Transformar los datos para incluir el nombre del producto y el icono en cada registro de historial
-        const historyWithProductName = history.map(record => ({
-            id: record.id,
-            productId: record.productId,
-            fecha_precio: record.fecha_precio,
-            precio: record.precio,
-            name: record.Image.name,
-            icon: record.Image.icon,
-            descripcion: record.Image.descripcion
+        const historyWithProductName = await Promise.all(history.map(async (record) => {
+            const vipPriceOnDate = await getVipPriceOnDate(record.fecha_precio);
+            return {
+                id: record.id,
+                productId: record.productId,
+                fecha_precio: record.fecha_precio,
+                precio: record.precio,
+                name: record.Image.name,
+                icon: record.Image.icon,
+                descripcion: record.Image.descripcion,
+                vip_price: vipPriceOnDate
+            };
         }));
         console.log(historyWithProductName);
         res.json(historyWithProductName);
