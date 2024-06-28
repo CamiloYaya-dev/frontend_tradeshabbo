@@ -43,6 +43,24 @@ async function getCatalog() {
     }
 }
 
+async function fetchAndStoreHabboOnline() {
+    try {
+        const response_online = await axios.get('https://lionfish-cosmic-ideally.ngrok-free.app/habbo-online').catch(error => {
+            console.warn('Error fetching habbo online data, using local file:', error.message);
+            return null; // Retorna null en caso de error
+        });
+
+        if (response_online) {
+            const onlineData = response_online.data;
+            // Guardar el JSON en la ruta especificada
+            const jsonContent_online = JSON.stringify(onlineData, null, 2);
+            fs.writeFileSync(path.join(__dirname, 'public', 'furnis', 'precios', 'habbo_online.json'), jsonContent_online, 'utf8');
+        }
+    } catch (error) {
+        console.error('Error fetching and storing habbo online data:', error);
+    }
+}
+
 // Middleware para añadir el header ngrok-skip-browser-warning
 app.use((req, res, next) => {
     res.setHeader('ngrok-skip-browser-warning', 'true');
@@ -138,7 +156,9 @@ app.listen(port, async () => {
     try {
         await sequelize.authenticate();
         console.log('Database connected successfully.');
-        await getCatalog(); // Asegúrate de esperar a que el catálogo se obtenga y se guarde antes de continuar
+        await getCatalog();
+        await fetchAndStoreHabboOnline();
+        setInterval(fetchAndStoreHabboOnline, 3600000);
         console.log(`Servidor escuchando en http://localhost:${port}`);
     } catch (error) {
         console.error('Unable to connect to the database:', error);

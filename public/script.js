@@ -1,4 +1,25 @@
 $(document).ready(function() {
+    // Función para cargar el número de Habbos en línea
+    function loadOnlineCount() {
+        $.getJSON('furnis/precios/habbo_online.json', function (data) {
+            const habboEsCount = data[0].habbo_es;
+            const habboBrCount = data[0].habbo_br;
+            const habboComCount = data[0].habbo_com;
+            $('#online-count-es').text(habboEsCount);
+            $('#online-count-br').text(habboBrCount);
+            $('#online-count-com').text(habboComCount);
+        }).fail(function () {
+            $('#online-count-es').text('En mantenimiento');
+            $('#online-count-br').text('En mantenimiento');
+            $('#online-count-com').text('En mantenimiento');
+        });
+    }
+
+    // Llamar a la función cuando la página se carga
+    loadOnlineCount();
+
+    // Llamar a la función cada hora
+    setInterval(loadOnlineCount, 3600000);
     // Cargar productos desde el servidor
     $.getJSON('/images', function(data) {
         var productContainer = $('#product-container');

@@ -174,12 +174,18 @@ body {
 
 .online_habbo_text_blue{
     font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
-    font-size: 20px;
+    font-size: 15px;
     color: #7ecaee;
 }
 .online_habbo_text_white{
     font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
     font-size: 20px;
+    color: white;
+}
+
+.online_habbo_text_white_fz_12{
+    font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    font-size: 12px;
     color: white;
 }
 
