@@ -262,6 +262,24 @@ app.post('/images/:id/vote', async (req, res) => {
     }
 });
 
+app.get('/latest-price-update', async (req, res) => {
+    try {
+        const latestPrice = await PriceHistory.findOne({
+            order: [['fecha_precio', 'DESC']],
+            attributes: ['fecha_precio']
+        });
+
+        if (!latestPrice) {
+            return res.status(404).json({ error: 'No price history found' });
+        }
+
+        res.json({ fecha_precio: latestPrice.fecha_precio });
+    } catch (error) {
+        console.error('Error retrieving latest price update:', error);
+        res.status(500).send('Error retrieving latest price update');
+    }
+});
+
 
 app.listen(port, async () => {
     try {

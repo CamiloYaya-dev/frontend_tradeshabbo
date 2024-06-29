@@ -202,6 +202,12 @@ body {
     color: white;
 }
 
+.online_habbo_text_white_fz_20{
+    font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    font-size: 20px;
+    color: white;
+}
+
 .colum-catalog{
     margin-top: 20px;
 }
@@ -278,5 +284,5 @@ footer {
 
 .example_row{
     padding-left: 20px;
-    width: auto !important;
+    width: 100% !important;
 }

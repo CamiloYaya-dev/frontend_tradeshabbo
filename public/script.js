@@ -217,5 +217,18 @@ $(document).ready(function() {
                 }
             });
         });
+
+        function loadLastPriceUpdate() {
+            $.getJSON('/latest-price-update', function(data) {
+                const latestDate = new Date(data.fecha_precio);
+                const formattedDate = latestDate.toLocaleDateString();
+                $('#last_price_updated').text(formattedDate);
+            }).fail(function() {
+                $('#last_price_updated').text('No disponible');
+            });
+        }
+
+        loadLastPriceUpdate();
+        
     });
 });
