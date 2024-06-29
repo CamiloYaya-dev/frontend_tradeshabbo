@@ -190,6 +190,7 @@ $(document).ready(function() {
             var button = $(this);
             var imageId = button.data('id');
             var voteType = button.data('vote');
+            button.prop('disabled', true);
     
             $.ajax({
                 url: `/images/${imageId}/vote`,
@@ -204,6 +205,7 @@ $(document).ready(function() {
                     } else if (voteType === 'downvote') {
                         voteCountSpan.text(response.downvotes);
                     }
+                    button.prop('disabled', false);
                 },
                 error: function(jqXHR) {
                     if (jqXHR.status === 403) {
@@ -211,6 +213,7 @@ $(document).ready(function() {
                     } else {
                         alert('Error al votar. Por favor, inténtelo de nuevo.');
                     }
+                    button.prop('disabled', false);
                 }
             });
         });
