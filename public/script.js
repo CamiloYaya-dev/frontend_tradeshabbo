@@ -20,6 +20,7 @@ $(document).ready(function() {
 
     // Llamar a la función cada hora
     setInterval(loadOnlineCount, 3600000);
+
     // Cargar productos desde el servidor
     $.getJSON('/images', function(data) {
         var productContainer = $('#product-container');
@@ -29,6 +30,7 @@ $(document).ready(function() {
         var row_explanation_trends = $('#row_explanation_trends');
         var row_explanation_votes = $('#row_explanation_votes');
         var filter_tags = $('#filter_tags');
+
         // Función para renderizar los productos
         function renderProducts(products) {
             productContainer.empty();
@@ -36,8 +38,8 @@ $(document).ready(function() {
                 var borderClass = item.highlight == 1 ? 'highlight-border' : '';
                 var productCard = `
                     <div class="col-md-3 col-sm-6 mb-4 product-item">
-                        <a href="#" class="text-decoration-none product-link" data-id="${item.id}">
-                            <div class="card h-100 position-relative ${borderClass}">
+                        <div class="card h-100 position-relative ${borderClass}">
+                            <a href="#" class="text-decoration-none product-link" data-id="${item.id}">
                                 ${item.icon == "hc" ? `<img src="furnis/iconos/icon_hc.png" class="iconos-hc" alt="icon">` : ''}
                                 ${item.icon == "rare" ? `<img src="furnis/iconos/icon_rare.png" class="iconos-rare" alt="icon">` : ''}
                                 ${item.icon == "funky" ? `<img src="furnis/iconos/icon_funky.png" class="iconos-funky" alt="icon">` : ''}
@@ -45,15 +47,19 @@ $(document).ready(function() {
                                 ${item.status == "arrow_trend_up" ? `<img src="furnis/iconos/arrow_trend_up.png" class="iconos-arrow-trend-up" alt="icon">` : ''}
                                 ${item.status == "arrow_trend_down" ? `<img src="furnis/iconos/arrow_trend_down.png" class="iconos-arrow-trend-down" alt="icon">` : ''}
                                 <img src="${item.src}" class="card-img-top" alt="${item.name}">
+                            </a>
                                 <div class="card-body text-center">
                                     <p class="card-text text-price">
                                         <img src="furnis/dinero/credito.png" alt="credito" class="price-icon">${item.price}
                                         <img src="furnis/dinero/vip.png" alt="vip" class="price-vip">${(item.price / item.vip_price).toFixed(2)}
                                     </p>
                                     <p class="card-text text-name online_habbo_text_white">${item.name}</p>
+                                    <div class="vote-buttons">
+                                        <button class="price_history_content vote-button" data-id="${item.id}" data-vote="upvote">👍<span class="vote-count">${item.upvotes}</span></button>
+                                        <button class="price_history_content vote-button" data-id="${item.id}" data-vote="downvote">👎<span class="vote-count">${item.downvotes}</span></button>
+                                    </div>
                                 </div>
-                            </div>
-                        </a>
+                        </div>
                     </div>
                 `;
                 productContainer.append(productCard);
@@ -177,6 +183,36 @@ $(document).ready(function() {
             row_explanation_trends.show();
             row_explanation_votes.show();
             filter_tags.show();
+        });
+
+        // Manejar clic en los botones de votación
+        $(document).on('click', '.vote-button', function() {
+            var button = $(this);
+            var imageId = button.data('id');
+            var voteType = button.data('vote');
+    
+            $.ajax({
+                url: `/images/${imageId}/vote`,
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({ voteType: voteType }),
+                success: function(response) {
+                    // Actualizar los contadores de votos en la interfaz
+                    var voteCountSpan = button.find('.vote-count');
+                    if (voteType === 'upvote') {
+                        voteCountSpan.text(response.upvotes);
+                    } else if (voteType === 'downvote') {
+                        voteCountSpan.text(response.downvotes);
+                    }
+                },
+                error: function(jqXHR) {
+                    if (jqXHR.status === 403) {
+                        alert('Usted ya ha votado a favor o en contra del precio de este articulo.');
+                    } else {
+                        alert('Error al votar. Por favor, inténtelo de nuevo.');
+                    }
+                }
+            });
         });
     });
 });

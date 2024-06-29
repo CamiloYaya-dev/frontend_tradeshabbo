@@ -32,7 +32,9 @@ async function populateDatabase() {
                     hot: priceInfo.hot,
                     status: priceInfo.status,
                     fecha_creacion: priceInfo.fecha_creacion,
-                    descripcion: priceInfo.descripcion
+                    descripcion: priceInfo.descripcion,
+                    upvotes: priceInfo.upvotes,
+                    downvotes: priceInfo.downvotes
                 };
             });
         };

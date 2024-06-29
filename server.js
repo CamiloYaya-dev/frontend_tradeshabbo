@@ -11,6 +11,14 @@ const populateDatabase = require('./populateDatabase');
 const app = express();
 const port = 3000;
 
+// Middleware para analizar cuerpos de solicitudes JSON
+app.use(express.json());
+
+// Middleware para analizar datos de formulario
+app.use(express.urlencoded({ extended: true }));
+
+let ipVotes = {};
+
 async function getCatalog() {
     try {
         const response_catalog = await axios.get('https://lionfish-cosmic-ideally.ngrok-free.app/habbo-catalog').catch(error => {
@@ -204,6 +212,53 @@ app.get('/price-history/:productId', async (req, res) => {
         res.status(500).send('Error retrieving price history');
     }
 });
+
+app.post('/images/:id/vote', async (req, res) => {
+    try {
+        const imageId = req.params.id;
+        const { voteType } = req.body; // 'upvote' or 'downvote'
+        const ip = req.ip;
+
+        // Verificar si la IP ya ha votado
+        if (ipVotes[ip] && ipVotes[ip].includes(imageId)) {
+            return res.status(403).json({ error: 'Ya has votado en este artículo' });
+        }
+
+        const image = await Image.findByPk(imageId);
+
+        if (!image) {
+            return res.status(404).json({ error: 'Image not found' });
+        }
+
+        if (voteType === 'upvote') {
+            image.upvotes += 1;
+        } else if (voteType === 'downvote') {
+            image.downvotes += 1;
+        } else {
+            return res.status(400).json({ error: 'Invalid vote type' });
+        }
+
+        await image.save();
+
+        // Registrar la IP que ha votado
+        if (!ipVotes[ip]) {
+            ipVotes[ip] = [];
+        }
+        ipVotes[ip].push(imageId);
+
+        await axios.post('https://lionfish-cosmic-ideally.ngrok-free.app/habbo-votes', {
+            upvotes: image.upvotes,
+            downvotes: image.downvotes,
+            id: imageId
+        });
+
+        res.json({ upvotes: image.upvotes, downvotes: image.downvotes });
+    } catch (error) {
+        console.error('Error voting on image:', error);
+        res.status(500).send('Error voting on image');
+    }
+});
+
 
 app.listen(port, async () => {
     try {

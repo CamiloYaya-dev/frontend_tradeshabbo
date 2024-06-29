@@ -55,7 +55,7 @@ body {
 
 .iconos-arrow-trend-up {
     position: absolute;
-    bottom: 100px;
+    bottom: 175px;
     right: 10px;
     width: 70px; /* Ajusta el tamaño del ícono según sea necesario */
     height: 60px;
@@ -63,7 +63,7 @@ body {
 
 .iconos-arrow-trend-down {
     position: absolute;
-    bottom: 120px;
+    bottom: 175px;
     right: 10px;
     width: 70px; /* Ajusta el tamaño del ícono según sea necesario */
     height: 40px;

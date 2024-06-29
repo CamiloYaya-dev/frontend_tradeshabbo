@@ -42,6 +42,14 @@ const Image = sequelize.define('Image', {
     descripcion: {
         type: DataTypes.STRING,
         allowNull: true
+    },
+    upvotes: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0
+    },
+    downvotes: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0
     }
 });
 
