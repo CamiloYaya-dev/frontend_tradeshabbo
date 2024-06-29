@@ -17,6 +17,8 @@ app.use(express.json());
 // Middleware para analizar datos de formulario
 app.use(express.urlencoded({ extended: true }));
 
+app.set('trust proxy', true);
+
 let ipVotes = {};
 
 async function getCatalog() {
@@ -217,7 +219,8 @@ app.post('/images/:id/vote', async (req, res) => {
     try {
         const imageId = req.params.id;
         const { voteType } = req.body; // 'upvote' or 'downvote'
-        const ip = req.ip;
+        const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+        console.error(req.headers)
 
         // Verificar si la IP ya ha votado
         if (ipVotes[ip] && ipVotes[ip].includes(imageId)) {
