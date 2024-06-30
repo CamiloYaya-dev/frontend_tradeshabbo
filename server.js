@@ -16,6 +16,7 @@ const app = express();
 const port = 3000;
 
 const SECRET_KEY = '5229c0e71dddc98e14e7053988c57d20901e060b7d713ed4ccd5656c9192f47f'; // Replace with your actual secret key
+const IPQS_API_KEY = 'qzD6JCaax154TQb4rvZYcmSRdawfcgZP'; // Reemplaza con tu clave API de IPQualityScore
 
 // Middleware para analizar cuerpos de solicitudes JSON
 app.use(express.json());
@@ -53,6 +54,27 @@ app.use((req, res, next) => {
     res.setHeader('ngrok-skip-browser-warning', 'true');
     next();
 });
+
+// Middleware para bloquear IPs de proxy, VPN o Tor
+async function blockProxiesMiddleware(req, res, next) {
+    const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+
+    try {
+        const response = await axios.get(`https://ipqualityscore.com/api/json/ip/${IPQS_API_KEY}/${ip}`);
+        const data = response.data;
+
+        if (data.proxy || data.vpn || data.tor) {
+            return res.status(403).json({ error: 'Access forbidden: Proxy, VPN or Tor detected' });
+        }
+    } catch (error) {
+        console.error('Error checking IP with IPQualityScore:', error.message);
+    }
+
+    next();
+}
+
+// Aplicar el middleware solo a las rutas que requieren la verificación de IP
+app.use(blockProxiesMiddleware);
 
 // Ruta para obtener la API Key
 app.get('/api-key', (req, res) => {
