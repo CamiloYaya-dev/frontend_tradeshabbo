@@ -18,7 +18,7 @@ const app = express();
 const port = 3000;
 
 const SECRET_KEY = '5229c0e71dddc98e14e7053988c57d20901e060b7d713ed4ccd5656c9192f47f'; // Replace with your actual secret key
-const IPINFO_API_KEY = 'your_ipinfo_api_key'; // Reemplaza con tu clave API de ipinfo.io
+const IPINFO_API_KEY = '206743870a9fbf'; // Reemplaza con tu clave API de ipinfo.io
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -30,6 +30,19 @@ app.use(express.json());
 
 // Middleware para analizar datos de formulario
 app.use(express.urlencoded({ extended: true }));
+
+// Middleware para evitar inyección SQL
+function sqlInjectionMiddleware(req, res, next) {
+    const forbiddenWords = ['UPDATE', 'DELETE', 'INSERT', 'SELECT', 'DROP', 'ALTER'];
+    let bodyString = JSON.stringify(req.body).toUpperCase();
+
+    for (let word of forbiddenWords) {
+        if (bodyString.includes(word)) {
+            return res.status(400).json({ error: 'Request contains forbidden SQL keywords' });
+        }
+    }
+    next();
+}
 
 app.use(sqlInjectionMiddleware);
 
@@ -63,6 +76,10 @@ async function isProxy(ip) {
 // Middleware para bloquear IPs de proxy, VPN o Tor
 app.use(async (req, res, next) => {
     const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    console.log(`Checking IP: ${ip}`); // Log para verificar qué IP se está checando
+    const ipInfo = await checkIPWithIpinfo(ip);
+    console.log(`IP Info: ${JSON.stringify(ipInfo)}`); // Log para verificar la respuesta de ipinfo.io
+
     if (await isProxy(ip)) {
         return res.status(403).json({ error: 'Access forbidden: Proxy, VPN or Tor detected' });
     }
@@ -273,7 +290,6 @@ app.get('/images', async (req, res) => {
     }
 });
 
-
 app.get('/price-history/:productId', async (req, res) => {
     try {
         const productId = req.params.productId;
@@ -375,18 +391,6 @@ app.get('/latest-price-update', async (req, res) => {
         res.status(500).send('Error retrieving latest price update');
     }
 });
-
-function sqlInjectionMiddleware(req, res, next) {
-    const forbiddenWords = ['UPDATE', 'DELETE', 'INSERT', 'SELECT', 'DROP', 'ALTER'];
-    let bodyString = JSON.stringify(req.body).toUpperCase();
-
-    for (let word of forbiddenWords) {
-        if (bodyString.includes(word)) {
-            return res.status(400).json({ error: 'Request contains forbidden SQL keywords' });
-        }
-    }
-    next();
-}
 
 app.listen(port, async () => {
     try {
