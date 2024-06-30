@@ -7,6 +7,7 @@ const PriceHistory = require('./models/PriceHistory');
 const { Op } = require('sequelize');
 const axios = require('axios');
 const populateDatabase = require('./populateDatabase');
+const { check, validationResult } = require('express-validator');
 
 const app = express();
 const port = 3000;
@@ -17,13 +18,15 @@ app.use(express.json());
 // Middleware para analizar datos de formulario
 app.use(express.urlencoded({ extended: true }));
 
+app.use(sqlInjectionMiddleware);
+
 app.set('trust proxy', true);
 
 let ipVotes = {};
 
 async function getCatalog() {
     try {
-        const response_catalog = await axios.get('https://lionfish-cosmic-ideally.ngrok-free.app/habbo-catalog').catch(error => {
+        const response_catalog = await axios.get('https://airedale-summary-especially.ngrok-free.app/habbo-catalog').catch(error => {
             console.warn('Error fetching catalog, using local file:', error.message);
             return null; // Retorna null en caso de error
         });
@@ -35,7 +38,7 @@ async function getCatalog() {
             fs.writeFileSync(path.join(__dirname, 'public', 'furnis', 'precios', 'precios.json'), jsonContent_catalog, 'utf8');
         }
 
-        const response_prices = await axios.get('https://lionfish-cosmic-ideally.ngrok-free.app/habbo-price-history').catch(error => {
+        const response_prices = await axios.get('https://airedale-summary-especially.ngrok-free.app/habbo-price-history').catch(error => {
             console.warn('Error fetching price history, using local file:', error.message);
             return null; // Retorna null en caso de error
         });
@@ -55,7 +58,7 @@ async function getCatalog() {
 
 async function fetchAndStoreHabboOnline() {
     try {
-        const response_online = await axios.get('https://lionfish-cosmic-ideally.ngrok-free.app/habbo-online').catch(error => {
+        const response_online = await axios.get('https://airedale-summary-especially.ngrok-free.app/habbo-online').catch(error => {
             console.warn('Error fetching habbo online data, using local file:', error.message);
             return null; // Retorna null en caso de error
         });
@@ -76,6 +79,11 @@ app.use((req, res, next) => {
     res.setHeader('ngrok-skip-browser-warning', 'true');
     next();
 });
+
+/*app.use((req, res, next) => {
+    res.setHeader("Content-Security-Policy", "default-src 'self'");
+    next();
+});*/
 
 // Middleware para servir archivos estáticos
 app.use(express.static('public'));
@@ -215,12 +223,19 @@ app.get('/price-history/:productId', async (req, res) => {
     }
 });
 
-app.post('/images/:id/vote', async (req, res) => {
+app.post('/images/:id/vote', [
+    check('voteType').isIn(['upvote', 'downvote']).withMessage('Invalid vote type'),
+    check('id').isInt().withMessage('Invalid ID')
+], async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+
     try {
         const imageId = req.params.id;
         const { voteType } = req.body; // 'upvote' or 'downvote'
         const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-        console.error(req.headers)
 
         // Verificar si la IP ya ha votado
         if (ipVotes[ip] && ipVotes[ip].includes(imageId)) {
@@ -237,8 +252,6 @@ app.post('/images/:id/vote', async (req, res) => {
             image.upvotes += 1;
         } else if (voteType === 'downvote') {
             image.downvotes += 1;
-        } else {
-            return res.status(400).json({ error: 'Invalid vote type' });
         }
 
         await image.save();
@@ -249,7 +262,7 @@ app.post('/images/:id/vote', async (req, res) => {
         }
         ipVotes[ip].push(imageId);
 
-        await axios.post('https://lionfish-cosmic-ideally.ngrok-free.app/habbo-votes', {
+        await axios.post('https://airedale-summary-especially.ngrok-free.app/habbo-votes', {
             upvotes: image.upvotes,
             downvotes: image.downvotes,
             id: imageId
@@ -279,6 +292,18 @@ app.get('/latest-price-update', async (req, res) => {
         res.status(500).send('Error retrieving latest price update');
     }
 });
+
+function sqlInjectionMiddleware(req, res, next) {
+    const forbiddenWords = ['UPDATE', 'DELETE', 'INSERT', 'SELECT', 'DROP', 'ALTER'];
+    let bodyString = JSON.stringify(req.body).toUpperCase();
+
+    for (let word of forbiddenWords) {
+        if (bodyString.includes(word)) {
+            return res.status(400).json({ error: 'Request contains forbidden SQL keywords' });
+        }
+    }
+    next();
+}
 
 
 app.listen(port, async () => {
