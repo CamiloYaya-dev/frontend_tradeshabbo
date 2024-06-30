@@ -23,7 +23,7 @@
     "fecha_creacion": "2024-06-24T23:50:57.000Z",
     "descripcion": "Este articulo es un obsequio del habbo club y aun esta por validar que mes se dará.",
     "upvotes": 25,
-    "downvotes": 10
+    "downvotes": 11
   },
   {
     "id": 3,
@@ -88,7 +88,7 @@
     "fecha_creacion": "2024-06-24T23:19:10.000Z",
     "descripcion": "Este articulo es un obsequio del habbo club y aun esta por validar que mes se dará.",
     "upvotes": 27,
-    "downvotes": 18
+    "downvotes": 19
   },
   {
     "id": 8,
@@ -113,7 +113,7 @@
     "status": null,
     "fecha_creacion": "2024-06-24T23:19:10.000Z",
     "descripcion": "Este articulo es un obsequio del habbo club y aun esta por validar que mes se dará.",
-    "upvotes": 104,
+    "upvotes": 106,
     "downvotes": 24
   },
   {
@@ -165,7 +165,7 @@
     "status": "arrow_trend_up",
     "fecha_creacion": "2024-06-24T23:19:10.000Z",
     "descripcion": "Fue el primer rare del hotel, salio a un precio inicial de 50 creditos, estuvo un total de 7 dias en catalogo, desde el 18 de junio de 2024 hasta el 25 de junio de 2024",
-    "upvotes": 102,
+    "upvotes": 105,
     "downvotes": 17
   },
   {
@@ -230,7 +230,7 @@
     "status": "",
     "fecha_creacion": "2024-06-24T23:19:10.000Z",
     "descripcion": "Este furni hace parte de la categoria FUNKY FRIDAY y solo duraron 24 horas en catalogo a un precio de 6 créditos",
-    "upvotes": 69,
+    "upvotes": 72,
     "downvotes": 9
   },
   {
@@ -256,7 +256,7 @@
     "status": "arrow_trend_up",
     "fecha_creacion": "2024-06-24T23:19:10.000Z",
     "descripcion": "Este furni hace parte de la categoria FUNKY FRIDAY y solo duraron 24 horas en catalogo a un precio de 10 créditos",
-    "upvotes": 25,
+    "upvotes": 26,
     "downvotes": 11
   },
   {
@@ -269,7 +269,7 @@
     "status": "arrow_trend_up",
     "fecha_creacion": "2024-06-24T23:19:10.000Z",
     "descripcion": "Este furni hace parte de la categoria FUNKY FRIDAY y solo duraron 24 horas en catalogo a un precio de 10 créditos",
-    "upvotes": 58,
+    "upvotes": 59,
     "downvotes": 12
   },
   {
@@ -282,7 +282,7 @@
     "status": "arrow_trend_up",
     "fecha_creacion": "2024-06-24T23:19:10.000Z",
     "descripcion": "Este furni hace parte de la categoria FUNKY FRIDAY y solo duraron 24 horas en catalogo a un precio de 10 créditos",
-    "upvotes": 71,
+    "upvotes": 77,
     "downvotes": 9
   },
   {
@@ -295,7 +295,7 @@
     "status": "arrow_trend_up",
     "fecha_creacion": "2024-06-24T23:19:10.000Z",
     "descripcion": "Este furni hace parte de la categoria FUNKY FRIDAY y solo duraron 24 horas en catalogo a un precio de 10 créditos",
-    "upvotes": 36,
+    "upvotes": 41,
     "downvotes": 12
   },
   {
@@ -530,7 +530,7 @@
     "fecha_creacion": "2024-06-24T23:19:10.000Z",
     "descripcion": "Este furni hace parte de la categoria FUNKY FRIDAY y solo duraron 24 horas en catalogo a un precio de 6 créditos",
     "upvotes": 59,
-    "downvotes": 69
+    "downvotes": 70
   },
   {
     "id": 42,
@@ -568,8 +568,8 @@
     "status": " ",
     "fecha_creacion": "2024-06-25T02:34:41.000Z",
     "descripcion": "Este rare salio el 25 de junio de 2024 y fue el segundo rare en salir, su precio en catalogo era de 35 creditos, duro un total de 7 dias.",
-    "upvotes": 41,
-    "downvotes": 70
+    "upvotes": 42,
+    "downvotes": 71
   },
   {
     "id": 46,
@@ -582,7 +582,7 @@
     "fecha_creacion": "2024-06-29T17:51:58.000Z",
     "descripcion": "Salió el 28 de junio de 2024, solo duro 24 horas a un precio de 10 créditos.",
     "upvotes": 2,
-    "downvotes": 1
+    "downvotes": 2
   },
   {
     "id": 47,
@@ -595,7 +595,7 @@
     "fecha_creacion": "2024-06-29T17:51:58.000Z",
     "descripcion": "Salió el 28 de junio de 2024, solo duro 24 horas a un precio de 10 créditos.",
     "upvotes": 2,
-    "downvotes": 1
+    "downvotes": 2
   },
   {
     "id": 48,
@@ -608,7 +608,7 @@
     "fecha_creacion": "2024-06-29T17:51:58.000Z",
     "descripcion": "Salió el 28 de junio de 2024, solo duro 24 horas a un precio de 10 créditos.",
     "upvotes": 4,
-    "downvotes": 1
+    "downvotes": 2
   },
   {
     "id": 49,
@@ -621,6 +621,6 @@
     "fecha_creacion": "2024-06-29T17:51:58.000Z",
     "descripcion": "Salió el 28 de junio de 2024, solo duro 24 horas a un precio de 10 créditos.",
     "upvotes": 3,
-    "downvotes": 1
+    "downvotes": 2
   }
 ]

@@ -374,7 +374,7 @@ app.post('/images/:id/vote', [
         const imageId = req.params.id;
         const { voteType } = req.body; // 'upvote' or 'downvote'
         const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-
+        console.log(ipVotes);
         // Verificar si la IP ya ha votado
         if (ipVotes[ip] && ipVotes[ip].includes(imageId)) {
             return res.status(403).json({ error: 'Ya has votado en este artículo' });
