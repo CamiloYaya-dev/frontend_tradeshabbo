@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    const SECRET_KEY = 'your_secret_key'; // Replace with your actual secret key
+    const SECRET_KEY = '5229c0e71dddc98e14e7053988c57d20901e060b7d713ed4ccd5656c9192f47f';
 
     function fetchApiKey(callback) {
         $.getJSON('/api-key', function(data) {

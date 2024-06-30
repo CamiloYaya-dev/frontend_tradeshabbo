@@ -15,7 +15,7 @@ const CryptoJS = require('crypto-js');
 const app = express();
 const port = 3000;
 
-const SECRET_KEY = 'your_secret_key'; // Replace with your actual secret key
+const SECRET_KEY = '5229c0e71dddc98e14e7053988c57d20901e060b7d713ed4ccd5656c9192f47f'; // Replace with your actual secret key
 
 // Middleware para analizar cuerpos de solicitudes JSON
 app.use(express.json());
