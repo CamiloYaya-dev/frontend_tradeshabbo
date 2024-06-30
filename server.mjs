@@ -1,22 +1,29 @@
-const express = require('express');
-const path = require('path');
-const fs = require('fs');
-const sequelize = require('./config/database');
-const Image = require('./models/Image');
-const PriceHistory = require('./models/PriceHistory');
-const { Op } = require('sequelize');
-const axios = require('axios');
-const populateDatabase = require('./populateDatabase');
-const { check, validationResult } = require('express-validator');
-const crypto = require('crypto');
-const moment = require('moment');
-const CryptoJS = require('crypto-js');
+import express from 'express';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import fs from 'fs';
+import sequelize from './config/database.js';
+import Image from './models/Image.js';
+import PriceHistory from './models/PriceHistory.js';
+import { Op } from 'sequelize';
+import axios from 'axios';
+import populateDatabase from './populateDatabase.js';
+import { check, validationResult } from 'express-validator';
+import crypto from 'crypto';
+import moment from 'moment';
+import CryptoJS from 'crypto-js';
+import fetch from 'node-fetch';
 
 const app = express();
 const port = 3000;
 
 const SECRET_KEY = '5229c0e71dddc98e14e7053988c57d20901e060b7d713ed4ccd5656c9192f47f'; // Replace with your actual secret key
-const IPQS_API_KEY = 'qzD6JCaax154TQb4rvZYcmSRdawfcgZP'; // Reemplaza con tu clave API de IPQualityScore
+const IPINFO_API_KEY = 'your_ipinfo_api_key'; // Reemplaza con tu clave API de ipinfo.io
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+app.enable('trust proxy'); // Allows Accurate Usage of req.ip
 
 // Middleware para analizar cuerpos de solicitudes JSON
 app.use(express.json());
@@ -26,7 +33,41 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(sqlInjectionMiddleware);
 
-app.set('trust proxy', true);
+// Middleware para verificar IPs usando ipinfo.io
+async function checkIPWithIpinfo(ip) {
+    const url = `https://ipinfo.io/${ip}?token=${IPINFO_API_KEY}`;
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error fetching IP data from ipinfo:', error);
+        return null;
+    }
+}
+
+async function isProxy(ip) {
+    const ipInfo = await checkIPWithIpinfo(ip);
+    if (!ipInfo) return false;
+
+    // Chequear campos relevantes en la respuesta de ipinfo
+    if (ipInfo.bogon) {
+        return true;
+    }
+    if (ipInfo.proxy || ipInfo.vpn || ipInfo.tor) {
+        return true;
+    }
+    return false;
+}
+
+// Middleware para bloquear IPs de proxy, VPN o Tor
+app.use(async (req, res, next) => {
+    const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    if (await isProxy(ip)) {
+        return res.status(403).json({ error: 'Access forbidden: Proxy, VPN or Tor detected' });
+    }
+    next();
+});
 
 let ipVotes = {};
 
@@ -54,27 +95,6 @@ app.use((req, res, next) => {
     res.setHeader('ngrok-skip-browser-warning', 'true');
     next();
 });
-
-// Middleware para bloquear IPs de proxy, VPN o Tor
-async function blockProxiesMiddleware(req, res, next) {
-    const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-
-    try {
-        const response = await axios.get(`https://ipqualityscore.com/api/json/ip/${IPQS_API_KEY}/${ip}`);
-        const data = response.data;
-
-        if (data.proxy || data.vpn || data.tor) {
-            return res.status(403).json({ error: 'Access forbidden: Proxy, VPN or Tor detected' });
-        }
-    } catch (error) {
-        console.error('Error checking IP with IPQualityScore:', error.message);
-    }
-
-    next();
-}
-
-// Aplicar el middleware solo a las rutas que requieren la verificación de IP
-app.use(blockProxiesMiddleware);
 
 // Ruta para obtener la API Key
 app.get('/api-key', (req, res) => {
