@@ -77,6 +77,21 @@
 <body>
     <header class="bg-dark text-white text-center py-3 header-page">
         <img src="furnis/iconos/trades_habbo_origins.png" class="sprite_trades_habbo_origins" alt="Logo de Trades Habbo Origins">
+        <nav class="navbar navbar-expand-lg">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item navbar_item">
+                        <a class="habbo_text_blue menu-link" href="#" data-section="catalogo">Catálogo</a>
+                    </li>
+                    <li class="nav-item navbar_item">
+                        <a class="habbo_text_blue menu-link" href="#" data-section="noticias">Noticias</a>
+                    </li>
+                    <li class="nav-item navbar_item">
+                        <a class="habbo_text_blue menu-link" href="#" data-section="calculador">Calculador de Tradeos</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
     </header>
     <main class="container my-4">
         <div class="row">
@@ -84,38 +99,40 @@
                 <div class="row row_sprite_hotel_origins">
                     <img src="furnis/iconos/sprite_hotel_origins.png" class="sprite_hotel_origins" alt="Icono del Hotel Origins">
                 </div>
-                <div class="row">
-                    <div class="online_users example_row">
-                        <div class="online_users_content">
-                            <p class="online_habbo_text_blue ng-binding">Precios actualizados el:</p>
-                            <p class="online_habbo_text_white_fz_20 ng-binding" id="last_price_updated">
-                                
-                            </p>
+                <div id="column-explications-catalogo">
+                    <div class="row">
+                        <div class="online_users example_row">
+                            <div class="online_users_content">
+                                <p class="habbo_text_blue ng-binding">Precios actualizados el:</p>
+                                <p class="online_habbo_text_white_fz_20 ng-binding" id="last_price_updated">
+                                    
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="online_users example_row" id="row_explanation_trends">
-                        <div class="online_users_content">
-                            <p class="online_habbo_text_blue ng-binding">Explicacion de las tendencias:</p>
-                            <p class="online_habbo_text_white_fz_12 ng-binding">
-                                Que un item en el catalogo tenga <img src="furnis/iconos/arrow_trend_down.png" class="iconos-arrow-trend-down-example" alt="icon"> o <img src="furnis/iconos/arrow_trend_up.png" class="iconos-arrow-trend-up-example" alt="icon"> depende de la variacion de los precios de los 7 ultimos dias.
-                            </p>
+                    <div class="row">
+                        <div class="online_users example_row" id="row_explanation_trends">
+                            <div class="online_users_content">
+                                <p class="habbo_text_blue ng-binding">Explicacion de las tendencias:</p>
+                                <p class="online_habbo_text_white_fz_12 ng-binding">
+                                    Que un item en el catalogo tenga <img src="furnis/iconos/arrow_trend_down.png" class="iconos-arrow-trend-down-example" alt="icon"> o <img src="furnis/iconos/arrow_trend_up.png" class="iconos-arrow-trend-up-example" alt="icon"> depende de la variacion de los precios de los 7 ultimos dias.
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="online_users example_row" id="row_explanation_votes">
-                        <div class="online_users_content">
-                            <p class="online_habbo_text_blue ng-binding">Explicacion de los votos:</p>
-                            <p class="online_habbo_text_white_fz_12 ng-binding">
-                               Es el respaldo que la comunidad le da al precio actual del item, cada que se actualiza el precio se reinicia el contador, solo es puede votar una vez por ip.<br>UNA VEZ VOTADO NO ES POSIBLE CAMBIAR EL VOTO.
-                            </p>
+                    <div class="row">
+                        <div class="online_users example_row" id="row_explanation_votes">
+                            <div class="online_users_content">
+                                <p class="habbo_text_blue ng-binding">Explicacion de los votos:</p>
+                                <p class="online_habbo_text_white_fz_12 ng-binding">
+                                Es el respaldo que la comunidad le da al precio actual del item, cada que se actualiza el precio se reinicia el contador, solo es puede votar una vez por ip.<br>UNA VEZ VOTADO NO ES POSIBLE CAMBIAR EL VOTO.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-8 column colum-catalog">
+            <div class="col-md-8 column colum-catalog" id="catalogo-section">
                 <div class="row mb-4">
                     <div class="col-12">
                         <input type="text" id="search-input" class="form-control buscar-furnis" placeholder="Buscar furnis...">
@@ -138,11 +155,41 @@
                 </div>
                 <button id="back-button" style="display: none;" class="price_history_content online_habbo_text_white">Regresar</button>
             </div>
+            <div class="col-md-8 column" id="noticias-section" style="display: none;">
+                <!-- Contenido de noticias -->
+                <h2>Noticias</h2>
+                <p>Aquí se mostrarán las noticias.</p>
+            </div>
+            <div class="col-md-8 column" id="calculador-section" style="display: none;">
+                <div class="row body_calculadora">
+                    <div class="col-md-4">
+                        <div class="item_calculador_tradeos">
+                            <div id="item-a-image" class="item-image"></div>
+                            <select id="item-a" class="form-control">
+                                <!-- Opciones de items -->
+                            </select>
+                            <p id="item-a-price" class="item-price"></p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-center item_calculador_tradeos">
+                        <p id="equivalente" class="equivalent_result"></p>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="item_calculador_tradeos">
+                            <div id="item-b-image" class="item-image"></div>
+                            <select id="item-b" class="form-control">
+                                <!-- Opciones de items -->
+                            </select>
+                            <p id="item-b-price" class="item-price"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="col-md-2 column">
                 <div class="row">
                     <div class="online_users">
                         <div class="online_users_content">
-                            <p class="online_habbo_text_blue ng-binding">Habbos en línea - ES:</p>
+                            <p class="habbo_text_blue ng-binding">Habbos en línea - ES:</p>
                             <p class="online_habbo_text_white ng-binding" id="online-count-es">En mantenimiento</p>
                             <p class="online_habbo_text_white_fz_12 ng-binding">Se actualiza cada hora</p>
                         </div>
@@ -151,7 +198,7 @@
                 <div class="row">
                     <div class="online_users">
                         <div class="online_users_content">
-                            <p class="online_habbo_text_blue ng-binding">Habbos en línea - BR:</p>
+                            <p class="habbo_text_blue ng-binding">Habbos en línea - BR:</p>
                             <p class="online_habbo_text_white ng-binding" id="online-count-br">En mantenimiento</p>
                             <p class="online_habbo_text_white_fz_12 ng-binding">Se actualiza cada hora</p>
                         </div>
@@ -160,7 +207,7 @@
                 <div class="row">
                     <div class="online_users">
                         <div class="online_users_content">
-                            <p class="online_habbo_text_blue ng-binding">Habbos en línea - COM:</p>
+                            <p class="habbo_text_blue ng-binding">Habbos en línea - COM:</p>
                             <p class="online_habbo_text_white ng-binding" id="online-count-com">En mantenimiento</p>
                             <p class="online_habbo_text_white_fz_12 ng-binding">Se actualiza cada hora</p>
                         </div>
@@ -179,7 +226,7 @@
         </div>
     </main>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="bd09e45a-a83f-41a8-91d0-13807524e45c.js"></script>
+    <script src="e5aa1cc3-c8f5-42a2-b2d6-94d66b3ff50b.js"></script>
     <script>
         (adsbygoogle = window.adsbygoogle || []).push({});
     </script>

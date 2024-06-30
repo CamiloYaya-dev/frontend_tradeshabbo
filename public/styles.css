@@ -185,7 +185,7 @@ body {
     font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
 }
 
-.online_habbo_text_blue{
+.habbo_text_blue{
     font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
     font-size: 15px;
     color: #7ecaee;
@@ -285,4 +285,73 @@ footer {
 .example_row{
     padding-left: 20px;
     width: 100% !important;
+}
+
+.header-page {
+    position: relative;
+}
+
+.navbar {
+    margin-top: 10px;
+}
+
+.nav-link {
+    color: #333 !important;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+    color: #000 !important;
+}
+
+.navbar_item {
+    background-color: #335e7a;
+    border: 1px solid #050a0e;
+    border-radius: 15px;
+    box-shadow: 0 2px 3px rgba(6, 19, 25, .7);
+    padding: 12px;
+    font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    margin-left: 5px;
+}
+
+.item_calculador_tradeos {
+    background-color: #335e7a;
+    border: 1px solid #050a0e;
+    border-radius: 15px;
+    box-shadow: 0 2px 3px rgba(6, 19, 25, .7);
+    padding: 12px;
+    font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    text-align: center;
+}
+
+.img_calculador_tradeos { 
+    width: 150px;
+}
+
+.item-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.item-image img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    height: 250px;
+}
+
+.body_calculadora{
+    padding-top: 25px;
+}
+
+.item-price{
+    margin-top: 15px;
+}
+
+.equivalent_result{
+    padding-top: 100px;
 }

@@ -24,7 +24,6 @@ $(document).ready(function() {
             return decryptedData;
         }
 
-        // Función para cargar el número de Habbos en línea
         function loadOnlineCount() {
             $.getJSON('furnis/precios/habbo_online.json', function(data) {
                 const habboEsCount = data[0].habbo_es;
@@ -40,13 +39,9 @@ $(document).ready(function() {
             });
         }
 
-        // Llamar a la función cuando la página se carga
         loadOnlineCount();
-
-        // Llamar a la función cada hora
         setInterval(loadOnlineCount, 3600000);
 
-        // Función para cargar productos desde el servidor
         function loadProducts(apiKey) {
             $.ajax({
                 url: '/images',
@@ -62,7 +57,6 @@ $(document).ready(function() {
                     var row_explanation_votes = $('#row_explanation_votes');
                     var filter_tags = $('#filter_tags');
 
-                    // Función para renderizar los productos
                     function renderProducts(products) {
                         productContainer.empty();
                         products.forEach(function(item) {
@@ -95,12 +89,12 @@ $(document).ready(function() {
                             `;
                             productContainer.append(productCard);
                         });
+
+                        fillItemOptions(products);
                     }
 
-                    // Renderizar todos los productos inicialmente
                     renderProducts(decryptedData);
 
-                    // Filtrar productos según el valor del campo de búsqueda
                     $('#search-input').on('input', function() {
                         var searchValue = $(this).val().toLowerCase();
                         var filteredProducts = decryptedData.filter(function(item) {
@@ -109,7 +103,6 @@ $(document).ready(function() {
                         renderProducts(filteredProducts);
                     });
 
-                    // Filtrar productos por categoría al hacer clic en los botones
                     $('.filter-button').on('click', function() {
                         var category = $(this).data('category');
                         if (category === 'all') {
@@ -126,7 +119,6 @@ $(document).ready(function() {
                         }
                     });
 
-                    // Manejar clic en un producto para mostrar el historial de precios
                     $(document).on('click', '.product-link', function(e) {
                         e.preventDefault();
                         var productId = $(this).data('id');
@@ -162,18 +154,18 @@ $(document).ready(function() {
                                     var previousPrice = null;
                                     var actualPrice = true;
                                     var historyContent = `
-                                        <h3 class="price_history_content online_habbo_text_blue">Historial de Precios</h3>
+                                        <h3 class="price_history_content habbo_text_blue">Historial de Precios</h3>
                                         <div class="price-history-image">
                                             <img src="${imagePath}" alt="${firstRecord.name}" class="${imageClass}">
                                         </div>
                                         <table class="table price_history_content">
                                             <thead>
                                                 <tr>
-                                                    <th class="online_habbo_text_blue">Fecha</th>
-                                                    <th class="online_habbo_text_blue">Nombre</th>
-                                                    <th class="online_habbo_text_blue">Precio <img src="furnis/dinero/credito.png" alt="credito" class="price-icon"></th>
-                                                    <th class="online_habbo_text_blue">Precio <img src="furnis/dinero/vip.png" alt="vip" class="price-vip"></th>
-                                                    <th class="online_habbo_text_blue">Tendencia</th>
+                                                    <th class="habbo_text_blue">Fecha</th>
+                                                    <th class="habbo_text_blue">Nombre</th>
+                                                    <th class="habbo_text_blue">Precio <img src="furnis/dinero/credito.png" alt="credito" class="price-icon"></th>
+                                                    <th class="habbo_text_blue">Precio <img src="furnis/dinero/vip.png" alt="vip" class="price-vip"></th>
+                                                    <th class="habbo_text_blue">Tendencia</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -204,7 +196,7 @@ $(document).ready(function() {
                                                 }).join('')}
                                             </tbody>
                                         </table>
-                                        <p class="price_history_content online_habbo_text_blue">${firstRecord.descripcion}</p>
+                                        <p class="price_history_content habbo_text_blue">${firstRecord.descripcion}</p>
                                     `;
                                     productHistoryContainer.html(historyContent);
                                 }
@@ -212,7 +204,6 @@ $(document).ready(function() {
                         });
                     });
 
-                    // Manejar clic en el botón de regreso para mostrar la lista de productos
                     backButton.on('click', function() {
                         productHistoryContainer.hide();
                         backButton.hide();
@@ -223,7 +214,6 @@ $(document).ready(function() {
                         filter_tags.show();
                     });
 
-                    // Manejar clic en los botones de votación
                     $(document).on('click', '.vote-button', function() {
                         var button = $(this);
                         var imageId = button.data('id');
@@ -239,7 +229,6 @@ $(document).ready(function() {
                                 data: JSON.stringify({ voteType: voteType }),
                                 success: function(data) {
                                     const decryptedData = decryptData(data.token);
-                                    // Actualizar los contadores de votos en la interfaz
                                     var voteCountSpan = button.find('.vote-count');
                                     if (voteType === 'upvote') {
                                         voteCountSpan.text(decryptedData.upvotes);
@@ -284,10 +273,89 @@ $(document).ready(function() {
             });
         }
 
-        // Obtener la API Key y cargar los productos inicialmente
         fetchApiKey(loadProducts);
     }
 
-    // Verificar IP y luego inicializar la aplicación
     verifyIP(initialize);
+
+    $('.menu-link').on('click', function(e) {
+        e.preventDefault();
+        var section = $(this).data('section');
+        if (section === 'catalogo') {
+            $('#catalogo-section').show();
+            $('#column-explications-catalogo').show();
+            $('#noticias-section').hide();
+            $('#calculador-section').hide();
+        } /*else if (section === 'noticias') {
+            $('#catalogo-section').hide();
+            $('#column-explications-catalogo').hide();
+            $('#noticias-section').show();
+            $('#calculador-section').hide();
+        }*/ else if (section === 'calculador') {
+            $('#catalogo-section').hide();
+            $('#column-explications-catalogo').hide();
+            $('#noticias-section').hide();
+            $('#calculador-section').show();
+        }
+    });
+
+    function fillItemOptions(products) {
+        var itemASelect = $('#item-a');
+        var itemBSelect = $('#item-b');
+        itemASelect.empty();
+        itemBSelect.empty();
+    
+        let optionNull = '<option value="0" data-src="" data-name="">Seleccione un item....</option>';
+        itemASelect.append(optionNull);
+        itemBSelect.append(optionNull);
+    
+        products.forEach(function(product) {
+            var option = `<option value="${product.price}" data-src="${product.src}" data-name="${product.name}">${product.name}</option>`;
+            itemASelect.append(option);
+            itemBSelect.append(option);
+        });
+    
+        $('#item-a').on('change', function() {
+            updateImage('item-a');
+            calculateEquivalent();
+        });
+    
+        $('#item-b').on('change', function() {
+            updateImage('item-b');
+            calculateEquivalent();
+        });
+    }
+
+    function updateImage(selectId) {
+        var select = $('#' + selectId);
+        var imageSrc = select.find('option:selected').data('src');
+        if (imageSrc) {
+            $('#' + selectId + '-image').html(`<img src="${imageSrc}" alt="${select.find('option:selected').text()}" class="img-fluid">`);
+        } else {
+            $('#' + selectId + '-image').html(''); // Clear the image if no item is selected
+        }
+    }
+
+    function calculateEquivalent() {
+        var itemASelect = $('#item-a');
+        var itemBSelect = $('#item-b');
+    
+        var itemAPrice = parseFloat(itemASelect.val());
+        var itemBPrice = parseFloat(itemBSelect.val());
+    
+        var itemNameA = itemASelect.find('option:selected').data('name');
+        var itemNameB = itemBSelect.find('option:selected').data('name');
+    
+        if (itemAPrice && itemBPrice) {
+            var equivalentAtoB = (itemAPrice / itemBPrice).toFixed(2);
+            var equivalentBtoA = (itemBPrice / itemAPrice).toFixed(2);
+            $('#equivalente').html(`<p class="online_habbo_text_white_fz_20 ">El furni "${itemNameA}" vale ${equivalentAtoB} "${itemNameB}"<br><br> Esto es lo mismo que decir que <br><br> El furni "${itemNameB}" vale ${equivalentBtoA} "${itemNameA}"</p>`);
+            $('#item-a-price').html(`<p class="text-price"><img src="furnis/dinero/credito.png" alt="credito" class="price-icon">${itemAPrice}</p>`);
+            $('#item-b-price').html(`<p class="text-price"><img src="furnis/dinero/credito.png" alt="credito" class="price-icon">${itemBPrice}</p>`);
+        } else {
+            $('#equivalente').text('');
+            $('#item-a-price').text('');
+            $('#item-b-price').text('');
+        }
+    }
 });
