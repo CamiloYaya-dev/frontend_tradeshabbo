@@ -75,7 +75,11 @@ async function isProxy(ip) {
 
 // Middleware para bloquear IPs de proxy, VPN o Tor
 app.use(async (req, res, next) => {
-    const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    let ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    // Tomar la primera IP de la lista si hay múltiples IPs
+    if (ip.includes(',')) {
+        ip = ip.split(',')[0].trim();
+    }
     console.log(`Checking IP: ${ip}`); // Log para verificar qué IP se está checando
     const ipInfo = await checkIPWithIpinfo(ip);
     console.log(`IP Info: ${JSON.stringify(ipInfo)}`); // Log para verificar la respuesta de ipinfo.io
