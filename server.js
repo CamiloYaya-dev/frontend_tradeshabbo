@@ -8,6 +8,8 @@ const { Op } = require('sequelize');
 const axios = require('axios');
 const populateDatabase = require('./populateDatabase');
 const { check, validationResult } = require('express-validator');
+const crypto = require('crypto');
+const moment = require('moment');
 
 const app = express();
 const port = 3000;
@@ -24,12 +26,52 @@ app.set('trust proxy', true);
 
 let ipVotes = {};
 
+function generateApiKey() {
+    const apiKey = crypto.randomBytes(32).toString('hex');
+    const expirationDate = moment().add(5, 'seconds').toISOString();
+    return { apiKey, expirationDate };
+}
+
+let { apiKey, expirationDate } = generateApiKey();
+
+// Middleware de verificación de API Key con fecha de caducidad
+function apiKeyMiddleware(req, res, next) {
+    const providedApiKey = req.headers['x-api-key'];
+    const currentDate = new Date().toISOString();
+
+    if (!providedApiKey || providedApiKey !== apiKey || currentDate > expirationDate) {
+        return res.status(403).json({ error: 'Forbidden: Invalid or expired API Key' });
+    }
+    next();
+}
+
+// Middleware para añadir el header ngrok-skip-browser-warning
+app.use((req, res, next) => {
+    res.setHeader('ngrok-skip-browser-warning', 'true');
+    next();
+});
+
+// Ruta para obtener la API Key
+app.get('/api-key', (req, res) => {
+    const newKeyData = generateApiKey();
+    apiKey = newKeyData.apiKey;
+    expirationDate = newKeyData.expirationDate;
+    res.json({ apiKey, expirationDate });
+});
+
+// Aplicar el middleware solo a las rutas que requieren la API Key
+app.use('/latest-price-update', apiKeyMiddleware);
+app.use('/images', apiKeyMiddleware);
+app.use('/price-history/:productId', apiKeyMiddleware);
+app.use('/images/:id/vote', apiKeyMiddleware);
+
 async function getCatalog() {
     try {
-        const response_catalog = await axios.get('https://airedale-summary-especially.ngrok-free.app/habbo-catalog').catch(error => {
-            console.warn('Error fetching catalog, using local file:', error.message);
-            return null; // Retorna null en caso de error
-        });
+        const response_catalog = await axios.get('https://airedale-summary-especially.ngrok-free.app/habbo-catalog')
+            .catch(error => {
+                console.warn('Error fetching catalog, using local file:', error.message);
+                return null; // Retorna null en caso de error
+            });
 
         if (response_catalog) {
             const prices = response_catalog.data;
@@ -38,10 +80,11 @@ async function getCatalog() {
             fs.writeFileSync(path.join(__dirname, 'public', 'furnis', 'precios', 'precios.json'), jsonContent_catalog, 'utf8');
         }
 
-        const response_prices = await axios.get('https://airedale-summary-especially.ngrok-free.app/habbo-price-history').catch(error => {
-            console.warn('Error fetching price history, using local file:', error.message);
-            return null; // Retorna null en caso de error
-        });
+        const response_prices = await axios.get('https://airedale-summary-especially.ngrok-free.app/habbo-price-history')
+            .catch(error => {
+                console.warn('Error fetching price history, using local file:', error.message);
+                return null; // Retorna null en caso de error
+            });
 
         if (response_prices) {
             const pricesHistory = response_prices.data;
@@ -58,10 +101,11 @@ async function getCatalog() {
 
 async function fetchAndStoreHabboOnline() {
     try {
-        const response_online = await axios.get('https://airedale-summary-especially.ngrok-free.app/habbo-online').catch(error => {
-            console.warn('Error fetching habbo online data, using local file:', error.message);
-            return null; // Retorna null en caso de error
-        });
+        const response_online = await axios.get('https://airedale-summary-especially.ngrok-free.app/habbo-online')
+            .catch(error => {
+                console.warn('Error fetching habbo online data, using local file:', error.message);
+                return null; // Retorna null en caso de error
+            });
 
         if (response_online) {
             const onlineData = response_online.data;
@@ -73,17 +117,6 @@ async function fetchAndStoreHabboOnline() {
         console.error('Error fetching and storing habbo online data:', error);
     }
 }
-
-// Middleware para añadir el header ngrok-skip-browser-warning
-app.use((req, res, next) => {
-    res.setHeader('ngrok-skip-browser-warning', 'true');
-    next();
-});
-
-/*app.use((req, res, next) => {
-    res.setHeader("Content-Security-Policy", "default-src 'self'");
-    next();
-});*/
 
 // Middleware para servir archivos estáticos
 app.use(express.static('public'));
@@ -305,7 +338,6 @@ function sqlInjectionMiddleware(req, res, next) {
     next();
 }
 
-
 app.listen(port, async () => {
     try {
         await sequelize.authenticate();
@@ -313,6 +345,7 @@ app.listen(port, async () => {
         await getCatalog();
         await fetchAndStoreHabboOnline();
         setInterval(fetchAndStoreHabboOnline, 3600000);
+
         console.log(`Servidor escuchando en http://localhost:${port}`);
     } catch (error) {
         console.error('Unable to connect to the database:', error);
