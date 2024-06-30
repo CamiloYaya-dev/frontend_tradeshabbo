@@ -5,7 +5,7 @@ import fs from 'fs';
 import sequelize from './config/database.js';
 import Image from './models/Image.js';
 import PriceHistory from './models/PriceHistory.js';
-import { Op } from 'sequelize';
+import { Sequelize, Op, QueryTypes } from 'sequelize';
 import axios from 'axios';
 import populateDatabase from './populateDatabase.js';
 import { check, validationResult } from 'express-validator';
@@ -13,6 +13,8 @@ import crypto from 'crypto';
 import moment from 'moment';
 import CryptoJS from 'crypto-js';
 import fetch from 'node-fetch';
+import rateLimit from 'express-rate-limit'; // Import the rate limiting middleware
+import session from 'express-session';
 
 const app = express();
 const port = 3000;
@@ -25,11 +27,29 @@ const __dirname = path.dirname(__filename);
 
 app.enable('trust proxy'); // Allows Accurate Usage of req.ip
 
+// Configura el middleware de sesión
+app.use(session({
+    secret: 'your-secret-key',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false } // Asegúrate de configurar 'secure' en true si usas HTTPS
+}));
+
 // Middleware para analizar cuerpos de solicitudes JSON
 app.use(express.json());
 
 // Middleware para analizar datos de formulario
 app.use(express.urlencoded({ extended: true }));
+
+// Configura el limitador de tasa
+const limiter = rateLimit({
+    windowMs: 60 * 1000, // 1 minuto
+    max: 1000, // Limita cada IP a 10 solicitudes por ventana de 1 minuto
+    message: "Too many requests from this IP, please try again later.",
+});
+
+// Aplica el limitador de tasa a todas las solicitudes
+app.use(limiter);
 
 // Middleware para evitar inyección SQL
 function sqlInjectionMiddleware(req, res, next) {
@@ -73,8 +93,8 @@ async function isProxy(ip) {
     return false;
 }
 
-// Middleware para bloquear IPs de proxy, VPN o Tor
-app.use(async (req, res, next) => {
+// Ruta para verificar IP al cargar el home
+app.get('/verify-ip', async (req, res) => {
     let ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
     // Tomar la primera IP de la lista si hay múltiples IPs
     if (ip.includes(',')) {
@@ -87,7 +107,10 @@ app.use(async (req, res, next) => {
     if (await isProxy(ip)) {
         return res.status(403).json({ error: 'Access forbidden: Proxy, VPN or Tor detected' });
     }
-    next();
+
+    // Guardar en sesión que la IP ha sido verificada
+    req.session.ipVerified = true;
+    res.status(200).json({ message: 'IP verified successfully' });
 });
 
 let ipVotes = {};
@@ -223,34 +246,40 @@ function encryptData(data) {
     return CryptoJS.AES.encrypt(JSON.stringify(data), SECRET_KEY).toString();
 }
 
-// Ruta para obtener imágenes desde la base de datos
 app.get('/images', async (req, res) => {
     try {
+        // Verificar si la IP ya ha sido verificada
+        if (!req.session.ipVerified) {
+            return res.status(403).json({ error: 'IP not verified' });
+        }
+
         // Obtener la fecha actual
         const today = new Date();
         today.setHours(0, 0, 0, 0); // Establecer el inicio del día
-        const yesterday = new Date(today);
-        yesterday.setDate(today.getDate() - 7); // Establecer el final del día
+        const startDate = new Date(today);
+        startDate.setDate(today.getDate() - 7); // Establecer la fecha de inicio
+
+        // Consulta optimizada para obtener los últimos precios
+        const priceHistories = await PriceHistory.findAll({
+            where: {
+                fecha_precio: {
+                    [Op.gte]: startDate,
+                    [Op.lt]: today
+                }
+            },
+            order: [['productId'], ['fecha_precio', 'DESC']]
+        });
 
         // Obtener todas las imágenes
         const images = await Image.findAll();
 
-        // Crear un arreglo para almacenar las imágenes con sus últimos precios y estatus calculado
-        const imagesWithDetails = await Promise.all(images.map(async (image) => {
-            // Obtener el historial de precios para la imagen actual de la fecha actual
-            const priceHistory = await PriceHistory.findAll({
-                where: {
-                    productId: image.id,
-                    fecha_precio: {
-                        [Op.gte]: yesterday,
-                        [Op.lt]: new Date(today.getTime() + 24 * 60 * 60 * 1000) // Hasta el final de hoy
-                    }
-                },
-                order: [['fecha_precio', 'DESC']],
-                limit: 2 // Necesitamos los dos últimos precios para calcular el estatus
-            });
+        // Obtener el precio VIP una sola vez
+        const vip_price = await getVipPrice();
 
-            // Calcular el estatus basado en los dos últimos precios
+        // Crear un arreglo para almacenar las imágenes con sus últimos precios y estatus calculado
+        const imagesWithDetails = images.map(image => {
+            // Filtrar el historial de precios correspondiente a la imagen actual
+            const priceHistory = priceHistories.filter(ph => ph.productId === image.id);
             let status = '';
             if (priceHistory.length > 1) {
                 const actualPrice = priceHistory[0].precio;
@@ -263,17 +292,15 @@ app.get('/images', async (req, res) => {
                 }
             }
 
-            // Obtener el precio VIP
-            const vip_price = await getVipPrice();
-
             // Devolver la imagen con el precio VIP y el estatus calculado
             return {
                 ...image.toJSON(), // Convertir la instancia de Sequelize a objeto JSON
                 vip_price: vip_price,
                 status: status,
-                fecha_precio: priceHistory[0] ? priceHistory[0].fecha_precio : null // Añadir la fecha del precio más reciente
+                fecha_precio: priceHistory[0] ? priceHistory[0].fecha_precio : null, // Añadir la fecha del precio más reciente
+                precio: priceHistory[0] ? priceHistory[0].precio : null // Añadir el precio más reciente
             };
-        }));
+        });
 
         // Ordenar las imágenes: primero los 'hot', luego por la fecha del historial de precios más reciente
         imagesWithDetails.sort((a, b) => {
