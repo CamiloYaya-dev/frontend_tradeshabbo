@@ -87,7 +87,15 @@ async function isProxy(ip) {
     if (ipInfo.bogon) {
         return true;
     }
-    if (ipInfo.proxy || ipInfo.vpn || ipInfo.tor) {
+    if (ipInfo.proxy || ipInfo.vpn || ipInfo.tor || ipInfo.relay || ipInfo.hosting) {
+        return true;
+    }
+    // Chequear el tipo de compañía, si es de tipo 'hosting' también puede ser indicativo de proxy/VPN
+    if (ipInfo.company && ipInfo.company.type === 'hosting') {
+        return true;
+    }
+    // Chequear el tipo de ASN, si es de tipo 'hosting' también puede ser indicativo de proxy/VPN
+    if (ipInfo.asn && ipInfo.asn.type === 'hosting') {
         return true;
     }
     return false;
