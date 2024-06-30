@@ -1,9 +1,18 @@
 $(document).ready(function() {
+    const SECRET_KEY = 'your_secret_key'; // Replace with your actual secret key
+
     function fetchApiKey(callback) {
         $.getJSON('/api-key', function(data) {
-            const API_KEY = data.apiKey;
+            const decryptedData = decryptData(data.token);
+            const API_KEY = decryptedData.apiKey;
             callback(API_KEY);
         });
+    }
+
+    function decryptData(token) {
+        const bytes = CryptoJS.AES.decrypt(token, SECRET_KEY);
+        const decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+        return decryptedData;
     }
 
     // Función para cargar el número de Habbos en línea
@@ -35,6 +44,7 @@ $(document).ready(function() {
             type: 'GET',
             headers: { 'x-api-key': apiKey },
             success: function(data) {
+                const decryptedData = decryptData(data.token);
                 var productContainer = $('#product-container');
                 var productHistoryContainer = $('#product-history-container');
                 var backButton = $('#back-button');
@@ -79,12 +89,12 @@ $(document).ready(function() {
                 }
 
                 // Renderizar todos los productos inicialmente
-                renderProducts(data);
+                renderProducts(decryptedData);
 
                 // Filtrar productos según el valor del campo de búsqueda
                 $('#search-input').on('input', function() {
                     var searchValue = $(this).val().toLowerCase();
-                    var filteredProducts = data.filter(function(item) {
+                    var filteredProducts = decryptedData.filter(function(item) {
                         return item.name.toLowerCase().includes(searchValue);
                     });
                     renderProducts(filteredProducts);
@@ -94,9 +104,9 @@ $(document).ready(function() {
                 $('.filter-button').on('click', function() {
                     var category = $(this).data('category');
                     if (category === 'all') {
-                        renderProducts(data); // Mostrar todos los productos
+                        renderProducts(decryptedData); // Mostrar todos los productos
                     } else {
-                        var filteredProducts = data.filter(function(item) {
+                        var filteredProducts = decryptedData.filter(function(item) {
                             if (category === 'hot') {
                                 return item.hot == 1;
                             } else {
@@ -117,7 +127,8 @@ $(document).ready(function() {
                             url: `/price-history/${productId}`,
                             type: 'GET',
                             headers: { 'x-api-key': apiKey },
-                            success: function(historyData) {
+                            success: function(data) {
+                                const decryptedData = decryptData(data.token);
                                 searchContainer.hide();
                                 row_explanation_trends.hide();
                                 row_explanation_votes.hide();
@@ -126,7 +137,7 @@ $(document).ready(function() {
                                 productHistoryContainer.show();
                                 backButton.show();
                         
-                                var firstRecord = historyData[0];
+                                var firstRecord = decryptedData[0];
                                 var imagePath = '';
                                 if (firstRecord.icon === 'hc') {
                                     imagePath = `furnis/hc/${firstRecord.name.replace(/ /g, '_')}.png`;
@@ -157,10 +168,10 @@ $(document).ready(function() {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            ${historyData.map((record, index) => {
+                                            ${decryptedData.map((record, index) => {
                                                 const actualPrice = record.precio;
-                                                const previousPrice = index > 0 ? historyData[index - 1].precio : null;
-                                                const nextPrice = index < historyData.length - 1 ? historyData[index + 1].precio : null;
+                                                const previousPrice = index > 0 ? decryptedData[index - 1].precio : null;
+                                                const nextPrice = index < decryptedData.length - 1 ? decryptedData[index + 1].precio : null;
                                                 var trendIcon = '';
                                                 
                                                 if (previousPrice === null || nextPrice === null) {
@@ -217,13 +228,14 @@ $(document).ready(function() {
                             contentType: 'application/json',
                             headers: { 'x-api-key': apiKey },
                             data: JSON.stringify({ voteType: voteType }),
-                            success: function(response) {
+                            success: function(data) {
+                                const decryptedData = decryptData(data.token);
                                 // Actualizar los contadores de votos en la interfaz
                                 var voteCountSpan = button.find('.vote-count');
                                 if (voteType === 'upvote') {
-                                    voteCountSpan.text(response.upvotes);
+                                    voteCountSpan.text(decryptedData.upvotes);
                                 } else if (voteType === 'downvote') {
-                                    voteCountSpan.text(response.downvotes);
+                                    voteCountSpan.text(decryptedData.downvotes);
                                 }
                                 button.prop('disabled', false);
                             },
@@ -246,7 +258,8 @@ $(document).ready(function() {
                             type: 'GET',
                             headers: { 'x-api-key': apiKey },
                             success: function(data) {
-                                const latestDate = new Date(data.fecha_precio);
+                                const decryptedData = decryptData(data.token);
+                                const latestDate = new Date(decryptedData.fecha_precio);
                                 const formattedDate = latestDate.toLocaleDateString();
                                 $('#last_price_updated').text(formattedDate);
                             },

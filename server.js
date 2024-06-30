@@ -10,9 +10,12 @@ const populateDatabase = require('./populateDatabase');
 const { check, validationResult } = require('express-validator');
 const crypto = require('crypto');
 const moment = require('moment');
+const CryptoJS = require('crypto-js');
 
 const app = express();
 const port = 3000;
+
+const SECRET_KEY = 'your_secret_key'; // Replace with your actual secret key
 
 // Middleware para analizar cuerpos de solicitudes JSON
 app.use(express.json());
@@ -56,7 +59,8 @@ app.get('/api-key', (req, res) => {
     const newKeyData = generateApiKey();
     apiKey = newKeyData.apiKey;
     expirationDate = newKeyData.expirationDate;
-    res.json({ apiKey, expirationDate });
+    const response = { apiKey, expirationDate };
+    res.json({ token: encryptData(response) });
 });
 
 // Aplicar el middleware solo a las rutas que requieren la API Key
@@ -151,6 +155,11 @@ async function getVipPriceOnDate(date) {
     }
 }
 
+// Encriptar los datos antes de enviarlos al cliente
+function encryptData(data) {
+    return CryptoJS.AES.encrypt(JSON.stringify(data), SECRET_KEY).toString();
+}
+
 // Ruta para obtener imágenes desde la base de datos
 app.get('/images', async (req, res) => {
     try {
@@ -215,7 +224,7 @@ app.get('/images', async (req, res) => {
             return dateB - dateA;
         });
 
-        res.json(imagesWithDetails);
+        res.json({ token: encryptData(imagesWithDetails) });
     } catch (error) {
         console.error('Error retrieving images:', error);
         res.status(500).send('Error retrieving images');
@@ -248,8 +257,7 @@ app.get('/price-history/:productId', async (req, res) => {
                 vip_price: vipPriceOnDate
             };
         }));
-        console.log(historyWithProductName);
-        res.json(historyWithProductName);
+        res.json({ token: encryptData(historyWithProductName) });
     } catch (error) {
         console.error('Error retrieving price history:', error);
         res.status(500).send('Error retrieving price history');
@@ -301,7 +309,7 @@ app.post('/images/:id/vote', [
             id: imageId
         });
 
-        res.json({ upvotes: image.upvotes, downvotes: image.downvotes });
+        res.json({ token: encryptData({ upvotes: image.upvotes, downvotes: image.downvotes }) });
     } catch (error) {
         console.error('Error voting on image:', error);
         res.status(500).send('Error voting on image');
@@ -319,7 +327,7 @@ app.get('/latest-price-update', async (req, res) => {
             return res.status(404).json({ error: 'No price history found' });
         }
 
-        res.json({ fecha_precio: latestPrice.fecha_precio });
+        res.json({ token: encryptData({ fecha_precio: latestPrice.fecha_precio }) });
     } catch (error) {
         console.error('Error retrieving latest price update:', error);
         res.status(500).send('Error retrieving latest price update');
