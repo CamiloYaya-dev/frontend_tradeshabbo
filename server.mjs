@@ -112,9 +112,9 @@ app.get('/verify-ip', async (req, res) => {
     const ipInfo = await checkIPWithIpinfo(ip);
     console.log(`IP Info: ${JSON.stringify(ipInfo)}`); // Log para verificar la respuesta de ipinfo.io
 
-    if (await isProxy(ip)) {
+    /*if (await isProxy(ip)) {
         return res.status(403).json({ error: 'Access forbidden: Proxy, VPN or Tor detected' });
-    }
+    }*/
 
     // Guardar en sesión que la IP ha sido verificada
     req.session.ipVerified = true;

@@ -156,9 +156,106 @@
                 <button id="back-button" style="display: none;" class="price_history_content online_habbo_text_white">Regresar</button>
             </div>
             <div class="col-md-8 column" id="noticias-section" style="display: none;">
-                <!-- Contenido de noticias -->
-                <h2>Noticias</h2>
-                <p>Aquí se mostrarán las noticias.</p>
+                <audio id="click-sound" src="sonidos/mensaje_conso.mp3"></audio>
+                <div id="noticias-container">
+                    <!-- Las noticias se cargarán aquí dinámicamente -->
+                </div>
+                <div class="pagination">
+                    <a href="#">&laquo;</a>
+                    <a href="#">1</a>
+                    <a href="#">2</a>
+                    <a href="#">3</a>
+                    <a href="#">4</a>
+                    <a href="#">5</a>
+                    <a href="#">&raquo;</a>
+                </div>
+                <!-- Modal -->
+                <div class="modal fade" id="noticiaModal" tabindex="-1" role="dialog" aria-labelledby="noticiaModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content noticia-modal-background">
+                            <div class="habbo-consola tu-clase-css">
+                                <div class="habbo-header">
+                                    Habbo Consola 
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="d-flex">
+                                    <div class="consola-izquierda"></div>
+                                    <div class="flex-grow-1">
+                                        <div class="habbo-body">
+                                            <div class="habbo-user">
+                                                <div class="user-avatar">
+                                                </div>
+                                                <div class="user-status">Emo.<br><span>Hola tengo una nueva noticia para ti :D</span></div>
+                                            </div>
+                                            <div class="habbo-messages">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <p id="noticiaModalDescription" class="noticia_descripcion">Descripción completa de la noticia</p>
+                                                    </div>
+                                                    <div class="col-12 d-flex justify-content-center align-items-center">
+                                                        <img id="noticiaModalImage" src="" alt="" class="img-fluid mb-3 noticia_completa_imagen">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="consola-derecha"></div>
+                                </div>
+                                
+                                <div class="habbo-footer">
+                                    <div class="row justify-content-center">
+                                        <div class="col-6">
+                                            <div class="row">
+                                                <div class="col-3 p-0">
+                                                    <button class="footer-button w-100 h-100">
+                                                        <div class="button-content">
+                                                            <img src="./furnis/noticias/mis_datos.png" alt="MIS DATOS" class="button-icon">
+                                                            <br>
+                                                            <span>MIS DATOS</span>
+                                                            <div class="button-lines"></div>
+                                                        </div>
+                                                    </button>
+                                                </div>
+                                                <div class="col-3 p-0">
+                                                    <button class="footer-button w-100 h-100">
+                                                        <div class="button-content">
+                                                            <img src="./furnis/noticias/amigos.png" alt="AMIGOS" class="button-icon">
+                                                            <br>
+                                                            <span>AMIGOS</span>
+                                                            <div class="button-lines"></div>
+                                                        </div>
+                                                    </button>
+                                                </div>
+                                                <div class="col-3 p-0">
+                                                    <button class="footer-button w-100 h-100">
+                                                        <div class="button-content">
+                                                            <img src="./furnis/noticias/buscar.png" alt="BUSCAR" class="button-icon">
+                                                            <br>
+                                                            <span>BUSCAR</span>
+                                                            <div class="button-lines"></div>
+                                                        </div>
+                                                    </button>
+                                                </div>
+                                                <div class="col-3 p-0">
+                                                    <button class="footer-button w-100 h-100">
+                                                        <div class="button-content">
+                                                            <img src="./furnis/noticias/ayuda.png" alt="AYUDA" class="button-icon">
+                                                            <br>
+                                                            <span>AYUDA</span>
+                                                            <div class="button-lines"></div>
+                                                        </div>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>                
             </div>
             <div class="col-md-8 column" id="calculador-section" style="display: none;">
                 <div class="row body_calculadora">
@@ -225,8 +322,9 @@
             </div>
         </div>
     </main>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="e5aa1cc3-c8f5-42a2-b2d6-94d66b3ff50b.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="51c38e73-7058-4668-8936-088023da6d95.js"></script>
     <script>
         (adsbygoogle = window.adsbygoogle || []).push({});
     </script>

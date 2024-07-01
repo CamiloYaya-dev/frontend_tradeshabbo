@@ -664,5 +664,11 @@
     "product_id": 49,
     "fecha_precio": "2024-06-29T12:53:53.000Z",
     "precio": "10.00"
+  },
+  {
+    "id": 134,
+    "product_id": 13,
+    "fecha_precio": "2024-06-30T12:48:25.000Z",
+    "precio": "70.00"
   }
 ]

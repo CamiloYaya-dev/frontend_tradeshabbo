@@ -1,0 +1,46 @@
+[
+    {
+        "id": 1,
+        "titulo": "¡Nuevo raro disponible! El Césped",
+        "imagen_completa": "catalogo_cesped",
+        "alt_imagen_completa": "Catalogo el cesped",
+        "descripcion_completa": "<p>Con el <strong>boom</strong> que ha provocado <em>Habbo Hotel: Orígenes</em>, llegó también el primer raro mítico que te hacíamos conocer y que iba a salir a la venta en esta noticia. Pasada la primera semana desde que la gente comenzó a jugar en dicho Hotel, se pone a la venta el segundo raro tan mítico como el primero. </p><p>El segundo raro, <strong>RARO El Césped</strong>, ya se encuentra disponible en el catálogo de <em>Habbo Hotel: Orígenes</em> por tiempo limitado. Podrás adquirirlo por un precio de 35 créditos. Los raros en este hotel serán lanzados los días martes de cada semana, salvo que haya excepciones.",
+        "imagen_resumida": "rares_martes",
+        "alt_imagen_resumida": "nuevo raro martes 25 de junio del 2024",
+        "descripcion_resumida": "<p class=\"noticia_descripcion\"><strong>¡Llega el segundo raro mítico a Habbo Hotel: Orígenes!</strong> Descubre y adquiere el segundo raro, <strong>RARO El Césped</strong>, disponible por tiempo limitado. ¡No te lo pierdas!</p>",
+        "fecha_noticia": "25-06-2024"
+    },
+    {
+        "id": 2,
+        "titulo": "¡El Funky Friday ha vuelto!",
+        "imagen_completa": "funky_friday_21_06_2024",
+        "alt_imagen_completa": "La vuelta del Funky Friday imagen oficial",
+        "descripcion_completa": "<p><strong>El regreso de FUNKY FRIDAY a Habbo Hotel: Orígenes!</strong></p><p>El día de hoy, llega una nueva categoría en el catálogo llamada Funky Friday, que contiene los furnis Plasto en cinco nuevos colores, sumando un total de 30 nuevos furnis Plasto. Estos estarán disponibles por solo 24 horas durante este viernes y sus precios varían entre 6 créditos y 10 créditos.</p><p><em>Nota: la decisión de volver a poner a la venta estos objetos en el Catálogo después de las 24 horas sera una decision que se tomara por votación mediante una encuesta en el Infobús.</em></p>",
+        "imagen_resumida": "funky_friday",
+        "alt_imagen_resumida": "La vuelta del Funky Friday",
+        "descripcion_resumida": "<p class=\"noticia_descripcion\"><strong>¡El regreso de FUNKY FRIDAY a Habbo Hotel: Orígenes!</strong> Mas de 30 artículos de Plasto te están esperando</p>",
+        "fecha_noticia": "21-06-2024"
+    },
+    {
+        "id": 3,
+        "titulo": "¡Nuevos furnis Funky!",
+        "imagen_completa": "funky_friday_28_06_2024",
+        "alt_imagen_completa": "Nuevos furnis Funky Friday imagen oficial",
+        "descripcion_completa": "<p><strong>Funky Friday regresa a Habbo Hotel: Orígenes!</strong></p><p>El día de hoy, llega nuevamente la categoría Funky Friday en el catálogo y, en esta ocasión, recibe las Alfombras Falso Oso en cuatro nuevos colores. Estas estarán disponibles por solo 24 horas durante este viernes y su precio es de 10 créditos cada una.</p><p><em>Nota: la decisión de volver a poner a la venta estos objetos en el Catálogo después de las 24 horas sera una decision que se tomara por votación mediante una encuesta en el Infobús.</em></p>",
+        "imagen_resumida": "funky_friday",
+        "alt_imagen_resumida": "Nuevos furnis Funky Friday",
+        "descripcion_resumida": "<p class=\"noticia_descripcion\">Descubre las nuevas Alfombras Falso Oso en cuatro colores diferentes. ¡Disponibles solo por 24 horas!</p>",
+        "fecha_noticia": "28-06-2024"
+    },
+    {
+        "id": 4,
+        "titulo": "¡Nuevo raro disponible! La Habbocola",
+        "imagen_completa": "catalogo_habbocola",
+        "alt_imagen_completa": "Catalogo habbocola",
+        "descripcion_completa": "<p><strong>El primer rare de Habbo Hotel: Orígenes: La Habbocola!</strong></p><p>La Habbocola fue el primer rare en salir en el hotel. Se lanzó a un precio de 50 créditos y estuvo disponible durante una semana en el catálogo.</p><p><em>Nota: la disponibilidad de La Habbocola en el Catálogo fue limitada y está garantizado que no volvera a estar disponible en el futuro.</em></p>",
+        "imagen_resumida": "rares_martes",
+        "alt_imagen_resumida": "nuevo raro martes 18 de junio del 2024",
+        "descripcion_resumida": "<p class=\"noticia_descripcion\"><strong>¡Llega el primer raro mítico a Habbo Hotel: Orígenes!</strong> Descubre y adquiere el primer raro, <strong>RARO La Habbocola</strong>, disponible por tiempo limitado. ¡No te lo pierdas!</p>",
+        "fecha_noticia": "18-06-2024"
+    }
+]
