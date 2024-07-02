@@ -9,7 +9,7 @@
     "status": null,
     "fecha_creacion": "2024-06-25T01:19:10.000Z",
     "descripcion": "Este articulo es un obsequio del habbo club del primer mes",
-    "upvotes": 71,
+    "upvotes": 72,
     "downvotes": 16
   },
   {
@@ -28,15 +28,15 @@
   {
     "id": 3,
     "name": "Imperiales",
-    "price": "35.00",
+    "price": "20.00",
     "icon": "hc",
     "highlight": 0,
     "hot": 0,
     "status": "arrow_trend_down",
     "fecha_creacion": "2024-06-24T23:19:10.000Z",
     "descripcion": "Este articulo es un obsequio del habbo club y aun esta por validar que mes se dará.",
-    "upvotes": 36,
-    "downvotes": 18
+    "upvotes": 1,
+    "downvotes": 0
   },
   {
     "id": 4,
@@ -48,8 +48,8 @@
     "status": null,
     "fecha_creacion": "2024-06-24T23:19:10.000Z",
     "descripcion": "Este articulo es un obsequio del habbo club y aun esta por validar que mes se dará.",
-    "upvotes": 73,
-    "downvotes": 7
+    "upvotes": 74,
+    "downvotes": 8
   },
   {
     "id": 5,
@@ -61,21 +61,21 @@
     "status": "arrow_trend_down",
     "fecha_creacion": "2024-06-24T23:51:12.000Z",
     "descripcion": "Este articulo es un obsequio del habbo club y aun esta por validar que mes se dará.",
-    "upvotes": 102,
-    "downvotes": 15
+    "upvotes": 2,
+    "downvotes": 0
   },
   {
     "id": 6,
     "name": "La_Cafetera",
-    "price": "35.00",
+    "price": "17.00",
     "icon": "hc",
     "highlight": 0,
     "hot": 0,
     "status": null,
     "fecha_creacion": "2024-06-24T23:19:10.000Z",
     "descripcion": "Este articulo es un obsequio del habbo club y aun esta por validar que mes se dará.",
-    "upvotes": 82,
-    "downvotes": 15
+    "upvotes": 1,
+    "downvotes": 0
   },
   {
     "id": 7,
@@ -113,8 +113,8 @@
     "status": null,
     "fecha_creacion": "2024-06-24T23:19:10.000Z",
     "descripcion": "Este articulo es un obsequio del habbo club y aun esta por validar que mes se dará.",
-    "upvotes": 115,
-    "downvotes": 25
+    "upvotes": 1,
+    "downvotes": 1
   },
   {
     "id": 10,
@@ -166,7 +166,7 @@
     "fecha_creacion": "2024-06-24T23:19:10.000Z",
     "descripcion": "Fue el primer rare del hotel, salio a un precio inicial de 50 creditos, estuvo un total de 7 dias en catalogo, desde el 18 de junio de 2024 hasta el 25 de junio de 2024",
     "upvotes": 115,
-    "downvotes": 20
+    "downvotes": 21
   },
   {
     "id": 14,
@@ -275,15 +275,15 @@
   {
     "id": 22,
     "name": "Pod_Funky_Verde_Oscuro",
-    "price": "40.00",
+    "price": "45.00",
     "icon": "funky",
     "highlight": 0,
     "hot": 1,
     "status": "arrow_trend_up",
     "fecha_creacion": "2024-06-24T23:19:10.000Z",
     "descripcion": "Este furni hace parte de la categoria FUNKY FRIDAY y solo duraron 24 horas en catalogo a un precio de 10 créditos",
-    "upvotes": 98,
-    "downvotes": 11
+    "upvotes": 2,
+    "downvotes": 0
   },
   {
     "id": 23,
@@ -568,8 +568,8 @@
     "status": " ",
     "fecha_creacion": "2024-06-25T02:34:41.000Z",
     "descripcion": "Este rare salio el 25 de junio de 2024 y fue el segundo rare en salir, su precio en catalogo era de 35 creditos, duro un total de 7 dias.",
-    "upvotes": 50,
-    "downvotes": 76
+    "upvotes": 51,
+    "downvotes": 78
   },
   {
     "id": 46,
@@ -581,8 +581,8 @@
     "status": null,
     "fecha_creacion": "2024-06-29T17:51:58.000Z",
     "descripcion": "Salió el 28 de junio de 2024, solo duro 24 horas a un precio de 10 créditos.",
-    "upvotes": 6,
-    "downvotes": 3
+    "upvotes": 1,
+    "downvotes": 0
   },
   {
     "id": 47,
@@ -594,8 +594,8 @@
     "status": null,
     "fecha_creacion": "2024-06-29T17:51:58.000Z",
     "descripcion": "Salió el 28 de junio de 2024, solo duro 24 horas a un precio de 10 créditos.",
-    "upvotes": 5,
-    "downvotes": 5
+    "upvotes": 1,
+    "downvotes": 0
   },
   {
     "id": 48,
@@ -607,8 +607,8 @@
     "status": null,
     "fecha_creacion": "2024-06-29T17:51:58.000Z",
     "descripcion": "Salió el 28 de junio de 2024, solo duro 24 horas a un precio de 10 créditos.",
-    "upvotes": 7,
-    "downvotes": 5
+    "upvotes": 0,
+    "downvotes": 1
   },
   {
     "id": 49,
@@ -620,7 +620,20 @@
     "status": null,
     "fecha_creacion": "2024-06-29T17:51:58.000Z",
     "descripcion": "Salió el 28 de junio de 2024, solo duro 24 horas a un precio de 10 créditos.",
-    "upvotes": 6,
-    "downvotes": 6
+    "upvotes": 1,
+    "downvotes": 0
+  },
+  {
+    "id": 50,
+    "name": "PH_Ticket",
+    "price": "210.00",
+    "icon": "mega_rare",
+    "highlight": 1,
+    "hot": 1,
+    "status": "0",
+    "fecha_creacion": "2024-07-02T04:57:18.000Z",
+    "descripcion": "Este Mega Rare es una falla que se dio en los primero 3 dias por un error en la oferta de 12 meses de habboclub con los tickets ya que se daban en forma de furni, al poco tiempo fue corregido. No se puede tradear la unica manera de obtenerlo es poniendolo en la sala de otra persona (lo cual dificulta su libre comercio)",
+    "upvotes": 1,
+    "downvotes": 0
   }
 ]

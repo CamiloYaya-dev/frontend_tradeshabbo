@@ -155,6 +155,7 @@ $(document).ready(function() {
                                             ${item.icon == "hc" ? `<img src="furnis/iconos/icon_hc.png" class="iconos-hc" alt="icon">` : ''}
                                             ${item.icon == "rare" ? `<img src="furnis/iconos/icon_rare.png" class="iconos-rare" alt="icon">` : ''}
                                             ${item.icon == "funky" ? `<img src="furnis/iconos/icon_funky.png" class="iconos-funky" alt="icon">` : ''}
+                                            ${item.icon == "mega_rare" ? `<img src="furnis/iconos/icon_mega_rare.png" class="iconos-funky" alt="icon">` : ''}
                                             ${item.hot == 1 ? `<img src="furnis/iconos/hot_sale.png" class="iconos-hot-sale" alt="icon">` : ''}
                                             ${item.status == "arrow_trend_up" ? `<img src="furnis/iconos/arrow_trend_up.png" class="iconos-arrow-trend-up" alt="icon">` : ''}
                                             ${item.status == "arrow_trend_down" ? `<img src="furnis/iconos/arrow_trend_down.png" class="iconos-arrow-trend-down" alt="icon">` : ''}
@@ -236,6 +237,9 @@ $(document).ready(function() {
                                     } else if (firstRecord.icon === 'funky') {
                                         imagePath = `furnis/rares/${firstRecord.name.replace(/ /g, '_')}.png`;
                                         imageClass = "price-history-img-funky"
+                                    } else if (firstRecord.icon === "mega_rare") {
+                                        imagePath = `furnis/rares/${firstRecord.name.replace(/ /g, '_')}.png`;
+                                        imageClass = "price-history-img"
                                     }
                             
                                     var previousPrice = null;
