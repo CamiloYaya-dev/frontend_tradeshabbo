@@ -54,7 +54,7 @@
   {
     "id": 5,
     "name": "El_Super_Dado",
-    "price": "245.00",
+    "price": "210.00",
     "icon": "hc",
     "highlight": 1,
     "hot": 1,
@@ -106,7 +106,7 @@
   {
     "id": 9,
     "name": "Silla_Majestic",
-    "price": "140.00",
+    "price": "105.00",
     "icon": "hc",
     "highlight": 1,
     "hot": 1,
@@ -282,7 +282,7 @@
     "status": "arrow_trend_up",
     "fecha_creacion": "2024-06-24T23:19:10.000Z",
     "descripcion": "Este furni hace parte de la categoria FUNKY FRIDAY y solo duraron 24 horas en catalogo a un precio de 10 créditos",
-    "upvotes": 97,
+    "upvotes": 98,
     "downvotes": 11
   },
   {
@@ -574,7 +574,7 @@
   {
     "id": 46,
     "name": "Alfombra_Funky_Beige",
-    "price": "10.00",
+    "price": "30.00",
     "icon": "funky",
     "highlight": 0,
     "hot": null,
@@ -587,7 +587,7 @@
   {
     "id": 47,
     "name": "Alfombra_Funky_Gris",
-    "price": "10.00",
+    "price": "30.00",
     "icon": "funky",
     "highlight": null,
     "hot": null,
@@ -600,7 +600,7 @@
   {
     "id": 48,
     "name": "Alfombra_Funky_Rosa",
-    "price": "10.00",
+    "price": "30.00",
     "icon": "funky",
     "highlight": null,
     "hot": null,
@@ -613,7 +613,7 @@
   {
     "id": 49,
     "name": "Alfombra_Funky_Turquesa",
-    "price": "10.00",
+    "price": "30.00",
     "icon": "funky",
     "highlight": null,
     "hot": null,

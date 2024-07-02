@@ -262,10 +262,8 @@ app.get('/images', async (req, res) => {
         }
 
         // Obtener la fecha actual
-        const today = new Date();
-        today.setHours(0, 0, 0, 0); // Establecer el inicio del día
-        const startDate = new Date(today);
-        startDate.setDate(today.getDate() - 7); // Establecer la fecha de inicio
+        const today = moment().tz('America/Argentina/Buenos_Aires').set({hour: 23, minute: 59, second: 59, millisecond: 999});
+        const startDate = today.clone().subtract(7, 'days');
 
         // Consulta optimizada para obtener los últimos precios
         const priceHistories = await PriceHistory.findAll({
