@@ -1,0 +1,20 @@
+{
+    "name": "Habbo Hotel: Orígenes",
+    "short_name": "Habbo",
+    "description": "La mejor aplicación para conocer los precios de los furnis y rares en Habbo Hotel: Orígenes.",
+    "start_url": "/index.html",
+    "display": "standalone",
+    "background_color": "#ffcc00",
+    "theme_color": "#ffcc00",
+    "icons": [
+        {
+            "src": "favicon.ico",
+            "sizes": "48x48",
+            "type": "image/x-icon"
+        }
+    ],
+    "orientation": "portrait-primary",
+    "scope": "/",
+    "related_applications": [],
+    "prefer_related_applications": false
+}
