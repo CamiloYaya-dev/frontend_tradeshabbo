@@ -730,5 +730,23 @@
     "product_id": 50,
     "fecha_precio": "2024-07-02T00:17:29.000Z",
     "precio": "210.00"
+  },
+  {
+    "id": 145,
+    "product_id": 51,
+    "fecha_precio": "2024-07-02T08:31:17.000Z",
+    "precio": "50.00"
+  },
+  {
+    "id": 146,
+    "product_id": 13,
+    "fecha_precio": "2024-07-02T08:35:20.000Z",
+    "precio": "85.00"
+  },
+  {
+    "id": 147,
+    "product_id": 44,
+    "fecha_precio": "2024-07-02T08:40:25.000Z",
+    "precio": "50.00"
   }
 ]

@@ -42,5 +42,16 @@
         "alt_imagen_resumida": "nuevo raro martes 18 de junio del 2024",
         "descripcion_resumida": "<p class=\"noticia_descripcion\"><strong>¡Llega el primer raro mítico a Habbo Hotel: Orígenes!</strong> Descubre y adquiere el primer raro, <strong>RARO La Habbocola</strong>, disponible por tiempo limitado. ¡No te lo pierdas!</p>",
         "fecha_noticia": "18-06-2024"
+    },
+    {
+        "id": 5,
+        "titulo": "¡Nuevo raro disponible! Almohadon Purpura",
+        "imagen_completa": "catalogo_almohadon_purpura",
+        "alt_imagen_completa": "Catalogo Almohadon Purpura",
+        "descripcion_completa": "<p><strong>El terce rare de Habbo Hotel: Orígenes: El almohadon Purpura!</strong></p><p>Es martes de rares!! Llego el Almohando Purpura a 50 créditos y estara disponible durante una semana en el catálogo.</p><p><em>Nota: la disponibilidad de La Habbocola en el Catálogo es limitada y está garantizado que no volvera a estar disponible en el futuro.</em></p>",
+        "imagen_resumida": "rares_martes",
+        "alt_imagen_resumida": "nuevo raro martes 02 de julio del 2024",
+        "descripcion_resumida": "<p class=\"noticia_descripcion\"><strong>¡Llega el tercer raro mítico a Habbo Hotel: Orígenes!</strong> Descubre y adquiere el tercer raro, <strong>RARO Almohadon Purpura</strong>, disponible por tiempo limitado. ¡No te lo pierdas!</p>",
+        "fecha_noticia": "02-07-2024"
     }
 ]
