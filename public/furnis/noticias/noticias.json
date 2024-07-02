@@ -53,5 +53,16 @@
         "alt_imagen_resumida": "nuevo raro martes 02 de julio del 2024",
         "descripcion_resumida": "<p class=\"noticia_descripcion\"><strong>¡Llega el tercer raro mítico a Habbo Hotel: Orígenes!</strong> Descubre y adquiere el tercer raro, <strong>RARO Almohadon Purpura</strong>, disponible por tiempo limitado. ¡No te lo pierdas!</p>",
         "fecha_noticia": "02-07-2024"
+    },
+    {
+        "id": 6,
+        "titulo": "¡La primera STAFF de habbo origins ES!",
+        "imagen_completa": "dalmia_staff",
+        "alt_imagen_completa": "Dalmia staff habbo origins",
+        "descripcion_completa": "<p><strong>Habbo origins ES tiene su primer STAFF</strong></p><p>Dalmia se convierte oficialmente en el primer STAFF de habbo origins ES, envio algunos mensajes generales, hablo un rato de ella y cual sera su rol.</p><p><em>Nota: Dalmia aclaro que solo es un STAFF que se dedica a las redes sociales, sin embargo no nos quita la emocion de que por lo menos ya tenemos un STAFF</em></p>",
+        "imagen_resumida": "staff",
+        "alt_imagen_resumida": "dalmia nuevo staff habbo origins",
+        "descripcion_resumida": "<p class=\"noticia_descripcion\"><strong>¡Habbo Hotel Origins ES tiene un nuevo STAFF</strong> Descubre la visita del nuevo <strong>STAFF DALMIA</strong>!!</p>",
+        "fecha_noticia": "02-07-2024"
     }
 ]

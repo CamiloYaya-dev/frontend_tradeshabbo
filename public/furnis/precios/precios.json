@@ -2,15 +2,15 @@
   {
     "id": 1,
     "name": "El_Club_Sofa",
-    "price": "105.00",
+    "price": "100.00",
     "icon": "hc",
     "highlight": 1,
     "hot": 1,
     "status": null,
     "fecha_creacion": "2024-06-25T01:19:10.000Z",
     "descripcion": "Este articulo es un obsequio del habbo club del primer mes",
-    "upvotes": 75,
-    "downvotes": 17
+    "upvotes": 0,
+    "downvotes": 0
   },
   {
     "id": 2,
@@ -35,20 +35,20 @@
     "status": "arrow_trend_down",
     "fecha_creacion": "2024-06-24T23:19:10.000Z",
     "descripcion": "Este articulo es un obsequio del habbo club y aun esta por validar que mes se dará.",
-    "upvotes": 4,
+    "upvotes": 5,
     "downvotes": 0
   },
   {
     "id": 4,
     "name": "Sofa_Trono_HC",
-    "price": "280.00",
+    "price": "250.00",
     "icon": "hc",
     "highlight": 1,
     "hot": 1,
     "status": null,
     "fecha_creacion": "2024-06-24T23:19:10.000Z",
     "descripcion": "Este articulo es un obsequio del habbo club y aun esta por validar que mes se dará.",
-    "upvotes": 75,
+    "upvotes": 77,
     "downvotes": 9
   },
   {
@@ -61,7 +61,7 @@
     "status": "arrow_trend_down",
     "fecha_creacion": "2024-06-24T23:51:12.000Z",
     "descripcion": "Este articulo es un obsequio del habbo club y aun esta por validar que mes se dará.",
-    "upvotes": 35,
+    "upvotes": 37,
     "downvotes": 4
   },
   {
@@ -74,7 +74,7 @@
     "status": null,
     "fecha_creacion": "2024-06-24T23:19:10.000Z",
     "descripcion": "Este articulo es un obsequio del habbo club y aun esta por validar que mes se dará.",
-    "upvotes": 1,
+    "upvotes": 2,
     "downvotes": 0
   },
   {
@@ -106,14 +106,14 @@
   {
     "id": 9,
     "name": "Silla_Majestic",
-    "price": "105.00",
+    "price": "100.00",
     "icon": "hc",
     "highlight": 1,
     "hot": 1,
     "status": null,
     "fecha_creacion": "2024-06-24T23:19:10.000Z",
     "descripcion": "Este articulo es un obsequio del habbo club y aun esta por validar que mes se dará.",
-    "upvotes": 43,
+    "upvotes": 45,
     "downvotes": 2
   },
   {
@@ -165,7 +165,7 @@
     "status": "arrow_trend_up",
     "fecha_creacion": "2024-06-24T23:19:10.000Z",
     "descripcion": "Fue el primer rare del hotel, salio a un precio inicial de 50 creditos, estuvo un total de 7 dias en catalogo, desde el 18 de junio de 2024 hasta el 25 de junio de 2024",
-    "upvotes": 1,
+    "upvotes": 4,
     "downvotes": 0
   },
   {
@@ -243,7 +243,7 @@
     "status": "",
     "fecha_creacion": "2024-06-24T23:19:10.000Z",
     "descripcion": "Este furni hace parte de la categoria FUNKY FRIDAY y solo duraron 24 horas en catalogo a un precio de 10 créditos",
-    "upvotes": 89,
+    "upvotes": 91,
     "downvotes": 14
   },
   {
@@ -256,7 +256,7 @@
     "status": "arrow_trend_up",
     "fecha_creacion": "2024-06-24T23:19:10.000Z",
     "descripcion": "Este furni hace parte de la categoria FUNKY FRIDAY y solo duraron 24 horas en catalogo a un precio de 10 créditos",
-    "upvotes": 36,
+    "upvotes": 38,
     "downvotes": 13
   },
   {
@@ -269,7 +269,7 @@
     "status": "arrow_trend_up",
     "fecha_creacion": "2024-06-24T23:19:10.000Z",
     "descripcion": "Este furni hace parte de la categoria FUNKY FRIDAY y solo duraron 24 horas en catalogo a un precio de 10 créditos",
-    "upvotes": 64,
+    "upvotes": 65,
     "downvotes": 14
   },
   {
@@ -282,7 +282,7 @@
     "status": "arrow_trend_up",
     "fecha_creacion": "2024-06-24T23:19:10.000Z",
     "descripcion": "Este furni hace parte de la categoria FUNKY FRIDAY y solo duraron 24 horas en catalogo a un precio de 10 créditos",
-    "upvotes": 24,
+    "upvotes": 26,
     "downvotes": 0
   },
   {
@@ -295,7 +295,7 @@
     "status": "arrow_trend_up",
     "fecha_creacion": "2024-06-24T23:19:10.000Z",
     "descripcion": "Este furni hace parte de la categoria FUNKY FRIDAY y solo duraron 24 horas en catalogo a un precio de 10 créditos",
-    "upvotes": 50,
+    "upvotes": 52,
     "downvotes": 14
   },
   {
@@ -568,8 +568,8 @@
     "status": " ",
     "fecha_creacion": "2024-06-25T02:34:41.000Z",
     "descripcion": "Este rare salio el 25 de junio de 2024 y fue el segundo rare en salir, su precio en catalogo era de 35 creditos, duro un total de 7 dias.",
-    "upvotes": 54,
-    "downvotes": 80
+    "upvotes": 6,
+    "downvotes": 0
   },
   {
     "id": 46,
@@ -581,7 +581,7 @@
     "status": null,
     "fecha_creacion": "2024-06-29T17:51:58.000Z",
     "descripcion": "Salió el 28 de junio de 2024, solo duro 24 horas a un precio de 10 créditos.",
-    "upvotes": 3,
+    "upvotes": 5,
     "downvotes": 2
   },
   {
@@ -594,7 +594,7 @@
     "status": null,
     "fecha_creacion": "2024-06-29T17:51:58.000Z",
     "descripcion": "Salió el 28 de junio de 2024, solo duro 24 horas a un precio de 10 créditos.",
-    "upvotes": 3,
+    "upvotes": 5,
     "downvotes": 2
   },
   {
@@ -607,7 +607,7 @@
     "status": null,
     "fecha_creacion": "2024-06-29T17:51:58.000Z",
     "descripcion": "Salió el 28 de junio de 2024, solo duro 24 horas a un precio de 10 créditos.",
-    "upvotes": 2,
+    "upvotes": 4,
     "downvotes": 3
   },
   {
@@ -620,7 +620,7 @@
     "status": null,
     "fecha_creacion": "2024-06-29T17:51:58.000Z",
     "descripcion": "Salió el 28 de junio de 2024, solo duro 24 horas a un precio de 10 créditos.",
-    "upvotes": 3,
+    "upvotes": 5,
     "downvotes": 2
   },
   {
@@ -633,8 +633,8 @@
     "status": "0",
     "fecha_creacion": "2024-07-02T04:57:18.000Z",
     "descripcion": "Este Mega Rare es una falla que se dio en los primero 3 dias por un error en la oferta de 12 meses de habboclub con los tickets ya que se daban en forma de furni, al poco tiempo fue corregido. No se puede tradear la unica manera de obtenerlo es poniendolo en la sala de otra persona (lo cual dificulta su libre comercio)",
-    "upvotes": 40,
-    "downvotes": 10
+    "upvotes": 41,
+    "downvotes": 11
   },
   {
     "id": 51,
@@ -646,7 +646,7 @@
     "status": "0",
     "fecha_creacion": "2024-07-02T13:31:03.000Z",
     "descripcion": "Este rare salio el 02 de julio de 2024 a un precio de 50 creditos, solo duro 1 semana en catalogo.",
-    "upvotes": 1,
+    "upvotes": 3,
     "downvotes": 0
   }
 ]
