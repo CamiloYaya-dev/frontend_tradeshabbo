@@ -149,7 +149,7 @@ $(document).ready(function() {
                         products.forEach(function(item) {
                             var borderClass = item.highlight == 1 ? 'highlight-border' : '';
                             var productCard = `
-                                <div class="col-md-3 col-sm-6 mb-4 product-item">
+                                <div class="col-md-3 col-sm-6 mb-4 product-item catalog_item_div">
                                     <div class="card h-100 position-relative ${borderClass}">
                                         <a href="#" class="text-decoration-none product-link" data-id="${item.id}">
                                             ${item.icon == "hc" ? `<img src="furnis/iconos/icon_hc.png" class="iconos-hc" alt="icon">` : ''}
@@ -161,23 +161,35 @@ $(document).ready(function() {
                                             ${item.status == "arrow_trend_down" ? `<img src="furnis/iconos/arrow_trend_down.png" class="iconos-arrow-trend-down" alt="icon">` : ''}
                                             <img src="${item.src}" class="card-img-top" alt="${item.name}">
                                         </a>
-                                            <div class="card-body text-center">
-                                                <p class="card-text text-price">
-                                                    <img src="furnis/dinero/credito.png" alt="credito" class="price-icon">${item.price}
-                                                    <img src="furnis/dinero/vip.png" alt="vip" class="price-vip">${(item.price / item.vip_price).toFixed(2)}
-                                                </p>
-                                                <p class="card-text text-name online_habbo_text_white">${item.name}</p>
-                                                <div class="vote-buttons">
-                                                    <button class="price_history_content vote-button" data-id="${item.id}" data-vote="upvote">👍<span class="vote-count">${item.upvotes}</span></button>
-                                                    <button class="price_history_content vote-button" data-id="${item.id}" data-vote="downvote">👎<span class="vote-count">${item.downvotes}</span></button>
+                                        <div class="card-body text-center">
+                                            <p class="card-text text-price">
+                                                <img src="furnis/dinero/credito.png" alt="credito" class="price-icon">${item.price}
+                                                <img src="furnis/dinero/vip.png" alt="vip" class="price-vip">${(item.price / item.vip_price).toFixed(2)}
+                                            </p>
+                                            <p class="card-text text-name online_habbo_text_white catalog_item_name">${item.name}</p>
+                                            <div class="row">
+                                                <div class="col-6 d-flex flex-column justify-content-around opinion_precio catalog_votes">
+                                                    <span class="online_habbo_text_white">¿Precio adecuado?</span>
+                                                    <div class="d-flex justify-content-around">
+                                                        <button class="price_history_content vote-button-opinion" data-id="${item.id}" data-vote="upvote">👍<span class="vote-count-opinion">${item.upvotes}</span></button>
+                                                        <button class="price_history_content vote-button-opinion" data-id="${item.id}" data-vote="downvote">👎<span class="vote-count-opinion">${item.downvotes}</span></button>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6 d-flex flex-column justify-content-around opinion_precio">
+                                                    <span class="online_habbo_text_white">¿Subirá o bajará?</span>
+                                                    <div class="d-flex justify-content-around">
+                                                        <button class="price_history_content vote-button-belief" data-id="${item.id}" data-vote="upprice"><img src="furnis/iconos/up_price_history.png" alt="up price" class="price-icon"><span class="vote-count-belief">${item.upvotes_belief || 0}</span></button>
+                                                        <button class="price_history_content vote-button-belief" data-id="${item.id}" data-vote="downprice"><img src="furnis/iconos/down_price_history.png" alt="down price" class="price-icon"><span class="vote-count-belief">${item.downvotes_belief || 0}</span></button>
+                                                    </div>
                                                 </div>
                                             </div>
+                                        </div>
                                     </div>
                                 </div>
                             `;
                             productContainer.append(productCard);
                         });
-
+                    
                         fillItemOptions(products);
                     }
 
@@ -225,7 +237,7 @@ $(document).ready(function() {
                                     productContainer.hide();
                                     productHistoryContainer.show();
                                     backButton.show();
-                            
+                                    
                                     var firstRecord = decryptedData[0];
                                     var imagePath = '';
                                     if (firstRecord.icon === 'hc') {
@@ -305,7 +317,7 @@ $(document).ready(function() {
                         filter_tags.show();
                     });
 
-                    $(document).on('click', '.vote-button', function() {
+                    $(document).on('click', '.vote-button-opinion', function() {
                         var button = $(this);
                         var imageId = button.data('id');
                         var voteType = button.data('vote');
@@ -320,7 +332,7 @@ $(document).ready(function() {
                                 data: JSON.stringify({ voteType: voteType }),
                                 success: function(data) {
                                     const decryptedData = decryptData(data.token);
-                                    var voteCountSpan = button.find('.vote-count');
+                                    var voteCountSpan = button.find('.vote-count-opinion');
                                     if (voteType === 'upvote') {
                                         voteCountSpan.text(decryptedData.upvotes);
                                     } else if (voteType === 'downvote') {
@@ -331,6 +343,41 @@ $(document).ready(function() {
                                 error: function(jqXHR) {
                                     if (jqXHR.status === 403) {
                                         alert('Usted ya ha votado a favor o en contra del precio de este articulo.');
+                                    } else {
+                                        alert('Error al votar. Por favor, inténtelo de nuevo.');
+                                    }
+                                    button.prop('disabled', false);
+                                }
+                            });
+                        });
+                    });
+
+                    $(document).on('click', '.vote-button-belief', function() {
+                        var button = $(this);
+                        var imageId = button.data('id');
+                        var voteType = button.data('vote');
+                        button.prop('disabled', true);
+                    
+                        fetchApiKey(function(apiKey) {
+                            $.ajax({
+                                url: `/images/${imageId}/vote-belief`,
+                                type: 'POST',
+                                contentType: 'application/json',
+                                headers: { 'x-api-key': apiKey },
+                                data: JSON.stringify({ voteType: voteType }),
+                                success: function(data) {
+                                    const decryptedData = decryptData(data.token);
+                                    var voteCountSpan = button.find('.vote-count-belief');
+                                    if (voteType === 'upprice') {
+                                        voteCountSpan.text(decryptedData.upvotes_belief);
+                                    } else if (voteType === 'downprice') {
+                                        voteCountSpan.text(decryptedData.downvotes_belief);
+                                    }
+                                    button.prop('disabled', false);
+                                },
+                                error: function(jqXHR) {
+                                    if (jqXHR.status === 403) {
+                                        alert('Usted ya voto si cree que subira o bajara el precio de este articulo.');
                                     } else {
                                         alert('Error al votar. Por favor, inténtelo de nuevo.');
                                     }

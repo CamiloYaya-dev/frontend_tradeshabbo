@@ -34,7 +34,9 @@ async function populateDatabase() {
                     fecha_creacion: priceInfo.fecha_creacion,
                     descripcion: priceInfo.descripcion,
                     upvotes: priceInfo.upvotes,
-                    downvotes: priceInfo.downvotes
+                    downvotes: priceInfo.downvotes,
+                    upvotes_belief: priceInfo.upvotes_belief,
+                    downvotes_belief: priceInfo.downvotes_belief
                 };
             });
         };

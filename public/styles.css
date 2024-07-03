@@ -534,6 +534,26 @@ footer {
 
 
 
-.tu-clase-css {
+.font-habbo-class {
     font-family: 'DePixelKlein', sans-serif;
+}
+
+.opinion_precio{
+    padding: 0px;
+}
+
+.catalog_item_name{
+    border-bottom: 1px solid black;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+
+.catalog_item_div{
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 10px !important;
+}
+
+.catalog_votes{
+    border-right: 1px solid black;
 }

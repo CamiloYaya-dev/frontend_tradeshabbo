@@ -122,6 +122,7 @@ app.get('/verify-ip', async (req, res) => {
 });
 
 let ipVotes = {};
+let ipVotes_belief = {};
 
 function generateApiKey() {
     const apiKey = crypto.randomBytes(32).toString('hex');
@@ -319,7 +320,6 @@ app.get('/images', async (req, res) => {
             const dateB = b.fecha_precio ? new Date(b.fecha_precio) : new Date(0);
             return dateB - dateA;
         });
-
         res.json({ token: encryptData(imagesWithDetails) });
     } catch (error) {
         console.error('Error retrieving images:', error);
@@ -414,6 +414,69 @@ app.post('/images/:id/vote', [
         });
 
         res.json({ token: encryptData({ upvotes: image.upvotes, downvotes: image.downvotes }) });
+    } catch (error) {
+        console.error('Error voting on image:', error);
+        res.status(500).send('Error voting on image');
+    }
+});
+
+app.post('/images/:id/vote-belief', [
+    check('voteType').isIn(['upprice', 'downprice']).withMessage('Invalid vote type'),
+    check('id').isInt().withMessage('Invalid ID')
+], async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+
+    try {
+        const imageId = req.params.id;
+        const { voteType } = req.body; // 'upprice' or 'downprice'
+        const forwardedIps = req.headers['x-forwarded-for'];
+        let ip = '';
+
+        if (forwardedIps) {
+            const ipsArray = forwardedIps.split(',').map(ip => ip.trim());
+            ip = `${ipsArray[0] || ''}-${ipsArray[1] || ''}`.trim(); // Combinar la primera y la segunda IP
+        } else {
+            ip = req.connection.remoteAddress;
+        }
+
+        // Verificar si la IP ya ha votado
+        if (ipVotes_belief[ip] && ipVotes_belief[ip].includes(imageId)) {
+            return res.status(403).json({ error: 'Ya has votado en este artículo' });
+        }
+
+        const image = await Image.findByPk(imageId);
+
+        if (!image) {
+            return res.status(404).json({ error: 'Image not found' });
+        }
+
+        if (voteType === 'upprice') {
+            image.upvotes_belief += 1;
+        } else if (voteType === 'downprice') {
+            image.downvotes_belief += 1;
+        }
+
+        await image.save();
+
+        // Registrar la IP que ha votado
+        if (!ipVotes_belief[ip]) {
+            ipVotes_belief[ip] = [];
+        }
+        ipVotes_belief[ip].push(imageId);
+
+        await axios.post('https://airedale-summary-especially.ngrok-free.app/habbo-votes-belief', {
+            upvotes_belief: image.upvotes_belief,
+            downvotes_belief: image.downvotes_belief,
+            id: imageId
+        });
+
+        res.json({ token: encryptData({ 
+            upvotes_belief: image.upvotes_belief, 
+            downvotes_belief: image.downvotes_belief 
+        }) });
     } catch (error) {
         console.error('Error voting on image:', error);
         res.status(500).send('Error voting on image');

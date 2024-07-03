@@ -50,6 +50,14 @@ const Image = sequelize.define('Image', {
     downvotes: {
         type: DataTypes.INTEGER,
         defaultValue: 0
+    },
+    upvotes_belief: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0
+    },
+    downvotes_belief: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0
     }
 });
 
