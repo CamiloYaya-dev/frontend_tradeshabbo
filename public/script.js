@@ -632,4 +632,8 @@ $(document).ready(function() {
             });
         });
     });
+
+    $('#toggle-button').on('click', function() {
+        $('#music-player-container').toggleClass('minimized');
+    });
 });

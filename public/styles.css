@@ -647,3 +647,24 @@ audio::-webkit-media-controls-panel {
     width: 100%;
     margin-top: 20px;
 }
+
+#music-player-content {
+    transition: height 0.3s ease;
+}
+
+.minimized #music-player-content {
+    display: none;
+}
+
+.minimized #toggle-button::after {
+    content: '🗖';
+}
+
+#toggle-button::after {
+    content: '🗕';
+}
+
+#toggle-button{
+    margin-bottom: 10px;
+    float: inline-end;
+}
