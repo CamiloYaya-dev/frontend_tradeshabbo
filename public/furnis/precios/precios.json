@@ -12,7 +12,8 @@
     "upvotes": 41,
     "downvotes": 8,
     "upvotes_belief": 13,
-    "downvotes_belief": 11
+    "downvotes_belief": 11,
+    "mote": "Vip"
   },
   {
     "id": 2,
@@ -27,7 +28,8 @@
     "upvotes": 35,
     "downvotes": 14,
     "upvotes_belief": 2,
-    "downvotes_belief": 11
+    "downvotes_belief": 11,
+    "mote": ""
   },
   {
     "id": 3,
@@ -42,7 +44,8 @@
     "upvotes": 18,
     "downvotes": 6,
     "upvotes_belief": 7,
-    "downvotes_belief": 11
+    "downvotes_belief": 11,
+    "mote": ""
   },
   {
     "id": 4,
@@ -57,7 +60,8 @@
     "upvotes": 98,
     "downvotes": 21,
     "upvotes_belief": 12,
-    "downvotes_belief": 19
+    "downvotes_belief": 19,
+    "mote": ""
   },
   {
     "id": 5,
@@ -72,7 +76,8 @@
     "upvotes": 11,
     "downvotes": 4,
     "upvotes_belief": 4,
-    "downvotes_belief": 33
+    "downvotes_belief": 33,
+    "mote": "DA2HC"
   },
   {
     "id": 6,
@@ -86,8 +91,9 @@
     "descripcion": "Este articulo es un obsequio del habbo club y aun esta por validar que mes se dará.",
     "upvotes": 13,
     "downvotes": 5,
-    "upvotes_belief": 6,
-    "downvotes_belief": 13
+    "upvotes_belief": 7,
+    "downvotes_belief": 13,
+    "mote": ""
   },
   {
     "id": 7,
@@ -102,7 +108,8 @@
     "upvotes": 34,
     "downvotes": 27,
     "upvotes_belief": 5,
-    "downvotes_belief": 9
+    "downvotes_belief": 9,
+    "mote": "Desk/Study"
   },
   {
     "id": 8,
@@ -117,7 +124,8 @@
     "upvotes": 89,
     "downvotes": 17,
     "upvotes_belief": 1,
-    "downvotes_belief": 7
+    "downvotes_belief": 7,
+    "mote": ""
   },
   {
     "id": 9,
@@ -129,10 +137,11 @@
     "status": null,
     "fecha_creacion": "2024-06-24T23:19:10.000Z",
     "descripcion": "Este articulo es un obsequio del habbo club y aun esta por validar que mes se dará.",
-    "upvotes": 2,
+    "upvotes": 3,
     "downvotes": 1,
-    "upvotes_belief": 3,
-    "downvotes_belief": 1
+    "upvotes_belief": 4,
+    "downvotes_belief": 1,
+    "mote": ""
   },
   {
     "id": 10,
@@ -147,7 +156,8 @@
     "upvotes": 72,
     "downvotes": 19,
     "upvotes_belief": 5,
-    "downvotes_belief": 8
+    "downvotes_belief": 8,
+    "mote": ""
   },
   {
     "id": 11,
@@ -162,7 +172,8 @@
     "upvotes": 35,
     "downvotes": 16,
     "upvotes_belief": 1,
-    "downvotes_belief": 7
+    "downvotes_belief": 7,
+    "mote": ""
   },
   {
     "id": 12,
@@ -177,7 +188,8 @@
     "upvotes": 97,
     "downvotes": 13,
     "upvotes_belief": 3,
-    "downvotes_belief": 4
+    "downvotes_belief": 4,
+    "mote": ""
   },
   {
     "id": 13,
@@ -189,10 +201,11 @@
     "status": "arrow_trend_up",
     "fecha_creacion": "2024-06-24T23:19:10.000Z",
     "descripcion": "Fue el primer rare del hotel, salio a un precio inicial de 50 creditos, estuvo un total de 7 dias en catalogo, desde el 18 de junio de 2024 hasta el 25 de junio de 2024",
-    "upvotes": 19,
+    "upvotes": 20,
     "downvotes": 7,
-    "upvotes_belief": 35,
-    "downvotes_belief": 6
+    "upvotes_belief": 36,
+    "downvotes_belief": 6,
+    "mote": "HC"
   },
   {
     "id": 14,
@@ -207,7 +220,8 @@
     "upvotes": 1,
     "downvotes": 0,
     "upvotes_belief": 0,
-    "downvotes_belief": 1
+    "downvotes_belief": 1,
+    "mote": ""
   },
   {
     "id": 15,
@@ -222,7 +236,8 @@
     "upvotes": 1,
     "downvotes": 0,
     "upvotes_belief": 0,
-    "downvotes_belief": 1
+    "downvotes_belief": 1,
+    "mote": ""
   },
   {
     "id": 16,
@@ -237,7 +252,8 @@
     "upvotes": 1,
     "downvotes": 0,
     "upvotes_belief": 0,
-    "downvotes_belief": 1
+    "downvotes_belief": 1,
+    "mote": ""
   },
   {
     "id": 17,
@@ -252,7 +268,8 @@
     "upvotes": 1,
     "downvotes": 0,
     "upvotes_belief": 0,
-    "downvotes_belief": 1
+    "downvotes_belief": 1,
+    "mote": ""
   },
   {
     "id": 18,
@@ -267,7 +284,8 @@
     "upvotes": 2,
     "downvotes": 0,
     "upvotes_belief": 1,
-    "downvotes_belief": 1
+    "downvotes_belief": 1,
+    "mote": ""
   },
   {
     "id": 19,
@@ -282,7 +300,8 @@
     "upvotes": 3,
     "downvotes": 3,
     "upvotes_belief": 1,
-    "downvotes_belief": 4
+    "downvotes_belief": 4,
+    "mote": ""
   },
   {
     "id": 20,
@@ -297,7 +316,8 @@
     "upvotes": 10,
     "downvotes": 1,
     "upvotes_belief": 14,
-    "downvotes_belief": 6
+    "downvotes_belief": 6,
+    "mote": ""
   },
   {
     "id": 21,
@@ -312,7 +332,8 @@
     "upvotes": 6,
     "downvotes": 1,
     "upvotes_belief": 10,
-    "downvotes_belief": 5
+    "downvotes_belief": 5,
+    "mote": ""
   },
   {
     "id": 22,
@@ -326,8 +347,9 @@
     "descripcion": "Este furni hace parte de la categoria FUNKY FRIDAY y solo duraron 24 horas en catalogo a un precio de 10 créditos",
     "upvotes": 7,
     "downvotes": 4,
-    "upvotes_belief": 13,
-    "downvotes_belief": 4
+    "upvotes_belief": 14,
+    "downvotes_belief": 4,
+    "mote": ""
   },
   {
     "id": 23,
@@ -341,8 +363,9 @@
     "descripcion": "Este furni hace parte de la categoria FUNKY FRIDAY y solo duraron 24 horas en catalogo a un precio de 10 créditos",
     "upvotes": 4,
     "downvotes": 2,
-    "upvotes_belief": 10,
-    "downvotes_belief": 4
+    "upvotes_belief": 11,
+    "downvotes_belief": 4,
+    "mote": ""
   },
   {
     "id": 24,
@@ -357,7 +380,8 @@
     "upvotes": 47,
     "downvotes": 7,
     "upvotes_belief": 2,
-    "downvotes_belief": 4
+    "downvotes_belief": 4,
+    "mote": ""
   },
   {
     "id": 25,
@@ -372,7 +396,8 @@
     "upvotes": 90,
     "downvotes": 9,
     "upvotes_belief": 2,
-    "downvotes_belief": 3
+    "downvotes_belief": 3,
+    "mote": ""
   },
   {
     "id": 26,
@@ -387,7 +412,8 @@
     "upvotes": 91,
     "downvotes": 8,
     "upvotes_belief": 2,
-    "downvotes_belief": 3
+    "downvotes_belief": 3,
+    "mote": ""
   },
   {
     "id": 27,
@@ -402,7 +428,8 @@
     "upvotes": 83,
     "downvotes": 9,
     "upvotes_belief": 2,
-    "downvotes_belief": 2
+    "downvotes_belief": 2,
+    "mote": ""
   },
   {
     "id": 28,
@@ -417,7 +444,8 @@
     "upvotes": 47,
     "downvotes": 9,
     "upvotes_belief": 2,
-    "downvotes_belief": 3
+    "downvotes_belief": 3,
+    "mote": ""
   },
   {
     "id": 29,
@@ -432,7 +460,8 @@
     "upvotes": 100,
     "downvotes": 9,
     "upvotes_belief": 2,
-    "downvotes_belief": 2
+    "downvotes_belief": 2,
+    "mote": ""
   },
   {
     "id": 30,
@@ -447,7 +476,8 @@
     "upvotes": 48,
     "downvotes": 9,
     "upvotes_belief": 2,
-    "downvotes_belief": 3
+    "downvotes_belief": 3,
+    "mote": ""
   },
   {
     "id": 31,
@@ -462,7 +492,8 @@
     "upvotes": 45,
     "downvotes": 9,
     "upvotes_belief": 2,
-    "downvotes_belief": 3
+    "downvotes_belief": 3,
+    "mote": ""
   },
   {
     "id": 32,
@@ -477,7 +508,8 @@
     "upvotes": 55,
     "downvotes": 8,
     "upvotes_belief": 2,
-    "downvotes_belief": 3
+    "downvotes_belief": 3,
+    "mote": ""
   },
   {
     "id": 33,
@@ -492,7 +524,8 @@
     "upvotes": 30,
     "downvotes": 8,
     "upvotes_belief": 2,
-    "downvotes_belief": 3
+    "downvotes_belief": 3,
+    "mote": ""
   },
   {
     "id": 34,
@@ -507,7 +540,8 @@
     "upvotes": 99,
     "downvotes": 7,
     "upvotes_belief": 1,
-    "downvotes_belief": 3
+    "downvotes_belief": 3,
+    "mote": ""
   },
   {
     "id": 35,
@@ -522,7 +556,8 @@
     "upvotes": 28,
     "downvotes": 9,
     "upvotes_belief": 1,
-    "downvotes_belief": 3
+    "downvotes_belief": 3,
+    "mote": ""
   },
   {
     "id": 36,
@@ -537,7 +572,8 @@
     "upvotes": 68,
     "downvotes": 8,
     "upvotes_belief": 1,
-    "downvotes_belief": 3
+    "downvotes_belief": 3,
+    "mote": ""
   },
   {
     "id": 37,
@@ -552,7 +588,8 @@
     "upvotes": 101,
     "downvotes": 8,
     "upvotes_belief": 1,
-    "downvotes_belief": 3
+    "downvotes_belief": 3,
+    "mote": ""
   },
   {
     "id": 38,
@@ -567,7 +604,8 @@
     "upvotes": 52,
     "downvotes": 9,
     "upvotes_belief": 1,
-    "downvotes_belief": 3
+    "downvotes_belief": 3,
+    "mote": ""
   },
   {
     "id": 39,
@@ -582,7 +620,8 @@
     "upvotes": 43,
     "downvotes": 8,
     "upvotes_belief": 1,
-    "downvotes_belief": 3
+    "downvotes_belief": 3,
+    "mote": ""
   },
   {
     "id": 40,
@@ -597,7 +636,8 @@
     "upvotes": 24,
     "downvotes": 4,
     "upvotes_belief": 1,
-    "downvotes_belief": 3
+    "downvotes_belief": 3,
+    "mote": ""
   },
   {
     "id": 41,
@@ -612,7 +652,8 @@
     "upvotes": 61,
     "downvotes": 8,
     "upvotes_belief": 1,
-    "downvotes_belief": 3
+    "downvotes_belief": 3,
+    "mote": ""
   },
   {
     "id": 42,
@@ -627,7 +668,8 @@
     "upvotes": 97,
     "downvotes": 9,
     "upvotes_belief": 1,
-    "downvotes_belief": 3
+    "downvotes_belief": 3,
+    "mote": ""
   },
   {
     "id": 43,
@@ -642,7 +684,8 @@
     "upvotes": 103,
     "downvotes": 7,
     "upvotes_belief": 1,
-    "downvotes_belief": 3
+    "downvotes_belief": 3,
+    "mote": ""
   },
   {
     "id": 44,
@@ -654,10 +697,11 @@
     "status": " ",
     "fecha_creacion": "2024-06-25T02:34:41.000Z",
     "descripcion": "Este rare salio el 25 de junio de 2024 y fue el segundo rare en salir, su precio en catalogo era de 35 creditos, duro un total de 7 dias.",
-    "upvotes": 1,
+    "upvotes": 2,
     "downvotes": 3,
-    "upvotes_belief": 2,
-    "downvotes_belief": 3
+    "upvotes_belief": 5,
+    "downvotes_belief": 3,
+    "mote": "Vivo"
   },
   {
     "id": 46,
@@ -671,8 +715,9 @@
     "descripcion": "Salió el 28 de junio de 2024, solo duro 24 horas a un precio de 10 créditos.",
     "upvotes": 12,
     "downvotes": 8,
-    "upvotes_belief": 9,
-    "downvotes_belief": 5
+    "upvotes_belief": 10,
+    "downvotes_belief": 5,
+    "mote": ""
   },
   {
     "id": 47,
@@ -686,8 +731,9 @@
     "descripcion": "Salió el 28 de junio de 2024, solo duro 24 horas a un precio de 10 créditos.",
     "upvotes": 13,
     "downvotes": 7,
-    "upvotes_belief": 9,
-    "downvotes_belief": 5
+    "upvotes_belief": 10,
+    "downvotes_belief": 5,
+    "mote": ""
   },
   {
     "id": 48,
@@ -701,8 +747,9 @@
     "descripcion": "Salió el 28 de junio de 2024, solo duro 24 horas a un precio de 10 créditos.",
     "upvotes": 11,
     "downvotes": 9,
-    "upvotes_belief": 9,
-    "downvotes_belief": 5
+    "upvotes_belief": 10,
+    "downvotes_belief": 5,
+    "mote": ""
   },
   {
     "id": 49,
@@ -716,8 +763,9 @@
     "descripcion": "Salió el 28 de junio de 2024, solo duro 24 horas a un precio de 10 créditos.",
     "upvotes": 14,
     "downvotes": 7,
-    "upvotes_belief": 10,
-    "downvotes_belief": 3
+    "upvotes_belief": 11,
+    "downvotes_belief": 3,
+    "mote": ""
   },
   {
     "id": 50,
@@ -732,7 +780,8 @@
     "upvotes": 63,
     "downvotes": 35,
     "upvotes_belief": 24,
-    "downvotes_belief": 8
+    "downvotes_belief": 8,
+    "mote": ""
   },
   {
     "id": 51,
@@ -747,6 +796,7 @@
     "upvotes": 40,
     "downvotes": 17,
     "upvotes_belief": 38,
-    "downvotes_belief": 5
+    "downvotes_belief": 6,
+    "mote": ""
   }
 ]

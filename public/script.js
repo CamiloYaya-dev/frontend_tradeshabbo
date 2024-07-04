@@ -260,7 +260,7 @@ $(document).ready(function() {
                                                 <img src="furnis/dinero/credito.png" alt="credito" class="price-icon">${item.price}
                                                 <img src="furnis/dinero/vip.png" alt="vip" class="price-vip">${(item.price / item.vip_price).toFixed(2)}
                                             </p>
-                                            <p class="card-text text-name online_habbo_text_white catalog_item_name">${item.name}</p>
+                                            <p class="card-text text-name online_habbo_text_white catalog_item_name">${item.name} ${item.mote ? `(${item.mote})` : ''}</p>
                                             <div class="row">
                                                 <div class="col-6 d-flex flex-column justify-content-around opinion_precio catalog_votes">
                                                     <span class="online_habbo_text_white">¿Precio adecuado?</span>

@@ -36,7 +36,8 @@ async function populateDatabase() {
                     upvotes: priceInfo.upvotes,
                     downvotes: priceInfo.downvotes,
                     upvotes_belief: priceInfo.upvotes_belief,
-                    downvotes_belief: priceInfo.downvotes_belief
+                    downvotes_belief: priceInfo.downvotes_belief,
+                    mote: priceInfo.mote
                 };
             });
         };

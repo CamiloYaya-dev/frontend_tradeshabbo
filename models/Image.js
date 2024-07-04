@@ -58,7 +58,11 @@ const Image = sequelize.define('Image', {
     downvotes_belief: {
         type: DataTypes.INTEGER,
         defaultValue: 0
-    }
+    },
+    mote: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
 });
 
 module.exports = Image;
