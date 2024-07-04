@@ -642,3 +642,8 @@ audio::-webkit-media-controls-panel {
     border: 1px solid #050a0e;
     width: 90% !important;
 }
+
+.row_discord{
+    width: 100%;
+    margin-top: 20px;
+}

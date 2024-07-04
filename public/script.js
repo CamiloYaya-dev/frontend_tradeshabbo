@@ -81,9 +81,11 @@ $(document).ready(function() {
                         </button>
                     </div>
                     <div class="modal-body text-center">
-                        <img src="furnis/noticias/lloron.png" alt="Guía de Precios" class="img-fluid">
-                        <p class="online_habbo_text_white_fz_15">Debido a usuarios como este que se dedican solo a difamar la página web porque les molesta no poder seguir estafando a la gente con precios ridículos, necesito aclarar que los precios <strong class="alerta_lloron">SON SOLO UNA GUÍA</strong> basada en mi criterio. <strong class="alerta_lloron">Ustedes, la comunidad, son los ÚNICOS QUE DECIDEN CUÁNTO VALE CADA COSA.</strong></p>
-                        <p class="online_habbo_text_white_fz_15"><strong class="alerta_lloron">RECUERDA:</strong> Son tus furnis, tú decides cuánto valen.</p>
+                        <video controls class="img-fluid">
+                            <source src="furnis/noticias/videos/DiceRigAll6.mp4" type="video/mp4">
+                            Tu navegador no soporta la etiqueta de video.
+                        </video>
+                        <p class="online_habbo_text_white_fz_15">Se recomienda a todos los usuarios de dados <strong class="alerta_lloron">NO SEGUIR JUGANDO</strong> aparentemente ahi un <strong class="alerta_lloron">EXPLOIT PARA LOS DADOS.</strong></p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
