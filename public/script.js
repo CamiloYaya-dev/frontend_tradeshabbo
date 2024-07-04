@@ -1,4 +1,28 @@
 $(document).ready(function() {
+    // Mostrar imagen en un modal
+    $('body').append(`
+        <div class="modal" id="priceGuidelineModal" tabindex="-1" role="dialog" aria-labelledby="priceGuidelineModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content online_users_content">
+                    <div class="modal-header">
+                        <h5 class="modal-title habbo_text_blue" id="priceGuidelineModalLabel">Aviso Importante</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <img src="furnis/noticias/lloron.png" alt="Guía de Precios" class="img-fluid">
+                        <p class="online_habbo_text_white_fz_15">Debido a usuarios como este que se dedican solo a difamar la página web porque les molesta no poder seguir estafando a la gente con precios ridículos, necesito aclarar que los precios <strong class="alerta_lloron">SON SOLO UNA GUÍA</strong> basada en mi criterio. <strong class="alerta_lloron">Ustedes, la comunidad, son los ÚNICOS QUE DECIDEN CUÁNTO VALE CADA COSA.</strong></p>
+                        <p class="online_habbo_text_white_fz_15"><strong class="alerta_lloron">RECUERDA:</strong> Son tus furnis, tú decides cuánto valen.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `);
+    $('#priceGuidelineModal').modal('show');
     const noticiasPerPage = 10;
     let currentPage = 1;
     let totalNoticias = 0;

@@ -209,6 +209,12 @@ body {
     color: white;
 }
 
+.online_habbo_text_white_fz_15{
+    font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    font-size: 15px;
+    color: white;
+}
+
 .online_habbo_text_white_fz_20{
     font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
     font-size: 20px;
@@ -556,4 +562,8 @@ footer {
 
 .catalog_votes{
     border-right: 1px solid black;
+}
+
+.alerta_lloron{
+    font-size: 15px;
 }
