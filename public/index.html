@@ -73,6 +73,7 @@
     <meta name="theme-color" content="#ffffff">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7371046141870803" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.16/mediaelementplayer.min.css" />
 </head>
 <body>
     <header class="bg-dark text-white text-center py-3 header-page">
@@ -92,7 +93,7 @@
                 </ul>
             </div>
         </nav>
-    </header>
+    </header>    
     <main class="container my-4">
         <div class="row">
             <div class="col-md-2 column">
@@ -323,9 +324,18 @@
             </div>
         </div>
     </main>
+    <div id="music-player-container" class="music-player-container">
+        <select id="track-list" class="form-control"></select>
+        <audio id="audio-player" controls>
+            Your browser does not support the audio element.
+        </audio>
+        <button id="repeat-button" class="btn btn-primary boton-music boton-repetir">Repetir</button>
+        <button id="shuffle-button" class="btn btn-secondary boton-music">Canción Aleatoria</button>
+    </div>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="97985c44-a7fc-4a91-b882-1692dc133868.js"></script>
+    <script src="f766dac6-c071-4f68-9b43-f84df2d3375d.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.16/mediaelement-and-player.min.js"></script>
     <script>
         (adsbygoogle = window.adsbygoogle || []).push({});
     </script>

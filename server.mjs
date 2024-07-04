@@ -501,6 +501,22 @@ app.get('/latest-price-update', async (req, res) => {
     }
 });
 
+app.get('/get-songs', (req, res) => {
+    const musicDir = path.join(__dirname, 'public/sonidos/musica');
+    fs.readdir(musicDir, (err, files) => {
+        if (err) {
+            return res.status(500).send('Error reading music directory');
+        }
+
+        const songs = files.map(file => ({
+            name: path.basename(file, path.extname(file)),
+            path: `/sonidos/musica/${file}`
+        }));
+
+        res.json(songs);
+    });
+});
+
 app.listen(port, async () => {
     try {
         await sequelize.authenticate();

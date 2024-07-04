@@ -54,7 +54,7 @@ body {
     position: absolute;
     top: 10px;
     left: 10px;
-    width: 40px; /* Ajusta el tamaño del ícono según sea necesario */
+    width: 40px;
     height: 60px;
 }
 
@@ -62,7 +62,7 @@ body {
     position: absolute;
     bottom: 175px;
     right: 10px;
-    width: 70px; /* Ajusta el tamaño del ícono según sea necesario */
+    width: 70px;
     height: 60px;
 }
 
@@ -70,7 +70,7 @@ body {
     position: absolute;
     bottom: 175px;
     right: 10px;
-    width: 70px; /* Ajusta el tamaño del ícono según sea necesario */
+    width: 70px;
     height: 40px;
 }
 
@@ -99,7 +99,7 @@ body {
 }
 
 .header, .main, .footer {
-    background: rgba(255, 255, 255, 0.8); /* Fondo blanco con opacidad */
+    background: rgba(255, 255, 255, 0.8);
     padding: 20px;
     border-radius: 10px;
 }
@@ -160,7 +160,7 @@ body {
     background-color: #26627D;
     border-color: #26627D;
     color: white;
-    outline: none; /* Para quitar el borde azul predeterminado en algunos navegadores */
+    outline: none;
 }
 
 @keyframes border-animation {
@@ -330,8 +330,8 @@ footer {
 
 .navbar_item a:hover,
 .navbar_item a:focus {
-    color: #fff; /* Mantén el color del texto en blanco al pasar el cursor */
-    text-decoration: none; /* Quita el subrayado del link al pasar el cursor */
+    color: #fff;
+    text-decoration: none;
 }
 
 .item_calculador_tradeos {
@@ -460,7 +460,7 @@ footer {
 .user-avatar {
     width: 50px;
     height: 50px;
-    background: #333 url('./furnis/noticias/emo.png') no-repeat center center; /* Reemplaza con la ruta del avatar */
+    background: #333 url('./furnis/noticias/emo.png') no-repeat center center;
     background-size: cover;
     border-radius: 5px;
     margin-right: 10px;
@@ -521,7 +521,7 @@ footer {
 }
 
 .col-3.p-0 {
-    padding: 0; /* Quita el padding de las columnas para que los botones estén pegados */
+    padding: 0;
 }
 
 .row_habbo_footer{
@@ -535,7 +535,7 @@ footer {
 .consola-izquierda, .consola-derecha {
     max-width: 20px;
     flex: 0 0 20px;
-    background-color: #FCCB04; /* Color de fondo similar al resto del diseño */
+    background-color: #FCCB04;
 }
 
 
@@ -566,4 +566,51 @@ footer {
 
 .alerta_lloron{
     font-size: 15px;
+}
+
+.music-player-container {
+    position: fixed;
+    bottom: 0px;
+    right: 10px;
+    background: #333;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    background-color: #335e7a;
+    border: 1px solid #050a0e;
+    box-shadow: 0 2px 3px rgba(6, 19, 25, .7);
+    padding: 12px;
+    font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: white;
+}
+
+#track-list {
+    margin-bottom: 10px;
+    background-color: #335e7a;
+    font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    color: white;
+}
+
+#audio-player{
+    width: 100%;
+}
+
+audio::-internal-media-controls-download-button {
+    display: none;
+}
+
+audio::-webkit-media-controls-enclosure {
+    overflow: hidden;
+}
+
+audio::-webkit-media-controls-panel {
+    width: calc(100% + 30px);
+}
+
+.boton-music{
+    margin-top: 5px;
 }

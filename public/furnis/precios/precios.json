@@ -9,10 +9,10 @@
     "status": null,
     "fecha_creacion": "2024-06-25T01:19:10.000Z",
     "descripcion": "Este articulo es un obsequio del habbo club del primer mes",
-    "upvotes": 37,
-    "downvotes": 7,
-    "upvotes_belief": 10,
-    "downvotes_belief": 9
+    "upvotes": 41,
+    "downvotes": 8,
+    "upvotes_belief": 13,
+    "downvotes_belief": 11
   },
   {
     "id": 2,
@@ -26,7 +26,7 @@
     "descripcion": "Este articulo es un obsequio del habbo club y aun esta por validar que mes se dará.",
     "upvotes": 35,
     "downvotes": 14,
-    "upvotes_belief": 1,
+    "upvotes_belief": 2,
     "downvotes_belief": 11
   },
   {
@@ -39,10 +39,10 @@
     "status": "arrow_trend_down",
     "fecha_creacion": "2024-06-24T23:19:10.000Z",
     "descripcion": "Este articulo es un obsequio del habbo club y aun esta por validar que mes se dará.",
-    "upvotes": 16,
+    "upvotes": 18,
     "downvotes": 6,
-    "upvotes_belief": 5,
-    "downvotes_belief": 10
+    "upvotes_belief": 7,
+    "downvotes_belief": 11
   },
   {
     "id": 4,
@@ -54,10 +54,10 @@
     "status": null,
     "fecha_creacion": "2024-06-24T23:19:10.000Z",
     "descripcion": "Este articulo es un obsequio del habbo club y aun esta por validar que mes se dará.",
-    "upvotes": 96,
-    "downvotes": 20,
-    "upvotes_belief": 9,
-    "downvotes_belief": 18
+    "upvotes": 98,
+    "downvotes": 21,
+    "upvotes_belief": 12,
+    "downvotes_belief": 19
   },
   {
     "id": 5,
@@ -69,10 +69,10 @@
     "status": "arrow_trend_down",
     "fecha_creacion": "2024-06-24T23:51:12.000Z",
     "descripcion": "Este articulo es un obsequio del habbo club y aun esta por validar que mes se dará.",
-    "upvotes": 8,
-    "downvotes": 2,
+    "upvotes": 11,
+    "downvotes": 4,
     "upvotes_belief": 4,
-    "downvotes_belief": 24
+    "downvotes_belief": 33
   },
   {
     "id": 6,
@@ -84,10 +84,10 @@
     "status": null,
     "fecha_creacion": "2024-06-24T23:19:10.000Z",
     "descripcion": "Este articulo es un obsequio del habbo club y aun esta por validar que mes se dará.",
-    "upvotes": 11,
+    "upvotes": 13,
     "downvotes": 5,
-    "upvotes_belief": 5,
-    "downvotes_belief": 12
+    "upvotes_belief": 6,
+    "downvotes_belief": 13
   },
   {
     "id": 7,
@@ -100,8 +100,8 @@
     "fecha_creacion": "2024-06-24T23:19:10.000Z",
     "descripcion": "Este articulo es un obsequio del habbo club y aun esta por validar que mes se dará.",
     "upvotes": 34,
-    "downvotes": 26,
-    "upvotes_belief": 3,
+    "downvotes": 27,
+    "upvotes_belief": 5,
     "downvotes_belief": 9
   },
   {
@@ -122,17 +122,17 @@
   {
     "id": 9,
     "name": "Silla_Majestic",
-    "price": "100.00",
+    "price": "150.00",
     "icon": "hc",
     "highlight": 1,
     "hot": 1,
     "status": null,
     "fecha_creacion": "2024-06-24T23:19:10.000Z",
     "descripcion": "Este articulo es un obsequio del habbo club y aun esta por validar que mes se dará.",
-    "upvotes": 67,
-    "downvotes": 15,
-    "upvotes_belief": 11,
-    "downvotes_belief": 19
+    "upvotes": 2,
+    "downvotes": 1,
+    "upvotes_belief": 3,
+    "downvotes_belief": 1
   },
   {
     "id": 10,
@@ -146,7 +146,7 @@
     "descripcion": "Este articulo es un obsequio del habbo club y aun esta por validar que mes se dará.",
     "upvotes": 72,
     "downvotes": 19,
-    "upvotes_belief": 4,
+    "upvotes_belief": 5,
     "downvotes_belief": 8
   },
   {
@@ -189,100 +189,100 @@
     "status": "arrow_trend_up",
     "fecha_creacion": "2024-06-24T23:19:10.000Z",
     "descripcion": "Fue el primer rare del hotel, salio a un precio inicial de 50 creditos, estuvo un total de 7 dias en catalogo, desde el 18 de junio de 2024 hasta el 25 de junio de 2024",
-    "upvotes": 13,
-    "downvotes": 5,
-    "upvotes_belief": 29,
-    "downvotes_belief": 5
+    "upvotes": 19,
+    "downvotes": 7,
+    "upvotes_belief": 35,
+    "downvotes_belief": 6
   },
   {
     "id": 14,
     "name": "Mesa_Cuadrada_Funky_Naranja",
-    "price": "125.00",
+    "price": "100.00",
     "icon": "funky",
     "highlight": 0,
     "hot": 0,
     "status": "",
     "fecha_creacion": "2024-06-24T23:19:10.000Z",
     "descripcion": "Este furni hace parte de la categoria FUNKY FRIDAY y solo duraron 24 horas en catalogo a un precio de 6 créditos",
-    "upvotes": 44,
-    "downvotes": 19,
-    "upvotes_belief": 2,
-    "downvotes_belief": 5
+    "upvotes": 1,
+    "downvotes": 0,
+    "upvotes_belief": 0,
+    "downvotes_belief": 1
   },
   {
     "id": 15,
     "name": "Mesa_Funky_Naranja",
-    "price": "125.00",
+    "price": "100.00",
     "icon": "funky",
     "highlight": 0,
     "hot": 0,
     "status": "",
     "fecha_creacion": "2024-06-24T23:19:10.000Z",
     "descripcion": "Este furni hace parte de la categoria FUNKY FRIDAY y solo duraron 24 horas en catalogo a un precio de 6 créditos",
-    "upvotes": 93,
-    "downvotes": 14,
-    "upvotes_belief": 3,
-    "downvotes_belief": 4
+    "upvotes": 1,
+    "downvotes": 0,
+    "upvotes_belief": 0,
+    "downvotes_belief": 1
   },
   {
     "id": 16,
     "name": "Mesa_Redonda_Funky_Naranja",
-    "price": "125.00",
+    "price": "100.00",
     "icon": "funky",
     "highlight": 0,
     "hot": 0,
     "status": "",
     "fecha_creacion": "2024-06-24T23:19:10.000Z",
     "descripcion": "Este furni hace parte de la categoria FUNKY FRIDAY y solo duraron 24 horas en catalogo a un precio de 6 créditos",
-    "upvotes": 73,
-    "downvotes": 17,
-    "upvotes_belief": 2,
-    "downvotes_belief": 5
+    "upvotes": 1,
+    "downvotes": 0,
+    "upvotes_belief": 0,
+    "downvotes_belief": 1
   },
   {
     "id": 17,
     "name": "Mesita_Funky_Naranja",
-    "price": "125.00",
+    "price": "100.00",
     "icon": "funky",
     "highlight": 0,
     "hot": 0,
     "status": "",
     "fecha_creacion": "2024-06-24T23:19:10.000Z",
     "descripcion": "Este furni hace parte de la categoria FUNKY FRIDAY y solo duraron 24 horas en catalogo a un precio de 6 créditos",
-    "upvotes": 45,
-    "downvotes": 19,
-    "upvotes_belief": 3,
-    "downvotes_belief": 4
+    "upvotes": 1,
+    "downvotes": 0,
+    "upvotes_belief": 0,
+    "downvotes_belief": 1
   },
   {
     "id": 18,
     "name": "Silla_Funky_Naranja",
-    "price": "125.00",
+    "price": "100.00",
     "icon": "funky",
     "highlight": 0,
     "hot": 0,
     "status": "",
     "fecha_creacion": "2024-06-24T23:19:10.000Z",
     "descripcion": "Este furni hace parte de la categoria FUNKY FRIDAY y solo duraron 24 horas en catalogo a un precio de 6 créditos",
-    "upvotes": 77,
-    "downvotes": 14,
-    "upvotes_belief": 3,
-    "downvotes_belief": 3
+    "upvotes": 2,
+    "downvotes": 0,
+    "upvotes_belief": 1,
+    "downvotes_belief": 1
   },
   {
     "id": 19,
     "name": "Pod_Funky_Naranja",
-    "price": "125.00",
+    "price": "100.00",
     "icon": "funky",
     "highlight": 0,
     "hot": 1,
     "status": "",
     "fecha_creacion": "2024-06-24T23:19:10.000Z",
     "descripcion": "Este furni hace parte de la categoria FUNKY FRIDAY y solo duraron 24 horas en catalogo a un precio de 10 créditos",
-    "upvotes": 98,
-    "downvotes": 18,
-    "upvotes_belief": 7,
-    "downvotes_belief": 6
+    "upvotes": 3,
+    "downvotes": 3,
+    "upvotes_belief": 1,
+    "downvotes_belief": 4
   },
   {
     "id": 20,
@@ -294,9 +294,9 @@
     "status": "arrow_trend_up",
     "fecha_creacion": "2024-06-24T23:19:10.000Z",
     "descripcion": "Este furni hace parte de la categoria FUNKY FRIDAY y solo duraron 24 horas en catalogo a un precio de 10 créditos",
-    "upvotes": 6,
+    "upvotes": 10,
     "downvotes": 1,
-    "upvotes_belief": 10,
+    "upvotes_belief": 14,
     "downvotes_belief": 6
   },
   {
@@ -309,9 +309,9 @@
     "status": "arrow_trend_up",
     "fecha_creacion": "2024-06-24T23:19:10.000Z",
     "descripcion": "Este furni hace parte de la categoria FUNKY FRIDAY y solo duraron 24 horas en catalogo a un precio de 10 créditos",
-    "upvotes": 4,
+    "upvotes": 6,
     "downvotes": 1,
-    "upvotes_belief": 8,
+    "upvotes_belief": 10,
     "downvotes_belief": 5
   },
   {
@@ -324,9 +324,9 @@
     "status": "arrow_trend_up",
     "fecha_creacion": "2024-06-24T23:19:10.000Z",
     "descripcion": "Este furni hace parte de la categoria FUNKY FRIDAY y solo duraron 24 horas en catalogo a un precio de 10 créditos",
-    "upvotes": 5,
+    "upvotes": 7,
     "downvotes": 4,
-    "upvotes_belief": 10,
+    "upvotes_belief": 13,
     "downvotes_belief": 4
   },
   {
@@ -339,9 +339,9 @@
     "status": "arrow_trend_up",
     "fecha_creacion": "2024-06-24T23:19:10.000Z",
     "descripcion": "Este furni hace parte de la categoria FUNKY FRIDAY y solo duraron 24 horas en catalogo a un precio de 10 créditos",
-    "upvotes": 3,
+    "upvotes": 4,
     "downvotes": 2,
-    "upvotes_belief": 8,
+    "upvotes_belief": 10,
     "downvotes_belief": 4
   },
   {
@@ -647,16 +647,16 @@
   {
     "id": 44,
     "name": "El_Cesped",
-    "price": "50.00",
+    "price": "40.00",
     "icon": "rare",
     "highlight": 1,
     "hot": 1,
     "status": " ",
     "fecha_creacion": "2024-06-25T02:34:41.000Z",
     "descripcion": "Este rare salio el 25 de junio de 2024 y fue el segundo rare en salir, su precio en catalogo era de 35 creditos, duro un total de 7 dias.",
-    "upvotes": 53,
-    "downvotes": 6,
-    "upvotes_belief": 34,
+    "upvotes": 1,
+    "downvotes": 3,
+    "upvotes_belief": 2,
     "downvotes_belief": 3
   },
   {
@@ -669,9 +669,9 @@
     "status": null,
     "fecha_creacion": "2024-06-29T17:51:58.000Z",
     "descripcion": "Salió el 28 de junio de 2024, solo duro 24 horas a un precio de 10 créditos.",
-    "upvotes": 11,
+    "upvotes": 12,
     "downvotes": 8,
-    "upvotes_belief": 8,
+    "upvotes_belief": 9,
     "downvotes_belief": 5
   },
   {
@@ -684,9 +684,9 @@
     "status": null,
     "fecha_creacion": "2024-06-29T17:51:58.000Z",
     "descripcion": "Salió el 28 de junio de 2024, solo duro 24 horas a un precio de 10 créditos.",
-    "upvotes": 12,
+    "upvotes": 13,
     "downvotes": 7,
-    "upvotes_belief": 8,
+    "upvotes_belief": 9,
     "downvotes_belief": 5
   },
   {
@@ -699,9 +699,9 @@
     "status": null,
     "fecha_creacion": "2024-06-29T17:51:58.000Z",
     "descripcion": "Salió el 28 de junio de 2024, solo duro 24 horas a un precio de 10 créditos.",
-    "upvotes": 10,
+    "upvotes": 11,
     "downvotes": 9,
-    "upvotes_belief": 8,
+    "upvotes_belief": 9,
     "downvotes_belief": 5
   },
   {
@@ -714,9 +714,9 @@
     "status": null,
     "fecha_creacion": "2024-06-29T17:51:58.000Z",
     "descripcion": "Salió el 28 de junio de 2024, solo duro 24 horas a un precio de 10 créditos.",
-    "upvotes": 13,
+    "upvotes": 14,
     "downvotes": 7,
-    "upvotes_belief": 9,
+    "upvotes_belief": 10,
     "downvotes_belief": 3
   },
   {
@@ -729,10 +729,10 @@
     "status": "0",
     "fecha_creacion": "2024-07-02T04:57:18.000Z",
     "descripcion": "Este Mega Rare es una falla que se dio en los primero 3 dias por un error en la oferta de 12 meses de habboclub con los tickets ya que se daban en forma de furni, al poco tiempo fue corregido. No se puede tradear la unica manera de obtenerlo es poniendolo en la sala de otra persona (lo cual dificulta su libre comercio)",
-    "upvotes": 61,
-    "downvotes": 33,
-    "upvotes_belief": 19,
-    "downvotes_belief": 7
+    "upvotes": 63,
+    "downvotes": 35,
+    "upvotes_belief": 24,
+    "downvotes_belief": 8
   },
   {
     "id": 51,
@@ -744,9 +744,9 @@
     "status": "0",
     "fecha_creacion": "2024-07-02T13:31:03.000Z",
     "descripcion": "Este rare salio el 02 de julio de 2024 a un precio de 50 creditos, solo duro 1 semana en catalogo.",
-    "upvotes": 36,
+    "upvotes": 40,
     "downvotes": 17,
-    "upvotes_belief": 32,
-    "downvotes_belief": 4
+    "upvotes_belief": 38,
+    "downvotes_belief": 5
   }
 ]
