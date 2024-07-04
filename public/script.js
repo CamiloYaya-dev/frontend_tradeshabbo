@@ -237,7 +237,7 @@ $(document).ready(function() {
                     var row_explanation_trends = $('#row_explanation_trends');
                     var row_explanation_votes = $('#row_explanation_votes');
                     var filter_tags = $('#filter_tags');
-
+                    var sortSelect = $('#sort-options');
                     function renderProducts(products) {
                         productContainer.empty();
                         products.forEach(function(item) {
@@ -311,6 +311,28 @@ $(document).ready(function() {
                             });
                             renderProducts(filteredProducts);
                         }
+                    });
+
+                    // Manejar el evento de cambio del select de ordenación
+                    sortSelect.on('change', function() {
+                        var sortBy = $(this).val();
+                        var sortedProducts = [...decryptedData];
+
+                        if (sortBy === 'price_desc') {
+                            console.log('repre 1');
+                            sortedProducts.sort((a, b) => b.price - a.price);
+                        } else if (sortBy === 'price_asc') {
+                            console.log('repre 2');
+                            sortedProducts.sort((a, b) => a.price - b.price);
+                        } else if (sortBy === 'date_desc') {
+                            console.log('repre 3');
+                            sortedProducts.sort((a, b) => new Date(b.fecha_precio) - new Date(a.fecha_precio));
+                        } else if (sortBy === 'date_asc') {
+                            console.log('repre 4');
+                            sortedProducts.sort((a, b) => new Date(a.fecha_precio) - new Date(b.fecha_precio));
+                        }
+                        console.log(sortedProducts);
+                        renderProducts(sortedProducts);
                     });
 
                     $(document).on('click', '.product-link', function(e) {

@@ -140,13 +140,26 @@
                     </div>
                 </div>
                 <div class="row mb-4">
-                    <div class="col-12 text-center" id="filter_tags">
+                    <div class="col-3 text-center">
+
+                    </div>
+                    <div class="col-6 text-center" id="filter_tags">
                         <button class="price_history_content online_habbo_text_white filter-button" data-category="all">Todos</button>
                         <button class="price_history_content online_habbo_text_white filter-button" data-category="hc">HC</button>
                         <button class="price_history_content online_habbo_text_white filter-button" data-category="rare">Rare</button>
                         <button class="price_history_content online_habbo_text_white filter-button" data-category="funky">Funky</button>
                         <button class="price_history_content online_habbo_text_white filter-button" data-category="hot">Hot Trades</button>
                         <button class="price_history_content online_habbo_text_white filter-button" data-category="mega_rare">Mega Rares</button>
+                        
+                    </div>
+                    <div class="col-3 text-center">
+                        <select id="sort-options" class="form-control d-inline-block w-auto ml-3 select_order">
+                            <option value="default">Ordenar por</option>
+                            <option value="price_desc">Precio: Mayor a Menor</option>
+                            <option value="price_asc">Precio: Menor a Mayor</option>
+                            <option value="date_desc">Fecha Actualizacion: Reciente a Antigua</option>
+                            <option value="date_asc">Fecha Actualizacion: Antigua a Reciente</option>
+                        </select>
                     </div>
                 </div>
                 <div class="row" id="product-container">
@@ -334,7 +347,7 @@
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="4981c2e0-5da9-4e40-a647-138cabf0cac9.js"></script>
+    <script src="6caafce2-b34f-482f-b545-4af9f72740ec.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.16/mediaelement-and-player.min.js"></script>
     <script>
         (adsbygoogle = window.adsbygoogle || []).push({});
