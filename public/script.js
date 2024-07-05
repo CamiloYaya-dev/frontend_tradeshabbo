@@ -70,7 +70,7 @@ $(document).ready(function() {
     }
     
     // Mostrar imagen en un modal
-    $('body').append(`
+    /*$('body').append(`
         <div class="modal" id="priceGuidelineModal" tabindex="-1" role="dialog" aria-labelledby="priceGuidelineModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content online_users_content">
@@ -94,7 +94,7 @@ $(document).ready(function() {
             </div>
         </div>
     `);
-    $('#priceGuidelineModal').modal('show');
+    $('#priceGuidelineModal').modal('show');*/
     const noticiasPerPage = 10;
     let currentPage = 1;
     let totalNoticias = 0;
