@@ -70,7 +70,7 @@ $(document).ready(function() {
     }
     
     // Mostrar imagen en un modal
-    /*$('body').append(`
+    $('body').append(`
         <div class="modal" id="priceGuidelineModal" tabindex="-1" role="dialog" aria-labelledby="priceGuidelineModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content online_users_content">
@@ -81,11 +81,8 @@ $(document).ready(function() {
                         </button>
                     </div>
                     <div class="modal-body text-center">
-                        <video controls class="img-fluid">
-                            <source src="furnis/noticias/videos/DiceRigAll6.mp4" type="video/mp4">
-                            Tu navegador no soporta la etiqueta de video.
-                        </video>
-                        <p class="online_habbo_text_white_fz_15">Se recomienda a todos los usuarios de dados <strong class="alerta_lloron">NO SEGUIR JUGANDO</strong> aparentemente ahi un <strong class="alerta_lloron">EXPLOIT PARA LOS DADOS.</strong></p>
+                        <p class="online_habbo_text_white_fz_15">Me complace anunciar que ya contamos con servidor de discord <strong class="alerta_lloron"><a href="https://discord.gg/dh4FMNrfTT" target="_blank">DISCORD TRADE HABBO ORIGINS</a></p>
+                        <p class="online_habbo_text_white_fz_15">Hoy sortearemos 5 acebos verdes y 5 acebos lilas, entre todos los miembros del discord, hacemos sorteos cada viernes y martes :)</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
@@ -94,7 +91,7 @@ $(document).ready(function() {
             </div>
         </div>
     `);
-    $('#priceGuidelineModal').modal('show');*/
+    $('#priceGuidelineModal').modal('show');
     const noticiasPerPage = 10;
     let currentPage = 1;
     let totalNoticias = 0;
