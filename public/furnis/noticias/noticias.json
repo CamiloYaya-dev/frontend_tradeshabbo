@@ -64,5 +64,16 @@
         "alt_imagen_resumida": "dalmia nuevo staff habbo origins",
         "descripcion_resumida": "<p class=\"noticia_descripcion\"><strong>¡Habbo Hotel Origins ES tiene un nuevo STAFF</strong> Descubre la visita del nuevo <strong>STAFF DALMIA</strong>!!</p>",
         "fecha_noticia": "02-07-2024"
+    },
+    {
+        "id": 7,
+        "titulo": "¡Nuevo Viernes Nuevo Funky!",
+        "imagen_completa": "funky_friday_05_07_2024",
+        "alt_imagen_completa": "Viernes Funky 05 de julio de 2024",
+        "descripcion_completa": "<p><strong>Funky Friday regresa a Habbo Hotel: Orígenes!</strong></p><p>El día de hoy, llega nuevamente la categoría Funky Friday en el catálogo y, en esta ocasión, recibe las Guinarnalda (Acebos) en dos nuevos colores. Estas estarán disponibles por solo 24 horas durante este viernes y su precio es de 5 créditos cada una.</p><p><em>Nota: la decisión de volver a poner a la venta estos objetos en el Catálogo después de las 24 horas sera una decision que se tomara por votación mediante una encuesta en el Infobús.</em></p>",
+        "imagen_resumida": "funky_friday",
+        "alt_imagen_resumida": "Nuevos furnis Nuevo Funky",
+        "descripcion_resumida": "<p class=\"noticia_descripcion\">Descubre las nuevas Guirnaldas en dos colores diferentes. ¡Disponibles solo por 24 horas!</p>",
+        "fecha_noticia": "05-07-2024"
     }
 ]
