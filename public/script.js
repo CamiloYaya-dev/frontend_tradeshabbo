@@ -511,7 +511,7 @@ $(document).ready(function() {
                                 success: function(data) {
                                     const decryptedData = decryptData(data.token);
                                     const latestDate = new Date(decryptedData.fecha_precio);
-                                    const formattedDate = latestDate.toLocaleDateString();
+                                    const formattedDate = latestDate.toLocaleString();
                                     $('#last_price_updated').text(formattedDate);
                                 },
                                 fail: function() {
