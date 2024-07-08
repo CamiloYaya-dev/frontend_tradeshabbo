@@ -70,7 +70,7 @@ $(document).ready(function() {
     }
     
     // Mostrar imagen en un modal
-    /*$('body').append(`
+    $('body').append(`
         <div class="modal" id="priceGuidelineModal" tabindex="-1" role="dialog" aria-labelledby="priceGuidelineModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content online_users_content">
@@ -81,8 +81,8 @@ $(document).ready(function() {
                         </button>
                     </div>
                     <div class="modal-body text-center">
-                        <p class="online_habbo_text_white_fz_15">Me complace anunciar que ya contamos con servidor de discord <strong class="alerta_lloron"><a href="https://discord.gg/dh4FMNrfTT" target="_blank">DISCORD TRADE HABBO ORIGINS</a></p>
-                        <p class="online_habbo_text_white_fz_15">Tenemos sorteo activo para todos los miembros del discord (solo tienes que estar adentro y reaccionar a la publicacion) 3 RARES del proximo partes, 3 ganadores, 1 rare para cada uno</p>
+                        <p class="online_habbo_text_white_fz_15">Se agregado una nueva seccion de <strong class="alerta_lloron">SORTEOS</strong> puedes verlos ahora en el menu o en el servidor de discord</p>
+                        <strong class="alerta_lloron"><a href="https://discord.com/channels/1257448055050080297/1258640868496244736" target="_blank">DANDO CLICK AQUI</a></strong>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
@@ -91,7 +91,7 @@ $(document).ready(function() {
             </div>
         </div>
     `);
-    $('#priceGuidelineModal').modal('show');*/
+    $('#priceGuidelineModal').modal('show');
     const noticiasPerPage = 10;
     let currentPage = 1;
     let totalNoticias = 0;
@@ -154,6 +154,34 @@ $(document).ready(function() {
             const totalPages = Math.ceil(totalNoticias / noticiasPerPage);
             renderPagination(totalPages);
             renderNoticias(currentPage);
+        });
+    }
+
+    function loadSorteos() {
+        $.getJSON('furnis/sorteos/sorteos.json', function(data) {
+            sorteosData = data.sort(function(a, b) {
+                return new Date(b.fecha) - new Date(a.fecha); // Sort descending by date
+            });
+
+            const sorteosContainer = $('#sorteos-container');
+            sorteosContainer.empty();
+
+            sorteosData.forEach(function(sorteo) {
+                const sorteoHTML = `
+                    <div class="col-md-3 col-sm-6 mb-4 catalog_item_div sorteo-item">
+                        <div class="card h-100 position-relative rainbow-border">
+                            <img src="${sorteo.src}" class="card-img-top" alt="${sorteo.name}">
+                            <div class="card-body text-center">
+                                <p class="card-text text-name online_habbo_text_white">${sorteo.name}</p>
+                                <a href="${sorteo.link}" class="text-decoration-none" target="_blank">
+                                    <img src="furnis/sorteos/click_y_participa.png" class="card-img-buttom sorteo-button" alt="${sorteo.name} Click para participar">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                sorteosContainer.append(sorteoHTML);
+            });
         });
     }
 
@@ -539,17 +567,27 @@ $(document).ready(function() {
             $('#column-explications-catalogo').show();
             $('#noticias-section').hide();
             $('#calculador-section').hide();
+            $('#sorteos-section').hide();
         } else if (section === 'noticias') {
             loadNoticias();
             $('#catalogo-section').hide();
             $('#column-explications-catalogo').hide();
             $('#noticias-section').show();
             $('#calculador-section').hide();
+            $('#sorteos-section').hide();
         } else if (section === 'calculador') {
             $('#catalogo-section').hide();
             $('#column-explications-catalogo').hide();
             $('#noticias-section').hide();
             $('#calculador-section').show();
+            $('#sorteos-section').hide();
+        } else if (section === 'sorteos') {
+            loadSorteos();
+            $('#catalogo-section').hide();
+            $('#column-explications-catalogo').hide();
+            $('#noticias-section').hide();
+            $('#calculador-section').hide();
+            $('#sorteos-section').show();
         }
     });
 
