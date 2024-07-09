@@ -265,6 +265,9 @@ $(document).ready(function() {
                     var row_explanation_votes = $('#row_explanation_votes');
                     var filter_tags = $('#filter_tags');
                     var sortSelect = $('#sort-options');
+                    var creditUsdPriceHabbo = 0.06899;
+                    var creditUsdPriceIlegal = 0.06;
+                    var creditUsdPriceHabboEs = 1.72;
                     function renderProducts(products) {
                         productContainer.empty();
                         products.forEach(function(item) {
@@ -273,19 +276,27 @@ $(document).ready(function() {
                                 <div class="col-md-3 col-sm-6 mb-4 product-item catalog_item_div">
                                     <div class="card h-100 position-relative ${borderClass}">
                                         <a href="#" class="text-decoration-none product-link" data-id="${item.id}">
-                                            ${item.icon == "hc" ? `<img src="furnis/iconos/icon_hc.png" class="iconos-hc" alt="icon">` : ''}
-                                            ${item.icon == "rare" ? `<img src="furnis/iconos/icon_rare.png" class="iconos-rare" alt="icon">` : ''}
-                                            ${item.icon == "funky" ? `<img src="furnis/iconos/icon_funky.png" class="iconos-funky" alt="icon">` : ''}
-                                            ${item.icon == "mega_rare" ? `<img src="furnis/iconos/icon_mega_rare.png" class="iconos-funky" alt="icon">` : ''}
-                                            ${item.hot == 1 ? `<img src="furnis/iconos/hot_sale.png" class="iconos-hot-sale" alt="icon">` : ''}
-                                            ${item.status == "arrow_trend_up" ? `<img src="furnis/iconos/arrow_trend_up.png" class="iconos-arrow-trend-up" alt="icon">` : ''}
-                                            ${item.status == "arrow_trend_down" ? `<img src="furnis/iconos/arrow_trend_down.png" class="iconos-arrow-trend-down" alt="icon">` : ''}
-                                            <img src="${item.src}" class="card-img-top" alt="${item.name}">
+                                            <div>
+                                                ${item.icon == "hc" ? `<img src="furnis/iconos/icon_hc.png" class="iconos-hc" alt="icon">` : ''}
+                                                ${item.icon == "rare" ? `<img src="furnis/iconos/icon_rare.png" class="iconos-rare" alt="icon">` : ''}
+                                                ${item.icon == "funky" ? `<img src="furnis/iconos/icon_funky.png" class="iconos-funky" alt="icon">` : ''}
+                                                ${item.icon == "mega_rare" ? `<img src="furnis/iconos/icon_mega_rare.png" class="iconos-funky" alt="icon">` : ''}
+                                                ${item.hot == 1 ? `<img src="furnis/iconos/hot_sale.png" class="iconos-hot-sale" alt="icon">` : ''}
+                                                <img src="${item.src}" class="card-img-top" alt="${item.name}">
+                                                ${item.status == "arrow_trend_up" ? `<img src="furnis/iconos/arrow_trend_up.png" class="iconos-arrow-trend-up" alt="icon">` : ''}
+                                                ${item.status == "arrow_trend_down" ? `<img src="furnis/iconos/arrow_trend_down.png" class="iconos-arrow-trend-down" alt="icon">` : ''}
+                                                ${!item.status ? `<div class="div-no-arrow"></div>` : ''}
+                                            </div>
                                         </a>
                                         <div class="card-body text-center">
                                             <p class="card-text text-price">
-                                                <img src="furnis/dinero/credito.png" alt="credito" class="price-icon">${item.price}
-                                                <img src="furnis/dinero/vip.png" alt="vip" class="price-vip">${(item.price / item.vip_price).toFixed(2)}
+                                                <img src="furnis/dinero/credito.png" alt="credito" class="price-icon" data-toggle="tooltip" title="Precio en Créditos">${item.price}
+                                                <img src="furnis/dinero/vip.png" alt="vip" class="price-vip" data-toggle="tooltip" title="Precio en Vips">${(item.price / item.vip_price).toFixed(2)}
+                                            </p>
+                                            <p class="card-text text-price-other-markets">
+                                                <img src="furnis/iconos/icon_habbo.png" alt="habbo" class="price-habbo" data-toggle="tooltip" title="Precio Habbo en dolares">${(creditUsdPriceHabbo * item.price).toFixed(2)}
+                                                <img src="furnis/iconos/icon_precio_externo.png" alt="precio_externo" class="price-market" data-toggle="tooltip" title="Precio Externo en dolares">${(creditUsdPriceIlegal * item.price).toFixed(2)}
+                                                <img src="furnis/iconos/icon_espana.png" alt="precio_externo" class="price-habbo-es" data-toggle="tooltip" title="Precio Creditos .ES">${(creditUsdPriceHabboEs * item.price)}
                                             </p>
                                             <p class="card-text text-name online_habbo_text_white catalog_item_name">${item.name} ${item.mote ? `(${item.mote})` : ''}</p>
                                             <div class="row">
@@ -671,4 +682,6 @@ $(document).ready(function() {
     $('#toggle-button').on('click', function() {
         $('#music-player-container').toggleClass('minimized');
     });
+
+    $('[data-toggle="tooltip"]').tooltip(); 
 });
