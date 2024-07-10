@@ -70,7 +70,7 @@ $(document).ready(function() {
     }
     
     // Mostrar imagen en un modal
-    $('body').append(`
+    /*$('body').append(`
         <div class="modal" id="priceGuidelineModal" tabindex="-1" role="dialog" aria-labelledby="priceGuidelineModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content online_users_content">
@@ -91,7 +91,7 @@ $(document).ready(function() {
             </div>
         </div>
     `);
-    $('#priceGuidelineModal').modal('show');
+    $('#priceGuidelineModal').modal('show');*/
     const noticiasPerPage = 10;
     let currentPage = 1;
     let totalNoticias = 0;
@@ -329,17 +329,17 @@ $(document).ready(function() {
                                             <p class="card-text text-name online_habbo_text_white catalog_item_name">${item.name} ${item.mote ? `(${item.mote})` : ''}</p>
                                             <div class="row">
                                                 <div class="col-6 d-flex flex-column justify-content-around opinion_precio catalog_votes">
-                                                    <span class="online_habbo_text_white">¿Precio adecuado?</span>
+                                                    <span class="online_habbo_text_white question_text">¿Precio adecuado?</span>
                                                     <div class="d-flex justify-content-around">
                                                         <button class="price_history_content vote-button-opinion" data-id="${item.id}" data-vote="upvote">👍<span class="vote-count-opinion">${item.upvotes}</span></button>
                                                         <button class="price_history_content vote-button-opinion" data-id="${item.id}" data-vote="downvote">👎<span class="vote-count-opinion">${item.downvotes}</span></button>
                                                     </div>
                                                 </div>
                                                 <div class="col-6 d-flex flex-column justify-content-around opinion_precio">
-                                                    <span class="online_habbo_text_white">¿Subirá o bajará?</span>
+                                                    <span class="online_habbo_text_white question_text">¿Subirá o bajará?</span>
                                                     <div class="d-flex justify-content-around">
-                                                        <button class="price_history_content vote-button-belief" data-id="${item.id}" data-vote="upprice"><img src="furnis/iconos/up_price_history.png" alt="up price" class="price-icon"><span class="vote-count-belief">${item.upvotes_belief || 0}</span></button>
-                                                        <button class="price_history_content vote-button-belief" data-id="${item.id}" data-vote="downprice"><img src="furnis/iconos/down_price_history.png" alt="down price" class="price-icon"><span class="vote-count-belief">${item.downvotes_belief || 0}</span></button>
+                                                        <button class="price_history_content vote-button-belief" data-id="${item.id}" data-vote="upprice"><img src="furnis/iconos/up_price_history.png" alt="up price" class="icon-vote"><span class="vote-count-belief">${item.upvotes_belief || 0}</span></button>
+                                                        <button class="price_history_content vote-button-belief" data-id="${item.id}" data-vote="downprice"><img src="furnis/iconos/down_price_history.png" alt="down price" class="icon-vote"><span class="vote-count-belief">${item.downvotes_belief || 0}</span></button>
                                                     </div>
                                                 </div>
                                             </div>

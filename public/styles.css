@@ -800,3 +800,12 @@ animation: rainbow-border 5s linear infinite;
 .origins{
     border-right: 1px solid #000;
 }
+
+.icon-vote {
+    width: 15px;
+    margin-right: 5px;
+}
+
+.question_text{
+    margin-bottom: 10px;
+}
