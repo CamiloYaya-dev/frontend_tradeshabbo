@@ -1,14 +1,14 @@
 [
     {
-        "id": 1,
-        "name": "Sorteo - 3 ganadores al azar del proximo rare del martes 09 de julio",
-        "link": "https://discord.com/channels/1257448055050080297/1258640868496244736/1258988763258949653",
-        "src": "furnis/sorteos/next_rare.png"
-    },
-    {
         "id": 2,
         "name": "Competicion - 3 Ganadores a los que mas inviten miembros al servidor de discord del 8 de julio al 22 de julio",
         "link": "https://discord.com/channels/1257448055050080297/1258640868496244736/1259693845990608946",
         "src": "furnis/sorteos/competicion_invitar.png"
+    },
+    {
+        "id": 3,
+        "name": "Sorteo - 5 Ganadores de 1 objeto funky del proximo viernes 12 de julio :)",
+        "link": "https://discord.com/channels/1257448055050080297/1258640868496244736/1260440089109069846",
+        "src": "furnis/sorteos/funky_friday.png"
     }
 ]
