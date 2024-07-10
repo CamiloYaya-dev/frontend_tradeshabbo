@@ -33,6 +33,11 @@ body {
     margin-right: 5px;
 }
 
+.dolar {
+    width: 30px;
+    margin-right: 5px;
+}
+
 .price-market {
     width: 30px;
     margin-right: 5px;
@@ -41,6 +46,10 @@ body {
 .price-habbo-es {
     width: 35px;
     margin-right: 5px;
+}
+
+.credit-habbo-es{
+    width: 20px;
 }
 
 .iconos-rare {
@@ -156,8 +165,11 @@ body {
 
 .text-price-other-markets{
     font-size: 15px;
+    margin-bottom: 15px !important;
     font-family: fantasy;
     color: #229728;
+    padding-bottom: 15px !important;
+    border-bottom: 1px solid #000;
 }
 
 .header-page {
@@ -770,4 +782,21 @@ animation: rainbow-border 5s linear infinite;
 
 .div-no-arrow{
     padding-top: 40px;
+}
+
+.text-price-es{
+    margin-bottom: 0px;
+    font-size: 20px;
+    font-family: fantasy;
+    color: #229728;
+}
+
+.ingame{
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #000;
+}
+
+.origins{
+    border-right: 1px solid #000;
 }

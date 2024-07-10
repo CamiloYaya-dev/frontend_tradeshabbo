@@ -289,15 +289,43 @@ $(document).ready(function() {
                                             </div>
                                         </a>
                                         <div class="card-body text-center">
-                                            <p class="card-text text-price">
-                                                <img src="furnis/dinero/credito.png" alt="credito" class="price-icon" data-toggle="tooltip" title="Precio en Créditos">${item.price}
-                                                <img src="furnis/dinero/vip.png" alt="vip" class="price-vip" data-toggle="tooltip" title="Precio en Vips">${(item.price / item.vip_price).toFixed(2)}
-                                            </p>
-                                            <p class="card-text text-price-other-markets">
-                                                <img src="furnis/iconos/icon_habbo.png" alt="habbo" class="price-habbo" data-toggle="tooltip" title="Precio Habbo en dolares">${(creditUsdPriceHabbo * item.price).toFixed(2)}
-                                                <img src="furnis/iconos/icon_precio_externo.png" alt="precio_externo" class="price-market" data-toggle="tooltip" title="Precio Externo en dolares">${(creditUsdPriceIlegal * item.price).toFixed(2)}
-                                                <img src="furnis/iconos/icon_espana.png" alt="precio_externo" class="price-habbo-es" data-toggle="tooltip" title="Precio Creditos .ES">${(creditUsdPriceHabboEs * item.price)}
-                                            </p>
+                                            <div class="price-sections">
+                                                <div class="section ingame">
+                                                    <div class="row">
+                                                        <div class="col-md-6 subsection origins">
+                                                            <p class="online_habbo_text_white">Origins</p>
+                                                            <p class="card-text text-price">
+                                                                <img src="furnis/dinero/credito.png" alt="credito" class="price-icon" data-toggle="tooltip" title="Precio en Créditos">${item.price}
+                                                                <br>
+                                                                <img src="furnis/dinero/vip.png" alt="vip" class="price-vip" data-toggle="tooltip" title="Precio en Vips">${(item.price / item.vip_price).toFixed(2)}
+                                                            </br>
+                                                        </div>
+                                                        <div class="col-md-6 subsection es">
+                                                            <p class="online_habbo_text_white">.ES</p>
+                                                            <p class="card-text text-price-es">
+                                                                <span class="price-item">
+                                                                    <img src="furnis/dinero/credito.png" alt="precio_habbo_es" class="credit-habbo-es" data-toggle="tooltip" title="Precio Creditos .ES">
+                                                                    ${Math.round(creditUsdPriceHabboEs * item.price)}
+                                                                </span>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="section dolares">
+                                                    <p class="online_habbo_text_white">Dólares <img src="furnis/iconos/icon_dolar.png" alt="dolar" class="dolar" data-toggle="tooltip" title="Precio Externo en dolares"></p>
+                                                    <p class="card-text text-price-other-markets">
+                                                        <span class="price-item">
+                                                            <img src="furnis/iconos/icon_habbo.png" alt="habbo" class="price-habbo" data-toggle="tooltip" title="Precio Habbo en dolares">
+                                                            ${((creditUsdPriceHabbo * item.price).toFixed(2).endsWith("00") ? parseInt((creditUsdPriceHabbo * item.price).toFixed(2), 10) : (creditUsdPriceHabbo * item.price).toFixed(2).replace(".", ","))}
+                                                        </span>
+                                                        <span class="price-item">
+                                                            <img src="furnis/iconos/icon_precio_externo.png" alt="precio_externo" class="price-market" data-toggle="tooltip" title="Precio Externo en dolares">
+                                                            ${((creditUsdPriceIlegal * item.price).toFixed(2).endsWith("00") ? parseInt((creditUsdPriceIlegal * item.price).toFixed(2), 10) : (creditUsdPriceIlegal * item.price).toFixed(2).replace(".", ","))}
+                                                        </span>
+                                                    </p>
+                                                </div>
+                                            </div>
+
                                             <p class="card-text text-name online_habbo_text_white catalog_item_name">${item.name} ${item.mote ? `(${item.mote})` : ''}</p>
                                             <div class="row">
                                                 <div class="col-6 d-flex flex-column justify-content-around opinion_precio catalog_votes">
