@@ -809,3 +809,7 @@ animation: rainbow-border 5s linear infinite;
 .question_text{
     margin-bottom: 10px;
 }
+
+.carousel{
+   width: 40%;
+}

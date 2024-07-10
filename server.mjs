@@ -517,6 +517,16 @@ app.get('/get-songs', (req, res) => {
     });
 });
 
+app.get('/furnis/sorteos/pagos', (req, res) => {
+    const directoryPath = path.join(__dirname, 'public/furnis/sorteos/pagos');
+    fs.readdir(directoryPath, (err, files) => {
+        if (err) {
+            return res.status(500).send('Unable to scan directory: ' + err);
+        }
+        res.json(files);
+    });
+});
+
 app.listen(port, async () => {
     try {
         await sequelize.authenticate();
