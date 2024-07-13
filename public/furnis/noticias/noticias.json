@@ -75,5 +75,27 @@
         "alt_imagen_resumida": "Nuevos furnis Nuevo Funky",
         "descripcion_resumida": "<p class=\"noticia_descripcion\">Descubre las nuevas Guirnaldas en dos colores diferentes. ¡Disponibles solo por 24 horas!</p>",
         "fecha_noticia": "05-07-2024"
+    },
+    {
+        "id": 8,
+        "titulo": "¡Nuevo raro disponible! Huevo de Dragón",
+        "imagen_completa": "catalogo_huevo_dragon",
+        "alt_imagen_completa": "Catalogo Huevo de Dragón",
+        "descripcion_completa": "<p><strong>El nuevo raro de Habbo Hotel: Orígenes: Huevo de Dragón!</strong></p><p>El Huevo de Dragón ya se encuentra disponible en el catálogo de Habbo Hotel: Orígenes por tiempo limitado. Podrás adquirirlo por un precio de 50 créditos. ¡No te lo pierdas! Disponible hasta el 16 de julio.</p>",
+        "imagen_resumida": "rares_martes",
+        "alt_imagen_resumida": "nuevo raro martes 09 de julio del 2024",
+        "descripcion_resumida": "<p class=\"noticia_descripcion\"><strong>¡Llega el nuevo raro a Habbo Hotel: Orígenes!</strong> Descubre y adquiere el nuevo raro, <strong>RARO Huevo de Dragón</strong>, disponible por tiempo limitado. ¡No te lo pierdas!</p>",
+        "fecha_noticia": "09-07-2024"
+    },
+    {
+        "id": 9,
+        "titulo": "¡Nuevo artículo disponible! Teleport Británico Funky",
+        "imagen_completa": "catalogo_teleport_britanico_funky",
+        "alt_imagen_completa": "Catalogo Teleport Británico Funky",
+        "descripcion_completa": "<p><strong>Nuevo artículo en el catálogo: Teleport Británico Funky!</strong></p><p>El Teleport Británico Funky estuvo disponible en el catálogo por solo 24 horas. Podrás adquirirlo por un precio de 10 créditos. ¡Esperamos que hayas podido conseguirlo!</p>",
+        "imagen_resumida": "funky_friday",
+        "alt_imagen_resumida": "nuevo artículo Teleport Británico Funky",
+        "descripcion_resumida": "<p class=\"noticia_descripcion\"><strong>¡Llega el nuevo artículo a Habbo Hotel: Orígenes!</strong> Descubre y adquiere el nuevo <strong>Teleport Británico Funky</strong>, disponible por tiempo limitado. ¡No te lo pierdas!</p>",
+        "fecha_noticia": "12-07-2024"
     }
 ]
