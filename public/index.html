@@ -82,21 +82,21 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item navbar_item">
-                        <a class="habbo_text_blue menu-link" href="#" data-section="catalogo">Catálogo</a>
+                        <a class="habbo_text_blue menu-link" href="#" data-section="catalogo" data-i18n="catalogo">Catálogo</a>
                     </li>
                     <li class="nav-item navbar_item">
-                        <a class="habbo_text_blue menu-link" href="#" data-section="noticias">Noticias</a>
+                        <a class="habbo_text_blue menu-link" href="#" data-section="noticias" data-i18n="noticias">Noticias</a>
                     </li>
                     <li class="nav-item navbar_item">
-                        <a class="habbo_text_blue menu-link" href="#" data-section="calculador">Calculador de Tradeos</a>
+                        <a class="habbo_text_blue menu-link" href="#" data-section="calculador" data-i18n="calculador_tradeos">Calculador de Tradeos</a>
                     </li>
                     <li class="nav-item navbar_item">
-                        <a class="habbo_text_blue menu-link" href="#" data-section="sorteos">Sorteos</a>
+                        <a class="habbo_text_blue menu-link" href="#" data-section="sorteos" data-i18n="sorteos">Sorteos</a>
                     </li>
                 </ul>
             </div>
         </nav>
-    </header>    
+    </header>
     <main class="container my-4">
         <div class="row">
             <div class="col-md-2 column">
@@ -107,7 +107,7 @@
                     <div class="row">
                         <div class="online_users example_row">
                             <div class="online_users_content">
-                                <p class="habbo_text_blue ng-binding">Precios actualizados el:</p>
+                                <p class="habbo_text_blue ng-binding" data-i18n="precios_actualizados_el">Precios actualizados el</p>
                                 <p class="online_habbo_text_white_fz_20 ng-binding" id="last_price_updated">
                                     
                                 </p>
@@ -117,17 +117,17 @@
                     <div class="row">
                         <div class="online_users example_row" id="row_explanation_trends">
                             <div class="online_users_content">
-                                <p class="habbo_text_blue ng-binding">Explicacion Precios:</p>
-                                <p class="online_habbo_text_white_fz_12">Debido a algunos usuarios que se dedican solo a difamar la página web porque les molesta no poder seguir estafando a la gente con precios ridículos, necesito aclarar que los precios <strong class="alerta_lloron">SON SOLO UNA GUÍA</strong> basada en mi criterio. <strong class="alerta_lloron">Ustedes, la comunidad, son los ÚNICOS QUE DECIDEN CUÁNTO VALE CADA COSA.</strong></p>
-                                <p class="online_habbo_text_white_fz_12"><strong class="alerta_lloron">RECUERDA:</strong> Son tus furnis, tú decides cuánto valen.</p>
+                                <p class="habbo_text_blue ng-binding" data-i18n="explicacion_precios">Explicacion Precios</p>
+                                <p class="online_habbo_text_white_fz_12" data-i18n="explicacion_precios_p1">Debido a algunos usuarios que se dedican solo a difamar la página web porque les molesta no poder seguir estafando a la gente con precios ridículos, necesito aclarar que los precios <strong class="alerta_lloron">SON SOLO UNA GUÍA</strong> basada en mi criterio. <strong class="alerta_lloron">Ustedes, la comunidad, son los ÚNICOS QUE DECIDEN CUÁNTO VALE CADA COSA.</strong></p>
+                                <p class="online_habbo_text_white_fz_12" data-i18n="explicacion_precios_p2"><strong class="alerta_lloron">RECUERDA:</strong> Son tus furnis, tú decides cuánto valen.</p>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="online_users example_row" id="row_explanation_trends">
                             <div class="online_users_content">
-                                <p class="habbo_text_blue ng-binding">Explicacion de las tendencias:</p>
-                                <p class="online_habbo_text_white_fz_12 ng-binding">
+                                <p class="habbo_text_blue ng-binding" data-i18n="explicacion_tendencias">Explicacion de las tendencias</p>
+                                <p class="online_habbo_text_white_fz_12 ng-binding" data-i18n="explicacion_tendencias_p1">
                                     Que un item en el catalogo tenga <img src="furnis/iconos/arrow_trend_down.png" class="iconos-arrow-trend-down-example" alt="icon"> o <img src="furnis/iconos/arrow_trend_up.png" class="iconos-arrow-trend-up-example" alt="icon"> depende de la variacion de los precios de los 7 ultimos dias.
                                 </p>
                             </div>
@@ -136,8 +136,8 @@
                     <div class="row">
                         <div class="online_users example_row" id="row_explanation_votes">
                             <div class="online_users_content">
-                                <p class="habbo_text_blue ng-binding">Explicacion de los votos:</p>
-                                <p class="online_habbo_text_white_fz_12 ng-binding">
+                                <p class="habbo_text_blue ng-binding" data-i18n="explicacion_votos">Explicacion de los votos</p>
+                                <p class="online_habbo_text_white_fz_12 ng-binding" data-i18n="explicacion_votos_p1">
                                     Es el respaldo que la comunidad le da al precio actual del ítem. Cada vez que se actualiza el precio, se reinicia el contador. Solo se puede votar una vez por IP.<br>UNA VEZ VOTADO, NO ES POSIBLE CAMBIAR EL VOTO.
                                 </p>
                             </div>
@@ -148,7 +148,7 @@
             <div class="col-md-8 column colum-catalog" id="catalogo-section">
                 <div class="row mb-4">
                     <div class="col-12">
-                        <input type="text" id="search-input" class="form-control buscar-furnis" placeholder="Buscar furnis...">
+                        <input type="text" id="search-input" class="form-control buscar-furnis" data-i18n="[placeholder]placeholder_search">
                     </div>
                 </div>
                 <div class="row mb-4">
@@ -156,21 +156,21 @@
 
                     </div>
                     <div class="col-6 text-center" id="filter_tags">
-                        <button class="price_history_content online_habbo_text_white filter-button" data-category="all">Todos</button>
-                        <button class="price_history_content online_habbo_text_white filter-button" data-category="hc">HC</button>
-                        <button class="price_history_content online_habbo_text_white filter-button" data-category="rare">Rare</button>
-                        <button class="price_history_content online_habbo_text_white filter-button" data-category="funky">Funky</button>
-                        <button class="price_history_content online_habbo_text_white filter-button" data-category="hot">Hot Trades</button>
-                        <button class="price_history_content online_habbo_text_white filter-button" data-category="mega_rare">Mega Rares</button>
+                        <button class="price_history_content online_habbo_text_white filter-button" data-category="all" data-i18n="filter_tag_todos">Todos</button>
+                        <button class="price_history_content online_habbo_text_white filter-button" data-category="hc" data-i18n="filter_tag_hc">HC</button>
+                        <button class="price_history_content online_habbo_text_white filter-button" data-category="rare" data-i18n="filter_tag_rare">Rare</button>
+                        <button class="price_history_content online_habbo_text_white filter-button" data-category="funky" data-i18n="filter_tag_funky">Funky</button>
+                        <button class="price_history_content online_habbo_text_white filter-button" data-category="hot" data-i18n="filter_tag_hot">Hot Trades</button>
+                        <button class="price_history_content online_habbo_text_white filter-button" data-category="mega_rare" data-i18n="filter_tag_mega_rares">Mega Rares</button>
                         
                     </div>
                     <div class="col-3 text-center">
-                        <select id="sort-options" class="form-control d-inline-block w-auto ml-3 select_order">
-                            <option value="default">Ordenar por</option>
-                            <option value="price_desc">Precio: Mayor a Menor</option>
-                            <option value="price_asc">Precio: Menor a Mayor</option>
-                            <option value="date_desc">Fecha Actualizacion: Reciente a Antigua</option>
-                            <option value="date_asc">Fecha Actualizacion: Antigua a Reciente</option>
+                        <select id="sort-options" class="form-control w-auto ml-3 select_order">
+                            <option value="default" data-i18n="select_order_op1">Ordenar por</option>
+                            <option value="price_desc" data-i18n="select_order_op2">Precio: Mayor a Menor</option>
+                            <option value="price_asc" data-i18n="select_order_op3">Precio: Menor a Mayor</option>
+                            <option value="date_desc" data-i18n="select_order_op4">Fecha Actualizacion: Reciente a Antigua</option>
+                            <option value="date_asc" data-i18n="select_order_op5">Fecha Actualizacion: Antigua a Reciente</option>
                         </select>
                     </div>
                 </div>
@@ -180,7 +180,7 @@
                 <div id="product-history-container" class="price_history" style="display: none;">
                     <!-- El historial de precios se cargará aquí dinámicamente -->
                 </div>
-                <button id="back-button" style="display: none;" class="price_history_content online_habbo_text_white">Regresar</button>
+                <button id="back-button" style="display: none;" class="price_history_content online_habbo_text_white" data-i18n="regresar">Regresar</button>
             </div>
             <div class="col-md-8 column" id="noticias-section" style="display: none;">
                 <audio id="click-sound" src="sonidos/mensaje_conso.mp3"></audio>
@@ -214,7 +214,7 @@
                                             <div class="habbo-user">
                                                 <div class="user-avatar">
                                                 </div>
-                                                <div class="user-status">Emo.<br><span>Hola tengo una nueva noticia para ti :D</span></div>
+                                                <div class="user-status" data-i18n="consola_title">Emo.<br><span>Hola tengo una nueva noticia para ti :D</span></div>
                                             </div>
                                             <div class="habbo-messages">
                                                 <div class="row">
@@ -240,7 +240,7 @@
                                                         <div class="button-content">
                                                             <img src="./furnis/noticias/mis_datos.png" alt="MIS DATOS" class="button-icon">
                                                             <br>
-                                                            <span>MIS DATOS</span>
+                                                            <span data-i18n="consola_mis_datos">MIS DATOS</span>
                                                             <div class="button-lines"></div>
                                                         </div>
                                                     </button>
@@ -250,7 +250,7 @@
                                                         <div class="button-content">
                                                             <img src="./furnis/noticias/amigos.png" alt="AMIGOS" class="button-icon">
                                                             <br>
-                                                            <span>AMIGOS</span>
+                                                            <span data-i18n="consola_amigos">AMIGOS</span>
                                                             <div class="button-lines"></div>
                                                         </div>
                                                     </button>
@@ -260,7 +260,7 @@
                                                         <div class="button-content">
                                                             <img src="./furnis/noticias/buscar.png" alt="BUSCAR" class="button-icon">
                                                             <br>
-                                                            <span>BUSCAR</span>
+                                                            <span data-i18n="consola_buscar">BUSCAR</span>
                                                             <div class="button-lines"></div>
                                                         </div>
                                                     </button>
@@ -270,7 +270,7 @@
                                                         <div class="button-content">
                                                             <img src="./furnis/noticias/ayuda.png" alt="AYUDA" class="button-icon">
                                                             <br>
-                                                            <span>AYUDA</span>
+                                                            <span data-i18n="consola_ayuda">AYUDA</span>
                                                             <div class="button-lines"></div>
                                                         </div>
                                                     </button>
@@ -329,30 +329,45 @@
                 </div>
             </div>
             <div class="col-md-2 column">
+                <div class="row row_lenguage">
+                    <div id="language-switcher" class="text-right">
+                        <select id="language-select" class="form-control select_lenguage" style="display: inline-block; width: auto;">
+                            <option value="es">Español</option>
+                            <option value="en">English</option>
+                            <option value="pt">Português</option>
+                            <option value="fn">Finlandes</option>
+                            <option value="it">Italiano</option>
+                            <option value="fr">Frances</option>
+                            <option value="de">Aleman</option>
+                            <option value="nl">Neerlandés</option>
+                            <option value="tk">Turco</option>
+                        </select>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="online_users">
                         <div class="online_users_content">
-                            <p class="habbo_text_blue ng-binding">Habbos en línea - ES:</p>
+                            <p class="habbo_text_blue ng-binding" data-i18n="habbo_on_es">Habbos en línea - ES</p>
                             <p class="online_habbo_text_white ng-binding" id="online-count-es">En mantenimiento</p>
-                            <p class="online_habbo_text_white_fz_12 ng-binding">Se actualiza cada hora</p>
+                            <p class="online_habbo_text_white_fz_12 ng-binding" data-i18n="habbo_on_explicacion">Se actualiza cada hora</p>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="online_users">
                         <div class="online_users_content">
-                            <p class="habbo_text_blue ng-binding">Habbos en línea - BR:</p>
+                            <p class="habbo_text_blue ng-binding" data-i18n="habbo_on_br">Habbos en línea - BR:</p>
                             <p class="online_habbo_text_white ng-binding" id="online-count-br">En mantenimiento</p>
-                            <p class="online_habbo_text_white_fz_12 ng-binding">Se actualiza cada hora</p>
+                            <p class="online_habbo_text_white_fz_12 ng-binding" data-i18n="habbo_on_explicacion">Se actualiza cada hora</p>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="online_users">
                         <div class="online_users_content">
-                            <p class="habbo_text_blue ng-binding">Habbos en línea - COM:</p>
+                            <p class="habbo_text_blue ng-binding" data-i18n="habbo_on_com">Habbos en línea - COM:</p>
                             <p class="online_habbo_text_white ng-binding" id="online-count-com">En mantenimiento</p>
-                            <p class="online_habbo_text_white_fz_12 ng-binding">Se actualiza cada hora</p>
+                            <p class="online_habbo_text_white_fz_12 ng-binding" data-i18n="habbo_on_explicacion">Se actualiza cada hora</p>
                         </div>
                     </div>
                 </div>
@@ -378,14 +393,21 @@
             <audio id="audio-player" controls>
                 Your browser does not support the audio element.
             </audio>
-            <button id="repeat-button" class="btn btn-primary boton-music boton-repetir">Repetir</button>
-            <button id="shuffle-button" class="btn btn-secondary boton-music">Canción Aleatoria</button>
+            <button id="repeat-button" class="btn btn-primary boton-music boton-repetir" data-i18n="repetir">Repetir</button>
+            <button id="shuffle-button" class="btn btn-secondary boton-music" data-i18n="cancion_aleatoria">Canción Aleatoria</button>
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="f4f4f844-d377-4637-815a-90d70bd0648e.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.16/mediaelement-and-player.min.js"></script>
+    <script src="88e3fe55-9b69-45d2-86d3-4084e03abec8.js"></script>
+    <!-- Incluir i18next -->
+    <script src="https://unpkg.com/i18next@20.6.1/i18next.min.js"></script>
+    <script src="https://unpkg.com/i18next-browser-languagedetector@6.1.2/i18nextBrowserLanguageDetector.min.js"></script>
+    <script src="https://unpkg.com/i18next-xhr-backend@3.2.2/i18nextXHRBackend.min.js"></script>
+
+    <!-- Configuración de i18next -->
+    <script src="a1c5fb58-19d4-4b61-aab1-b8ed6c81c319.js"></script>
     <script>
         (adsbygoogle = window.adsbygoogle || []).push({});
     </script>

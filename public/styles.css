@@ -678,6 +678,38 @@ audio::-webkit-media-controls-panel {
     width: 90% !important;
 }
 
+.row_lenguage{
+    padding-top: 20px;
+}
+
+.select_lenguage{
+    bottom: 0px;
+    right: 10px;
+    background: #333;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    background-color: #335e7a;
+    border: 1px solid #050a0e;
+    width: 90% !important;
+}
+
+.select_lenguage:focus{
+    bottom: 0px;
+    right: 10px;
+    background: #333;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    background-color: #335e7a;
+    border: 1px solid #050a0e;
+    width: 90% !important;
+}
+
 .row_discord{
     width: 100%;
     margin-top: 20px;
