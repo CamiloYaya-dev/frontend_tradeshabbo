@@ -56,5 +56,10 @@
     "alert_voto_tendencia": "You have already voted if you think the price will go up or down for this item.",
     "alert_error_voto_tendencia": "Error voting. Please try again.",
     "calculadora_op1": "Select an item....",
-    "equivalente_text": "The furni \"{{itemNameA}}\" is worth {{equivalentAtoB}} \"{{itemNameB}}\"<br><br> This is the same as saying that <br><br> The furni \"{{itemNameB}}\" is worth {{equivalentBtoA}} \"{{itemNameA}}\""
+    "equivalente_text": "The furni \"{{itemNameA}}\" is worth {{equivalentAtoB}} \"{{itemNameB}}\"<br><br> This is the same as saying that <br><br> The furni \"{{itemNameB}}\" is worth {{equivalentBtoA}} \"{{itemNameA}}\"",
+    "master_trades": "Master Trades",
+    "ultimo_debate": "Last Debate",
+    "explicacion_master_trades": "Master Trades Explanation",
+    "explicacion_master_trades_p1": "All catalog prices are debated and approved by the <strong class=\"alerta_lloron\">MasterTrades</strong> in the image. The price must have <strong class=\"alerta_lloron\">80% approval</strong> to be modified. If it gets less, it is not modified.",
+    "explicacion_master_trades_p2": "<strong class=\"alerta_lloron\">REMEMBER:</strong> The master trades only try to make a guide with the most accurate prices to reality, however, they are your furnis, you decide how much they are worth."
 }

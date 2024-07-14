@@ -56,5 +56,10 @@
     "alert_voto_tendencia": "Bu ürünün fiyatının yükselip düşeceğini düşündüğünüz için zaten oy verdiniz.",
     "alert_error_voto_tendencia": "Oy verirken hata oluştu. Lütfen tekrar deneyin.",
     "calculadora_op1": "Bir öğe seçin....",
-    "equivalente_text": "Furni \"{{itemNameA}}\" {{equivalentAtoB}} \"{{itemNameB}}\" değerinde<br><br> Bu, aynı şekilde söylemek anlamına gelir ki <br><br> Furni \"{{itemNameB}}\" {{equivalentBtoA}} \"{{itemNameA}}\" değerindedir"
+    "equivalente_text": "Furni \"{{itemNameA}}\" {{equivalentAtoB}} \"{{itemNameB}}\" değerinde<br><br> Bu, aynı şekilde söylemek anlamına gelir ki <br><br> Furni \"{{itemNameB}}\" {{equivalentBtoA}} \"{{itemNameA}}\" değerindedir",
+    "master_trades": "Master Trades",
+    "ultimo_debate": "Son Tartışma",
+    "explicacion_master_trades": "Master Trades Açıklaması",
+    "explicacion_master_trades_p1": "Katalogdaki tüm fiyatlar resimdeki <strong class=\"alerta_lloron\">MasterTrades</strong> tarafından tartışılır ve onaylanır. Fiyatın değiştirilmesi için <strong class=\"alerta_lloron\">%80 onay</strong> alması gerekir. Daha az alırsa, değiştirilmez.",
+    "explicacion_master_trades_p2": "<strong class=\"alerta_lloron\">UNUTMAYIN:</strong> Master trades sadece en gerçekçi fiyatlarla bir rehber hazırlamaya çalışır, ancak furniler sizin, ne kadar değerli olduklarına siz karar verirsiniz."
 }

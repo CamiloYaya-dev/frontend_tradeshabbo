@@ -56,5 +56,10 @@
     "alert_voto_tendencia": "U heeft al gestemd of u denkt dat de prijs van dit artikel zal stijgen of dalen.",
     "alert_error_voto_tendencia": "Fout bij het stemmen. Probeer het opnieuw.",
     "calculadora_op1": "Selecteer een item....",
-    "equivalente_text": "De furni \"{{itemNameA}}\" is waard {{equivalentAtoB}} \"{{itemNameB}}\"<br><br> Dit is hetzelfde als zeggen dat <br><br> De furni \"{{itemNameB}}\" is waard {{equivalentBtoA}} \"{{itemNameA}}\""
+    "equivalente_text": "De furni \"{{itemNameA}}\" is waard {{equivalentAtoB}} \"{{itemNameB}}\"<br><br> Dit is hetzelfde als zeggen dat <br><br> De furni \"{{itemNameB}}\" is waard {{equivalentBtoA}} \"{{itemNameA}}\"",
+    "master_trades": "Master Trades",
+    "ultimo_debate": "Laatste Debat",
+    "explicacion_master_trades": "Uitleg Master Trades",
+    "explicacion_master_trades_p1": "Alle catalogusprijzen worden besproken en goedgekeurd door de <strong class=\"alerta_lloron\">MasterTrades</strong> op de afbeelding. De prijs moet een <strong class=\"alerta_lloron\">goedkeuring van 80%</strong> hebben om te worden gewijzigd. Als het minder krijgt, wordt het niet gewijzigd.",
+    "explicacion_master_trades_p2": "<strong class=\"alerta_lloron\">ONTHOUD:</strong> De master trades proberen alleen een gids te maken met de meest nauwkeurige prijzen in verhouding tot de realiteit, maar het zijn jouw furnis, jij beslist hoeveel ze waard zijn."
 }

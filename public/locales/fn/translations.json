@@ -56,5 +56,10 @@
     "alert_voto_tendencia": "Olet jo äänestänyt, nousuuko vai laskeeko tämän artikkelin hinta.",
     "alert_error_voto_tendencia": "Virhe äänestyksessä. Yritä uudelleen.",
     "calculadora_op1": "Valitse kohde....",
-    "equivalente_text": "Furni \"{{itemNameA}}\" maksaa {{equivalentAtoB}} \"{{itemNameB}}\"<br><br> Tämä tarkoittaa samaa kuin <br><br> Furni \"{{itemNameB}}\" maksaa {{equivalentBtoA}} \"{{itemNameA}}\""
+    "equivalente_text": "Furni \"{{itemNameA}}\" maksaa {{equivalentAtoB}} \"{{itemNameB}}\"<br><br> Tämä tarkoittaa samaa kuin <br><br> Furni \"{{itemNameB}}\" maksaa {{equivalentBtoA}} \"{{itemNameA}}\"",
+    "master_trades": "Master Trades",
+    "ultimo_debate": "Viimeinen Keskustelu",
+    "explicacion_master_trades": "Master Trades Selitys",
+    "explicacion_master_trades_p1": "Kaikki katalogin hinnat keskustellaan ja hyväksytään kuvassa olevien <strong class=\"alerta_lloron\">MasterTrades</strong> toimesta. Hinnan on saatava <strong class=\"alerta_lloron\">80%:n hyväksyntä</strong>, jotta sitä voidaan muuttaa. Jos se saa vähemmän, sitä ei muuteta.",
+    "explicacion_master_trades_p2": "<strong class=\"alerta_lloron\">MUISTA:</strong> Master Trades yrittävät vain tehdä oppaan mahdollisimman tarkkojen hintojen mukaan, mutta ne ovat sinun furnisesi, sinä päätät, kuinka paljon ne ovat arvokkaita."
 }

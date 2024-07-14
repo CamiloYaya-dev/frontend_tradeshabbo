@@ -93,6 +93,9 @@
                     <li class="nav-item navbar_item">
                         <a class="habbo_text_blue menu-link" href="#" data-section="sorteos" data-i18n="sorteos">Sorteos</a>
                     </li>
+                    <li class="nav-item navbar_item">
+                        <a class="habbo_text_blue menu-link" href="#" data-section="master_trades" data-i18n="master_trades">Master Trades</a>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -140,6 +143,31 @@
                                 <p class="online_habbo_text_white_fz_12 ng-binding" data-i18n="explicacion_votos_p1">
                                     Es el respaldo que la comunidad le da al precio actual del ítem. Cada vez que se actualiza el precio, se reinicia el contador. Solo se puede votar una vez por IP.<br>UNA VEZ VOTADO, NO ES POSIBLE CAMBIAR EL VOTO.
                                 </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="column-explications-master-trades" style="display: none;">
+                    <div class="row">
+                        <div class="online_users example_row">
+                            <div class="shiny-box">
+                                <p class="habbo_text_gold ng-binding" data-i18n="ultimo_debate">Ultimo Debate</p>
+                                <p class="online_habbo_text_white_fz_20 ng-binding">
+                                    14/07/2024
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="online_users example_row" id="row_explanation_trends">
+                            <div class="shiny-box">
+                                <p class="habbo_text_gold ng-binding" data-i18n="explicacion_master_trades">Explicacion Master Tardes</p>
+                                <p class="online_habbo_text_white_fz_12" data-i18n="explicacion_master_trades_p1">
+                                    Todos los precios del catálogo son debatidos y aprobados por los <strong class="alerta_lloron">MasterTrades</strong> de la imagen. El precio tiene que tener un <strong class="alerta_lloron">80% de aprobación</strong> para que sea modificado. Si obtiene menos, no es modificado.
+                                </p>
+                                <p class="online_habbo_text_white_fz_12" data-i18n="explicacion_master_trades_p2">
+                                    <strong class="alerta_lloron">RECUERDA:</strong> Los master trades solo intentamos hacer una guía con los precios más acertados a la realidad, sin embargo, son tus furnis, tú decides cuánto valen.
+                                </p>                                
                             </div>
                         </div>
                     </div>
@@ -328,8 +356,11 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-2 column">
-                <div class="row row_lenguage">
+            <div class="col-md-8 column" id="master-trades-section" style="display: none;">
+                <img src="./mt/fondo.png">
+            </div>
+            <div class="col-md-2 column" id="columna_derecha">
+                <div class="row row_lenguage fila_end">
                     <div id="language-switcher" class="text-right">
                         <select id="language-select" class="form-control select_lenguage" style="display: inline-block; width: auto;">
                             <option value="es">Español</option>
@@ -344,7 +375,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row fila_end">
                     <div class="online_users">
                         <div class="online_users_content">
                             <p class="habbo_text_blue ng-binding" data-i18n="habbo_on_es">Habbos en línea - ES</p>
@@ -353,7 +384,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row fila_end">
                     <div class="online_users">
                         <div class="online_users_content">
                             <p class="habbo_text_blue ng-binding" data-i18n="habbo_on_br">Habbos en línea - BR:</p>
@@ -362,7 +393,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row fila_end">
                     <div class="online_users">
                         <div class="online_users_content">
                             <p class="habbo_text_blue ng-binding" data-i18n="habbo_on_com">Habbos en línea - COM:</p>
@@ -371,10 +402,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="row row_discord">
+                <div class="row row_discord fila_discord">
                     <iframe src="https://discord.com/widget?id=1257448055050080297&theme=dark" width="250" height="300" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
                 </div>
-                <div class="row">
+                <div class="row fila_end">
                     <div class="ad-space">
                         <ins class="adsbygoogle"
                             style="display:block"
@@ -389,7 +420,7 @@
     <div id="music-player-container" class="music-player-container">
         <button id="toggle-button" class="btn btn-info boton-music"></button>
         <div id="music-player-content">
-            <select id="track-list" class="form-control"></select>
+            <select id="track-list" class="form-control track-list"></select>
             <audio id="audio-player" controls>
                 Your browser does not support the audio element.
             </audio>
@@ -400,18 +431,18 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.16/mediaelement-and-player.min.js"></script>
-    <script src="88e3fe55-9b69-45d2-86d3-4084e03abec8.js"></script>
+    <script src="4c62c2c9-8856-4678-a771-3e218488a1c9.js"></script>
     <!-- Incluir i18next -->
     <script src="https://unpkg.com/i18next@20.6.1/i18next.min.js"></script>
     <script src="https://unpkg.com/i18next-browser-languagedetector@6.1.2/i18nextBrowserLanguageDetector.min.js"></script>
     <script src="https://unpkg.com/i18next-xhr-backend@3.2.2/i18nextXHRBackend.min.js"></script>
 
     <!-- Configuración de i18next -->
-    <script src="a1c5fb58-19d4-4b61-aab1-b8ed6c81c319.js"></script>
+    <script src="b9ee7725-cc83-4881-ab80-5724dde9bb1c.js"></script>
     <script>
         (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
-    <footer>
+    <footer id="footer">
          <p>Pagina creada por Camilo Andres Yaya Poveda</p>
     </footer>
 </body>
