@@ -963,3 +963,14 @@ animation: rainbow-border 5s linear infinite;
     justify-content: end;
     margin-left: 0px !important;
 }
+
+.sorteos-titulo{
+    place-content: center;
+    padding-bottom: 15px;
+}
+
+.carousel-item img {
+    width: 350px;
+    height: 350px;
+    object-fit: cover; /* Mantiene la relación de aspecto y rellena el cuadro */
+}

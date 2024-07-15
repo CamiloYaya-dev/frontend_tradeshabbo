@@ -38,7 +38,7 @@ function loadCarouselImages() {
             const carouselItemClass = index === 0 ? 'carousel-item active' : 'carousel-item';
             const carouselItemHTML = `
                 <div class="${carouselItemClass}">
-                    <img src="furnis/sorteos/pagos/${imageFile}" class="d-block w-100 test" alt="Sorteo Image">
+                    <img src="furnis/sorteos/pagos/${imageFile}" class="d-block w-100 test carousel-img" alt="Sorteo Image">
                 </div>
             `;
             sorteosCarouselInner.append(carouselItemHTML);
