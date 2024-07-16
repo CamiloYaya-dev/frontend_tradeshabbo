@@ -60,6 +60,6 @@
     "master_trades": "Master Trades",
     "ultimo_debate": "Ultimo Dibattito",
     "explicacion_master_trades": "Spiegazione Master Trades",
-    "explicacion_master_trades_p1": "Tutti i prezzi del catalogo sono dibattuti e approvati dai <strong class=\"alerta_lloron\">MasterTrades</strong> nell'immagine. Il prezzo deve avere una <strong class=\"alerta_lloron\">approvazione dell'80%</strong> per essere modificato. Se ottiene di meno, non viene modificato.",
+    "explicacion_master_trades_p1": "Tutti i prezzi del catalogo sono dibattuti e approvati dai <strong class=\"alerta_lloron\">MasterTrades</strong> nell'immagine. Il prezzo deve avere una <strong class=\"alerta_lloron\">approvazione dell'60%</strong> per essere modificato. Se ottiene di meno, non viene modificato.",
     "explicacion_master_trades_p2": "<strong class=\"alerta_lloron\">RICORDA:</strong> I master trades cercano solo di creare una guida con i prezzi più accurati rispetto alla realtà, tuttavia, sono i tuoi furnis, tu decidi quanto valgono."
 }
