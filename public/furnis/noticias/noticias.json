@@ -97,5 +97,16 @@
         "alt_imagen_resumida": "nuevo artículo Teleport Británico Funky",
         "descripcion_resumida": "<p class=\"noticia_descripcion\"><strong>¡Llega el nuevo artículo a Habbo Hotel: Orígenes!</strong> Descubre y adquiere el nuevo <strong>Teleport Británico Funky</strong>, disponible por tiempo limitado. ¡No te lo pierdas!</p>",
         "fecha_noticia": "12-07-2024"
+    },
+    {
+        "id": 10,
+        "titulo": "¡Nuevo raro disponible! Heladera Dorada",
+        "imagen_completa": "catalogo_heladera_dorada",
+        "alt_imagen_completa": "Catalogo Heladera Dorada",
+        "descripcion_completa": "<p><strong>¡El nuevo raro de Habbo Hotel: Orígenes: Heladera Dorada!</strong></p><p>Hoy, 16 de julio de 2024, se lanza un nuevo raro mítico en el catálogo de Habbo Hotel: Orígenes. La <strong>Heladera Dorada</strong> ya está disponible por tiempo limitado a un precio inicial de 50 créditos. No pierdas la oportunidad de agregar esta pieza única a tu colección. ¡Date prisa, estará disponible solo por una semana!</p>",
+        "imagen_resumida": "rares_martes",
+        "alt_imagen_resumida": "nuevo raro martes 16 de julio del 2024",
+        "descripcion_resumida": "<p class=\"noticia_descripcion\"><strong>¡Llega un nuevo raro a Habbo Hotel: Orígenes!</strong> Descubre y adquiere el nuevo raro, <strong>RARO Heladera Dorada</strong>, disponible por tiempo limitado. ¡No te lo pierdas!</p>",
+        "fecha_noticia": "16-07-2024"
     }
 ]
