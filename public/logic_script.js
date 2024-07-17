@@ -81,353 +81,525 @@ function initialize() {
     loadOnlineCount();
     setInterval(loadOnlineCount, 3600000);
 
-    function loadProducts(apiKey) {
-        $.ajax({
-            url: '/images',
-            type: 'GET',
-            headers: { 'x-api-key': apiKey },
-            success: function(data) {
-                const decryptedData = decryptData(data.token);
-                var productContainer = $('#product-container');
-                var productHistoryContainer = $('#product-history-container');
-                var backButton = $('#back-button');
-                var searchContainer = $('#search-input');
-                var row_explanation_trends = $('#row_explanation_trends');
-                var row_explanation_votes = $('#row_explanation_votes');
-                var filter_tags = $('#filter_tags');
-                var sortSelect = $('#sort-options');
-                var creditUsdPriceHabbo = 0.06899;
-                var creditUsdPriceIlegal = 0.06;
-                var creditUsdPriceHabboEs = 1.72;
-                function renderProducts(products) {
-                    productContainer.empty();
-                    products.forEach(function(item) {
-                        var borderClass = item.highlight == 1 ? 'highlight-border' : '';
-                        var productCard = `
-                            <div class="col-md-3 col-sm-6 mb-4 product-item catalog_item_div">
-                                <div class="card h-100 position-relative ${borderClass}">
-                                    <a href="#" class="text-decoration-none product-link" data-id="${item.id}">
-                                        <div>
-                                            ${item.icon == "hc" ? `<img src="furnis/iconos/icon_hc.png" class="iconos-hc" alt="icon">` : ''}
-                                            ${item.icon == "rare" ? `<img src="furnis/iconos/icon_rare.png" class="iconos-rare" alt="icon">` : ''}
-                                            ${item.icon == "funky" ? `<img src="furnis/iconos/icon_funky.png" class="iconos-funky" alt="icon">` : ''}
-                                            ${item.icon == "mega_rare" ? `<img src="furnis/iconos/icon_mega_rare.png" class="iconos-funky" alt="icon">` : ''}
-                                            ${item.hot == 1 ? `<img src="furnis/iconos/hot_sale.png" class="iconos-hot-sale" alt="icon">` : ''}
-                                            <img src="${item.src}" class="card-img-top" alt="${item.name}">
-                                            ${item.status == "arrow_trend_up" ? `<img src="furnis/iconos/arrow_trend_up.png" class="iconos-arrow-trend-up" alt="icon">` : ''}
-                                            ${item.status == "arrow_trend_down" ? `<img src="furnis/iconos/arrow_trend_down.png" class="iconos-arrow-trend-down" alt="icon">` : ''}
-                                            ${!item.status ? `<div class="div-no-arrow"></div>` : ''}
-                                        </div>
-                                    </a>
-                                    <div class="card-body text-center">
-                                        <div class="price-sections">
-                                            <div class="section ingame">
-                                                <div class="row">
-                                                    <div class="col-md-6 subsection origins">
-                                                        <p class="online_habbo_text_white">Origins</p>
-                                                        <p class="card-text text-price">
-                                                            <img src="furnis/dinero/credito.png" alt="credito" class="price-icon" data-toggle="tooltip" data-i18n="[title]titulo_creditos" title="Precio en Créditos">${item.price}
-                                                            <br>
-                                                            <img src="furnis/dinero/vip.png" alt="vip" class="price-vip" data-toggle="tooltip" data-i18n="[title]titulo_vips" title="Precio en Vips">${(item.price / item.vip_price).toFixed(2)}
-                                                        </br>
-                                                    </div>
-                                                    <div class="col-md-6 subsection es">
-                                                        <p class="online_habbo_text_white">.ES</p>
-                                                        <p class="card-text text-price-es">
-                                                            <span class="price-item">
-                                                                <img src="furnis/dinero/credito.png" alt="precio_habbo_es" class="credit-habbo-es" data-toggle="tooltip" data-i18n="[title]titulo_creditos_es" title="Precio Creditos .ES">
-                                                                ${Math.round(creditUsdPriceHabboEs * item.price)}
-                                                            </span>
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="section dolares">
-                                                <p class="online_habbo_text_white" data-i18n="dolares">Dólares <img src="furnis/iconos/icon_dolar.png" alt="dolar" class="dolar" data-toggle="tooltip" data-i18n="[title]titulo_dolares" title="Precio Externo en dolares"></p>
-                                                <p class="card-text text-price-other-markets">
-                                                    <span class="price-item">
-                                                        <img src="furnis/iconos/icon_habbo.png" alt="habbo" class="price-habbo" data-toggle="tooltip" data-i18n="[title]titulo_habbo_dolares" title="Precio Habbo en dolares">
-                                                        ${((creditUsdPriceHabbo * item.price).toFixed(2).endsWith("00") ? parseInt((creditUsdPriceHabbo * item.price).toFixed(2), 10) : (creditUsdPriceHabbo * item.price).toFixed(2).replace(".", ","))}
-                                                    </span>
-                                                    <span class="price-item">
-                                                        <img src="furnis/iconos/icon_precio_externo.png" alt="precio_externo" class="price-market" data-i18n="[title]titulo_externo_dolares" data-toggle="tooltip" title="Precio Externo en dolares">
-                                                        ${((creditUsdPriceIlegal * item.price).toFixed(2).endsWith("00") ? parseInt((creditUsdPriceIlegal * item.price).toFixed(2), 10) : (creditUsdPriceIlegal * item.price).toFixed(2).replace(".", ","))}
-                                                    </span>
-                                                </p>
-                                            </div>
-                                        </div>
+    function fetchFirebaseData() {
+        return new Promise((resolve, reject) => {
+            $.getJSON('/fetch-firebase-data', function(data) {
+                resolve(data);
+            }).fail(function(error) {
+                reject(error);
+            });
+        });
+    }
 
-                                        <p class="card-text text-name online_habbo_text_white catalog_item_name">${item.name} ${item.mote ? `(${item.mote})` : ''}</p>
-                                        <div class="row">
-                                            <div class="col-6 d-flex flex-column justify-content-around opinion_precio catalog_votes">
-                                                <span class="online_habbo_text_white question_text" data-i18n="pregunta_precio">¿Precio adecuado?</span>
-                                                <div class="d-flex justify-content-around">
-                                                    <button class="price_history_content vote-button-opinion" data-id="${item.id}" data-vote="upvote">👍<span class="vote-count-opinion">${item.upvotes}</span></button>
-                                                    <button class="price_history_content vote-button-opinion" data-id="${item.id}" data-vote="downvote">👎<span class="vote-count-opinion">${item.downvotes}</span></button>
+    function fetchItemData(callback) {
+        $.getJSON('https://tc-api.serversia.com/items', function(data) {
+            const itemData = data.map(item => ({
+                id: item.id,
+                name: item.name,
+                slug: item.slug,
+                hc_val: item.hc_val
+            })).sort((a, b) => a.id - b.id); // Ordenar por id de menor a mayor
+            callback(itemData);
+        }).fail(function() {
+            console.error('Error fetching item data');
+            callback([]);
+        });
+    }
+
+    function mapTradersClub(decryptedData, itemData) {
+        // Crear un mapeo manual entre 
+        // decryptedData.id:itemData.id
+        const manualMapping = {
+            1: 1, //club sofa
+            2: 7, //jacuzzy
+            3: 5, //imperiales
+            4: 3, //trono hc
+            5: 12, //da2hc
+            6: 8, //cafetera
+            7: 9, //escritorio hc
+            8: 13, //lampara hc
+            9: 2, //majestic
+            10: 10, //mesa nordica
+            11: 11, //hc set - mesahc
+            12: 11, //hc set - mesahc
+            13: 4, //habbocola
+            44: 6, //vivo
+            50: 14, //ph ticket
+            23: 15, //pod funky
+            22: 15, //pod funky
+            21: 15, //pod funky
+            20: 15, //pod funky
+            19: 15, //pod funky
+            46: 16, //alfombra funky
+            47: 16, //alfombra funky
+            48: 16, //alfombra funky
+            49: 16, //alfombra funky
+            51: 17, //almo purpura
+            53: 18, //guirnalda morada
+            52: 19, //guirnalda verde
+            54: 20, //egg lila
+            55: 21, //teleport britanico funky
+            56: 23 // heladera dorada
+        };
+    
+        decryptedData.forEach(decryptedItem => {
+            const itemId = manualMapping[decryptedItem.id];
+            if (itemId) {
+                const matchingItem = itemData.find(item => item.id === itemId);
+                if (matchingItem) {
+                    if(matchingItem.id === 11 || matchingItem.id === 12){
+                        decryptedItem.traders_club = matchingItem.hc_val/5;
+                    }else{
+                        decryptedItem.traders_club = matchingItem.hc_val;
+                    }
+                    
+                } else {
+                    decryptedItem.traders_club = "N/A";
+                }
+            } else {
+                decryptedItem.traders_club = "N/A";
+            }
+        });
+    }
+
+    function mapHabbonation(decryptedData, firebaseData) {
+        // Crear un mapeo manual entre decryptedData.id y firebaseData.key
+        const manualMapping = {
+            2: "5",  //jacuzzy
+            3: "1",  //imperiales
+            4: "11",  //trono hc
+            5: "6", //da2hc
+            6: "3",  //cafetera
+            7: "8",  //escritorio hc
+            8: "9", //lampara hc
+            9: "7",  //majestic
+            10: "10", //mesa nordica
+            11: "12", //hc set - mesahc
+            12: "12", //hc set - mesahc
+            13: "13",  //habbocola
+            44: "14",  //vivo
+            50: "-O14LE2bdCAJpds5g998", //ph ticket
+            23: "-O14JZuYfwuw6x8-Fm1X", //pod funky
+            22: "-O14JZuYfwuw6x8-Fm1X", //pod funky
+            21: "-O14JZuYfwuw6x8-Fm1X", //pod funky
+            20: "-O14JZuYfwuw6x8-Fm1X", //pod funky
+            19: "-O14JZuYfwuw6x8-Fm1X", //pod funky
+            46: "-O14NidAp6E44OFZ9bli", //alfombra funky
+            47: "-O14NidAp6E44OFZ9bli", //alfombra funky
+            48: "-O14NidAp6E44OFZ9bli", //alfombra funky
+            49: "-O14NidAp6E44OFZ9bli", //alfombra funky
+            51: "-O0p7fXT3HJnneJiU1Ik", //almo purpura
+            53: "-O14OWTanqoE2ukWjBcS", //guirnalda morada
+            52: "-O14O9uDOE07xffw92Tw", //guirnalda verde
+            54: "-O1MUU23mb2SjRD4eUKi", //egg lila
+            55: "-O1dq3aBROmChleZjPjP", //teleport britanico funky
+            56: "-O1tGbbJU-DqRETGreA0", // heladera dorada
+            18: "-O14NIUCN5VTZfSXU7xm", // silla funky
+            28: "-O14NIUCN5VTZfSXU7xm", // silla funky
+            29: "-O14NIUCN5VTZfSXU7xm", // silla funky
+            30: "-O14NIUCN5VTZfSXU7xm", // silla funky
+            31: "-O14NIUCN5VTZfSXU7xm" // silla funky
+        };
+    
+        decryptedData.forEach(decryptedItem => {
+            const itemId = manualMapping[decryptedItem.id];
+            if (itemId) {
+                const matchingItem = firebaseData[itemId];
+                if (matchingItem) {
+                    if (itemId === "11" || itemId === "12") {
+                        decryptedItem.habbonation = parseFloat(matchingItem.price) / 5;
+                    } else {
+                        decryptedItem.habbonation = parseFloat(matchingItem.price);
+                    }
+                } else {
+                    decryptedItem.habbonation = "N/A";
+                }
+            } else {
+                decryptedItem.habbonation = "N/A";
+            }
+        });
+    } 
+
+    function loadProducts(apiKey, firebaseData) {
+        fetchItemData(function(itemData) {
+            $.ajax({
+                url: '/images',
+                type: 'GET',
+                headers: { 'x-api-key': apiKey },
+                success: function(data) {
+                    const decryptedData = decryptData(data.token);
+                    var productContainer = $('#product-container');
+                    var productHistoryContainer = $('#product-history-container');
+                    var backButton = $('#back-button');
+                    var searchContainer = $('#search-input');
+                    var row_explanation_trends = $('#row_explanation_trends');
+                    var row_explanation_votes = $('#row_explanation_votes');
+                    var filter_tags = $('#filter_tags');
+                    var sortSelect = $('#sort-options');
+                    var creditUsdPriceHabbo = 0.06899;
+                    var creditUsdPriceIlegal = 0.06;
+                    var creditUsdPriceHabboEs = 1.72;
+                    function renderProducts(products) {
+                        productContainer.empty();
+                        products.forEach(function(item) {
+                            var borderClass = item.highlight == 1 ? 'highlight-border' : '';
+                            var collapseId = `collapse${item.id}`;
+                            var productCard = `
+                                <div class="col-md-3 col-sm-6 mb-4 product-item catalog_item_div">
+                                    <div class="card h-100 position-relative ${borderClass}">
+                                        <a href="#" class="text-decoration-none product-link" data-id="${item.id}">
+                                            <div>
+                                                ${item.icon == "hc" ? `<img src="furnis/iconos/icon_hc.png" class="iconos-hc" alt="icon">` : ''}
+                                                ${item.icon == "rare" ? `<img src="furnis/iconos/icon_rare.png" class="iconos-rare" alt="icon">` : ''}
+                                                ${item.icon == "funky" ? `<img src="furnis/iconos/icon_funky.png" class="iconos-funky" alt="icon">` : ''}
+                                                ${item.icon == "mega_rare" ? `<img src="furnis/iconos/icon_mega_rare.png" class="iconos-funky" alt="icon">` : ''}
+                                                ${item.hot == 1 ? `<img src="furnis/iconos/hot_sale.png" class="iconos-hot-sale" alt="icon">` : ''}
+                                                <img src="${item.src}" class="card-img-top" alt="${item.name}">
+                                                ${item.status == "arrow_trend_up" ? `<img src="furnis/iconos/arrow_trend_up.png" class="iconos-arrow-trend-up" alt="icon">` : ''}
+                                                ${item.status == "arrow_trend_down" ? `<img src="furnis/iconos/arrow_trend_down.png" class="iconos-arrow-trend-down" alt="icon">` : ''}
+                                                ${!item.status ? `<div class="div-no-arrow"></div>` : ''}
+                                            </div>
+                                        </a>
+                                        <div class="card-body text-center">
+                                            <div class="price-sections">
+                                                <div class="section ingame">
+                                                    <div class="row">
+                                                        <div class="col-md-6 subsection origins">
+                                                            <div>
+                                                                <p class="online_habbo_text_white">Origins .ES</p>
+                                                                <p class="card-text text-price">
+                                                                    <img src="furnis/dinero/credito.png" alt="credito" class="price-icon" data-toggle="tooltip" data-i18n="[title]titulo_creditos" title="Precio en Créditos">${item.price}
+                                                                    <br>
+                                                                    <img src="furnis/dinero/vip.png" alt="vip" class="price-vip" data-toggle="tooltip" data-i18n="[title]titulo_vips" title="Precio en Vips">${(item.price / item.vip_price).toFixed(2)}
+                                                                </br>
+                                                            </div>
+                                                             <div>
+                                                                <button class="boton_collapse_otros_catalogos collapse_text_white" type="button" data-toggle="collapse" data-target="#${collapseId}" aria-expanded="false" aria-controls="${collapseId}">
+                                                                    Otros Precios
+                                                                </button>
+                                                                <div class="collapse text-price-es" id="${collapseId}">
+                                                                    <div>
+                                                                        <img src="furnis/iconos/icon_habbonation.png" alt="habbonation icon" class="habbonation_club_icon" data-toggle="tooltip" title="habbonation">
+                                                                         <br>
+                                                                        <img src="furnis/dinero/vip.png" alt="vip" class="price-vip" data-toggle="tooltip" data-i18n="[title]titulo_vips" title="Precio en Vips">${item.habbonation}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 subsection es">
+                                                            <div class="section_es">
+                                                                <p class="online_habbo_text_white">Habbo .ES</p>
+                                                                <p class="card-text text-price-es">
+                                                                    <span class="price-item">
+                                                                        <img src="furnis/dinero/credito.png" alt="precio_habbo_es" class="credit-habbo-es" data-toggle="tooltip" data-i18n="[title]titulo_creditos_es" title="Precio Creditos .ES">
+                                                                        ${Math.round(creditUsdPriceHabboEs * item.price)}
+                                                                    </span>
+                                                                </p>
+                                                            </div>
+                                                            <div class="section_origins_com">
+                                                                <p class="online_habbo_text_white_origins_com">Origins .COM</p>
+                                                                <p class="card-text text-price-es">
+                                                                    <span class="price-item">
+                                                                        <img src="furnis/iconos/icon_trader_club.png" alt="trader club icon" class="traders_club_icon" data-toggle="tooltip" title="traderclub.gg">
+                                                                        <br>
+                                                                        <img src="furnis/dinero/vip.png" alt="vip" class="price-vip" data-toggle="tooltip" data-i18n="[title]titulo_vips" title="Precio en Vips">${item.traders_club}
+                                                                    </span>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="section dolares">
+                                                    <p class="online_habbo_text_white" data-i18n="dolares">Dólares <img src="furnis/iconos/icon_dolar.png" alt="dolar" class="dolar" data-toggle="tooltip" data-i18n="[title]titulo_dolares" title="Precio Externo en dolares"></p>
+                                                    <p class="card-text text-price-other-markets">
+                                                        <span class="price-item">
+                                                            <img src="furnis/iconos/icon_habbo.png" alt="habbo" class="price-habbo" data-toggle="tooltip" data-i18n="[title]titulo_habbo_dolares" title="Precio Habbo en dolares">
+                                                            ${((creditUsdPriceHabbo * item.price).toFixed(2).endsWith("00") ? parseInt((creditUsdPriceHabbo * item.price).toFixed(2), 10) : (creditUsdPriceHabbo * item.price).toFixed(2).replace(".", ","))}
+                                                        </span>
+                                                        <span class="price-item">
+                                                            <img src="furnis/iconos/icon_precio_externo.png" alt="precio_externo" class="price-market" data-i18n="[title]titulo_externo_dolares" data-toggle="tooltip" title="Precio Externo en dolares">
+                                                            ${((creditUsdPriceIlegal * item.price).toFixed(2).endsWith("00") ? parseInt((creditUsdPriceIlegal * item.price).toFixed(2), 10) : (creditUsdPriceIlegal * item.price).toFixed(2).replace(".", ","))}
+                                                        </span>
+                                                    </p>
                                                 </div>
                                             </div>
-                                            <div class="col-6 d-flex flex-column justify-content-around opinion_precio">
-                                                <span class="online_habbo_text_white question_text" data-i18n="pregunta_tendencia">¿Subirá o bajará?</span>
-                                                <div class="d-flex justify-content-around">
-                                                    <button class="price_history_content vote-button-belief" data-id="${item.id}" data-vote="upprice"><img src="furnis/iconos/up_price_history.png" alt="up price" class="icon-vote"><span class="vote-count-belief">${item.upvotes_belief || 0}</span></button>
-                                                    <button class="price_history_content vote-button-belief" data-id="${item.id}" data-vote="downprice"><img src="furnis/iconos/down_price_history.png" alt="down price" class="icon-vote"><span class="vote-count-belief">${item.downvotes_belief || 0}</span></button>
+
+                                            <p class="card-text text-name online_habbo_text_white catalog_item_name">${item.name} ${item.mote ? `(${item.mote})` : ''}</p>
+                                            <div class="row">
+                                                <div class="col-6 d-flex flex-column justify-content-around opinion_precio catalog_votes">
+                                                    <span class="online_habbo_text_white question_text" data-i18n="pregunta_precio">¿Precio adecuado?</span>
+                                                    <div class="d-flex justify-content-around">
+                                                        <button class="price_history_content vote-button-opinion" data-id="${item.id}" data-vote="upvote">👍<span class="vote-count-opinion">${item.upvotes}</span></button>
+                                                        <button class="price_history_content vote-button-opinion" data-id="${item.id}" data-vote="downvote">👎<span class="vote-count-opinion">${item.downvotes}</span></button>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6 d-flex flex-column justify-content-around opinion_precio">
+                                                    <span class="online_habbo_text_white question_text" data-i18n="pregunta_tendencia">¿Subirá o bajará?</span>
+                                                    <div class="d-flex justify-content-around">
+                                                        <button class="price_history_content vote-button-belief" data-id="${item.id}" data-vote="upprice"><img src="furnis/iconos/up_price_history.png" alt="up price" class="icon-vote"><span class="vote-count-belief">${item.upvotes_belief || 0}</span></button>
+                                                        <button class="price_history_content vote-button-belief" data-id="${item.id}" data-vote="downprice"><img src="furnis/iconos/down_price_history.png" alt="down price" class="icon-vote"><span class="vote-count-belief">${item.downvotes_belief || 0}</span></button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        `;
-                        productContainer.append(productCard);
-                    });
-                
-                    fillItemOptions(products);
-                }
+                            `;
+                            productContainer.append(productCard);
+                        });
+                    
+                        fillItemOptions(products);
+                    }
+                    mapTradersClub(decryptedData, itemData);
+                    mapHabbonation(decryptedData, firebaseData);
+                    renderProducts(decryptedData);
 
-                renderProducts(decryptedData);
-
-                $('#search-input').on('input', function() {
-                    var searchValue = $(this).val().toLowerCase();
-                    var filteredProducts = decryptedData.filter(function(item) {
-                        return item.name.toLowerCase().includes(searchValue);
-                    });
-                    renderProducts(filteredProducts);
-                });
-
-                $('.filter-button').on('click', function() {
-                    var category = $(this).data('category');
-                    if (category === 'all') {
-                        renderProducts(decryptedData); // Mostrar todos los productos
-                    } else {
+                    $('#search-input').on('input', function() {
+                        var searchValue = $(this).val().toLowerCase();
                         var filteredProducts = decryptedData.filter(function(item) {
-                            if (category === 'hot') {
-                                return item.hot == 1;
-                            } else {
-                                return item.icon === category;
-                            }
+                            return item.name.toLowerCase().includes(searchValue);
                         });
                         renderProducts(filteredProducts);
-                    }
-                });
+                    });
 
-                // Manejar el evento de cambio del select de ordenación
-                sortSelect.on('change', function() {
-                    var sortBy = $(this).val();
-                    var sortedProducts = [...decryptedData];
-
-                    if (sortBy === 'price_desc') {
-                        console.log('repre 1');
-                        sortedProducts.sort((a, b) => b.price - a.price);
-                    } else if (sortBy === 'price_asc') {
-                        console.log('repre 2');
-                        sortedProducts.sort((a, b) => a.price - b.price);
-                    } else if (sortBy === 'date_desc') {
-                        console.log('repre 3');
-                        sortedProducts.sort((a, b) => new Date(b.fecha_precio) - new Date(a.fecha_precio));
-                    } else if (sortBy === 'date_asc') {
-                        console.log('repre 4');
-                        sortedProducts.sort((a, b) => new Date(a.fecha_precio) - new Date(b.fecha_precio));
-                    }
-                    console.log(sortedProducts);
-                    renderProducts(sortedProducts);
-                });
-
-                $(document).on('click', '.product-link', function(e) {
-                    e.preventDefault();
-                    var productId = $(this).data('id');
-                    
-                    fetchApiKey(function(apiKey) {
-                        $.ajax({
-                            url: `/price-history/${productId}`,
-                            type: 'GET',
-                            headers: { 'x-api-key': apiKey },
-                            success: function(data) {
-                                $('#sort-options').hide();
-                                const decryptedData = decryptData(data.token);
-                                searchContainer.hide();
-                                row_explanation_trends.hide();
-                                row_explanation_votes.hide();
-                                filter_tags.hide();
-                                productContainer.hide();
-                                productHistoryContainer.show();
-                                backButton.show();
-                                
-                                var firstRecord = decryptedData[0];
-                                var imagePath = '';
-                                if (firstRecord.icon === 'hc') {
-                                    imagePath = `furnis/hc/${firstRecord.name.replace(/ /g, '_')}.png`;
-                                    imageClass = "price-history-img"
-                                } else if (firstRecord.icon === 'rare') {
-                                    imagePath = `furnis/rares/${firstRecord.name.replace(/ /g, '_')}.png`;
-                                    imageClass = "price-history-img"
-                                } else if (firstRecord.icon === 'funky') {
-                                    imagePath = `furnis/rares/${firstRecord.name.replace(/ /g, '_')}.png`;
-                                    imageClass = "price-history-img-funky"
-                                } else if (firstRecord.icon === "mega_rare") {
-                                    imagePath = `furnis/rares/${firstRecord.name.replace(/ /g, '_')}.png`;
-                                    imageClass = "price-history-img"
+                    $('.filter-button').on('click', function() {
+                        var category = $(this).data('category');
+                        if (category === 'all') {
+                            renderProducts(decryptedData); // Mostrar todos los productos
+                        } else {
+                            var filteredProducts = decryptedData.filter(function(item) {
+                                if (category === 'hot') {
+                                    return item.hot == 1;
+                                } else {
+                                    return item.icon === category;
                                 }
+                            });
+                            renderProducts(filteredProducts);
+                        }
+                    });
+
+                    // Manejar el evento de cambio del select de ordenación
+                    sortSelect.on('change', function() {
+                        var sortBy = $(this).val();
+                        var sortedProducts = [...decryptedData];
+
+                        if (sortBy === 'price_desc') {
+                            sortedProducts.sort((a, b) => b.price - a.price);
+                        } else if (sortBy === 'price_asc') {
+                            sortedProducts.sort((a, b) => a.price - b.price);
+                        } else if (sortBy === 'date_desc') {
+                            sortedProducts.sort((a, b) => new Date(b.fecha_precio) - new Date(a.fecha_precio));
+                        } else if (sortBy === 'date_asc') {
+                            sortedProducts.sort((a, b) => new Date(a.fecha_precio) - new Date(b.fecha_precio));
+                        }
+                        renderProducts(sortedProducts);
+                    });
+
+                    $(document).on('click', '.product-link', function(e) {
+                        e.preventDefault();
+                        var productId = $(this).data('id');
                         
-                                var previousPrice = null;
-                                var actualPrice = true;
-                                var historyContent = `
-                                    <h3 class="price_history_content habbo_text_blue" data-i18n="historial_precios">Historial de Precios</h3>
-                                    <div class="price-history-image">
-                                        <img src="${imagePath}" alt="${firstRecord.name}" class="${imageClass}">
-                                    </div>
-                                    <table class="table price_history_content">
-                                        <thead>
-                                            <tr>
-                                                <th class="habbo_text_blue" data-i18n="historial_fecha">Fecha</th>
-                                                <th class="habbo_text_blue" data-i18n="historial_nombre">Nombre</th>
-                                                <th class="habbo_text_blue" data-i18n="historial_precio_credito">Precio <img src="furnis/dinero/credito.png" alt="credito" class="price-icon"></th>
-                                                <th class="habbo_text_blue" data-i18n="historial_precios_vip">Precio <img src="furnis/dinero/vip.png" alt="vip" class="price-vip"></th>
-                                                <th class="habbo_text_blue" data-i18n="historial_tendencia">Tendencia</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            ${decryptedData.map((record, index) => {
-                                                const actualPrice = record.precio;
-                                                const previousPrice = index > 0 ? decryptedData[index - 1].precio : null;
-                                                const nextPrice = index < decryptedData.length - 1 ? decryptedData[index + 1].precio : null;
-                                                var trendIcon = '';
-                                                
-                                                if (previousPrice === null || nextPrice === null) {
-                                                    trendIcon = '<img class="equal_price_history" src="./furnis/iconos/equal_price_history.png" alt="equal price">';
-                                                } else if (actualPrice > previousPrice && actualPrice < nextPrice) {
-                                                    trendIcon = '<img class="down_price_history" src="./furnis/iconos/down_price_history.png" alt="up down price">';
-                                                } else if (actualPrice < previousPrice && actualPrice > nextPrice) {
-                                                    trendIcon = '<img class="up_price_history" src="./furnis/iconos/up_price_history.png" alt="up price">';
-                                                } else {
-                                                    trendIcon = '<img class="up_price_history" src="./furnis/iconos/up_price_history.png" alt="up price">';
-                                                }
-                                                return `
-                                                    <tr>
-                                                        <td class="online_habbo_text_white">${new Date(record.fecha_precio).toLocaleDateString()}</td>
-                                                        <td class="online_habbo_text_white">${record.name}</td>
-                                                        <td class="online_habbo_text_white">${record.precio}</td>
-                                                        <td class="online_habbo_text_white">${(record.precio / record.vip_price).toFixed(2)}</td>
-                                                        <td class="online_habbo_text_white">${trendIcon}</td>
-                                                    </tr>
-                                                `;
-                                            }).join('')}
-                                        </tbody>
-                                    </table>
-                                    <p class="price_history_content habbo_text_blue">${firstRecord.descripcion}</p>
-                                `;
-                                productHistoryContainer.html(historyContent);
-                                updateContent();
-                            }
+                        fetchApiKey(function(apiKey) {
+                            $.ajax({
+                                url: `/price-history/${productId}`,
+                                type: 'GET',
+                                headers: { 'x-api-key': apiKey },
+                                success: function(data) {
+                                    $('#sort-options').hide();
+                                    const decryptedData = decryptData(data.token);
+                                    searchContainer.hide();
+                                    row_explanation_trends.hide();
+                                    row_explanation_votes.hide();
+                                    filter_tags.hide();
+                                    productContainer.hide();
+                                    productHistoryContainer.show();
+                                    backButton.show();
+                                    
+                                    var firstRecord = decryptedData[0];
+                                    var imagePath = '';
+                                    if (firstRecord.icon === 'hc') {
+                                        imagePath = `furnis/hc/${firstRecord.name.replace(/ /g, '_')}.png`;
+                                        imageClass = "price-history-img"
+                                    } else if (firstRecord.icon === 'rare') {
+                                        imagePath = `furnis/rares/${firstRecord.name.replace(/ /g, '_')}.png`;
+                                        imageClass = "price-history-img"
+                                    } else if (firstRecord.icon === 'funky') {
+                                        imagePath = `furnis/rares/${firstRecord.name.replace(/ /g, '_')}.png`;
+                                        imageClass = "price-history-img-funky"
+                                    } else if (firstRecord.icon === "mega_rare") {
+                                        imagePath = `furnis/rares/${firstRecord.name.replace(/ /g, '_')}.png`;
+                                        imageClass = "price-history-img"
+                                    }
+                            
+                                    var previousPrice = null;
+                                    var actualPrice = true;
+                                    var historyContent = `
+                                        <h3 class="price_history_content habbo_text_blue" data-i18n="historial_precios">Historial de Precios</h3>
+                                        <div class="price-history-image">
+                                            <img src="${imagePath}" alt="${firstRecord.name}" class="${imageClass}">
+                                        </div>
+                                        <table class="table price_history_content">
+                                            <thead>
+                                                <tr>
+                                                    <th class="habbo_text_blue" data-i18n="historial_fecha">Fecha</th>
+                                                    <th class="habbo_text_blue" data-i18n="historial_nombre">Nombre</th>
+                                                    <th class="habbo_text_blue" data-i18n="historial_precio_credito">Precio <img src="furnis/dinero/credito.png" alt="credito" class="price-icon"></th>
+                                                    <th class="habbo_text_blue" data-i18n="historial_precios_vip">Precio <img src="furnis/dinero/vip.png" alt="vip" class="price-vip"></th>
+                                                    <th class="habbo_text_blue" data-i18n="historial_tendencia">Tendencia</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                ${decryptedData.map((record, index) => {
+                                                    const actualPrice = record.precio;
+                                                    const previousPrice = index > 0 ? decryptedData[index - 1].precio : null;
+                                                    const nextPrice = index < decryptedData.length - 1 ? decryptedData[index + 1].precio : null;
+                                                    var trendIcon = '';
+                                                    
+                                                    if (previousPrice === null || nextPrice === null) {
+                                                        trendIcon = '<img class="equal_price_history" src="./furnis/iconos/equal_price_history.png" alt="equal price">';
+                                                    } else if (actualPrice > previousPrice && actualPrice < nextPrice) {
+                                                        trendIcon = '<img class="down_price_history" src="./furnis/iconos/down_price_history.png" alt="up down price">';
+                                                    } else if (actualPrice < previousPrice && actualPrice > nextPrice) {
+                                                        trendIcon = '<img class="up_price_history" src="./furnis/iconos/up_price_history.png" alt="up price">';
+                                                    } else {
+                                                        trendIcon = '<img class="up_price_history" src="./furnis/iconos/up_price_history.png" alt="up price">';
+                                                    }
+                                                    return `
+                                                        <tr>
+                                                            <td class="online_habbo_text_white">${new Date(record.fecha_precio).toLocaleDateString()}</td>
+                                                            <td class="online_habbo_text_white">${record.name}</td>
+                                                            <td class="online_habbo_text_white">${record.precio}</td>
+                                                            <td class="online_habbo_text_white">${(record.precio / record.vip_price).toFixed(2)}</td>
+                                                            <td class="online_habbo_text_white">${trendIcon}</td>
+                                                        </tr>
+                                                    `;
+                                                }).join('')}
+                                            </tbody>
+                                        </table>
+                                        <p class="price_history_content habbo_text_blue">${firstRecord.descripcion}</p>
+                                    `;
+                                    productHistoryContainer.html(historyContent);
+                                    updateContent();
+                                }
+                            });
                         });
                     });
-                });
 
-                backButton.on('click', function() {
-                    productHistoryContainer.hide();
-                    backButton.hide();
-                    productContainer.show();
-                    searchContainer.show();
-                    row_explanation_trends.show();
-                    row_explanation_votes.show();
-                    filter_tags.show();
-                    $('#sort-options').show();
-                });
+                    backButton.on('click', function() {
+                        productHistoryContainer.hide();
+                        backButton.hide();
+                        productContainer.show();
+                        searchContainer.show();
+                        row_explanation_trends.show();
+                        row_explanation_votes.show();
+                        filter_tags.show();
+                        $('#sort-options').show();
+                    });
 
-                $(document).on('click', '.vote-button-opinion', function() {
-                    var button = $(this);
-                    var imageId = button.data('id');
-                    var voteType = button.data('vote');
-                    button.prop('disabled', true);
-                
-                    fetchApiKey(function(apiKey) {
-                        $.ajax({
-                            url: `/images/${imageId}/vote`,
-                            type: 'POST',
-                            contentType: 'application/json',
-                            headers: { 'x-api-key': apiKey },
-                            data: JSON.stringify({ voteType: voteType }),
-                            success: function(data) {
-                                const decryptedData = decryptData(data.token);
-                                var voteCountSpan = button.find('.vote-count-opinion');
-                                if (voteType === 'upvote') {
-                                    voteCountSpan.text(decryptedData.upvotes);
-                                } else if (voteType === 'downvote') {
-                                    voteCountSpan.text(decryptedData.downvotes);
+                    $(document).on('click', '.vote-button-opinion', function() {
+                        var button = $(this);
+                        var imageId = button.data('id');
+                        var voteType = button.data('vote');
+                        button.prop('disabled', true);
+                    
+                        fetchApiKey(function(apiKey) {
+                            $.ajax({
+                                url: `/images/${imageId}/vote`,
+                                type: 'POST',
+                                contentType: 'application/json',
+                                headers: { 'x-api-key': apiKey },
+                                data: JSON.stringify({ voteType: voteType }),
+                                success: function(data) {
+                                    const decryptedData = decryptData(data.token);
+                                    var voteCountSpan = button.find('.vote-count-opinion');
+                                    if (voteType === 'upvote') {
+                                        voteCountSpan.text(decryptedData.upvotes);
+                                    } else if (voteType === 'downvote') {
+                                        voteCountSpan.text(decryptedData.downvotes);
+                                    }
+                                    button.prop('disabled', false);
+                                },
+                                error: function(jqXHR) {
+                                    if (jqXHR.status === 403) {
+                                        alert(i18next.t('alert_voto_precio'));
+                                    } else {
+                                        alert(i18next.t('alert_error_voto_precio'));
+                                    }
+                                    button.prop('disabled', false);
                                 }
-                                button.prop('disabled', false);
-                            },
-                            error: function(jqXHR) {
-                                if (jqXHR.status === 403) {
-                                    alert(i18next.t('alert_voto_precio'));
-                                } else {
-                                    alert(i18next.t('alert_error_voto_precio'));
-                                }
-                                button.prop('disabled', false);
-                            }
+                            });
                         });
                     });
-                });
 
-                $(document).on('click', '.vote-button-belief', function() {
-                    var button = $(this);
-                    var imageId = button.data('id');
-                    var voteType = button.data('vote');
-                    button.prop('disabled', true);
-                
-                    fetchApiKey(function(apiKey) {
-                        $.ajax({
-                            url: `/images/${imageId}/vote-belief`,
-                            type: 'POST',
-                            contentType: 'application/json',
-                            headers: { 'x-api-key': apiKey },
-                            data: JSON.stringify({ voteType: voteType }),
-                            success: function(data) {
-                                const decryptedData = decryptData(data.token);
-                                var voteCountSpan = button.find('.vote-count-belief');
-                                if (voteType === 'upprice') {
-                                    voteCountSpan.text(decryptedData.upvotes_belief);
-                                } else if (voteType === 'downprice') {
-                                    voteCountSpan.text(decryptedData.downvotes_belief);
+                    $(document).on('click', '.vote-button-belief', function() {
+                        var button = $(this);
+                        var imageId = button.data('id');
+                        var voteType = button.data('vote');
+                        button.prop('disabled', true);
+                    
+                        fetchApiKey(function(apiKey) {
+                            $.ajax({
+                                url: `/images/${imageId}/vote-belief`,
+                                type: 'POST',
+                                contentType: 'application/json',
+                                headers: { 'x-api-key': apiKey },
+                                data: JSON.stringify({ voteType: voteType }),
+                                success: function(data) {
+                                    const decryptedData = decryptData(data.token);
+                                    var voteCountSpan = button.find('.vote-count-belief');
+                                    if (voteType === 'upprice') {
+                                        voteCountSpan.text(decryptedData.upvotes_belief);
+                                    } else if (voteType === 'downprice') {
+                                        voteCountSpan.text(decryptedData.downvotes_belief);
+                                    }
+                                    button.prop('disabled', false);
+                                },
+                                error: function(jqXHR) {
+                                    if (jqXHR.status === 403) {
+                                        alert(i18next.t('alert_voto_tendencia'));
+                                    } else {
+                                        alert(i18next.t('alert_error_voto_tendencia'));
+                                    }
+                                    button.prop('disabled', false);
                                 }
-                                button.prop('disabled', false);
-                            },
-                            error: function(jqXHR) {
-                                if (jqXHR.status === 403) {
-                                    alert(i18next.t('alert_voto_tendencia'));
-                                } else {
-                                    alert(i18next.t('alert_error_voto_tendencia'));
-                                }
-                                button.prop('disabled', false);
-                            }
+                            });
                         });
                     });
-                });
 
-                function loadLastPriceUpdate() {
-                    fetchApiKey(function(apiKey) {
-                        $.ajax({
-                            url: '/latest-price-update',
-                            type: 'GET',
-                            headers: { 'x-api-key': apiKey },
-                            success: function(data) {
-                                const decryptedData = decryptData(data.token);
-                                const latestDate = new Date(decryptedData.fecha_precio);
-                                const formattedDate = latestDate.toLocaleString();
-                                $('#last_price_updated').text(formattedDate);
-                            },
-                            fail: function() {
-                                $('#last_price_updated').text('No disponible');
-                            }
+                    function loadLastPriceUpdate() {
+                        fetchApiKey(function(apiKey) {
+                            $.ajax({
+                                url: '/latest-price-update',
+                                type: 'GET',
+                                headers: { 'x-api-key': apiKey },
+                                success: function(data) {
+                                    const decryptedData = decryptData(data.token);
+                                    const latestDate = new Date(decryptedData.fecha_precio);
+                                    const formattedDate = latestDate.toLocaleString();
+                                    $('#last_price_updated').text(formattedDate);
+                                },
+                                fail: function() {
+                                    $('#last_price_updated').text('No disponible');
+                                }
+                            });
                         });
-                    });
+                    }
+                    updateContent();
+                    loadLastPriceUpdate();
                 }
-                updateContent();
-                loadLastPriceUpdate();
-            }
+            });
         });
     }
 
-    fetchApiKey(loadProducts);
+    fetchApiKey(function(apiKey) {
+        fetchFirebaseData()
+            .then(firebaseData => {
+                loadProducts(apiKey, firebaseData);
+            })
+            .catch(error => {
+                console.error('Error fetching Firebase data:', error);
+            });
+    });
 }
 
 verifyIP(initialize);

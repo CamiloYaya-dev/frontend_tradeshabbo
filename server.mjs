@@ -15,6 +15,8 @@ import CryptoJS from 'crypto-js';
 import fetch from 'node-fetch';
 import rateLimit from 'express-rate-limit'; // Import the rate limiting middleware
 import session from 'express-session';
+import { initializeApp } from 'firebase/app';
+import { getDatabase, ref, get, child } from 'firebase/database';
 
 const app = express();
 const port = 3000;
@@ -538,5 +540,32 @@ app.listen(port, async () => {
         console.log(`Servidor escuchando en http://localhost:${port}`);
     } catch (error) {
         console.error('Unable to connect to the database:', error);
+    }
+});
+
+const firebaseConfig = {
+    apiKey: "AIzaSyAldNScIrt21pLLf6Q4-y1mN88--bYhYCY",
+    authDomain: "habbos-68e47.firebaseapp.com",
+    databaseURL: "https://habbos-68e47-default-rtdb.firebaseio.com",
+    projectId: "habbos-68e47",
+    storageBucket: "habbos-68e47.appspot.com",
+    messagingSenderId: "617135519302",
+    appId: "1:617135519302:web:ccd6d60f01220fc0923c47"
+};
+
+const appFirebase = initializeApp(firebaseConfig);
+const database = getDatabase(appFirebase);
+
+app.get('/fetch-firebase-data', async (req, res) => {
+    try {
+        const dbRef = ref(database);
+        const snapshot = await get(child(dbRef, 'furniture'));
+        if (snapshot.exists()) {
+            res.json(snapshot.val());
+        } else {
+            res.status(404).json({ error: 'No data available' });
+        }
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to fetch data from Firebase' });
     }
 });

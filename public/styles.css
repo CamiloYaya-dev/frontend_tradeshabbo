@@ -268,6 +268,12 @@ main.container.master-trades-bg {
     color: white;
 }
 
+.online_habbo_text_white_origins_com{
+    font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    font-size: 14px;
+    color: white;
+}
+
 .online_habbo_text_white_fz_12{
     font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
     font-size: 12px;
@@ -307,6 +313,20 @@ main.container.master-trades-bg {
     box-shadow: 0 2px 3px rgba(6, 19, 25, .7);
     padding: 12px;
     font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+}
+
+.boton_collapse_otros_catalogos {
+    background-color: #335e7a;
+    border: 1px solid #050a0e;
+    box-shadow: 0 2px 3px rgba(6, 19, 25, .7);
+    font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    width: 100%;
+}
+
+.collapse_text_white{
+    font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    font-size: 10px;
+    color: white;
 }
 
 .table th {
@@ -973,4 +993,21 @@ animation: rainbow-border 5s linear infinite;
     width: 350px;
     height: 350px;
     object-fit: cover; /* Mantiene la relación de aspecto y rellena el cuadro */
+}
+
+.traders_club_icon{
+    width: 35px;
+}
+
+.habbonation_club_icon{
+    width: 25px;
+}
+
+.section_es{
+    border-bottom: 1px solid black;
+    padding-bottom: 10px;
+}
+
+.section_origins_com{
+    padding-top: 10px;
 }
