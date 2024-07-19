@@ -35,8 +35,18 @@ main.container.master-trades-bg {
     margin-right: 5px;
 }
 
+.price-icon-principal {
+    width: 30px;
+    margin-right: 5px;
+}
+
 .price-vip {
     width: 40px;
+    margin-right: 5px;
+}
+
+.price-vip-principal {
+    width: 65px;
     margin-right: 5px;
 }
 
@@ -177,11 +187,8 @@ main.container.master-trades-bg {
 
 .text-price-other-markets{
     font-size: 20px;
-    margin-bottom: 15px !important;
     font-family: fantasy;
     color: #229728;
-    padding-bottom: 15px !important;
-    border-bottom: 1px solid #000;
 }
 
 .header-page {
@@ -325,8 +332,10 @@ main.container.master-trades-bg {
 
 .collapse_text_white{
     font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
-    font-size: 10px;
+    font-size: 15px;
     color: white;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .table th {
@@ -1032,4 +1041,13 @@ animation: rainbow-border 5s linear infinite;
 
 .image_mt{
     width: 100%;
+}
+
+.price_trades_habbo_origins{
+    place-content: center;
+}
+
+.section_dolares{
+    border-top: 1px solid black;
+    margin-top: 10px;
 }
