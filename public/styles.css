@@ -1011,3 +1011,21 @@ animation: rainbow-border 5s linear infinite;
 .section_origins_com{
     padding-top: 10px;
 }
+
+#price-history-chart {
+    width: 100% !important;
+}
+
+.grafic_item{
+    background-color: #26627D;
+    border: 1px solid black;
+    border-radius: 15px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    margin-bottom: 20px;
+}
+
+.button_price_history_dinamic{
+    margin-bottom: 10px;
+    display: flow-root;
+}

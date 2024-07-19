@@ -107,8 +107,6 @@ function initialize() {
     }
 
     function mapTradersClub(decryptedData, itemData) {
-        // Crear un mapeo manual entre 
-        // decryptedData.id:itemData.id
         const manualMapping = {
             1: 1, //club sofa
             2: 7, //jacuzzy
@@ -148,7 +146,7 @@ function initialize() {
                 const matchingItem = itemData.find(item => item.id === itemId);
                 if (matchingItem) {
                     if(matchingItem.id === 11 || matchingItem.id === 12){
-                        decryptedItem.traders_club = matchingItem.hc_val/5;
+                        decryptedItem.traders_club = matchingItem.hc_val / 5;
                     }else{
                         decryptedItem.traders_club = matchingItem.hc_val;
                     }
@@ -163,7 +161,6 @@ function initialize() {
     }
 
     function mapHabbonation(decryptedData, firebaseData) {
-        // Crear un mapeo manual entre decryptedData.id y firebaseData.key
         const manualMapping = {
             2: "5",  //jacuzzy
             3: "1",  //imperiales
@@ -195,7 +192,7 @@ function initialize() {
             55: "-O1dq3aBROmChleZjPjP", //teleport britanico funky
             56: "-O1tGbbJU-DqRETGreA0", // heladera dorada
             18: "-O14NIUCN5VTZfSXU7xm", // silla funky
-            28: "-O14NIUCN5VTZfSXU7xm", // silla funky
+             28: "-O14NIUCN5VTZfSXU7xm", // silla funky
             29: "-O14NIUCN5VTZfSXU7xm", // silla funky
             30: "-O14NIUCN5VTZfSXU7xm", // silla funky
             31: "-O14NIUCN5VTZfSXU7xm" // silla funky
@@ -239,6 +236,7 @@ function initialize() {
                     var creditUsdPriceHabbo = 0.06899;
                     var creditUsdPriceIlegal = 0.06;
                     var creditUsdPriceHabboEs = 1.72;
+
                     function renderProducts(products) {
                         productContainer.empty();
                         products.forEach(function(item) {
@@ -407,6 +405,19 @@ function initialize() {
                                 success: function(data) {
                                     $('#sort-options').hide();
                                     const decryptedData = decryptData(data.token);
+                                    console.log(decryptedData);
+                                    const datesWithTime = decryptedData.map(item => {
+                                        return item.fecha_precio.replace('T', ' ').replace('.000Z', '');
+                                    });
+                                    const creditsPrice = decryptedData.map(item => {
+                                        return item.precio;
+                                    });
+                                    const vipPrice = decryptedData.map(item => {
+                                        return (item.precio / item.vip_price).toFixed(2);
+                                    });
+                                    // Llamar a la función para mostrar la tabla por defecto
+                                    showTable(decryptedData);
+
                                     searchContainer.hide();
                                     row_explanation_trends.hide();
                                     row_explanation_votes.hide();
@@ -414,76 +425,95 @@ function initialize() {
                                     productContainer.hide();
                                     productHistoryContainer.show();
                                     backButton.show();
-                                    
-                                    var firstRecord = decryptedData[0];
-                                    var imagePath = '';
-                                    if (firstRecord.icon === 'hc') {
-                                        imagePath = `furnis/hc/${firstRecord.name.replace(/ /g, '_')}.png`;
-                                        imageClass = "price-history-img"
-                                    } else if (firstRecord.icon === 'rare') {
-                                        imagePath = `furnis/rares/${firstRecord.name.replace(/ /g, '_')}.png`;
-                                        imageClass = "price-history-img"
-                                    } else if (firstRecord.icon === 'funky') {
-                                        imagePath = `furnis/rares/${firstRecord.name.replace(/ /g, '_')}.png`;
-                                        imageClass = "price-history-img-funky"
-                                    } else if (firstRecord.icon === "mega_rare") {
-                                        imagePath = `furnis/rares/${firstRecord.name.replace(/ /g, '_')}.png`;
-                                        imageClass = "price-history-img"
-                                    }
-                            
-                                    var previousPrice = null;
-                                    var actualPrice = true;
-                                    var historyContent = `
-                                        <h3 class="price_history_content habbo_text_blue" data-i18n="historial_precios">Historial de Precios</h3>
-                                        <div class="price-history-image">
-                                            <img src="${imagePath}" alt="${firstRecord.name}" class="${imageClass}">
-                                        </div>
-                                        <table class="table price_history_content">
-                                            <thead>
-                                                <tr>
-                                                    <th class="habbo_text_blue" data-i18n="historial_fecha">Fecha</th>
-                                                    <th class="habbo_text_blue" data-i18n="historial_nombre">Nombre</th>
-                                                    <th class="habbo_text_blue" data-i18n="historial_precio_credito">Precio <img src="furnis/dinero/credito.png" alt="credito" class="price-icon"></th>
-                                                    <th class="habbo_text_blue" data-i18n="historial_precios_vip">Precio <img src="furnis/dinero/vip.png" alt="vip" class="price-vip"></th>
-                                                    <th class="habbo_text_blue" data-i18n="historial_tendencia">Tendencia</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                ${decryptedData.map((record, index) => {
-                                                    const actualPrice = record.precio;
-                                                    const previousPrice = index > 0 ? decryptedData[index - 1].precio : null;
-                                                    const nextPrice = index < decryptedData.length - 1 ? decryptedData[index + 1].precio : null;
-                                                    var trendIcon = '';
-                                                    
-                                                    if (previousPrice === null || nextPrice === null) {
-                                                        trendIcon = '<img class="equal_price_history" src="./furnis/iconos/equal_price_history.png" alt="equal price">';
-                                                    } else if (actualPrice > previousPrice && actualPrice < nextPrice) {
-                                                        trendIcon = '<img class="down_price_history" src="./furnis/iconos/down_price_history.png" alt="up down price">';
-                                                    } else if (actualPrice < previousPrice && actualPrice > nextPrice) {
-                                                        trendIcon = '<img class="up_price_history" src="./furnis/iconos/up_price_history.png" alt="up price">';
-                                                    } else {
-                                                        trendIcon = '<img class="up_price_history" src="./furnis/iconos/up_price_history.png" alt="up price">';
-                                                    }
-                                                    return `
-                                                        <tr>
-                                                            <td class="online_habbo_text_white">${new Date(record.fecha_precio).toLocaleDateString()}</td>
-                                                            <td class="online_habbo_text_white">${record.name}</td>
-                                                            <td class="online_habbo_text_white">${record.precio}</td>
-                                                            <td class="online_habbo_text_white">${(record.precio / record.vip_price).toFixed(2)}</td>
-                                                            <td class="online_habbo_text_white">${trendIcon}</td>
-                                                        </tr>
-                                                    `;
-                                                }).join('')}
-                                            </tbody>
-                                        </table>
-                                        <p class="price_history_content habbo_text_blue">${firstRecord.descripcion}</p>
-                                    `;
-                                    productHistoryContainer.html(historyContent);
-                                    updateContent();
+
+                                    $('#toggle-view-btn').on('click', function() {
+                                        if ($(this).text() === 'Mostrar Gráfica') {
+                                            $('#price-history-table').hide();
+                                            $('#div_grafica_item').show();
+                                            drawChart(datesWithTime, creditsPrice, vipPrice);
+                                            $(this).text('Mostrar Tabla');
+                                        } else {
+                                            $('#div_grafica_item').hide();
+                                            $('#price-history-table').show();
+                                            $(this).text('Mostrar Gráfica');
+                                        }
+                                    });
                                 }
                             });
                         });
                     });
+
+                    function showTable(decryptedData) {
+                        var firstRecord = decryptedData[0];
+                        var imagePath = '';
+                        if (firstRecord.icon === 'hc') {
+                            imagePath = `furnis/hc/${firstRecord.name.replace(/ /g, '_')}.png`;
+                            imageClass = "price-history-img"
+                        } else if (firstRecord.icon === 'rare') {
+                            imagePath = `furnis/rares/${firstRecord.name.replace(/ /g, '_')}.png`;
+                            imageClass = "price-history-img"
+                        } else if (firstRecord.icon === 'funky') {
+                            imagePath = `furnis/rares/${firstRecord.name.replace(/ /g, '_')}.png`;
+                            imageClass = "price-history-img-funky"
+                        } else if (firstRecord.icon === "mega_rare") {
+                            imagePath = `furnis/rares/${firstRecord.name.replace(/ /g, '_')}.png`;
+                            imageClass = "price-history-img"
+                        }
+        
+                        var historyContent = `
+                            <h3 class="price_history_content habbo_text_blue" data-i18n="historial_precios">Historial de Precios</h3>
+                            <div class="price-history-image">
+                                <img src="${imagePath}" alt="${firstRecord.name}" class="${imageClass}">
+                            </div>
+                            <div>
+                                <button id="toggle-view-btn" class="button_price_history_dinamic price_history_content online_habbo_text_white">Mostrar Gráfica</button>
+                            </div>
+                            <div class="grafic_item" id="div_grafica_item" style="display: none;">
+                                <canvas id="price-history-chart"></canvas>
+                            </div>
+                            <table class="table price_history_content" id="price-history-table">
+                                <thead>
+                                    <tr>
+                                        <th class="habbo_text_blue" data-i18n="historial_fecha">Fecha</th>
+                                        <th class="habbo_text_blue" data-i18n="historial_nombre">Nombre</th>
+                                        <th class="habbo_text_blue" data-i18n="historial_precio_credito">Precio <img src="furnis/dinero/credito.png" alt="credito" class="price-icon"></th>
+                                        <th class="habbo_text_blue" data-i18n="historial_precios_vip">Precio <img src="furnis/dinero/vip.png" alt="vip" class="price-vip"></th>
+                                        <th class="habbo_text_blue" data-i18n="historial_tendencia">Tendencia</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${decryptedData.map((record, index) => {
+                                        const actualPrice = record.precio;
+                                        const previousPrice = index > 0 ? decryptedData[index - 1].precio : null;
+                                        const nextPrice = index < decryptedData.length - 1 ? decryptedData[index + 1].precio : null;
+                                        var trendIcon = '';
+                                        
+                                        if (previousPrice === null || nextPrice === null) {
+                                            trendIcon = '<img class="equal_price_history" src="./furnis/iconos/equal_price_history.png" alt="equal price">';
+                                        } else if (actualPrice > previousPrice && actualPrice < nextPrice) {
+                                            trendIcon = '<img class="down_price_history" src="./furnis/iconos/down_price_history.png" alt="up down price">';
+                                        } else if (actualPrice < previousPrice && actualPrice > nextPrice) {
+                                            trendIcon = '<img class="up_price_history" src="./furnis/iconos/up_price_history.png" alt="up price">';
+                                        } else {
+                                            trendIcon = '<img class="up_price_history" src="./furnis/iconos/up_price_history.png" alt="up price">';
+                                        }
+                                        return `
+                                            <tr>
+                                                <td class="online_habbo_text_white">${new Date(record.fecha_precio).toLocaleDateString()}</td>
+                                                <td class="online_habbo_text_white">${record.name}</td>
+                                                <td class="online_habbo_text_white">${record.precio}</td>
+                                                <td class="online_habbo_text_white">${(record.precio / record.vip_price).toFixed(2)}</td>
+                                                <td class="online_habbo_text_white">${trendIcon}</td>
+                                            </tr>
+                                        `;
+                                    }).join('')}
+                                </tbody>
+                            </table>
+                            <p class="price_history_content habbo_text_blue">${firstRecord.descripcion}</p>
+                        `;
+                        $('#product-history-container').html(historyContent);
+                        updateContent();
+                    }
 
                     backButton.on('click', function() {
                         productHistoryContainer.hide();
@@ -663,4 +693,117 @@ function calculateEquivalent() {
         $('#item-a-price').text('');
         $('#item-b-price').text('');
     }
+}
+
+Chart.defaults.backgroundColor = '#26627D';
+Chart.defaults.borderColor = '#36A2EB';
+Chart.defaults.color = '#FFFFFF';
+
+let chartInstance = null;
+
+function drawChart(labels, creditsPrice, vipPrice) {
+    const ctx = document.getElementById('price-history-chart').getContext('2d');
+
+    // Destruir el gráfico existente antes de crear uno nuevo
+    if (chartInstance) {
+        chartInstance.destroy();
+    }
+
+    const data = {
+        labels: labels,
+        datasets: [
+            {
+                label: 'Precio en Creditos',
+                data: creditsPrice,
+                borderColor: '#DDB81C',
+                backgroundColor: 'rgba(221, 184, 28, 0.8)',
+                fill: false,
+                tension: 1
+            },
+            {
+                label: 'Precio en Vips',
+                data: vipPrice,
+                borderColor: '#3F9317',
+                backgroundColor: 'rgba(63, 147, 23, 0.8)',
+                fill: false,
+                tension: 1
+            }
+        ]
+    };
+
+    const config = {
+        type: 'line',
+        data: data,
+        options: {
+            scales: {
+                x: {
+                    type: 'time',
+                    time: {
+                        unit: 'month',
+                        tooltipFormat: 'PPpp',
+                        displayFormats: {
+                            month: 'MMM yyyy'
+                        }
+                    },
+                    title: {
+                        display: true,
+                        text: 'Months',
+                        color: '#ffffff'
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Value',
+                        color: '#ffffff'
+                    },
+                    ticks: {
+                        callback: function(value, index, values) {
+                            if (values.length > 5) {
+                                const step = Math.ceil(values.length / 5);
+                                if (index % step === 0) {
+                                    return value;
+                                } else {
+                                    return null;
+                                }
+                            }
+                            return value;
+                        }
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    labels: {
+                        color: '#ffffff'
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        title: function(tooltipItems) {
+                            return tooltipItems[0].label;
+                        },
+                        label: function(tooltipItem) {
+                            return `${tooltipItem.dataset.label}: ${tooltipItem.raw}`;
+                        }
+                    },
+                    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+                    titleColor: '#ffffff',
+                    bodyColor: '#ffffff'
+                }
+            }
+        },
+        plugins: [{
+            beforeDraw: function(chart) {
+                const ctx = chart.ctx;
+                ctx.save();
+                ctx.fillStyle = '#26627D';
+                ctx.globalCompositeOperation = 'destination-over';
+                ctx.fillRect(0, 0, chart.width, chart.height);
+                ctx.restore();
+            }
+        }]
+    };
+
+    chartInstance = new Chart(ctx, config);
 }

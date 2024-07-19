@@ -46,6 +46,7 @@ $(document).ready(function() {
     $.getScript('sorteos.js', function() {});
     $.getScript('logic_script.js', function() {});
     $.getScript('mts.js', function() {});
+    $.getScript('grafics.js', function() {});
 
     $('.menu-link').on('click', function(e) {
         e.preventDefault();
