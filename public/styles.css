@@ -1029,3 +1029,7 @@ animation: rainbow-border 5s linear infinite;
     margin-bottom: 10px;
     display: flow-root;
 }
+
+.image_mt{
+    width: 100%;
+}
