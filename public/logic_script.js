@@ -262,6 +262,7 @@ function initialize() {
                                             <div class="price-sections">
                                                 <div class="section ingame">
                                                     <div class="row price_trades_habbo_origins">
+                                                        <p class="online_habbo_text_white">Origins .ES</p>
                                                         <p class="card-text text-price">
                                                             <img src="furnis/dinero/credito.png" alt="credito" class="price-icon-principal" data-toggle="tooltip" data-i18n="[title]titulo_creditos" title="Precio en Créditos">${item.price}
                                                             <img src="furnis/dinero/vip.png" alt="vip" class="price-vip-principal" data-toggle="tooltip" data-i18n="[title]titulo_vips" title="Precio en Vips">${(item.price / item.vip_price).toFixed(2)}
@@ -276,7 +277,6 @@ function initialize() {
                                                         <div class="row">
                                                             <div class="col-md-6 subsection origins">
                                                                 <div>
-                                                                    <p class="online_habbo_text_white">Origins .ES</p>
                                                                     <div>
                                                                         <img src="furnis/iconos/icon_habbonation.png" alt="habbonation icon" class="habbonation_club_icon" data-toggle="tooltip" title="habbonation">
                                                                             <br>
