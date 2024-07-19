@@ -717,6 +717,10 @@ function drawChart(labels, creditsPrice, vipPrice) {
                 data: creditsPrice,
                 borderColor: '#DDB81C',
                 backgroundColor: 'rgba(221, 184, 28, 0.8)',
+                pointBackgroundColor: '#DDB81C',
+                pointBorderColor: '#ffffff',
+                pointBorderWidth: 2,
+                pointRadius: 5,
                 fill: false,
                 tension: 1
             },
@@ -725,8 +729,12 @@ function drawChart(labels, creditsPrice, vipPrice) {
                 data: vipPrice,
                 borderColor: '#3F9317',
                 backgroundColor: 'rgba(63, 147, 23, 0.8)',
+                pointBackgroundColor: '#3F9317',
+                pointBorderColor: '#ffffff',
+                pointBorderWidth: 2,
+                pointRadius: 5,
                 fill: false,
-                tension: 1
+                tension: 0.1
             }
         ]
     };
