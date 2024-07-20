@@ -262,11 +262,13 @@ function initialize() {
                                             <div class="price-sections">
                                                 <div class="section ingame">
                                                     <div class="row price_trades_habbo_origins">
-                                                        <p class="online_habbo_text_white">Origins .ES</p>
-                                                        <p class="card-text text-price">
-                                                            <img src="furnis/dinero/credito.png" alt="credito" class="price-icon-principal" data-toggle="tooltip" data-i18n="[title]titulo_creditos" title="Precio en Créditos">${item.price}
-                                                            <img src="furnis/dinero/vip.png" alt="vip" class="price-vip-principal" data-toggle="tooltip" data-i18n="[title]titulo_vips" title="Precio en Vips">${(item.price / item.vip_price).toFixed(2)}
-                                                        </p>
+                                                        <div class="col-12">
+                                                            <p class="online_habbo_text_white">Origins .ES</p>
+                                                            <p class="card-text text-price">
+                                                                <img src="furnis/dinero/credito.png" alt="credito" class="price-icon-principal" data-toggle="tooltip" data-i18n="[title]titulo_creditos" title="Precio en Créditos">${item.price}
+                                                                <img src="furnis/dinero/vip.png" alt="vip" class="price-vip-principal" data-toggle="tooltip" data-i18n="[title]titulo_vips" title="Precio en Vips">${(item.price / item.vip_price).toFixed(2)}
+                                                            </p>
+                                                        </div>
                                                     </div>
                                                     <div class="row">
                                                         <button class="boton_collapse_otros_catalogos collapse_text_white" type="button" data-toggle="collapse" data-target="#${collapseId}" aria-expanded="false" aria-controls="${collapseId}">
