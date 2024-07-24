@@ -1051,3 +1051,31 @@ animation: rainbow-border 5s linear infinite;
     border-top: 1px solid black;
     margin-top: 10px;
 }
+
+.contador_div{
+    background: #FCCB04;
+    padding: 5px;
+    text-align: center;
+    font-weight: bold;
+    color: #A67600;
+    border: 6px solid #FCCB04;
+    width: 200px;
+    border-radius: 15px;
+}
+
+.contador_title{
+    background-color: #FCCB04;
+}
+
+.contador_text{
+    background-color: #444;
+    color: white;
+    margin-bottom: 0px;
+}
+
+.row_contador{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding-right: 30px;
+}

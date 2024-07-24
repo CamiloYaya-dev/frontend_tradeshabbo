@@ -5,7 +5,7 @@ import fs from 'fs';
 import sequelize from './config/database.js';
 import Image from './models/Image.js';
 import PriceHistory from './models/PriceHistory.js';
-import { Sequelize, Op, QueryTypes } from 'sequelize';
+import { Sequelize, Op } from 'sequelize';
 import axios from 'axios';
 import populateDatabase from './populateDatabase.js';
 import { check, validationResult } from 'express-validator';
@@ -13,7 +13,7 @@ import crypto from 'crypto';
 import moment from 'moment';
 import CryptoJS from 'crypto-js';
 import fetch from 'node-fetch';
-import rateLimit from 'express-rate-limit'; // Import the rate limiting middleware
+import rateLimit from 'express-rate-limit';
 import session from 'express-session';
 import { initializeApp } from 'firebase/app';
 import { getDatabase, ref, get, child } from 'firebase/database';
@@ -21,13 +21,14 @@ import { getDatabase, ref, get, child } from 'firebase/database';
 const app = express();
 const port = 3000;
 
-const SECRET_KEY = '5229c0e71dddc98e14e7053988c57d20901e060b7d713ed4ccd5656c9192f47f'; // Replace with your actual secret key
-const IPINFO_API_KEY = '206743870a9fbf'; // Reemplaza con tu clave API de ipinfo.io
+const SECRET_KEY = '5229c0e71dddc98e14e7053988c57d20901e060b7d713ed4ccd5656c9192f47f';
+const IPINFO_API_KEY = '206743870a9fbf';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const visitCountPath = path.join(__dirname, 'public', 'visitCount.json')
 
-app.enable('trust proxy'); // Allows Accurate Usage of req.ip
+app.enable('trust proxy');
 
 // Configura el middleware de sesión
 app.use(session({
@@ -37,23 +38,16 @@ app.use(session({
     cookie: { secure: false } // Asegúrate de configurar 'secure' en true si usas HTTPS
 }));
 
-// Middleware para analizar cuerpos de solicitudes JSON
 app.use(express.json());
-
-// Middleware para analizar datos de formulario
 app.use(express.urlencoded({ extended: true }));
 
-// Configura el limitador de tasa
 const limiter = rateLimit({
     windowMs: 60 * 1000, // 1 minuto
-    max: 1000, // Limita cada IP a 10 solicitudes por ventana de 1 minuto
+    max: 1000,
     message: "Too many requests from this IP, please try again later.",
 });
-
-// Aplica el limitador de tasa a todas las solicitudes
 app.use(limiter);
 
-// Middleware para evitar inyección SQL
 function sqlInjectionMiddleware(req, res, next) {
     const forbiddenWords = ['UPDATE', 'DELETE', 'INSERT', 'SELECT', 'DROP', 'ALTER'];
     let bodyString = JSON.stringify(req.body).toUpperCase();
@@ -68,7 +62,6 @@ function sqlInjectionMiddleware(req, res, next) {
 
 app.use(sqlInjectionMiddleware);
 
-// Middleware para verificar IPs usando ipinfo.io
 async function checkIPWithIpinfo(ip) {
     const url = `https://ipinfo.io/${ip}?token=${IPINFO_API_KEY}`;
     try {
@@ -85,40 +78,24 @@ async function isProxy(ip) {
     const ipInfo = await checkIPWithIpinfo(ip);
     if (!ipInfo) return false;
 
-    // Chequear campos relevantes en la respuesta de ipinfo
-    if (ipInfo.bogon) {
-        return true;
-    }
-    if (ipInfo.proxy || ipInfo.vpn || ipInfo.tor || ipInfo.relay || ipInfo.hosting) {
-        return true;
-    }
-    // Chequear el tipo de compañía, si es de tipo 'hosting' también puede ser indicativo de proxy/VPN
-    if (ipInfo.company && ipInfo.company.type === 'hosting') {
-        return true;
-    }
-    // Chequear el tipo de ASN, si es de tipo 'hosting' también puede ser indicativo de proxy/VPN
-    if (ipInfo.asn && ipInfo.asn.type === 'hosting') {
-        return true;
-    }
+    if (ipInfo.bogon) return true;
+    if (ipInfo.proxy || ipInfo.vpn || ipInfo.tor || ipInfo.relay || ipInfo.hosting) return true;
+    if (ipInfo.company && ipInfo.company.type === 'hosting') return true;
+    if (ipInfo.asn && ipInfo.asn.type === 'hosting') return true;
     return false;
 }
 
-// Ruta para verificar IP al cargar el home
 app.get('/verify-ip', async (req, res) => {
     let ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-    // Tomar la primera IP de la lista si hay múltiples IPs
-    if (ip.includes(',')) {
-        ip = ip.split(',')[0].trim();
-    }
-    console.log(`Checking IP: ${ip}`); // Log para verificar qué IP se está checando
+    if (ip.includes(',')) ip = ip.split(',')[0].trim();
+    console.log(`Checking IP: ${ip}`);
     const ipInfo = await checkIPWithIpinfo(ip);
-    console.log(`IP Info: ${JSON.stringify(ipInfo)}`); // Log para verificar la respuesta de ipinfo.io
+    console.log(`IP Info: ${JSON.stringify(ipInfo)}`);
 
     /*if (await isProxy(ip)) {
         return res.status(403).json({ error: 'Access forbidden: Proxy, VPN or Tor detected' });
     }*/
 
-    // Guardar en sesión que la IP ha sido verificada
     req.session.ipVerified = true;
     res.status(200).json({ message: 'IP verified successfully' });
 });
@@ -134,7 +111,6 @@ function generateApiKey() {
 
 let { apiKey, expirationDate } = generateApiKey();
 
-// Middleware de verificación de API Key con fecha de caducidad
 function apiKeyMiddleware(req, res, next) {
     const providedApiKey = req.headers['x-api-key'];
     const currentDate = new Date().toISOString();
@@ -145,13 +121,11 @@ function apiKeyMiddleware(req, res, next) {
     next();
 }
 
-// Middleware para añadir el header ngrok-skip-browser-warning
 app.use((req, res, next) => {
     res.setHeader('ngrok-skip-browser-warning', 'true');
     next();
 });
 
-// Ruta para obtener la API Key
 app.get('/api-key', (req, res) => {
     const newKeyData = generateApiKey();
     apiKey = newKeyData.apiKey;
@@ -160,72 +134,21 @@ app.get('/api-key', (req, res) => {
     res.json({ token: encryptData(response) });
 });
 
-// Aplicar el middleware solo a las rutas que requieren la API Key
 app.use('/latest-price-update', apiKeyMiddleware);
 app.use('/images', apiKeyMiddleware);
 app.use('/price-history/:productId', apiKeyMiddleware);
 app.use('/images/:id/vote', apiKeyMiddleware);
 
-async function getCatalog() {
-    try {
-        const response_catalog = await axios.get('https://airedale-summary-especially.ngrok-free.app/habbo-catalog')
-            .catch(error => {
-                console.warn('Error fetching catalog, using local file:', error.message);
-                return null; // Retorna null en caso de error
-            });
-
-        if (response_catalog) {
-            const prices = response_catalog.data;
-            // Guardar el JSON en la ruta especificada
-            const jsonContent_catalog = JSON.stringify(prices, null, 2);
-            fs.writeFileSync(path.join(__dirname, 'public', 'furnis', 'precios', 'precios.json'), jsonContent_catalog, 'utf8');
-        }
-
-        const response_prices = await axios.get('https://airedale-summary-especially.ngrok-free.app/habbo-price-history')
-            .catch(error => {
-                console.warn('Error fetching price history, using local file:', error.message);
-                return null; // Retorna null en caso de error
-            });
-
-        if (response_prices) {
-            const pricesHistory = response_prices.data;
-            // Guardar el JSON en la ruta especificada
-            const jsonContent_pricesHistory = JSON.stringify(pricesHistory, null, 2);
-            fs.writeFileSync(path.join(__dirname, 'public', 'furnis', 'precios', 'precios_historico.json'), jsonContent_pricesHistory, 'utf8');
-        }
-
-        await populateDatabase(); // Asegúrate de esperar a que la base de datos se poble
-    } catch (error) {
-        console.error('Error fetching and storing prices:', error);
-    }
+function encryptData(data) {
+    return CryptoJS.AES.encrypt(JSON.stringify(data), SECRET_KEY).toString();
 }
 
-async function fetchAndStoreHabboOnline() {
-    try {
-        const response_online = await axios.get('https://airedale-summary-especially.ngrok-free.app/habbo-online')
-            .catch(error => {
-                console.warn('Error fetching habbo online data, using local file:', error.message);
-                return null; // Retorna null en caso de error
-            });
-
-        if (response_online) {
-            const onlineData = response_online.data;
-            // Guardar el JSON en la ruta especificada
-            const jsonContent_online = JSON.stringify(onlineData, null, 2);
-            fs.writeFileSync(path.join(__dirname, 'public', 'furnis', 'precios', 'habbo_online.json'), jsonContent_online, 'utf8');
-        }
-    } catch (error) {
-        console.error('Error fetching and storing habbo online data:', error);
-    }
-}
-
-// Middleware para servir archivos estáticos
 app.use(express.static('public'));
 
 async function getVipPrice() {
     try {
         const vipItem = await Image.findOne({ where: { name: 'El Club Sofa' } });
-        return vipItem ? vipItem.price : null; // Asumimos que el campo de precio es 'price'
+        return vipItem ? vipItem.price : null;
     } catch (error) {
         console.error('Error retrieving VIP price:', error);
         return null;
@@ -235,7 +158,7 @@ async function getVipPrice() {
 async function getVipPriceOnDate(date) {
     try {
         const endOfDay = new Date(date);
-        endOfDay.setUTCHours(23, 59, 59, 999); // Obtener solo la fecha en formato YYYY-MM-DD
+        endOfDay.setUTCHours(23, 59, 59, 999);
         const vipItemHistory = await PriceHistory.findOne({
             where: {
                 productId: '1',
@@ -252,23 +175,94 @@ async function getVipPriceOnDate(date) {
     }
 }
 
-// Encriptar los datos antes de enviarlos al cliente
-function encryptData(data) {
-    return CryptoJS.AES.encrypt(JSON.stringify(data), SECRET_KEY).toString();
+async function getCatalog() {
+    try {
+        const response_catalog = await axios.get('https://airedale-summary-especially.ngrok-free.app/habbo-catalog')
+            .catch(error => {
+                console.warn('Error fetching catalog, using local file:', error.message);
+                return null;
+            });
+
+        if (response_catalog) {
+            const prices = response_catalog.data;
+            const jsonContent_catalog = JSON.stringify(prices, null, 2);
+            fs.writeFileSync(path.join(__dirname, 'public', 'furnis', 'precios', 'precios.json'), jsonContent_catalog, 'utf8');
+        }
+
+        const response_prices = await axios.get('https://airedale-summary-especially.ngrok-free.app/habbo-price-history')
+            .catch(error => {
+                console.warn('Error fetching price history, using local file:', error.message);
+                return null;
+            });
+
+        if (response_prices) {
+            const pricesHistory = response_prices.data;
+            const jsonContent_pricesHistory = JSON.stringify(pricesHistory, null, 2);
+            fs.writeFileSync(path.join(__dirname, 'public', 'furnis', 'precios', 'precios_historico.json'), jsonContent_pricesHistory, 'utf8');
+        }
+
+        await populateDatabase();
+    } catch (error) {
+        console.error('Error fetching and storing prices:', error);
+    }
 }
+
+async function fetchAndStoreHabboOnline() {
+    try {
+        const response_online = await axios.get('https://airedale-summary-especially.ngrok-free.app/habbo-online')
+            .catch(error => {
+                console.warn('Error fetching habbo online data, using local file:', error.message);
+                return null;
+            });
+
+        if (response_online) {
+            const onlineData = response_online.data;
+            const jsonContent_online = JSON.stringify(onlineData, null, 2);
+            fs.writeFileSync(path.join(__dirname, 'public', 'furnis', 'precios', 'habbo_online.json'), jsonContent_online, 'utf8');
+        }
+    } catch (error) {
+        console.error('Error fetching and storing habbo online data:', error);
+    }
+}
+
+function updateVisitCount() {
+    fs.readFile(visitCountPath, 'utf8', (err, data) => {
+        if (err) {
+            if (err.code === 'ENOENT') {
+                fs.writeFileSync(visitCountPath, JSON.stringify({ visits: 0 }), 'utf8');
+                data = JSON.stringify({ visits: 0 });
+            } else {
+                console.error('Error reading visit count:', err);
+                return;
+            }
+        }
+
+        const visitData = JSON.parse(data || '{}');
+        visitData.visits = (visitData.visits || 0) + 1;
+
+        fs.writeFile(visitCountPath, JSON.stringify(visitData), 'utf8', (err) => {
+            if (err) {
+                console.error('Error writing visit count:', err);
+            }
+        });
+    });
+}
+
+app.use((req, res, next) => {
+    next();
+});
 
 app.get('/images', async (req, res) => {
     try {
-        // Verificar si la IP ya ha sido verificada
         if (!req.session.ipVerified) {
             return res.status(403).json({ error: 'IP not verified' });
         }
 
-        // Obtener la fecha actual
+        await updateVisitCount();
+
         const today = moment().tz('America/Argentina/Buenos_Aires').set({hour: 23, minute: 59, second: 59, millisecond: 999});
         const startDate = today.clone().subtract(7, 'days');
 
-        // Consulta optimizada para obtener los últimos precios
         const priceHistories = await PriceHistory.findAll({
             where: {
                 fecha_precio: {
@@ -279,15 +273,10 @@ app.get('/images', async (req, res) => {
             order: [['productId'], ['fecha_precio', 'DESC']]
         });
 
-        // Obtener todas las imágenes
         const images = await Image.findAll();
-
-        // Obtener el precio VIP una sola vez
         const vip_price = await getVipPrice();
 
-        // Crear un arreglo para almacenar las imágenes con sus últimos precios y estatus calculado
         const imagesWithDetails = images.map(image => {
-            // Filtrar el historial de precios correspondiente a la imagen actual
             const priceHistory = priceHistories.filter(ph => ph.productId === image.id);
             let status = '';
             if (priceHistory.length > 1) {
@@ -301,23 +290,19 @@ app.get('/images', async (req, res) => {
                 }
             }
 
-            // Devolver la imagen con el precio VIP y el estatus calculado
             return {
-                ...image.toJSON(), // Convertir la instancia de Sequelize a objeto JSON
+                ...image.toJSON(),
                 vip_price: vip_price,
                 status: status,
-                fecha_precio: priceHistory[0] ? priceHistory[0].fecha_precio : null, // Añadir la fecha del precio más reciente
-                precio: priceHistory[0] ? priceHistory[0].precio : null // Añadir el precio más reciente
+                fecha_precio: priceHistory[0] ? priceHistory[0].fecha_precio : null,
+                precio: priceHistory[0] ? priceHistory[0].precio : null
             };
         });
 
-        // Ordenar las imágenes: primero los 'hot', luego por la fecha del historial de precios más reciente
         imagesWithDetails.sort((a, b) => {
-            // Primero, ordenar por el campo 'hot'
             if (a.hot == 1 && b.hot != 1) return -1;
             if (a.hot != 1 && b.hot == 1) return 1;
 
-            // Si ambos son 'hot' o ambos no son 'hot', ordenar por la fecha del historial de precios
             const dateA = a.fecha_precio ? new Date(a.fecha_precio) : new Date(0);
             const dateB = b.fecha_precio ? new Date(b.fecha_precio) : new Date(0);
             return dateB - dateA;
@@ -337,7 +322,7 @@ app.get('/price-history/:productId', async (req, res) => {
             where: { productId },
             include: [{
                 model: Image,
-                as: 'image', // Especifica el alias correcto aquí
+                as: 'image',
                 attributes: ['name', 'icon', 'descripcion']
             }]
         });
@@ -348,9 +333,9 @@ app.get('/price-history/:productId', async (req, res) => {
                 productId: record.productId,
                 fecha_precio: record.fecha_precio,
                 precio: record.precio,
-                name: record.image ? record.image.name : null, // Usar el alias correcto aquí
-                icon: record.image ? record.image.icon : null, // Usar el alias correcto aquí
-                descripcion: record.image ? record.image.descripcion : null, // Usar el alias correcto aquí
+                name: record.image ? record.image.name : null,
+                icon: record.image ? record.image.icon : null,
+                descripcion: record.image ? record.image.descripcion : null,
                 vip_price: vipPriceOnDate
             };
         }));
@@ -372,19 +357,18 @@ app.post('/images/:id/vote', [
 
     try {
         const imageId = req.params.id;
-        const { voteType } = req.body; // 'upvote' or 'downvote'
+        const { voteType } = req.body;
         const forwardedIps = req.headers['x-forwarded-for'];
         let ip = '';
 
         console.log(ipVotes);
         if (forwardedIps) {
             const ipsArray = forwardedIps.split(',').map(ip => ip.trim());
-            ip = `${ipsArray[0] || ''}-${ipsArray[1] || ''}`.trim(); // Combinar la primera y la segunda IP
+            ip = `${ipsArray[0] || ''}-${ipsArray[1] || ''}`.trim();
         } else {
             ip = req.connection.remoteAddress;
         }
 
-        // Verificar si la IP ya ha votado
         if (ipVotes[ip] && ipVotes[ip].includes(imageId)) {
             return res.status(403).json({ error: 'Ya has votado en este artículo' });
         }
@@ -403,7 +387,6 @@ app.post('/images/:id/vote', [
 
         await image.save();
 
-        // Registrar la IP que ha votado
         if (!ipVotes[ip]) {
             ipVotes[ip] = [];
         }
@@ -433,18 +416,17 @@ app.post('/images/:id/vote-belief', [
 
     try {
         const imageId = req.params.id;
-        const { voteType } = req.body; // 'upprice' or 'downprice'
+        const { voteType } = req.body;
         const forwardedIps = req.headers['x-forwarded-for'];
         let ip = '';
 
         if (forwardedIps) {
             const ipsArray = forwardedIps.split(',').map(ip => ip.trim());
-            ip = `${ipsArray[0] || ''}-${ipsArray[1] || ''}`.trim(); // Combinar la primera y la segunda IP
+            ip = `${ipsArray[0] || ''}-${ipsArray[1] || ''}`.trim();
         } else {
             ip = req.connection.remoteAddress;
         }
 
-        // Verificar si la IP ya ha votado
         if (ipVotes_belief[ip] && ipVotes_belief[ip].includes(imageId)) {
             return res.status(403).json({ error: 'Ya has votado en este artículo' });
         }
@@ -463,7 +445,6 @@ app.post('/images/:id/vote-belief', [
 
         await image.save();
 
-        // Registrar la IP que ha votado
         if (!ipVotes_belief[ip]) {
             ipVotes_belief[ip] = [];
         }

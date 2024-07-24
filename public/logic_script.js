@@ -78,6 +78,14 @@ function initialize() {
         });
     }
 
+    function loadContador(){
+        $.getJSON('../visitCount.json', function(data) {
+            $('#contador').text(data.visits);
+        }).fail(function() {
+            $('#contador').text('En mantenimiento');
+        });
+    }
+
     loadOnlineCount();
     setInterval(loadOnlineCount, 3600000);
 
@@ -161,6 +169,7 @@ function initialize() {
     }
 
     function mapHabbonation(decryptedData, firebaseData) {
+        console.log(firebaseData)
         const manualMapping = {
             2: "5",  //jacuzzy
             3: "1",  //imperiales
@@ -203,7 +212,7 @@ function initialize() {
             if (itemId) {
                 const matchingItem = firebaseData[itemId];
                 if (matchingItem) {
-                    if (itemId === "11" || itemId === "12") {
+                    if ((matchingItem.id === "11" || matchingItem.id === "12")) {
                         decryptedItem.habbonation = parseFloat(matchingItem.price) / 5;
                     } else {
                         decryptedItem.habbonation = parseFloat(matchingItem.price);
@@ -224,6 +233,7 @@ function initialize() {
                 type: 'GET',
                 headers: { 'x-api-key': apiKey },
                 success: function(data) {
+                    loadContador();
                     const decryptedData = decryptData(data.token);
                     var productContainer = $('#product-container');
                     var productHistoryContainer = $('#product-history-container');
