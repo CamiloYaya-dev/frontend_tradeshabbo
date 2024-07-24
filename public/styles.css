@@ -1079,3 +1079,12 @@ animation: rainbow-border 5s linear infinite;
     align-items: flex-end;
     padding-right: 30px;
 }
+
+.olimpiadas_imagen{
+    width: 650px;
+}
+
+.modal_olimpiadas{
+    width: 715px;
+    max-width: 715px;
+}
