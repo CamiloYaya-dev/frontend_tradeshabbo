@@ -170,7 +170,6 @@ function initialize() {
     }
 
     function mapHabbonation(decryptedData, firebaseData) {
-        console.log(firebaseData)
         const manualMapping = {
             2: "5",  //jacuzzy
             3: "1",  //imperiales
@@ -420,7 +419,6 @@ function initialize() {
                                 success: function(data) {
                                     $('#sort-options').hide();
                                     const decryptedData = decryptData(data.token);
-                                    console.log(decryptedData);
                                     const datesWithTime = decryptedData.map(item => {
                                         return item.fecha_precio.replace('T', ' ').replace('.000Z', '');
                                     });
