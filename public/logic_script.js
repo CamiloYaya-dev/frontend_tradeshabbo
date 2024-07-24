@@ -141,11 +141,12 @@ function initialize() {
             48: 16, //alfombra funky
             49: 16, //alfombra funky
             51: 17, //almo purpura
-            53: 18, //guirnalda morada
-            52: 19, //guirnalda verde
-            54: 20, //egg lila
-            55: 21, //teleport britanico funky
-            56: 23 // heladera dorada
+            53: 22, //guirnalda morada
+            52: 23, //guirnalda verde
+            54: 18, //egg lila
+            55: 20, //teleport britanico funky
+            56: 24, // heladera dorada
+            104: 25 // humared
         };
     
         decryptedData.forEach(decryptedItem => {
@@ -153,7 +154,7 @@ function initialize() {
             if (itemId) {
                 const matchingItem = itemData.find(item => item.id === itemId);
                 if (matchingItem) {
-                    if(matchingItem.id === 11 || matchingItem.id === 12){
+                    if(itemId.id === 11 || itemId.id === 12){
                         decryptedItem.traders_club = matchingItem.hc_val / 5;
                     }else{
                         decryptedItem.traders_club = matchingItem.hc_val;
@@ -201,7 +202,7 @@ function initialize() {
             55: "-O1dq3aBROmChleZjPjP", //teleport britanico funky
             56: "-O1tGbbJU-DqRETGreA0", // heladera dorada
             18: "-O14NIUCN5VTZfSXU7xm", // silla funky
-             28: "-O14NIUCN5VTZfSXU7xm", // silla funky
+            28: "-O14NIUCN5VTZfSXU7xm", // silla funky
             29: "-O14NIUCN5VTZfSXU7xm", // silla funky
             30: "-O14NIUCN5VTZfSXU7xm", // silla funky
             31: "-O14NIUCN5VTZfSXU7xm" // silla funky
