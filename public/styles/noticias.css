@@ -1,0 +1,14 @@
+@media (max-width: 768px) {
+    .noticia_div {
+        text-align: center;
+    }
+
+    .noticia_imagen_resumida {
+        width: 50%;
+        margin: 0 auto;
+    }
+
+    .icon_consola{
+        width: 50%;
+    }
+}

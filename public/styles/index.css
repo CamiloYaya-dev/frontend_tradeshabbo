@@ -1,0 +1,55 @@
+/* Estilos adicionales para la versión móvil */
+@media (max-width: 768px) {
+    .sprite_trades_habbo_origins {
+        width: 300px;
+        height: auto;
+        margin: 0 auto;
+        float: none;
+        padding-right: 0px;
+    }
+    .contador_div {
+        max-width: 200px;
+        margin: 0 auto;
+        padding: 10px;
+    }
+    .navbar-nav {
+        flex-direction: column;
+        align-items: center;
+    }
+    .navbar_item {
+        margin: 5px 0;
+    }
+
+    .row_contador{
+        padding-right: 0px;
+        padding-top: 0px;
+    }
+
+    .div_filtros{
+        padding-top: 15px
+    }
+
+    .row_lenguage{
+        padding-top: 0px;
+        margin-bottom: 15px;
+    }
+    .select_lenguage{
+        width: 100% !important;
+        height: auto;
+    }
+
+    .select_lenguage:focus{
+        width: 100% !important;
+        height: auto;
+    }
+
+    .div_select_lenguage{
+        padding-left: 15px;
+    }
+    .navbar-nav {
+        flex-direction: column;
+    }
+    .nav-item {
+        width: 100%;
+    }
+}

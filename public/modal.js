@@ -1,4 +1,3 @@
-// Mostrar imagen en un modal
 $('body').append(`
     <div class="modal" id="priceGuidelineModal" tabindex="-1" role="dialog" aria-labelledby="priceGuidelineModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal_olimpiadas" role="document">
@@ -10,8 +9,13 @@ $('body').append(`
                     </button>
                 </div>
                 <div class="modal-body text-center">
-                    <p class="online_habbo_text_white_fz_15">Gran Evento en Habbo Origins, mas informacion en el servidor de Discord <strong class="alerta_lloron"><a href="https://discord.com/channels/1257448055050080297/1258417994543927338/1265701053341503540" target="_blank">DANDO CLICK AQUI</a></strong>
-                    <img id="noticiaModalImage" src="./olimpiadas_habbo.png" alt="" class="img-fluid mb-3 olimpiadas_imagen">
+                    <p class="online_habbo_text_white_fz_15">
+                        Gran Evento en Habbo Origins, más información en el servidor de Discord 
+                        <strong class="alerta_lloron">
+                            <a href="https://discord.com/channels/1257448055050080297/1258417994543927338/1265701053341503540" target="_blank">DANDO CLICK AQUÍ</a>
+                        </strong>
+                    </p>
+                    <img id="noticiaModalImage" src="./olimpiadas_habbo.png" alt="Evento Habbo Origins" class="img-fluid mb-3 olimpiadas_imagen">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>

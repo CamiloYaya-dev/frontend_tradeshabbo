@@ -144,6 +144,8 @@ main.container.master-trades-bg {
 
 .sprite_trades_habbo_origins{
     width: auto;
+    float: inline-end;
+    padding-right: 50px;
 }
 
 .header, .main, .footer {
@@ -452,6 +454,13 @@ footer {
     padding: 12px;
     font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
     text-align: center;
+}
+
+.div_calculador_tradeos{
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 
 .img_calculador_tradeos { 
@@ -767,6 +776,7 @@ audio::-webkit-media-controls-panel {
 
 .row_lenguage{
     padding-top: 20px;
+    margin-bottom: 0px;
 }
 
 .select_lenguage{
@@ -1078,6 +1088,7 @@ animation: rainbow-border 5s linear infinite;
     justify-content: flex-end;
     align-items: flex-end;
     padding-right: 30px;
+    padding-top: 20px;
 }
 
 .olimpiadas_imagen{
@@ -1087,4 +1098,16 @@ animation: rainbow-border 5s linear infinite;
 .modal_olimpiadas{
     width: 715px;
     max-width: 715px;
+}
+
+.div_filtros{
+    padding-top: 0px
+}
+
+.td-in-mobile{
+    display: none;
+}
+
+.td-no-mobile{
+    display: block;
 }

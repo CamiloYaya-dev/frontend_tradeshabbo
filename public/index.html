@@ -63,6 +63,12 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles/index.css">
+    <link rel="stylesheet" href="styles/col_izquierda_index.css">
+    <link rel="stylesheet" href="styles/price-history.css">
+    <link rel="stylesheet" href="styles/noticias.css">
+    <link rel="stylesheet" href="styles/calculador_trades.css">
+    <link rel="stylesheet" href="styles/modal.css">
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <link rel="apple-touch-icon" sizes="180x180" href="favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon.ico">
@@ -77,12 +83,11 @@
 </head>
 <body>
     <header class="bg-dark text-white text-center py-3 header-page">
-        <div class="row">
-            <div class="col-4"></div>
-            <div class="col-4">
+        <div class="row align-items-center">
+            <div class="col-md-8 col-sm-12 text-center text-md-left mb-3 mb-md-0">
                 <img src="furnis/iconos/trades_habbo_origins.png" class="sprite_trades_habbo_origins" alt="Logo de Trades Habbo Origins">
             </div>
-            <div class="col-4 row_contador">
+            <div class="col-md-4 col-sm-12 text-center mb-3 mb-md-0 row_contador">
                 <div class="contador_div font-habbo-class">
                     <div class="contador_title">
                         Contador de Visitas
@@ -91,10 +96,12 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-3"></div>
-            <div class="col-6">
-                <nav class="navbar navbar-expand-lg">
+        <div class="row mt-3">
+            <div class="col-md-12 col-d-12">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav mx-auto">
                             <li class="nav-item navbar_item">
@@ -109,19 +116,19 @@
                             <li class="nav-item navbar_item">
                                 <a class="habbo_text_blue menu-link" href="#" data-section="sorteos" data-i18n="sorteos">Sorteos</a>
                             </li>
-                            <li class="nav-item navbar_item">
+                            <li class="nav-item navbar_item d-none d-md-block">
                                 <a class="habbo_text_blue menu-link" href="#" data-section="master_trades" data-i18n="master_trades">Master Trades</a>
                             </li>
                         </ul>
                     </div>
                 </nav>
             </div>
-            <div class="col-3"></div>
         </div>
     </header>
     <main class="container my-4">
         <div class="row">
-            <div class="col-md-2 column">
+            <div class="col-md-2 column d-none d-md-block">
+                <!-- Esta sección no se mostrará en dispositivos móviles -->
                 <div class="row row_sprite_hotel_origins">
                     <img src="furnis/iconos/sprite_hotel_origins.png" class="sprite_hotel_origins" alt="Icono del Hotel Origins">
                 </div>
@@ -130,9 +137,7 @@
                         <div class="online_users example_row">
                             <div class="online_users_content">
                                 <p class="habbo_text_blue ng-binding" data-i18n="precios_actualizados_el">Precios actualizados el</p>
-                                <p class="online_habbo_text_white_fz_20 ng-binding" id="last_price_updated">
-                                    
-                                </p>
+                                <p class="online_habbo_text_white_fz_20 ng-binding" id="last_price_updated"></p>
                             </div>
                         </div>
                     </div>
@@ -140,7 +145,9 @@
                         <div class="online_users example_row" id="row_explanation_trends">
                             <div class="online_users_content">
                                 <p class="habbo_text_blue ng-binding" data-i18n="explicacion_precios">Explicacion Precios</p>
-                                <p class="online_habbo_text_white_fz_12" data-i18n="explicacion_precios_p1">Debido a algunos usuarios que se dedican solo a difamar la página web porque les molesta no poder seguir estafando a la gente con precios ridículos, necesito aclarar que los precios <strong class="alerta_lloron">SON SOLO UNA GUÍA</strong> basada en mi criterio. <strong class="alerta_lloron">Ustedes, la comunidad, son los ÚNICOS QUE DECIDEN CUÁNTO VALE CADA COSA.</strong></p>
+                                <p class="online_habbo_text_white_fz_12" data-i18n="explicacion_precios_p1">
+                                    Debido a algunos usuarios que se dedican solo a difamar la página web porque les molesta no poder seguir estafando a la gente con precios ridículos, necesito aclarar que los precios <strong class="alerta_lloron">SON SOLO UNA GUÍA</strong> basada en mi criterio. <strong class="alerta_lloron">Ustedes, la comunidad, son los ÚNICOS QUE DECIDEN CUÁNTO VALE CADA COSA.</strong>
+                                </p>
                                 <p class="online_habbo_text_white_fz_12" data-i18n="explicacion_precios_p2"><strong class="alerta_lloron">RECUERDA:</strong> Son tus furnis, tú decides cuánto valen.</p>
                             </div>
                         </div>
@@ -171,9 +178,7 @@
                         <div class="online_users example_row">
                             <div class="shiny-box">
                                 <p class="habbo_text_gold ng-binding" data-i18n="ultimo_debate">Ultimo Debate</p>
-                                <p class="online_habbo_text_white_fz_20 ng-binding">
-                                    23/07/2024
-                                </p>
+                                <p class="online_habbo_text_white_fz_20 ng-binding">23/07/2024</p>
                             </div>
                         </div>
                     </div>
@@ -193,25 +198,39 @@
                 </div>
             </div>
             <div class="col-md-8 column colum-catalog" id="catalogo-section">
+                <div class="row row_lenguage fila_end d-block d-md-none">
+                    <div id="language-switcher" class="text-right div_select_lenguage">
+                        <select id="language-select" class="form-control select_lenguage" style="display: inline-block; width: auto;">
+                            <option value="es">Español</option>
+                            <option value="en">English</option>
+                            <option value="pt">Português</option>
+                            <option value="fn">Finlandes</option>
+                            <option value="it">Italiano</option>
+                            <option value="fr">Frances</option>
+                            <option value="de">Aleman</option>
+                            <option value="nl">Neerlandés</option>
+                            <option value="tk">Turco</option>
+                        </select>
+                    </div>
+                </div>
                 <div class="row mb-4">
                     <div class="col-12">
                         <input type="text" id="search-input" class="form-control buscar-furnis" data-i18n="[placeholder]placeholder_search">
                     </div>
                 </div>
                 <div class="row mb-4">
-                    <div class="col-3 text-center">
-
+                    <div class="col-md-3 col-12 text-center d-none d-md-block">
+                        <!-- Esta columna no se mostrará en dispositivos móviles -->
                     </div>
-                    <div class="col-6 text-center" id="filter_tags">
+                    <div class="col-md-6 col-12 text-center" id="filter_tags">
                         <button class="price_history_content online_habbo_text_white filter-button" data-category="all" data-i18n="filter_tag_todos">Todos</button>
                         <button class="price_history_content online_habbo_text_white filter-button" data-category="hc" data-i18n="filter_tag_hc">HC</button>
                         <button class="price_history_content online_habbo_text_white filter-button" data-category="rare" data-i18n="filter_tag_rare">Rare</button>
                         <button class="price_history_content online_habbo_text_white filter-button" data-category="funky" data-i18n="filter_tag_funky">Funky</button>
                         <button class="price_history_content online_habbo_text_white filter-button" data-category="hot" data-i18n="filter_tag_hot">Hot Trades</button>
                         <button class="price_history_content online_habbo_text_white filter-button" data-category="mega_rare" data-i18n="filter_tag_mega_rares">Mega Rares</button>
-                        
                     </div>
-                    <div class="col-3 text-center">
+                    <div class="col-md-3 col-12 text-center d-md-block div_filtros">
                         <select id="sort-options" class="form-control w-auto ml-3 select_order">
                             <option value="default" data-i18n="select_order_op1">Ordenar por</option>
                             <option value="price_desc" data-i18n="select_order_op2">Precio: Mayor a Menor</option>
@@ -285,7 +304,7 @@
                                                 <div class="col-3 p-0">
                                                     <button class="footer-button w-100 h-100">
                                                         <div class="button-content">
-                                                            <img src="./furnis/noticias/mis_datos.png" alt="MIS DATOS" class="button-icon">
+                                                            <img src="./furnis/noticias/mis_datos.png" alt="MIS DATOS" class="button-icon icon_consola">
                                                             <br>
                                                             <span data-i18n="consola_mis_datos">MIS DATOS</span>
                                                             <div class="button-lines"></div>
@@ -295,7 +314,7 @@
                                                 <div class="col-3 p-0">
                                                     <button class="footer-button w-100 h-100">
                                                         <div class="button-content">
-                                                            <img src="./furnis/noticias/amigos.png" alt="AMIGOS" class="button-icon">
+                                                            <img src="./furnis/noticias/amigos.png" alt="AMIGOS" class="button-icon icon_consola">
                                                             <br>
                                                             <span data-i18n="consola_amigos">AMIGOS</span>
                                                             <div class="button-lines"></div>
@@ -305,7 +324,7 @@
                                                 <div class="col-3 p-0">
                                                     <button class="footer-button w-100 h-100">
                                                         <div class="button-content">
-                                                            <img src="./furnis/noticias/buscar.png" alt="BUSCAR" class="button-icon">
+                                                            <img src="./furnis/noticias/buscar.png" alt="BUSCAR" class="button-icon icon_consola">
                                                             <br>
                                                             <span data-i18n="consola_buscar">BUSCAR</span>
                                                             <div class="button-lines"></div>
@@ -315,7 +334,7 @@
                                                 <div class="col-3 p-0">
                                                     <button class="footer-button w-100 h-100">
                                                         <div class="button-content">
-                                                            <img src="./furnis/noticias/ayuda.png" alt="AYUDA" class="button-icon">
+                                                            <img src="./furnis/noticias/ayuda.png" alt="AYUDA" class="button-icon icon_consola">
                                                             <br>
                                                             <span data-i18n="consola_ayuda">AYUDA</span>
                                                             <div class="button-lines"></div>
@@ -342,7 +361,7 @@
                             <p id="item-a-price" class="item-price"></p>
                         </div>
                     </div>
-                    <div class="col-md-4 text-center item_calculador_tradeos">
+                    <div class="col-md-4 text-center item_calculador_tradeos div_calculador_tradeos">
                         <p id="equivalente" class="equivalent_result"></p>
                     </div>
                     <div class="col-md-4">
@@ -360,11 +379,11 @@
                 <div class="row" id="sorteos-container">
                     <!-- Los sorteos se cargarán aquí dinámicamente -->
                 </div>
-                <div class="row sorteos-titulo">
+                <div class="row sorteos-titulo d-none d-md-none">
                     <img src="./furnis/sorteos/titulo.png">
                 </div>
                 <!-- Carousel -->
-                <div class="row justify-content-center">
+                <div class="row justify-content-center d-none d-md-none">
                     <div id="sorteos-carousel" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner" id="sorteos-carousel-inner"></div>
                         <a class="carousel-control-prev" href="#sorteos-carousel" role="button" data-slide="prev">
@@ -381,7 +400,7 @@
             <div class="col-md-8 column" id="master-trades-section" style="display: none;">
                 <img src="./mt/fondo.png" class="image_mt">
             </div>
-            <div class="col-md-2 column" id="columna_derecha">
+            <div class="col-md-2 column d-none d-md-block" id="columna_derecha">
                 <div class="row row_lenguage fila_end">
                     <div id="language-switcher" class="text-right">
                         <select id="language-select" class="form-control select_lenguage" style="display: inline-block; width: auto;">
@@ -439,7 +458,7 @@
             </div>
         </div>
     </main>
-    <div id="music-player-container" class="music-player-container">
+    <div id="music-player-container" class="music-player-container d-none d-md-block">
         <button id="toggle-button" class="btn btn-info boton-music"></button>
         <div id="music-player-content">
             <select id="track-list" class="form-control track-list"></select>

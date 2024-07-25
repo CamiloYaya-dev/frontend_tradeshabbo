@@ -484,44 +484,116 @@ function initialize() {
                             <div class="grafic_item" id="div_grafica_item" style="display: none;">
                                 <canvas id="price-history-chart"></canvas>
                             </div>
-                            <table class="table price_history_content" id="price-history-table">
-                                <thead>
-                                    <tr>
-                                        <th class="habbo_text_blue" data-i18n="historial_fecha">Fecha</th>
-                                        <th class="habbo_text_blue" data-i18n="historial_nombre">Nombre</th>
-                                        <th class="habbo_text_blue" data-i18n="historial_precio_credito">Precio <img src="furnis/dinero/credito.png" alt="credito" class="price-icon"></th>
-                                        <th class="habbo_text_blue" data-i18n="historial_precios_vip">Precio <img src="furnis/dinero/vip.png" alt="vip" class="price-vip"></th>
-                                        <th class="habbo_text_blue" data-i18n="historial_tendencia">Tendencia</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    ${decryptedData.map((record, index) => {
-                                        const actualPrice = record.precio;
-                                        const previousPrice = index > 0 ? decryptedData[index - 1].precio : null;
-                                        const nextPrice = index < decryptedData.length - 1 ? decryptedData[index + 1].precio : null;
-                                        var trendIcon = '';
-                                        
-                                        if (previousPrice === null || nextPrice === null) {
-                                            trendIcon = '<img class="equal_price_history" src="./furnis/iconos/equal_price_history.png" alt="equal price">';
-                                        } else if (actualPrice > previousPrice && actualPrice < nextPrice) {
-                                            trendIcon = '<img class="down_price_history" src="./furnis/iconos/down_price_history.png" alt="up down price">';
-                                        } else if (actualPrice < previousPrice && actualPrice > nextPrice) {
-                                            trendIcon = '<img class="up_price_history" src="./furnis/iconos/up_price_history.png" alt="up price">';
-                                        } else {
-                                            trendIcon = '<img class="up_price_history" src="./furnis/iconos/up_price_history.png" alt="up price">';
-                                        }
-                                        return `
-                                            <tr>
-                                                <td class="online_habbo_text_white">${new Date(record.fecha_precio).toLocaleDateString()}</td>
-                                                <td class="online_habbo_text_white">${record.name}</td>
-                                                <td class="online_habbo_text_white">${record.precio}</td>
-                                                <td class="online_habbo_text_white">${(record.precio / record.vip_price).toFixed(2)}</td>
-                                                <td class="online_habbo_text_white">${trendIcon}</td>
-                                            </tr>
-                                        `;
-                                    }).join('')}
-                                </tbody>
-                            </table>
+                            <div class="price-history-table-container">
+                                <table class="table price_history_content" id="price-history-table">
+                                    <thead>
+                                        <tr>
+                                            <th class="habbo_text_blue" data-i18n="historial_fecha">Fecha</th>
+                                            <th class="habbo_text_blue" data-i18n="historial_nombre">Nombre</th>
+                                            <th class="habbo_text_blue" data-i18n="historial_precio_credito">Precio <img src="furnis/dinero/credito.png" alt="credito" class="price-icon"></th>
+                                            <th class="habbo_text_blue" data-i18n="historial_precios_vip">Precio <img src="furnis/dinero/vip.png" alt="vip" class="price-vip"></th>
+                                            <th class="habbo_text_blue" data-i18n="historial_tendencia">Tendencia</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        ${decryptedData.map((record, index) => {
+                                            const actualPrice = record.precio;
+                                            const previousPrice = index > 0 ? decryptedData[index - 1].precio : null;
+                                            const nextPrice = index < decryptedData.length - 1 ? decryptedData[index + 1].precio : null;
+                                            var trendIcon = '';
+                                            
+                                            if (previousPrice === null || nextPrice === null) {
+                                                trendIcon = '<img class="equal_price_history" src="./furnis/iconos/equal_price_history.png" alt="equal price">';
+                                            } else if (actualPrice > previousPrice && actualPrice < nextPrice) {
+                                                trendIcon = '<img class="down_price_history" src="./furnis/iconos/down_price_history.png" alt="up down price">';
+                                            } else if (actualPrice < previousPrice && actualPrice > nextPrice) {
+                                                trendIcon = '<img class="up_price_history" src="./furnis/iconos/up_price_history.png" alt="up price">';
+                                            } else {
+                                                trendIcon = '<img class="up_price_history" src="./furnis/iconos/up_price_history.png" alt="up price">';
+                                            }
+                                            return `
+                                                <tr>
+                                                    <td class="online_habbo_text_white">
+                                                        <div class="td-in-mobile">
+                                                            <div class="row">
+                                                                <div class="col-6">
+                                                                    <p class="repre habbo_text_blue">Fecha</p>
+                                                                </div>
+                                                                <div class="col-6">
+                                                                    ${new Date(record.fecha_precio).toLocaleDateString()}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="td-no-mobile">
+                                                            ${new Date(record.fecha_precio).toLocaleDateString()}
+                                                        </div>
+                                                    </td>
+                                                    <td class="online_habbo_text_white">
+                                                        <div class="td-in-mobile">
+                                                            <div class="row">
+                                                                <div class="col-6">
+                                                                    <p class="repre habbo_text_blue">Nombre</p>
+                                                                </div>
+                                                                <div class="col-6">
+                                                                    ${record.name}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="td-no-mobile">
+                                                            ${record.name}
+                                                        </div>
+                                                    </td>
+                                                    <td class="online_habbo_text_white">
+                                                        <div class="td-in-mobile">
+                                                            <div class="row">
+                                                                <div class="col-6">
+                                                                    <p class="repre habbo_text_blue">Precio</p>
+                                                                </div>
+                                                                <div class="col-6">
+                                                                    ${record.precio} <img src="furnis/dinero/credito.png" alt="credito" class="price-icon">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="td-no-mobile">
+                                                            ${record.precio}
+                                                        </div>
+                                                    </td>
+                                                    <td class="online_habbo_text_white">
+                                                        <div class="td-in-mobile">
+                                                            <div class="row">
+                                                                <div class="col-6">
+                                                                    <p class="repre habbo_text_blue">Precio VIP</p>
+                                                                </div>
+                                                                <div class="col-6">
+                                                                    ${(record.precio / record.vip_price).toFixed(2)} <img src="furnis/dinero/vip.png" alt="vip" class="price-vip">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="td-no-mobile">
+                                                            ${(record.precio / record.vip_price).toFixed(2)}
+                                                        </div>
+                                                    </td>
+                                                    <td class="online_habbo_text_white">
+                                                        <div class="td-in-mobile">
+                                                            <div class="row">
+                                                                <div class="col-6">
+                                                                    <p class="repre habbo_text_blue">Tendencia</p>
+                                                                </div>
+                                                                <div class="col-6">
+                                                                    ${trendIcon}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="td-no-mobile">
+                                                            ${trendIcon}
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            `;
+                                        }).join('')}
+                                    </tbody>
+                                </table>
+                            </div>
                             <p class="price_history_content habbo_text_blue">${firstRecord.descripcion}</p>
                         `;
                         $('#product-history-container').html(historyContent);

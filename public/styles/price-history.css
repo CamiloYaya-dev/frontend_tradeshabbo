@@ -1,0 +1,23 @@
+@media (max-width: 767px) {
+    #price-history-table {
+        display: block;
+    }
+    #price-history-table thead {
+        display: none;
+    }
+    #price-history-table tbody {
+        display: block;
+    }
+    #price-history-table tr {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #ddd;
+    }
+    .td-in-mobile{
+        display: block;
+    }
+    .td-no-mobile{
+        display: none;
+    }
+}

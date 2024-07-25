@@ -1,0 +1,13 @@
+@media (max-width: 768px) {
+    .modal_olimpiadas {
+        width: 90%; /* Reduce modal width on small screens */
+    }
+
+    .modal-body p {
+        font-size: 0.9rem; /* Reduce font size on small screens */
+    }
+
+    .olimpiadas_imagen {
+        width: 100%; /* Ensure image fits within the modal */
+    }
+}

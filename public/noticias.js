@@ -25,20 +25,20 @@ const noticiasPerPage = 10;
             const noticiaHTML = `
                 <div class="noticia_div" data-toggle="modal" data-target="#noticiaModal" data-id="${noticia.id}">
                     <div class="row">
-                        <div class="col-11">
+                        <div class="col-12 col-md-11">
                             <div class="row">
                                 <div class="col-12">
                                     <h5 class="noticia_title">${noticia.titulo}</h5>
                                 </div>
                                 <div class="col-12">
-                                    ${noticia.descripcion_resumida}
+                                    <p>${noticia.descripcion_resumida}</p>
                                 </div>
                                 <div class="col-12 noticia_fecha_col">
                                     <p class="noticia_fecha">Fecha de publicacion: ${noticia.fecha_noticia}</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-1 d-flex justify-content-center align-items-center">
+                        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center">
                             <img src="furnis/noticias/imagenes/resumidas/${noticia.imagen_resumida}.png" alt="${noticia.alt_imagen_resumida}" class="noticia_imagen_resumida">
                         </div>
                     </div>
