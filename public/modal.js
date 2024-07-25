@@ -1,4 +1,4 @@
-$('body').append(`
+/*$('body').append(`
     <div class="modal" id="priceGuidelineModal" tabindex="-1" role="dialog" aria-labelledby="priceGuidelineModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal_olimpiadas" role="document">
             <div class="modal-content online_users_content">
@@ -24,4 +24,4 @@ $('body').append(`
         </div>
     </div>
 `);
-$('#priceGuidelineModal').modal('show');
+$('#priceGuidelineModal').modal('show');*/
