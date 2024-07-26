@@ -48,6 +48,15 @@ $(document).ready(function() {
     $.getScript('mts.js', function() {});
     $.getScript('grafics.js', function() {});
 
+    $('#button_options').on('click', function(e) {
+        var content = document.getElementById("toggle-content");
+        if (content.style.display === "none") {
+            content.style.display = "block";
+        } else {
+            content.style.display = "none";
+        }
+    });
+
     $('.menu-link').on('click', function(e) {
         e.preventDefault();
         var section = $(this).data('section');

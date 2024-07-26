@@ -282,7 +282,7 @@ function initialize() {
                                                     </div>
                                                     <div class="row">
                                                         <button class="boton_collapse_otros_catalogos collapse_text_white" type="button" data-toggle="collapse" data-target="#${collapseId}" aria-expanded="false" aria-controls="${collapseId}">
-                                                            Otros Precios
+                                                            Otros Precios <i class="fas fa-chevron-down toggle-icon"></i>
                                                         </button>
                                                     </div>
                                                     <div class="collapse text-price-es" id="${collapseId}">
@@ -474,7 +474,7 @@ function initialize() {
                         }
         
                         var historyContent = `
-                            <h3 class="price_history_content habbo_text_blue" data-i18n="historial_precios">Historial de Precios</h3>
+                            <h3 class="price_history_content habbo_text_blue h3_historial_precios" data-i18n="historial_precios">Historial de Precios</h3>
                             <div class="price-history-image">
                                 <img src="${imagePath}" alt="${firstRecord.name}" class="${imageClass}">
                             </div>
@@ -517,7 +517,7 @@ function initialize() {
                                                         <div class="td-in-mobile">
                                                             <div class="row">
                                                                 <div class="col-6">
-                                                                    <p class="repre habbo_text_blue">Fecha</p>
+                                                                    <p class="consola_history_price habbo_text_blue">Fecha</p>
                                                                 </div>
                                                                 <div class="col-6">
                                                                     ${new Date(record.fecha_precio).toLocaleDateString()}
@@ -532,7 +532,7 @@ function initialize() {
                                                         <div class="td-in-mobile">
                                                             <div class="row">
                                                                 <div class="col-6">
-                                                                    <p class="repre habbo_text_blue">Nombre</p>
+                                                                    <p class="consola_history_pricehabbo_text_blue">Nombre</p>
                                                                 </div>
                                                                 <div class="col-6">
                                                                     ${record.name}
@@ -547,7 +547,7 @@ function initialize() {
                                                         <div class="td-in-mobile">
                                                             <div class="row">
                                                                 <div class="col-6">
-                                                                    <p class="repre habbo_text_blue">Precio</p>
+                                                                    <p class="consola_history_pricehabbo_text_blue">Precio</p>
                                                                 </div>
                                                                 <div class="col-6">
                                                                     ${record.precio} <img src="furnis/dinero/credito.png" alt="credito" class="price-icon">
@@ -562,7 +562,7 @@ function initialize() {
                                                         <div class="td-in-mobile">
                                                             <div class="row">
                                                                 <div class="col-6">
-                                                                    <p class="repre habbo_text_blue">Precio VIP</p>
+                                                                    <p class="consola_history_pricehabbo_text_blue">Precio VIP</p>
                                                                 </div>
                                                                 <div class="col-6">
                                                                     ${(record.precio / record.vip_price).toFixed(2)} <img src="furnis/dinero/vip.png" alt="vip" class="price-vip">
@@ -577,7 +577,7 @@ function initialize() {
                                                         <div class="td-in-mobile">
                                                             <div class="row">
                                                                 <div class="col-6">
-                                                                    <p class="repre habbo_text_blue">Tendencia</p>
+                                                                    <p class="consola_history_pricehabbo_text_blue">Tendencia</p>
                                                                 </div>
                                                                 <div class="col-6">
                                                                     ${trendIcon}
@@ -594,7 +594,7 @@ function initialize() {
                                     </tbody>
                                 </table>
                             </div>
-                            <p class="price_history_content habbo_text_blue">${firstRecord.descripcion}</p>
+                            <p class="price_history_content habbo_text_blue mobile_description">${firstRecord.descripcion}</p>
                         `;
                         $('#product-history-container').html(historyContent);
                         updateContent();
@@ -780,6 +780,10 @@ function calculateEquivalent() {
     }
 }
 
+function isMobileDevice() {
+    return /Mobi|Android/i.test(navigator.userAgent);
+}
+
 Chart.defaults.backgroundColor = '#26627D';
 Chart.defaults.borderColor = '#36A2EB';
 Chart.defaults.color = '#FFFFFF';
@@ -890,7 +894,7 @@ function drawChart(labels, creditsPrice, vipPrice) {
             beforeDraw: function(chart) {
                 const ctx = chart.ctx;
                 ctx.save();
-                ctx.fillStyle = '#26627D';
+                ctx.fillStyle = isMobileDevice() ? '#555' : '#26627D';
                 ctx.globalCompositeOperation = 'destination-over';
                 ctx.fillRect(0, 0, chart.width, chart.height);
                 ctx.restore();

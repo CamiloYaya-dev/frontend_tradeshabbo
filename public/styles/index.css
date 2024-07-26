@@ -11,6 +11,7 @@
         max-width: 200px;
         margin: 0 auto;
         padding: 10px;
+        border: 1px solid black;
     }
     .navbar-nav {
         flex-direction: column;
@@ -36,12 +37,40 @@
     .select_lenguage{
         width: 100% !important;
         height: auto;
+        background-color: transparent;
+        border-color: white;
+        border: 2px solid;
     }
 
     .select_lenguage:focus{
         width: 100% !important;
         height: auto;
+        background-color: transparent;
+        border-color: white;
     }
+
+    .select_lenguage option {
+        background-color: #555; /* Color de fondo de las opciones */
+        color: #fff; /* Color del texto de las opciones */
+    }
+
+    .select_order{
+        background-color: transparent;
+        border-color: white;
+        min-height: 45px;
+        border: 2px solid;
+    }
+
+    .select_order:focus{
+        background-color: transparent;
+        border-color: white;
+    }
+
+    .select_order option{
+        background-color: #555; /* Color de fondo de las opciones */
+        color: #fff; /* Color del texto de las opciones */
+    }
+
 
     .div_select_lenguage{
         padding-left: 15px;
@@ -51,5 +80,179 @@
     }
     .nav-item {
         width: 100%;
+    }
+    .header-page{
+        background-color: #FCCB04 !important;
+        padding-top: 5px !important;
+        padding-bottom: 0px !important;
+        border: none;
+        height: 60px;
+    }
+
+    .column-left, .column-right {
+        background-color: #FCCB04; /* Color de fondo */
+        padding: 0; /* Elimina el padding para ajustar el ancho */
+        margin: 0; /* Elimina el margen para ajustar el ancho */
+        min-height: 100vh; /* Asegura que las columnas ocupen toda la altura de la pantalla */
+    }
+
+    .colum-catalog {
+        background: repeating-linear-gradient(0deg, #636363 0px, #636363 5px, /* Ancho de la primera raya */ #424242 5px, /* Inicio de la segunda raya */ #424242 15px /* Ancho de la segunda raya */);
+        border-radius: 15px;
+        padding-top: 20px;
+        margin-top: 0px;
+        overflow-y: auto; /* Permite el scroll vertical */
+        height: calc(90vh - 60px); /* Ajusta la altura según el espacio disponible */
+        font-family: 'DePixelKlein', sans-serif;
+    }
+
+    .body_calculadora{
+        background: repeating-linear-gradient(0deg, #636363 0px, #636363 5px, /* Ancho de la primera raya */ #424242 5px, /* Inicio de la segunda raya */ #424242 15px /* Ancho de la segunda raya */);
+        border-radius: 15px;
+        padding-top: 20px;
+        margin-top: 0px;
+        overflow-y: auto; /* Permite el scroll vertical */
+        height: calc(90vh - 60px); /* Ajusta la altura según el espacio disponible */
+        font-family: 'DePixelKlein', sans-serif;
+        padding-bottom: 20px;
+    }
+
+    .price_history_content{
+        background-color: transparent;
+        border-color: white;
+        font-family: 'DePixelKlein', sans-serif;
+        border: 2px solid;
+    }
+
+    .online_habbo_text_white{
+        font-family: 'DePixelKlein', sans-serif;
+    }
+
+    body {
+        background: #FCCB04;
+        overflow: hidden;
+    }
+    .column-footer {
+        background-color: #FCCB04;
+        text-align: center;
+        padding: 10px;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+
+    .buscar-furnis{
+        background-color: transparent;
+        border-color: white;
+        border: 2px solid;
+    }
+
+    .buscar-furnis:focus{
+        background-color: transparent;
+        border-color: white;
+    }
+
+    .toggle-button{
+        background-color: transparent;
+        border-color: white;
+        width: 100%;
+        height: 100%;
+        color: #fff; 
+        border: 2px solid;
+    }
+
+    .colum_button_options{
+        padding-left: 0px;
+    }
+
+    .card-img-top{
+        height: 120px;
+    }
+    .iconos-hot-sale {
+        width: 60px;
+        height: 80px;
+    }
+
+    .iconos-hc{
+        width: 60px;
+        height: 60px;
+    }
+
+    .div-no-arrow{
+        padding-top: 0px;
+    }
+
+    .card{
+        background-color: #555;
+        border-image: none;
+        border: 2px solid white;
+        animation: none;
+    }
+
+    .card-body{
+        background-color: #555;
+    }
+
+    .boton_collapse_otros_catalogos{
+        background-color: #555;
+    }
+
+    .filtros_filas{
+        display: none;
+    }
+
+    .item_calculador_tradeos{
+        background-color: #555;
+        font-family: 'DePixelKlein', sans-serif;
+    }
+
+    #item-a{
+        background-color: transparent;
+        color: white;
+    }
+
+    #item-a option{
+        background-color: #555;
+    }
+
+    #item-b{
+        background-color: transparent;
+        color: white;
+    }
+
+    #item-b option{
+        background-color: #555;
+    }
+
+    .text-price{
+        color: white;
+    }
+    
+    #price-history-table{
+        background-color: #555;
+    }
+
+    .button_price_history_dinamic {
+        background-color: #555;
+        border: 2px solid black;
+    }
+
+    .h3_historial_precios {
+        background-color: #555;
+        border: 2px solid black;
+        color: white;
+    }
+
+    .consola_history_price{
+        color: white;
+    }
+
+    .mobile_description{
+        color: white;
+        background-color: #555;
+    }
+
+    .grafic_item{
+        background-color: #555;
     }
 }

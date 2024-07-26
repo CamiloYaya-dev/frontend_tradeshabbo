@@ -1111,3 +1111,7 @@ animation: rainbow-border 5s linear infinite;
 .td-no-mobile{
     display: block;
 }
+
+.filtros_filas{
+    display: block;
+}
