@@ -130,7 +130,7 @@
 
     body {
         background: #FCCB04;
-        overflow: hidden;
+        overflow: auto;
     }
     .column-footer {
         background-color: #FCCB04;
@@ -255,4 +255,34 @@
     .grafic_item{
         background-color: #555;
     }
+
+    .opciones_consola_mobile{
+        padding-left: 15px;
+    }
+
+    .menu-link{
+        font-size: 10px;
+    }
+
+    .vote-button-opinion {
+        border: 2px solid #000; /* Color del borde en negro */
+        background-color: transparent; /* Fondo transparente si es necesario */
+        color: #000; /* Color del texto */
+        font-size: 16px; /* Tamaño de la fuente */
+        cursor: pointer; /* Muestra un puntero al pasar el mouse */
+    }
+    
+    .vote-button-opinion:hover {
+        border-color: #333; /* Color del borde al pasar el mouse */
+        background-color: #f0f0f0; /* Fondo al pasar el mouse */
+        color: #333; /* Color del texto al pasar el mouse */
+    }
+    
+    .vote-button-opinion:focus {
+        outline: none; /* Elimina el contorno azul en algunos navegadores */
+        border-color: #000; /* Asegura que el color del borde se mantenga negro */
+        background-color: #f0f0f0; /* Fondo al enfocarse */
+        color: #333; /* Color del texto al enfocarse */
+    }
+    
 }
