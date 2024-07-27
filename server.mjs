@@ -225,28 +225,57 @@ async function fetchAndStoreHabboOnline() {
     }
 }
 
-function updateVisitCount() {
-    fs.readFile(visitCountPath, 'utf8', (err, data) => {
-        if (err) {
-            if (err.code === 'ENOENT') {
-                fs.writeFileSync(visitCountPath, JSON.stringify({ visits: 0 }), 'utf8');
-                data = JSON.stringify({ visits: 0 });
+async function updateVisitCount() {
+    try {
+        // Hacer la solicitud a la URL externa para obtener el contador de visitas
+        const response = await axios.get('https://airedale-summary-especially.ngrok-free.app/contador-visitas');
+        const externalVisitData = response.data;
+
+        console.log(response);
+        // Si la respuesta no contiene el contador de visitas, usar 0 como valor por defecto
+        const externalVisitCount = externalVisitData.contador_visitas !== undefined ? externalVisitData.contador_visitas : 0;
+        console.log(externalVisitCount);
+
+        // Actualizar el contador de visitas en el archivo, siempre usando externalVisitCount
+        fs.readFile(visitCountPath, 'utf8', (err, data) => {
+            let updatedVisitCount = externalVisitCount;
+
+            if (err) {
+                if (err.code === 'ENOENT') {
+                    // Si el archivo no existe, lo creamos con el contador de visitas externo
+                    fs.writeFileSync(visitCountPath, JSON.stringify({ visits: updatedVisitCount }), 'utf8');
+                    console.log('Archivo visitCount.json creado con:', updatedVisitCount);
+                } else {
+                    console.error('Error reading visit count:', err);
+                    return;
+                }
             } else {
-                console.error('Error reading visit count:', err);
-                return;
+                // Actualizar el archivo existente con el nuevo valor de externalVisitCount
+                const localVisitData = JSON.parse(data || '{}');
+                localVisitData.visits = updatedVisitCount;
+
+                console.log(localVisitData);
+                fs.writeFile(visitCountPath, JSON.stringify(localVisitData), 'utf8', (err) => {
+                    if (err) {
+                        console.error('Error writing visit count:', err);
+                    } else {
+                        console.log('Archivo visitCount.json actualizado con:', updatedVisitCount);
+                    }
+                });
             }
-        }
+        });
+    } catch (error) {
+        console.error('Error fetching visit count from external source:', error);
 
-        const visitData = JSON.parse(data || '{}');
-        visitData.visits = (visitData.visits || 0) + 1;
-
-        fs.writeFile(visitCountPath, JSON.stringify(visitData), 'utf8', (err) => {
+        // Si hay un error, establecer el contador de visitas en 0
+        fs.writeFile(visitCountPath, JSON.stringify({ visits: 0 }), 'utf8', (err) => {
             if (err) {
                 console.error('Error writing visit count:', err);
             }
         });
-    });
+    }
 }
+
 
 app.use((req, res, next) => {
     next();
