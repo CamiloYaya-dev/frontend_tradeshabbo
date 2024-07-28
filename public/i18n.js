@@ -48,10 +48,10 @@ $(document).ready(function() {
     changeLanguage(selectedLanguage);
     
     // Actualizar el select del idioma
-    $('#language-select').val(selectedLanguage);
+    $('.language-select').val(selectedLanguage);
 
     // Manejar el cambio de idioma desde el select
-    $('#language-select').change(function() {
+    $('.language-select').change(function() {
         const newLanguage = $(this).val();
         changeLanguage(newLanguage);
     });

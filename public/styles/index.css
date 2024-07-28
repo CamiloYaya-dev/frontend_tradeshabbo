@@ -106,6 +106,8 @@
         font-family: 'DePixelKlein', sans-serif;
     }
 
+    
+
     .body_calculadora{
         background: repeating-linear-gradient(0deg, #636363 0px, #636363 5px, /* Ancho de la primera raya */ #424242 5px, /* Inicio de la segunda raya */ #424242 15px /* Ancho de la segunda raya */);
         border-radius: 15px;

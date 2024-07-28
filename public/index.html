@@ -69,6 +69,7 @@
     <link rel="stylesheet" href="styles/noticias.css">
     <link rel="stylesheet" href="styles/calculador_trades.css">
     <link rel="stylesheet" href="styles/modal.css">
+    <link rel="stylesheet" href="styles/sorteos.css">
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <link rel="apple-touch-icon" sizes="180x180" href="favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon.ico">
@@ -213,21 +214,6 @@
                     </div> 
                 </div>
                 <div class="filtros_filas">
-                    <div class="row row_lenguage fila_end d-block d-md-none">
-                        <div id="language-switcher" class="text-right div_select_lenguage">
-                            <select id="language-select" class="form-control select_lenguage" style="display: inline-block; width: auto;">
-                                <option value="es">Español</option>
-                                <option value="en">English</option>
-                                <option value="pt">Português</option>
-                                <option value="fn">Finlandes</option>
-                                <option value="it">Italiano</option>
-                                <option value="fr">Frances</option>
-                                <option value="de">Aleman</option>
-                                <option value="nl">Neerlandés</option>
-                                <option value="tk">Turco</option>
-                            </select>
-                        </div>
-                    </div>
                     <div class="row mb-4">
                         <div class="col-md-3 col-12 text-center d-none d-md-block">
                             <!-- Esta columna no se mostrará en dispositivos móviles -->
@@ -254,7 +240,7 @@
                 <div id="toggle-content" style="display: none;">
                     <div class="row row_lenguage fila_end d-block d-md-none">
                         <div id="language-switcher" class="text-right div_select_lenguage">
-                            <select id="language-select" class="form-control select_lenguage" style="display: inline-block; width: auto;">
+                            <select class="form-control select_lenguage language-select" style="display: inline-block; width: auto;">
                                 <option value="es">Español</option>
                                 <option value="en">English</option>
                                 <option value="pt">Português</option>
@@ -301,9 +287,14 @@
             <div class="col-10 col-md-8 column" id="noticias-section" style="display: none;">
                 <audio id="click-sound" src="sonidos/mensaje_conso.mp3"></audio>
                 <div id="noticias-container">
-                    <!-- Las noticias se cargarán aquí dinámicamente -->
+                    <div class="search-container mb-3">
+                        <input type="text" id="search-noticias" placeholder="Buscar noticias..." class="form-control buscar-noticias">
+                    </div>
+                    <div id="noticias-div">
+                        <!-- Las noticias se cargarán aquí dinámicamente -->
+                    </div>
                 </div>
-                <div class="pagination">
+                <div class="pagination d-none">
                     <a href="#">&laquo;</a>
                     <a href="#">1</a>
                     <a href="#">2</a>
@@ -314,7 +305,7 @@
                 </div>
                 <!-- Modal -->
                 <div class="modal fade" id="noticiaModal" tabindex="-1" role="dialog" aria-labelledby="noticiaModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-dialog modal-lg noticia_modal" role="document">
                         <div class="modal-content noticia-modal-background">
                             <div class="habbo-consola font-habbo-class">
                                 <div class="habbo-header">
@@ -346,8 +337,10 @@
                                     </div>
                                     <div class="consola-derecha"></div>
                                 </div>
-                                
-                                <div class="habbo-footer">
+                                <div class="habbo-footer-mobile d-block d-md-none">
+
+                                </div>
+                                <div class="habbo-footer footer-noticias-mobile">
                                     <div class="row justify-content-center">
                                         <div class="col-6">
                                             <div class="row">
@@ -456,7 +449,7 @@
             <div class="col-md-2 column d-none d-md-block" id="columna_derecha">
                 <div class="row row_lenguage fila_end">
                     <div id="language-switcher" class="text-right">
-                        <select id="language-select" class="form-control select_lenguage" style="display: inline-block; width: auto;">
+                        <select class="form-control select_lenguage language-select" style="display: inline-block; width: auto;">
                             <option value="es">Español</option>
                             <option value="en">English</option>
                             <option value="pt">Português</option>
@@ -581,14 +574,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.34/moment-timezone-with-data.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.16/mediaelement-and-player.min.js"></script>
-    <script src="5830d1ed-f5f8-4b56-ad5d-1048bb71ba80.js"></script>
+    <script src="21c6f0fe-15f1-489a-b7bd-8326e413cd63.js"></script>
     <!-- Incluir i18next -->
     <script src="https://unpkg.com/i18next@20.6.1/i18next.min.js"></script>
     <script src="https://unpkg.com/i18next-browser-languagedetector@6.1.2/i18nextBrowserLanguageDetector.min.js"></script>
     <script src="https://unpkg.com/i18next-xhr-backend@3.2.2/i18nextXHRBackend.min.js"></script>
 
     <!-- Configuración de i18next -->
-    <script src="dd467f99-dff5-4ea8-9cf2-2ac3829525ab.js"></script>
+    <script src="f53415f1-9e28-45fa-a2a9-d58a485398f5.js"></script>
     <script>
         (adsbygoogle = window.adsbygoogle || []).push({});
     </script>

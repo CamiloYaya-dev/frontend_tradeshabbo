@@ -290,7 +290,7 @@ app.get('/images', async (req, res) => {
         await updateVisitCount();
 
         const today = moment().tz('America/Argentina/Buenos_Aires').set({hour: 23, minute: 59, second: 59, millisecond: 999});
-        const startDate = today.clone().subtract(7, 'days');
+        const startDate = today.clone().subtract(16, 'days');
 
         const priceHistories = await PriceHistory.findAll({
             where: {

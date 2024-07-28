@@ -1,0 +1,11 @@
+@media (max-width: 768px) {
+    #sorteos-section{
+        background: repeating-linear-gradient(0deg, #636363 0px, #636363 5px, /* Ancho de la primera raya */ #424242 5px, /* Inicio de la segunda raya */ #424242 15px /* Ancho de la segunda raya */);
+        border-radius: 15px;
+        padding-top: 20px;
+        margin-top: 0px;
+        overflow-y: auto; /* Permite el scroll vertical */
+        height: calc(90vh - 60px); /* Ajusta la altura según el espacio disponible */
+        font-family: 'DePixelKlein', sans-serif;
+    }
+}

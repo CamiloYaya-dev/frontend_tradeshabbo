@@ -226,6 +226,19 @@ main.container.master-trades-bg {
     outline: none;
 }
 
+.buscar-noticias{
+    background-color: #26627D;
+    border-color: #000000;
+    color: white;
+    margin-top: 20px;
+}
+
+.buscar-noticias:focus {
+    background-color: #26627D;
+    color: white;
+    outline: none;
+}
+
 @keyframes border-animation {
     0% {
         border-image: linear-gradient(45deg, red, orange, yellow) 1;
@@ -1114,4 +1127,22 @@ animation: rainbow-border 5s linear infinite;
 
 .filtros_filas{
     display: block;
+}
+
+#item-a{
+    background-color: #335e7a;
+    color: white;
+}
+
+#item-a option{
+    background-color: #335e7a;
+}
+
+#item-b{
+    background-color: #335e7a;
+    color: white;
+}
+
+#item-b option{
+    background-color: #335e7a;
 }

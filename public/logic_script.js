@@ -35,10 +35,10 @@ $(document).ready(function() {
     changeLanguage(selectedLanguage);
     
     // Actualizar el select del idioma
-    $('#language-select').val(selectedLanguage);
+    $('.language-select').val(selectedLanguage);
 
     // Manejar el cambio de idioma desde el select
-    $('#language-select').change(function() {
+    $('.language-select').change(function() {
         const newLanguage = $(this).val();
         changeLanguage(newLanguage);
     });
@@ -339,14 +339,14 @@ function initialize() {
                                             <p class="card-text text-name online_habbo_text_white catalog_item_name">${item.name} ${item.mote ? `(${item.mote})` : ''}</p>
                                             <div class="row">
                                                 <div class="col-6 d-flex flex-column justify-content-around opinion_precio catalog_votes">
-                                                    <span class="online_habbo_text_white question_text" data-i18n="pregunta_precio">¿Precio adecuado?</span>
+                                                    <span class="online_habbo_text_white question_text" data-i18n="pregunta_precio">Precio adecuado?</span>
                                                     <div class="d-flex justify-content-around">
                                                         <button class="price_history_content vote-button-opinion" data-id="${item.id}" data-vote="upvote">👍<span class="vote-count-opinion">${item.upvotes}</span></button>
                                                         <button class="price_history_content vote-button-opinion" data-id="${item.id}" data-vote="downvote">👎<span class="vote-count-opinion">${item.downvotes}</span></button>
                                                     </div>
                                                 </div>
                                                 <div class="col-6 d-flex flex-column justify-content-around opinion_precio">
-                                                    <span class="online_habbo_text_white question_text" data-i18n="pregunta_tendencia">¿Subirá o bajará?</span>
+                                                    <span class="online_habbo_text_white question_text" data-i18n="pregunta_tendencia">Subirá o bajará?</span>
                                                     <div class="d-flex justify-content-around">
                                                         <button class="price_history_content vote-button-belief" data-id="${item.id}" data-vote="upprice"><img src="furnis/iconos/up_price_history.png" alt="up price" class="icon-vote"><span class="vote-count-belief">${item.upvotes_belief || 0}</span></button>
                                                         <button class="price_history_content vote-button-belief" data-id="${item.id}" data-vote="downprice"><img src="furnis/iconos/down_price_history.png" alt="down price" class="icon-vote"><span class="vote-count-belief">${item.downvotes_belief || 0}</span></button>
