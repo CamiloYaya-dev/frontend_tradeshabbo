@@ -61,5 +61,6 @@
     "ultimo_debate": "Letzte Debatte",
     "explicacion_master_trades": "Erklärung Master Trades",
     "explicacion_master_trades_p1": "Alle Katalogpreise werden von den <strong class=\"alerta_lloron\">MasterTrades</strong> im Bild diskutiert und genehmigt. Der Preis muss eine <strong class=\"alerta_lloron\">50% Zustimmung</strong> haben, um geändert zu werden. Wenn er weniger erhält, wird er nicht geändert.",
-    "explicacion_master_trades_p2": "<strong class=\"alerta_lloron\">ERINNERN SIE SICH:</strong> Die Master Trades versuchen nur, einen Leitfaden mit den realitätsnahesten Preisen zu erstellen, aber es sind Ihre Furnis, Sie entscheiden, wie viel sie wert sind."
+    "explicacion_master_trades_p2": "<strong class=\"alerta_lloron\">ERINNERN SIE SICH:</strong> Die Master Trades versuchen nur, einen Leitfaden mit den realitätsnahesten Preisen zu erstellen, aber es sind Ihre Furnis, Sie entscheiden, wie viel sie wert sind.",
+    "historial_precios_img": "furnis/iconos/locales/historial_de.png"
 }

@@ -61,5 +61,6 @@
     "ultimo_debate": "Laatste Debat",
     "explicacion_master_trades": "Uitleg Master Trades",
     "explicacion_master_trades_p1": "Alle catalogusprijzen worden besproken en goedgekeurd door de <strong class=\"alerta_lloron\">MasterTrades</strong> op de afbeelding. De prijs moet een <strong class=\"alerta_lloron\">goedkeuring van 50%</strong> hebben om te worden gewijzigd. Als het minder krijgt, wordt het niet gewijzigd.",
-    "explicacion_master_trades_p2": "<strong class=\"alerta_lloron\">ONTHOUD:</strong> De master trades proberen alleen een gids te maken met de meest nauwkeurige prijzen in verhouding tot de realiteit, maar het zijn jouw furnis, jij beslist hoeveel ze waard zijn."
+    "explicacion_master_trades_p2": "<strong class=\"alerta_lloron\">ONTHOUD:</strong> De master trades proberen alleen een gids te maken met de meest nauwkeurige prijzen in verhouding tot de realiteit, maar het zijn jouw furnis, jij beslist hoeveel ze waard zijn.",
+    "historial_precios_img": "furnis/iconos/locales/historial_nl.png"
 }

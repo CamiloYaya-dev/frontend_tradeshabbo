@@ -61,5 +61,6 @@
     "ultimo_debate": "Viimeinen Keskustelu",
     "explicacion_master_trades": "Master Trades Selitys",
     "explicacion_master_trades_p1": "Kaikki katalogin hinnat keskustellaan ja hyväksytään kuvassa olevien <strong class=\"alerta_lloron\">MasterTrades</strong> toimesta. Hinnan on saatava <strong class=\"alerta_lloron\">50%:n hyväksyntä</strong>, jotta sitä voidaan muuttaa. Jos se saa vähemmän, sitä ei muuteta.",
-    "explicacion_master_trades_p2": "<strong class=\"alerta_lloron\">MUISTA:</strong> Master Trades yrittävät vain tehdä oppaan mahdollisimman tarkkojen hintojen mukaan, mutta ne ovat sinun furnisesi, sinä päätät, kuinka paljon ne ovat arvokkaita."
+    "explicacion_master_trades_p2": "<strong class=\"alerta_lloron\">MUISTA:</strong> Master Trades yrittävät vain tehdä oppaan mahdollisimman tarkkojen hintojen mukaan, mutta ne ovat sinun furnisesi, sinä päätät, kuinka paljon ne ovat arvokkaita.",
+    "historial_precios_img": "furnis/iconos/locales/historial_fn.png"
 }

@@ -13,6 +13,8 @@ function updateContent() {
             $(this).attr("placeholder", i18next.t(key.split(']')[1]));
         } else if (key.startsWith('[title]')) {
             $(this).attr("title", i18next.t(key.split(']')[1]));
+        } else if (key.startsWith('[src]')) {
+            $(this).attr("src", i18next.t(key.split(']')[1]));
         } else {
             $(this).html(i18next.t(key));
         }
@@ -265,7 +267,7 @@ function initialize() {
                                                 <img src="${item.src}" class="card-img-top" alt="${item.name}">
                                                 ${item.status == "arrow_trend_up" ? `<img src="furnis/iconos/arrow_trend_up.png" class="iconos-arrow-trend-up" alt="icon">` : ''}
                                                 ${item.status == "arrow_trend_down" ? `<img src="furnis/iconos/arrow_trend_down.png" class="iconos-arrow-trend-down" alt="icon">` : ''}
-                                                ${!item.status ? `<div class="div-no-arrow"></div>` : ''}
+                                                <img src="furnis/iconos/locales/historial_es.png" class="history_price_icon" alt="icon" data-i18n="[src]historial_precios_img">
                                             </div>
                                         </a>
                                         <div class="card-body text-center">

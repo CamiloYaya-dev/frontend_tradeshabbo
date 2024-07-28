@@ -61,5 +61,6 @@
     "ultimo_debate": "Son Tartışma",
     "explicacion_master_trades": "Master Trades Açıklaması",
     "explicacion_master_trades_p1": "Katalogdaki tüm fiyatlar resimdeki <strong class=\"alerta_lloron\">MasterTrades</strong> tarafından tartışılır ve onaylanır. Fiyatın değiştirilmesi için <strong class=\"alerta_lloron\">%80 onay</strong> alması gerekir. Daha az alırsa, değiştirilmez.",
-    "explicacion_master_trades_p2": "<strong class=\"alerta_lloron\">UNUTMAYIN:</strong> Master trades sadece en gerçekçi fiyatlarla bir rehber hazırlamaya çalışır, ancak furniler sizin, ne kadar değerli olduklarına siz karar verirsiniz."
+    "explicacion_master_trades_p2": "<strong class=\"alerta_lloron\">UNUTMAYIN:</strong> Master trades sadece en gerçekçi fiyatlarla bir rehber hazırlamaya çalışır, ancak furniler sizin, ne kadar değerli olduklarına siz karar verirsiniz.",
+    "historial_precios_img": "furnis/iconos/locales/historial_tk.png"
 }

@@ -1146,3 +1146,9 @@ animation: rainbow-border 5s linear infinite;
 #item-b option{
     background-color: #335e7a;
 }
+
+.history_price_icon{
+    position: static;
+    width: 158px;
+    margin-left: 15px;
+}
