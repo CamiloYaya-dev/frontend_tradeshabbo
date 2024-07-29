@@ -86,15 +86,55 @@
 <body>
     <header class="bg-dark text-white text-center py-3 header-page">
         <div class="row align-items-center header-container">
-            <div class="col-md-8 col-sm-12 text-center text-md-left mb-3 mb-md-0">
+            <div class="col-md-4 col-sm-12 mb-3 mb-md-0 d-none d-md-block">
+                <div class="row">
+                    <div class="col-md-4 col-sm-12 d-flex justify-content-center mb-3 mb-md-0">
+                        <div class="online_users">
+                            <div class="online_users_content font-habbo-class d-none d-md-block">
+                                <p data-i18n="habbo_on_es">Habbos en línea - ES</p>
+                                <p class="contador_text" id="online-count-es">En mantenimiento</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-12 d-flex justify-content-center mb-3 mb-md-0">
+                        <div class="online_users">
+                            <div class="online_users_content font-habbo-class d-none d-md-block">
+                                <p data-i18n="habbo_on_com">Habbos en línea - COM:</p>
+                                <p class="contador_text" id="online-count-com">En mantenimiento</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-12 d-flex justify-content-center mb-3 mb-md-0">
+                        <div class="online_users">
+                            <div class="online_users_content font-habbo-class d-none d-md-block">
+                                <p data-i18n="habbo_on_br">Habbos en línea - BR:</p>
+                                <p class="contador_text" id="online-count-br">En mantenimiento</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-12 d-flex justify-content-center mb-3 mb-md-0">
                 <img src="furnis/iconos/trades_habbo_origins.png" class="sprite_trades_habbo_origins" alt="Logo de Trades Habbo Origins">
             </div>
             <div class="col-md-4 col-sm-12 text-center mb-3 mb-md-0 row_contador">
-                <div class="contador_div font-habbo-class d-none d-md-block">
-                    <div class="contador_title">
-                        Contador de Visitas
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="contador_div font-habbo-class d-none d-md-block">
+                            <div class="contador_title">
+                                Contador de Visitas
+                            </div>
+                            <p class="contador_text" id="contador">En mantenimiento</p>
+                        </div>
                     </div>
-                    <p class="contador_text" id="contador">En mantenimiento</p>
+                    <div class="col-md-6">
+                        <div class="contador_div font-habbo-class d-none d-md-block">
+                            <div class="contador_title">
+                                Contador de Votos
+                            </div>
+                            <p class="contador_text" id="contador_votos">En mantenimiento</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -136,16 +176,16 @@
                 </div>
                 <div id="column-explications-catalogo">
                     <div class="row">
-                        <div class="online_users example_row">
-                            <div class="online_users_content">
+                        <div class="div_text_column_left example_row">
+                            <div class="div_text_column_left_content">
                                 <p class="habbo_text_blue ng-binding" data-i18n="precios_actualizados_el">Precios actualizados el</p>
                                 <p class="online_habbo_text_white_fz_20 ng-binding" id="last_price_updated"></p>
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="online_users example_row" id="row_explanation_trends">
-                            <div class="online_users_content">
+                        <div class="div_text_column_left example_row" id="row_explanation_trends">
+                            <div class="div_text_column_left_content">
                                 <p class="habbo_text_blue ng-binding" data-i18n="explicacion_precios">Explicacion Precios</p>
                                 <p class="online_habbo_text_white_fz_12" data-i18n="explicacion_precios_p1">
                                     Debido a algunos usuarios que se dedican solo a difamar la página web porque les molesta no poder seguir estafando a la gente con precios ridículos, necesito aclarar que los precios <strong class="alerta_lloron">SON SOLO UNA GUÍA</strong> basada en mi criterio. <strong class="alerta_lloron">Ustedes, la comunidad, son los ÚNICOS QUE DECIDEN CUÁNTO VALE CADA COSA.</strong>
@@ -155,8 +195,8 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="online_users example_row" id="row_explanation_trends">
-                            <div class="online_users_content">
+                        <div class="div_text_column_left example_row" id="row_explanation_trends">
+                            <div class="div_text_column_left_content">
                                 <p class="habbo_text_blue ng-binding" data-i18n="explicacion_tendencias">Explicacion de las tendencias</p>
                                 <p class="online_habbo_text_white_fz_12 ng-binding" data-i18n="explicacion_tendencias_p1">
                                     Que un item en el catalogo tenga <img src="furnis/iconos/arrow_trend_down.png" class="iconos-arrow-trend-down-example" alt="icon"> o <img src="furnis/iconos/arrow_trend_up.png" class="iconos-arrow-trend-up-example" alt="icon"> depende de la variacion de los precios de los 7 ultimos dias.
@@ -165,8 +205,8 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="online_users example_row" id="row_explanation_votes">
-                            <div class="online_users_content">
+                        <div class="div_text_column_left example_row" id="row_explanation_votes">
+                            <div class="div_text_column_left_content">
                                 <p class="habbo_text_blue ng-binding" data-i18n="explicacion_votos">Explicacion de los votos</p>
                                 <p class="online_habbo_text_white_fz_12 ng-binding" data-i18n="explicacion_votos_p1">
                                     Es el respaldo que la comunidad le da al precio actual del ítem. Cada vez que se actualiza el precio, se reinicia el contador. Solo se puede votar una vez por IP.<br>UNA VEZ VOTADO, NO ES POSIBLE CAMBIAR EL VOTO.
@@ -177,7 +217,7 @@
                 </div>
                 <div id="column-explications-master-trades" style="display: none;">
                     <div class="row">
-                        <div class="online_users example_row">
+                        <div class="div_text_column_left example_row">
                             <div class="shiny-box">
                                 <p class="habbo_text_gold ng-binding" data-i18n="ultimo_debate">Ultimo Debate</p>
                                 <p class="online_habbo_text_white_fz_20 ng-binding">23/07/2024</p>
@@ -185,7 +225,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="online_users example_row" id="row_explanation_trends">
+                        <div class="div_text_column_left example_row" id="row_explanation_trends">
                             <div class="shiny-box">
                                 <p class="habbo_text_gold ng-binding" data-i18n="explicacion_master_trades">Explicacion Master Tardes</p>
                                 <p class="online_habbo_text_white_fz_12" data-i18n="explicacion_master_trades_p1">
@@ -460,33 +500,6 @@
                             <option value="nl">Neerlandés</option>
                             <option value="tk">Turco</option>
                         </select>
-                    </div>
-                </div>
-                <div class="row fila_end">
-                    <div class="online_users">
-                        <div class="online_users_content">
-                            <p class="habbo_text_blue ng-binding" data-i18n="habbo_on_es">Habbos en línea - ES</p>
-                            <p class="online_habbo_text_white ng-binding" id="online-count-es">En mantenimiento</p>
-                            <p class="online_habbo_text_white_fz_12 ng-binding" data-i18n="habbo_on_explicacion">Se actualiza cada hora</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row fila_end">
-                    <div class="online_users">
-                        <div class="online_users_content">
-                            <p class="habbo_text_blue ng-binding" data-i18n="habbo_on_br">Habbos en línea - BR:</p>
-                            <p class="online_habbo_text_white ng-binding" id="online-count-br">En mantenimiento</p>
-                            <p class="online_habbo_text_white_fz_12 ng-binding" data-i18n="habbo_on_explicacion">Se actualiza cada hora</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row fila_end">
-                    <div class="online_users">
-                        <div class="online_users_content">
-                            <p class="habbo_text_blue ng-binding" data-i18n="habbo_on_com">Habbos en línea - COM:</p>
-                            <p class="online_habbo_text_white ng-binding" id="online-count-com">En mantenimiento</p>
-                            <p class="online_habbo_text_white_fz_12 ng-binding" data-i18n="habbo_on_explicacion">Se actualiza cada hora</p>
-                        </div>
                     </div>
                 </div>
                 <div class="row row_discord fila_discord">

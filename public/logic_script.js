@@ -86,6 +86,11 @@ function initialize() {
         }).fail(function() {
             $('#contador').text('En mantenimiento');
         });
+        $.getJSON('../votesCount.json', function(data) {
+            $('#contador_votos').text(data.votes);
+        }).fail(function() {
+            $('#contador_votos').text('En mantenimiento');
+        });
     }
 
     loadOnlineCount();
@@ -618,7 +623,7 @@ function initialize() {
                         var imageId = button.data('id');
                         var voteType = button.data('vote');
                         button.prop('disabled', true);
-                    
+                        let contador_votos = $('#contador_votos');
                         fetchApiKey(function(apiKey) {
                             $.ajax({
                                 url: `/images/${imageId}/vote`,
@@ -628,12 +633,14 @@ function initialize() {
                                 data: JSON.stringify({ voteType: voteType }),
                                 success: function(data) {
                                     const decryptedData = decryptData(data.token);
+                                    console.log(decryptedData);
                                     var voteCountSpan = button.find('.vote-count-opinion');
                                     if (voteType === 'upvote') {
                                         voteCountSpan.text(decryptedData.upvotes);
                                     } else if (voteType === 'downvote') {
                                         voteCountSpan.text(decryptedData.downvotes);
                                     }
+                                    contador_votos.text(decryptedData.contador_votos);
                                     button.prop('disabled', false);
                                 },
                                 error: function(jqXHR) {
@@ -653,7 +660,8 @@ function initialize() {
                         var imageId = button.data('id');
                         var voteType = button.data('vote');
                         button.prop('disabled', true);
-                    
+                        let contador_votos = $('#contador_votos');
+
                         fetchApiKey(function(apiKey) {
                             $.ajax({
                                 url: `/images/${imageId}/vote-belief`,
@@ -669,6 +677,7 @@ function initialize() {
                                     } else if (voteType === 'downprice') {
                                         voteCountSpan.text(decryptedData.downvotes_belief);
                                     }
+                                    contador_votos.text(decryptedData.contador_votos);
                                     button.prop('disabled', false);
                                 },
                                 error: function(jqXHR) {

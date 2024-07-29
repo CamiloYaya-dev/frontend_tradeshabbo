@@ -27,6 +27,7 @@ const IPINFO_API_KEY = '206743870a9fbf';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const visitCountPath = path.join(__dirname, 'public', 'visitCount.json')
+const votesCountPath = path.join(__dirname, 'public', 'votesCount.json')
 
 app.enable('trust proxy');
 
@@ -276,6 +277,57 @@ async function updateVisitCount() {
     }
 }
 
+async function updateVotesCount() {
+    try {
+        // Hacer la solicitud a la URL externa para obtener el contador de votos
+        const response = await axios.get('https://airedale-summary-especially.ngrok-free.app/contador-votos');
+        const externalVotesCount = response.data;
+
+        console.log(response);
+        // Si la respuesta no contiene el contador de votos, usar 0 como valor por defecto
+        const responseVotesCount = externalVotesCount.contador_votos !== undefined ? externalVotesCount.contador_votos : 0;
+        console.log(responseVotesCount);
+
+        // Actualizar el contador de votos en el archivo, siempre usando responseVotesCount
+        fs.readFile(votesCountPath, 'utf8', (err, data) => {
+            let updatedVotesCount = responseVotesCount;
+
+            if (err) {
+                if (err.code === 'ENOENT') {
+                    // Si el archivo no existe, lo creamos con el contador de votos externo
+                    fs.writeFileSync(votesCountPath, JSON.stringify({ votes: updatedVotesCount }), 'utf8');
+                    console.log('Archivo votesCount.json creado con:', updatedVotesCount);
+                } else {
+                    console.error('Error reading votes count:', err);
+                    return;
+                }
+            } else {
+                // Actualizar el archivo existente con el nuevo valor de responseVotesCount
+                const localVotesData = JSON.parse(data || '{}');
+                localVotesData.votes = updatedVotesCount;
+
+                console.log(localVotesData);
+                fs.writeFile(votesCountPath, JSON.stringify(localVotesData), 'utf8', (err) => {
+                    if (err) {
+                        console.error('Error writing votes count:', err);
+                    } else {
+                        console.log('Archivo votesCount.json actualizado con:', updatedVotesCount);
+                    }
+                });
+            }
+        });
+    } catch (error) {
+        console.error('Error fetching votes count from external source:', error);
+
+        // Si hay un error, establecer el contador de votos en 0
+        fs.writeFile(votesCountPath, JSON.stringify({ votes: 0 }), 'utf8', (err) => {
+            if (err) {
+                console.error('Error writing votes count:', err);
+            }
+        });
+    }
+}
+
 
 app.use((req, res, next) => {
     next();
@@ -288,6 +340,7 @@ app.get('/images', async (req, res) => {
         }
 
         await updateVisitCount();
+        await updateVotesCount();
 
         const today = moment().tz('America/Argentina/Buenos_Aires').set({hour: 23, minute: 59, second: 59, millisecond: 999});
         const startDate = today.clone().subtract(16, 'days');
@@ -390,7 +443,6 @@ app.post('/images/:id/vote', [
         const forwardedIps = req.headers['x-forwarded-for'];
         let ip = '';
 
-        console.log(ipVotes);
         if (forwardedIps) {
             const ipsArray = forwardedIps.split(',').map(ip => ip.trim());
             ip = `${ipsArray[0] || ''}-${ipsArray[1] || ''}`.trim();
@@ -421,13 +473,17 @@ app.post('/images/:id/vote', [
         }
         ipVotes[ip].push(imageId);
 
-        await axios.post('https://airedale-summary-especially.ngrok-free.app/habbo-votes', {
+        const response = await axios.post('https://airedale-summary-especially.ngrok-free.app/habbo-votes', {
             upvotes: image.upvotes,
             downvotes: image.downvotes,
             id: imageId
         });
 
-        res.json({ token: encryptData({ upvotes: image.upvotes, downvotes: image.downvotes }) });
+        const ngrokData = response.data;
+
+        res.json({ 
+            token: encryptData({ upvotes: image.upvotes, downvotes: image.downvotes, contador_votos: ngrokData[0].contador_votos})
+        });
     } catch (error) {
         console.error('Error voting on image:', error);
         res.status(500).send('Error voting on image');
@@ -479,15 +535,18 @@ app.post('/images/:id/vote-belief', [
         }
         ipVotes_belief[ip].push(imageId);
 
-        await axios.post('https://airedale-summary-especially.ngrok-free.app/habbo-votes-belief', {
+        const response = await axios.post('https://airedale-summary-especially.ngrok-free.app/habbo-votes-belief', {
             upvotes_belief: image.upvotes_belief,
             downvotes_belief: image.downvotes_belief,
             id: imageId
         });
 
+        const ngrokData = response.data;
+
         res.json({ token: encryptData({ 
             upvotes_belief: image.upvotes_belief, 
-            downvotes_belief: image.downvotes_belief 
+            downvotes_belief: image.downvotes_belief,
+            contador_votos: ngrokData[0].contador_votos
         }) });
     } catch (error) {
         console.error('Error voting on image:', error);

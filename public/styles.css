@@ -144,8 +144,6 @@ main.container.master-trades-bg {
 
 .sprite_trades_habbo_origins{
     width: auto;
-    float: inline-end;
-    padding-right: 50px;
 }
 
 .header, .main, .footer {
@@ -252,13 +250,32 @@ main.container.master-trades-bg {
 }
 
 .online_users {
-    margin-top: 24px;
     text-align: center;
     font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
-    width: 250px
+    width: auto;
+    max-width: 160px;
 }
 
 .online_users_content {
+    background: #FCCB04;
+    padding: 5px;
+    text-align: center;
+    font-weight: bold;
+    color: #A67600;
+    border: 6px solid #FCCB04;
+    width: auto;
+    border-radius: 15px;
+    font-size: 10px;
+}
+
+.div_text_column_left {
+    margin-top: 24px;
+    text-align: center;
+    font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    width: 250px;
+}
+
+.div_text_column_left_content {
     background-color: #335e7a;
     border: 1px solid #050a0e;
     border-radius: 15px;
@@ -275,6 +292,12 @@ main.container.master-trades-bg {
 .habbo_text_blue{
     font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
     font-size: 15px;
+    color: #7ecaee;
+}
+
+.habbo_text_blue_12{
+    font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    font-size: 12px;
     color: #7ecaee;
 }
 
@@ -333,7 +356,7 @@ main.container.master-trades-bg {
     border: 1px solid #050a0e;
     border-radius: 15px;
     box-shadow: 0 2px 3px rgba(6, 19, 25, .7);
-    padding: 12px;
+    padding: 6px;
     font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
 }
 
@@ -1149,6 +1172,6 @@ animation: rainbow-border 5s linear infinite;
 
 .history_price_icon{
     position: static;
-    width: 158px;
+    width: 140px;
     margin-left: 15px;
 }
