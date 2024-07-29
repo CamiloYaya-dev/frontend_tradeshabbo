@@ -28,6 +28,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const visitCountPath = path.join(__dirname, 'public', 'visitCount.json')
 const votesCountPath = path.join(__dirname, 'public', 'votesCount.json')
+const discordInfoPath = path.join(__dirname, 'public', 'discordInfo.json')
 
 app.enable('trust proxy');
 
@@ -328,6 +329,25 @@ async function updateVotesCount() {
     }
 }
 
+async function syncDiscord() {
+    try {
+        // Fetch the data from the Discord API
+        const response = await axios.get('https://discord.com/api/guilds/1257448055050080297/widget.json');
+        const externalInfoDiscord = response.data;
+
+        // Save the data to the discordInfo.json file
+        fs.writeFile(discordInfoPath, JSON.stringify(externalInfoDiscord, null, 2), 'utf8', (err) => {
+            if (err) {
+                console.error('Error writing to discordInfo.json:', err);
+            } else {
+                console.log('discordInfo.json has been updated with the latest Discord data.');
+            }
+        });
+    } catch (error) {
+        console.error('Error fetching data from Discord API:', error);
+    }
+}
+
 
 app.use((req, res, next) => {
     next();
@@ -341,6 +361,7 @@ app.get('/images', async (req, res) => {
 
         await updateVisitCount();
         await updateVotesCount();
+        await syncDiscord();
 
         const today = moment().tz('America/Argentina/Buenos_Aires').set({hour: 23, minute: 59, second: 59, millisecond: 999});
         const startDate = today.clone().subtract(16, 'days');

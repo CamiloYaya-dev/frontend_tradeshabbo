@@ -541,15 +541,37 @@ footer {
     margin-bottom: 20px;
 }
 
+.noticia_div_last_three{
+    margin-bottom: 0px;
+}
+
 .noticia_title{
     color: #7ecaee;
 }
+
+.noticia_title_last_three{
+    color: #7ecaee;
+    font-size: 12px;
+    text-align: center;
+}
+
 .noticia_descripcion{
     color: white;
 }
 
+.noticia_descripcion_last_three{
+    color: white;
+    font-size: 12px;
+    text-align: center;
+}
+
 .noticia_imagen_resumida{
     width: 75px;
+}
+
+.noticia_imagen_resumida_last_three{
+    width: 55px;
+    font-size: 12px;
 }
 
 .noticia_fecha{
@@ -1174,4 +1196,27 @@ animation: rainbow-border 5s linear infinite;
     position: static;
     width: 140px;
     margin-left: 15px;
+}
+
+.discord_icon{
+    width: 100%;
+    margin-top: 20px;
+}
+
+.discord_row{
+    background-color: #FCCB04;
+    border: 6px solid #FCCB04;
+    margin-left: 20px;
+    max-width: 270px;
+    border-radius: 15px;
+    color: #A67600;
+}
+
+.discord_row_text{
+    font-size: 12px;
+}
+
+.col_no_padding{
+    padding-left: 0px;
+    padding-right: 0px;
 }

@@ -59,6 +59,44 @@ function renderNoticias(page) {
     });
 }
 
+function loadLastThreeNoticias() {
+    $.getJSON('furnis/noticias/noticias.json', function(data) {
+        // Sort data by date in descending order
+        noticiasData = data.sort(function(a, b) {
+            const dateA = new Date(a.fecha_noticia.split('-').reverse().join('-'));
+            const dateB = new Date(b.fecha_noticia.split('-').reverse().join('-'));
+            return dateB - dateA; // Ordenar de manera descendente
+        });
+
+        // Get the last three noticias
+        const lastThreeNoticias = noticiasData.slice(0, 3);
+        const lastThreeContainer = $('#last_three_noticies');
+        lastThreeContainer.empty();
+
+        lastThreeNoticias.forEach(function(noticia) {
+            const noticiaHTML = `
+                <div class="noticia_div noticia_div_last_three" data-toggle="modal" data-target="#noticiaModal" data-id="${noticia.id}">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-12">
+                                    <h5 class="noticia_title_last_three">${noticia.titulo}</h5>
+                                </div>
+                                <div class="col-12 noticia_descripcion_last_three">
+                                    <p>${noticia.descripcion_resumida}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 d-flex justify-content-center align-items-center">
+                            <img src="furnis/noticias/imagenes/resumidas/${noticia.imagen_resumida}.png" alt="${noticia.alt_imagen_resumida}" class="noticia_imagen_resumida_last_three">
+                        </div>
+                    </div>
+                </div>
+            `;
+            lastThreeContainer.append(noticiaHTML);
+        });
+    });
+}
 function loadNoticias() {
     $.getJSON('furnis/noticias/noticias.json', function(data) {
         noticiasData = data.sort(function(a, b) {
@@ -100,16 +138,21 @@ $(document).on('click', '.noticia_div', function() {
     const noticiaId = $(this).data('id');
     const noticia = noticiasData.find(n => n.id === noticiaId);
 
-    $('#noticiaModalImage').attr('src', `furnis/noticias/imagenes/completas/${noticia.imagen_completa}.png`);
-    $('#noticiaModalDescription').html(noticia.descripcion_completa);
+    if (noticia) {
+        $('#noticiaModalImage').attr('src', `furnis/noticias/imagenes/completas/${noticia.imagen_completa}.png`);
+        $('#noticiaModalDescription').html(noticia.descripcion_completa);
 
-    const clickSound = document.getElementById('click-sound');
-    clickSound.play();
+        const clickSound = document.getElementById('click-sound');
+        clickSound.play();
 
-    $('#noticiaModal').modal('show');
+        $('#noticiaModal').modal('show');
+    } else {
+        console.error('Noticia not found for ID:', noticiaId);
+    }
 });
 
 $('#noticiaModal').on('shown.bs.modal', function () {
+    let i = 0;
     document.querySelectorAll('.footer-button').forEach(button => {
         button.addEventListener('mouseenter', function() {
             const img = this.querySelector('.button-icon');

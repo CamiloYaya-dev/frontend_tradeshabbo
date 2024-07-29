@@ -139,7 +139,26 @@
             </div>
         </div>
         <div class="row mt-3">
-            <div class="col-md-12 d-none d-md-block">
+            <div class="col-md-3 d-flex justify-content-center d-none d-md-block">
+                <div class="row discord_row font-habbo-class">
+                    <div class="col-md-6">
+                        <a href="" target="_blank" id="discord_invitation">
+                            <img src="furnis/iconos/discord_icon.png" class="discord_icon" alt="Icono del Hotel Origins">
+                        </a>
+                    </div>
+                    <div class="col-md-3 discord_row_text col_no_padding">
+                        <div class="row">
+                            <div class="col-md-12" id="discord_title">
+                                Trades Habbo Origins: Comunidad
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 discord_row_text col_no_padding" id="discord_members_online">
+                        20 Usuarios Online
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 d-none d-md-block">
                 <nav class="navbar navbar-expand-lg navbar-light">
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -165,6 +184,7 @@
                     </div>
                 </nav>
             </div>
+            <div class="col-md-3 d-none d-md-block"></div>
         </div>
     </header>
     <main class="container my-4">
@@ -342,96 +362,7 @@
                     <a href="#">4</a>
                     <a href="#">5</a>
                     <a href="#">&raquo;</a>
-                </div>
-                <!-- Modal -->
-                <div class="modal fade" id="noticiaModal" tabindex="-1" role="dialog" aria-labelledby="noticiaModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg noticia_modal" role="document">
-                        <div class="modal-content noticia-modal-background">
-                            <div class="habbo-consola font-habbo-class">
-                                <div class="habbo-header">
-                                    Habbo Consola 
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="d-flex">
-                                    <div class="consola-izquierda"></div>
-                                    <div class="flex-grow-1">
-                                        <div class="habbo-body">
-                                            <div class="habbo-user">
-                                                <div class="user-avatar">
-                                                </div>
-                                                <div class="user-status" data-i18n="consola_title">Emo.<br><span>Hola tengo una nueva noticia para ti :D</span></div>
-                                            </div>
-                                            <div class="habbo-messages">
-                                                <div class="row">
-                                                    <div class="col-12">
-                                                        <p id="noticiaModalDescription" class="noticia_descripcion">Descripción completa de la noticia</p>
-                                                    </div>
-                                                    <div class="col-12 d-flex justify-content-center align-items-center">
-                                                        <img id="noticiaModalImage" src="" alt="" class="img-fluid mb-3 noticia_completa_imagen">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="consola-derecha"></div>
-                                </div>
-                                <div class="habbo-footer-mobile d-block d-md-none">
-
-                                </div>
-                                <div class="habbo-footer footer-noticias-mobile">
-                                    <div class="row justify-content-center">
-                                        <div class="col-6">
-                                            <div class="row">
-                                                <div class="col-3 p-0">
-                                                    <button class="footer-button w-100 h-100">
-                                                        <div class="button-content">
-                                                            <img src="./furnis/noticias/mis_datos.png" alt="MIS DATOS" class="button-icon icon_consola">
-                                                            <br>
-                                                            <span data-i18n="consola_mis_datos">MIS DATOS</span>
-                                                            <div class="button-lines"></div>
-                                                        </div>
-                                                    </button>
-                                                </div>
-                                                <div class="col-3 p-0">
-                                                    <button class="footer-button w-100 h-100">
-                                                        <div class="button-content">
-                                                            <img src="./furnis/noticias/amigos.png" alt="AMIGOS" class="button-icon icon_consola">
-                                                            <br>
-                                                            <span data-i18n="consola_amigos">AMIGOS</span>
-                                                            <div class="button-lines"></div>
-                                                        </div>
-                                                    </button>
-                                                </div>
-                                                <div class="col-3 p-0">
-                                                    <button class="footer-button w-100 h-100">
-                                                        <div class="button-content">
-                                                            <img src="./furnis/noticias/buscar.png" alt="BUSCAR" class="button-icon icon_consola">
-                                                            <br>
-                                                            <span data-i18n="consola_buscar">BUSCAR</span>
-                                                            <div class="button-lines"></div>
-                                                        </div>
-                                                    </button>
-                                                </div>
-                                                <div class="col-3 p-0">
-                                                    <button class="footer-button w-100 h-100">
-                                                        <div class="button-content">
-                                                            <img src="./furnis/noticias/ayuda.png" alt="AYUDA" class="button-icon icon_consola">
-                                                            <br>
-                                                            <span data-i18n="consola_ayuda">AYUDA</span>
-                                                            <div class="button-lines"></div>
-                                                        </div>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>                
+                </div>    
             </div>
             <div class="col-10 col-md-8 column" id="calculador-section" style="display: none;">
                 <div class="row body_calculadora">
@@ -502,8 +433,8 @@
                         </select>
                     </div>
                 </div>
-                <div class="row row_discord fila_discord">
-                    <iframe src="https://discord.com/widget?id=1257448055050080297&theme=dark" width="250" height="300" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+                <div class="row fila_end" id="last_three_noticies">
+                    <!-- Ultimas 3 noticias -->
                 </div>
                 <div class="row fila_end">
                     <div class="ad-space">
@@ -580,6 +511,95 @@
             <button id="shuffle-button" class="btn btn-secondary boton-music" data-i18n="cancion_aleatoria">Canción Aleatoria</button>
         </div>
     </div>
+    <!-- Modal -->
+    <div class="modal fade" id="noticiaModal" tabindex="-1" role="dialog" aria-labelledby="noticiaModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg noticia_modal" role="document">
+            <div class="modal-content noticia-modal-background">
+                <div class="habbo-consola font-habbo-class">
+                    <div class="habbo-header">
+                        Habbo Consola 
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="d-flex">
+                        <div class="consola-izquierda"></div>
+                        <div class="flex-grow-1">
+                            <div class="habbo-body">
+                                <div class="habbo-user">
+                                    <div class="user-avatar">
+                                    </div>
+                                    <div class="user-status" data-i18n="consola_title">Emo.<br><span>Hola tengo una nueva noticia para ti :D</span></div>
+                                </div>
+                                <div class="habbo-messages">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <p id="noticiaModalDescription" class="noticia_descripcion">Descripción completa de la noticia</p>
+                                        </div>
+                                        <div class="col-12 d-flex justify-content-center align-items-center">
+                                            <img id="noticiaModalImage" src="" alt="" class="img-fluid mb-3 noticia_completa_imagen">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="consola-derecha"></div>
+                    </div>
+                    <div class="habbo-footer-mobile d-block d-md-none">
+
+                    </div>
+                    <div class="habbo-footer footer-noticias-mobile">
+                        <div class="row justify-content-center">
+                            <div class="col-6">
+                                <div class="row">
+                                    <div class="col-3 p-0">
+                                        <button class="footer-button w-100 h-100">
+                                            <div class="button-content">
+                                                <img src="./furnis/noticias/mis_datos.png" alt="MIS DATOS" class="button-icon icon_consola">
+                                                <br>
+                                                <span data-i18n="consola_mis_datos">MIS DATOS</span>
+                                                <div class="button-lines"></div>
+                                            </div>
+                                        </button>
+                                    </div>
+                                    <div class="col-3 p-0">
+                                        <button class="footer-button w-100 h-100">
+                                            <div class="button-content">
+                                                <img src="./furnis/noticias/amigos.png" alt="AMIGOS" class="button-icon icon_consola">
+                                                <br>
+                                                <span data-i18n="consola_amigos">AMIGOS</span>
+                                                <div class="button-lines"></div>
+                                            </div>
+                                        </button>
+                                    </div>
+                                    <div class="col-3 p-0">
+                                        <button class="footer-button w-100 h-100">
+                                            <div class="button-content">
+                                                <img src="./furnis/noticias/buscar.png" alt="BUSCAR" class="button-icon icon_consola">
+                                                <br>
+                                                <span data-i18n="consola_buscar">BUSCAR</span>
+                                                <div class="button-lines"></div>
+                                            </div>
+                                        </button>
+                                    </div>
+                                    <div class="col-3 p-0">
+                                        <button class="footer-button w-100 h-100">
+                                            <div class="button-content">
+                                                <img src="./furnis/noticias/ayuda.png" alt="AYUDA" class="button-icon icon_consola">
+                                                <br>
+                                                <span data-i18n="consola_ayuda">AYUDA</span>
+                                                <div class="button-lines"></div>
+                                            </div>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
@@ -587,14 +607,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.34/moment-timezone-with-data.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.16/mediaelement-and-player.min.js"></script>
-    <script src="21c6f0fe-15f1-489a-b7bd-8326e413cd63.js"></script>
+    <script src="1baa8170-e940-4821-a2ee-3f35097108d2.js"></script>
     <!-- Incluir i18next -->
     <script src="https://unpkg.com/i18next@20.6.1/i18next.min.js"></script>
     <script src="https://unpkg.com/i18next-browser-languagedetector@6.1.2/i18nextBrowserLanguageDetector.min.js"></script>
     <script src="https://unpkg.com/i18next-xhr-backend@3.2.2/i18nextXHRBackend.min.js"></script>
 
     <!-- Configuración de i18next -->
-    <script src="f53415f1-9e28-45fa-a2a9-d58a485398f5.js"></script>
+    <script src="112c029d-d616-49be-89d7-8bc435012dbe.js"></script>
     <script>
         (adsbygoogle = window.adsbygoogle || []).push({});
     </script>

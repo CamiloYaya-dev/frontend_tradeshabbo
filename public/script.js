@@ -62,6 +62,7 @@ $(document).ready(function() {
         var section = $(this).data('section');
         if (section === 'catalogo') {
             loadOtherClass();
+            loadLastThreeNoticias();
             $('#catalogo-section').show();
             $('#column-explications-catalogo').show();
             $('#noticias-section').hide();
