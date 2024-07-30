@@ -141,5 +141,27 @@
         "alt_imagen_resumida": "nuevo raro martes 23 de julio del 2024",
         "descripcion_resumida": "<p class=\"noticia_descripcion\"><strong>Llega un nuevo raro a Habbo Hotel: Orígenes!</strong> Descubre y adquiere el nuevo raro, <strong>RARO Humareda Roja</strong>, disponible por tiempo limitado. No te lo pierdas!</p>",
         "fecha_noticia": "23-07-2024"
+    },
+    {
+        "id": 14,
+        "titulo": "Nuevo raro disponible! Fontana Mágica Azul",
+        "imagen_completa": "catalogo_fontana_azul",
+        "alt_imagen_completa": "Catalogo Fontana Mágica Azul",
+        "descripcion_completa": "<p><strong>Nuevo raro en Habbo Hotel: Orígenes: Fontana Mágica Azul!</strong></p><p>El 30 de julio de 2024, se lanzó el raro <strong>Fontana Mágica Azul</strong>, disponible por un precio de 75 créditos. Este raro estará en el catálogo por tiempo limitado de solo 72 horas, siendo el primer raro en tener una disponibilidad tan corta. No pierdas la oportunidad de agregar esta exclusiva pieza a tu colección!</p><p><em>Nota: La disponibilidad de la Fontana Mágica Azul es limitada y no volverá a estar disponible en el futuro.</em></p>",
+        "imagen_resumida": "rares_martes",
+        "alt_imagen_resumida": "nuevo raro martes 30 de julio del 2024",
+        "descripcion_resumida": "<p class=\"noticia_descripcion\"><strong>Llega un nuevo raro a Habbo Hotel: Orígenes!</strong> Descubre y adquiere el nuevo raro, <strong>RARO Fontana Mágica Azul</strong>, disponible solo por 72 horas. ¡No te lo pierdas!</p>",
+        "fecha_noticia": "30-07-2024"
+    },
+    {
+        "id": 15,
+        "titulo": "¡Las candidaturas para ser Hobba están abiertas!",
+        "imagen_completa": "hobba_noticia",
+        "alt_imagen_completa": "Promoción Hobba en Habbo Hotel: Orígenes",
+        "descripcion_completa": "<p><strong>¡Las candidaturas para ser Hobba están abiertas en Habbo Hotel: Orígenes!</strong></p><p>Ahora mismo estamos aceptando candidaturas para el programa de Hobbas de Habbo Hotel: Orígenes. Lxs Hobbas son jugadores que tienen ciertos poderes específicos y limitados dentro del juego. Su labor es hacer que la experiencia en el juego sea más agradable tanto para novatxs como para veteranxs de la plataforma.</p><p>Hemos redactado una página que recoge las preguntas y respuestas frecuentes sobre lxs Hobbas. Puedes encontrarla <a href=\"https://origins.habbo.es/community/article/108/108\">aquí</a>.</p><p><strong>📨 Preséntate a Hobba</strong></p><p>Buscamos jugadores madurxs, amables y que conozcan el juego; que quieran contribuir a hacer de Habbo Hotel Orígenes un lugar mejor tanto para novatxs como para veteranxs. Si te quieres presentar, rellena este <a href=\"https://origins.habbo.es/community/article/108/108\">formulario de Google</a>. Necesitarás una cuenta de Gmail para poder hacerlo.</p><p><strong>🙋 El proceso de selección</strong></p><p>Para garantizar la selección de lxs Habbos más adecuadxs para el programa Hobba, elegiremos \"a mano\" entre lxs candidatxs. La implementación de los poderes Hobba que se decidieron tras la votación de la comunidad sigue estando en construcción. Esperamos poder aportar noticias sobre el tema cuando lancemos el programa en agosto o septiembre.</p>",
+        "imagen_resumida": "staff",
+        "alt_imagen_resumida": "Promoción Hobba",
+        "descripcion_resumida": "<p class=\"noticia_descripcion\"><strong>¡Las candidaturas para ser Hobba están abiertas!</strong> Conviértete en parte del programa de Hobbas y ayuda a mejorar la experiencia de Habbo Hotel: Orígenes. <a href=\"https://origins.habbo.es/community/article/108/108\">¡Aplica ahora!</a></p>",
+        "fecha_noticia": "30-07-2024"
     }
 ]
