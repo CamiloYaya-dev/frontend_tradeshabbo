@@ -40,7 +40,7 @@
     "titulo_vips": "VIPs Price",
     "titulo_creditos_es": ".ES Credits Price",
     "titulo_dolares": "External Price in Dollars",
-    "titulo_habbo_dolares": "Habbo Price in Dollars",
+    "titulo_habbo_dolares": "Habbo Official Price in Dollars",
     "titulo_externo_dolares": "External Price in Dollars",
     "dolares": "Dollars <img src=\"furnis/iconos/icon_dolar.png\" alt=\"dollar\" class=\"dolar\" data-toggle=\"tooltip\" data-i18n=\"[title]titulo_dolares\" title=\"External Price in Dollars\">",
     "pregunta_precio": "Is the price right?",

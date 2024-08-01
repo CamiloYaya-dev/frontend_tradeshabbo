@@ -337,20 +337,6 @@ function initialize() {
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        
-                                                        <div class="section_dolares">
-                                                            <p class="online_habbo_text_white" data-i18n="dolares">Dólares <img src="furnis/iconos/icon_dolar.png" alt="dolar" class="dolar" data-toggle="tooltip" data-i18n="[title]titulo_dolares" title="Precio Externo en dolares"></p>
-                                                            <p class="card-text text-price-other-markets">
-                                                                <span class="price-item">
-                                                                    <img src="furnis/iconos/icon_habbo.png" alt="habbo" class="price-habbo" data-toggle="tooltip" data-i18n="[title]titulo_habbo_dolares" title="Precio Habbo en dolares">
-                                                                    ${((creditUsdPriceHabbo * item.price).toFixed(2).endsWith("00") ? parseInt((creditUsdPriceHabbo * item.price).toFixed(2), 10) : (creditUsdPriceHabbo * item.price).toFixed(2).replace(".", ","))}
-                                                                </span>
-                                                                <span class="price-item">
-                                                                    <img src="furnis/iconos/icon_precio_externo.png" alt="precio_externo" class="price-market" data-i18n="[title]titulo_externo_dolares" data-toggle="tooltip" title="Precio Externo en dolares">
-                                                                    ${((creditUsdPriceIlegal * item.price).toFixed(2).endsWith("00") ? parseInt((creditUsdPriceIlegal * item.price).toFixed(2), 10) : (creditUsdPriceIlegal * item.price).toFixed(2).replace(".", ","))}
-                                                                </span>
-                                                            </p>
-                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
