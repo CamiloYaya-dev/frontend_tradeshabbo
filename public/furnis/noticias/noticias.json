@@ -163,5 +163,16 @@
         "alt_imagen_resumida": "Promoción Hobba",
         "descripcion_resumida": "<p class=\"noticia_descripcion\"><strong>¡Las candidaturas para ser Hobba están abiertas!</strong> Conviértete en parte del programa de Hobbas y ayuda a mejorar la experiencia de Habbo Hotel: Orígenes. <a href=\"https://origins.habbo.es/community/article/108/108\">¡Aplica ahora!</a></p>",
         "fecha_noticia": "30-07-2024"
+    },
+    {
+        "id": 16,
+        "titulo": "Nuevo Viernes Funky! Bonsáis Funky",
+        "imagen_completa": "funky_friday_02_08_2024",
+        "alt_imagen_completa": "Viernes Funky 02 de agosto de 2024",
+        "descripcion_completa": "<p><strong>Funky Friday regresa a Habbo Hotel: Orígenes!</strong></p><p>Hoy, en el catálogo de Funky Friday, llega una nueva colección de Bonsáis Funky. Hay tres tipos de Bonsáis disponibles, cada uno a un precio de 5 créditos. Estos estarán en el catálogo solo por 24 horas. No te pierdas la oportunidad de coleccionarlos todos!</p><p><em>Nota: La disponibilidad de estos Bonsáis es limitada y estarán disponibles solo durante el día de hoy.</em></p>",
+        "imagen_resumida": "funky_friday",
+        "alt_imagen_resumida": "Funky Friday Bonsáis Funky",
+        "descripcion_resumida": "<p class=\"noticia_descripcion\"><strong>Llega una nueva colección a Habbo Hotel: Orígenes!</strong> Descubre y adquiere los nuevos Bonsáis Funky disponibles solo por 24 horas. No te lo pierdas!</p>",
+        "fecha_noticia": "02-08-2024"
     }
 ]
