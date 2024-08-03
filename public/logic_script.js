@@ -631,7 +631,6 @@ function initialize() {
                                 data: JSON.stringify({ voteType: voteType }),
                                 success: function(data) {
                                     const decryptedData = decryptData(data.token);
-                                    console.log(decryptedData);
                                     var voteCountSpan = button.find('.vote-count-opinion');
                                     if (voteType === 'upvote') {
                                         voteCountSpan.text(decryptedData.upvotes);

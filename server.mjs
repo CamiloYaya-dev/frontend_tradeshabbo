@@ -90,9 +90,7 @@ async function isProxy(ip) {
 app.get('/verify-ip', async (req, res) => {
     let ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
     if (ip.includes(',')) ip = ip.split(',')[0].trim();
-    console.log(`Checking IP: ${ip}`);
     const ipInfo = await checkIPWithIpinfo(ip);
-    console.log(`IP Info: ${JSON.stringify(ipInfo)}`);
 
     /*if (await isProxy(ip)) {
         return res.status(403).json({ error: 'Access forbidden: Proxy, VPN or Tor detected' });
@@ -233,10 +231,8 @@ async function updateVisitCount() {
         const response = await axios.get('https://airedale-summary-especially.ngrok-free.app/contador-visitas');
         const externalVisitData = response.data;
 
-        console.log(response);
         // Si la respuesta no contiene el contador de visitas, usar 0 como valor por defecto
         const externalVisitCount = externalVisitData.contador_visitas !== undefined ? externalVisitData.contador_visitas : 0;
-        console.log(externalVisitCount);
 
         // Actualizar el contador de visitas en el archivo, siempre usando externalVisitCount
         fs.readFile(visitCountPath, 'utf8', (err, data) => {
@@ -246,7 +242,6 @@ async function updateVisitCount() {
                 if (err.code === 'ENOENT') {
                     // Si el archivo no existe, lo creamos con el contador de visitas externo
                     fs.writeFileSync(visitCountPath, JSON.stringify({ visits: updatedVisitCount }), 'utf8');
-                    console.log('Archivo visitCount.json creado con:', updatedVisitCount);
                 } else {
                     console.error('Error reading visit count:', err);
                     return;
@@ -256,12 +251,9 @@ async function updateVisitCount() {
                 const localVisitData = JSON.parse(data || '{}');
                 localVisitData.visits = updatedVisitCount;
 
-                console.log(localVisitData);
                 fs.writeFile(visitCountPath, JSON.stringify(localVisitData), 'utf8', (err) => {
                     if (err) {
                         console.error('Error writing visit count:', err);
-                    } else {
-                        console.log('Archivo visitCount.json actualizado con:', updatedVisitCount);
                     }
                 });
             }
@@ -284,10 +276,8 @@ async function updateVotesCount() {
         const response = await axios.get('https://airedale-summary-especially.ngrok-free.app/contador-votos');
         const externalVotesCount = response.data;
 
-        console.log(response);
         // Si la respuesta no contiene el contador de votos, usar 0 como valor por defecto
         const responseVotesCount = externalVotesCount.contador_votos !== undefined ? externalVotesCount.contador_votos : 0;
-        console.log(responseVotesCount);
 
         // Actualizar el contador de votos en el archivo, siempre usando responseVotesCount
         fs.readFile(votesCountPath, 'utf8', (err, data) => {
@@ -297,7 +287,6 @@ async function updateVotesCount() {
                 if (err.code === 'ENOENT') {
                     // Si el archivo no existe, lo creamos con el contador de votos externo
                     fs.writeFileSync(votesCountPath, JSON.stringify({ votes: updatedVotesCount }), 'utf8');
-                    console.log('Archivo votesCount.json creado con:', updatedVotesCount);
                 } else {
                     console.error('Error reading votes count:', err);
                     return;
@@ -307,12 +296,9 @@ async function updateVotesCount() {
                 const localVotesData = JSON.parse(data || '{}');
                 localVotesData.votes = updatedVotesCount;
 
-                console.log(localVotesData);
                 fs.writeFile(votesCountPath, JSON.stringify(localVotesData), 'utf8', (err) => {
                     if (err) {
                         console.error('Error writing votes count:', err);
-                    } else {
-                        console.log('Archivo votesCount.json actualizado con:', updatedVotesCount);
                     }
                 });
             }
@@ -339,8 +325,6 @@ async function syncDiscord() {
         fs.writeFile(discordInfoPath, JSON.stringify(externalInfoDiscord, null, 2), 'utf8', (err) => {
             if (err) {
                 console.error('Error writing to discordInfo.json:', err);
-            } else {
-                console.log('discordInfo.json has been updated with the latest Discord data.');
             }
         });
     } catch (error) {
@@ -622,7 +606,6 @@ app.get('/furnis/sorteos/pagos', (req, res) => {
 app.listen(port, async () => {
     try {
         await sequelize.authenticate();
-        console.log('Database connected successfully.');
         await getCatalog();
         await fetchAndStoreHabboOnline();
         setInterval(fetchAndStoreHabboOnline, 3600000);
