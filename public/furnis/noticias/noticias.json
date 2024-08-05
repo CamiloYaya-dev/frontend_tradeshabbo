@@ -174,5 +174,16 @@
         "alt_imagen_resumida": "Funky Friday Bonsáis Funky",
         "descripcion_resumida": "<p class=\"noticia_descripcion\"><strong>Llega una nueva colección a Habbo Hotel: Orígenes!</strong> Descubre y adquiere los nuevos Bonsáis Funky disponibles solo por 24 horas. No te lo pierdas!</p>",
         "fecha_noticia": "02-08-2024"
+    },
+    {
+        "id": 17,
+        "titulo": "Nueva mecánica de PLACAS en el Discord de THO!",
+        "imagen_completa": "discord_placas_THO",
+        "alt_imagen_completa": "Nueva mecánica de PLACAS en el Discord de Tho",
+        "descripcion_completa": "<p><strong>Nueva mecánica de PLACAS en el Discord de Tho!</strong></p><p>Estamos emocionados de anunciar que se ha implementado una nueva mecánica de PLACAS en nuestro Discord. Actualmente, existen 3 placas que se otorgan por diferentes motivos:</p><ul><li>A cualquiera que reaccione al mensaje <a href=\"https://discord.com/channels/1257448055050080297/1258417994543927338/1269819982678589561\">aquí</a>, se le dará la placa <strong>Pionero</strong>. Esta placa solo estará disponible durante 7 días.</li><li>A los ganadores de sorteos, concursos y competiciones se les otorgará la placa <strong>Ganador/a</strong>.</li><li>A los que debaten activamente sobre precios y votan en las encuestas se les dará la placa <strong>Discutidores de mercado</strong>.</li></ul><p>No pierdas la oportunidad de participar y ganar estas exclusivas placas en nuestro Discord!</p>",
+        "imagen_resumida": "THO",
+        "alt_imagen_resumida": "Nueva mecánica de PLACAS en el Discord de Tho",
+        "descripcion_resumida": "<p class=\"noticia_descripcion\"><strong>Nueva mecánica de PLACAS en el Discord de Tho!</strong> Participa y gana las nuevas placas <strong>Pionero</strong>, <strong>Ganador/a</strong> y <strong>Discutidores de mercado</strong>. ¡No te lo pierdas!</p>",
+        "fecha_noticia": "04-08-2024"
     }
 ]

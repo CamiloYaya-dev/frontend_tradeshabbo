@@ -96,7 +96,7 @@ function initialize() {
     function discordInfo(){
         $.getJSON('../discordInfo.json', function(data) {
             $('#discord_title').text(data.name);
-            $('#discord_invitation').attr('href', data.instant_invite);
+            $('#discord_invitation').attr('href', "https://discord.gg/tradeshabbo");
             $('#discord_members_online').text(data.presence_count + " Usuarios Online");
         }).fail(function() {
             $('#discord_title').text('En mantenimiento');
