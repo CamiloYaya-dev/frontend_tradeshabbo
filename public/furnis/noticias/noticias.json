@@ -196,5 +196,16 @@
         "alt_imagen_resumida": "Battle Ball Rebound imagen oficial",
         "descripcion_resumida": "<p class=\"noticia_descripcion\"><strong>¡Battle Ball Rebound llega a Habbo Hotel: Orígenes!</strong> Prepárate para el lanzamiento el 15 de agosto y conoce la información adicional que te ayudará a escalar en las filas.</p>",
         "fecha_noticia": "05-08-2024"
+    },
+    {
+        "id": 19,
+        "titulo": "Saltos de trampolín – Habbo Deportes",
+        "imagen_completa": "saltarin",
+        "alt_imagen_completa": "Saltos de trampolín en Habbo Deportes",
+        "descripcion_completa": "<p><strong>¡Demuestra tu capacidad para saltar del trampolín en el Lido y llévate un premio!</strong></p><p>Saltar de un trampolín es la máxima sensación de libertad. Como parte de nuestra agenda deportiva, ¡queremos ver lo libre que ERES! Tendremos tres sesiones distintas con jurado. Estaremos puntuando qué tal se te da saltar del trampolín en la sala pública Habbo Lido.</p><p><strong>¿Cuándo puedo participar?</strong></p><p>El martes 6 de agosto a las horas siguientes:</p><ul><li>8:30 a. m. UTC (1:30 a. m. PDT / 10:30 a. m. CEST)</li><li>10:30 a. m. UTC (3:30 a. m. PDT / 12:30 p. m. CEST)</li><li>12:30 p. m. UTC (5:30 a. m. PDT / 2:30 p. m. CEST)</li></ul><p><strong>Premios</strong></p><ul><li>🥇 Primer puesto: Trofeo de Oro, Placa Pato de Oro</li><li>🥈 Segundo puesto: Trofeo de Plata, Placa Pato de Plata</li><li>🥉 Tercer puesto: Trofeo de Bronce, Placa Pato de Bronce</li></ul><p>Estas placas se dieron en Habbo a principios de los 2000, como parte del evento Juegos Habbowealth 2005.</p><p>Cada una de las tres sesiones con jurado tendrán sus propios ganadores. En total, habrá nueve vencedores.</p><p><strong>❗ Recuerda que tienes que ser parte de un equipo de Habbo Deportes para poder participar en la competición.</strong></p><p>Para más detalles, visita la <a href=\"https://origins.habbo.es/community/article/119/saltos-de-trampolin-habbo-deportes\">noticia oficial</a>.</p>",
+        "imagen_resumida": "staff",
+        "alt_imagen_resumida": "Saltos de trampolín en Habbo Deportes",
+        "descripcion_resumida": "<p class=\"noticia_descripcion\"><strong>¡Demuestra tu capacidad para saltar del trampolín en el Lido y llévate un premio!</strong> Participa en una de las tres sesiones el martes 6 de agosto y gana trofeos y placas exclusivas. Para más detalles, visita la <a href=\"https://origins.habbo.es/community/article/119/saltos-de-trampolin-habbo-deportes\">noticia oficial</a>.</p>",
+        "fecha_noticia": "05-08-2024"
     }
 ]
