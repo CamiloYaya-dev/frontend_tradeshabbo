@@ -185,5 +185,16 @@
         "alt_imagen_resumida": "Nueva mecánica de PLACAS en el Discord de Tho",
         "descripcion_resumida": "<p class=\"noticia_descripcion\"><strong>Nueva mecánica de PLACAS en el Discord de Tho!</strong> Participa y gana las nuevas placas <strong>Pionero</strong>, <strong>Ganador/a</strong> y <strong>Discutidores de mercado</strong>. ¡No te lo pierdas!</p>",
         "fecha_noticia": "04-08-2024"
+    },
+    {
+        "id": 18,
+        "titulo": "¡Battle Ball Rebound llega a Habbo Hotel: Orígenes!",
+        "imagen_completa": "battle_ball_rebound",
+        "alt_imagen_completa": "Battle Ball Rebound en Habbo Hotel: Orígenes",
+        "descripcion_completa": "<p><strong>¡Prepárate para la emoción de Battle Ball Rebound en Habbo Hotel: Orígenes!</strong></p><p>El 15 de agosto, lanzaremos Battle Ball Rebound en Habbo Hotel: Orígenes. ¡El Diablo Rojo no puede esperar a ver cómo se desempeñan los mejores de los mejores!</p><p>Antes de que llegue, aquí tienes información adicional que te ayudará a escalar en las filas:</p><ul><li>Ahora, la forma en que juegas es increíblemente importante para cómo puntúas. En el pasado, ganabas puntos simplemente saltando en una baldosa, pero eso ya no es el caso. Los jugadores (excluyendo al que bloquea) que salten en una baldosa para colorearla, obtendrán un punto de asistencia.</li><li>Quien complete el bloqueo obtendrá un punto extra, pero los puntos no se otorgarán al equipo hasta que la baldosa esté bloqueada.</li><li>Robar la baldosa de un oponente otorgará puntos extra. ¡Debes atacar y defender cuidadosamente para obtener el máximo de puntos!</li><li>Los potenciadores jugarán un papel significativo. El potenciador de arlequín hará que tus oponentes coloreen las baldosas por ti, ¡ellos perderán puntos y tú los ganarás! Ser aturdido restará puntos de tu puntuación, ¡evita los alfileres en el campo de juego!</li></ul><p>Verás más material promocional acercándose al lanzamiento. ¡Estamos emocionados de presentar esto y estamos dando los toques finales!</p>",
+        "imagen_resumida": "staff",
+        "alt_imagen_resumida": "Battle Ball Rebound imagen oficial",
+        "descripcion_resumida": "<p class=\"noticia_descripcion\"><strong>¡Battle Ball Rebound llega a Habbo Hotel: Orígenes!</strong> Prepárate para el lanzamiento el 15 de agosto y conoce la información adicional que te ayudará a escalar en las filas.</p>",
+        "fecha_noticia": "05-08-2024"
     }
 ]
