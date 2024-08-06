@@ -2,3 +2,4 @@
 .cache
 
 database.sqlite
+*.sqlite
