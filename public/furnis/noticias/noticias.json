@@ -207,5 +207,16 @@
         "alt_imagen_resumida": "Saltos de trampolín en Habbo Deportes",
         "descripcion_resumida": "<p class=\"noticia_descripcion\"><strong>¡Demuestra tu capacidad para saltar del trampolín en el Lido y llévate un premio!</strong> Participa en una de las tres sesiones el martes 6 de agosto y gana trofeos y placas exclusivas. Para más detalles, visita la <a href=\"https://origins.habbo.es/community/article/119/saltos-de-trampolin-habbo-deportes\">noticia oficial</a>.</p>",
         "fecha_noticia": "05-08-2024"
+    },
+    {
+        "id": 20,
+        "titulo": "Nuevo raro disponible! El Holoboy",
+        "imagen_completa": "catalogo_holoboy",
+        "alt_imagen_completa": "Catalogo Holoboy",
+        "descripcion_completa": "<p><strong>El nuevo raro de Habbo Hotel: Orígenes: Holoboy!</strong></p><p>El Holoboy ya se encuentra disponible en el catálogo de Habbo Hotel: Orígenes por tiempo limitado. Podrás adquirirlo por un precio de 50 créditos. Este es el primer raro en tener una disponibilidad de solo 48 horas en el catálogo, así que no te lo pierdas!</p>",
+        "imagen_resumida": "rares_martes",
+        "alt_imagen_resumida": "nuevo raro martes 06 de agosto del 2024",
+        "descripcion_resumida": "<p class=\"noticia_descripcion\"><strong>Llega el nuevo raro a Habbo Hotel: Orígenes!</strong> Descubre y adquiere el nuevo raro, <strong>RARO Holoboy</strong>, disponible por tiempo limitado. No te lo pierdas!</p>",
+        "fecha_noticia": "06-08-2024"
     }
 ]
