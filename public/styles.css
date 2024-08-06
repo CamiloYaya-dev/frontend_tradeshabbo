@@ -287,6 +287,11 @@ main.container.master-trades-bg {
 .online_users_content_master_trades{
     background-color: #000;
     border: 2px solid #fff;
+    color: white;
+}
+
+.contador_text_master_trades{
+    background-color: #000000 !important;
 }
 
 .habbo_text_blue{
@@ -539,6 +544,12 @@ footer {
     font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
     margin-top: 20px;
     margin-bottom: 20px;
+}
+
+.noticia_div_master_trades{
+    background-color: #000000;
+    border: 1px solid #ffffff;
+
 }
 
 .noticia_div_last_three{
@@ -1131,8 +1142,18 @@ animation: rainbow-border 5s linear infinite;
     border-radius: 15px;
 }
 
+.contador_div_master_trades{
+    background-color: #000000;
+    color: white;
+    border: 2px solid white;
+}
+
 .contador_title{
     background-color: #335e7a;
+}
+
+.contador_title_master_trades{
+    background-color: #000000;
 }
 
 .contador_text{
@@ -1210,6 +1231,12 @@ animation: rainbow-border 5s linear infinite;
     max-width: 270px;
     border-radius: 15px;
     color: #7ecaee;
+}
+
+.discord_row_master_trades{
+    background-color: #000000;
+    color: #ffffff;
+    border: 2px solid #ffffff;
 }
 
 .discord_row_text{
