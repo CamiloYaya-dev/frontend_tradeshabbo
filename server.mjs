@@ -17,6 +17,9 @@ import rateLimit from 'express-rate-limit';
 import session from 'express-session';
 import { initializeApp } from 'firebase/app';
 import { getDatabase, ref, get, child } from 'firebase/database';
+import request from 'request';
+import cheerio from 'cheerio';
+import puppeteer from 'puppeteer';
 
 const app = express();
 const port = 3000;
@@ -48,7 +51,7 @@ const limiter = rateLimit({
     max: 1000,
     message: "Too many requests from this IP, please try again later.",
 });
-app.use(limiter);
+//app.use(limiter);
 
 function sqlInjectionMiddleware(req, res, next) {
     const forbiddenWords = ['UPDATE', 'DELETE', 'INSERT', 'SELECT', 'DROP', 'ALTER'];
@@ -642,3 +645,148 @@ app.get('/fetch-firebase-data', async (req, res) => {
         res.status(500).json({ error: 'Failed to fetch data from Firebase' });
     }
 });
+
+app.get('/proxy', (req, res) => {
+  const url = 'https://habbotemplarios.com/generador-de-habbos/';
+  request(url, (error, response, body) => {
+    if (!error && response.statusCode === 200) {
+      const $ = cheerio.load(body);
+
+      // Eliminar los elementos no deseados
+      $('#search-modal').remove();
+      $('header.header-wrapper').remove();
+      $('nav.top-nav').remove(); // Elimina la navegación superior si es necesario
+
+      $('footer.site-footer').remove(); // Elimina el footer
+
+      // Eliminar elementos específicos dentro de #main
+      $('.sidebar').remove();
+      $('.fas').remove();
+      $('.clear-content ').remove();
+      
+
+      $('#main').css({
+        'padding-top': '40px',
+        'width': 'auto'
+      });
+
+      $('body').css({
+        background: 'none',
+        background: 'url(https://images.habbo.com/habbo-web/origins-america/es/assets/images/habbo_background.683cff59.gif)'
+      });
+
+      // Modificar los enlaces dentro de #head-direction
+      $('#head-direction a[data-direction="left"]').html('&larr;');
+      $('#head-direction a[data-direction="right"]').html('&rarr;');
+
+      
+      $('#direction a[data-direction="left"]').html('&larr;');
+      $('#direction a[data-direction="right"]').html('&rarr;');
+
+      // Remover encabezados de seguridad que bloquean el embebido
+      res.set('Content-Security-Policy', "frame-ancestors 'self'");
+      res.set('X-Frame-Options', 'ALLOWALL');
+
+      // Enviar el contenido modificado al cliente
+      res.send($.html());
+    } else {
+      res.status(response.statusCode).send('Error loading the page');
+    }
+  });
+});
+
+const rewriteResourceUrls = (html, baseUrl) => {
+    const $ = cheerio.load(html);
+  
+    $('link[href], script[src], img[src]').each((_, element) => {
+      const attr = element.name === 'link' ? 'href' : 'src';
+      const resourceUrl = $(element).attr(attr);
+      if (resourceUrl && !resourceUrl.startsWith('http')) {
+        const absoluteUrl = new URL(resourceUrl, baseUrl).href;
+        console.log(absoluteUrl);
+        $(element).attr(attr, `/proxy-resource?url=${encodeURIComponent(absoluteUrl)}`);
+      }
+    });
+  
+    return $.html();
+  };
+  
+  // Proxy para manejar los recursos estáticos (imágenes, CSS, etc.)
+  app.get('/proxy-resource', async (req, res) => {
+    const resourceUrl = req.query.url;
+    try {
+      const response = await axios.get(resourceUrl, { responseType: 'arraybuffer' });
+      const contentType = response.headers['content-type'];
+      res.set('Content-Type', contentType);
+      res.send(response.data);
+    } catch (error) {
+      console.error('Error loading resource:', error);
+      res.status(500).send('Error loading the resource');
+    }
+  });
+  
+  // Ruta principal para el proxy
+  app.get('/proxy-text', async (req, res) => {
+    const url = 'https://www.habbofont.net/';
+  
+    try {
+      const response = await axios.get(url);
+      let html = rewriteResourceUrls(response.data, url);
+  
+      // Insertar script para hacer clic en el enlace "Home"
+      const $ = cheerio.load(html);
+      $('body').append(`
+        <script>
+          document.addEventListener('DOMContentLoaded', function() {
+  
+            // Hacer clic en el enlace "Home"
+            const homeLink = document.querySelector('.menu ul li a[href="/"]');
+            if (homeLink) homeLink.click();
+            
+            // Eliminar header y footer
+            const header = document.querySelector('header');
+            if (header) header.remove();
+            const footer = document.querySelector('footer');
+            if (footer) footer.remove();
+
+            document.body.style.background = 'none';
+
+            const hiddenInput = document.querySelector('.logo-link');
+            if (hiddenInput) {
+                hiddenInput.style.display = 'none';
+                const button = document.createElement('button');
+                button.textContent = 'Descargar Imagen';
+                button.disabled = !hiddenInput.value.startsWith('https://habbofont.net/');
+                button.addEventListener('click', function() {
+                const link = hiddenInput.value;
+                window.open(link, '_blank');
+                });
+                hiddenInput.insertAdjacentElement('afterend', button);
+
+                // Crear un observador para monitorear cambios en el valor del input oculto
+                const observer = new MutationObserver(() => {
+                button.disabled = !hiddenInput.value.startsWith('https://habbofont.net/');
+                });
+
+                observer.observe(hiddenInput, {
+                attributes: true,
+                attributeFilter: ['value']
+                });
+            }
+          });
+        </script>
+      `);
+      html = $.html();
+  
+      // Remover encabezados de seguridad que bloquean el embebido
+      res.set('Content-Security-Policy', "frame-ancestors 'self'");
+      res.set('X-Frame-Options', 'ALLOWALL');
+  
+      // Enviar el contenido modificado al cliente
+      res.send(html);
+    } catch (error) {
+      console.error('Error loading page:', error);
+      res.status(500).send('Error loading the page');
+    }
+  });
+  

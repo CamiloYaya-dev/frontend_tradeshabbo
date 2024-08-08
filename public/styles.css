@@ -1220,3 +1220,9 @@ animation: rainbow-border 5s linear infinite;
     padding-left: 0px;
     padding-right: 0px;
 }
+
+.habbo-generator{
+    width: 100%;
+    height: 100%;
+    border: none;
+}

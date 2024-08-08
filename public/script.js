@@ -72,6 +72,8 @@ $(document).ready(function() {
             $('#sort-options').show();
             $('#footer').show();
             $('#column-explications-master-trades').hide();
+            $('#habbo-generator-section').hide();
+            $('#text-generator-section').hide();
         } else if (section === 'noticias') {
             loadOtherClass();
             loadNoticias();
@@ -84,6 +86,8 @@ $(document).ready(function() {
             $('#sort-options').hide();
             $('#footer').show();
             $('#column-explications-master-trades').hide();
+            $('#habbo-generator-section').hide();
+            $('#text-generator-section').hide();
         } else if (section === 'calculador') {
             loadOtherClass();
             $('#catalogo-section').hide();
@@ -95,6 +99,8 @@ $(document).ready(function() {
             $('#sort-options').hide();
             $('#footer').show();
             $('#column-explications-master-trades').hide();
+            $('#habbo-generator-section').hide();
+            $('#text-generator-section').hide();
         } else if (section === 'sorteos') {
             loadOtherClass();
             loadSorteos();
@@ -107,6 +113,8 @@ $(document).ready(function() {
             $('#sort-options').hide();
             $('#footer').show();
             $('#column-explications-master-trades').hide();
+            $('#habbo-generator-section').hide();
+            $('#text-generator-section').hide();
         } else if (section === 'master_trades') {
             loadMasterTrades();
             $('#catalogo-section').hide();
@@ -118,6 +126,34 @@ $(document).ready(function() {
             $('#sort-options').hide();
             $('#footer').hide();
             $('#column-explications-master-trades').show();
+            $('#habbo-generator-section').hide();
+            $('#text-generator-section').hide();
+        } else if (section === 'habbo_generator_section'){
+            loadOtherClass();
+            $('#catalogo-section').hide();
+            $('#column-explications-catalogo').hide();
+            $('#noticias-section').hide();
+            $('#calculador-section').hide();
+            $('#sorteos-section').hide();
+            $('#master-trades-section').hide();
+            $('#sort-options').hide();
+            $('#footer').show();
+            $('#column-explications-master-trades').hide();
+            $('#habbo-generator-section').show();
+            $('#text-generator-section').hide();
+        } else if (section === 'text_generator_section'){
+            loadOtherClass();
+            $('#catalogo-section').hide();
+            $('#column-explications-catalogo').hide();
+            $('#noticias-section').hide();
+            $('#calculador-section').hide();
+            $('#sorteos-section').hide();
+            $('#master-trades-section').hide();
+            $('#sort-options').hide();
+            $('#footer').show();
+            $('#column-explications-master-trades').hide();
+            $('#habbo-generator-section').hide();
+            $('#text-generator-section').show();
         }
         updateContent();
     });
