@@ -51,7 +51,7 @@ const limiter = rateLimit({
     max: 1000,
     message: "Too many requests from this IP, please try again later.",
 });
-//app.use(limiter);
+app.use(limiter);
 
 function sqlInjectionMiddleware(req, res, next) {
     const forbiddenWords = ['UPDATE', 'DELETE', 'INSERT', 'SELECT', 'DROP', 'ALTER'];
