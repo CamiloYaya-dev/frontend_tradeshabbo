@@ -663,8 +663,8 @@ app.get('/proxy', (req, res) => {
       $('.sidebar').remove();
       $('.fas').remove();
       $('.clear-content ').remove();
+      $('#habbo_image_name').removeAttr('placeholder');
       
-
       $('#main').css({
         'padding-top': '40px',
         'width': 'auto'
@@ -703,7 +703,6 @@ const rewriteResourceUrls = (html, baseUrl) => {
       const resourceUrl = $(element).attr(attr);
       if (resourceUrl && !resourceUrl.startsWith('http')) {
         const absoluteUrl = new URL(resourceUrl, baseUrl).href;
-        console.log(absoluteUrl);
         $(element).attr(attr, `/proxy-resource?url=${encodeURIComponent(absoluteUrl)}`);
       }
     });
