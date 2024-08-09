@@ -254,6 +254,7 @@ function initialize() {
                     discordInfo();
                     loadLastThreeNoticias();
                     const decryptedData = decryptData(data.token);
+                    console.log(decryptedData);
                     var productContainer = $('#product-container');
                     var productHistoryContainer = $('#product-history-container');
                     var backButton = $('#back-button');
@@ -294,8 +295,8 @@ function initialize() {
                                                         <div class="col-12">
                                                             <p class="online_habbo_text_white">Origins .ES</p>
                                                             <p class="card-text text-price">
-                                                                <img src="furnis/dinero/credito.png" alt="credito" class="price-icon-principal" data-toggle="tooltip" data-i18n="[title]titulo_creditos" title="Precio en Créditos">${item.price}
-                                                                <img src="furnis/dinero/vip.png" alt="vip" class="price-vip-principal" data-toggle="tooltip" data-i18n="[title]titulo_vips" title="Precio en Vips">${(item.price / item.vip_price).toFixed(2)}
+                                                                <img src="furnis/dinero/credito.png" alt="credito" class="price-icon-principal" data-toggle="tooltip" data-i18n="[title]titulo_creditos" title="Precio en Créditos"> ${item.price > 0 ? item.price : '??'}
+                                                                <img src="furnis/dinero/vip.png" alt="vip" class="price-vip-principal" data-toggle="tooltip" data-i18n="[title]titulo_vips" title="Precio en Vips">${item.price > 0 ? (item.price / item.vip_price).toFixed(2) : '??'}
                                                             </p>
                                                         </div>
                                                     </div>
@@ -321,7 +322,7 @@ function initialize() {
                                                                     <p class="card-text text-price-es">
                                                                         <span class="price-item">
                                                                             <img src="furnis/dinero/credito.png" alt="precio_habbo_es" class="credit-habbo-es" data-toggle="tooltip" data-i18n="[title]titulo_creditos_es" title="Precio Creditos .ES">
-                                                                            ${Math.round(creditUsdPriceHabboEs * item.price)}
+                                                                                ${item.price > 0 ? Math.round(creditUsdPriceHabboEs * item.price) : '??'}
                                                                         </span>
                                                                     </p>
                                                                 </div>
