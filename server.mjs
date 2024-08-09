@@ -20,6 +20,10 @@ import { getDatabase, ref, get, child } from 'firebase/database';
 import request from 'request';
 import cheerio from 'cheerio';
 import puppeteer from 'puppeteer';
+import { Client, GatewayIntentBits, REST, Routes } from 'discord.js';
+import { ActionRowBuilder, ButtonBuilder, ButtonStyle, ApplicationCommandOptionType, AttachmentBuilder } from 'discord.js';
+import dotenv from 'dotenv';
+dotenv.config();
 
 const app = express();
 const port = 3000;
@@ -789,3 +793,333 @@ const rewriteResourceUrls = (html, baseUrl) => {
     }
   });
   
+const DISCORD_TOKEN = process.env.DISCORD_TOKEN;
+const CLIENT_ID = process.env.CLIENT_ID; // Tu Client ID
+const GUILD_ID = process.env.GUILD_ID; // Tu Guild ID (ID del servidor)
+const ALLOWED_ROLES = process.env.ALLOWED_ROLES; // Roles permitidos
+
+const client = new Client({
+    intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent],
+});
+
+client.once('ready', () => {
+    console.log('Discord bot is ready!');
+});
+
+client.login(DISCORD_TOKEN);
+
+const rest = new REST({ version: '10' }).setToken(DISCORD_TOKEN);
+
+const getImageChoices = () => {
+    const hcDir = path.join(__dirname, 'public', 'furnis', 'hc');
+    const raresDir = path.join(__dirname, 'public', 'furnis', 'rares');
+
+    const hcImages = fs.readdirSync(hcDir).map(file => ({ name: file.replace('.png', ''), value: `hc/${file}` }));
+    const raresImages = fs.readdirSync(raresDir).map(file => ({ name: file.replace('.png', ''), value: `rares/${file}` }));
+
+    return [...hcImages, ...raresImages];
+};
+
+const commands = [
+    {
+        name: 'crear-encuesta',
+        description: 'Crear una encuesta en el canal actual',
+        options: [
+            {
+                name: 'imagen',
+                type: ApplicationCommandOptionType.String,
+                description: 'Imagen para la encuesta',
+                required: true,
+                autocomplete: true
+            },
+            {
+                name: 'opciones',
+                type: ApplicationCommandOptionType.String,
+                description: 'Opciones de la encuesta separadas por punto y coma (;)',
+                required: true,
+            },
+            {
+                name: 'modo',
+                type: ApplicationCommandOptionType.String,
+                description: 'Modo de votación (unico, permanente)',
+                required: true,
+                choices: [
+                    { name: 'Único', value: 'unico' },
+                    { name: 'Único Permanente', value: 'permanente' }
+                ]
+            },
+            {
+                name: 'duracion',
+                type: ApplicationCommandOptionType.Integer,
+                description: 'Duración de la encuesta en horas',
+                required: true,
+            },
+        ],
+    },
+    {
+        name: 'finalizar-encuesta',
+        description: 'Finalizar una encuesta antes de tiempo',
+        options: [
+            {
+                name: 'url',
+                type: ApplicationCommandOptionType.String,
+                description: 'URL del mensaje de la encuesta',
+                required: true,
+            },
+        ],
+    },
+];
+
+(async () => {
+    try {
+
+        await rest.put(
+            Routes.applicationGuildCommands(CLIENT_ID, GUILD_ID),
+            { body: commands },
+        );
+
+    } catch (error) {
+        console.error(error);
+    }
+})();
+
+let activePolls = new Map();
+
+client.on('interactionCreate', async interaction => {
+    if (interaction.isAutocomplete()) {
+        const focusedValue = interaction.options.getFocused();
+        const choices = getImageChoices();
+        const filtered = choices.filter(choice => choice.name.toLowerCase().includes(focusedValue.toLowerCase())).slice(0, 25);
+        await interaction.respond(
+            filtered.map(choice => ({ name: choice.name.slice(0, 25), value: choice.value }))
+        );
+    }
+
+    if (!interaction.isCommand()) return;
+
+    const { commandName, options, member } = interaction;
+
+    // Verificar si el usuario tiene uno de los roles permitidos
+    const hasRole = member.roles.cache.some(role => ALLOWED_ROLES.includes(role.id));
+
+    if (!hasRole) {
+        await interaction.reply({ content: 'No tienes permiso para usar este comando.', ephemeral: true });
+        return;
+    }
+
+    if (commandName === 'crear-encuesta') {
+        const imagen = options.getString('imagen');
+        const opciones = options.getString('opciones').split(';').map(op => op.trim());
+        const modo = options.getString('modo');
+        const duracion = options.getInteger('duracion');
+
+        let voteCounts = new Array(opciones.length).fill(0);
+        const userVotes = new Map();
+        const voteDetails = new Map(); // Almacena los detalles de los votos
+
+        const row = new ActionRowBuilder();
+        opciones.forEach((opcion, index) => {
+            row.addComponents(
+                new ButtonBuilder()
+                    .setCustomId(`opcion${index}`)
+                    .setLabel(opcion)
+                    .setStyle(ButtonStyle.Primary)
+            );
+        });
+
+        const attachment = new AttachmentBuilder(path.join(__dirname, 'public', 'furnis', imagen));
+
+        const encuestaMessage = await interaction.reply({ 
+            content: getPollMessage(opciones, voteCounts, 0), 
+            components: [row], 
+            files: [attachment], 
+            fetchReply: true 
+        });
+
+        // Enviar la encuesta a la API externa con el ID del mensaje
+        const nuevaEncuesta = {
+            encuesta_id: encuestaMessage.id,
+            imagen,
+            modo,
+            duracion,
+            activa: true
+        };
+
+        let opcionesExternas = [];
+
+        try {
+            const response = await axios.post('https://airedale-summary-especially.ngrok-free.app/encuestas', nuevaEncuesta);
+
+            // Enviar las opciones a la API externa con el índice
+            for (let [index, opcion] of opciones.entries()) {
+                const nuevaOpcion = {
+                    encuesta_id: encuestaMessage.id,
+                    opcion_texto: opcion,
+                    opcion_discord_id: index  // Agregar el índice como opción_discord_id
+                };
+                const opcionResponse = await axios.post('https://airedale-summary-especially.ngrok-free.app/opciones', nuevaOpcion);
+                opcionesExternas.push(opcionResponse.data.data[0]); // Guardar las opciones con sus IDs externos
+            }
+        } catch (error) {
+            console.error('Error al agregar la encuesta o las opciones a la API externa:', error.response ? error.response.data : error.message);
+            return;
+        }
+
+        const pollData = {
+            opciones,
+            opcionesExternas, // Guardar las opciones externas
+            modo,
+            voteCounts,
+            userVotes,
+            voteDetails, // Añadido para almacenar los detalles de los votos
+            message: encuestaMessage,
+            row
+        };
+
+        activePolls.set(encuestaMessage.id, pollData);
+
+        const filter = i => i.customId.startsWith('opcion') && i.message.id === encuestaMessage.id;
+        const collector = interaction.channel.createMessageComponentCollector({ filter, time: duracion * 3600000 });
+
+        pollData.collector = collector;
+
+        collector.on('collect', async i => {
+            const userId = i.user.id;
+            const selectedOptionIndex = parseInt(i.customId.replace('opcion', ''), 10);
+            const selectedOptionId = pollData.opcionesExternas[selectedOptionIndex].opcion_id;
+
+            try {
+                if (modo === 'unico') {
+                    const previousVote = pollData.userVotes.get(userId);
+
+                    if (previousVote !== undefined) {
+                        pollData.voteCounts[previousVote]--;
+                        const details = pollData.voteDetails.get(previousVote);
+                        details.splice(details.indexOf(userId), 1);
+                        pollData.voteDetails.set(previousVote, details);
+
+                        // Eliminar el voto anterior en la API externa
+                        const previousOptionId = pollData.opcionesExternas[previousVote].opcion_id;
+                        await axios.delete('https://airedale-summary-especially.ngrok-free.app/votos', {
+                            data: {
+                                encuesta_id: encuestaMessage.id,
+                                opcion_id: previousOptionId,
+                                usuario_id: userId
+                            }
+                        });
+
+                        if (previousVote === selectedOptionIndex) {
+                            // Si el usuario vota de nuevo por la misma opción, solo se elimina el voto
+                            pollData.userVotes.delete(userId);
+                            const totalVotes = pollData.voteCounts.reduce((sum, count) => sum + count, 0);
+                            await i.update({ content: getPollMessage(pollData.opciones, pollData.voteCounts, totalVotes), components: [pollData.row] });
+                            return;
+                        }
+                    }
+
+                    pollData.voteCounts[selectedOptionIndex]++;
+                    pollData.userVotes.set(userId, selectedOptionIndex);
+
+                    if (!pollData.voteDetails.has(selectedOptionIndex)) {
+                        pollData.voteDetails.set(selectedOptionIndex, []);
+                    }
+                    pollData.voteDetails.get(selectedOptionIndex).push(userId);
+
+                    // Agregar el nuevo voto en la API externa
+                    await axios.post('https://airedale-summary-especially.ngrok-free.app/votos', {
+                        encuesta_id: encuestaMessage.id,
+                        opcion_id: selectedOptionId,
+                        usuario_id: userId
+                    });
+
+                } else if (modo === 'permanente') {
+                    if (pollData.userVotes.has(userId)) {
+                        await i.update({ content: 'Ya has votado y no puedes cambiar tu voto.', components: [], ephemeral: true });
+                        return;
+                    }
+
+                    pollData.voteCounts[selectedOptionIndex]++;
+                    pollData.userVotes.set(userId, selectedOptionIndex);
+
+                    if (!pollData.voteDetails.has(selectedOptionIndex)) {
+                        pollData.voteDetails.set(selectedOptionIndex, []);
+                    }
+                    pollData.voteDetails.get(selectedOptionIndex).push(userId);
+
+                    // Agregar el nuevo voto en la API externa
+                    await axios.post('https://airedale-summary-especially.ngrok-free.app/votos', {
+                        encuesta_id: encuestaMessage.id,
+                        opcion_id: selectedOptionId,
+                        usuario_id: userId
+                    });
+                }
+
+                const totalVotes = pollData.voteCounts.reduce((sum, count) => sum + count, 0);
+                await i.update({ content: getPollMessage(pollData.opciones, pollData.voteCounts, totalVotes), components: [pollData.row] });
+            } catch (error) {
+                console.error('Error handling vote:', error);
+                await i.update({ content: 'Ocurrió un error al procesar tu voto. Inténtalo de nuevo.', components: [], ephemeral: true });
+            }
+        });
+
+        collector.on('end', () => {
+            const totalVotes = pollData.voteCounts.reduce((sum, count) => sum + count, 0);
+            activePolls.delete(encuestaMessage.id);
+            
+            // Inactivar encuesta en la API externa
+            axios.put(`https://airedale-summary-especially.ngrok-free.app/encuestas/${encuestaMessage.id}/inactivar`)
+                .then(response => {
+                    console.log('Encuesta inactivada en la API externa:', response.data);
+                })
+                .catch(error => {
+                    console.error('Error al inactivar la encuesta en la API externa:', error.response ? error.response.data : error.message);
+                });
+
+            interaction.followUp({ content: `Encuesta finalizada:\n${getPollMessage(pollData.opciones, pollData.voteCounts, totalVotes)}`, files: [attachment] });
+        });
+    } else if (commandName === 'finalizar-encuesta') {
+        const url = options.getString('url');
+        const mensajeId = extractMessageIdFromUrl(url);
+        const pollData = activePolls.get(mensajeId);
+
+        if (pollData) {
+            pollData.collector.stop();
+            activePolls.delete(mensajeId);
+            
+            // Inactivar encuesta en la API externa
+            axios.put(`https://airedale-summary-especially.ngrok-free.app/encuestas/${mensajeId}/inactivar`)
+                .then(response => {
+                    console.log('Encuesta inactivada en la API externa:', response.data);
+                })
+                .catch(error => {
+                    console.error('Error al inactivar la encuesta en la API externa:', error.response ? error.response.data : error.message);
+                });
+
+            await interaction.reply({ content: 'La encuesta ha sido finalizada antes de tiempo.', ephemeral: true });
+        } else {
+            await interaction.reply({ content: 'No se encontró una encuesta activa con ese ID.', ephemeral: true });
+        }
+    }
+});
+
+function extractMessageIdFromUrl(url) {
+    const parts = url.split('/');
+    return parts[parts.length - 1];
+}
+
+function getPollMessage(opciones, voteCounts, totalVotes) {
+    const porcentajes = voteCounts.map(count => (totalVotes ? ((count / totalVotes) * 100).toFixed(2) : 0));
+    let message = `Total de votos: ${totalVotes}\n\n`;
+    opciones.forEach((opcion, index) => {
+        const progressBar = generateProgressBar(porcentajes[index]);
+        message += `${opcion}: ${porcentajes[index]}% ${progressBar} (${voteCounts[index]} votos)\n`;
+    });
+    return message;
+}
+
+function generateProgressBar(percentage) {
+    const totalBars = 20;
+    const filledBars = Math.round((percentage / 100) * totalBars);
+    const emptyBars = totalBars - filledBars;
+    return `[${'█'.repeat(filledBars)}${'░'.repeat(emptyBars)}]`;
+}
