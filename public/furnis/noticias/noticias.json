@@ -218,5 +218,16 @@
         "alt_imagen_resumida": "nuevo raro martes 06 de agosto del 2024",
         "descripcion_resumida": "<p class=\"noticia_descripcion\"><strong>Llega el nuevo raro a Habbo Hotel: Orígenes!</strong> Descubre y adquiere el nuevo raro, <strong>RARO Holoboy</strong>, disponible por tiempo limitado. No te lo pierdas!</p>",
         "fecha_noticia": "06-08-2024"
+    },
+    {
+        "id": 21,
+        "titulo": "Nuevo raro disponible! La Hologirl",
+        "imagen_completa": "catalogo_hologirl",
+        "alt_imagen_completa": "Catalogo Hologirl",
+        "descripcion_completa": "<p><strong>El nuevo raro de Habbo Hotel: Orígenes: Hologirl!</strong></p><p>El 8 de agosto de 2024, se lanza un nuevo raro mítico en el catálogo de Habbo Hotel: Orígenes. La <strong>Hologirl</strong> ya está disponible por tiempo limitado a un precio especial de 50 créditos. Este es el primer raro que sale un jueves y estará disponible solo por 48 horas en el catálogo. ¡No pierdas la oportunidad de agregar esta pieza única a tu colección!</p>",
+        "imagen_resumida": "rares_martes",
+        "alt_imagen_resumida": "nuevo raro jueves 08 de agosto del 2024",
+        "descripcion_resumida": "<p class=\"noticia_descripcion\"><strong>Llega un nuevo raro a Habbo Hotel: Orígenes!</strong> Descubre y adquiere el nuevo raro, <strong>RARO Hologirl</strong>, disponible solo por 48 horas. ¡No te lo pierdas!</p>",
+        "fecha_noticia": "08-08-2024"
     }
 ]
