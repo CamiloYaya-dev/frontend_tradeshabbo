@@ -989,14 +989,31 @@ client.on('interactionCreate', async interaction => {
                             const articulo = preciosData.find(item => item.name === imagenNombre);
                 
                             if (articulo) {
-                                // Hacer la solicitud POST con el ID y el resultadoFinal como precio en un array
-                                const postData = [
-                                    {
-                                        id: articulo.id,
-                                        price: resultadoFinal
-                                    }
-                                ];
-
+                                console.log(`Se encontró el artículo con ID: ${articulo.id} para la imagen ${pollData.imagen}`);
+                
+                                // Actualizar o registrar el precio en la base de datos SQLite
+                                const today = new Date();
+                                const priceHistory = await PriceHistory.create({
+                                    productId: articulo.id,
+                                    precio: resultadoFinal,
+                                    fecha_precio: today
+                                });
+                                console.log('Precio registrado en la base de datos SQLite.');
+                
+                                // Actualizar el precio en el modelo Image
+                                const image = await Image.findByPk(articulo.id);
+                                if (image) {
+                                    image.price = resultadoFinal;
+                                    await image.save();
+                                    console.log('Precio actualizado en el modelo Image.');
+                                }
+                
+                                // Hacer la solicitud POST con el ID y el resultadoFinal como precio
+                                const postData = [{
+                                    id: articulo.id,
+                                    price: resultadoFinal
+                                }];
+                
                                 await axios.post('https://airedale-summary-especially.ngrok-free.app/habbo-update-catalog', postData)
                                     .then(response => {
                                         console.log('Catálogo actualizado exitosamente:', response.data);
