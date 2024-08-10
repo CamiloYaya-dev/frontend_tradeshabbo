@@ -772,7 +772,7 @@ client.on('interactionCreate', async interaction => {
         const modo = options.getString('modo');
         const duracionNoParser = options.getString('duracion');
         const duracion = parseDuration(duracionNoParser);
-        const channelIds = ['1271322111629197312', '1271322143522557972'];
+        const channelIds = ['1262144139852517456', '1262190957495849010'];
 
         for (const channelId of channelIds) {
             try {
