@@ -648,7 +648,6 @@ app.get('/fetch-firebase-data', async (req, res) => {
 });
 
 const DISCORD_TOKEN = process.env.DISCORD_TOKEN;
-console.log('DISCORD_TOKEN', DISCORD_TOKEN)
 const CLIENT_ID = process.env.CLIENT_ID; // Tu Client ID
 const GUILD_ID = process.env.GUILD_ID; // Tu Guild ID (ID del servidor)
 const ALLOWED_ROLES = process.env.ALLOWED_ROLES; // Roles permitidos
@@ -705,8 +704,8 @@ const commands = [
             },
             {
                 name: 'duracion',
-                type: ApplicationCommandOptionType.Integer,
-                description: 'Duración de la encuesta en horas',
+                type: ApplicationCommandOptionType.String,
+                description: 'Duración de la encuesta (por ejemplo: 1d2h30m para 1 día, 2 horas y 30 minutos)',
                 required: true,
             },
         ],
@@ -741,6 +740,7 @@ const commands = [
 })();
 
 let activePolls = new Map();
+let lock = false;
 
 client.on('interactionCreate', async interaction => {
     if (interaction.isAutocomplete()) {
@@ -765,181 +765,281 @@ client.on('interactionCreate', async interaction => {
     }
 
     if (commandName === 'crear-encuesta') {
+        await interaction.deferReply({ ephemeral: true });
+
         const imagen = options.getString('imagen');
         const opciones = options.getString('opciones').split(';').map(op => op.trim());
         const modo = options.getString('modo');
-        const duracion = options.getInteger('duracion');
+        const duracionNoParser = options.getString('duracion');
+        const duracion = parseDuration(duracionNoParser);
+        const channelIds = ['1271322111629197312', '1271322143522557972'];
 
-        let voteCounts = new Array(opciones.length).fill(0);
-        const userVotes = new Map();
-        const voteDetails = new Map(); // Almacena los detalles de los votos
-
-        const row = new ActionRowBuilder();
-        opciones.forEach((opcion, index) => {
-            row.addComponents(
-                new ButtonBuilder()
-                    .setCustomId(`opcion${index}`)
-                    .setLabel(opcion)
-                    .setStyle(ButtonStyle.Primary)
-            );
-        });
-
-        const attachment = new AttachmentBuilder(path.join(__dirname, 'public', 'furnis', imagen));
-
-        const encuestaMessage = await interaction.reply({ 
-            content: getPollMessage(opciones, voteCounts, 0), 
-            components: [row], 
-            files: [attachment], 
-            fetchReply: true 
-        });
-
-        // Enviar la encuesta a la API externa con el ID del mensaje
-        const nuevaEncuesta = {
-            encuesta_id: encuestaMessage.id,
-            imagen,
-            modo,
-            duracion,
-            activa: true
-        };
-
-        let opcionesExternas = [];
-
-        try {
-            const response = await axios.post('https://airedale-summary-especially.ngrok-free.app/encuestas', nuevaEncuesta);
-            console.log('Encuesta agregada a la API externa:', response.data);
-
-            // Enviar las opciones a la API externa con el índice
-            for (let [index, opcion] of opciones.entries()) {
-                const nuevaOpcion = {
-                    encuesta_id: encuestaMessage.id,
-                    opcion_texto: opcion,
-                    opcion_discord_id: index  // Agregar el índice como opción_discord_id
-                };
-                const opcionResponse = await axios.post('https://airedale-summary-especially.ngrok-free.app/opciones', nuevaOpcion);
-                console.log('Opción agregada a la API externa:', opcionResponse.data);
-                opcionesExternas.push(opcionResponse.data.data[0]); // Guardar las opciones con sus IDs externos
-            }
-        } catch (error) {
-            console.error('Error al agregar la encuesta o las opciones a la API externa:', error.response ? error.response.data : error.message);
-            return;
-        }
-
-        const pollData = {
-            opciones,
-            opcionesExternas, // Guardar las opciones externas
-            modo,
-            voteCounts,
-            userVotes,
-            voteDetails, // Añadido para almacenar los detalles de los votos
-            message: encuestaMessage,
-            row
-        };
-
-        activePolls.set(encuestaMessage.id, pollData);
-
-        const filter = i => i.customId.startsWith('opcion') && i.message.id === encuestaMessage.id;
-        const collector = interaction.channel.createMessageComponentCollector({ filter, time: duracion * 3600000 });
-
-        pollData.collector = collector;
-
-        collector.on('collect', async i => {
-            const userId = i.user.id;
-            const selectedOptionIndex = parseInt(i.customId.replace('opcion', ''), 10);
-            const selectedOptionId = pollData.opcionesExternas[selectedOptionIndex].opcion_id;
-
+        for (const channelId of channelIds) {
             try {
-                if (modo === 'unico') {
-                    const previousVote = pollData.userVotes.get(userId);
+                const voteCounts = new Array(opciones.length).fill(0);
+                const userVotes = new Map();
+                const voteDetails = new Map(); // Almacena los detalles de los votos
 
-                    if (previousVote !== undefined) {
-                        pollData.voteCounts[previousVote]--;
-                        const details = pollData.voteDetails.get(previousVote);
-                        details.splice(details.indexOf(userId), 1);
-                        pollData.voteDetails.set(previousVote, details);
-
-                        // Eliminar el voto anterior en la API externa
-                        const previousOptionId = pollData.opcionesExternas[previousVote].opcion_id;
-                        await axios.delete('https://airedale-summary-especially.ngrok-free.app/votos', {
-                            data: {
-                                encuesta_id: encuestaMessage.id,
-                                opcion_id: previousOptionId,
-                                usuario_id: userId
-                            }
-                        });
-
-                        if (previousVote === selectedOptionIndex) {
-                            // Si el usuario vota de nuevo por la misma opción, solo se elimina el voto
-                            pollData.userVotes.delete(userId);
-                            const totalVotes = pollData.voteCounts.reduce((sum, count) => sum + count, 0);
-                            await i.update({ content: getPollMessage(pollData.opciones, pollData.voteCounts, totalVotes), components: [pollData.row] });
-                            return;
-                        }
-                    }
-
-                    pollData.voteCounts[selectedOptionIndex]++;
-                    pollData.userVotes.set(userId, selectedOptionIndex);
-
-                    if (!pollData.voteDetails.has(selectedOptionIndex)) {
-                        pollData.voteDetails.set(selectedOptionIndex, []);
-                    }
-                    pollData.voteDetails.get(selectedOptionIndex).push(userId);
-
-                    // Agregar el nuevo voto en la API externa
-                    await axios.post('https://airedale-summary-especially.ngrok-free.app/votos', {
-                        encuesta_id: encuestaMessage.id,
-                        opcion_id: selectedOptionId,
-                        usuario_id: userId
-                    });
-
-                } else if (modo === 'permanente') {
-                    if (pollData.userVotes.has(userId)) {
-                        await i.update({ content: 'Ya has votado y no puedes cambiar tu voto.', components: [], ephemeral: true });
-                        return;
-                    }
-
-                    pollData.voteCounts[selectedOptionIndex]++;
-                    pollData.userVotes.set(userId, selectedOptionIndex);
-
-                    if (!pollData.voteDetails.has(selectedOptionIndex)) {
-                        pollData.voteDetails.set(selectedOptionIndex, []);
-                    }
-                    pollData.voteDetails.get(selectedOptionIndex).push(userId);
-
-                    // Agregar el nuevo voto en la API externa
-                    await axios.post('https://airedale-summary-especially.ngrok-free.app/votos', {
-                        encuesta_id: encuestaMessage.id,
-                        opcion_id: selectedOptionId,
-                        usuario_id: userId
-                    });
-                }
-
-                const totalVotes = pollData.voteCounts.reduce((sum, count) => sum + count, 0);
-
-                console.log(`Votos actuales para la encuesta ${encuestaMessage.id}:`, Array.from(pollData.voteDetails.entries()));
-
-                await i.update({ content: getPollMessage(pollData.opciones, pollData.voteCounts, totalVotes), components: [pollData.row] });
-            } catch (error) {
-                console.error('Error handling vote:', error);
-                await i.update({ content: 'Ocurrió un error al procesar tu voto. Inténtalo de nuevo.', components: [], ephemeral: true });
-            }
-        });
-
-        collector.on('end', () => {
-            const totalVotes = pollData.voteCounts.reduce((sum, count) => sum + count, 0);
-            activePolls.delete(encuestaMessage.id);
-            console.log(`Votos finales para la encuesta ${encuestaMessage.id}:`, Array.from(pollData.voteDetails.entries()));
-            
-            // Inactivar encuesta en la API externa
-            axios.put(`https://airedale-summary-especially.ngrok-free.app/encuestas/${encuestaMessage.id}/inactivar`)
-                .then(response => {
-                    console.log('Encuesta inactivada en la API externa:', response.data);
-                })
-                .catch(error => {
-                    console.error('Error al inactivar la encuesta en la API externa:', error.response ? error.response.data : error.message);
+                const row = new ActionRowBuilder();
+                opciones.forEach((opcion, index) => {
+                    row.addComponents(
+                        new ButtonBuilder()
+                            .setCustomId(`opcion${index}-${channelId}`)
+                            .setLabel(opcion)
+                            .setStyle(ButtonStyle.Primary)
+                    );
                 });
 
-            interaction.followUp({ content: `Encuesta finalizada:\n${getPollMessage(pollData.opciones, pollData.voteCounts, totalVotes)}`, files: [attachment] });
-        });
+                const attachment = new AttachmentBuilder(path.join(__dirname, 'public', 'furnis', imagen));
+                const channel = await client.channels.fetch(channelId);
+                const encuestaMessage = await channel.send({
+                    content: getPollMessage(opciones, voteCounts, 0),
+                    components: [row],
+                    files: [attachment]
+                });
+
+                const nuevaEncuesta = {
+                    encuesta_id: encuestaMessage.id,
+                    imagen,
+                    modo,
+                    duracion,
+                    activa: true
+                };
+
+                let opcionesExternas = [];
+
+                try {
+                    const response = await axios.post('https://airedale-summary-especially.ngrok-free.app/encuestas', nuevaEncuesta);
+
+                    for (let [index, opcion] of opciones.entries()) {
+                        const nuevaOpcion = {
+                            encuesta_id: encuestaMessage.id,
+                            opcion_texto: opcion,
+                            opcion_discord_id: index  // Agregar el índice como opción_discord_id
+                        };
+                        const opcionResponse = await axios.post('https://airedale-summary-especially.ngrok-free.app/opciones', nuevaOpcion);
+                        opcionesExternas.push(opcionResponse.data.data[0]);
+                    }
+                } catch (error) {
+                    console.error('Error al agregar la encuesta o las opciones a la API externa:', error.response ? error.response.data : error.message);
+                    return;
+                }
+
+                const pollData = {
+                    opciones,
+                    opcionesExternas,
+                    modo,
+                    voteCounts,
+                    userVotes,
+                    voteDetails, 
+                    message: encuestaMessage,
+                    row,
+                    imagen: imagen
+                };
+                activePolls.set(encuestaMessage.id, pollData);
+                const filter = i => i.customId.startsWith('opcion') && i.message.id === encuestaMessage.id;
+                const collector = channel.createMessageComponentCollector({ filter, time: duracion });
+
+                pollData.collector = collector;
+
+                collector.on('collect', async i => {
+                    const userId = i.user.id;
+                    const selectedOptionIndex = parseInt(i.customId.replace(`opcion`, '').split('-')[0], 10);
+                    const selectedOptionId = pollData.opcionesExternas[selectedOptionIndex].opcion_id;
+
+                    try {
+                        if (modo === 'unico') {
+                            const previousVote = pollData.userVotes.get(userId);
+
+                            if (previousVote !== undefined) {
+                                pollData.voteCounts[previousVote]--;
+                                const details = pollData.voteDetails.get(previousVote);
+                                details.splice(details.indexOf(userId), 1);
+                                pollData.voteDetails.set(previousVote, details);
+
+                                const previousOptionId = pollData.opcionesExternas[previousVote].opcion_id;
+                                await axios.delete('https://airedale-summary-especially.ngrok-free.app/votos', {
+                                    data: {
+                                        encuesta_id: encuestaMessage.id,
+                                        opcion_id: previousOptionId,
+                                        usuario_id: userId
+                                    }
+                                });
+
+                                if (previousVote === selectedOptionIndex) {
+                                    pollData.userVotes.delete(userId);
+                                    const totalVotes = pollData.voteCounts.reduce((sum, count) => sum + count, 0);
+                                    await i.update({ content: getPollMessage(pollData.opciones, pollData.voteCounts, totalVotes), components: [pollData.row] });
+                                    return;
+                                }
+                            }
+
+                            pollData.voteCounts[selectedOptionIndex]++;
+                            pollData.userVotes.set(userId, selectedOptionIndex);
+
+                            if (!pollData.voteDetails.has(selectedOptionIndex)) {
+                                pollData.voteDetails.set(selectedOptionIndex, []);
+                            }
+                            pollData.voteDetails.get(selectedOptionIndex).push(userId);
+
+                            await axios.post('https://airedale-summary-especially.ngrok-free.app/votos', {
+                                encuesta_id: encuestaMessage.id,
+                                opcion_id: selectedOptionId,
+                                usuario_id: userId
+                            });
+
+                        } else if (modo === 'permanente') {
+                            if (pollData.userVotes.has(userId)) {
+                                await i.update({ content: 'Ya has votado y no puedes cambiar tu voto.', components: [], ephemeral: true });
+                                return;
+                            }
+
+                            pollData.voteCounts[selectedOptionIndex]++;
+                            pollData.userVotes.set(userId, selectedOptionIndex);
+
+                            if (!pollData.voteDetails.has(selectedOptionIndex)) {
+                                pollData.voteDetails.set(selectedOptionIndex, []);
+                            }
+                            pollData.voteDetails.get(selectedOptionIndex).push(userId);
+
+                            await axios.post('https://airedale-summary-especially.ngrok-free.app/votos', {
+                                encuesta_id: encuestaMessage.id,
+                                opcion_id: selectedOptionId,
+                                usuario_id: userId
+                            });
+                        }
+
+                        const totalVotes = pollData.voteCounts.reduce((sum, count) => sum + count, 0);
+                        await i.update({ content: getPollMessage(pollData.opciones, pollData.voteCounts, totalVotes), components: [pollData.row] });
+                    } catch (error) {
+                        console.error('Error handling vote:', error);
+                        await i.update({ content: 'Ocurrió un error al procesar tu voto. Inténtalo de nuevo.', components: [], ephemeral: true });
+                    }
+                });
+
+                collector.on('end', async (collected, reason) => {
+                    try {
+                        const pollData = activePolls.get(encuestaMessage.id);
+                        if (!pollData) {
+                            console.error(`No se encontró pollData para el mensaje ID: ${encuestaMessage.id}`);
+                            return;
+                        }
+                
+                        // Inactivar encuesta en la API externa
+                        await axios.put(`https://airedale-summary-especially.ngrok-free.app/encuestas/${encuestaMessage.id}/inactivar`)
+                            .then(response => {
+                                console.log('Encuesta inactivada en la API externa:', response.data);
+                            })
+                            .catch(error => {
+                                console.error('Error al inactivar la encuesta en la API externa:', error.response ? error.response.data : error.message);
+                            });
+                
+                        // Verificar si todas las encuestas con la misma imagen han finalizado
+                        const completedPolls = Array.from(activePolls.values()).filter(poll => poll.imagen === pollData.imagen && poll.collector.ended);
+
+                        if (completedPolls.length === 2) {
+                            let votosCanal1 = 0;
+                            let votosCanal2 = 0;
+                            let opcionGanadoraCanal1 = '';
+                            let opcionGanadoraCanal2 = '';
+                
+                            // Iterar sobre cada encuesta completada y obtener la opción ganadora de cada una
+                            completedPolls.forEach((poll, index) => {
+                                let maxVotes = 0;
+                                let winningOption = '';
+                                let winningOptionVotes = 0;
+                
+                                poll.opciones.forEach((opcion, idx) => {
+                                    if (poll.voteCounts[idx] > maxVotes) {
+                                        maxVotes = poll.voteCounts[idx];
+                                        winningOption = opcion;
+                                        winningOptionVotes = parseInt(opcion.match(/\d+/g)?.join('') || "0");
+                                    }
+                                });
+                
+                                if (index === 0) {
+                                    votosCanal1 = winningOptionVotes;
+                                    opcionGanadoraCanal1 = winningOption;
+                                } else {
+                                    votosCanal2 = winningOptionVotes;
+                                    opcionGanadoraCanal2 = winningOption;
+                                }
+                            });
+                
+                            // Calcular el resultado ponderado
+                            const pesoCanal1 = 0.70;
+                            const pesoCanal2 = 0.30;
+                
+                            let resultadoFinal = (votosCanal1 * pesoCanal1) + (votosCanal2 * pesoCanal2);
+                
+                            // Función para redondear al múltiplo de 5 más cercano
+                            const redondearMultiploDe5 = (numero) => {
+                                return Math.round(numero / 5) * 5;
+                            };
+                
+                            // Redondear el resultado al múltiplo de 5 más cercano
+                            resultadoFinal = redondearMultiploDe5(resultadoFinal);
+
+                            // Buscar la imagen en el archivo precios.json
+                            const imagenNombre = pollData.imagen.split('/').pop().split('.')[0]; // Extrae "El_Super_Dado" de "hc/El_Super_Dado.png"
+                
+                            const preciosPath = path.join(__dirname, 'public', 'furnis', 'precios', 'precios.json');
+                            const preciosData = JSON.parse(fs.readFileSync(preciosPath, 'utf-8'));
+                
+                            const articulo = preciosData.find(item => item.name === imagenNombre);
+                
+                            if (articulo) {
+                                // Hacer la solicitud POST con el ID y el resultadoFinal como precio en un array
+                                const postData = [
+                                    {
+                                        id: articulo.id,
+                                        price: resultadoFinal
+                                    }
+                                ];
+
+                                await axios.post('https://airedale-summary-especially.ngrok-free.app/habbo-update-catalog', postData)
+                                    .then(response => {
+                                        console.log('Catálogo actualizado exitosamente:', response.data);
+                                    })
+                                    .catch(error => {
+                                        console.error('Error al actualizar el catálogo:', error.response ? error.response.data : error.message);
+                                    });
+                            } else {
+                                console.log(`No se encontró ningún artículo para la imagen ${pollData.imagen}`);
+                            }
+                
+                            // Anunciar el resultado en los canales correspondientes
+                            const mensaje = `La encuesta ha culminado.\n\n` +
+                                            `La opción ganadora de la encuesta de los Master Trades es "${opcionGanadoraCanal1}".\n` +
+                                            `La opción ganadora de la encuesta de la comunidad es "${opcionGanadoraCanal2}".\n` +
+                                            `El precio final después del cálculo es ${resultadoFinal}. Ya puedes ver este precio en la página web https://www.tradeshabbo.com/`;
+                
+                            completedPolls.forEach(async (poll) => {
+                                await poll.message.channel.send({
+                                    content: mensaje,
+                                    files: [path.join(__dirname, 'public','furnis', poll.imagen)]
+                                });
+                            });
+                
+                            // Eliminar las encuestas completadas de activePolls
+                            completedPolls.forEach(poll => activePolls.delete(poll.message.id));
+                        } else {
+                            console.log('No se han encontrado ambas encuestas aún, no eliminando de activePolls.');
+                        }
+                    } catch (error) {
+                        console.error('Error in collector end handler:', error);
+                    }
+                });
+                
+                
+                
+                
+            } catch (error) {
+                console.error(`Error al crear la encuesta en el canal ${channelId}:`, error);
+            }
+        }
+
+        await interaction.editReply({ content: 'Encuesta creada y publicada en los canales especificados.' });
     } else if (commandName === 'finalizar-encuesta') {
         const url = options.getString('url');
         const mensajeId = extractMessageIdFromUrl(url);
@@ -948,8 +1048,7 @@ client.on('interactionCreate', async interaction => {
         if (pollData) {
             pollData.collector.stop();
             activePolls.delete(mensajeId);
-            
-            // Inactivar encuesta en la API externa
+
             axios.put(`https://airedale-summary-especially.ngrok-free.app/encuestas/${mensajeId}/inactivar`)
                 .then(response => {
                     console.log('Encuesta inactivada en la API externa:', response.data);
@@ -964,6 +1063,8 @@ client.on('interactionCreate', async interaction => {
         }
     }
 });
+
+
 
 function extractMessageIdFromUrl(url) {
     const parts = url.split('/');
@@ -985,4 +1086,28 @@ function generateProgressBar(percentage) {
     const filledBars = Math.round((percentage / 100) * totalBars);
     const emptyBars = totalBars - filledBars;
     return `[${'█'.repeat(filledBars)}${'░'.repeat(emptyBars)}]`;
+}
+
+function parseDuration(duration) {
+    const regex = /(\d+d)?(\d+h)?(\d+m)?/;
+    const matches = duration.match(regex);
+
+    let totalMilliseconds = 0;
+
+    if (matches) {
+        if (matches[1]) {
+            const days = parseInt(matches[1].replace('d', ''), 10);
+            totalMilliseconds += days * 24 * 60 * 60 * 1000; // Días a milisegundos
+        }
+        if (matches[2]) {
+            const hours = parseInt(matches[2].replace('h', ''), 10);
+            totalMilliseconds += hours * 60 * 60 * 1000; // Horas a milisegundos
+        }
+        if (matches[3]) {
+            const minutes = parseInt(matches[3].replace('m', ''), 10);
+            totalMilliseconds += minutes * 60 * 1000; // Minutos a milisegundos
+        }
+    }
+
+    return totalMilliseconds;
 }
