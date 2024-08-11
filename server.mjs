@@ -23,6 +23,8 @@ import { Client, GatewayIntentBits, REST, Routes } from 'discord.js';
 import { ActionRowBuilder, ButtonBuilder, ButtonStyle, ApplicationCommandOptionType, AttachmentBuilder } from 'discord.js';
 import dotenv from 'dotenv';
 import { postTweet } from './twitterClient.mjs';
+import { generateSummaryWeb } from './openaiClient.mjs';
+import { format } from 'date-fns';
 
 dotenv.config();
 
@@ -1243,10 +1245,11 @@ client.on('messageCreate', async (message) => {
             return message.reply('No tienes permisos para usar este comando.');
         }
 
-        // Extraer el comando, la mención y el contenido
+        // Extraer el comando, la mención, el contenido y el parámetro $web
         const args = message.content.split(' ');
         const mentionType = args[1] && (args[1] === '$everyone' || args[1] === '$here') ? args[1] : '';
-        const content = args.slice(mentionType ? 2 : 1).join(' ').trim();
+        const isWeb = args.includes('$web');
+        const content = args.slice(mentionType ? 2 : 1).filter(arg => arg !== '$web').join(' ').trim();
 
         if (!content) {
             return message.reply('Por favor, incluye el contenido de la noticia.');
@@ -1259,16 +1262,76 @@ client.on('messageCreate', async (message) => {
             };
 
             // Manejar las imágenes adjuntas
+            let imageUrl = null;
             if (message.attachments.size > 0) {
                 const attachments = message.attachments.map(attachment => new AttachmentBuilder(attachment.url));
+                imageUrl = message.attachments.first().url;
                 messageOptions.files = attachments;
             }
 
             newsChannel.send(messageOptions).then(async (sentMessage) => {
                 message.reply('La noticia ha sido publicada exitosamente.');
                 const messageUrl = `https://discord.com/channels/${sentMessage.guildId}/${sentMessage.channelId}/${sentMessage.id}`;
-                console.log(messageUrl);
-                await postTweet(content, messageUrl);
+                console.log(`Mensaje publicado en: ${messageUrl}`);
+
+                // Publicar el tweet después de publicar la noticia en Discord
+                //await postTweet(content, messageUrl);
+
+                // Si el parámetro $web está presente, generar y guardar el resumen
+                if (isWeb) {
+                    const prompWeb = `Tengo esta noticia "+${content} +" y necesito que me la generes y resumas en este formato, toma esta noticia como ejemplo {
+                        "titulo": "Nuevo raro disponible! La Hologirl",
+                        "imagen_completa": "catalogo_hologirl",
+                        "alt_imagen_completa": "Catalogo Hologirl",
+                        "descripcion_completa": "<p><strong>El nuevo raro de Habbo Hotel: Orígenes: Hologirl!</strong></p><p>El 8 de agosto de 2024, se lanza un nuevo raro mítico en el catálogo de Habbo Hotel: Orígenes. La <strong>Hologirl</strong> ya está disponible por tiempo limitado a un precio especial de 50 créditos. Este es el primer raro que sale un jueves y estará disponible solo por 48 horas en el catálogo. ¡No pierdas la oportunidad de agregar esta pieza única a tu colección!</p>",
+                        "imagen_resumida": "rares_martes",
+                        "alt_imagen_resumida": "nuevo raro jueves 08 de agosto del 2024",
+                        "descripcion_resumida": "<p class=\"noticia_descripcion\"><strong>Llega un nuevo raro a Habbo Hotel: Orígenes!</strong> Descubre y adquiere el nuevo raro, <strong>RARO Hologirl</strong>, disponible solo por 48 horas. ¡No te lo pierdas!</p>"
+                    } los posibles valores de la imagen_resumida son rares_martes (para cuando la noticia habla de un rare), funky_friday (para cuando la noticia habla de un funky, es decir, tiene la palabra FUNKY en algun lado), THO (para cuando la noticia habla de tradeshabbo o tradeshabboorigins o explicitamente de THO), staff (cuando la noticia es de oficial de habbo o explicitamente tiene la palabra staff o hobba), IMPORTANTE NINGUNO DE LOS ANTERIORES CAMPOS PEUDE QUEDAR VACIO`
+                    let summaryData = await generateSummaryWeb(prompWeb);
+                    summaryData = JSON.parse(summaryData);
+
+                    console.log('Resumen generado para la web:', summaryData);
+
+                    if (imageUrl) {
+                        // Descargar y guardar la imagen en la ruta local especificada
+                        const imageName = `${summaryData.imagen_completa}.png`;
+                        const savePath = path.join('public', 'furnis', 'noticias', 'imagenes', 'completas', imageName);
+
+                        try {
+                            await downloadImage(imageUrl, savePath);
+                            console.log(`Imagen guardada en: ${savePath}`);
+                        } catch (error) {
+                            console.error('Error al descargar y guardar la imagen:', error);
+                        }
+                    }
+                    try {
+                        const response = await axios.post('https://airedale-summary-especially.ngrok-free.app/nueva-noticia', summaryData);
+                        console.log('Datos enviados a la web exitosamente.');
+                        
+                        const noticiaId = response.data['noticia_id'];
+                        const fechaActual = format(new Date(), 'dd-MM-yyyy');
+
+                        // Leer el archivo noticias.json
+                        const noticiasPath = path.join('public', 'furnis', 'noticias', 'noticias.json');
+                        const noticias = JSON.parse(fs.readFileSync(noticiasPath, 'utf8'));
+
+                        // Agregar nuevo registro
+                        const nuevaNoticia = {
+                            id: noticiaId,
+                            ...summaryData,
+                            fecha_noticia: fechaActual
+                        };
+                        noticias.push(nuevaNoticia);
+
+                        // Guardar de nuevo el archivo
+                        fs.writeFileSync(noticiasPath, JSON.stringify(noticias, null, 2), 'utf8');
+                        console.log('Nueva noticia agregada al archivo noticias.json.');
+
+                    } catch (error) {
+                        console.error('Error al enviar los datos a la web:', error);
+                    }
+                }
 
             }).catch(err => {
                 console.error('Error al publicar la noticia:', err);
@@ -1279,6 +1342,17 @@ client.on('messageCreate', async (message) => {
         }
     }
 });
+
+// Función para descargar la imagen desde Discord y guardarla en local
+async function downloadImage(url, savePath) {
+    return new Promise((resolve, reject) => {
+        request(url)
+            .pipe(fs.createWriteStream(savePath))
+            .on('finish', resolve)
+            .on('error', reject);
+    });
+}
+
 
 
 function extractMessageIdFromUrl(url) {
