@@ -61,11 +61,16 @@ function renderNoticias(page) {
 
 function loadLastThreeNoticias() {
     $.getJSON('furnis/noticias/noticias.json', function(data) {
-        // Sort data by date in descending order
+        // Sort data by date in descending order, and by id in descending order if dates are equal
         noticiasData = data.sort(function(a, b) {
             const dateA = new Date(a.fecha_noticia.split('-').reverse().join('-'));
             const dateB = new Date(b.fecha_noticia.split('-').reverse().join('-'));
-            return dateB - dateA; // Ordenar de manera descendente
+
+            if (dateB - dateA !== 0) {
+                return dateB - dateA; // Ordenar por fecha de manera descendente
+            } else {
+                return b.id - a.id; // Si las fechas son iguales, ordenar por id de manera descendente
+            }
         });
 
         // Get the last three noticias
@@ -97,6 +102,7 @@ function loadLastThreeNoticias() {
         });
     });
 }
+
 function loadNoticias() {
     $.getJSON('furnis/noticias/noticias.json', function(data) {
         noticiasData = data.sort(function(a, b) {

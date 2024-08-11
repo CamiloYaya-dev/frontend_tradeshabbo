@@ -19,7 +19,14 @@ import { initializeApp } from 'firebase/app';
 import { getDatabase, ref, get, child } from 'firebase/database';
 import request from 'request';
 import cheerio from 'cheerio';
-import puppeteer from 'puppeteer';
+import { Client, GatewayIntentBits, REST, Routes } from 'discord.js';
+import { ActionRowBuilder, ButtonBuilder, ButtonStyle, ApplicationCommandOptionType, AttachmentBuilder } from 'discord.js';
+import dotenv from 'dotenv';
+import { postTweet } from './twitterClient.mjs';
+import { generateSummaryWeb } from './openaiClient.mjs';
+import { format } from 'date-fns';
+
+dotenv.config();
 
 const app = express();
 const port = 3000;
@@ -789,3 +796,608 @@ const rewriteResourceUrls = (html, baseUrl) => {
     }
   });
   
+const DISCORD_TOKEN = process.env.DISCORD_TOKEN;
+const CLIENT_ID = process.env.CLIENT_ID; // Tu Client ID
+const GUILD_ID = process.env.GUILD_ID; // Tu Guild ID (ID del servidor)
+const ALLOWED_ROLES = process.env.ALLOWED_ROLES; // Roles permitidos
+
+const client = new Client({
+    intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent],
+});
+
+client.once('ready', () => {
+    console.log('Discord bot is ready!');
+});
+
+client.login(DISCORD_TOKEN);
+
+const rest = new REST({ version: '10' }).setToken(DISCORD_TOKEN);
+
+const getImageChoices = () => {
+    const hcDir = path.join(__dirname, 'public', 'furnis', 'hc');
+    const raresDir = path.join(__dirname, 'public', 'furnis', 'rares');
+
+    const hcImages = fs.readdirSync(hcDir).map(file => ({ name: file.replace('.png', ''), value: `hc/${file}` }));
+    const raresImages = fs.readdirSync(raresDir).map(file => ({ name: file.replace('.png', ''), value: `rares/${file}` }));
+
+    return [...hcImages, ...raresImages];
+};
+
+const commands = [
+    {
+        name: 'crear-encuesta',
+        description: 'Crear una encuesta en el canal actual',
+        options: [
+            {
+                name: 'imagen',
+                type: ApplicationCommandOptionType.String,
+                description: 'Imagen para la encuesta',
+                required: true,
+                autocomplete: true
+            },
+            {
+                name: 'opciones',
+                type: ApplicationCommandOptionType.String,
+                description: 'Opciones de la encuesta separadas por punto y coma (;)',
+                required: true,
+            },
+            {
+                name: 'modo',
+                type: ApplicationCommandOptionType.String,
+                description: 'Modo de votación (unico, permanente)',
+                required: true,
+                choices: [
+                    { name: 'Único', value: 'unico' },
+                    { name: 'Único Permanente', value: 'permanente' }
+                ]
+            },
+            {
+                name: 'duracion',
+                type: ApplicationCommandOptionType.String,
+                description: 'Duración de la encuesta (por ejemplo: 1d2h30m para 1 día, 2 horas y 30 minutos)',
+                required: true,
+            },
+        ],
+    },
+    {
+        name: 'finalizar-encuesta',
+        description: 'Finalizar una encuesta antes de tiempo',
+        options: [
+            {
+                name: 'url',
+                type: ApplicationCommandOptionType.String,
+                description: 'URL del mensaje de la encuesta',
+                required: true,
+            },
+        ],
+    },
+];
+
+(async () => {
+    try {
+
+        await rest.put(
+            Routes.applicationGuildCommands(CLIENT_ID, GUILD_ID),
+            { body: commands },
+        );
+
+    } catch (error) {
+        console.error(error);
+    }
+})();
+
+let activePolls = new Map();
+let lock = false;
+
+client.on('interactionCreate', async interaction => {
+    if (interaction.isAutocomplete()) {
+        const focusedValue = interaction.options.getFocused();
+        const choices = getImageChoices();
+        const filtered = choices.filter(choice => choice.name.toLowerCase().includes(focusedValue.toLowerCase())).slice(0, 25);
+        await interaction.respond(
+            filtered.map(choice => ({ name: choice.name.slice(0, 25), value: choice.value }))
+        );
+    }
+
+    if (!interaction.isCommand()) return;
+
+    const { commandName, options, member } = interaction;
+
+    // Verificar si el usuario tiene uno de los roles permitidos
+    const hasRole = member.roles.cache.some(role => ALLOWED_ROLES.includes(role.id));
+
+    if (!hasRole) {
+        await interaction.reply({ content: 'No tienes permiso para usar este comando.', ephemeral: true });
+        return;
+    }
+
+    if (commandName === 'crear-encuesta') {
+        await interaction.deferReply({ ephemeral: true });
+
+        const imagen = options.getString('imagen');
+        const opciones = options.getString('opciones').split(';').map(op => op.trim());
+        const modo = options.getString('modo');
+        const duracionNoParser = options.getString('duracion');
+        const duracion = parseDuration(duracionNoParser);
+        const channelIds = ['1262144139852517456', '1262190957495849010'];
+
+        for (const channelId of channelIds) {
+            try {
+                const voteCounts = new Array(opciones.length).fill(0);
+                const userVotes = new Map();
+                const voteDetails = new Map(); // Almacena los detalles de los votos
+
+                const row = new ActionRowBuilder();
+                opciones.forEach((opcion, index) => {
+                    row.addComponents(
+                        new ButtonBuilder()
+                            .setCustomId(`opcion${index}-${channelId}`)
+                            .setLabel(opcion)
+                            .setStyle(ButtonStyle.Primary)
+                    );
+                });
+
+                const attachment = new AttachmentBuilder(path.join(__dirname, 'public', 'furnis', imagen));
+                const channel = await client.channels.fetch(channelId);
+                const encuestaMessage = await channel.send({
+                    content: getPollMessage(opciones, voteCounts, 0),
+                    components: [row],
+                    files: [attachment]
+                });
+
+                const nuevaEncuesta = {
+                    encuesta_id: encuestaMessage.id,
+                    imagen,
+                    modo,
+                    duracion,
+                    activa: true
+                };
+
+                let opcionesExternas = [];
+
+                try {
+                    const response = await axios.post('https://airedale-summary-especially.ngrok-free.app/encuestas', nuevaEncuesta);
+
+                    for (let [index, opcion] of opciones.entries()) {
+                        const nuevaOpcion = {
+                            encuesta_id: encuestaMessage.id,
+                            opcion_texto: opcion,
+                            opcion_discord_id: index  // Agregar el índice como opción_discord_id
+                        };
+                        const opcionResponse = await axios.post('https://airedale-summary-especially.ngrok-free.app/opciones', nuevaOpcion);
+                        opcionesExternas.push(opcionResponse.data.data[0]);
+                    }
+                } catch (error) {
+                    console.error('Error al agregar la encuesta o las opciones a la API externa:', error.response ? error.response.data : error.message);
+                    return;
+                }
+
+                const pollData = {
+                    opciones,
+                    opcionesExternas,
+                    modo,
+                    voteCounts,
+                    userVotes,
+                    voteDetails, 
+                    message: encuestaMessage,
+                    row,
+                    imagen: imagen
+                };
+                activePolls.set(encuestaMessage.id, pollData);
+                const filter = i => i.customId.startsWith('opcion') && i.message.id === encuestaMessage.id;
+                const collector = channel.createMessageComponentCollector({ filter, time: duracion });
+
+                pollData.collector = collector;
+
+                collector.on('collect', async i => {
+                    const userId = i.user.id;
+                    const selectedOptionIndex = parseInt(i.customId.replace(`opcion`, '').split('-')[0], 10);
+                    const selectedOptionId = pollData.opcionesExternas[selectedOptionIndex].opcion_id;
+
+                    try {
+                        if (modo === 'unico') {
+                            const previousVote = pollData.userVotes.get(userId);
+
+                            if (previousVote !== undefined) {
+                                pollData.voteCounts[previousVote]--;
+                                const details = pollData.voteDetails.get(previousVote);
+                                details.splice(details.indexOf(userId), 1);
+                                pollData.voteDetails.set(previousVote, details);
+
+                                const previousOptionId = pollData.opcionesExternas[previousVote].opcion_id;
+                                await axios.delete('https://airedale-summary-especially.ngrok-free.app/votos', {
+                                    data: {
+                                        encuesta_id: encuestaMessage.id,
+                                        opcion_id: previousOptionId,
+                                        usuario_id: userId
+                                    }
+                                });
+
+                                if (previousVote === selectedOptionIndex) {
+                                    pollData.userVotes.delete(userId);
+                                    const totalVotes = pollData.voteCounts.reduce((sum, count) => sum + count, 0);
+                                    await i.update({ content: getPollMessage(pollData.opciones, pollData.voteCounts, totalVotes), components: [pollData.row] });
+                                    return;
+                                }
+                            }
+
+                            pollData.voteCounts[selectedOptionIndex]++;
+                            pollData.userVotes.set(userId, selectedOptionIndex);
+
+                            if (!pollData.voteDetails.has(selectedOptionIndex)) {
+                                pollData.voteDetails.set(selectedOptionIndex, []);
+                            }
+                            pollData.voteDetails.get(selectedOptionIndex).push(userId);
+
+                            await axios.post('https://airedale-summary-especially.ngrok-free.app/votos', {
+                                encuesta_id: encuestaMessage.id,
+                                opcion_id: selectedOptionId,
+                                usuario_id: userId
+                            });
+
+                        } else if (modo === 'permanente') {
+                            if (pollData.userVotes.has(userId)) {
+                                // Enviar un mensaje efímero solo visible para el usuario que ya votó
+                                await i.reply({ 
+                                    content: 'Ya has votado y no puedes cambiar tu voto, debido a que la encuesta esta configurada como voto unico permanente.', 
+                                    ephemeral: true 
+                                });
+                                return;
+                            }
+
+                            pollData.voteCounts[selectedOptionIndex]++;
+                            pollData.userVotes.set(userId, selectedOptionIndex);
+
+                            if (!pollData.voteDetails.has(selectedOptionIndex)) {
+                                pollData.voteDetails.set(selectedOptionIndex, []);
+                            }
+                            pollData.voteDetails.get(selectedOptionIndex).push(userId);
+
+                            await axios.post('https://airedale-summary-especially.ngrok-free.app/votos', {
+                                encuesta_id: encuestaMessage.id,
+                                opcion_id: selectedOptionId,
+                                usuario_id: userId
+                            });
+                        }
+
+                        const totalVotes = pollData.voteCounts.reduce((sum, count) => sum + count, 0);
+                        await i.update({ content: getPollMessage(pollData.opciones, pollData.voteCounts, totalVotes), components: [pollData.row] });
+                    } catch (error) {
+                        console.error('Error handling vote:', error);
+                        await i.update({ content: 'Ocurrió un error al procesar tu voto. Inténtalo de nuevo.', components: [], ephemeral: true });
+                    }
+                });
+
+                collector.on('end', async (collected, reason) => {
+                    try {
+                        const pollData = activePolls.get(encuestaMessage.id);
+                        if (!pollData) {
+                            console.error(`No se encontró pollData para el mensaje ID: ${encuestaMessage.id}`);
+                            return;
+                        }
+                
+                        // Inactivar encuesta en la API externa
+                        await axios.put(`https://airedale-summary-especially.ngrok-free.app/encuestas/${encuestaMessage.id}/inactivar`)
+                            .then(response => {
+                                console.log('Encuesta inactivada en la API externa:', response.data);
+                            })
+                            .catch(error => {
+                                console.error('Error al inactivar la encuesta en la API externa:', error.response ? error.response.data : error.message);
+                            });
+                
+                        // Verificar si todas las encuestas con la misma imagen han finalizado
+                        const completedPolls = Array.from(activePolls.values()).filter(poll => poll.imagen === pollData.imagen && poll.collector.ended);
+
+                        if (completedPolls.length === 2) {
+                            let votosCanal1 = 0;
+                            let votosCanal2 = 0;
+                            let opcionGanadoraCanal1 = '';
+                            let opcionGanadoraCanal2 = '';
+                
+                            // Iterar sobre cada encuesta completada y obtener la opción ganadora de cada una
+                            completedPolls.forEach((poll, index) => {
+                                let maxVotes = 0;
+                                let winningOption = '';
+                                let winningOptionVotes = 0;
+                
+                                poll.opciones.forEach((opcion, idx) => {
+                                    if (poll.voteCounts[idx] > maxVotes) {
+                                        maxVotes = poll.voteCounts[idx];
+                                        winningOption = opcion;
+                                        winningOptionVotes = parseInt(opcion.match(/\d+/g)?.join('') || "0");
+                                    }
+                                });
+                
+                                if (index === 0) {
+                                    votosCanal1 = winningOptionVotes;
+                                    opcionGanadoraCanal1 = winningOption;
+                                } else {
+                                    votosCanal2 = winningOptionVotes;
+                                    opcionGanadoraCanal2 = winningOption;
+                                }
+                            });
+                
+                            // Calcular el resultado ponderado
+                            const pesoCanal1 = 0.70;
+                            const pesoCanal2 = 0.30;
+                            let resultadoFinal = 0;
+                            if(votosCanal1 === votosCanal2){
+                                resultadoFinal = votosCanal1;
+                            } else {
+                                resultadoFinal = (votosCanal1 * pesoCanal1) + (votosCanal2 * pesoCanal2);
+                            }
+                            
+                
+                            // Función para redondear al múltiplo de 5 más cercano
+                            const redondearMultiploDe5 = (numero) => {
+                                return Math.round(numero / 5) * 5;
+                            };
+                
+                            // Redondear el resultado al múltiplo de 5 más cercano
+                            resultadoFinal = redondearMultiploDe5(resultadoFinal);
+
+                            // Buscar la imagen en el archivo precios.json
+                            const imagenNombre = pollData.imagen.split('/').pop().split('.')[0]; // Extrae "El_Super_Dado" de "hc/El_Super_Dado.png"
+                
+                            const preciosPath = path.join(__dirname, 'public', 'furnis', 'precios', 'precios.json');
+                            const preciosData = JSON.parse(fs.readFileSync(preciosPath, 'utf-8'));
+                
+                            const articulo = preciosData.find(item => item.name === imagenNombre);
+                
+                            if (articulo) {
+                                console.log(`Se encontró el artículo con ID: ${articulo.id} para la imagen ${pollData.imagen}`);
+                
+                                // Actualizar o registrar el precio en la base de datos SQLite
+                                const today = new Date();
+                                const priceHistory = await PriceHistory.create({
+                                    productId: articulo.id,
+                                    precio: resultadoFinal,
+                                    fecha_precio: today
+                                });
+                                console.log('Precio registrado en la base de datos SQLite.');
+                
+                                // Actualizar el precio en el modelo Image
+                                const image = await Image.findByPk(articulo.id);
+                                if (image) {
+                                    image.price = resultadoFinal;
+                                    await image.save();
+                                    console.log('Precio actualizado en el modelo Image.');
+                                }
+                
+                                // Hacer la solicitud POST con el ID y el resultadoFinal como precio
+                                const postData = [{
+                                    id: articulo.id,
+                                    price: resultadoFinal
+                                }];
+                
+                                await axios.post('https://airedale-summary-especially.ngrok-free.app/habbo-update-catalog', postData)
+                                    .then(response => {
+                                        console.log('Catálogo actualizado exitosamente:', response.data);
+                                    })
+                                    .catch(error => {
+                                        console.error('Error al actualizar el catálogo:', error.response ? error.response.data : error.message);
+                                    });
+                            } else {
+                                console.log(`No se encontró ningún artículo para la imagen ${pollData.imagen}`);
+                            }
+                
+                            // Anunciar el resultado en los canales correspondientes
+                            const mensaje = `La encuesta ha culminado.\n\n` +
+                                            `La opción ganadora de la encuesta de los Master Trades es "${opcionGanadoraCanal1}".\n` +
+                                            `La opción ganadora de la encuesta de la comunidad es "${opcionGanadoraCanal2}".\n` +
+                                            `El precio final después del cálculo es ${resultadoFinal}. Ya puedes ver este precio en la página web https://www.tradeshabbo.com/`;
+                
+                            completedPolls.forEach(async (poll) => {
+                                await poll.message.channel.send({
+                                    content: mensaje,
+                                    files: [path.join(__dirname, 'public','furnis', poll.imagen)]
+                                });
+                            });
+                
+                            // Eliminar las encuestas completadas de activePolls
+                            completedPolls.forEach(poll => activePolls.delete(poll.message.id));
+                        } else {
+                            console.log('No se han encontrado ambas encuestas aún, no eliminando de activePolls.');
+                        }
+                    } catch (error) {
+                        console.error('Error in collector end handler:', error);
+                    }
+                });
+                
+                
+                
+                
+            } catch (error) {
+                console.error(`Error al crear la encuesta en el canal ${channelId}:`, error);
+            }
+        }
+
+        await interaction.editReply({ content: 'Encuesta creada y publicada en los canales especificados.' });
+    } else if (commandName === 'finalizar-encuesta') {
+        const url = options.getString('url');
+        const mensajeId = extractMessageIdFromUrl(url);
+        const pollData = activePolls.get(mensajeId);
+
+        if (pollData) {
+            pollData.collector.stop();
+            activePolls.delete(mensajeId);
+
+            axios.put(`https://airedale-summary-especially.ngrok-free.app/encuestas/${mensajeId}/inactivar`)
+                .then(response => {
+                    console.log('Encuesta inactivada en la API externa:', response.data);
+                })
+                .catch(error => {
+                    console.error('Error al inactivar la encuesta en la API externa:', error.response ? error.response.data : error.message);
+                });
+
+            await interaction.reply({ content: 'La encuesta ha sido finalizada antes de tiempo.', ephemeral: true });
+        } else {
+            await interaction.reply({ content: 'No se encontró una encuesta activa con ese ID.', ephemeral: true });
+        }
+    }
+});
+
+client.on('messageCreate', async (message) => {
+    if (message.content.startsWith('/publicar-noticia')) {
+        const hasPermission = message.member.roles.cache.some(role => ALLOWED_ROLES.includes(role.id));
+
+        if (!hasPermission) {
+            return message.reply('No tienes permisos para usar este comando.');
+        }
+
+        // Extraer el comando, la mención, el contenido y el parámetro $web
+        const args = message.content.split(' ');
+        const mentionType = args[1] && (args[1] === '$everyone' || args[1] === '$here') ? args[1] : '';
+        const isWeb = args.includes('$web');
+        const content = args.slice(mentionType ? 2 : 1).filter(arg => arg !== '$web').join(' ').trim();
+
+        if (!content) {
+            return message.reply('Por favor, incluye el contenido de la noticia.');
+        }
+
+        const newsChannel = client.channels.cache.get('1271917752176611419');
+        if (newsChannel) {
+            const messageOptions = {
+                content: `${mentionType} 📰 **Nueva Noticia**\n\n${content}`
+            };
+
+            // Manejar las imágenes adjuntas
+            let imageUrl = null;
+            if (message.attachments.size > 0) {
+                const attachments = message.attachments.map(attachment => new AttachmentBuilder(attachment.url));
+                imageUrl = message.attachments.first().url;
+                messageOptions.files = attachments;
+            }
+
+            newsChannel.send(messageOptions).then(async (sentMessage) => {
+                message.reply('La noticia ha sido publicada exitosamente.');
+                const messageUrl = `https://discord.com/channels/${sentMessage.guildId}/${sentMessage.channelId}/${sentMessage.id}`;
+                console.log(`Mensaje publicado en: ${messageUrl}`);
+
+                // Publicar el tweet después de publicar la noticia en Discord
+                await postTweet(content, messageUrl);
+
+                // Si el parámetro $web está presente, generar y guardar el resumen
+                if (isWeb) {
+                    const prompWeb = `Tengo esta noticia "+${content} +" y necesito que me la generes y resumas en este formato, toma esta noticia como ejemplo {
+                        "titulo": "Nuevo raro disponible! La Hologirl",
+                        "imagen_completa": "catalogo_hologirl",
+                        "alt_imagen_completa": "Catalogo Hologirl",
+                        "descripcion_completa": "<p><strong>El nuevo raro de Habbo Hotel: Orígenes: Hologirl!</strong></p><p>El 8 de agosto de 2024, se lanza un nuevo raro mítico en el catálogo de Habbo Hotel: Orígenes. La <strong>Hologirl</strong> ya está disponible por tiempo limitado a un precio especial de 50 créditos. Este es el primer raro que sale un jueves y estará disponible solo por 48 horas en el catálogo. ¡No pierdas la oportunidad de agregar esta pieza única a tu colección!</p>",
+                        "imagen_resumida": "rares_martes",
+                        "alt_imagen_resumida": "nuevo raro jueves 08 de agosto del 2024",
+                        "descripcion_resumida": "<p class=\"noticia_descripcion\"><strong>Llega un nuevo raro a Habbo Hotel: Orígenes!</strong> Descubre y adquiere el nuevo raro, <strong>RARO Hologirl</strong>, disponible solo por 48 horas. ¡No te lo pierdas!</p>"
+                    } los posibles valores de la imagen_resumida son rares_martes (para cuando la noticia habla de un rare), funky_friday (para cuando la noticia habla de un funky, es decir, tiene la palabra FUNKY en algun lado), THO (para cuando la noticia habla de tradeshabbo o tradeshabboorigins o explicitamente de THO), staff (cuando la noticia es de oficial de habbo o explicitamente tiene la palabra staff o hobba), IMPORTANTE NINGUNO DE LOS ANTERIORES CAMPOS PEUDE QUEDAR VACIO,
+                     si la noticia es OFICIAL DE HABBO la imagen_resumida SIEMPRE TIENE QUE SER STAFF, la imagen_completa tiene que ser acorde al contexto de la noticia y al titulo de la noticia, si por alguna razon viene un link agregalo a la descripcion completa de la noticia.`
+                    let summaryData = await generateSummaryWeb(prompWeb);
+                    summaryData = JSON.parse(summaryData);
+
+                    console.log('Resumen generado para la web:', summaryData);
+
+                    if (imageUrl) {
+                        // Descargar y guardar la imagen en la ruta local especificada
+                        const imageName = `${summaryData.imagen_completa}.png`;
+                        const savePath = path.join('public', 'furnis', 'noticias', 'imagenes', 'completas', imageName);
+
+                        try {
+                            await downloadImage(imageUrl, savePath);
+                            console.log(`Imagen guardada en: ${savePath}`);
+                        } catch (error) {
+                            console.error('Error al descargar y guardar la imagen:', error);
+                        }
+                    }
+                    try {
+                        const response = await axios.post('https://airedale-summary-especially.ngrok-free.app/nueva-noticia', summaryData);
+                        console.log('Datos enviados a la web exitosamente.');
+                        
+                        const noticiaId = response.data['noticia_id'];
+                        const fechaActual = format(new Date(), 'dd-MM-yyyy');
+
+                        // Leer el archivo noticias.json
+                        const noticiasPath = path.join('public', 'furnis', 'noticias', 'noticias.json');
+                        const noticias = JSON.parse(fs.readFileSync(noticiasPath, 'utf8'));
+
+                        // Agregar nuevo registro
+                        const nuevaNoticia = {
+                            id: noticiaId,
+                            ...summaryData,
+                            fecha_noticia: fechaActual
+                        };
+                        noticias.push(nuevaNoticia);
+
+                        // Guardar de nuevo el archivo
+                        fs.writeFileSync(noticiasPath, JSON.stringify(noticias, null, 2), 'utf8');
+                        console.log('Nueva noticia agregada al archivo noticias.json.');
+
+                    } catch (error) {
+                        console.error('Error al enviar los datos a la web:', error);
+                    }
+                }
+
+            }).catch(err => {
+                console.error('Error al publicar la noticia:', err);
+                message.reply('Hubo un error al intentar publicar la noticia.');
+            });
+        } else {
+            message.reply('No se pudo encontrar el canal de noticias.');
+        }
+    }
+});
+
+// Función para descargar la imagen desde Discord y guardarla en local
+async function downloadImage(url, savePath) {
+    return new Promise((resolve, reject) => {
+        request(url)
+            .pipe(fs.createWriteStream(savePath))
+            .on('finish', resolve)
+            .on('error', reject);
+    });
+}
+
+
+
+function extractMessageIdFromUrl(url) {
+    const parts = url.split('/');
+    return parts[parts.length - 1];
+}
+
+function getPollMessage(opciones, voteCounts, totalVotes) {
+    const porcentajes = voteCounts.map(count => (totalVotes ? ((count / totalVotes) * 100).toFixed(2) : 0));
+    let message = `Total de votos: ${totalVotes}\n\n`;
+    opciones.forEach((opcion, index) => {
+        const progressBar = generateProgressBar(porcentajes[index]);
+        message += `${opcion}: ${porcentajes[index]}% ${progressBar} (${voteCounts[index]} votos)\n`;
+    });
+    return message;
+}
+
+function generateProgressBar(percentage) {
+    const totalBars = 20;
+    const filledBars = Math.round((percentage / 100) * totalBars);
+    const emptyBars = totalBars - filledBars;
+    return `[${'█'.repeat(filledBars)}${'░'.repeat(emptyBars)}]`;
+}
+
+function parseDuration(duration) {
+    const regex = /(\d+d)?(\d+h)?(\d+m)?/;
+    const matches = duration.match(regex);
+
+    let totalMilliseconds = 0;
+
+    if (matches) {
+        if (matches[1]) {
+            const days = parseInt(matches[1].replace('d', ''), 10);
+            totalMilliseconds += days * 24 * 60 * 60 * 1000; // Días a milisegundos
+        }
+        if (matches[2]) {
+            const hours = parseInt(matches[2].replace('h', ''), 10);
+            totalMilliseconds += hours * 60 * 60 * 1000; // Horas a milisegundos
+        }
+        if (matches[3]) {
+            const minutes = parseInt(matches[3].replace('m', ''), 10);
+            totalMilliseconds += minutes * 60 * 1000; // Minutos a milisegundos
+        }
+    }
+
+    return totalMilliseconds;
+}
