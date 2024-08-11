@@ -19,10 +19,11 @@ import { initializeApp } from 'firebase/app';
 import { getDatabase, ref, get, child } from 'firebase/database';
 import request from 'request';
 import cheerio from 'cheerio';
-import puppeteer from 'puppeteer';
 import { Client, GatewayIntentBits, REST, Routes } from 'discord.js';
 import { ActionRowBuilder, ButtonBuilder, ButtonStyle, ApplicationCommandOptionType, AttachmentBuilder } from 'discord.js';
 import dotenv from 'dotenv';
+import { postTweet } from './twitterClient.mjs';
+
 dotenv.config();
 
 const app = express();
@@ -1034,7 +1035,11 @@ client.on('interactionCreate', async interaction => {
 
                         } else if (modo === 'permanente') {
                             if (pollData.userVotes.has(userId)) {
-                                await i.update({ content: 'Ya has votado y no puedes cambiar tu voto.', components: [], ephemeral: true });
+                                // Enviar un mensaje efímero solo visible para el usuario que ya votó
+                                await i.reply({ 
+                                    content: 'Ya has votado y no puedes cambiar tu voto, debido a que la encuesta esta configurada como voto unico permanente.', 
+                                    ephemeral: true 
+                                });
                                 return;
                             }
 
@@ -1113,8 +1118,13 @@ client.on('interactionCreate', async interaction => {
                             // Calcular el resultado ponderado
                             const pesoCanal1 = 0.70;
                             const pesoCanal2 = 0.30;
-                
-                            let resultadoFinal = (votosCanal1 * pesoCanal1) + (votosCanal2 * pesoCanal2);
+                            let resultadoFinal = 0;
+                            if(votosCanal1 === votosCanal2){
+                                resultadoFinal = votosCanal1;
+                            } else {
+                                resultadoFinal = (votosCanal1 * pesoCanal1) + (votosCanal2 * pesoCanal2);
+                            }
+                            
                 
                             // Función para redondear al múltiplo de 5 más cercano
                             const redondearMultiploDe5 = (numero) => {
@@ -1225,6 +1235,50 @@ client.on('interactionCreate', async interaction => {
     }
 });
 
+client.on('messageCreate', async (message) => {
+    if (message.content.startsWith('/publicar-noticia')) {
+        const hasPermission = message.member.roles.cache.some(role => ALLOWED_ROLES.includes(role.id));
+
+        if (!hasPermission) {
+            return message.reply('No tienes permisos para usar este comando.');
+        }
+
+        // Extraer el comando, la mención y el contenido
+        const args = message.content.split(' ');
+        const mentionType = args[1] && (args[1] === '$everyone' || args[1] === '$here') ? args[1] : '';
+        const content = args.slice(mentionType ? 2 : 1).join(' ').trim();
+
+        if (!content) {
+            return message.reply('Por favor, incluye el contenido de la noticia.');
+        }
+
+        const newsChannel = client.channels.cache.get('1271917752176611419');
+        if (newsChannel) {
+            const messageOptions = {
+                content: `${mentionType} 📰 **Nueva Noticia**\n\n${content}`
+            };
+
+            // Manejar las imágenes adjuntas
+            if (message.attachments.size > 0) {
+                const attachments = message.attachments.map(attachment => new AttachmentBuilder(attachment.url));
+                messageOptions.files = attachments;
+            }
+
+            newsChannel.send(messageOptions).then(async (sentMessage) => {
+                message.reply('La noticia ha sido publicada exitosamente.');
+                const messageUrl = `https://discord.com/channels/${sentMessage.guildId}/${sentMessage.channelId}/${sentMessage.id}`;
+                console.log(messageUrl);
+                await postTweet(content, messageUrl);
+
+            }).catch(err => {
+                console.error('Error al publicar la noticia:', err);
+                message.reply('Hubo un error al intentar publicar la noticia.');
+            });
+        } else {
+            message.reply('No se pudo encontrar el canal de noticias.');
+        }
+    }
+});
 
 
 function extractMessageIdFromUrl(url) {
