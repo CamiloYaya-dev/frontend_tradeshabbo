@@ -1275,7 +1275,7 @@ client.on('messageCreate', async (message) => {
                 console.log(`Mensaje publicado en: ${messageUrl}`);
 
                 // Publicar el tweet después de publicar la noticia en Discord
-                //await postTweet(content, messageUrl);
+                await postTweet(content, messageUrl);
 
                 // Si el parámetro $web está presente, generar y guardar el resumen
                 if (isWeb) {
@@ -1287,7 +1287,8 @@ client.on('messageCreate', async (message) => {
                         "imagen_resumida": "rares_martes",
                         "alt_imagen_resumida": "nuevo raro jueves 08 de agosto del 2024",
                         "descripcion_resumida": "<p class=\"noticia_descripcion\"><strong>Llega un nuevo raro a Habbo Hotel: Orígenes!</strong> Descubre y adquiere el nuevo raro, <strong>RARO Hologirl</strong>, disponible solo por 48 horas. ¡No te lo pierdas!</p>"
-                    } los posibles valores de la imagen_resumida son rares_martes (para cuando la noticia habla de un rare), funky_friday (para cuando la noticia habla de un funky, es decir, tiene la palabra FUNKY en algun lado), THO (para cuando la noticia habla de tradeshabbo o tradeshabboorigins o explicitamente de THO), staff (cuando la noticia es de oficial de habbo o explicitamente tiene la palabra staff o hobba), IMPORTANTE NINGUNO DE LOS ANTERIORES CAMPOS PEUDE QUEDAR VACIO`
+                    } los posibles valores de la imagen_resumida son rares_martes (para cuando la noticia habla de un rare), funky_friday (para cuando la noticia habla de un funky, es decir, tiene la palabra FUNKY en algun lado), THO (para cuando la noticia habla de tradeshabbo o tradeshabboorigins o explicitamente de THO), staff (cuando la noticia es de oficial de habbo o explicitamente tiene la palabra staff o hobba), IMPORTANTE NINGUNO DE LOS ANTERIORES CAMPOS PEUDE QUEDAR VACIO,
+                     si la noticia es OFICIAL DE HABBO la imagen_resumida SIEMPRE TIENE QUE SER STAFF, la imagen_completa tiene que ser acorde al contexto de la noticia y al titulo de la noticia, si por alguna razon viene un link agregalo a la descripcion completa de la noticia.`
                     let summaryData = await generateSummaryWeb(prompWeb);
                     summaryData = JSON.parse(summaryData);
 
