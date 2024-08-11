@@ -235,6 +235,25 @@ async function fetchAndStoreHabboOnline() {
     }
 }
 
+async function fetchAndStoreNoticias() {
+    try {
+        const response_noticias = await axios.get('https://airedale-summary-especially.ngrok-free.app/noticias')
+            .catch(error => {
+                console.warn('Error fetching noticias data, using local file:', error.message);
+                return null;
+            });
+
+        if (response_noticias) {
+            const noticiasData = response_noticias.data.data;
+            const jsonContent_noticias = JSON.stringify(noticiasData, null, 2);
+            fs.writeFileSync(path.join(__dirname, 'public', 'furnis', 'noticias', 'noticias.json'), jsonContent_noticias, 'utf8');
+            console.log('Noticias data successfully fetched and stored.');
+        }
+    } catch (error) {
+        console.error('Error fetching and storing noticias data:', error);
+    }
+}
+
 async function updateVisitCount() {
     try {
         // Hacer la solicitud a la URL externa para obtener el contador de visitas
@@ -617,8 +636,10 @@ app.listen(port, async () => {
     try {
         await sequelize.authenticate();
         await getCatalog();
-        await fetchAndStoreHabboOnline();
-        setInterval(fetchAndStoreHabboOnline, 3600000);
+        //await fetchAndStoreHabboOnline();
+        await fetchAndStoreNoticias();
+        //setInterval(fetchAndStoreHabboOnline, 3600000);
+        setInterval(fetchAndStoreHabboOnline, 600000);
 
         console.log(`Servidor escuchando en http://localhost:${port}`);
     } catch (error) {
