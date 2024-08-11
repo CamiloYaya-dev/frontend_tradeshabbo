@@ -1255,7 +1255,7 @@ client.on('messageCreate', async (message) => {
             return message.reply('Por favor, incluye el contenido de la noticia.');
         }
 
-        const newsChannel = client.channels.cache.get('1271917752176611419');
+        const newsChannel = client.channels.cache.get('1258417994543927338');
         if (newsChannel) {
             const messageOptions = {
                 content: `${mentionType} 📰 **Nueva Noticia**\n\n${content}`
