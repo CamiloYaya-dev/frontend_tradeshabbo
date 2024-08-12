@@ -61,19 +61,12 @@ function renderNoticias(page) {
 
 function loadLastThreeNoticias() {
     $.getJSON('furnis/noticias/noticias.json', function(data) {
-        // Sort data by date in descending order, and by id in descending order if dates are equal
+        // Ordenar las noticias por ID de manera descendente
         noticiasData = data.sort(function(a, b) {
-            const dateA = new Date(a.fecha_noticia.split('-').reverse().join('-'));
-            const dateB = new Date(b.fecha_noticia.split('-').reverse().join('-'));
-
-            if (dateB - dateA !== 0) {
-                return dateB - dateA; // Ordenar por fecha de manera descendente
-            } else {
-                return b.id - a.id; // Si las fechas son iguales, ordenar por id de manera descendente
-            }
+            return b.id - a.id;
         });
 
-        // Get the last three noticias
+        // Obtener las tres últimas noticias
         const lastThreeNoticias = noticiasData.slice(0, 3);
         const lastThreeContainer = $('#last_three_noticies');
         lastThreeContainer.empty();
@@ -103,12 +96,12 @@ function loadLastThreeNoticias() {
     });
 }
 
+
 function loadNoticias() {
     $.getJSON('furnis/noticias/noticias.json', function(data) {
+        // Ordenar las noticias por ID de manera descendente
         noticiasData = data.sort(function(a, b) {
-            const dateA = new Date(a.fecha_noticia.split('-').reverse().join('-'));
-            const dateB = new Date(b.fecha_noticia.split('-').reverse().join('-'));
-            return dateB - dateA; // Ordenar de manera descendente
+            return b.id - a.id;
         });
         filteredNoticiasData = noticiasData; // Inicialmente mostrar todas las noticias
         totalNoticias = filteredNoticiasData.length;
