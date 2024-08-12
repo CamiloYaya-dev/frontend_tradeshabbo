@@ -830,7 +830,7 @@ client.once('ready', () => {
     console.log('Discord bot is ready!');
 });
 
-/*client.login(DISCORD_TOKEN);*/
+client.login(DISCORD_TOKEN);
 
 const rest = new REST({ version: '10' }).setToken(DISCORD_TOKEN);
 
@@ -1010,84 +1010,105 @@ client.on('interactionCreate', async interaction => {
 
                 pollData.collector = collector;
 
-                collector.on('collect', async i => {
+                collector.on('collect', async (i) => {
                     const userId = i.user.id;
-                    const selectedOptionIndex = parseInt(i.customId.replace(`opcion`, '').split('-')[0], 10);
+                    const selectedOptionIndex = parseInt(i.customId.replace('opcion', '').split('-')[0], 10);
                     const selectedOptionId = pollData.opcionesExternas[selectedOptionIndex].opcion_id;
-
+                
                     try {
+                        // Acknowledge the interaction immediately with an ephemeral response
+                        if (!i.deferred && !i.replied) {
+                            await i.deferReply({ ephemeral: true });
+                        }
+                
+                        // Function to send vote and retry on failure
+                        async function sendVoteWithRetry() {
+                            let sent = false;
+                            while (!sent) {
+                                try {
+                                    await axios.post('https://airedale-summary-especially.ngrok-free.app/votos', {
+                                        encuesta_id: encuestaMessage.id,
+                                        opcion_id: selectedOptionId,
+                                        usuario_id: userId
+                                    });
+                                    sent = true; // If successful, break the loop
+                                } catch (error) {
+                                    console.error('Error sending vote:', error.message);
+                                    console.log('Retrying...');
+                                }
+                            }
+                        }
+                
+                        // Handle the voting logic
                         if (modo === 'unico') {
                             const previousVote = pollData.userVotes.get(userId);
-
+                
                             if (previousVote !== undefined) {
                                 pollData.voteCounts[previousVote]--;
                                 const details = pollData.voteDetails.get(previousVote);
                                 details.splice(details.indexOf(userId), 1);
                                 pollData.voteDetails.set(previousVote, details);
-
+                
                                 const previousOptionId = pollData.opcionesExternas[previousVote].opcion_id;
-                                await axios.delete('https://airedale-summary-especially.ngrok-free.app/votos', {
-                                    data: {
-                                        encuesta_id: encuestaMessage.id,
-                                        opcion_id: previousOptionId,
-                                        usuario_id: userId
-                                    }
-                                });
-
+                                await sendVoteWithRetry(previousOptionId);
+                                
                                 if (previousVote === selectedOptionIndex) {
                                     pollData.userVotes.delete(userId);
                                     const totalVotes = pollData.voteCounts.reduce((sum, count) => sum + count, 0);
-                                    await i.update({ content: getPollMessage(pollData.opciones, pollData.voteCounts, totalVotes), components: [pollData.row] });
+                                    await encuestaMessage.edit({ content: getPollMessage(pollData.opciones, pollData.voteCounts, totalVotes), components: [pollData.row] });
                                     return;
                                 }
                             }
-
+                
                             pollData.voteCounts[selectedOptionIndex]++;
                             pollData.userVotes.set(userId, selectedOptionIndex);
-
+                
                             if (!pollData.voteDetails.has(selectedOptionIndex)) {
                                 pollData.voteDetails.set(selectedOptionIndex, []);
                             }
                             pollData.voteDetails.get(selectedOptionIndex).push(userId);
-
-                            await axios.post('https://airedale-summary-especially.ngrok-free.app/votos', {
-                                encuesta_id: encuestaMessage.id,
-                                opcion_id: selectedOptionId,
-                                usuario_id: userId
-                            });
-
+                
+                            await sendVoteWithRetry(selectedOptionId);
+                
                         } else if (modo === 'permanente') {
                             if (pollData.userVotes.has(userId)) {
-                                // Enviar un mensaje efímero solo visible para el usuario que ya votó
-                                await i.reply({ 
-                                    content: 'Ya has votado y no puedes cambiar tu voto, debido a que la encuesta esta configurada como voto unico permanente.', 
-                                    ephemeral: true 
+                                await i.editReply({
+                                    content: 'Ya has votado y no puedes cambiar tu voto, debido a que la encuesta está configurada como voto único permanente.',
+                                    ephemeral: true
                                 });
                                 return;
                             }
-
+                
                             pollData.voteCounts[selectedOptionIndex]++;
                             pollData.userVotes.set(userId, selectedOptionIndex);
-
+                
                             if (!pollData.voteDetails.has(selectedOptionIndex)) {
                                 pollData.voteDetails.set(selectedOptionIndex, []);
                             }
                             pollData.voteDetails.get(selectedOptionIndex).push(userId);
-
-                            await axios.post('https://airedale-summary-especially.ngrok-free.app/votos', {
-                                encuesta_id: encuestaMessage.id,
-                                opcion_id: selectedOptionId,
-                                usuario_id: userId
-                            });
+                
+                            await sendVoteWithRetry(selectedOptionId);
                         }
-
+                
                         const totalVotes = pollData.voteCounts.reduce((sum, count) => sum + count, 0);
-                        await i.update({ content: getPollMessage(pollData.opciones, pollData.voteCounts, totalVotes), components: [pollData.row] });
+                        await encuestaMessage.edit({ content: getPollMessage(pollData.opciones, pollData.voteCounts, totalVotes), components: [pollData.row] });
+                
+                        // Optionally send a final ephemeral message to the user to confirm their vote
+                        if (!i.replied) {
+                            await i.editReply({ content: '¡Tu voto ha sido registrado con éxito!', ephemeral: true });
+                        }
                     } catch (error) {
                         console.error('Error handling vote:', error);
-                        await i.update({ content: 'Ocurrió un error al procesar tu voto. Inténtalo de nuevo.', components: [], ephemeral: true });
+                        if (!i.replied) {
+                            await i.editReply({
+                                content: 'Ocurrió un error al procesar tu voto. Por favor, vuelve a intentarlo.',
+                                ephemeral: true
+                            });
+                        }
                     }
                 });
+                
+                
 
                 collector.on('end', async (collected, reason) => {
                     try {
@@ -1421,4 +1442,27 @@ function parseDuration(duration) {
     }
 
     return totalMilliseconds;
+}
+
+async function sendVoteWithRetry(encuestaMessage, selectedOptionId, userId) {
+    while (true) {
+        try {
+            const response = await axios.post('https://airedale-summary-especially.ngrok-free.app/votos', {
+                encuesta_id: encuestaMessage.id,
+                opcion_id: selectedOptionId,
+                usuario_id: userId
+            });
+
+            if (response.status === 201) {
+                console.log('Vote successfully sent!');
+                break; // Exit loop if request was successful
+            } else {
+                console.log(`Unexpected status code: ${response.status}. Retrying...`);
+            }
+        } catch (error) {
+            console.error('Error sending vote:', error.message);
+            console.log('Retrying...');
+            await new Promise(resolve => setTimeout(resolve, 5000)); // Wait for 5 seconds before retrying
+        }
+    }
 }
