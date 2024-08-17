@@ -1253,3 +1253,20 @@ animation: rainbow-border 5s linear infinite;
     height: 100%;
     border: none;
 }
+
+.dropdown-menu{
+    background-color:transparent;
+    border: none;
+}
+
+.dropdown-item{
+    margin-bottom: 5px;
+}
+
+.dropdown-item:focus,
+.dropdown-item:hover {
+    background-color: #335e7a !important;
+    color: inherit !important;
+    text-decoration: none !important;
+    outline: none !important;
+}
