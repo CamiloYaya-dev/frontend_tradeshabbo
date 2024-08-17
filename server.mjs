@@ -1411,7 +1411,7 @@ async function fetchAndExtractNoticias() {
         }
     });
 
-    await page.goto('https://origins.habbo.es/community/category/all/1', { waitUntil: 'networkidle0' });
+    await page.goto('https://origins.habbo.es/community/category/all/1', { waitUntil: 'networkidle0', timeout: 0 });
 
     const html = await page.content();
 
