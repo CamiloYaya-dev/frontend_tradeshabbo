@@ -22,9 +22,10 @@ import cheerio from 'cheerio';
 import { Client, GatewayIntentBits, REST, Routes } from 'discord.js';
 import { ActionRowBuilder, ButtonBuilder, ButtonStyle, ApplicationCommandOptionType, AttachmentBuilder } from 'discord.js';
 import dotenv from 'dotenv';
-import { postTweet } from './twitterClient.mjs';
+import { postTweet, postTweetOficial } from './twitterClient.mjs';
 import { generateSummaryWeb } from './openaiClient.mjs';
 import { format } from 'date-fns';
+import puppeteer from 'puppeteer';
 
 dotenv.config();
 
@@ -42,19 +43,18 @@ const discordInfoPath = path.join(__dirname, 'public', 'discordInfo.json')
 
 app.enable('trust proxy');
 
-// Configura el middleware de sesión
 app.use(session({
     secret: 'your-secret-key',
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: false } // Asegúrate de configurar 'secure' en true si usas HTTPS
+    cookie: { secure: false }
 }));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const limiter = rateLimit({
-    windowMs: 60 * 1000, // 1 minuto
+    windowMs: 60 * 1000,
     max: 1000,
     message: "Too many requests from this IP, please try again later.",
 });
@@ -256,27 +256,22 @@ async function fetchAndStoreNoticias() {
 
 async function updateVisitCount() {
     try {
-        // Hacer la solicitud a la URL externa para obtener el contador de visitas
         const response = await axios.get('https://nearby-kindly-lemming.ngrok-free.app/contador-visitas');
         const externalVisitData = response.data;
 
-        // Si la respuesta no contiene el contador de visitas, usar 0 como valor por defecto
         const externalVisitCount = externalVisitData.contador_visitas !== undefined ? externalVisitData.contador_visitas : 0;
 
-        // Actualizar el contador de visitas en el archivo, siempre usando externalVisitCount
         fs.readFile(visitCountPath, 'utf8', (err, data) => {
             let updatedVisitCount = externalVisitCount;
 
             if (err) {
                 if (err.code === 'ENOENT') {
-                    // Si el archivo no existe, lo creamos con el contador de visitas externo
                     fs.writeFileSync(visitCountPath, JSON.stringify({ visits: updatedVisitCount }), 'utf8');
                 } else {
                     console.error('Error reading visit count:', err);
                     return;
                 }
             } else {
-                // Actualizar el archivo existente con el nuevo valor de externalVisitCount
                 const localVisitData = JSON.parse(data || '{}');
                 localVisitData.visits = updatedVisitCount;
 
@@ -290,7 +285,6 @@ async function updateVisitCount() {
     } catch (error) {
         console.error('Error fetching visit count from external source:', error);
 
-        // Si hay un error, establecer el contador de visitas en 0
         fs.writeFile(visitCountPath, JSON.stringify({ visits: 0 }), 'utf8', (err) => {
             if (err) {
                 console.error('Error writing visit count:', err);
@@ -301,27 +295,22 @@ async function updateVisitCount() {
 
 async function updateVotesCount() {
     try {
-        // Hacer la solicitud a la URL externa para obtener el contador de votos
         const response = await axios.get('https://nearby-kindly-lemming.ngrok-free.app/contador-votos');
         const externalVotesCount = response.data;
 
-        // Si la respuesta no contiene el contador de votos, usar 0 como valor por defecto
         const responseVotesCount = externalVotesCount.contador_votos !== undefined ? externalVotesCount.contador_votos : 0;
 
-        // Actualizar el contador de votos en el archivo, siempre usando responseVotesCount
         fs.readFile(votesCountPath, 'utf8', (err, data) => {
             let updatedVotesCount = responseVotesCount;
 
             if (err) {
                 if (err.code === 'ENOENT') {
-                    // Si el archivo no existe, lo creamos con el contador de votos externo
                     fs.writeFileSync(votesCountPath, JSON.stringify({ votes: updatedVotesCount }), 'utf8');
                 } else {
                     console.error('Error reading votes count:', err);
                     return;
                 }
             } else {
-                // Actualizar el archivo existente con el nuevo valor de responseVotesCount
                 const localVotesData = JSON.parse(data || '{}');
                 localVotesData.votes = updatedVotesCount;
 
@@ -335,7 +324,6 @@ async function updateVotesCount() {
     } catch (error) {
         console.error('Error fetching votes count from external source:', error);
 
-        // Si hay un error, establecer el contador de votos en 0
         fs.writeFile(votesCountPath, JSON.stringify({ votes: 0 }), 'utf8', (err) => {
             if (err) {
                 console.error('Error writing votes count:', err);
@@ -346,11 +334,9 @@ async function updateVotesCount() {
 
 async function syncDiscord() {
     try {
-        // Fetch the data from the Discord API
         const response = await axios.get('https://discord.com/api/guilds/1257448055050080297/widget.json');
         const externalInfoDiscord = response.data;
 
-        // Save the data to the discordInfo.json file
         fs.writeFile(discordInfoPath, JSON.stringify(externalInfoDiscord, null, 2), 'utf8', (err) => {
             if (err) {
                 console.error('Error writing to discordInfo.json:', err);
@@ -636,10 +622,9 @@ app.listen(port, async () => {
     try {
         await sequelize.authenticate();
         await getCatalog();
-        //await fetchAndStoreHabboOnline();
         await fetchAndStoreNoticias();
         await fetchAndExtractNoticias();
-        //setInterval(fetchAndStoreHabboOnline, 3600000);
+        setInterval(fetchAndExtractNoticias, 600000);
         setInterval(fetchAndStoreHabboOnline, 600000);
 
         console.log(`Servidor escuchando en http://localhost:${port}`);
@@ -681,14 +666,12 @@ app.get('/proxy', (req, res) => {
     if (!error && response.statusCode === 200) {
       const $ = cheerio.load(body);
 
-      // Eliminar los elementos no deseados
       $('#search-modal').remove();
       $('header.header-wrapper').remove();
-      $('nav.top-nav').remove(); // Elimina la navegación superior si es necesario
+      $('nav.top-nav').remove();
 
-      $('footer.site-footer').remove(); // Elimina el footer
+      $('footer.site-footer').remove();
 
-      // Eliminar elementos específicos dentro de #main
       $('.sidebar').remove();
       $('.fas').remove();
       $('.clear-content ').remove();
@@ -704,7 +687,6 @@ app.get('/proxy', (req, res) => {
         background: 'url(https://images.habbo.com/habbo-web/origins-america/es/assets/images/habbo_background.683cff59.gif)'
       });
 
-      // Modificar los enlaces dentro de #head-direction
       $('#head-direction a[data-direction="left"]').html('&larr;');
       $('#head-direction a[data-direction="right"]').html('&rarr;');
 
@@ -712,11 +694,9 @@ app.get('/proxy', (req, res) => {
       $('#direction a[data-direction="left"]').html('&larr;');
       $('#direction a[data-direction="right"]').html('&rarr;');
 
-      // Remover encabezados de seguridad que bloquean el embebido
       res.set('Content-Security-Policy', "frame-ancestors 'self'");
       res.set('X-Frame-Options', 'ALLOWALL');
 
-      // Enviar el contenido modificado al cliente
       res.send($.html());
     } else {
       res.status(response.statusCode).send('Error loading the page');
@@ -738,8 +718,7 @@ const rewriteResourceUrls = (html, baseUrl) => {
   
     return $.html();
   };
-  
-  // Proxy para manejar los recursos estáticos (imágenes, CSS, etc.)
+
   app.get('/proxy-resource', async (req, res) => {
     const resourceUrl = req.query.url;
     try {
@@ -752,8 +731,7 @@ const rewriteResourceUrls = (html, baseUrl) => {
       res.status(500).send('Error loading the resource');
     }
   });
-  
-  // Ruta principal para el proxy
+
   app.get('/proxy-text', async (req, res) => {
     const url = 'https://www.habbofont.net/';
   
@@ -819,9 +797,9 @@ const rewriteResourceUrls = (html, baseUrl) => {
   });
   
 const DISCORD_TOKEN = process.env.DISCORD_TOKEN;
-const CLIENT_ID = process.env.CLIENT_ID; // Tu Client ID
-const GUILD_ID = process.env.GUILD_ID; // Tu Guild ID (ID del servidor)
-const ALLOWED_ROLES = process.env.ALLOWED_ROLES; // Roles permitidos
+const CLIENT_ID = process.env.CLIENT_ID;
+const GUILD_ID = process.env.GUILD_ID;
+const ALLOWED_ROLES = process.env.ALLOWED_ROLES;
 
 const client = new Client({
     intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent],
@@ -925,7 +903,6 @@ client.on('interactionCreate', async interaction => {
 
     const { commandName, options, member } = interaction;
 
-    // Verificar si el usuario tiene uno de los roles permitidos
     const hasRole = member.roles.cache.some(role => ALLOWED_ROLES.includes(role.id));
 
     if (!hasRole) {
@@ -947,7 +924,7 @@ client.on('interactionCreate', async interaction => {
             try {
                 const voteCounts = new Array(opciones.length).fill(0);
                 const userVotes = new Map();
-                const voteDetails = new Map(); // Almacena los detalles de los votos
+                const voteDetails = new Map();
 
                 const row = new ActionRowBuilder();
                 opciones.forEach((opcion, index) => {
@@ -984,7 +961,7 @@ client.on('interactionCreate', async interaction => {
                         const nuevaOpcion = {
                             encuesta_id: encuestaMessage.id,
                             opcion_texto: opcion,
-                            opcion_discord_id: index  // Agregar el índice como opción_discord_id
+                            opcion_discord_id: index
                         };
                         const opcionResponse = await axios.post('https://nearby-kindly-lemming.ngrok-free.app/opciones', nuevaOpcion);
                         opcionesExternas.push(opcionResponse.data.data[0]);
@@ -1017,12 +994,10 @@ client.on('interactionCreate', async interaction => {
                     const selectedOptionId = pollData.opcionesExternas[selectedOptionIndex].opcion_id;
                 
                     try {
-                        // Acknowledge the interaction immediately with an ephemeral response
                         if (!i.deferred && !i.replied) {
                             await i.deferReply({ ephemeral: true });
                         }
-                
-                        // Function to send vote and retry on failure
+
                         async function sendVoteWithRetry() {
                             let sent = false;
                             while (!sent) {
@@ -1032,15 +1007,14 @@ client.on('interactionCreate', async interaction => {
                                         opcion_id: selectedOptionId,
                                         usuario_id: userId
                                     });
-                                    sent = true; // If successful, break the loop
+                                    sent = true;
                                 } catch (error) {
                                     console.error('Error sending vote:', error.message);
                                     console.log('Retrying...');
                                 }
                             }
                         }
-                
-                        // Handle the voting logic
+
                         if (modo === 'unico') {
                             const previousVote = pollData.userVotes.get(userId);
                 
@@ -1093,8 +1067,7 @@ client.on('interactionCreate', async interaction => {
                 
                         const totalVotes = pollData.voteCounts.reduce((sum, count) => sum + count, 0);
                         await encuestaMessage.edit({ content: getPollMessage(pollData.opciones, pollData.voteCounts, totalVotes), components: [pollData.row] });
-                
-                        // Optionally send a final ephemeral message to the user to confirm their vote
+
                         if (!i.replied) {
                             await i.editReply({ content: '¡Tu voto ha sido registrado con éxito!', ephemeral: true });
                         }
@@ -1118,8 +1091,7 @@ client.on('interactionCreate', async interaction => {
                             console.error(`No se encontró pollData para el mensaje ID: ${encuestaMessage.id}`);
                             return;
                         }
-                
-                        // Inactivar encuesta en la API externa
+
                         await axios.put(`https://nearby-kindly-lemming.ngrok-free.app/encuestas/${encuestaMessage.id}/inactivar`)
                             .then(response => {
                                 console.log('Encuesta inactivada en la API externa:', response.data);
@@ -1127,8 +1099,7 @@ client.on('interactionCreate', async interaction => {
                             .catch(error => {
                                 console.error('Error al inactivar la encuesta en la API externa:', error.response ? error.response.data : error.message);
                             });
-                
-                        // Verificar si todas las encuestas con la misma imagen han finalizado
+
                         const completedPolls = Array.from(activePolls.values()).filter(poll => poll.imagen === pollData.imagen && poll.collector.ended);
 
                         if (completedPolls.length === 2) {
@@ -1136,8 +1107,7 @@ client.on('interactionCreate', async interaction => {
                             let votosCanal2 = 0;
                             let opcionGanadoraCanal1 = '';
                             let opcionGanadoraCanal2 = '';
-                
-                            // Iterar sobre cada encuesta completada y obtener la opción ganadora de cada una
+
                             completedPolls.forEach((poll, index) => {
                                 let maxVotes = 0;
                                 let winningOption = '';
@@ -1159,8 +1129,7 @@ client.on('interactionCreate', async interaction => {
                                     opcionGanadoraCanal2 = winningOption;
                                 }
                             });
-                
-                            // Calcular el resultado ponderado
+
                             const pesoCanal1 = 0.70;
                             const pesoCanal2 = 0.30;
                             let resultadoFinal = 0;
@@ -1169,18 +1138,14 @@ client.on('interactionCreate', async interaction => {
                             } else {
                                 resultadoFinal = (votosCanal1 * pesoCanal1) + (votosCanal2 * pesoCanal2);
                             }
-                            
-                
-                            // Función para redondear al múltiplo de 5 más cercano
+
                             const redondearMultiploDe5 = (numero) => {
                                 return Math.round(numero / 5) * 5;
                             };
-                
-                            // Redondear el resultado al múltiplo de 5 más cercano
+
                             resultadoFinal = redondearMultiploDe5(resultadoFinal);
 
-                            // Buscar la imagen en el archivo precios.json
-                            const imagenNombre = pollData.imagen.split('/').pop().split('.')[0]; // Extrae "El_Super_Dado" de "hc/El_Super_Dado.png"
+                            const imagenNombre = pollData.imagen.split('/').pop().split('.')[0];
                 
                             const preciosPath = path.join(__dirname, 'public', 'furnis', 'precios', 'precios.json');
                             const preciosData = JSON.parse(fs.readFileSync(preciosPath, 'utf-8'));
@@ -1189,8 +1154,7 @@ client.on('interactionCreate', async interaction => {
                 
                             if (articulo) {
                                 console.log(`Se encontró el artículo con ID: ${articulo.id} para la imagen ${pollData.imagen}`);
-                
-                                // Actualizar o registrar el precio en la base de datos SQLite
+
                                 const today = new Date();
                                 const priceHistory = await PriceHistory.create({
                                     productId: articulo.id,
@@ -1198,16 +1162,14 @@ client.on('interactionCreate', async interaction => {
                                     fecha_precio: today
                                 });
                                 console.log('Precio registrado en la base de datos SQLite.');
-                
-                                // Actualizar el precio en el modelo Image
+
                                 const image = await Image.findByPk(articulo.id);
                                 if (image) {
                                     image.price = resultadoFinal;
                                     await image.save();
                                     console.log('Precio actualizado en el modelo Image.');
                                 }
-                
-                                // Hacer la solicitud POST con el ID y el resultadoFinal como precio
+
                                 const postData = [{
                                     id: articulo.id,
                                     price: resultadoFinal
@@ -1223,8 +1185,7 @@ client.on('interactionCreate', async interaction => {
                             } else {
                                 console.log(`No se encontró ningún artículo para la imagen ${pollData.imagen}`);
                             }
-                
-                            // Anunciar el resultado en los canales correspondientes
+
                             const mensaje = `La encuesta ha culminado.\n\n` +
                                             `La opción ganadora de la encuesta de los Master Trades es "${opcionGanadoraCanal1}".\n` +
                                             `La opción ganadora de la encuesta de la comunidad es "${opcionGanadoraCanal2}".\n` +
@@ -1236,8 +1197,7 @@ client.on('interactionCreate', async interaction => {
                                     files: [path.join(__dirname, 'public','furnis', poll.imagen)]
                                 });
                             });
-                
-                            // Eliminar las encuestas completadas de activePolls
+
                             completedPolls.forEach(poll => activePolls.delete(poll.message.id));
                         } else {
                             console.log('No se han encontrado ambas encuestas aún, no eliminando de activePolls.');
@@ -1288,7 +1248,6 @@ client.on('messageCreate', async (message) => {
             return message.reply('No tienes permisos para usar este comando.');
         }
 
-        // Extraer el comando, la mención, el contenido y el parámetro $web
         const args = message.content.split(' ');
         const mentionType = args[1] && (args[1] === '$everyone' || args[1] === '$here') ? args[1] : '';
         const isWeb = args.includes('$web');
@@ -1304,7 +1263,6 @@ client.on('messageCreate', async (message) => {
                 content: `${mentionType} 📰 **Nueva Noticia**\n\n${content}`
             };
 
-            // Manejar las imágenes adjuntas
             let imageUrl = null;
             if (message.attachments.size > 0) {
                 const attachments = message.attachments.map(attachment => new AttachmentBuilder(attachment.url));
@@ -1317,10 +1275,8 @@ client.on('messageCreate', async (message) => {
                 const messageUrl = `https://discord.com/channels/${sentMessage.guildId}/${sentMessage.channelId}/${sentMessage.id}`;
                 console.log(`Mensaje publicado en: ${messageUrl}`);
 
-                // Publicar el tweet después de publicar la noticia en Discord
                 await postTweet(content, messageUrl);
 
-                // Si el parámetro $web está presente, generar y guardar el resumen
                 if (isWeb) {
                     const prompWeb = `Tengo esta noticia "+${content} +" y necesito que me la generes y resumas en este formato, toma esta noticia como ejemplo {
                         "titulo": "Nuevo raro disponible! La Hologirl",
@@ -1338,7 +1294,7 @@ client.on('messageCreate', async (message) => {
                     console.log('Resumen generado para la web:', summaryData);
 
                     if (imageUrl) {
-                        // Descargar y guardar la imagen en la ruta local especificada
+
                         const imageName = `${summaryData.imagen_completa}.png`;
                         const savePath = path.join('public', 'furnis', 'noticias', 'imagenes', 'completas', imageName);
 
@@ -1356,11 +1312,9 @@ client.on('messageCreate', async (message) => {
                         const noticiaId = response.data['noticia_id'];
                         const fechaActual = format(new Date(), 'dd-MM-yyyy');
 
-                        // Leer el archivo noticias.json
                         const noticiasPath = path.join('public', 'furnis', 'noticias', 'noticias.json');
                         const noticias = JSON.parse(fs.readFileSync(noticiasPath, 'utf8'));
 
-                        // Agregar nuevo registro
                         const nuevaNoticia = {
                             id: noticiaId,
                             ...summaryData,
@@ -1368,7 +1322,6 @@ client.on('messageCreate', async (message) => {
                         };
                         noticias.push(nuevaNoticia);
 
-                        // Guardar de nuevo el archivo
                         fs.writeFileSync(noticiasPath, JSON.stringify(noticias, null, 2), 'utf8');
                         console.log('Nueva noticia agregada al archivo noticias.json.');
 
@@ -1387,7 +1340,6 @@ client.on('messageCreate', async (message) => {
     }
 });
 
-// Función para descargar la imagen desde Discord y guardarla en local
 async function downloadImage(url, savePath) {
     return new Promise((resolve, reject) => {
         request(url)
@@ -1430,93 +1382,163 @@ function parseDuration(duration) {
     if (matches) {
         if (matches[1]) {
             const days = parseInt(matches[1].replace('d', ''), 10);
-            totalMilliseconds += days * 24 * 60 * 60 * 1000; // Días a milisegundos
+            totalMilliseconds += days * 24 * 60 * 60 * 1000;
         }
         if (matches[2]) {
             const hours = parseInt(matches[2].replace('h', ''), 10);
-            totalMilliseconds += hours * 60 * 60 * 1000; // Horas a milisegundos
+            totalMilliseconds += hours * 60 * 60 * 1000;
         }
         if (matches[3]) {
             const minutes = parseInt(matches[3].replace('m', ''), 10);
-            totalMilliseconds += minutes * 60 * 1000; // Minutos a milisegundos
+            totalMilliseconds += minutes * 60 * 1000;
         }
     }
 
     return totalMilliseconds;
 }
 
-async function sendVoteWithRetry(encuestaMessage, selectedOptionId, userId) {
-    while (true) {
-        try {
-            const response = await axios.post('https://nearby-kindly-lemming.ngrok-free.app/votos', {
-                encuesta_id: encuestaMessage.id,
-                opcion_id: selectedOptionId,
-                usuario_id: userId
-            });
+async function fetchAndExtractNoticias() {
+    const browser = await puppeteer.launch();
+    const page = await browser.newPage();
 
-            if (response.status === 201) {
-                console.log('Vote successfully sent!');
-                break; // Exit loop if request was successful
+    await page.setRequestInterception(true);
+    page.on('request', (request) => {
+        const resourceType = request.resourceType();
+        if (['image', 'stylesheet', 'font', 'media'].includes(resourceType)) {
+            request.abort();
+        } else {
+            request.continue();
+        }
+    });
+
+    await page.goto('https://origins.habbo.es/community/category/all/1', { waitUntil: 'networkidle0' });
+
+    const html = await page.content();
+
+    const $ = cheerio.load(html);
+
+    const section = $('section.ng-scope');
+
+    const articles = section.find('article.news-header');
+
+    const nuevasNoticias = [];
+
+    articles.each((index, element) => {
+        const anchor = $(element).find('a').first().attr('href');
+        const title = $(element).find('h2').first().text().trim();
+
+        nuevasNoticias.push({ titulo: title, link: anchor });
+    });
+
+    const response = await axios.get('https://nearby-kindly-lemming.ngrok-free.app/noticias-oficiales');
+    const noticiasRegistradas = response.data.data;
+
+    const noticiasNoRegistradas = nuevasNoticias.filter(nuevaNoticia => {
+        return !noticiasRegistradas.some(noticia => 
+            noticia.link.trim() === nuevaNoticia.link.trim() && noticia.title.trim() === nuevaNoticia.titulo.trim()
+        );
+    });
+
+    for (const noticia of noticiasNoRegistradas) {
+        try {
+            const noticiaResponse = await axios.post('https://nearby-kindly-lemming.ngrok-free.app/nueva-noticia-oficial', noticia);
+            const url = 'https://origins.habbo.es' + noticia.link;
+            await page.goto(url, { waitUntil: 'networkidle0' });
+
+            const noticiaHtml = await page.content();
+            const $noticia = cheerio.load(noticiaHtml);
+
+            const contenidoNoticia = $noticia('.news-article').text().trim();
+            const promp = `Hola Traders, tengo una nueva noticia para ustedes. Según la información oficial de Habbo, ${contenidoNoticia}. Como siempre, les mantendremos al tanto de cualquier novedad. Muchas gracias por leer la noticia, en esta la mejor comunidad de todas."
+
+            Instrucciones adicionales:
+
+            Evita el uso de pronombres posesivos: No uses palabras como "nuestro" o "nosotros".
+            Referencia en tercera persona: Habla siempre como si estuvieras reportando sobre acciones realizadas por un tercero (Habbo) y no por ti mismo o por el equipo de Trades Habbo.
+            No asumas agradecimientos ni explicaciones: No incluyas frases que impliquen una relación directa con la audiencia, como "agradecemos su paciencia" o "valdrá la pena la espera".
+            Mantén el tono imparcial: Limítate a reportar lo que se anunció sin interpretar o añadir comentarios personales.
+            Lo que tienes que resumir es lo que esta entre Según la información oficial de Habbo, y  Como siempre, les mantendremos al tanto de cualquier novedad.`
+            let summaryData = await generateSummaryWeb(promp);
+            const newsChannel = client.channels.cache.get('1258417994543927338');
+            
+            if (newsChannel) {
+                newsChannel.send(`📰 **Resumen nueva noticia oficial**\n\nHola Traders, tengo una nueva noticia para ustedes.\n\n${summaryData}\n\nComo siempre, les mantendremos al tanto de cualquier novedad. Muchas gracias por leer la noticia, en esta la mejor comunidad de todas.\n\nLink oficial: ${url}\n\n***Esta noticia a sido generada con AI***`).then(async (sentMessage) => {
+                    const messageUrl = `https://discord.com/channels/${sentMessage.guildId}/${sentMessage.channelId}/${sentMessage.id}`;
+                    console.log(`Mensaje publicado en: ${messageUrl}`);
+                    await postTweetOficial(summaryData, messageUrl);
+                    const prompWeb = `Tengo esta noticia: ${contenidoNoticia}. Necesito que la generes y la resumas en el siguiente formato JSON (el json que es un ejemplo del formato que necesito):
+                        (formato json de ejemplo: {
+                            "titulo": "Nuevo raro disponible! La Hologirl",
+                            "imagen_completa": "catalogo_hologirl",
+                            "alt_imagen_completa": "Catalogo Hologirl",
+                            "descripcion_completa": "<p><strong>El nuevo raro de Habbo Hotel: Orígenes: Hologirl!</strong></p><p>El 8 de agosto de 2024, se lanza un nuevo raro mítico en el catálogo de Habbo Hotel: Orígenes. La <strong>Hologirl</strong> ya está disponible por tiempo limitado a un precio especial de 50 créditos. Este es el primer raro que sale un jueves y estará disponible solo por 48 horas en el catálogo. ¡No pierdas la oportunidad de agregar esta pieza única a tu colección!</p>",
+                            "imagen_resumida": "staff",
+                            "alt_imagen_resumida": "nuevo raro jueves 08 de agosto del 2024",
+                            "descripcion_resumida": "<p class=\"noticia_descripcion\"><strong>Llega un nuevo raro a Habbo Hotel: Orígenes!</strong> Descubre y adquiere el nuevo raro, <strong>RARO Hologirl</strong>, disponible solo por 48 horas. ¡No te lo pierdas!</p>"
+                        })
+                        
+                       Instrucciones adicionales:
+
+                        Imágenes y Títulos:
+
+                        imagen_resumida: Siempre debe ser "staff".
+                        imagen_completa: Debe ser acorde al contexto y título de la noticia.
+                        alt_imagen_completa y alt_imagen_resumida: Deben describir correctamente las imágenes en el contexto del evento o noticia.
+                        Formato de las Descripciones:
+
+                        descripcion_completa: Proporciona un resumen detallado de la noticia oficial publicada por Habbo.
+                        descripcion_resumida: Debe ser un resumen más breve y directo, pero diferente a la descripción completa.
+                        Condiciones para ambas descripciones:
+
+                        Importante: SIEMPRE debes hablar como si fueras un reportero de la fansite "Trades Habbo (THO)", refiriéndote a las acciones de Habbo en tercera persona. No utilices pronombres posesivos como "nuestro" o "nosotros". No uses frases que impliquen pertenencia al equipo de Habbo, como "estamos trabajando" o "nuestro equipo". Si no cumples con estas condiciones, la noticia se habrá generado incorrectamente.
+                        Tono y Estilo:
+
+                        Saludo: Comienza con "Hola Traders, tengo una nueva noticia, la cual generé con IA para ustedes."
+                        Referencia en tercera persona: Siempre habla como si fueras un reportero de la fansite "Trades Habbo (THO)", refiriéndote a las acciones de Habbo en tercera persona. No utilices pronombres posesivos como "nuestro" o "nosotros".
+                        Imparcialidad: Mantén un tono neutral y no incluyas opiniones, agradecimientos personales, ni explicaciones que sugieran una relación directa con la audiencia.
+                        Contenido:
+
+                        Resumenes: Asegúrate de que ambos resúmenes (completo y resumido) reflejen el hecho de que la noticia fue publicada por Habbo, y que tú como reportero de THO estás simplemente reportando lo que fue anunciado.
+                        Evita ciertas expresiones: No uses frases que impliquen que eres parte del equipo de Habbo, como "estamos trabajando" o "nuestro equipo".
+
+                        Advertencia: Si incluyes cualquier pronombre posesivo o hablas en primera persona del plural (ejemplo: "estamos", "nuestro equipo"), la noticia se considerará incorrecta."
+                    `
+                    let summaryDataWeb = await generateSummaryWeb(prompWeb);
+                    summaryDataWeb = JSON.parse(summaryDataWeb);
+                    summaryDataWeb.descripcion_completa += `Este es un resumen de la noticia oficial <a href="${url}" target="_blank">Link</a><br>Esta noticia ha sido generada con IA por lo mismo puede tener errores gramaticales o hablar como si fuera parte del equipo de habbo`
+
+                    try {
+                        const response = await axios.post('https://nearby-kindly-lemming.ngrok-free.app/nueva-noticia', summaryDataWeb);
+                        console.log('Datos enviados a la web exitosamente.');
+                        
+                        const noticiaId = response.data['noticia_id'];
+                        const fechaActual = format(new Date(), 'dd-MM-yyyy');
+
+                        const noticiasPath = path.join('public', 'furnis', 'noticias', 'noticias.json');
+                        const noticias = JSON.parse(fs.readFileSync(noticiasPath, 'utf8'));
+
+                        const nuevaNoticia = {
+                            id: noticiaId,
+                            ...summaryDataWeb,
+                            fecha_noticia: fechaActual
+                        };
+                        noticias.push(nuevaNoticia);
+
+                        fs.writeFileSync(noticiasPath, JSON.stringify(noticias, null, 2), 'utf8');
+                        console.log('Nueva noticia agregada al archivo noticias.json.');
+                    } catch (error) {
+                        console.error('Error al enviar los datos a la web:', error);
+                    }
+                }).catch(err => {
+                    console.error('Error al enviar el resumen al canal de Discord:', err);
+                });
             } else {
-                console.log(`Unexpected status code: ${response.status}. Retrying...`);
+                console.error('No se pudo encontrar el canal de Discord con el ID proporcionado.');
             }
         } catch (error) {
-            console.error('Error sending vote:', error.message);
-            console.log('Retrying...');
-            await new Promise(resolve => setTimeout(resolve, 5000)); // Wait for 5 seconds before retrying
+            console.error('Error al enviar la noticia o al extraer la información:', error);
         }
     }
-}
 
-async function fetchAndExtractNoticias() {
-    try {
-        // Obtener el HTML de la página con axios
-        const { data: html } = await axios.get('https://origins.habbo.es/community/category/all/1');
-
-        // Cargar el HTML en Cheerio para manipulación
-        const $ = cheerio.load(html);
-
-        console.log($.html());
-        // Selecciona la sección con la clase 'ng-scope'
-        const section = $('section.ng-scope');
-
-        //console.log(section);
-        // Selecciona todos los artículos con la clase 'news-header' dentro de la sección
-        const articles = section.find('article.news-header');
-        //console.log(articles);
-        // Crear un array para almacenar las nuevas noticias
-        const nuevasNoticias = [];
-
-        // Itera sobre los artículos y extrae la información deseada
-        articles.each((index, element) => {
-            const anchor = $(element).find('a').first().attr('href'); // Obtiene el atributo href del primer <a>
-            const title = $(element).find('h2').first().text().trim(); // Obtiene el texto del primer <h2> y quita espacios en blanco
-
-            nuevasNoticias.push({ titulo: title, link: anchor });
-        });
-
-        // Obtener las noticias oficiales ya registradas
-        const response = await axios.get('https://nearby-kindly-lemming.ngrok-free.app/noticias-oficiales');
-        console.log(nuevasNoticias);
-        const noticiasRegistradas = response.data.data;
-
-        // Filtrar las noticias que no están registradas
-        const noticiasNoRegistradas = nuevasNoticias.filter(nuevaNoticia => {
-            return !noticiasRegistradas.some(noticia => 
-                noticia.link.trim() === nuevaNoticia.link.trim() && noticia.title.trim() === nuevaNoticia.titulo.trim()
-            );
-        });
-
-        // Enviar las noticias no registradas a la API
-        for (const noticia of noticiasNoRegistradas) {
-            try {
-                const response = await axios.post('https://nearby-kindly-lemming.ngrok-free.app/nueva-noticia-oficial', noticia);
-                console.log(`Noticia enviada: ${noticia.titulo}`);
-            } catch (error) {
-                console.error('Error al enviar la noticia:', error);
-            }
-        }
-    } catch (error) {
-        console.error('Error al obtener o procesar las noticias:', error);
-    }
+    await browser.close();
 }

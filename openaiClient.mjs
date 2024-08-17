@@ -17,6 +17,6 @@ export async function generateSummaryWeb(text) {
         return response.choices[0].message.content.trim();
     } catch (error) {
         console.error('Error al generar el resumen:', error);
-        return text; // Si falla, devuelve el texto original
+        return text;
     }
 }
