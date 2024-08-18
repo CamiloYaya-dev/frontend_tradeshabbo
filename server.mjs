@@ -25,6 +25,7 @@ import dotenv from 'dotenv';
 import { postTweet, postTweetOficial } from './twitterClient.mjs';
 import { generateSummaryWeb } from './openaiClient.mjs';
 import { format } from 'date-fns';
+import jwt from 'jsonwebtoken';
 import puppeteer from 'puppeteer';
 
 dotenv.config();
@@ -34,6 +35,20 @@ const port = 3000;
 
 const SECRET_KEY = '5229c0e71dddc98e14e7053988c57d20901e060b7d713ed4ccd5656c9192f47f';
 const IPINFO_API_KEY = '206743870a9fbf';
+
+const apiRestKey = process.env.API_REST_KEY;
+const apiRestJWTKey = process.env.API_REST_JWT_KEY;
+
+function generateJWT() {
+    const payload = { apiKey: apiRestKey };
+    return jwt.sign(payload, apiRestJWTKey, { expiresIn: '1m' });  // El token expira en 1 hora
+}
+
+function addJWTMiddleware(req, res, next) {
+    const token = generateJWT();
+    req.headers['Authorization'] = `Bearer ${token}`;
+    next();
+}
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -186,24 +201,31 @@ async function getVipPriceOnDate(date) {
 }
 
 async function getCatalog() {
+    const token = generateJWT();
     try {
-        const response_catalog = await axios.get('https://nearby-kindly-lemming.ngrok-free.app/habbo-catalog')
-            .catch(error => {
-                console.warn('Error fetching catalog, using local file:', error.message);
-                return null;
-            });
+        const response_catalog = await axios.get('https://nearby-kindly-lemming.ngrok-free.app/habbo-catalog', {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        }).catch(error => {
+            console.warn('Error fetching catalog, using local file:', error.message);
+            return null;
+        });
 
         if (response_catalog) {
             const prices = response_catalog.data;
             const jsonContent_catalog = JSON.stringify(prices, null, 2);
             fs.writeFileSync(path.join(__dirname, 'public', 'furnis', 'precios', 'precios.json'), jsonContent_catalog, 'utf8');
         }
-
-        const response_prices = await axios.get('https://nearby-kindly-lemming.ngrok-free.app/habbo-price-history')
-            .catch(error => {
-                console.warn('Error fetching price history, using local file:', error.message);
-                return null;
-            });
+        const token2 = generateJWT();
+        const response_prices = await axios.get('https://nearby-kindly-lemming.ngrok-free.app/habbo-price-history', {
+            headers: {
+                'Authorization': `Bearer ${token2}`
+            }
+        }).catch(error => {
+            console.warn('Error fetching catalog, using local file:', error.message);
+            return null;
+        });
 
         if (response_prices) {
             const pricesHistory = response_prices.data;
@@ -218,9 +240,13 @@ async function getCatalog() {
 }
 
 async function fetchAndStoreHabboOnline() {
+    const token = generateJWT();
     try {
-        const response_online = await axios.get('https://nearby-kindly-lemming.ngrok-free.app/habbo-online')
-            .catch(error => {
+        const response_online = await axios.get('https://nearby-kindly-lemming.ngrok-free.app/habbo-online',{
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        }).catch(error => {
                 console.warn('Error fetching habbo online data, using local file:', error.message);
                 return null;
             });
@@ -236,8 +262,13 @@ async function fetchAndStoreHabboOnline() {
 }
 
 async function fetchAndStoreNoticias() {
+    const token = generateJWT();
     try {
-        const response_noticias = await axios.get('https://nearby-kindly-lemming.ngrok-free.app/noticias')
+        const response_noticias = await axios.get('https://nearby-kindly-lemming.ngrok-free.app/noticias',{
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
             .catch(error => {
                 console.warn('Error fetching noticias data, using local file:', error.message);
                 return null;
@@ -255,8 +286,13 @@ async function fetchAndStoreNoticias() {
 }
 
 async function updateVisitCount() {
+    const token = generateJWT();
     try {
-        const response = await axios.get('https://nearby-kindly-lemming.ngrok-free.app/contador-visitas');
+        const response = await axios.get('https://nearby-kindly-lemming.ngrok-free.app/contador-visitas',{
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
         const externalVisitData = response.data;
 
         const externalVisitCount = externalVisitData.contador_visitas !== undefined ? externalVisitData.contador_visitas : 0;
@@ -294,8 +330,13 @@ async function updateVisitCount() {
 }
 
 async function updateVotesCount() {
+    const token = generateJWT();
     try {
-        const response = await axios.get('https://nearby-kindly-lemming.ngrok-free.app/contador-votos');
+        const response = await axios.get('https://nearby-kindly-lemming.ngrok-free.app/contador-votos',{
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
         const externalVotesCount = response.data;
 
         const responseVotesCount = externalVotesCount.contador_votos !== undefined ? externalVotesCount.contador_votos : 0;
@@ -493,10 +534,15 @@ app.post('/images/:id/vote', [
         }
         ipVotes[ip].push(imageId);
 
+        const token = generateJWT();
         const response = await axios.post('https://nearby-kindly-lemming.ngrok-free.app/habbo-votes', {
             upvotes: image.upvotes,
             downvotes: image.downvotes,
             id: imageId
+        }, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
         });
 
         const ngrokData = response.data;
@@ -554,11 +600,15 @@ app.post('/images/:id/vote-belief', [
             ipVotes_belief[ip] = [];
         }
         ipVotes_belief[ip].push(imageId);
-
+        const token = generateJWT();
         const response = await axios.post('https://nearby-kindly-lemming.ngrok-free.app/habbo-votes-belief', {
             upvotes_belief: image.upvotes_belief,
             downvotes_belief: image.downvotes_belief,
             id: imageId
+        }, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
         });
 
         const ngrokData = response.data;
@@ -843,12 +893,15 @@ client.once('ready', async () => {
     });
 
     await Promise.all(fetchPromises);
-
+    const token = generateJWT();
     try {
         const response = await axios.post('https://nearby-kindly-lemming.ngrok-free.app/guardar_invitaciones', inviteData, {
             headers: {
-                'Content-Type': 'application/json'
+                'Authorization': `Bearer ${token}`
             }
+        }).catch(error => {
+            console.warn('Error fetching catalog, using local file:', error.message);
+            return null;
         });
     } catch (error) {
         console.error('Error sending invites to the server:', error);
@@ -858,9 +911,13 @@ client.once('ready', async () => {
 
 client.on('guildMemberAdd', async member => {
     console.log('entre al guildMemberAdd');
-
+    const token = generateJWT();
     try {
-        const response = await axios.get('https://nearby-kindly-lemming.ngrok-free.app/invitaciones');
+        const response = await axios.get('https://nearby-kindly-lemming.ngrok-free.app/invitaciones', {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
         const storedInvites = response.data;
 
         const newInvites = await member.guild.invites.fetch();
@@ -882,11 +939,11 @@ client.on('guildMemberAdd', async member => {
                 invitadoTag: inviter.user.tag,
                 invitacionCode: usedInvite.code
             };
-
+            const token2 = generateJWT();
             try {
                 const competicionResponse = await axios.post('https://nearby-kindly-lemming.ngrok-free.app/competicion-invitacion', competicionData, {
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Authorization': `Bearer ${token2}`
                     }
                 });
                 console.log('Registro guardado en la competición de invitación:', competicionResponse.data);
@@ -894,9 +951,14 @@ client.on('guildMemberAdd', async member => {
                 console.error('Error guardando el registro en la competición de invitación:', error);
             }
 
+            const token3 = generateJWT();
             await axios.post('https://nearby-kindly-lemming.ngrok-free.app/actualizar_uso_invitacion', {
                 code: usedInvite.code,
                 uses: usedInvite.uses + 1
+            }, {
+                headers: {
+                    'Authorization': `Bearer ${token3}`
+                }
             });
 
         } else {
@@ -920,11 +982,11 @@ client.on('inviteCreate', async invite => {
         uses: invite.uses,
         inviter_id: inviterId
     };
-
+    const token = generateJWT();
     try {
         const response = await axios.post('https://nearby-kindly-lemming.ngrok-free.app/guardar_invitaciones', [newInviteData], {
             headers: {
-                'Content-Type': 'application/json'
+                'Authorization': `Bearer ${token}`
             }
         });
     } catch (error) {
@@ -1076,9 +1138,13 @@ client.on('interactionCreate', async interaction => {
                 };
 
                 let opcionesExternas = [];
-
+                const token = generateJWT();
                 try {
-                    const response = await axios.post('https://nearby-kindly-lemming.ngrok-free.app/encuestas', nuevaEncuesta);
+                    const response = await axios.post('https://nearby-kindly-lemming.ngrok-free.app/encuestas', nuevaEncuesta, {
+                        headers: {
+                            'Authorization': `Bearer ${token}`
+                        }
+                    });
 
                     for (let [index, opcion] of opciones.entries()) {
                         const nuevaOpcion = {
@@ -1086,7 +1152,12 @@ client.on('interactionCreate', async interaction => {
                             opcion_texto: opcion,
                             opcion_discord_id: index
                         };
-                        const opcionResponse = await axios.post('https://nearby-kindly-lemming.ngrok-free.app/opciones', nuevaOpcion);
+                        let tokenOpciones = generateJWT();
+                        const opcionResponse = await axios.post('https://nearby-kindly-lemming.ngrok-free.app/opciones', nuevaOpcion, {
+                            headers: {
+                                'Authorization': `Bearer ${tokenOpciones}`
+                            }
+                        });
                         opcionesExternas.push(opcionResponse.data.data[0]);
                     }
                 } catch (error) {
@@ -1125,10 +1196,15 @@ client.on('interactionCreate', async interaction => {
                             let sent = false;
                             while (!sent) {
                                 try {
+                                    let tokenVotos = generateJWT();
                                     await axios.post('https://nearby-kindly-lemming.ngrok-free.app/votos', {
                                         encuesta_id: encuestaMessage.id,
                                         opcion_id: selectedOptionId,
                                         usuario_id: userId
+                                    }, {
+                                        headers: {
+                                            'Authorization': `Bearer ${tokenVotos}`
+                                        }
                                     });
                                     sent = true;
                                 } catch (error) {
@@ -1214,8 +1290,12 @@ client.on('interactionCreate', async interaction => {
                             console.error(`No se encontró pollData para el mensaje ID: ${encuestaMessage.id}`);
                             return;
                         }
-
-                        await axios.put(`https://nearby-kindly-lemming.ngrok-free.app/encuestas/${encuestaMessage.id}/inactivar`)
+                        const token = generateJWT();
+                        await axios.put(`https://nearby-kindly-lemming.ngrok-free.app/encuestas/${encuestaMessage.id}/inactivar`, {
+                            headers: {
+                                'Authorization': `Bearer ${token}`
+                            }
+                        })
                             .then(response => {
                                 console.log('Encuesta inactivada en la API externa:', response.data);
                             })
@@ -1297,8 +1377,12 @@ client.on('interactionCreate', async interaction => {
                                     id: articulo.id,
                                     price: resultadoFinal
                                 }];
-                
-                                await axios.post('https://nearby-kindly-lemming.ngrok-free.app/habbo-update-catalog', postData)
+                                const token = generateJWT();
+                                await axios.post('https://nearby-kindly-lemming.ngrok-free.app/habbo-update-catalog', postData, {
+                                    headers: {
+                                        'Authorization': `Bearer ${token}`
+                                    }
+                                })
                                     .then(response => {
                                         console.log('Catálogo actualizado exitosamente:', response.data);
                                     })
@@ -1347,8 +1431,12 @@ client.on('interactionCreate', async interaction => {
         if (pollData) {
             pollData.collector.stop();
             activePolls.delete(mensajeId);
-
-            axios.put(`https://nearby-kindly-lemming.ngrok-free.app/encuestas/${mensajeId}/inactivar`)
+            const token = generateJWT();
+            axios.put(`https://nearby-kindly-lemming.ngrok-free.app/encuestas/${mensajeId}/inactivar`, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            })
                 .then(response => {
                     console.log('Encuesta inactivada en la API externa:', response.data);
                 })
@@ -1429,7 +1517,12 @@ client.on('messageCreate', async (message) => {
                         }
                     }
                     try {
-                        const response = await axios.post('https://nearby-kindly-lemming.ngrok-free.app/nueva-noticia', summaryData);
+                        const token = generateJWT();
+                        const response = await axios.post('https://nearby-kindly-lemming.ngrok-free.app/nueva-noticia', summaryData, {
+                            headers: {
+                                'Authorization': `Bearer ${token}`
+                            }
+                        });
                         console.log('Datos enviados a la web exitosamente.');
                         
                         const noticiaId = response.data['noticia_id'];
@@ -1596,8 +1689,12 @@ async function fetchAndExtractNoticias() {
 
         nuevasNoticias.push({ titulo: title, link: anchor });
     });
-
-    const response = await axios.get('https://nearby-kindly-lemming.ngrok-free.app/noticias-oficiales');
+    const token = generateJWT();
+    const response = await axios.get('https://nearby-kindly-lemming.ngrok-free.app/noticias-oficiales', {
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    });
     const noticiasRegistradas = response.data.data;
 
     const noticiasNoRegistradas = nuevasNoticias.filter(nuevaNoticia => {
@@ -1607,8 +1704,13 @@ async function fetchAndExtractNoticias() {
     });
 
     for (const noticia of noticiasNoRegistradas) {
-        try {
-            const noticiaResponse = await axios.post('https://nearby-kindly-lemming.ngrok-free.app/nueva-noticia-oficial', noticia);
+        try { 
+            let tokenNewsOficial = generateJWT();
+            const noticiaResponse = await axios.post('https://nearby-kindly-lemming.ngrok-free.app/nueva-noticia-oficial', noticia, {
+                headers: {
+                    'Authorization': `Bearer ${tokenNewsOficial}`
+                }
+            });
             const url = 'https://origins.habbo.es' + noticia.link;
             await page.goto(url, { waitUntil: 'networkidle0' });
 
@@ -1675,7 +1777,12 @@ async function fetchAndExtractNoticias() {
                     summaryDataWeb.descripcion_completa += `Este es un resumen de la noticia oficial <a href="${url}" target="_blank">Link</a><br>Esta noticia ha sido generada con IA por lo mismo puede tener errores gramaticales o hablar como si fuera parte del equipo de habbo`
 
                     try {
-                        const response = await axios.post('https://nearby-kindly-lemming.ngrok-free.app/nueva-noticia', summaryDataWeb);
+                        let tokenNews = generateJWT();
+                        const response = await axios.post('https://nearby-kindly-lemming.ngrok-free.app/nueva-noticia', summaryDataWeb, {
+                            headers: {
+                                'Authorization': `Bearer ${tokenNews}`
+                            }
+                        });
                         console.log('Datos enviados a la web exitosamente.');
                         
                         const noticiaId = response.data['noticia_id'];
