@@ -19,7 +19,7 @@ import { initializeApp } from 'firebase/app';
 import { getDatabase, ref, get, child } from 'firebase/database';
 import request from 'request';
 import cheerio from 'cheerio';
-import { Client, GatewayIntentBits, REST, Routes } from 'discord.js';
+import { Client, GatewayIntentBits, REST, Routes, Collection } from 'discord.js';
 import { ActionRowBuilder, ButtonBuilder, ButtonStyle, ApplicationCommandOptionType, AttachmentBuilder } from 'discord.js';
 import dotenv from 'dotenv';
 import { postTweet, postTweetOficial } from './twitterClient.mjs';
@@ -729,7 +729,7 @@ const rewriteResourceUrls = (html, baseUrl) => {
     return $.html();
   };
 
-  app.get('/proxy-resource', async (req, res) => {
+app.get('/proxy-resource', async (req, res) => {
     const resourceUrl = req.query.url;
     try {
       const response = await axios.get(resourceUrl, { responseType: 'arraybuffer' });
@@ -740,16 +740,15 @@ const rewriteResourceUrls = (html, baseUrl) => {
       console.error('Error loading resource:', error);
       res.status(500).send('Error loading the resource');
     }
-  });
+});
 
-  app.get('/proxy-text', async (req, res) => {
+app.get('/proxy-text', async (req, res) => {
     const url = 'https://www.habbofont.net/';
   
     try {
       const response = await axios.get(url);
       let html = rewriteResourceUrls(response.data, url);
-  
-      // Insertar script para hacer clic en el enlace "Home"
+
       const $ = cheerio.load(html);
       $('body').append(`
         <script>
@@ -793,12 +792,10 @@ const rewriteResourceUrls = (html, baseUrl) => {
         </script>
       `);
       html = $.html();
-  
-      // Remover encabezados de seguridad que bloquean el embebido
+
       res.set('Content-Security-Policy', "frame-ancestors 'self'");
       res.set('X-Frame-Options', 'ALLOWALL');
   
-      // Enviar el contenido modificado al cliente
       res.send(html);
     } catch (error) {
       console.error('Error loading page:', error);
@@ -812,11 +809,127 @@ const GUILD_ID = process.env.GUILD_ID;
 const ALLOWED_ROLES = process.env.ALLOWED_ROLES;
 
 const client = new Client({
-    intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent],
+    intents: [
+        GatewayIntentBits.Guilds,
+        GatewayIntentBits.GuildMembers,
+        GatewayIntentBits.GuildInvites, // Asegúrate de incluir esta línea
+        GatewayIntentBits.GuildMessages,
+        GatewayIntentBits.MessageContent
+    ],
 });
 
-client.once('ready', () => {
+const invites = new Collection();
+
+client.once('ready', async () => {
     console.log('Discord bot is ready!');
+
+    const inviteData = [];
+
+    const fetchPromises = client.guilds.cache.map(async guild => {
+        try {
+            const guildInvites = await guild.invites.fetch();
+            invites.set(guild.id, guildInvites);
+
+            guildInvites.forEach(invite => {
+                inviteData.push({
+                    code: invite.code,
+                    uses: invite.uses,
+                    inviterId: invite.inviter ? invite.inviter.id : null
+                });
+            });
+        } catch (error) {
+            console.error(`Error fetching invites for guild ${guild.name}:`, error);
+        }
+    });
+
+    await Promise.all(fetchPromises);
+
+    try {
+        const response = await axios.post('https://nearby-kindly-lemming.ngrok-free.app/guardar_invitaciones', inviteData, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+    } catch (error) {
+        console.error('Error sending invites to the server:', error);
+    }
+
+});
+
+client.on('guildMemberAdd', async member => {
+    console.log('entre al guildMemberAdd');
+
+    try {
+        const response = await axios.get('https://nearby-kindly-lemming.ngrok-free.app/invitaciones');
+        const storedInvites = response.data;
+
+        const newInvites = await member.guild.invites.fetch();
+
+        const usedInvite = storedInvites.find(storedInvite => {
+            const matchingNewInvite = newInvites.get(storedInvite.code);
+            return matchingNewInvite && matchingNewInvite.uses > storedInvite.uses;
+        });
+
+        if (usedInvite) {
+            const inviter = await member.guild.members.fetch(usedInvite.inviterId);
+
+            console.log(`${member.user.tag} fue invitado por ${inviter.user.tag} usando la invitación con el código ${usedInvite.code}`);
+
+            const competicionData = {
+                nuevoUsuarioId: member.user.id,
+                nuevoUsuarioTag: member.user.tag,
+                invitadoId: inviter.user.id,
+                invitadoTag: inviter.user.tag,
+                invitacionCode: usedInvite.code
+            };
+
+            try {
+                const competicionResponse = await axios.post('https://nearby-kindly-lemming.ngrok-free.app/competicion-invitacion', competicionData, {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                console.log('Registro guardado en la competición de invitación:', competicionResponse.data);
+            } catch (error) {
+                console.error('Error guardando el registro en la competición de invitación:', error);
+            }
+
+            await axios.post('https://nearby-kindly-lemming.ngrok-free.app/actualizar_uso_invitacion', {
+                code: usedInvite.code,
+                uses: usedInvite.uses + 1
+            });
+
+        } else {
+            console.log('No se pudo identificar la invitación usada.');
+        }
+
+    } catch (error) {
+        console.error('Error comparando invitaciones:', error);
+    }
+});
+
+client.on('inviteCreate', async invite => {
+    const guildInvites = invites.get(invite.guild.id) || new Collection();
+    guildInvites.set(invite.code, invite);
+    invites.set(invite.guild.id, guildInvites);
+
+    const inviterId = invite.inviter ? invite.inviter.id : null;
+
+    const newInviteData = {
+        code: invite.code,
+        uses: invite.uses,
+        inviter_id: inviterId
+    };
+
+    try {
+        const response = await axios.post('https://nearby-kindly-lemming.ngrok-free.app/guardar_invitaciones', [newInviteData], {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+    } catch (error) {
+        console.error('Error guardando la nueva invitación en el servidor:', error);
+    }
 });
 
 client.login(DISCORD_TOKEN);
