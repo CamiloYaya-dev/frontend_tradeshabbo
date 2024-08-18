@@ -1270,3 +1270,40 @@ animation: rainbow-border 5s linear infinite;
     text-decoration: none !important;
     outline: none !important;
 }
+
+#comunidad_salas {
+    column-count: 3;
+    column-gap: 1em;
+}
+
+.gallery-img {
+    width: 100%;
+    margin-bottom: 1em;
+    display: block;
+    border-radius: 8px;
+}
+
+.gallery-item {
+    break-inside: avoid;
+    padding: 0.5em;
+}
+
+.modal-body-comunidad{
+    background-color: #335e7a;
+}
+
+.modal-header-comunidad{
+    background-color: #335e7a;
+    border-bottom: none;
+}
+
+.modal_habbo_text_blue{
+    font-family: 'DePixelKlein', sans-serif;
+    color: #7ecaee;
+}
+
+.modal_habbo_text_white{
+    font-family: 'DePixelKlein', sans-serif;
+    color: #ffffff;
+    margin-bottom: 0px;
+}

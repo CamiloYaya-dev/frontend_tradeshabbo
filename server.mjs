@@ -618,6 +618,16 @@ app.get('/furnis/sorteos/pagos', (req, res) => {
     });
 });
 
+app.get('/salas', (req, res) => {
+    const directoryPath = path.join(__dirname, 'public/salas');
+    fs.readdir(directoryPath, (err, files) => {
+        if (err) {
+            return res.status(500).send('Unable to scan directory: ' + err);
+        }
+        res.json(files);
+    });
+});
+
 app.listen(port, async () => {
     try {
         await sequelize.authenticate();
@@ -1337,6 +1347,50 @@ client.on('messageCreate', async (message) => {
         } else {
             message.reply('No se pudo encontrar el canal de noticias.');
         }
+    }
+    if (message.channelId === '1263260299012603945' && message.attachments.size > 0) {
+        const member = message.guild.members.cache.get(message.author.id);
+
+    // Obtener el apodo del miembro o su nombre de usuario si no tiene apodo
+        const username = member ? (member.nickname || member.user.username) : message.author.username;
+
+        message.attachments.forEach(attachment => {
+            if (attachment.contentType.startsWith('image/')) {
+                const timestamp = new Date();
+                const formattedDate = `${timestamp.getDate()}-${timestamp.getMonth() + 1}-${timestamp.getFullYear()}_${timestamp.getHours()}-${timestamp.getMinutes()}-${timestamp.getSeconds()}`;
+                const messageId = message.id; // Obtener el ID del mensaje
+                const fileExtension = path.extname(attachment.name);
+                const savePath = path.join('public', 'salas', `${formattedDate}_${username}_${messageId}${fileExtension}`);
+                downloadImage(attachment.url, savePath);
+            }
+        });
+    }
+});
+
+client.on('messageDelete', (message) => {
+    if (message.channelId === '1263260299012603945' && message.attachments.size > 0) {
+        const messageId = message.id;
+        const directoryPath = path.join('public', 'salas');
+        
+        fs.readdir(directoryPath, (err, files) => {
+            if (err) {
+                console.error('Error al leer el directorio:', err);
+                return;
+            }
+
+            files.forEach(file => {
+                if (file.includes(messageId)) {
+                    const filePath = path.join(directoryPath, file);
+                    fs.unlink(filePath, (err) => {
+                        if (err) {
+                            console.error('Error al eliminar el archivo:', err);
+                        } else {
+                            console.log(`Imagen eliminada: ${filePath}`);
+                        }
+                    });
+                }
+            });
+        });
     }
 });
 

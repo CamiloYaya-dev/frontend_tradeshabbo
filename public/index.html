@@ -160,6 +160,15 @@
                                     <a class="dropdown-item navbar_item habbo_text_blue menu-link" href="#" data-section="master_trades" data-i18n="master_trades">Master Trades</a>
                                 </div>
                             </div>
+                            <div class="dropdown show navbar_item">
+                                <a class="habbo_text_blue menu-link dropdown-toggle" href="#" role="button" id="dropdownMenuComunidad" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Comunidad
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuComunidad">
+                                    <a class="dropdown-item navbar_item habbo_text_blue menu-link" href="#" data-section="comunidad_salas">Fotos</a>
+                                    <a class="dropdown-item navbar_item habbo_text_blue menu-link" href="#" data-section="compro_vendo">Compro / Vendo</a>
+                                </div>
+                            </div>
                         </ul>
                     </div>
                 </nav>
@@ -401,6 +410,8 @@
             <div class="col-md-8 column" id="text-generator-section" style="display: none;">
                 <iframe src="/proxy-text" class="habbo-generator"></iframe>
             </div>
+            <div class="col-md-8 column" id="comunidad_salas" style="display: none;">
+            </div>
             <div class="col-1 d-block d-md-none column-right">
                 <!-- Contenido de la columna derecha -->
             </div>
@@ -587,6 +598,22 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header modal-header-comunidad">
+              <h5 class="modal-title modal_habbo_text_blue" id="imageModalLabel">Detalles de la Imagen</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body text-center modal-body-comunidad">
+              <img id="modalImage" src="" class="img-fluid" alt="Imagen ampliada">
+              <p id="imageDetails" class="mt-3"></p>
+            </div>
+          </div>
+        </div>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
@@ -598,14 +625,14 @@
     <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.16/mediaelement-and-player.min.js"></script>
-    <script src="b205041c-7cdd-469d-9223-3defe90999d9.js"></script>
+    <script src="72d4f428-1d2f-40a9-b8f6-9729432ca62b.js"></script>
     <!-- Incluir i18next -->
     <script src="https://unpkg.com/i18next@20.6.1/i18next.min.js"></script>
     <script src="https://unpkg.com/i18next-browser-languagedetector@6.1.2/i18nextBrowserLanguageDetector.min.js"></script>
     <script src="https://unpkg.com/i18next-xhr-backend@3.2.2/i18nextXHRBackend.min.js"></script>
 
     <!-- Configuración de i18next -->
-    <script src="c9f7b47f-8c60-4188-8ce5-da2ce7e7e71d.js"></script>
+    <script src="059a2f0c-0832-42b4-baa7-53daa9eeedd5.js"></script>
     <script>
         (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
