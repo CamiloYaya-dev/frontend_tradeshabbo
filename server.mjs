@@ -1676,13 +1676,14 @@ async function fetchAndExtractNoticias() {
         }
     });
 
-    page.on('console', msg => console.log('PAGE LOG:', msg.text())); // Logging from page
-    page.on('pageerror', err => console.log('PAGE ERROR:', err.message)); // Capture page errors
+    page.on('console', msg => console.log('PAGE LOG:', msg.text()));
+    page.on('pageerror', err => console.log('PAGE ERROR:', err.message));
+    page.on('requestfailed', request => console.log('REQUEST FAILED:', request.url(), request.failure().errorText));
 
     console.log("camilo 2");
     try {
         console.log("camilo 3");
-        await page.goto('https://origins.habbo.es/community/category/all/1', { waitUntil: 'domcontentloaded', timeout: 120000 });
+        await page.goto('https://origins.habbo.es/community/category/all/1', { waitUntil: 'load', timeout: 120000 });
         console.log("camilo 4");
         const html = await page.content();
 
