@@ -1674,8 +1674,7 @@ async function fetchAndExtractNoticias() {
     console.log("camilo 2");
     try {
         console.log("camilo 3");
-        await page.goto('https://origins.habbo.es/community/category/all/1', { waitUntil: 'networkidle0', timeout: 0 });
-
+        await page.goto('https://origins.habbo.es/community/category/all/1', { waitUntil: 'networkidle0', timeout: 60000 });
         console.log("camilo 4");
         const html = await page.content();
 
@@ -1824,6 +1823,7 @@ async function fetchAndExtractNoticias() {
         console.log("camilo 7");
     } catch(error){
         console.error('Error en fetchAndExtractNoticias:', error);
+        console.error("Se produjo un error al intentar acceder a la página:", error.message);
     } finally {
         await browser.close();
         setTimeout(fetchAndExtractNoticias, 600000);
