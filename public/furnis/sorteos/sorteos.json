@@ -1,8 +1,14 @@
 [
     {
         "id": 3,
-        "name": "Sorteo - 5 Ganadores de 5 objetos funky del proximo viernes 9 de agosto de 2024",
-        "link": "https://discord.com/channels/1257448055050080297/1258640868496244736/1270992022009811054",
-        "src": "furnis/sorteos/funky_friday.png"
+        "name": "Sorteo - 1 Ganador de 1 holoboy el proximo 30 de agosto de 2024 - Via Discord",
+        "link": "https://discord.com/channels/1257448055050080297/1258640868496244736/1278414186098983044",
+        "src": "furnis/sorteos/rares.png"
+    },
+    {
+        "id": 4,
+        "name": "Sorteo - 1 Ganador de 1 holoboy el proximo 30 de agosto de 2024 - Via Twitter",
+        "link": "https://x.com/TradesHabbo/status/1828860857935143366",
+        "src": "furnis/sorteos/rares.png"
     }
 ]
