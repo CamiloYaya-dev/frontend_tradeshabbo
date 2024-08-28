@@ -684,8 +684,7 @@ app.listen(port, async () => {
         await getCatalog();
         await fetchAndStoreNoticias();
         await fetchAndExtractNoticias();
-        setInterval(fetchAndExtractNoticias, 600000);
-        setInterval(fetchAndStoreHabboOnline, 600000);
+        //setTimeout(fetchAndStoreHabboOnline, 600000);
 
         console.log(`Servidor escuchando en http://localhost:${port}`);
     } catch (error) {
@@ -1671,148 +1670,154 @@ async function fetchAndExtractNoticias() {
         }
     });
 
-    await page.goto('https://origins.habbo.es/community/category/all/1', { waitUntil: 'networkidle0', timeout: 0 });
+    try {
+        await page.goto('https://origins.habbo.es/community/category/all/1', { waitUntil: 'networkidle0', timeout: 0 });
 
-    const html = await page.content();
+        const html = await page.content();
 
-    const $ = cheerio.load(html);
+        const $ = cheerio.load(html);
 
-    const section = $('section.ng-scope');
+        const section = $('section.ng-scope');
 
-    const articles = section.find('article.news-header');
+        const articles = section.find('article.news-header');
 
-    const nuevasNoticias = [];
+        const nuevasNoticias = [];
 
-    articles.each((index, element) => {
-        const anchor = $(element).find('a').first().attr('href');
-        const title = $(element).find('h2').first().text().trim();
+        articles.each((index, element) => {
+            const anchor = $(element).find('a').first().attr('href');
+            const title = $(element).find('h2').first().text().trim();
 
-        nuevasNoticias.push({ titulo: title, link: anchor });
-    });
-    const token = generateJWT();
-    const response = await axios.get('https://nearby-kindly-lemming.ngrok-free.app/noticias-oficiales', {
-        headers: {
-            'Authorization': `Bearer ${token}`
-        }
-    });
-    const noticiasRegistradas = response.data.data;
-
-    const noticiasNoRegistradas = nuevasNoticias.filter(nuevaNoticia => {
-        return !noticiasRegistradas.some(noticia => 
-            noticia.link.trim() === nuevaNoticia.link.trim() && noticia.title.trim() === nuevaNoticia.titulo.trim()
-        );
-    });
-
-    for (const noticia of noticiasNoRegistradas) {
-        try { 
-            let tokenNewsOficial = generateJWT();
-            const noticiaResponse = await axios.post('https://nearby-kindly-lemming.ngrok-free.app/nueva-noticia-oficial', noticia, {
-                headers: {
-                    'Authorization': `Bearer ${tokenNewsOficial}`
-                }
-            });
-            const url = 'https://origins.habbo.es' + noticia.link;
-            await page.goto(url, { waitUntil: 'networkidle0' });
-
-            const noticiaHtml = await page.content();
-            const $noticia = cheerio.load(noticiaHtml);
-
-            const contenidoNoticia = $noticia('.news-article').text().trim();
-            const promp = `Hola Traders, tengo una nueva noticia para ustedes. Según la información oficial de Habbo, ${contenidoNoticia}. Como siempre, les mantendremos al tanto de cualquier novedad. Muchas gracias por leer la noticia, en esta la mejor comunidad de todas."
-
-            Instrucciones adicionales:
-
-            Evita el uso de pronombres posesivos: No uses palabras como "nuestro" o "nosotros".
-            Referencia en tercera persona: Habla siempre como si estuvieras reportando sobre acciones realizadas por un tercero (Habbo) y no por ti mismo o por el equipo de Trades Habbo.
-            No asumas agradecimientos ni explicaciones: No incluyas frases que impliquen una relación directa con la audiencia, como "agradecemos su paciencia" o "valdrá la pena la espera".
-            Mantén el tono imparcial: Limítate a reportar lo que se anunció sin interpretar o añadir comentarios personales.
-            Lo que tienes que resumir es lo que esta entre Según la información oficial de Habbo, y  Como siempre, les mantendremos al tanto de cualquier novedad.`
-            let summaryData = await generateSummaryWeb(promp);
-            const newsChannel = client.channels.cache.get('1258417994543927338');
-            
-            if (newsChannel) {
-                newsChannel.send(`📰 **Resumen nueva noticia oficial**\n\nHola Traders, tengo una nueva noticia para ustedes.\n\n${summaryData}\n\nComo siempre, les mantendremos al tanto de cualquier novedad. Muchas gracias por leer la noticia, en esta la mejor comunidad de todas.\n\nLink oficial: ${url}\n\n***Esta noticia a sido generada con AI***`).then(async (sentMessage) => {
-                    const messageUrl = `https://discord.com/channels/${sentMessage.guildId}/${sentMessage.channelId}/${sentMessage.id}`;
-                    console.log(`Mensaje publicado en: ${messageUrl}`);
-                    await postTweetOficial(summaryData, messageUrl);
-                    const prompWeb = `Tengo esta noticia: ${contenidoNoticia}. Necesito que la generes y la resumas en el siguiente formato JSON (el json que es un ejemplo del formato que necesito):
-                        (formato json de ejemplo: {
-                            "titulo": "Nuevo raro disponible! La Hologirl",
-                            "imagen_completa": "catalogo_hologirl",
-                            "alt_imagen_completa": "Catalogo Hologirl",
-                            "descripcion_completa": "<p><strong>El nuevo raro de Habbo Hotel: Orígenes: Hologirl!</strong></p><p>El 8 de agosto de 2024, se lanza un nuevo raro mítico en el catálogo de Habbo Hotel: Orígenes. La <strong>Hologirl</strong> ya está disponible por tiempo limitado a un precio especial de 50 créditos. Este es el primer raro que sale un jueves y estará disponible solo por 48 horas en el catálogo. ¡No pierdas la oportunidad de agregar esta pieza única a tu colección!</p>",
-                            "imagen_resumida": "staff",
-                            "alt_imagen_resumida": "nuevo raro jueves 08 de agosto del 2024",
-                            "descripcion_resumida": "<p class=\"noticia_descripcion\"><strong>Llega un nuevo raro a Habbo Hotel: Orígenes!</strong> Descubre y adquiere el nuevo raro, <strong>RARO Hologirl</strong>, disponible solo por 48 horas. ¡No te lo pierdas!</p>"
-                        })
-                        
-                       Instrucciones adicionales:
-
-                        Imágenes y Títulos:
-
-                        imagen_resumida: Siempre debe ser "staff".
-                        imagen_completa: Debe ser acorde al contexto y título de la noticia.
-                        alt_imagen_completa y alt_imagen_resumida: Deben describir correctamente las imágenes en el contexto del evento o noticia.
-                        Formato de las Descripciones:
-
-                        descripcion_completa: Proporciona un resumen detallado de la noticia oficial publicada por Habbo.
-                        descripcion_resumida: Debe ser un resumen más breve y directo, pero diferente a la descripción completa.
-                        Condiciones para ambas descripciones:
-
-                        Importante: SIEMPRE debes hablar como si fueras un reportero de la fansite "Trades Habbo (THO)", refiriéndote a las acciones de Habbo en tercera persona. No utilices pronombres posesivos como "nuestro" o "nosotros". No uses frases que impliquen pertenencia al equipo de Habbo, como "estamos trabajando" o "nuestro equipo". Si no cumples con estas condiciones, la noticia se habrá generado incorrectamente.
-                        Tono y Estilo:
-
-                        Saludo: Comienza con "Hola Traders, tengo una nueva noticia, la cual generé con IA para ustedes."
-                        Referencia en tercera persona: Siempre habla como si fueras un reportero de la fansite "Trades Habbo (THO)", refiriéndote a las acciones de Habbo en tercera persona. No utilices pronombres posesivos como "nuestro" o "nosotros".
-                        Imparcialidad: Mantén un tono neutral y no incluyas opiniones, agradecimientos personales, ni explicaciones que sugieran una relación directa con la audiencia.
-                        Contenido:
-
-                        Resumenes: Asegúrate de que ambos resúmenes (completo y resumido) reflejen el hecho de que la noticia fue publicada por Habbo, y que tú como reportero de THO estás simplemente reportando lo que fue anunciado.
-                        Evita ciertas expresiones: No uses frases que impliquen que eres parte del equipo de Habbo, como "estamos trabajando" o "nuestro equipo".
-
-                        Advertencia: Si incluyes cualquier pronombre posesivo o hablas en primera persona del plural (ejemplo: "estamos", "nuestro equipo"), la noticia se considerará incorrecta."
-                    `
-                    let summaryDataWeb = await generateSummaryWeb(prompWeb);
-                    summaryDataWeb = JSON.parse(summaryDataWeb);
-                    summaryDataWeb.descripcion_completa += `Este es un resumen de la noticia oficial <a href="${url}" target="_blank">Link</a><br>Esta noticia ha sido generada con IA por lo mismo puede tener errores gramaticales o hablar como si fuera parte del equipo de habbo`
-
-                    try {
-                        let tokenNews = generateJWT();
-                        const response = await axios.post('https://nearby-kindly-lemming.ngrok-free.app/nueva-noticia', summaryDataWeb, {
-                            headers: {
-                                'Authorization': `Bearer ${tokenNews}`
-                            }
-                        });
-                        console.log('Datos enviados a la web exitosamente.');
-                        
-                        const noticiaId = response.data['noticia_id'];
-                        const fechaActual = format(new Date(), 'dd-MM-yyyy');
-
-                        const noticiasPath = path.join('public', 'furnis', 'noticias', 'noticias.json');
-                        const noticias = JSON.parse(fs.readFileSync(noticiasPath, 'utf8'));
-
-                        const nuevaNoticia = {
-                            id: noticiaId,
-                            ...summaryDataWeb,
-                            fecha_noticia: fechaActual
-                        };
-                        noticias.push(nuevaNoticia);
-
-                        fs.writeFileSync(noticiasPath, JSON.stringify(noticias, null, 2), 'utf8');
-                        console.log('Nueva noticia agregada al archivo noticias.json.');
-                    } catch (error) {
-                        console.error('Error al enviar los datos a la web:', error);
-                    }
-                }).catch(err => {
-                    console.error('Error al enviar el resumen al canal de Discord:', err);
-                });
-            } else {
-                console.error('No se pudo encontrar el canal de Discord con el ID proporcionado.');
+            nuevasNoticias.push({ titulo: title, link: anchor });
+        });
+        const token = generateJWT();
+        const response = await axios.get('https://nearby-kindly-lemming.ngrok-free.app/noticias-oficiales', {
+            headers: {
+                'Authorization': `Bearer ${token}`
             }
-        } catch (error) {
-            console.error('Error al enviar la noticia o al extraer la información:', error);
-        }
-    }
+        });
+        const noticiasRegistradas = response.data.data;
 
-    await browser.close();
+        const noticiasNoRegistradas = nuevasNoticias.filter(nuevaNoticia => {
+            return !noticiasRegistradas.some(noticia => 
+                noticia.link.trim() === nuevaNoticia.link.trim() && noticia.title.trim() === nuevaNoticia.titulo.trim()
+            );
+        });
+
+        for (const noticia of noticiasNoRegistradas) {
+            try { 
+                let tokenNewsOficial = generateJWT();
+                const noticiaResponse = await axios.post('https://nearby-kindly-lemming.ngrok-free.app/nueva-noticia-oficial', noticia, {
+                    headers: {
+                        'Authorization': `Bearer ${tokenNewsOficial}`
+                    }
+                });
+                const url = 'https://origins.habbo.es' + noticia.link;
+                await page.goto(url, { waitUntil: 'networkidle0' });
+
+                const noticiaHtml = await page.content();
+                const $noticia = cheerio.load(noticiaHtml);
+
+                const contenidoNoticia = $noticia('.news-article').text().trim();
+                const promp = `Hola Traders, tengo una nueva noticia para ustedes. Según la información oficial de Habbo, ${contenidoNoticia}. Como siempre, les mantendremos al tanto de cualquier novedad. Muchas gracias por leer la noticia, en esta la mejor comunidad de todas."
+
+                Instrucciones adicionales:
+
+                Evita el uso de pronombres posesivos: No uses palabras como "nuestro" o "nosotros".
+                Referencia en tercera persona: Habla siempre como si estuvieras reportando sobre acciones realizadas por un tercero (Habbo) y no por ti mismo o por el equipo de Trades Habbo.
+                No asumas agradecimientos ni explicaciones: No incluyas frases que impliquen una relación directa con la audiencia, como "agradecemos su paciencia" o "valdrá la pena la espera".
+                Mantén el tono imparcial: Limítate a reportar lo que se anunció sin interpretar o añadir comentarios personales.
+                Lo que tienes que resumir es lo que esta entre Según la información oficial de Habbo, y  Como siempre, les mantendremos al tanto de cualquier novedad.`
+                let summaryData = await generateSummaryWeb(promp);
+                const newsChannel = client.channels.cache.get('1258417994543927338');
+                
+                if (newsChannel) {
+                    newsChannel.send(`📰 **Resumen nueva noticia oficial**\n\nHola Traders, tengo una nueva noticia para ustedes.\n\n${summaryData}\n\nComo siempre, les mantendremos al tanto de cualquier novedad. Muchas gracias por leer la noticia, en esta la mejor comunidad de todas.\n\nLink oficial: ${url}\n\n***Esta noticia a sido generada con AI***`).then(async (sentMessage) => {
+                        const messageUrl = `https://discord.com/channels/${sentMessage.guildId}/${sentMessage.channelId}/${sentMessage.id}`;
+                        console.log(`Mensaje publicado en: ${messageUrl}`);
+                        await postTweetOficial(summaryData, messageUrl);
+                        const prompWeb = `Tengo esta noticia: ${contenidoNoticia}. Necesito que la generes y la resumas en el siguiente formato JSON (el json que es un ejemplo del formato que necesito):
+                            (formato json de ejemplo: {
+                                "titulo": "Nuevo raro disponible! La Hologirl",
+                                "imagen_completa": "catalogo_hologirl",
+                                "alt_imagen_completa": "Catalogo Hologirl",
+                                "descripcion_completa": "<p><strong>El nuevo raro de Habbo Hotel: Orígenes: Hologirl!</strong></p><p>El 8 de agosto de 2024, se lanza un nuevo raro mítico en el catálogo de Habbo Hotel: Orígenes. La <strong>Hologirl</strong> ya está disponible por tiempo limitado a un precio especial de 50 créditos. Este es el primer raro que sale un jueves y estará disponible solo por 48 horas en el catálogo. ¡No pierdas la oportunidad de agregar esta pieza única a tu colección!</p>",
+                                "imagen_resumida": "staff",
+                                "alt_imagen_resumida": "nuevo raro jueves 08 de agosto del 2024",
+                                "descripcion_resumida": "<p class=\"noticia_descripcion\"><strong>Llega un nuevo raro a Habbo Hotel: Orígenes!</strong> Descubre y adquiere el nuevo raro, <strong>RARO Hologirl</strong>, disponible solo por 48 horas. ¡No te lo pierdas!</p>"
+                            })
+                            
+                        Instrucciones adicionales:
+
+                            Imágenes y Títulos:
+
+                            imagen_resumida: Siempre debe ser "staff".
+                            imagen_completa: Debe ser acorde al contexto y título de la noticia.
+                            alt_imagen_completa y alt_imagen_resumida: Deben describir correctamente las imágenes en el contexto del evento o noticia.
+                            Formato de las Descripciones:
+
+                            descripcion_completa: Proporciona un resumen detallado de la noticia oficial publicada por Habbo.
+                            descripcion_resumida: Debe ser un resumen más breve y directo, pero diferente a la descripción completa.
+                            Condiciones para ambas descripciones:
+
+                            Importante: SIEMPRE debes hablar como si fueras un reportero de la fansite "Trades Habbo (THO)", refiriéndote a las acciones de Habbo en tercera persona. No utilices pronombres posesivos como "nuestro" o "nosotros". No uses frases que impliquen pertenencia al equipo de Habbo, como "estamos trabajando" o "nuestro equipo". Si no cumples con estas condiciones, la noticia se habrá generado incorrectamente.
+                            Tono y Estilo:
+
+                            Saludo: Comienza con "Hola Traders, tengo una nueva noticia, la cual generé con IA para ustedes."
+                            Referencia en tercera persona: Siempre habla como si fueras un reportero de la fansite "Trades Habbo (THO)", refiriéndote a las acciones de Habbo en tercera persona. No utilices pronombres posesivos como "nuestro" o "nosotros".
+                            Imparcialidad: Mantén un tono neutral y no incluyas opiniones, agradecimientos personales, ni explicaciones que sugieran una relación directa con la audiencia.
+                            Contenido:
+
+                            Resumenes: Asegúrate de que ambos resúmenes (completo y resumido) reflejen el hecho de que la noticia fue publicada por Habbo, y que tú como reportero de THO estás simplemente reportando lo que fue anunciado.
+                            Evita ciertas expresiones: No uses frases que impliquen que eres parte del equipo de Habbo, como "estamos trabajando" o "nuestro equipo".
+
+                            Advertencia: Si incluyes cualquier pronombre posesivo o hablas en primera persona del plural (ejemplo: "estamos", "nuestro equipo"), la noticia se considerará incorrecta."
+                        `
+                        let summaryDataWeb = await generateSummaryWeb(prompWeb);
+                        summaryDataWeb = JSON.parse(summaryDataWeb);
+                        summaryDataWeb.descripcion_completa += `Este es un resumen de la noticia oficial <a href="${url}" target="_blank">Link</a><br>Esta noticia ha sido generada con IA por lo mismo puede tener errores gramaticales o hablar como si fuera parte del equipo de habbo`
+
+                        try {
+                            let tokenNews = generateJWT();
+                            const response = await axios.post('https://nearby-kindly-lemming.ngrok-free.app/nueva-noticia', summaryDataWeb, {
+                                headers: {
+                                    'Authorization': `Bearer ${tokenNews}`
+                                }
+                            });
+                            console.log('Datos enviados a la web exitosamente.');
+                            
+                            const noticiaId = response.data['noticia_id'];
+                            const fechaActual = format(new Date(), 'dd-MM-yyyy');
+
+                            const noticiasPath = path.join('public', 'furnis', 'noticias', 'noticias.json');
+                            const noticias = JSON.parse(fs.readFileSync(noticiasPath, 'utf8'));
+
+                            const nuevaNoticia = {
+                                id: noticiaId,
+                                ...summaryDataWeb,
+                                fecha_noticia: fechaActual
+                            };
+                            noticias.push(nuevaNoticia);
+
+                            fs.writeFileSync(noticiasPath, JSON.stringify(noticias, null, 2), 'utf8');
+                            console.log('Nueva noticia agregada al archivo noticias.json.');
+                        } catch (error) {
+                            console.error('Error al enviar los datos a la web:', error);
+                        }
+                    }).catch(err => {
+                        console.error('Error al enviar el resumen al canal de Discord:', err);
+                    });
+                } else {
+                    console.error('No se pudo encontrar el canal de Discord con el ID proporcionado.');
+                }
+            } catch (error) {
+                console.error('Error al enviar la noticia o al extraer la información:', error);
+            }
+
+        }
+    } catch(error){
+        console.error('Error en fetchAndExtractNoticias:', error);
+    } finally {
+        await browser.close();
+        setTimeout(fetchAndExtractNoticias, 600000);
+    }
 }
