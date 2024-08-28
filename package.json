@@ -33,6 +33,7 @@
     "express-validator": "^7.1.0",
     "firebase": "^10.12.3",
     "firebase-admin": "^12.2.0",
+    "form-data": "^4.0.0",
     "fs": "^0.0.1-security",
     "i18next": "^23.12.1",
     "i18next-browser-languagedetector": "^8.0.0",

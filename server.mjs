@@ -27,6 +27,7 @@ import { generateSummaryWeb } from './openaiClient.mjs';
 import { format } from 'date-fns';
 import jwt from 'jsonwebtoken';
 import puppeteer from 'puppeteer';
+import FormData from 'form-data';
 
 dotenv.config();
 
@@ -668,14 +669,25 @@ app.get('/furnis/sorteos/pagos', (req, res) => {
     });
 });
 
-app.get('/salas', (req, res) => {
-    const directoryPath = path.join(__dirname, 'public/salas');
-    fs.readdir(directoryPath, (err, files) => {
-        if (err) {
-            return res.status(500).send('Unable to scan directory: ' + err);
-        }
-        res.json(files);
-    });
+app.get('/salas', async (req, res) => {
+    try {
+        const token = generateJWT();
+        const response = await axios.get('https://nearby-kindly-lemming.ngrok-free.app/get-images', {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        }).catch(error => {
+            console.warn('Error fetching imagenes community, using remote rute:', error.message);
+            return null;
+        });
+        
+        const images = response.data.images;
+
+        res.json(images);
+    } catch (error) {
+        console.error('Error al obtener las imágenes:', error);
+        res.status(500).send('Error al obtener las imágenes');
+    }
 });
 
 app.listen(port, async () => {
@@ -1566,7 +1578,11 @@ client.on('messageCreate', async (message) => {
                 const messageId = message.id; // Obtener el ID del mensaje
                 const fileExtension = path.extname(attachment.name);
                 const savePath = path.join('public', 'salas', `${formattedDate}_${username}_${messageId}${fileExtension}`);
-                downloadImage(attachment.url, savePath);
+                downloadImage(attachment.url, savePath).then(() => {
+                    console.log('Imagen descargada:', savePath);
+                    uploadImageToService(savePath, attachment.contentType);
+                })
+                .catch(err => console.error('Error al descargar la imagen:', err));
             }
         });
     }
@@ -1574,27 +1590,27 @@ client.on('messageCreate', async (message) => {
 
 client.on('messageDelete', (message) => {
     if (message.channelId === '1263260299012603945' && message.attachments.size > 0) {
-        const messageId = message.id;
-        const directoryPath = path.join('public', 'salas');
-        
-        fs.readdir(directoryPath, (err, files) => {
-            if (err) {
-                console.error('Error al leer el directorio:', err);
-                return;
-            }
+        const messageid = message.id;
 
-            files.forEach(file => {
-                if (file.includes(messageId)) {
-                    const filePath = path.join(directoryPath, file);
-                    fs.unlink(filePath, (err) => {
-                        if (err) {
-                            console.error('Error al eliminar el archivo:', err);
-                        } else {
-                            console.log(`Imagen eliminada: ${filePath}`);
-                        }
-                    });
-                }
-            });
+        // Preparar el payload como JSON
+        const payload = {
+            messageid: messageid
+        };
+
+        const token = generateJWT();
+        const headers = {
+            'Authorization': `Bearer ${token}`
+        };
+        // Enviar la solicitud DELETE al endpoint remoto
+        axios.delete('https://nearby-kindly-lemming.ngrok-free.app/delete-image', {
+            headers: headers,
+            data: payload // Aquí es donde se envía el body con el messageid
+        })
+        .then(response => {
+            console.log(`Imagen eliminada exitosamente: ${response.data}`);
+        })
+        .catch(error => {
+            console.error('Error al eliminar la imagen:', error);
         });
     }
 });
@@ -1608,7 +1624,30 @@ async function downloadImage(url, savePath) {
     });
 }
 
+async function uploadImageToService(filePath, contentType) {
+    const imageData = fs.readFileSync(filePath);
+    const filename = path.basename(filePath);
+    const token = generateJWT();
 
+    // Crear el FormData
+    const form = new FormData();
+    form.append('filename', filename);
+    form.append('contentType', contentType);
+    form.append('image', imageData, { filename: filename, contentType: contentType });
+
+    // Configuración de encabezados para incluir el token de autorización y form-data headers
+    const headers = {
+        ...form.getHeaders(),  // Incluir los headers de FormData
+        'Authorization': `Bearer ${token}`
+    };
+
+    try {
+        const response = await axios.post('https://nearby-kindly-lemming.ngrok-free.app/upload-image', form, { headers });
+        console.log('Imagen subida exitosamente:', response.data);
+    } catch (err) {
+        console.error('Error al subir la imagen:', err);
+    }
+}
 
 function extractMessageIdFromUrl(url) {
     const parts = url.split('/');
