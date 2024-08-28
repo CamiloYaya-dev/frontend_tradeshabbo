@@ -1657,6 +1657,7 @@ function parseDuration(duration) {
 }
 
 async function fetchAndExtractNoticias() {
+    console.log("camilo 1");
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
 
@@ -1670,9 +1671,12 @@ async function fetchAndExtractNoticias() {
         }
     });
 
+    console.log("camilo 2");
     try {
+        console.log("camilo 3");
         await page.goto('https://origins.habbo.es/community/category/all/1', { waitUntil: 'networkidle0', timeout: 0 });
 
+        console.log("camilo 4");
         const html = await page.content();
 
         const $ = cheerio.load(html);
@@ -1695,6 +1699,7 @@ async function fetchAndExtractNoticias() {
                 'Authorization': `Bearer ${token}`
             }
         });
+        console.log("camilo 5");
         const noticiasRegistradas = response.data.data;
 
         const noticiasNoRegistradas = nuevasNoticias.filter(nuevaNoticia => {
@@ -1703,6 +1708,7 @@ async function fetchAndExtractNoticias() {
             );
         });
 
+        console.log("camilo 6");
         for (const noticia of noticiasNoRegistradas) {
             try { 
                 let tokenNewsOficial = generateJWT();
@@ -1814,6 +1820,8 @@ async function fetchAndExtractNoticias() {
             }
 
         }
+        
+        console.log("camilo 7");
     } catch(error){
         console.error('Error en fetchAndExtractNoticias:', error);
     } finally {
