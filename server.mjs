@@ -1662,10 +1662,7 @@ async function fetchAndExtractNoticias() {
         headless: true,
         args: ['--no-sandbox', '--disable-setuid-sandbox']
     });
-    console.log("Browser launched");
     const page = await browser.newPage();
-    console.log("Page created");
-
     await page.setRequestInterception(true);
     page.on('request', (request) => {
         const resourceType = request.resourceType();
@@ -1675,10 +1672,6 @@ async function fetchAndExtractNoticias() {
             request.continue();
         }
     });
-
-    // Eliminar o minimizar logging de errores si no te importan
-    page.on('console', msg => console.log('PAGE LOG:', msg.text()));
-    page.on('pageerror', err => console.log('PAGE ERROR:', err.message));
 
     console.log("camilo 2");
     try {
@@ -1726,7 +1719,7 @@ async function fetchAndExtractNoticias() {
                     }
                 });
                 const url = 'https://origins.habbo.es' + noticia.link;
-                await page.goto(url, { waitUntil: 'networkidle0' });
+                await page.goto(url, { waitUntil: 'load', timeout: 120000 });
 
                 const noticiaHtml = await page.content();
                 const $noticia = cheerio.load(noticiaHtml);
