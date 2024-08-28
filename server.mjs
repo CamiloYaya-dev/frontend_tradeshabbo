@@ -1670,15 +1670,15 @@ async function fetchAndExtractNoticias() {
     page.on('request', (request) => {
         const resourceType = request.resourceType();
         if (['image', 'stylesheet', 'font', 'media'].includes(resourceType)) {
-            request.abort();
+            request.abort();  // Ignora la carga de recursos no esenciales
         } else {
             request.continue();
         }
     });
 
+    // Eliminar o minimizar logging de errores si no te importan
     page.on('console', msg => console.log('PAGE LOG:', msg.text()));
     page.on('pageerror', err => console.log('PAGE ERROR:', err.message));
-    page.on('requestfailed', request => console.log('REQUEST FAILED:', request.url(), request.failure().errorText));
 
     console.log("camilo 2");
     try {
