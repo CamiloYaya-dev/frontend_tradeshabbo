@@ -1326,3 +1326,7 @@ animation: rainbow-border 5s linear infinite;
 .margin-right-10px{
     margin-right: 10px;
 }
+
+.col_in_card{
+    padding: 0px;
+}

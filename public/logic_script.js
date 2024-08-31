@@ -293,7 +293,7 @@ function initialize() {
                                             <div class="price-sections">
                                                 <div class="section ingame">
                                                     <div class="row price_trades_habbo_origins">
-                                                        <div class="col-12">
+                                                        <div class="col-12 col_in_card">
                                                             <p class="online_habbo_text_white">Origins .ES</p>
                                                             <p class="card-text text-price">
                                                                 <img src="furnis/dinero/credito.png" alt="credito" class="price-icon-principal" data-toggle="tooltip" data-i18n="[title]titulo_creditos" title="Precio en Créditos"> ${item.price > 0 ? item.price : '??'}
