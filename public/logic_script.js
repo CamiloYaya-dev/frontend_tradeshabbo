@@ -281,6 +281,7 @@ function initialize() {
                                                 ${item.icon == "rare" ? `<img src="furnis/iconos/icon_rare.png" class="iconos-rare" alt="icon">` : ''}
                                                 ${item.icon == "funky" ? `<img src="furnis/iconos/icon_funky.png" class="iconos-funky" alt="icon">` : ''}
                                                 ${item.icon == "mega_rare" ? `<img src="furnis/iconos/icon_mega_rare.png" class="iconos-funky" alt="icon">` : ''}
+                                                ${item.icon == "coleccion" ? `<img src="furnis/iconos/coleccion.png" class="iconos-coleccion" alt="icon">` : ''}
                                                 ${item.hot == 1 ? `<img src="furnis/iconos/hot_sale.png" class="iconos-hot-sale" alt="icon">` : ''}
                                                 <img src="${item.src}" class="card-img-top" alt="${item.name}">
                                                 ${item.status == "arrow_trend_up" ? `<img src="furnis/iconos/arrow_trend_up.png" class="iconos-arrow-trend-up" alt="icon">` : ''}
@@ -473,8 +474,11 @@ function initialize() {
                             imageClass = "price-history-img"
                         } else if (firstRecord.icon === 'funky') {
                             imagePath = `furnis/rares/${firstRecord.name.replace(/ /g, '_')}.png`;
-                            imageClass = "price-history-img-funky"
+                            imageClass = "price-history-img"
                         } else if (firstRecord.icon === "mega_rare") {
+                            imagePath = `furnis/rares/${firstRecord.name.replace(/ /g, '_')}.png`;
+                            imageClass = "price-history-img"
+                        } else if (firstRecord.icon === "coleccion") {
                             imagePath = `furnis/rares/${firstRecord.name.replace(/ /g, '_')}.png`;
                             imageClass = "price-history-img"
                         }
