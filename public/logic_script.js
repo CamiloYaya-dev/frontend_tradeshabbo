@@ -265,7 +265,7 @@ function initialize() {
                     var sortSelect = $('#sort-options');
                     var creditUsdPriceHabbo = 0.06899;
                     var creditUsdPriceIlegal = 0.06;
-                    var creditUsdPriceHabboEs = 1.1;
+                    var creditUsdPriceHabboEs = 1.19;
 
                     function renderProducts(products) {
                         productContainer.empty();
