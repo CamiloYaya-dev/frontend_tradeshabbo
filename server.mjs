@@ -45,14 +45,9 @@ function generateJWT() {
     return jwt.sign(payload, apiRestJWTKey, { expiresIn: '1m' });  // El token expira en 1 hora
 }
 
-function addJWTMiddleware(req, res, next) {
-    const token = generateJWT();
-    req.headers['Authorization'] = `Bearer ${token}`;
-    next();
-}
-
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
 const visitCountPath = path.join(__dirname, 'public', 'visitCount.json')
 const votesCountPath = path.join(__dirname, 'public', 'votesCount.json')
 const discordInfoPath = path.join(__dirname, 'public', 'discordInfo.json')
@@ -677,18 +672,63 @@ app.get('/salas', async (req, res) => {
                 'Authorization': `Bearer ${token}`
             }
         }).catch(error => {
-            console.warn('Error fetching imagenes community, using remote rute:', error.message);
+            console.warn('Error fetching imagenes community, using remote route:', error.message);
             return null;
         });
-        
-        const images = response.data.images;
 
-        res.json(images);
+        if (!response || !response.data || !response.data.images) {
+            return res.status(500).send('Error al obtener las imágenes');
+        }
+
+        const images = response.data.images;
+        const imagesPath = path.join(__dirname, 'public/salas');
+        console.log(imagesPath);
+        // Obtén la lista de archivos locales en public/salas
+        let localFiles = [];
+        try {
+            localFiles = await fs.promises.readdir(imagesPath);
+        } catch (err) {
+            console.error('Error reading local files:', err);
+        }
+
+        const downloadImage = async (url, filename) => {
+            const imagePath = path.join(imagesPath, filename);
+            const writer = fs.createWriteStream(imagePath);
+
+            const response = await axios({
+                url,
+                method: 'GET',
+                responseType: 'stream',
+            });
+
+            return new Promise((resolve, reject) => {
+                response.data.pipe(writer);
+                writer.on('finish', resolve);
+                writer.on('error', reject);
+            });
+        };
+
+        // Filtramos las imágenes que no estén ya presentes en el directorio local
+        const savedImages = [];
+        for (const imageUrl of images) {
+            const imageName = path.basename(imageUrl); // Obtenemos el nombre del archivo de la URL
+            if (!localFiles.includes(imageName)) {
+                // Si la imagen no está en el directorio local, la descargamos
+                await downloadImage(imageUrl, imageName);
+                console.log(`Imagen ${imageName} descargada.`);
+            } else {
+                console.log(`Imagen ${imageName} ya existe, no se descarga.`);
+            }
+            savedImages.push(`salas/${imageName}`); // Rutas internas
+        }
+
+        res.json(savedImages);
     } catch (error) {
-        console.error('Error al obtener las imágenes:', error);
-        res.status(500).send('Error al obtener las imágenes');
+        console.error('Error al obtener o descargar las imágenes:', error);
+        res.status(500).send('Error al obtener o descargar las imágenes');
     }
 });
+
 
 app.listen(port, async () => {
     try {
