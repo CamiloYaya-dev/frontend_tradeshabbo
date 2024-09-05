@@ -6,7 +6,7 @@
     "sorteos": "Çekilişler",
     "precios_actualizados_el": "Fiyatlar güncellendi",
     "explicacion_precios": "Fiyat Açıklaması",
-    "explicacion_precios_p1": "Fiyatlar her Salı ve istisnai olarak Cuma günleri güncellenir. Sitede gösterilen fiyatlar <strong class=\"alerta_lloron\">SADECE BİR REHBERDİR</strong>, mevcut 22 Master Trade tarafından tartışmalar ve demokratik oylamalar yoluyla belirlenir. Ayrıca, topluluğun oy kullanma bölümündeki oyları da dikkate alınır. Sizler, topluluk olarak, her şeyin değerini belirlemede önemli bir sesiniz var.",
+    "explicacion_precios_p1": "Fiyatlar, piyasa her değiştiğinde güncellenir. Fiyatların <strong class=\"alerta_lloron\">SADECE BİR REHBER OLDUĞUNU</strong> unutmamak önemlidir. Fiyatlar, oyun içi ve oyun dışındaki piyasa dalgalanmalarına göre ayarlanır.",
     "explicacion_precios_p2": "<strong class=\"alerta_lloron\">UNUTMA:</strong> Bunlar senin furni'lerin, ne kadar değerli olduklarına sen karar verirsin.",
     "explicacion_tendencias": "Trendlerin Açıklaması",
     "explicacion_tendencias_p1": "Bir katalog öğesinin <img src=\"furnis/iconos/arrow_trend_down.png\" class=\"iconos-arrow-trend-down-example\" alt=\"icon\"> veya <img src=\"furnis/iconos/arrow_trend_up.png\" class=\"iconos-arrow-trend-up-example\" alt=\"icon\"> olup olmadığı, son 16 gündeki fiyat dalgalanmalarına bağlıdır.",

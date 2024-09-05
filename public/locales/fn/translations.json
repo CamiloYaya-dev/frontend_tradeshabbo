@@ -6,7 +6,7 @@
     "sorteos": "Arvonnat",
     "precios_actualizados_el": "Hinnat päivitetty",
     "explicacion_precios": "Hintojen selitys",
-    "explicacion_precios_p1": "Hinnat päivitetään joka tiistai ja poikkeuksellisesti perjantaisin. Sivustolla näytetyt hinnat <strong class=\"alerta_lloron\">OVAT VAIN SUUNNITTELMALLINEN OPAS</strong>, jonka nykyiset 22 Master Tradea määrittävät keskustelujen ja demokraattisen äänestyksen kautta. Lisäksi otetaan huomioon myös yhteisön äänet äänestysosiossa. Teillä, yhteisöllä, on tärkeä rooli kunkin esineen arvon määrittämisessä.",
+    "explicacion_precios_p1": "Hinnat päivitetään aina, kun markkinat muuttuvat. On tärkeää muistaa, että hinnat <strong class=\"alerta_lloron\">OVAT VAIN SUUNTAVIIVOJA</strong>. Hintoja muutetaan markkinoiden vaihteluiden mukaan sekä pelissä että sen ulkopuolella.",
     "explicacion_precios_p2": "<strong class=\"alerta_lloron\">MUISTA:</strong> Ne ovat sinun furnisi, sinä päätät kuinka paljon ne maksavat.",
     "explicacion_tendencias": "Hintojen suuntaukset",
     "explicacion_tendencias_p1": "Se, onko kohteella luettelossa <img src=\"furnis/iconos/arrow_trend_down.png\" class=\"iconos-arrow-trend-down-example\" alt=\"ikon\"> tai <img src=\"furnis/iconos/arrow_trend_up.png\" class=\"iconos-arrow-trend-up-example\" alt=\"ikon\"> riippuu viimeisten 16 päivän hintojen vaihtelusta.",

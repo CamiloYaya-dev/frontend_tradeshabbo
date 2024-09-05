@@ -6,7 +6,7 @@
     "sorteos": "Sorteos",
     "precios_actualizados_el": "Precios actualizados el",
     "explicacion_precios": "Explicacion Precios",
-    "explicacion_precios_p1": "Los precios se actualizan cada martes y, de manera extraordinaria, los viernes. Los precios mostrados en la página <strong class=\"alerta_lloron\">SON SOLO UNA GUÍA</strong>, calculados en un 70% por los 25 Master Trades actuales, quienes son expertos en el mercado. El 30% restante proviene de las votaciones de la comunidad, donde literalmente cualquier persona puede participar en el servidor de Discord de la comunidad. Ustedes, la comunidad, juegan un papel crucial en la determinación del valor de cada objeto.",
+    "explicacion_precios_p1": "Los precios se actualizan cada que el mercado cambia, es importante recordar que los precios <strong class=\"alerta_lloron\">SON SOLO UNA GUÍA</strong>, los precios son modificados según a la fluctuación del mercado dentro y fuera del juego.",
     "explicacion_precios_p2": "<strong class=\"alerta_lloron\">RECUERDA:</strong> Son tus furnis, y aunque los Master Trades y la comunidad influyen, al final, tú decides cuánto valen.",
     "explicacion_tendencias": "Explicacion de las tendencias",
     "explicacion_tendencias_p1": "Que un item en el catálogo tenga <img src=\"furnis/iconos/arrow_trend_down.png\" class=\"iconos-arrow-trend-down-example\" alt=\"icon\"> o <img src=\"furnis/iconos/arrow_trend_up.png\" class=\"iconos-arrow-trend-up-example\" alt=\"icon\"> depende de la variación de los precios de los últimos 16 días.",

@@ -6,7 +6,7 @@
     "sorteos": "Tirages au sort",
     "precios_actualizados_el": "Prix mis à jour le",
     "explicacion_precios": "Explication des Prix",
-    "explicacion_precios_p1": "Les prix sont mis à jour tous les mardis et, exceptionnellement, les vendredis. Les prix affichés sur le site <strong class=\"alerta_lloron\">NE SONT QU'UNE INDICATION</strong>, déterminés par les 22 Master Trades actuels par le biais de débats et de votes démocratiques. De plus, les votes de la communauté dans la section des votes sont également pris en compte. Vous, la communauté, avez une voix importante dans la détermination de la valeur de chaque article.",
+    "explicacion_precios_p1": "Les prix sont mis à jour chaque fois que le marché change. Il est important de se rappeler que les prix <strong class=\"alerta_lloron\">NE SONT QU'UNE INDICATION</strong>. Les prix sont ajustés en fonction des fluctuations du marché à l'intérieur et à l'extérieur du jeu.",
     "explicacion_precios_p2": "<strong class=\"alerta_lloron\">RAPPELEZ-VOUS:</strong> Ce sont vos furnis, vous décidez combien ils valent.",
     "explicacion_tendencias": "Explication des tendances",
     "explicacion_tendencias_p1": "Le fait qu'un article dans le catalogue ait <img src=\"furnis/iconos/arrow_trend_down.png\" class=\"iconos-arrow-trend-down-example\" alt=\"icon\"> ou <img src=\"furnis/iconos/arrow_trend_up.png\" class=\"iconos-arrow-trend-up-example\" alt=\"icon\"> dépend de la variation des prix des 16 derniers jours.",
