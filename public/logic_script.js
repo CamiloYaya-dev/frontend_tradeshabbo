@@ -93,7 +93,7 @@ function initialize() {
         });
     }
 
-    function discordInfo(){
+    /*function discordInfo(){
         $.getJSON('../discordInfo.json', function(data) {
             $('#discord_title').text(data.name);
             $('#discord_invitation').attr('href', "https://discord.gg/tradeshabbo");
@@ -101,7 +101,7 @@ function initialize() {
         }).fail(function() {
             $('#discord_title').text('En mantenimiento');
         });
-    }
+    }*/
 
     loadOnlineCount();
     setInterval(loadOnlineCount, 3600000);
@@ -251,7 +251,7 @@ function initialize() {
                 headers: { 'x-api-key': apiKey },
                 success: function(data) {
                     loadContador();
-                    discordInfo();
+                    //discordInfo();
                     loadLastThreeNoticias();
                     const decryptedData = decryptData(data.token);
                     console.log(decryptedData);
