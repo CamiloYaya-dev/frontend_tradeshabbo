@@ -1812,7 +1812,7 @@ async function fetchAndExtractNoticias() {
                 const newsChannel = client.channels.cache.get('1258417994543927338');
                 
                 if (newsChannel) {
-                    newsChannel.send(`📰 **Resumen nueva noticia oficial**\n\nHola Traders, tengo una nueva noticia para ustedes.\n\n${summaryData}\n\nComo siempre, les mantendremos al tanto de cualquier novedad. Muchas gracias por leer la noticia, en esta la mejor comunidad de todas.\n\nLink oficial: ${url}\n\n***Esta noticia a sido generada con AI***`).then(async (sentMessage) => {
+                    newsChannel.send(`@everyone 📰 **Resumen nueva noticia oficial**\n\nHola Traders, tengo una nueva noticia para ustedes.\n\n${summaryData}\n\nComo siempre, les mantendremos al tanto de cualquier novedad. Muchas gracias por leer la noticia, en esta la mejor comunidad de todas.\n\nLink oficial: ${url}\n\n***Esta noticia a sido generada con AI***`).then(async (sentMessage) => {
                         const messageUrl = `https://discord.com/channels/${sentMessage.guildId}/${sentMessage.channelId}/${sentMessage.id}`;
                         console.log(`Mensaje publicado en: ${messageUrl}`);
                         await postTweetOficial(summaryData, messageUrl);
