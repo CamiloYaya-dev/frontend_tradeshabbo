@@ -354,6 +354,8 @@ main.container.master-trades-bg {
 
 .ad-space{
     margin-top: 24px;
+    padding-top: 55px;
+    text-align: center;
 }
 
 .price_history {
@@ -1330,4 +1332,46 @@ audio::-webkit-media-controls-panel {
 
 .col_in_card{
     padding: 0px;
+}
+
+.billboard {
+    position: relative;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
+    background: #333 url('./furnis/iconos/hoarding.png') no-repeat;
+    background-size: 100% 100%; /* Cambia el tamaño a 100px de ancho y 100px de alto */
+    height: 103%;
+
+}
+  
+.chains {
+    position: absolute;
+    top: -90px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+  
+.chain {
+    width: 85px;
+    height: 100px;
+    object-fit: contain;
+}
+
+.hoarding{
+    width: 300px;
+}
+
+.scale{
+    transform: scale(0.8);
+    padding-top: 0px;
+    margin-top: 0px;
+}
+
+.ads_right{
+    padding-top: 54px;
+}
+
+.ads_left{
+    padding-top: 79px;
 }
