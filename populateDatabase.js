@@ -10,6 +10,7 @@ async function populateDatabase() {
 
         const hcDirPath = path.join(__dirname, 'public', 'furnis', 'hc');
         const raresDirPath = path.join(__dirname, 'public', 'furnis', 'rares');
+        const deportesDirPath = path.join(__dirname, 'public', 'furnis', 'deportes');
         const priceFilePath = path.join(__dirname, 'public', 'furnis', 'precios', 'precios.json');
         const priceHistoryFilePath = path.join(__dirname, 'public', 'furnis', 'precios', 'precios_historico.json');
 
@@ -44,8 +45,9 @@ async function populateDatabase() {
 
         const hcImages = loadImages(hcDirPath, 'hc');
         const raresImages = loadImages(raresDirPath, 'rares');
+        const deportesImages = loadImages(deportesDirPath, 'deportes');
 
-        const images = [...hcImages, ...raresImages];
+        const images = [...hcImages, ...raresImages, ...deportesImages];
 
         await Image.bulkCreate(images);
         console.log('Database populated with images');
