@@ -278,18 +278,49 @@
                 <div class="filtros_filas">
                     <div class="row mb-4">
                         <div class="col-md-3 col-12 text-center d-none d-md-block">
-                            <!-- Esta columna no se mostrará en dispositivos móviles -->
+                            <button class="price_history_content online_habbo_text_white filter-button" data-category="deportes">
+                                <img src="furnis/iconos/deportes.png" alt="icon">
+                                Deportes
+                            </button>
+                            <button class="price_history_content online_habbo_text_white filter-button" data-category="deportes">
+                                <img src="furnis/iconos/deportes.png" alt="icon">
+                                Deportes
+                            </button>
+                            <button class="price_history_content online_habbo_text_white filter-button" data-category="deportes">
+                                <img src="furnis/iconos/deportes.png" alt="icon">
+                                Deportes
+                            </button>
                         </div>
-                        <div class="col-md-6 col-12 text-center" id="filter_tags">
-                            <button class="price_history_content online_habbo_text_white filter-button" data-category="all" data-i18n="filter_tag_todos">Todos</button>
-                            <button class="price_history_content online_habbo_text_white filter-button" data-category="hc" data-i18n="filter_tag_hc">HC</button>
-                            <button class="price_history_content online_habbo_text_white filter-button" data-category="rare" data-i18n="filter_tag_rare">Rare</button>
-                            <button class="price_history_content online_habbo_text_white filter-button" data-category="funky" data-i18n="filter_tag_funky">Funky</button>
-                            <button class="price_history_content online_habbo_text_white filter-button" data-category="hot" data-i18n="filter_tag_hot">Hot Trades</button>
-                            <button class="price_history_content online_habbo_text_white filter-button" data-category="mega_rare" data-i18n="filter_tag_mega_rares">Mega Rares</button>
-                            <button class="price_history_content online_habbo_text_white filter-button" data-category="coleccion">Colecciones</button>
+                        <div class="col-md-7 col-12 text-center" id="filter_tags">
+                            <button class="price_history_content online_habbo_text_white filter-button all_filtro" data-category="all" data-i18n="filter_tag_todos">
+                                Todos
+                            </button>
+                            <button class="price_history_content online_habbo_text_white filter-button" data-category="hc">
+                                <img src="furnis/iconos/icon_hc.png" class="iconos-hc-filtro" alt="icon">
+                                HC
+                            </button>
+                            <button class="price_history_content online_habbo_text_white filter-button" data-category="rare">
+                                <img src="furnis/rares/Habbocola.png" class="iconos-rare-filtro" alt="icon">
+                                Rare
+                            </button>
+                            <button class="price_history_content online_habbo_text_white filter-button" data-category="funky">
+                                <img src="furnis/rares/Luz_Roja_Bouncer.png" class="iconos-rare-filtro" alt="icon">
+                                Funky
+                            </button>
+                            <button class="price_history_content online_habbo_text_white filter-button" data-category="hot">
+                                <img src="furnis/iconos/hot_icon.png" class="iconos-hot-filtro" alt="icon">
+                                Hot Trades
+                            </button>
+                            <button class="price_history_content online_habbo_text_white filter-button" data-category="mega_rare">   
+                                <img src="furnis/rares/Dragon_De_Fuego_Oro.png" class="iconos-megarares-filtro" alt="icon">
+                                Mega Rares
+                            </button>
+                            <button class="price_history_content online_habbo_text_white filter-button coleccion_filtro" data-category="coleccion">    
+                                <img src="furnis/iconos/coleccion.png" class="iconos-coleccion-filtro" alt="icon">
+                                Colecciones
+                            </button>
                         </div>
-                        <div class="col-md-3 col-12 text-center d-md-block div_filtros">
+                        <div class="col-md-2 col-12 text-center d-md-block div_filtros">
                             <select id="sort-options" class="form-control w-auto ml-3 select_order">
                                 <option value="default" data-i18n="select_order_op1">Ordenar por</option>
                                 <option value="price_desc" data-i18n="select_order_op2">Precio: Mayor a Menor</option>

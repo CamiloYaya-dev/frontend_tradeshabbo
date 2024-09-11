@@ -96,12 +96,48 @@ main.container.master-trades-bg {
     right: 10px;
 }
 
+.iconos-deportes {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+}
+
 .iconos-hc {
     position: absolute;
     top: 10px;
     right: 10px;
     width: 40px;
     height: 40px;
+}
+
+.iconos-hc-filtro {
+    width: 30px;
+    height: 35px;
+}
+
+.iconos-rare-filtro{
+    width: 19px;
+}
+
+.iconos-coleccion-filtro{
+    width: 29px;
+}
+
+.iconos-megarares-filtro{
+    width: 26px;
+}
+
+.iconos-hot-filtro{
+    width: 33px;
+}
+
+.coleccion_filtro{
+    margin-top: 5px;
+}
+
+.all_filtro{
+    height: 50px;
 }
 
 .iconos-hot-sale {
@@ -834,7 +870,8 @@ audio::-webkit-media-controls-panel {
     z-index: 1000;
     background-color: #335e7a;
     border: 1px solid #050a0e;
-    width: 90% !important;
+    width: 100% !important;
+    float: inline-end;
 }
 
 .select_order:focus{
@@ -848,7 +885,7 @@ audio::-webkit-media-controls-panel {
     z-index: 1000;
     background-color: #335e7a;
     border: 1px solid #050a0e;
-    width: 90% !important;
+    width: 100% !important;
 }
 
 .row_lenguage{

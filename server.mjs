@@ -1052,11 +1052,13 @@ const rest = new REST({ version: '10' }).setToken(DISCORD_TOKEN);
 const getImageChoices = () => {
     const hcDir = path.join(__dirname, 'public', 'furnis', 'hc');
     const raresDir = path.join(__dirname, 'public', 'furnis', 'rares');
+    const deportesDir = path.join(__dirname, 'public', 'furnis', 'deportes');
 
     const hcImages = fs.readdirSync(hcDir).map(file => ({ name: file.replace('.png', ''), value: `hc/${file}` }));
     const raresImages = fs.readdirSync(raresDir).map(file => ({ name: file.replace('.png', ''), value: `rares/${file}` }));
+    const deportesImages = fs.readdirSync(deportesDir).map(file => ({ name: file.replace('.png', ''), value: `deportes/${file}` }));
 
-    return [...hcImages, ...raresImages];
+    return [...hcImages, ...raresImages, ...deportesImages];
 };
 
 const commands = [
