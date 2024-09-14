@@ -11,6 +11,7 @@ async function populateDatabase() {
         const hcDirPath = path.join(__dirname, 'public', 'furnis', 'hc');
         const raresDirPath = path.join(__dirname, 'public', 'furnis', 'rares');
         const deportesDirPath = path.join(__dirname, 'public', 'furnis', 'deportes');
+        const cabinDirPath = path.join(__dirname, 'public', 'furnis', 'cabin');
         const priceFilePath = path.join(__dirname, 'public', 'furnis', 'precios', 'precios.json');
         const priceHistoryFilePath = path.join(__dirname, 'public', 'furnis', 'precios', 'precios_historico.json');
 
@@ -46,10 +47,17 @@ async function populateDatabase() {
         const hcImages = loadImages(hcDirPath, 'hc');
         const raresImages = loadImages(raresDirPath, 'rares');
         const deportesImages = loadImages(deportesDirPath, 'deportes');
+        const cabinImages = loadImages(cabinDirPath, 'cabin');
+        const images = [...hcImages, ...raresImages, ...deportesImages, ...cabinImages];
 
-        const images = [...hcImages, ...raresImages, ...deportesImages];
-
-        await Image.bulkCreate(images);
+        for (const image of images) {
+            console.log(`Intentando insertar imagen con ID: ${image.id} y nombre: ${image.name}`);
+            try {
+                await Image.upsert(image); // Inserta o actualiza según sea necesario
+            } catch (error) {
+                console.error(`Error al insertar la imagen con ID: ${image.id} y nombre: ${image.name}`, error);
+            }
+        }
         console.log('Database populated with images');
 
         // Agregar productId a priceHistoryData
@@ -63,8 +71,14 @@ async function populateDatabase() {
             }
             return entry;
         });
-
-        await PriceHistory.bulkCreate(priceHistoryWithProductId);
+        for (const priceHistory of priceHistoryWithProductId) {
+            console.log(`Intentando insertar historial de precios para el producto ID: ${priceHistory.productId}`);
+            try {
+                await PriceHistory.upsert(priceHistory); // Inserta o actualiza según sea necesario
+            } catch (error) {
+                console.error(`Error al insertar el historial de precios con product ID: ${priceHistory.productId}`, error);
+            }
+        }
         console.log('Database populated with price history');
 
         await PriceHistory.findAll();

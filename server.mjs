@@ -1053,12 +1053,14 @@ const getImageChoices = () => {
     const hcDir = path.join(__dirname, 'public', 'furnis', 'hc');
     const raresDir = path.join(__dirname, 'public', 'furnis', 'rares');
     const deportesDir = path.join(__dirname, 'public', 'furnis', 'deportes');
+    const cabinDir = path.join(__dirname, 'public', 'furnis', 'cabin');
 
     const hcImages = fs.readdirSync(hcDir).map(file => ({ name: file.replace('.png', ''), value: `hc/${file}` }));
     const raresImages = fs.readdirSync(raresDir).map(file => ({ name: file.replace('.png', ''), value: `rares/${file}` }));
     const deportesImages = fs.readdirSync(deportesDir).map(file => ({ name: file.replace('.png', ''), value: `deportes/${file}` }));
+    const cabinImages = fs.readdirSync(cabinDir).map(file => ({ name: file.replace('.png', ''), value: `cabin/${file}` }));
 
-    return [...hcImages, ...raresImages, ...deportesImages];
+    return [...hcImages, ...raresImages, ...deportesImages, ...cabinImages];
 };
 
 const commands = [
