@@ -103,6 +103,13 @@ main.container.master-trades-bg {
     width: 30px;
 }
 
+.iconos-cabin {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+}
+
 .iconos-hc {
     position: absolute;
     top: 10px;
@@ -1555,4 +1562,8 @@ h5 {
     border-radius: 10px;
     background: rgba(0, 0, 0, 0.7); /* Fondo negro con 70% de opacidad */
     color: white;
+}
+
+.cabin-icon{
+    width: 18px;
 }
