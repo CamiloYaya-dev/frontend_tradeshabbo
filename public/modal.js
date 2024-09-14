@@ -1,4 +1,4 @@
-/*$('body').append(`
+$('body').append(`
     <div class="modal" id="priceGuidelineModal" tabindex="-1" role="dialog" aria-labelledby="priceGuidelineModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal_olimpiadas" role="document">
             <div class="modal-content online_users_content">
@@ -10,12 +10,9 @@
                 </div>
                 <div class="modal-body text-center">
                     <p class="online_habbo_text_white_fz_15">
-                        Gran Evento en Habbo Origins, más información en el servidor de Discord 
-                        <strong class="alerta_lloron">
-                            <a href="https://discord.com/channels/1257448055050080297/1258417994543927338/1265701053341503540" target="_blank">DANDO CLICK AQUÍ</a>
-                        </strong>
+                       El precio del vip bajo, paso de 60c a 50c por lo que el precio de los rares, funkys y mega rares "EN TERMINOS DE CREDITOS" bajo, sin embargo en vips siguen al mismo precio, es por esto que puede mostrar que los diferentes furnis bajaron de precio PERO siguen valiendo lo mismo en vips.
                     </p>
-                    <img id="noticiaModalImage" src="./olimpiadas_habbo.png" alt="Evento Habbo Origins" class="img-fluid mb-3 olimpiadas_imagen">
+                    <img id="noticiaModalImage" src="./furnis/hc/El_Club_Sofa.png" alt="Bajo el precio del vip" class="img-fluid mb-3 olimpiadas_imagen">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
@@ -24,4 +21,4 @@
         </div>
     </div>
 `);
-$('#priceGuidelineModal').modal('show');*/
+$('#priceGuidelineModal').modal('show');
