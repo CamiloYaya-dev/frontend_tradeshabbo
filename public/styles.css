@@ -1416,3 +1416,143 @@ audio::-webkit-media-controls-panel {
 .iconos-menu{
     width: 30px;
 }
+
+.card {
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+}
+
+.card-header {
+    font-weight: bold;
+}
+
+.img-fluid {
+    max-width: 80px;
+    height: auto;
+}
+
+h5 {
+    margin-top: 10px;
+}
+
+.equipo-logo{
+    padding-top: 20px;
+}
+
+.card-master-trades{
+    background: url('./equipo/fondos/fondo_mt.png') repeat center center;
+    border-radius: 0px 0px 13px 13px;
+}
+
+.card-noticias-equipo{
+    background: url('./equipo/fondos/noticias_fondo.png') repeat center center;
+    border-radius: 0px 0px 13px 13px;
+}
+
+.card-master-trades h5 {
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.7); /* Fondo negro con 70% de opacidad */
+    color: white;
+}
+
+.card-master-trades p {
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.7); /* Fondo negro con 70% de opacidad */
+    color: white;
+}
+
+.master-trades-title-card{
+    background-color: #335e7a;
+    border-radius: 13px 13px 0px 0px !important;
+}
+
+.card-equipo {
+    border: 1px solid #050a0e;
+    border-radius: 15px;
+    box-shadow: 0 2px 3px rgba(6, 19, 25, .7);
+}
+
+.card-noticias-equipo h5 {
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.7); /* Fondo negro con 70% de opacidad */
+    color: white;
+}
+
+.card-noticias-equipo p {
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.7); /* Fondo negro con 70% de opacidad */
+    color: white;
+}
+
+.noticias-title-card{
+    background-color: #335e7a;
+    border-radius: 13px 13px 0px 0px !important;
+}
+
+.card-administracion{
+    background: url('./equipo/fondos/administracion_fondo.png') repeat center center;
+    border-radius: 0px 0px 13px 13px;
+    background-size: 460px;
+}
+
+.card-administracion h5 {
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.7); /* Fondo negro con 70% de opacidad */
+    color: white;
+}
+
+.card-administracion p {
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.7); /* Fondo negro con 70% de opacidad */
+    color: white;
+}
+
+.administracion-title-card{
+    background-color: #335e7a;
+    border-radius: 13px 13px 0px 0px !important;
+}
+
+.card-moderadores-discord{
+    background: url('./equipo/fondos/discord_fondo.png') no-repeat center center;
+    border-radius: 0px 0px 13px 13px;
+    background-size: 125%;
+}
+
+.moderadores-discord-title-card{
+    background-color: #335e7a;
+    border-radius: 13px 13px 0px 0px !important;
+}
+
+.card-moderadores-discord h5 {
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.7); /* Fondo negro con 70% de opacidad */
+    color: white;
+}
+
+.card-moderadores-discord p {
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.7); /* Fondo negro con 70% de opacidad */
+    color: white;
+}
+
+.social-discord-title-card{
+    background-color: #335e7a;
+    border-radius: 13px 13px 0px 0px !important;
+}
+
+.card-social{
+    background: url('./equipo/fondos/social_fondo.png') no-repeat center center;
+    border-radius: 0px 0px 13px 13px;
+    background-size: 100%;
+}
+
+.card-social h5 {
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.7); /* Fondo negro con 70% de opacidad */
+    color: white;
+}
+
+.card-social p {
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.7); /* Fondo negro con 70% de opacidad */
+    color: white;
+}
