@@ -957,6 +957,11 @@ client.once('ready', async () => {
     } catch (error) {
         console.error('Error sending invites to the server:', error);
     }
+    
+    // ID del canal tipo foro
+    const forumChannelId = '1269826801396482158';
+
+    await tradesForo(forumChannelId);
 
 });
 
@@ -1612,7 +1617,7 @@ client.on('messageCreate', async (message) => {
     if (message.channelId === '1263260299012603945' && message.attachments.size > 0) {
         const member = message.guild.members.cache.get(message.author.id);
 
-    // Obtener el apodo del miembro o su nombre de usuario si no tiene apodo
+        // Obtener el apodo del miembro o su nombre de usuario si no tiene apodo
         const username = member ? (member.nickname || member.user.username) : message.author.username;
 
         message.attachments.forEach(attachment => {
@@ -1629,6 +1634,11 @@ client.on('messageCreate', async (message) => {
                 .catch(err => console.error('Error al descargar la imagen:', err));
             }
         });
+    }
+    if (message.channel.isThread()) {
+        console.log(`Nuevo mensaje en el hilo ${message.channel.name}: ${message.content}`);
+        
+        // Aquí puedes agregar la lógica adicional que necesites
     }
 });
 
@@ -1656,6 +1666,28 @@ client.on('messageDelete', (message) => {
         .catch(error => {
             console.error('Error al eliminar la imagen:', error);
         });
+    }
+});
+
+client.on('threadCreate', async (thread) => {
+    if (thread.parentId === '1269826801396482158') { // Verifica si el hilo pertenece al canal tipo foro
+        console.log(`Se ha creado una nueva publicación en el canal tipo foro: ${thread.name}`);
+        
+        try {
+            // Obtener el mensaje inicial de la publicación
+            const starterMessage = await thread.fetchStarterMessage();
+            
+            if (starterMessage) {
+                console.log(`Mensaje inicial de la publicación: ${starterMessage.content}`);
+            } else {
+                console.log('No se encontró ningún mensaje inicial.');
+            }
+        } catch (error) {
+            console.error('Error al obtener el mensaje inicial:', error);
+        }
+
+        // También puedes seguir imprimiendo el objeto thread como antes
+        console.log(JSON.stringify(thread, null, 2)); // Más legible y formateado
     }
 });
 
@@ -1906,5 +1938,57 @@ async function fetchAndExtractNoticias() {
     } finally {
         await browser.close();
         setTimeout(fetchAndExtractNoticias, 600000);
+    }
+}
+
+async function tradesForo(forumChannelId) {
+    try {
+        // Obtener el canal foro
+        const forumChannel = await client.channels.fetch(forumChannelId);
+
+        // Verificar si es un canal tipo foro
+        if (forumChannel.type !== 15) { // 15 es el tipo para "GUILD_FORUM"
+            console.error('Este canal no es un foro.');
+            process.exit(1); // Detener la aplicación si no es un canal foro
+        }
+
+        // Obtener los hilos activos del canal tipo foro
+        const activeThreads = await forumChannel.threads.fetchActive();
+
+        const threadsData = [];
+
+        // Recorrer cada hilo
+        for (const [threadId, thread] of activeThreads.threads) {
+            const threadData = {
+                id: threadId,
+                name: thread.name,
+                createdTimestamp: thread.createdTimestamp,
+                url: `https://discord.com/channels/${thread.guildId}/${forumChannelId}/${threadId}`, // Enlace del hilo
+                appliedTags: thread.appliedTags,
+                messages: []
+            };
+
+            // Obtener todos los mensajes del hilo
+            const messages = await thread.messages.fetch({ limit: 100 });
+            messages.forEach(msg => {
+                threadData.messages.push({
+                    author: msg.author.tag,
+                    content: msg.content,
+                    createdTimestamp: msg.createdTimestamp
+                });
+            });
+
+            threadsData.push(threadData);
+        }
+
+        // Guardar los datos en un archivo JSON
+        const savePath = path.join(__dirname,  'public', 'forum_threads.json');
+        fs.writeFileSync(savePath, JSON.stringify(threadsData, null, 2));
+
+        console.log('Datos de las publicaciones guardados en forum_threads.json');
+    } catch (error) {
+        console.error('Error al obtener las publicaciones del foro:', error);
+    } finally {
+        setTimeout(() => tradesForo('1269826801396482158'), 600000); // Pasar una función de flecha a setTimeout
     }
 }

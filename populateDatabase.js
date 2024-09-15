@@ -51,7 +51,7 @@ async function populateDatabase() {
         const images = [...hcImages, ...raresImages, ...deportesImages, ...cabinImages];
 
         for (const image of images) {
-            console.log(`Intentando insertar imagen con ID: ${image.id} y nombre: ${image.name}`);
+            //console.log(`Intentando insertar imagen con ID: ${image.id} y nombre: ${image.name}`);
             try {
                 await Image.upsert(image); // Inserta o actualiza según sea necesario
             } catch (error) {
@@ -72,7 +72,7 @@ async function populateDatabase() {
             return entry;
         });
         for (const priceHistory of priceHistoryWithProductId) {
-            console.log(`Intentando insertar historial de precios para el producto ID: ${priceHistory.productId}`);
+            //console.log(`Intentando insertar historial de precios para el producto ID: ${priceHistory.productId}`);
             try {
                 await PriceHistory.upsert(priceHistory); // Inserta o actualiza según sea necesario
             } catch (error) {

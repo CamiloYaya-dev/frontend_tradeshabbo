@@ -48,6 +48,7 @@ $(document).ready(function() {
     $.getScript('mts.js', function() {});
     $.getScript('grafics.js', function() {});
     $.getScript('salas.js', function() {});
+    $.getScript('marketplace.js', function() {});
 
     $('#button_options').on('click', function(e) {
         var content = document.getElementById("toggle-content");
@@ -77,6 +78,7 @@ $(document).ready(function() {
             $('#text-generator-section').hide();
             $('#comunidad_salas').hide();
             $('#equipo-section').hide();
+            $('#marketplace-section').hide();
         } else if (section === 'noticias') {
             loadOtherClass();
             loadNoticias();
@@ -93,6 +95,7 @@ $(document).ready(function() {
             $('#text-generator-section').hide();
             $('#comunidad_salas').hide();
             $('#equipo-section').hide();
+            $('#marketplace-section').hide();
         } else if (section === 'calculador') {
             loadOtherClass();
             $('#catalogo-section').hide();
@@ -108,6 +111,7 @@ $(document).ready(function() {
             $('#text-generator-section').hide();
             $('#comunidad_salas').hide();
             $('#equipo-section').hide();
+            $('#marketplace-section').hide();
         } else if (section === 'sorteos') {
             loadOtherClass();
             loadSorteos();
@@ -124,6 +128,7 @@ $(document).ready(function() {
             $('#text-generator-section').hide();
             $('#comunidad_salas').hide();
             $('#equipo-section').hide();
+            $('#marketplace-section').hide();
         } else if (section === 'master_trades') {
             loadMasterTrades();
             $('#catalogo-section').hide();
@@ -139,6 +144,7 @@ $(document).ready(function() {
             $('#text-generator-section').hide();
             $('#comunidad_salas').hide();
             $('#equipo-section').hide();
+            $('#marketplace-section').hide();
         } else if (section === 'habbo_generator_section'){
             loadOtherClass();
             $('#catalogo-section').hide();
@@ -154,6 +160,7 @@ $(document).ready(function() {
             $('#text-generator-section').hide();
             $('#comunidad_salas').hide();
             $('#equipo-section').hide();
+            $('#marketplace-section').hide();
         } else if (section === 'text_generator_section'){
             loadOtherClass();
             $('#catalogo-section').hide();
@@ -169,6 +176,7 @@ $(document).ready(function() {
             $('#text-generator-section').show();
             $('#comunidad_salas').hide();
             $('#equipo-section').hide();
+            $('#marketplace-section').hide();
         } else if (section === 'comunidad_salas'){
             loadOtherClass();
             loadSalaImages();
@@ -184,6 +192,7 @@ $(document).ready(function() {
             $('#habbo-generator-section').hide();
             $('#comunidad_salas').show();
             $('#equipo-section').hide();
+            $('#marketplace-section').hide();
         } else if (section === 'equipo'){
             loadOtherClass();
             $('#catalogo-section').hide();
@@ -198,6 +207,23 @@ $(document).ready(function() {
             $('#habbo-generator-section').hide();
             $('#comunidad_salas').hide();
             $('#equipo-section').show();
+            $('#marketplace-section').hide();
+        } else if (section === 'compro_vendo'){
+            loadOtherClass();
+            renderThreads();
+            $('#catalogo-section').hide();
+            $('#column-explications-catalogo').hide();
+            $('#noticias-section').hide();
+            $('#calculador-section').hide();
+            $('#sorteos-section').hide();
+            $('#master-trades-section').hide();
+            $('#sort-options').hide();
+            $('#footer').show();
+            $('#column-explications-master-trades').hide();
+            $('#habbo-generator-section').hide();
+            $('#comunidad_salas').hide();
+            $('#equipo-section').hide();
+            $('#marketplace-section').show();
         }
         updateContent();
     });
