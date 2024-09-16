@@ -253,6 +253,7 @@ function initialize() {
                     loadContador();
                     //discordInfo();
                     loadLastThreeNoticias();
+                    obtenerPlacas();
                     const decryptedData = decryptData(data.token);
                     console.log(decryptedData);
                     var productContainer = $('#product-container');

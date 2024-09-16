@@ -1220,7 +1220,6 @@ audio::-webkit-media-controls-panel {
     justify-content: flex-end;
     align-items: flex-end;
     padding-right: 30px;
-    padding-top: 20px;
 }
 
 .olimpiadas_imagen{
@@ -1578,4 +1577,104 @@ h5 {
 
 .div_marketplace{
     padding-top: 10px;
+}
+
+@media (max-width: 1600px) {
+    .habbo_text_blue{
+        font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+        font-size: 13px;
+        color: #7ecaee;
+    }
+}
+
+.row_menu{
+    margin: 0px 0px 0px 0px !important;
+}
+
+.column_placas{
+    padding-left: 0px;
+    padding-right: 10px;
+}
+
+.div_placas{
+    background-color: #335e7a;
+    border: 1px solid #050a0e;
+    border-radius: 15px;
+    box-shadow: 0 2px 3px rgba(6, 19, 25, .7);
+    padding: 12px;
+    font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    height: 110px; /* Establece la altura específica que desees */
+    overflow-y: auto; 
+    overflow-x: hidden;
+}
+
+/* Estilo para navegadores basados en WebKit (Chrome, Safari, Edge) */
+.div_placas::-webkit-scrollbar {
+    width: 8px; /* Ancho de la barra de desplazamiento */
+}
+
+.div_placas::-webkit-scrollbar-thumb {
+    background-color: transparent; /* Color de la barra de desplazamiento */
+    border-radius: 10px; /* Bordes redondeados */
+}
+
+.div_placas::-webkit-scrollbar-track {
+    background-color: transparent; /* Color del fondo de la barra de desplazamiento */
+}
+
+.placa {
+    position: relative;
+    width: 60px;  /* Ajusta el tamaño que necesites */
+    height: 60px;
+    overflow: hidden; /* Para asegurarse de que el contenido no se salga */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%; /* Hacer que el contenedor sea circular */
+    background-color: transparent;
+}
+
+/* Pseudo-elemento para rotar el fondo */
+.placa::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(//static.habbo-happy.net/img/albumteam/stuffdesign/409d62_placeholder.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    animation: girarFondo 10s linear infinite; /* Animación de rotación */
+    transform-origin: center; /* Punto de origen de la rotación */
+    z-index: 0; /* Mantenerlo detrás de la imagen */
+    border-radius: 50%; /* Mantener el pseudo-elemento circular */
+}
+
+/* Definir la animación de rotación */
+@keyframes girarFondo {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Ajustar la imagen que está dentro del div */
+.placa img {
+    position: relative;
+    z-index: 1; /* Asegura que la imagen esté por delante del fondo */
+    height: auto;
+}
+
+.no_padding{
+    padding-left: 0px;
+    padding-right: 0px;
+    text-align: -webkit-center;
+}
+
+.p_titulo_placas{
+    margin-bottom: 0px;
 }

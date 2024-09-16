@@ -49,6 +49,7 @@ $(document).ready(function() {
     $.getScript('grafics.js', function() {});
     $.getScript('salas.js', function() {});
     $.getScript('marketplace.js', function() {});
+    $.getScript('placas.js', function() {});
 
     $('#button_options').on('click', function(e) {
         var content = document.getElementById("toggle-content");

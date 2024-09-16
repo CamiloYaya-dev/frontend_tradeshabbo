@@ -902,7 +902,24 @@ app.get('/proxy-text', async (req, res) => {
       console.error('Error loading page:', error);
       res.status(500).send('Error loading the page');
     }
-  });
+});
+
+app.get('/obtener-placas', (req, res) => {
+    const placasDir = path.join(__dirname, 'public', 'placas'); // La ruta de la carpeta de imágenes
+
+    fs.readdir(placasDir, (err, files) => {
+        if (err) {
+            return res.status(500).json({ error: 'No se pudieron cargar las imágenes' });
+        }
+
+        // Filtrar solo las imágenes (por extensión)
+        const validExtensions = ['png', 'jpg', 'jpeg'];
+        const imageFiles = files.filter(file => validExtensions.includes(file.split('.').pop().toLowerCase()));
+
+        // Enviar la lista de archivos al frontend
+        res.json(imageFiles);
+    });
+});
   
 const DISCORD_TOKEN = process.env.DISCORD_TOKEN;
 const CLIENT_ID = process.env.CLIENT_ID;
