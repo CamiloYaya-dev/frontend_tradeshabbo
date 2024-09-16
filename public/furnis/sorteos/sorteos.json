@@ -1,20 +1,26 @@
 [
     {
         "id": 3,
-        "name": "Sorteo - 1 Ganador de 1 Puerta Espacial Oro Rorsa NFT el 15 de septiembre - Via Twitter",
-        "link": "https://x.com/TradesHabbo/status/1834300519092748573",
-        "src": "furnis/sorteos/rares.png"
+        "name": "Sorteo - 1 Ganador de 1 Saco de dormir azul NFT el 18 de septiembre - Via Twitter",
+        "link": "https://x.com/TradesHabbo/status/1835447995120128382",
+        "src": "furnis/iconos/habbo_nft.png"
     },
     {
         "id": 4,
-        "name": "Sorteo - 1 Ganador de 1 Caja de HC de 31 dias en habbo.es el 15 de septiembre - Via Twitter",
-        "link": "https://x.com/TradesHabbo/status/1834299922293703045",
-        "src": "furnis/sorteos/rares.png"
+        "name": "Sorteo - 1 Ganador de 1 Lote de Vuelta al Cole en habbo.es el 18 de septiembre - Via Twitter",
+        "link": "https://x.com/TradesHabbo/status/1835448730289615310",
+        "src": "furnis/iconos/habbo_legacy.png"
     },
     {
         "id": 5,
-        "name": "Sorteo - 1 Ganador de 1 Heladera Dorada en origins.habbo.es el 15 de septiembre - Via Twitter",
-        "link": "https://x.com/TradesHabbo/status/1834299291277660291",
-        "src": "furnis/sorteos/rares.png"
+        "name": "Sorteo - 1 Ganador de 1 Humareda Roja en origins.habbo.es el 18 de septiembre - Via Twitter",
+        "link": "https://x.com/TradesHabbo/status/1835449315835424994",
+        "src": "furnis/iconos/habbo_origins.png"
+    },
+    {
+        "id": 5,
+        "name": "Sorteo - 1 Ganador de 1 Humareda Roja en origins.habbo.es el 18 de septiembre - Via Discord",
+        "link": "https://discord.com/channels/1257448055050080297/1258640868496244736/1285008169395028080",
+        "src": "furnis/iconos/habbo_origins.png"
     }
 ]
