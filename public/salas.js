@@ -37,7 +37,7 @@ function loadSalaImages() {
             // Generar el HTML de la imagen
             const imageHtml = `
                 <div class="gallery-item">
-                    <img src="${imageFile}" class="img-fluid gallery-img" alt="Imagen ${fileName}" data-toggle="modal" data-target="#imageModal" data-user="${userId}" data-datetime="${datetime}">
+                    <img src="${imageFile}" class="gallery-img" alt="Imagen ${fileName}" data-toggle="modal" data-target="#imageModal" data-user="${userId}" data-datetime="${datetime}">
                 </div>
             `;
             comunidadSalas.append(imageHtml);
