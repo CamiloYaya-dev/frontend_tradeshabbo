@@ -1074,15 +1074,32 @@ const rest = new REST({ version: '10' }).setToken(DISCORD_TOKEN);
 const getImageChoices = () => {
     const hcDir = path.join(__dirname, 'public', 'furnis', 'hc');
     const raresDir = path.join(__dirname, 'public', 'furnis', 'rares');
+    const funkyDir = path.join(__dirname, 'public', 'furnis', 'funky');
+    const coleccionDir = path.join(__dirname, 'public', 'furnis', 'coleccion');
     const deportesDir = path.join(__dirname, 'public', 'furnis', 'deportes');
     const cabinDir = path.join(__dirname, 'public', 'furnis', 'cabin');
+    const habboweenDir = path.join(__dirname, 'public', 'furnis', 'habboween');
+    const goticoDir = path.join(__dirname, 'public', 'furnis', 'gotico');
 
     const hcImages = fs.readdirSync(hcDir).map(file => ({ name: file.replace('.png', ''), value: `hc/${file}` }));
     const raresImages = fs.readdirSync(raresDir).map(file => ({ name: file.replace('.png', ''), value: `rares/${file}` }));
+    const funkyImages = fs.readdirSync(funkyDir).map(file => ({ name: file.replace('.png', ''), value: `funky/${file}` }));
+    const coleccionImages = fs.readdirSync(coleccionDir).map(file => ({ name: file.replace('.png', ''), value: `coleccion/${file}` }));
     const deportesImages = fs.readdirSync(deportesDir).map(file => ({ name: file.replace('.png', ''), value: `deportes/${file}` }));
-    const cabinImages = fs.readdirSync(cabinDir).map(file => ({ name: file.replace('.png', ''), value: `cabin/${file}` }));
+    const cabinImages = fs.readdirSync(cabinDir).map(file => ({ name: file.replace('.png', ''), value: `cabin/${file}` })); 
+    const habboweenImages = fs.readdirSync(habboweenDir).map(file => ({ name: file.replace('.png', ''), value: `habboween/${file}` }));
+    const goticoImages = fs.readdirSync(goticoDir).map(file => ({ name: file.replace('.png', ''), value: `gotico/${file}` }));
 
-    return [...hcImages, ...raresImages, ...deportesImages, ...cabinImages];
+    return [
+        ...hcImages,
+        ...raresImages,
+        ...funkyImages,
+        ...coleccionImages,
+        ...deportesImages,
+        ...cabinImages,
+        ...habboweenImages,
+        ...goticoImages
+    ];
 };
 
 const commands = [

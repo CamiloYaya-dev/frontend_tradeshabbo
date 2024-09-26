@@ -10,8 +10,12 @@ async function populateDatabase() {
 
         const hcDirPath = path.join(__dirname, 'public', 'furnis', 'hc');
         const raresDirPath = path.join(__dirname, 'public', 'furnis', 'rares');
+        const funkyDirPath = path.join(__dirname, 'public', 'furnis', 'funky');
+        const coleccionDirPath = path.join(__dirname, 'public', 'furnis', 'coleccion');
         const deportesDirPath = path.join(__dirname, 'public', 'furnis', 'deportes');
         const cabinDirPath = path.join(__dirname, 'public', 'furnis', 'cabin');
+        const habboweenDirPath = path.join(__dirname, 'public', 'furnis', 'habboween');
+        const goticoDirPath = path.join(__dirname, 'public', 'furnis', 'gotico');
         const priceFilePath = path.join(__dirname, 'public', 'furnis', 'precios', 'precios.json');
         const priceHistoryFilePath = path.join(__dirname, 'public', 'furnis', 'precios', 'precios_historico.json');
 
@@ -46,9 +50,22 @@ async function populateDatabase() {
 
         const hcImages = loadImages(hcDirPath, 'hc');
         const raresImages = loadImages(raresDirPath, 'rares');
+        const funkyImages = loadImages(funkyDirPath, 'funky');
+        const coleccionImages = loadImages(coleccionDirPath, 'coleccion');
         const deportesImages = loadImages(deportesDirPath, 'deportes');
         const cabinImages = loadImages(cabinDirPath, 'cabin');
-        const images = [...hcImages, ...raresImages, ...deportesImages, ...cabinImages];
+        const habboweenImages = loadImages(habboweenDirPath, 'habboween');
+        const goticoImages = loadImages(goticoDirPath, 'gotico');
+        const images = [
+            ...hcImages,
+            ...raresImages,
+            ...funkyImages,
+            ...coleccionImages,
+            ...deportesImages,
+            ...cabinImages,
+            ...habboweenImages,
+            ...goticoImages
+        ];
 
         for (const image of images) {
             //console.log(`Intentando insertar imagen con ID: ${image.id} y nombre: ${image.name}`);

@@ -1567,6 +1567,20 @@ h5 {
     width: 18px;
 }
 
+.iconos-habboween{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 25px;
+}
+
+.iconos-gotico{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 25px;
+}
+
 .threads_p{
     color: white;
 }
@@ -1677,4 +1691,22 @@ h5 {
 
 .p_titulo_placas{
     margin-bottom: 0px;
+}
+
+.furnis-temporada{
+    margin-top: 10px;
+}
+
+.new-icon-one{
+    width: 35px;
+    position: absolute;
+    bottom: -8px;
+    right: 25px;
+}
+
+.new-icon-two{   
+    width: 35px;
+    position: absolute;
+    bottom: -8px;
+    right: 116px;
 }

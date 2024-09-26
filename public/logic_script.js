@@ -285,6 +285,8 @@ function initialize() {
                                                 ${item.icon == "coleccion" ? `<img src="furnis/iconos/coleccion.png" class="iconos-coleccion" alt="icon">` : ''}
                                                 ${item.icon == "deportes" ? `<img src="furnis/iconos/deportes.png" class="iconos-deportes" alt="icon">` : ''}
                                                 ${item.icon == "cabin" ? `<img src="furnis/iconos/cabin.png" class="iconos-cabin" alt="icon">` : ''}
+                                                ${item.icon == "habboween" ? `<img src="furnis/iconos/habboween.png" class="iconos-habboween" alt="icon">` : ''}
+                                                ${item.icon == "gotico" ? `<img src="furnis/iconos/gotico.png" class="iconos-gotico" alt="icon">` : ''}
                                                 ${item.hot == 1 ? `<img src="furnis/iconos/hot_sale.png" class="iconos-hot-sale" alt="icon">` : ''}
                                                 <img src="${item.src}" class="card-img-top" alt="${item.name}">
                                                 ${item.status == "arrow_trend_up" ? `<img src="furnis/iconos/arrow_trend_up.png" class="iconos-arrow-trend-up" alt="icon">` : ''}
@@ -476,19 +478,25 @@ function initialize() {
                             imagePath = `furnis/rares/${firstRecord.name.replace(/ /g, '_')}.png`;
                             imageClass = "price-history-img"
                         } else if (firstRecord.icon === 'funky') {
-                            imagePath = `furnis/rares/${firstRecord.name.replace(/ /g, '_')}.png`;
+                            imagePath = `furnis/funky/${firstRecord.name.replace(/ /g, '_')}.png`;
                             imageClass = "price-history-img"
                         } else if (firstRecord.icon === "mega_rare") {
                             imagePath = `furnis/rares/${firstRecord.name.replace(/ /g, '_')}.png`;
                             imageClass = "price-history-img"
                         } else if (firstRecord.icon === "coleccion") {
-                            imagePath = `furnis/rares/${firstRecord.name.replace(/ /g, '_')}.png`;
+                            imagePath = `furnis/coleccion/${firstRecord.name.replace(/ /g, '_')}.png`;
                             imageClass = "price-history-img"
                         } else if (firstRecord.icon === "deportes") {
                             imagePath = `furnis/deportes/${firstRecord.name.replace(/ /g, '_')}.png`;
                             imageClass = "price-history-img"
                         } else if (firstRecord.icon === "cabin") {
                             imagePath = `furnis/cabin/${firstRecord.name.replace(/ /g, '_')}.png`;
+                            imageClass = "price-history-img"
+                        } else if (firstRecord.icon === "habboween") {
+                            imagePath = `furnis/habboween/${firstRecord.name.replace(/ /g, '_')}.png`;
+                            imageClass = "price-history-img"
+                        } else if (firstRecord.icon === "gotico") {
+                            imagePath = `furnis/gotico/${firstRecord.name.replace(/ /g, '_')}.png`;
                             imageClass = "price-history-img"
                         }
         
