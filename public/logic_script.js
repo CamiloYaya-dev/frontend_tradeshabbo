@@ -262,7 +262,7 @@ function initialize() {
                     var searchContainer = $('#search-input');
                     var row_explanation_trends = $('#row_explanation_trends');
                     var row_explanation_votes = $('#row_explanation_votes');
-                    var filter_tags = $('#filter_tags');
+                    var filtros_filas = $('.filtros_filas');
                     var sortSelect = $('#sort-options');
                     var creditUsdPriceHabbo = 0.06899;
                     var creditUsdPriceIlegal = 0.06;
@@ -446,7 +446,7 @@ function initialize() {
                                     searchContainer.hide();
                                     row_explanation_trends.hide();
                                     row_explanation_votes.hide();
-                                    filter_tags.hide();
+                                    filtros_filas.hide();
                                     productContainer.hide();
                                     productHistoryContainer.show();
                                     backButton.show();
@@ -634,7 +634,7 @@ function initialize() {
                         searchContainer.show();
                         row_explanation_trends.show();
                         row_explanation_votes.show();
-                        filter_tags.show();
+                        filtros_filas.show();
                         $('#sort-options').show();
                     });
 
