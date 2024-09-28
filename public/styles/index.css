@@ -7,6 +7,10 @@
         float: none;
         padding-right: 0px;
     }
+
+    .header-page{
+        background: none;
+    }
     .contador_div {
         max-width: 200px;
         margin: 0 auto;
