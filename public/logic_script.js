@@ -814,7 +814,7 @@ function isMobileDevice() {
     return /Mobi|Android/i.test(navigator.userAgent);
 }
 
-Chart.defaults.backgroundColor = '#26627D';
+Chart.defaults.backgroundColor = '#626262';
 Chart.defaults.borderColor = '#36A2EB';
 Chart.defaults.color = '#FFFFFF';
 
@@ -924,7 +924,7 @@ function drawChart(labels, creditsPrice, vipPrice) {
             beforeDraw: function(chart) {
                 const ctx = chart.ctx;
                 ctx.save();
-                ctx.fillStyle = isMobileDevice() ? '#555' : '#26627D';
+                ctx.fillStyle = isMobileDevice() ? '#555' : '#626262';
                 ctx.globalCompositeOperation = 'destination-over';
                 ctx.fillRect(0, 0, chart.width, chart.height);
                 ctx.restore();

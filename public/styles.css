@@ -6,13 +6,13 @@
 body {
     font-family: Arial, sans-serif;
     background-size: cover;
-    background: url(https://images.habbo.com/habbo-web/origins-america/es/assets/images/habbo_background.683cff59.gif);
+    background: url('./fondo_hb1.png');
 }
 
 main.container.other-class {
     font-family: Arial, sans-serif;
     background-size: cover;
-    background: url(https://images.habbo.com/habbo-web/origins-america/es/assets/images/habbo_background.683cff59.gif);
+    background: url('./fondo_hb1.png');
 }
 
 main.container.master-trades-bg {
@@ -217,11 +217,11 @@ main.container.master-trades-bg {
 }
 
 .card {
-    background-color: #26627D;
+    background-color: #626262;
 }
 
 .card-body {
-    background-color: #26627D;
+    background-color: #626262;
 }
 
 .text-name {
@@ -243,8 +243,9 @@ main.container.master-trades-bg {
 .header-page {
     font-family: Arial, sans-serif;
     background-size: cover;
-    background-color: #335E7A !important;
+    background-color: #626262 !important;
     border: 1px solid #050a0e;
+    background: url(./fondo_habboween.png);
 }
 
 .header-page-master-trades{
@@ -256,47 +257,48 @@ main.container.master-trades-bg {
 
 .highlight-border {
     border: 3px solid;
-    border-image: linear-gradient(45deg, red, orange, yellow) 1;
+    border-image: linear-gradient(45deg, #006400, #228B22, #32CD32, #7CFC00) 1; /* Escala de verdes */
     animation: border-animation 5s infinite;
 }
 
 .buscar-furnis{
-    background-color: #26627D;
-    border-color: #000000;
+    background-color: #626262;
+    border-color: #2C2930;
     color: white;
 }
 
 .buscar-furnis:focus {
-    background-color: #26627D;
-    border-color: #26627D;
+    background-color: #626262;
+    border-color: #626262;
     color: white;
     outline: none;
 }
 
 .buscar-noticias{
-    background-color: #26627D;
-    border-color: #000000;
+    background-color: #626262;
+    border-color: #2C2930;
     color: white;
     margin-top: 20px;
 }
 
 .buscar-noticias:focus {
-    background-color: #26627D;
+    background-color: #626262;
     color: white;
     outline: none;
 }
 
 @keyframes border-animation {
     0% {
-        border-image: linear-gradient(45deg, red, orange, yellow) 1;
+        border-image: linear-gradient(45deg, #006400, #228B22, #32CD32) 1;
     }
     50% {
-        border-image: linear-gradient(45deg, yellow, orange, red) 1;
+        border-image: linear-gradient(45deg, #32CD32, #228B22, #006400) 1;
     }
     100% {
-        border-image: linear-gradient(45deg, red, orange, yellow) 1;
+        border-image: linear-gradient(45deg, #006400, #228B22, #32CD32) 1;
     }
 }
+
 
 .online_users {
     text-align: center;
@@ -306,12 +308,12 @@ main.container.master-trades-bg {
 }
 
 .online_users_content {
-    background: #335e7a;
+    background: #626262;
     padding: 5px;
     text-align: center;
     font-weight: bold;
-    color: #7ecaee;
-    border: 2px solid #000000;
+    color: #33D500;
+    border: 2px solid #2C2930;
     width: auto;
     border-radius: 15px;
     font-size: 10px;
@@ -325,7 +327,7 @@ main.container.master-trades-bg {
 }
 
 .div_text_column_left_content {
-    background-color: #335e7a;
+    background-color: #626262;
     border: 1px solid #050a0e;
     border-radius: 15px;
     box-shadow: 0 2px 3px rgba(6, 19, 25, .7);
@@ -340,19 +342,19 @@ main.container.master-trades-bg {
 }
 
 .contador_text_master_trades{
-    background-color: #000000 !important;
+    background-color: #2C2930 !important;
 }
 
 .habbo_text_blue{
     font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
     font-size: 15px;
-    color: #7ecaee;
+    color: #33D500;
 }
 
 .habbo_text_blue_12{
     font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
     font-size: 12px;
-    color: #7ecaee;
+    color: #33D500;
 }
 
 .habbo_text_gold{
@@ -408,7 +410,7 @@ main.container.master-trades-bg {
 }
 
 .price_history_content {
-    background-color: #335e7a;
+    background-color: #626262;
     border: 1px solid #050a0e;
     border-radius: 15px;
     box-shadow: 0 2px 3px rgba(6, 19, 25, .7);
@@ -417,7 +419,7 @@ main.container.master-trades-bg {
 }
 
 .boton_collapse_otros_catalogos {
-    background-color: #335e7a;
+    background-color: #626262;
     border: 1px solid #050a0e;
     box-shadow: 0 2px 3px rgba(6, 19, 25, .7);
     font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
@@ -472,7 +474,7 @@ main.container.master-trades-bg {
 }
 
 footer {
-    background-color: #335E7A;
+    background-color: #626262;
     color: white;
     text-align: center;
     padding: 1rem;
@@ -507,7 +509,7 @@ footer {
 }
 
 .navbar_item {
-    background-color: #335e7a;
+    background-color: #626262;
     border: 1px solid #050a0e;
     border-radius: 15px;
     box-shadow: 0 2px 3px rgba(6, 19, 25, .7);
@@ -539,7 +541,7 @@ footer {
 }
 
 .item_calculador_tradeos {
-    background-color: #335e7a;
+    background-color: #626262;
     border: 1px solid #050a0e;
     border-radius: 15px;
     box-shadow: 0 2px 3px rgba(6, 19, 25, .7);
@@ -587,7 +589,7 @@ footer {
 }
 
 .noticia_div{
-    background-color: #335e7a;
+    background-color: #626262;
     border: 1px solid #050a0e;
     border-radius: 15px;
     box-shadow: 0 2px 3px rgba(6, 19, 25, .7);
@@ -598,7 +600,7 @@ footer {
 }
 
 .noticia_div_master_trades{
-    background-color: #000000;
+    background-color: #2C2930;
     border: 1px solid #ffffff;
 
 }
@@ -608,11 +610,11 @@ footer {
 }
 
 .noticia_title{
-    color: #7ecaee;
+    color: #33D500;
 }
 
 .noticia_title_last_three{
-    color: #7ecaee;
+    color: #33D500;
     font-size: 12px;
     text-align: center;
 }
@@ -647,7 +649,7 @@ footer {
 }
 
 .noticia_pagination{
-    background-color: #335e7a;
+    background-color: #626262;
     border: 1px solid #050a0e;
     box-shadow: 0 2px 3px rgba(6, 19, 25, .7);
     padding: 12px;
@@ -817,7 +819,7 @@ footer {
     border-radius: 5px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
     z-index: 1000;
-    background-color: #335e7a;
+    background-color: #626262;
     border: 1px solid #050a0e;
     box-shadow: 0 2px 3px rgba(6, 19, 25, .7);
     padding: 12px;
@@ -834,7 +836,7 @@ footer {
 
 .track-list {
     margin-bottom: 10px;
-    background-color: #335e7a;
+    background-color: #626262;
     font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
     color: white;
 }
@@ -875,7 +877,7 @@ audio::-webkit-media-controls-panel {
     border-radius: 5px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
     z-index: 1000;
-    background-color: #335e7a;
+    background-color: #626262;
     border: 1px solid #050a0e;
     width: 100% !important;
     float: inline-end;
@@ -890,7 +892,7 @@ audio::-webkit-media-controls-panel {
     border-radius: 5px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
     z-index: 1000;
-    background-color: #335e7a;
+    background-color: #626262;
     border: 1px solid #050a0e;
     width: 100% !important;
 }
@@ -909,7 +911,7 @@ audio::-webkit-media-controls-panel {
     border-radius: 5px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
     z-index: 1000;
-    background-color: #335e7a;
+    background-color: #626262;
     border: 1px solid #050a0e;
     width: 250px !important;
     height: 50px;
@@ -924,7 +926,7 @@ audio::-webkit-media-controls-panel {
     border-radius: 5px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
     z-index: 1000;
-    background-color: #335e7a;
+    background-color: #626262;
     border: 1px solid #050a0e;
     width: 250px !important;
     height: 50px;
@@ -1016,7 +1018,7 @@ audio::-webkit-media-controls-panel {
     85% {
       border-color: violet;
     }
-  }
+}
   
 .rainbow-border {
     padding-top: 4px;
@@ -1158,7 +1160,7 @@ audio::-webkit-media-controls-panel {
 }
 
 .grafic_item{
-    background-color: #26627D;
+    background-color: #626262;
     border: 1px solid black;
     border-radius: 15px;
     padding-bottom: 10px;
@@ -1185,32 +1187,32 @@ audio::-webkit-media-controls-panel {
 }
 
 .contador_div{
-    background: #335e7a;
+    background: #626262;
     padding: 5px;
     text-align: center;
     font-weight: bold;
-    color: #7ecaee;
-    border: 2px solid #000000;
+    color: #33D500;
+    border: 2px solid #2C2930;
     width: 200px;
     border-radius: 15px;
 }
 
 .contador_div_master_trades{
-    background-color: #000000;
+    background-color: #2C2930;
     color: white;
     border: 2px solid white;
 }
 
 .contador_title{
-    background-color: #335e7a;
+    background-color: #626262;
 }
 
 .contador_title_master_trades{
-    background-color: #000000;
+    background-color: #2C2930;
 }
 
 .contador_text{
-    background-color: #335e7a;
+    background-color: #626262;
     color: white;
     margin-bottom: 0px;
 }
@@ -1248,21 +1250,21 @@ audio::-webkit-media-controls-panel {
 }
 
 #item-a{
-    background-color: #335e7a;
+    background-color: #626262;
     color: white;
 }
 
 #item-a option{
-    background-color: #335e7a;
+    background-color: #626262;
 }
 
 #item-b{
-    background-color: #335e7a;
+    background-color: #626262;
     color: white;
 }
 
 #item-b option{
-    background-color: #335e7a;
+    background-color: #626262;
 }
 
 .history_price_icon{
@@ -1277,16 +1279,16 @@ audio::-webkit-media-controls-panel {
 }
 
 .discord_row{
-    background-color: #335e7a;
-    border: 2px solid #000000;
+    background-color: #626262;
+    border: 2px solid #2C2930;
     margin-left: 20px;
     max-width: 270px;
     border-radius: 15px;
-    color: #7ecaee;
+    color: #33D500;
 }
 
 .discord_row_master_trades{
-    background-color: #000000;
+    background-color: #2C2930;
     color: #ffffff;
     border: 2px solid #ffffff;
 }
@@ -1317,7 +1319,7 @@ audio::-webkit-media-controls-panel {
 
 .dropdown-item:focus,
 .dropdown-item:hover {
-    background-color: #335e7a !important;
+    background-color: #626262 !important;
     color: inherit !important;
     text-decoration: none !important;
     outline: none !important;
@@ -1341,17 +1343,17 @@ audio::-webkit-media-controls-panel {
 }
 
 .modal-body-comunidad{
-    background-color: #335e7a;
+    background-color: #626262;
 }
 
 .modal-header-comunidad{
-    background-color: #335e7a;
+    background-color: #626262;
     border-bottom: none;
 }
 
 .modal_habbo_text_blue{
     font-family: 'DePixelKlein', sans-serif;
-    color: #7ecaee;
+    color: #33D500;
 }
 
 .modal_habbo_text_white{
@@ -1467,7 +1469,7 @@ h5 {
 }
 
 .master-trades-title-card{
-    background-color: #335e7a;
+    background-color: #626262;
     border-radius: 13px 13px 0px 0px !important;
 }
 
@@ -1490,7 +1492,7 @@ h5 {
 }
 
 .noticias-title-card{
-    background-color: #335e7a;
+    background-color: #626262;
     border-radius: 13px 13px 0px 0px !important;
 }
 
@@ -1513,7 +1515,7 @@ h5 {
 }
 
 .administracion-title-card{
-    background-color: #335e7a;
+    background-color: #626262;
     border-radius: 13px 13px 0px 0px !important;
 }
 
@@ -1524,7 +1526,7 @@ h5 {
 }
 
 .moderadores-discord-title-card{
-    background-color: #335e7a;
+    background-color: #626262;
     border-radius: 13px 13px 0px 0px !important;
 }
 
@@ -1541,7 +1543,7 @@ h5 {
 }
 
 .social-discord-title-card{
-    background-color: #335e7a;
+    background-color: #626262;
     border-radius: 13px 13px 0px 0px !important;
 }
 
@@ -1597,7 +1599,7 @@ h5 {
     .habbo_text_blue{
         font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
         font-size: 13px;
-        color: #7ecaee;
+        color: #33D500;
     }
 }
 
@@ -1611,7 +1613,7 @@ h5 {
 }
 
 .div_placas{
-    background-color: #335e7a;
+    background-color: #626262;
     border: 1px solid #050a0e;
     border-radius: 15px;
     box-shadow: 0 2px 3px rgba(6, 19, 25, .7);
