@@ -280,7 +280,7 @@ function initialize() {
                                             <div>
                                                 ${item.icon == "hc" ? `<img src="furnis/iconos/icon_hc.png" class="iconos-hc" alt="icon">` : ''}
                                                 ${item.icon == "rare" ? `<img src="furnis/iconos/icon_rare.png" class="iconos-rare" alt="icon">` : ''}
-                                                ${item.icon == "funky" ? `<img src="furnis/iconos/icon_funky.png" class="iconos-funky" alt="icon">` : ''}
+                                                ${item.icon == "funky" ? `<img src="furnis/iconos/freaky_friday.png" class="iconos-funky" alt="icon">` : ''}
                                                 ${item.icon == "mega_rare" ? `<img src="furnis/iconos/icon_mega_rare.png" class="iconos-funky" alt="icon">` : ''}
                                                 ${item.icon == "coleccion" ? `<img src="furnis/iconos/coleccion.png" class="iconos-coleccion" alt="icon">` : ''}
                                                 ${item.icon == "deportes" ? `<img src="furnis/iconos/deportes.png" class="iconos-deportes" alt="icon">` : ''}
