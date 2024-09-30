@@ -1188,7 +1188,7 @@ audio::-webkit-media-controls-panel {
     margin-top: 10px;
 }
 
-.contador_div{
+.contador_div {
     position: relative;
     background: #626262;
     padding: 5px;
@@ -1196,65 +1196,70 @@ audio::-webkit-media-controls-panel {
     font-weight: bold;
     color: #33D500;
     border: 2px solid #2C2930;
-    width: 200px;
+    width: 100%; /* Ajustado a 100% para que sea responsivo */
+    max-width: 200px; /* Mantiene el tamaño máximo */
     border-radius: 15px;
 }
 
 /*contador 1*/
 .baba-1-image-contador-1 {
     position: absolute;
-    top: -4px;
-    right: -5px;
-    width: 33px;
+    top: 0;
+    right: 0;
+    width: 20%; /* Ajusta el tamaño en función del contenedor */
     height: auto;
+    transform: translate(10%, -8%); /* Ajusta la posición relativa */
 }
 
 .baba-2-image-contador-1 {
     position: absolute;
-    top: 45px;
-    left: -2px;
-    width: 50px;
+    bottom: 0;
+    left: 0;
+    width: 25%; /* Ajusta el tamaño de la imagen */
     height: auto;
+    transform: translate(-4%, 62%); /* Ajusta la posición para que quede alineado */
 }
 
 /*contador 2*/
 .baba-1-image-contador-2 {
     position: absolute;
-    top: -4px;
-    right: -5px;
-    width: 33px;
+    top: 0;
+    right: 0;
+    width: 20%; /* Ajusta el tamaño en función del contenedor */
     height: auto;
+    transform: translate(10%, -8%); /* Ajusta la posición relativa */
 }
 
 .baba-2-image-contador-2 {
     position: absolute;
-    top: 45px;
-    left: -2px;
-    width: 50px;
+    bottom: 0;
+    left: 0;
+    width: 25%; /* Ajusta el tamaño de la imagen */
     height: auto;
+    transform: translate(-4%, 62%); /* Ajusta la posición para que quede alineado */
 }
 
 .gota-image-contador-2-1-1 {
     position: absolute;
-    top: 62px;
-    left: 40px;
-    width: 5px;
+    top: 112%;
+    left: 20%;
+    width: 3%;
     height: auto;
     animation: caerGotaContador212 4s ease-in-out infinite;
 }
 
 .gota-image-contador-2-1-2 {
     position: absolute;
-    top: 62px;
-    left: 40px;
+    top: 112%;
+    left: 20%;
     width: 5px;
     height: auto;
     animation: caerGotaContador212 8s ease-in-out infinite;
 }
 .gota-image-contador-2-1-3 {
     position: absolute;
-    top: 62px;
-    left: 40px;
+    top: 112%;
+    left: 20%;
     width: 5px;
     height: auto;
     animation: caerGotaContador212 12s ease-in-out infinite;
@@ -1262,8 +1267,8 @@ audio::-webkit-media-controls-panel {
 
 .gota-image-contador-2-2-1 {
     position: absolute;
-    top: 62px;
-    left: 1px;
+    top: 112%;
+    left: 1%;
     width: 5px;
     height: auto;
     animation: caerGotaContador212 6s ease-in-out infinite;
@@ -1271,8 +1276,8 @@ audio::-webkit-media-controls-panel {
 
 .gota-image-contador-2-2-2 {
     position: absolute;
-    top: 62px;
-    left: 1px;
+    top: 112%;
+    left: 1%;
     width: 5px;
     height: auto;
     animation: caerGotaContador212 12s ease-in-out infinite;
@@ -1280,8 +1285,8 @@ audio::-webkit-media-controls-panel {
 
 .gota-image-contador-2-2-3 {
     position: absolute;
-    top: 62px;
-    left: 1px;
+    top: 112%;
+    left: 1%;
     width: 5px;
     height: auto;
     animation: caerGotaContador212 18s ease-in-out infinite;
@@ -1289,8 +1294,8 @@ audio::-webkit-media-controls-panel {
 
 .gota-image-contador-2-3-1 {
     position: absolute;
-    top: 79px;
-    left: 12px;
+    top: 114%;
+    left: 5%;
     width: 5px;
     height: auto;
     animation: caerGotaContador23 10s ease-in-out infinite;
@@ -1298,8 +1303,8 @@ audio::-webkit-media-controls-panel {
 
 .gota-image-contador-2-3-2 {
     position: absolute;
-    top: 79px;
-    left: 12px;
+    top: 114%;
+    left: 5%;
     width: 5px;
     height: auto;
     animation: caerGotaContador23 15s ease-in-out infinite;
@@ -1307,8 +1312,8 @@ audio::-webkit-media-controls-panel {
 
 .gota-image-contador-2-3-3 {
     position: absolute;
-    top: 79px;
-    left: 12px;
+    top: 114%;
+    left: 5%;
     width: 5px;
     height: auto;
     animation: caerGotaContador23 20s ease-in-out infinite;
@@ -1316,8 +1321,8 @@ audio::-webkit-media-controls-panel {
 
 .gota-image-contador-2-4-1 {
     position: absolute;
-    top: 18px;
-    right: 18px;
+    top: 18%;
+    right: 12%;
     width: 5px;
     height: auto;
     animation: caerGotaContador246 4s ease-in-out infinite;
@@ -1325,8 +1330,8 @@ audio::-webkit-media-controls-panel {
 
 .gota-image-contador-2-4-2 {
     position: absolute;
-    top: 18px;
-    right: 18px;
+    top: 18%;
+    right: 12%;
     width: 5px;
     height: auto;
     animation: caerGotaContador246 6s ease-in-out infinite;
@@ -1334,8 +1339,8 @@ audio::-webkit-media-controls-panel {
 
 .gota-image-contador-2-4-3 {
     position: absolute;
-    top: 18px;
-    right: 18px;
+    top: 18%;
+    right: 12%;
     width: 5px;
     height: auto;
     animation: caerGotaContador246 8s ease-in-out infinite;
@@ -1343,8 +1348,8 @@ audio::-webkit-media-controls-panel {
 
 .gota-image-contador-2-5-1 {
     position: absolute;
-    top: 34px;
-    right: 6px;
+    top: 35%;
+    right: 5%;
     width: 5px;
     height: auto;
     animation: caerGotaContador25 10s ease-in-out infinite;
@@ -1352,8 +1357,8 @@ audio::-webkit-media-controls-panel {
 
 .gota-image-contador-2-5-2 {
     position: absolute;
-    top: 34px;
-    right: 6px;
+    top: 35%;
+    right: 5%;
     width: 5px;
     height: auto;
     animation: caerGotaContador25 20s ease-in-out infinite;
@@ -1361,8 +1366,8 @@ audio::-webkit-media-controls-panel {
 
 .gota-image-contador-2-5-3 {
     position: absolute;
-    top: 34px;
-    right: 6px;
+    top: 35%;
+    right: 5%;
     width: 5px;
     height: auto;
     animation: caerGotaContador25 30s ease-in-out infinite;
@@ -1370,8 +1375,8 @@ audio::-webkit-media-controls-panel {
 
 .gota-image-contador-2-6-1 {
     position: absolute;
-    top: 18px;
-    right: -2px;
+    top: 18%;
+    right: -1%;
     width: 5px;
     height: auto;
     animation: caerGotaContador246 6s ease-in-out infinite;
@@ -1379,8 +1384,8 @@ audio::-webkit-media-controls-panel {
 
 .gota-image-contador-2-6-2 {
     position: absolute;
-    top: 18px;
-    right: -2px;
+    top: 18%;
+    right: -1%;
     width: 5px;
     height: auto;
     animation: caerGotaContador246 12s ease-in-out infinite;
@@ -1388,8 +1393,8 @@ audio::-webkit-media-controls-panel {
 
 .gota-image-contador-2-6-3 {
     position: absolute;
-    top: 18px;
-    right: -2px;
+    top: 18%;
+    right: -1%;
     width: 5px;
     height: auto;
     animation: caerGotaContador246 18s ease-in-out infinite;
@@ -1397,7 +1402,7 @@ audio::-webkit-media-controls-panel {
 
 @keyframes caerGotaContador212 {
     0% {
-        top: 62px; /* Punto inicial */
+        top: 112%; /* Punto inicial */
         opacity: 1; /* Totalmente visible al inicio */
     }
     80% {
@@ -1408,14 +1413,14 @@ audio::-webkit-media-controls-panel {
         opacity: 0; /* Desaparece justo antes de llegar al final */
     }
     100% {
-        top: 62px; /* Vuelve al punto inicial, pero es invisible */
+        top: 112%; /* Vuelve al punto inicial, pero es invisible */
         opacity: 0; /* Permanece invisible al regresar */
     }
 }
 
 @keyframes caerGotaContador23 {
     0% {
-        top: 72px; /* Punto inicial */
+        top: 114%; /* Punto inicial */
         opacity: 1; /* Totalmente visible al inicio */
     }
     80% {
@@ -1426,14 +1431,14 @@ audio::-webkit-media-controls-panel {
         opacity: 0; /* Desaparece justo antes de llegar al final */
     }
     100% {
-        top: 72px; /* Vuelve al punto inicial, pero es invisible */
+        top: 114%; /* Vuelve al punto inicial, pero es invisible */
         opacity: 0; /* Permanece invisible al regresar */
     }
 }
 
 @keyframes caerGotaContador246 {
     0% {
-        top: 18px; /* Punto inicial */
+        top: 18%; /* Punto inicial */
         opacity: 1; /* Totalmente visible al inicio */
     }
     80% {
@@ -1444,14 +1449,14 @@ audio::-webkit-media-controls-panel {
         opacity: 0; /* Desaparece justo antes de llegar al final */
     }
     100% {
-        top: 18px; /* Vuelve al punto inicial, pero es invisible */
+        top: 18%; /* Vuelve al punto inicial, pero es invisible */
         opacity: 0; /* Permanece invisible al regresar */
     }
 }
 
 @keyframes caerGotaContador25 {
     0% {
-        top: 34px; /* Punto inicial */
+        top: 35%; /* Punto inicial */
         opacity: 1; /* Totalmente visible al inicio */
     }
     80% {
@@ -1462,7 +1467,7 @@ audio::-webkit-media-controls-panel {
         opacity: 0; /* Desaparece justo antes de llegar al final */
     }
     100% {
-        top: 34px; /* Vuelve al punto inicial, pero es invisible */
+        top: 35%; /* Vuelve al punto inicial, pero es invisible */
         opacity: 0; /* Permanece invisible al regresar */
     }
 }
@@ -1689,10 +1694,11 @@ audio::-webkit-media-controls-panel {
 
 .baba-2-navbar {
     position: absolute;
-    top: 40px;
-    left: -2px;
-    width: 50px;
+    bottom: 0;
+    left: 0;
+    width: 25%; /* Ajusta el tamaño de la imagen */
     height: auto;
+    transform: translate(-4%, 62%); /* Ajusta la posición para que quede alineado */
 }
 
 
