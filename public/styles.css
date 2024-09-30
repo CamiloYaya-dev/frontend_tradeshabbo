@@ -1472,46 +1472,51 @@ audio::-webkit-media-controls-panel {
     }
 }
 
-.tentaculo_izquierdo{
+.tentaculo_izquierdo {
     position: absolute;
-    top: -23px;
-    left: -5px;
-    width: 120px;
+    top: 0; /* Usamos 'top: 0' y ajustamos con 'transform' */
+    left: calc(1%);
+    transform: translate(-5%, -16%);
+    width: 40%;
     height: auto;
 }
 
-.tentaculo_derecho{
+.tentaculo_derecho {
     position: absolute;
-    top: -23px;
-    right: -5px;
-    width: 120px;
+    top: 0; /* Usamos 'top: 0' y ajustamos con 'transform' */
+    right: calc(-1%);
+    transform: translate(-1%, -17%);
+    width: 40%;
     height: auto;
 }
 
-.calabaza{
+.calabaza {
     position: absolute;
-    top: -48px;
-    left: 112px;
-    width: 70px;
+    top: 0; /* Usamos 'top: 0' y ajustamos con 'transform' */
+    left: calc(50%); /* Centramos horizontalmente */
+    transform: translate(-50%, -70%);
+    width: 24%;
     height: auto;
 }
 
-.llama-1{
-    width: 11px;
-    left: 132px;
-    top: -15px;
+.llama-1 {
     position: absolute;
+    top: 0; /* Comienza desde el top relativo al contenedor */
+    left: calc(50%); /* Centramos horizontalmente */
+    transform: translate(-220%, -100%);
+    width: 2%;
     height: auto;
-    animation: toggleVisibility 20s infinite; /* Repetir cada 10 segundos */
+    animation: toggleVisibility 20s infinite; /* Repetir cada 20 segundos */
 }
 
-.llama-2{
-    width: 11px;
-    left: 150px;
-    top: -15px;
+.llama-2 {
     position: absolute;
+    top: 0; /* Comienza desde el top relativo al contenedor */
+    left: calc(55%); /* Ligeramente a la derecha */
+    transform: translate(-125%, -100%);
+    width: 2%;
     height: auto;
-    animation: toggleVisibility 20s infinite; /* Repetir cada 10 segundos */
+    animation: toggleVisibility 20s infinite; /* Repetir cada 20 segundos */
 }
 
 @keyframes toggleVisibility {
@@ -1646,7 +1651,7 @@ audio::-webkit-media-controls-panel {
 }
 
 
-@media (max-width: 1600px) {
+/*@media (max-width: 1600px) {
     .tentaculo_izquierdo{
         position: absolute;
         top: -18px;
@@ -1677,7 +1682,7 @@ audio::-webkit-media-controls-panel {
         top: -7px;
         position: absolute;
         height: auto;
-        animation: toggleVisibility 20s infinite; /* Repetir cada 10 segundos */
+        animation: toggleVisibility 20s infinite; 
     }
     
     .llama-2{
@@ -1686,9 +1691,9 @@ audio::-webkit-media-controls-panel {
         top: -7px;
         position: absolute;
         height: auto;
-        animation: toggleVisibility 20s infinite; /* Repetir cada 10 segundos */
+        animation: toggleVisibility 20s infinite; 
     }
-}
+}*/
 
 /*navbar*/
 
