@@ -46,6 +46,50 @@ $(document).ready(function() {
     });
 
     updateContent();
+
+    const images = document.querySelectorAll('.patos_imagenes');
+
+    // Función para generar un número aleatorio entre un rango
+    function getRandom(min, max) {
+        return Math.random() * (max - min) + min;
+    }
+
+    // Función para seleccionar un pato aleatorio
+    function showRandomDuck() {
+        // Oculta todos los patos
+        images.forEach(image => {
+            image.style.display = 'none';
+            image.style.animation = ''; // Elimina cualquier animación activa
+            image.style.left = ''; // Resetea el valor de 'left'
+            image.style.right = ''; // Resetea el valor de 'right'
+        });
+
+        // Selecciona un pato aleatorio
+        const randomIndex = Math.floor(Math.random() * images.length);
+        const selectedDuck = images[randomIndex];
+
+        // Genera una duración aleatoria
+        const randomDuration = getRandom(20, 60); // Duración entre 10 y 120 segundos
+
+        // Asigna una posición horizontal aleatoria
+        const randomSide = Math.random() > 0.5 ? 'left' : 'right'; // Elige aleatoriamente entre 'left' y 'right'
+        const randomPosition = getRandom(0, 700); // Genera un valor aleatorio para la posición en la pantalla
+
+        selectedDuck.style.position = 'relative';
+        selectedDuck.style[randomSide] = `${randomPosition}px`; // Asigna el valor aleatorio a 'left' o 'right'
+
+        // Muestra el pato seleccionado y asigna la animación
+        selectedDuck.style.display = 'block';
+        selectedDuck.style.animation = `asomarse ${randomDuration}s ease-in-out`;
+
+        // Al final de la animación, oculta el pato y selecciona otro
+        setTimeout(() => {
+            showRandomDuck();
+        }, randomDuration * 1000); // Multiplicamos por 1000 para convertir segundos a milisegundos
+    }
+
+    // Inicia el ciclo mostrando el primer pato aleatorio
+    showRandomDuck();
 });
 
 function initialize() {

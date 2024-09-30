@@ -1571,6 +1571,75 @@ audio::-webkit-media-controls-panel {
     }
 }
 
+.image-animation-container {
+    position: fixed;
+    bottom: -15px; /* Empieza fuera del viewport */
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around; /* Distribuye las imágenes uniformemente */
+}
+
+/* Estilos de las imágenes */
+.asomandose-img-5 {
+    width: 100px; /* Ajusta según el tamaño que desees */
+    height: auto;
+    opacity: 0;
+    transform: translateY(100px); /* Posición fuera del viewport */
+}
+
+.asomandose-img-1 {
+    width: 100px; /* Ajusta según el tamaño que desees */
+    height: auto;
+    opacity: 0;
+    transform: translateY(100px); /* Posición fuera del viewport */
+}
+
+.asomandose-img-2 {
+    width: 100px; /* Ajusta según el tamaño que desees */
+    height: auto;
+    opacity: 0;
+    transform: translateY(100px); /* Posición fuera del viewport */
+}
+
+.asomandose-img-3 {
+    width: 100px; /* Ajusta según el tamaño que desees */
+    height: auto;
+    opacity: 0;
+    transform: translateY(100px); /* Posición fuera del viewport */
+}
+
+.asomandose-img-4 {
+    width: 100px; /* Ajusta según el tamaño que desees */
+    height: auto;
+    opacity: 0;
+    transform: translateY(100px); /* Posición fuera del viewport */
+}
+
+/* Animación de subir, mantener visible y luego bajar */
+@keyframes asomarse {
+    0% {
+        opacity: 0;
+        transform: translateY(100px); /* Fuera de pantalla */
+    }
+    20% {
+        opacity: 1;
+        transform: translateY(0); /* Sube dentro del viewport */
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(0); /* Mantiene la posición visible */
+    }
+    70% {
+        opacity: 1;
+        transform: translateY(100px); /* Comienza a bajar */
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(100px); /* Sale completamente del viewport */
+    }
+}
+
 
 @media (max-width: 1600px) {
     .tentaculo_izquierdo{
