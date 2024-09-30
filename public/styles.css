@@ -516,6 +516,7 @@ footer {
     padding: 12px;
     font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
     margin-left: 5px;
+    position: relative;
 }
 
 .navbar_item a:hover,
@@ -1187,6 +1188,7 @@ audio::-webkit-media-controls-panel {
 }
 
 .contador_div{
+    position: relative;
     background: #626262;
     padding: 5px;
     text-align: center;
@@ -1196,6 +1198,284 @@ audio::-webkit-media-controls-panel {
     width: 200px;
     border-radius: 15px;
 }
+
+/*contador 1*/
+.baba-1-image-contador-1 {
+    position: absolute;
+    top: -4px;
+    right: -5px;
+    width: 33px;
+    height: auto;
+}
+
+.baba-2-image-contador-1 {
+    position: absolute;
+    top: 45px;
+    left: -2px;
+    width: 50px;
+    height: auto;
+}
+
+/*contador 2*/
+.baba-1-image-contador-2 {
+    position: absolute;
+    top: -4px;
+    right: -5px;
+    width: 33px;
+    height: auto;
+}
+
+.baba-2-image-contador-2 {
+    position: absolute;
+    top: 45px;
+    left: -2px;
+    width: 50px;
+    height: auto;
+}
+
+.gota-image-contador-2-1-1 {
+    position: absolute;
+    top: 62px;
+    left: 40px;
+    width: 5px;
+    height: auto;
+    animation: caerGotaContador212 4s ease-in-out infinite;
+}
+
+.gota-image-contador-2-1-2 {
+    position: absolute;
+    top: 62px;
+    left: 40px;
+    width: 5px;
+    height: auto;
+    animation: caerGotaContador212 8s ease-in-out infinite;
+}
+.gota-image-contador-2-1-3 {
+    position: absolute;
+    top: 62px;
+    left: 40px;
+    width: 5px;
+    height: auto;
+    animation: caerGotaContador212 12s ease-in-out infinite;
+}
+
+.gota-image-contador-2-2-1 {
+    position: absolute;
+    top: 62px;
+    left: 1px;
+    width: 5px;
+    height: auto;
+    animation: caerGotaContador212 6s ease-in-out infinite;
+}
+
+.gota-image-contador-2-2-2 {
+    position: absolute;
+    top: 62px;
+    left: 1px;
+    width: 5px;
+    height: auto;
+    animation: caerGotaContador212 12s ease-in-out infinite;
+}
+
+.gota-image-contador-2-2-3 {
+    position: absolute;
+    top: 62px;
+    left: 1px;
+    width: 5px;
+    height: auto;
+    animation: caerGotaContador212 18s ease-in-out infinite;
+}
+
+.gota-image-contador-2-3-1 {
+    position: absolute;
+    top: 79px;
+    left: 12px;
+    width: 5px;
+    height: auto;
+    animation: caerGotaContador23 10s ease-in-out infinite;
+}
+
+.gota-image-contador-2-3-2 {
+    position: absolute;
+    top: 79px;
+    left: 12px;
+    width: 5px;
+    height: auto;
+    animation: caerGotaContador23 15s ease-in-out infinite;
+}
+
+.gota-image-contador-2-3-3 {
+    position: absolute;
+    top: 79px;
+    left: 12px;
+    width: 5px;
+    height: auto;
+    animation: caerGotaContador23 20s ease-in-out infinite;
+}
+
+.gota-image-contador-2-4-1 {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 5px;
+    height: auto;
+    animation: caerGotaContador246 4s ease-in-out infinite;
+}
+
+.gota-image-contador-2-4-2 {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 5px;
+    height: auto;
+    animation: caerGotaContador246 6s ease-in-out infinite;
+}
+
+.gota-image-contador-2-4-3 {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 5px;
+    height: auto;
+    animation: caerGotaContador246 8s ease-in-out infinite;
+}
+
+.gota-image-contador-2-5-1 {
+    position: absolute;
+    top: 34px;
+    right: 6px;
+    width: 5px;
+    height: auto;
+    animation: caerGotaContador25 10s ease-in-out infinite;
+}
+
+.gota-image-contador-2-5-2 {
+    position: absolute;
+    top: 34px;
+    right: 6px;
+    width: 5px;
+    height: auto;
+    animation: caerGotaContador25 20s ease-in-out infinite;
+}
+
+.gota-image-contador-2-5-3 {
+    position: absolute;
+    top: 34px;
+    right: 6px;
+    width: 5px;
+    height: auto;
+    animation: caerGotaContador25 30s ease-in-out infinite;
+}
+
+.gota-image-contador-2-6-1 {
+    position: absolute;
+    top: 18px;
+    right: -2px;
+    width: 5px;
+    height: auto;
+    animation: caerGotaContador246 6s ease-in-out infinite;
+}
+
+.gota-image-contador-2-6-2 {
+    position: absolute;
+    top: 18px;
+    right: -2px;
+    width: 5px;
+    height: auto;
+    animation: caerGotaContador246 12s ease-in-out infinite;
+}
+
+.gota-image-contador-2-6-3 {
+    position: absolute;
+    top: 18px;
+    right: -2px;
+    width: 5px;
+    height: auto;
+    animation: caerGotaContador246 18s ease-in-out infinite;
+}
+
+@keyframes caerGotaContador212 {
+    0% {
+        top: 62px; /* Punto inicial */
+        opacity: 1; /* Totalmente visible al inicio */
+    }
+    80% {
+        top: 100vh; /* La gota cae casi hasta el final de la página */
+        opacity: 1; /* Visible durante la caída */
+    }
+    90% {
+        opacity: 0; /* Desaparece justo antes de llegar al final */
+    }
+    100% {
+        top: 62px; /* Vuelve al punto inicial, pero es invisible */
+        opacity: 0; /* Permanece invisible al regresar */
+    }
+}
+
+@keyframes caerGotaContador23 {
+    0% {
+        top: 72px; /* Punto inicial */
+        opacity: 1; /* Totalmente visible al inicio */
+    }
+    80% {
+        top: 100vh; /* La gota cae casi hasta el final de la página */
+        opacity: 1; /* Visible durante la caída */
+    }
+    90% {
+        opacity: 0; /* Desaparece justo antes de llegar al final */
+    }
+    100% {
+        top: 72px; /* Vuelve al punto inicial, pero es invisible */
+        opacity: 0; /* Permanece invisible al regresar */
+    }
+}
+
+@keyframes caerGotaContador246 {
+    0% {
+        top: 18px; /* Punto inicial */
+        opacity: 1; /* Totalmente visible al inicio */
+    }
+    80% {
+        top: 100vh; /* La gota cae casi hasta el final de la página */
+        opacity: 1; /* Visible durante la caída */
+    }
+    90% {
+        opacity: 0; /* Desaparece justo antes de llegar al final */
+    }
+    100% {
+        top: 18px; /* Vuelve al punto inicial, pero es invisible */
+        opacity: 0; /* Permanece invisible al regresar */
+    }
+}
+
+@keyframes caerGotaContador25 {
+    0% {
+        top: 34px; /* Punto inicial */
+        opacity: 1; /* Totalmente visible al inicio */
+    }
+    80% {
+        top: 100vh; /* La gota cae casi hasta el final de la página */
+        opacity: 1; /* Visible durante la caída */
+    }
+    90% {
+        opacity: 0; /* Desaparece justo antes de llegar al final */
+    }
+    100% {
+        top: 34px; /* Vuelve al punto inicial, pero es invisible */
+        opacity: 0; /* Permanece invisible al regresar */
+    }
+}
+
+/*navbar*/
+
+.baba-2-navbar {
+    position: absolute;
+    top: 40px;
+    left: -2px;
+    width: 50px;
+    height: auto;
+}
+
 
 .contador_div_master_trades{
     background-color: #2C2930;
