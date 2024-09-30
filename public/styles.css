@@ -333,6 +333,7 @@ main.container.master-trades-bg {
     box-shadow: 0 2px 3px rgba(6, 19, 25, .7);
     padding: 12px;
     font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    position: relative;
 }
 
 .online_users_content_master_trades{
@@ -1463,6 +1464,155 @@ audio::-webkit-media-controls-panel {
     100% {
         top: 34px; /* Vuelve al punto inicial, pero es invisible */
         opacity: 0; /* Permanece invisible al regresar */
+    }
+}
+
+.tentaculo_izquierdo{
+    position: absolute;
+    top: -23px;
+    left: -5px;
+    width: 120px;
+    height: auto;
+}
+
+.tentaculo_derecho{
+    position: absolute;
+    top: -23px;
+    right: -5px;
+    width: 120px;
+    height: auto;
+}
+
+.calabaza{
+    position: absolute;
+    top: -48px;
+    left: 112px;
+    width: 70px;
+    height: auto;
+}
+
+.llama-1{
+    width: 11px;
+    left: 132px;
+    top: -15px;
+    position: absolute;
+    height: auto;
+    animation: toggleVisibility 20s infinite; /* Repetir cada 10 segundos */
+}
+
+.llama-2{
+    width: 11px;
+    left: 150px;
+    top: -15px;
+    position: absolute;
+    height: auto;
+    animation: toggleVisibility 20s infinite; /* Repetir cada 10 segundos */
+}
+
+@keyframes toggleVisibility {
+    0%, 90% {
+        opacity: 0; /* Completamente invisible */
+        visibility: hidden; /* No visible */
+    }
+    95% {
+        opacity: 1; /* Completamente visible */
+        visibility: visible; /* Visible */
+    }
+    100% {
+        opacity: 0; /* Invisible de nuevo al final */
+        visibility: hidden; /* No visible */
+    }
+}
+
+.flame-container-1 {
+    position: relative;
+    width: 50px;
+    height: 112px;
+    top: 119px;
+    left: 20px;
+}
+
+.flame-container-2 {
+    position: relative;
+    width: 50px;
+    height: 112px;
+    top: 42px;
+    left: 121px;
+}
+
+.flame {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    animation: flameAnimation 1.5s infinite steps(1);
+}
+
+.flame.frame1 {
+    animation-delay: 0s;
+}
+
+.flame.frame2 {
+    animation-delay: 0.5s;
+}
+
+.flame.frame3 {
+    animation-delay: 1s;
+}
+
+@keyframes flameAnimation {
+    0%, 33.3% {
+        opacity: 1; /* Imagen visible */
+    }
+    33.4%, 100% {
+        opacity: 0; /* Imagen invisible */
+    }
+}
+
+
+@media (max-width: 1600px) {
+    .tentaculo_izquierdo{
+        position: absolute;
+        top: -18px;
+        left: -7px;
+        width: 105px;
+        height: auto;
+    }
+    
+    .tentaculo_derecho{
+        position: absolute;
+        top: -18px;
+        right: -6px;
+        width: 105px;
+        height: auto;
+    }
+    
+    .calabaza{
+        position: absolute;
+        top: -30px;
+        left: 96px;
+        width: 50px;
+        height: auto;
+    }
+
+    .llama-1{
+        width: 8px;
+        left: 110px;
+        top: -7px;
+        position: absolute;
+        height: auto;
+        animation: toggleVisibility 20s infinite; /* Repetir cada 10 segundos */
+    }
+    
+    .llama-2{
+        width: 8px;
+        left: 124px;
+        top: -7px;
+        position: absolute;
+        height: auto;
+        animation: toggleVisibility 20s infinite; /* Repetir cada 10 segundos */
     }
 }
 
