@@ -920,6 +920,30 @@ app.get('/obtener-placas', (req, res) => {
         res.json(imageFiles);
     });
 });
+
+app.get('/secure-image/:imageName', async (req, res) => {
+    const imageName = req.params.imageName;
+    const referer = req.headers.referer;
+
+    /*// Verifica si la IP ha sido verificada
+    if (!req.session.ipVerified) {
+        return res.status(403).json({ error: 'IP not verified' });
+    }*/
+
+    // Opcional: verifica el referer para asegurarte de que la imagen sea solicitada desde tu página web
+    if (!referer || (!referer.includes('localhost:3000') || !referer.includes('www.tradeshabbo.com'))) {
+        return res.status(403).json({ error: 'Access forbidden' });
+    }
+
+    const imagePath = path.join(__dirname, 'public', 'furnis', 'rares', 'gifs', imageName);
+
+    // Verifica si la imagen existe
+    if (fs.existsSync(imagePath)) {
+        res.sendFile(imagePath);
+    } else {
+        res.status(404).json({ error: 'Image not found' });
+    }
+});
   
 const DISCORD_TOKEN = process.env.DISCORD_TOKEN;
 const CLIENT_ID = process.env.CLIENT_ID;
