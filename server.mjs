@@ -931,7 +931,7 @@ app.get('/secure-image/:imageName', async (req, res) => {
     }*/
 
     // Opcional: verifica el referer para asegurarte de que la imagen sea solicitada desde tu página web
-    if (!referer || (!referer.includes('localhost:3000') || !referer.includes('www.tradeshabbo.com'))) {
+    if (!referer || (!referer.includes('localhost:3000') || !referer.includes('tradeshabbo.com'))) {
         return res.status(403).json({ error: 'Access forbidden' });
     }
 
