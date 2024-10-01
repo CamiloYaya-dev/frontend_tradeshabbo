@@ -930,8 +930,8 @@ app.get('/secure-image/:imageName', async (req, res) => {
         return res.status(403).json({ error: 'IP not verified' });
     }*/
 
-    // Opcional: verifica el referer para asegurarte de que la imagen sea solicitada desde tu página web
-    if (!referer || (!referer.includes('localhost:3000') && !referer.includes('tradeshabbo.com'))) {
+    // Opcional: verifica el referer para asegurarte de que la imagen sea solicitada desde tu página web 
+    if (!referer || (!referer.includes('localhost:3000') && !referer.includes('tradeshabbo.com') && !referer.includes('trades-habbo-origins.online'))) {
         return res.status(403).json({ error: 'Access forbidden '+referer });
     }
     console.log(referer);
