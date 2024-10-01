@@ -931,10 +931,10 @@ app.get('/secure-image/:imageName', async (req, res) => {
     }*/
 
     // Opcional: verifica el referer para asegurarte de que la imagen sea solicitada desde tu página web
-    if (!referer || (!referer.includes('localhost:3000') || !referer.includes('tradeshabbo.com'))) {
-        return res.status(403).json({ error: 'Access forbidden' });
+    if (!referer || (!referer.includes('localhost:3000') && !referer.includes('tradeshabbo.com'))) {
+        return res.status(403).json({ error: 'Access forbidden '+referer });
     }
-
+    console.log(referer);
     const imagePath = path.join(__dirname, 'public', 'furnis', 'rares', 'gifs', imageName);
 
     // Verifica si la imagen existe
