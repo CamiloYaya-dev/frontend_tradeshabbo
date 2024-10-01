@@ -462,7 +462,7 @@ app.get('/price-history/:productId', async (req, res) => {
             include: [{
                 model: Image,
                 as: 'image',
-                attributes: ['name', 'icon', 'descripcion']
+                attributes: ['name', 'icon', 'descripcion', 'src']
             }]
         });
         const historyWithProductName = await Promise.all(history.map(async (record) => {
@@ -473,6 +473,7 @@ app.get('/price-history/:productId', async (req, res) => {
                 fecha_precio: record.fecha_precio,
                 precio: record.precio,
                 name: record.image ? record.image.name : null,
+                src: record.image ? record.image.src : null,
                 icon: record.image ? record.image.icon : null,
                 descripcion: record.image ? record.image.descripcion : null,
                 vip_price: vipPriceOnDate
@@ -925,25 +926,47 @@ app.get('/secure-image/:imageName', async (req, res) => {
     const imageName = req.params.imageName;
     const referer = req.headers.referer;
 
-    /*// Verifica si la IP ha sido verificada
-    if (!req.session.ipVerified) {
-        return res.status(403).json({ error: 'IP not verified' });
-    }*/
-
-    // Opcional: verifica el referer para asegurarte de que la imagen sea solicitada desde tu página web 
+    // Verifica el referer para asegurarte de que la imagen sea solicitada desde tu página web
     if (!referer || (!referer.includes('localhost:3000') && !referer.includes('tradeshabbo.com') && !referer.includes('trades-habbo-origins.online'))) {
-        return res.status(403).json({ error: 'Access forbidden '+referer });
+        return res.status(403).json({ error: 'Access forbidden' });
     }
-    console.log(referer);
-    const imagePath = path.join(__dirname, 'public', 'furnis', 'rares', 'gifs', imageName);
 
-    // Verifica si la imagen existe
-    if (fs.existsSync(imagePath)) {
-        res.sendFile(imagePath);
+    // Ruta base donde se encuentran las imágenes
+    const baseDirectory = path.join(__dirname, 'public');
+
+    // Buscar la imagen dentro del directorio 'public/furnis' y sus subcarpetas
+    const imagePath = findImage(baseDirectory, imageName);
+
+    // Verifica si la imagen fue encontrada
+    if (imagePath) {
+        res.sendFile(imagePath); // Envía el archivo de imagen encontrado
     } else {
         res.status(404).json({ error: 'Image not found' });
     }
 });
+
+function findImage(directory, imageName) {
+    const files = fs.readdirSync(directory);
+
+    for (const file of files) {
+        const fullPath = path.join(directory, file);
+
+        // Verifica si es un directorio
+        if (fs.statSync(fullPath).isDirectory()) {
+            const found = findImage(fullPath, imageName);
+            if (found) {
+                return found; // Si se encuentra la imagen, retorna la ruta
+            }
+        } else {
+            // Verifica si el archivo es la imagen solicitada
+            if (file === imageName) {
+                return fullPath; // Retorna la ruta completa de la imagen
+            }
+        }
+    }
+
+    return null; // Retorna null si no se encuentra la imagen
+}
   
 const DISCORD_TOKEN = process.env.DISCORD_TOKEN;
 const CLIENT_ID = process.env.CLIENT_ID;
@@ -1106,7 +1129,10 @@ const getImageChoices = () => {
     const goticoDir = path.join(__dirname, 'public', 'furnis', 'gotico');
 
     const hcImages = fs.readdirSync(hcDir).map(file => ({ name: file.replace('.png', ''), value: `hc/${file}` }));
-    const raresImages = fs.readdirSync(raresDir).map(file => ({ name: file.replace('.png', ''), value: `rares/${file}` }));
+    const raresImages = fs.readdirSync(raresDir).map(file => ({
+        name: file.replace(/\.(png|gif)$/, ''), // Reemplaza .png o .gif
+        value: `rares/${file}`
+    }));
     const funkyImages = fs.readdirSync(funkyDir).map(file => ({ name: file.replace('.png', ''), value: `funky/${file}` }));
     const coleccionImages = fs.readdirSync(coleccionDir).map(file => ({ name: file.replace('.png', ''), value: `coleccion/${file}` }));
     const deportesImages = fs.readdirSync(deportesDir).map(file => ({ name: file.replace('.png', ''), value: `deportes/${file}` }));

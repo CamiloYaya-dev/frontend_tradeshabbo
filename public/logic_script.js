@@ -514,40 +514,11 @@ function initialize() {
 
                     function showTable(decryptedData) {
                         var firstRecord = decryptedData[0];
-                        var imagePath = '';
-                        if (firstRecord.icon === 'hc') {
-                            imagePath = `furnis/hc/${firstRecord.name.replace(/ /g, '_')}.png`;
-                            imageClass = "price-history-img"
-                        } else if (firstRecord.icon === 'rare') {
-                            imagePath = `furnis/rares/${firstRecord.name.replace(/ /g, '_')}.png`;
-                            imageClass = "price-history-img"
-                        } else if (firstRecord.icon === 'funky') {
-                            imagePath = `furnis/funky/${firstRecord.name.replace(/ /g, '_')}.png`;
-                            imageClass = "price-history-img"
-                        } else if (firstRecord.icon === "mega_rare") {
-                            imagePath = `furnis/rares/${firstRecord.name.replace(/ /g, '_')}.png`;
-                            imageClass = "price-history-img"
-                        } else if (firstRecord.icon === "coleccion") {
-                            imagePath = `furnis/coleccion/${firstRecord.name.replace(/ /g, '_')}.png`;
-                            imageClass = "price-history-img"
-                        } else if (firstRecord.icon === "deportes") {
-                            imagePath = `furnis/deportes/${firstRecord.name.replace(/ /g, '_')}.png`;
-                            imageClass = "price-history-img"
-                        } else if (firstRecord.icon === "cabin") {
-                            imagePath = `furnis/cabin/${firstRecord.name.replace(/ /g, '_')}.png`;
-                            imageClass = "price-history-img"
-                        } else if (firstRecord.icon === "habboween") {
-                            imagePath = `furnis/habboween/${firstRecord.name.replace(/ /g, '_')}.png`;
-                            imageClass = "price-history-img"
-                        } else if (firstRecord.icon === "gotico") {
-                            imagePath = `furnis/gotico/${firstRecord.name.replace(/ /g, '_')}.png`;
-                            imageClass = "price-history-img"
-                        }
         
                         var historyContent = `
                             <h3 class="price_history_content habbo_text_blue h3_historial_precios" data-i18n="historial_precios">Historial de Precios</h3>
                             <div class="price-history-image">
-                                <img src="${imagePath}" alt="${firstRecord.name}" class="${imageClass}">
+                                <img src="${firstRecord.src}" alt="${firstRecord.name}" class="price-history-img">
                             </div>
                             <div>
                                 <button id="toggle-view-btn" class="button_price_history_dinamic price_history_content online_habbo_text_white">Mostrar Gráfica</button>

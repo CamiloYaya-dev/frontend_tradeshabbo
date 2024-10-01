@@ -21,7 +21,7 @@ function obtenerPlacas() {
                 const imageHTML = `
                     <div class="col-3 no_padding">
                         <div class="placa" data-toggle="tooltip" title="${tooltipText2}">
-                            <img src="/placas/${fileName}" alt="${fileName}">
+                            <img src="/secure-image/${fileName}" alt="${fileName}">
                         </div>
                     </div>
                 `;

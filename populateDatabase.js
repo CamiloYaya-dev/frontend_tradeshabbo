@@ -24,14 +24,14 @@ async function populateDatabase() {
 
         const loadImages = (dirPath, folder) => {
             const files = fs.readdirSync(dirPath);
-            return files.filter(file => file.endsWith('.png')).map(file => {
+            return files.filter(file => file.endsWith('.png') || file.endsWith('.gif')).map(file => {
                 const rawName = path.basename(file, path.extname(file));
                 const name = rawName.replace(/_/g, ' ');  // Reemplaza guiones bajos con espacios
                 const priceInfo = priceData.find(p => p.name === rawName) || { price: 0, icon: null, highlight: false };
                 return {
                     id: priceInfo.id,
                     name: name,
-                    src: `furnis/${folder}/${file}`,
+                    src: `/secure-image/${file}`,
                     price: priceInfo.price,
                     icon: priceInfo.icon,
                     highlight: priceInfo.highlight,
