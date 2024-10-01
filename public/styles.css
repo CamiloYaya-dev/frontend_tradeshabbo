@@ -1572,6 +1572,49 @@ audio::-webkit-media-controls-panel {
     animation-delay: 1s;
 }
 
+.ducks-container{
+    position: relative;
+}
+
+.pato-brujo{
+    position: relative;
+    transform: scaleX(-1);
+    left: 163px;
+    top: 7px;
+}
+
+.pato-diablo{
+    position: relative;
+    transform: scaleX(-1);
+    left: 25px;
+    top: 56px;
+}
+
+.pato-muerto1{
+    position: relative;
+    transform: scaleX(-1);
+    left: 18px;
+    top: 47px;
+}
+
+.pato-muerto2{
+    position: relative;
+    transform: scaleX(-1);
+    left: 27px;
+    top: 23px;
+}
+
+.pato-muerto3{
+    position: relative;
+    transform: scaleX(-1);
+    left: 110px;
+    top: 0px;
+}
+
+.column-explications-catalogo{
+    margin-top: 30px;
+}
+
 @keyframes flameAnimation {
     0%, 33.3% {
         opacity: 1; /* Imagen visible */
