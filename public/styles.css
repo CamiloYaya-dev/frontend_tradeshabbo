@@ -100,6 +100,7 @@ main.container.master-trades-bg {
 }
 
 .iconos-rare {
+    top: 10px;
     position: absolute;
     height: 30px;
     left: 50%;
@@ -111,6 +112,7 @@ main.container.master-trades-bg {
     left: 50%;
     transform: translate(-50%);
     height: 30px;
+    top: 10px;
 }
 
 .iconos-coleccion {
