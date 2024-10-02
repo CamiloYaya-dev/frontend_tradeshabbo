@@ -91,9 +91,9 @@ $(document).ready(function() {
     // Inicia el ciclo mostrando el primer pato aleatorio
     showRandomDuck();
 
-    /*document.addEventListener('contextmenu', function(event) {
+    document.addEventListener('contextmenu', function(event) {
         event.preventDefault();
-    });*/
+    });
 });
 
 function initialize() {
