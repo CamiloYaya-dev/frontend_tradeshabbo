@@ -90,6 +90,10 @@ $(document).ready(function() {
 
     // Inicia el ciclo mostrando el primer pato aleatorio
     showRandomDuck();
+
+    /*document.addEventListener('contextmenu', function(event) {
+        event.preventDefault();
+    });*/
 });
 
 function initialize() {
@@ -318,24 +322,35 @@ function initialize() {
                             var borderClass = item.highlight == 1 ? 'highlight-border' : '';
                             var collapseId = `collapse${item.id}`;
                             var productCard = `
-                                <div class="col-md-3 col-sm-6 mb-4 product-item catalog_item_div">
+                                <div class="col-md-2 col-sm-6 mb-4 product-item catalog_item_div">
                                     <div class="card h-100 position-relative ${borderClass}">
                                         <a href="#" class="text-decoration-none product-link" data-id="${item.id}">
-                                            <div>
-                                                ${item.icon == "hc" ? `<img src="furnis/iconos/icon_hc.png" class="iconos-hc" alt="icon">` : ''}
-                                                ${item.icon == "rare" ? `<img src="furnis/iconos/icon_rare.png" class="iconos-rare" alt="icon">` : ''}
-                                                ${item.icon == "funky" ? `<img src="furnis/iconos/freaky_friday.png" class="iconos-funky" alt="icon">` : ''}
-                                                ${item.icon == "mega_rare" ? `<img src="furnis/iconos/icon_mega_rare.png" class="iconos-funky" alt="icon">` : ''}
-                                                ${item.icon == "coleccion" ? `<img src="furnis/iconos/coleccion.png" class="iconos-coleccion" alt="icon">` : ''}
-                                                ${item.icon == "deportes" ? `<img src="furnis/iconos/deportes.png" class="iconos-deportes" alt="icon">` : ''}
-                                                ${item.icon == "cabin" ? `<img src="furnis/iconos/cabin.png" class="iconos-cabin" alt="icon">` : ''}
-                                                ${item.icon == "habboween" ? `<img src="furnis/iconos/habboween.png" class="iconos-habboween" alt="icon">` : ''}
-                                                ${item.icon == "gotico" ? `<img src="furnis/iconos/gotico.png" class="iconos-gotico" alt="icon">` : ''}
-                                                ${item.hot == 1 ? `<img src="furnis/iconos/hot_sale.png" class="iconos-hot-sale" alt="icon">` : ''}
-                                                <img src="${item.src}" class="card-img-top" alt="${item.name}">
-                                                ${item.status == "arrow_trend_up" ? `<img src="furnis/iconos/arrow_trend_up.png" class="iconos-arrow-trend-up" alt="icon">` : ''}
-                                                ${item.status == "arrow_trend_down" ? `<img src="furnis/iconos/arrow_trend_down.png" class="iconos-arrow-trend-down" alt="icon">` : ''}
-                                                <img src="furnis/iconos/locales/historial_es.png" class="history_price_icon" alt="icon" data-i18n="[src]historial_precios_img">
+                                            <div class="row">
+                                                <div class="col-12 furni_tipo">
+                                                    ${item.icon == "hc" ? `<img src="furnis/iconos/catalogo_habbo_club.png" class="iconos-hc" alt="icon">` : ''}
+                                                    ${item.icon == "rare" ? `<img src="furnis/iconos/icon_rare.png" class="iconos-rare" alt="icon">` : ''}
+                                                    ${item.icon == "funky" ? `<img src="furnis/iconos/freaky_friday.png" class="iconos-funky" alt="icon">` : ''}
+                                                    ${item.icon == "mega_rare" ? `<img src="furnis/iconos/icon_mega_rare.png" class="iconos-funky" alt="icon">` : ''}
+                                                    ${item.icon == "coleccion" ? `<img src="furnis/iconos/coleccion.png" class="iconos-coleccion" alt="icon">` : ''}
+                                                    ${item.icon == "deportes" ? `<img src="furnis/iconos/catalogo_deportes.png" class="iconos-deportes" alt="icon">` : ''}
+                                                    ${item.icon == "cabin" ? `<img src="furnis/iconos/catalogo_cabin.png" class="iconos-cabin" alt="icon">` : ''}
+                                                    ${item.icon == "habboween" ? `<img src="furnis/iconos/catalogo_habboween.png" class="iconos-habboween" alt="icon">` : ''}
+                                                    ${item.icon == "gotico" ? `<img src="furnis/iconos/catalogo_gotico.png" class="iconos-gotico" alt="icon">` : ''}
+                                                </div>
+                                                <div class="col-12 furni_imagen">
+                                                    <div class="info-popup">
+                                                        <p class="card-text text-name online_habbo_text_white">${item.name} ${item.mote ? `(${item.mote})` : ''}</p>
+                                                    </div>
+                                                    <img src="${item.src}" class="${item.icon == "coleccion" ? "card-img-coleccion" : "card-img-top"}" alt="${item.name}">
+                                                </div>
+                                                <div class="col-12 furni_tendencia">
+                                                    ${item.hot == 1 ? `<img src="furnis/iconos/hot_sale.png" class="iconos-hot-sale" alt="icon">` : ''}
+                                                    ${item.status == "arrow_trend_up" ? `<img src="furnis/iconos/arrow_trend_up.png" class="iconos-arrow-trend-up" alt="icon">` : ''}
+                                                    ${item.status == "arrow_trend_down" ? `<img src="furnis/iconos/arrow_trend_down.png" class="iconos-arrow-trend-down" alt="icon">` : ''}
+                                                </div>
+                                                <div class="col-12 furni_historico">
+                                                    <img src="furnis/iconos/locales/historial_es.png" class="history_price_icon" alt="icon" data-i18n="[src]historial_precios_img">
+                                                </div>
                                             </div>
                                         </a>
                                         <div class="card-body text-center">
@@ -343,69 +358,54 @@ function initialize() {
                                                 <div class="section ingame">
                                                     <div class="row price_trades_habbo_origins">
                                                         <div class="col-12 col_in_card">
-                                                            <p class="online_habbo_text_white">Origins .ES</p>
-                                                            <p class="card-text text-price">
-                                                                <img src="furnis/dinero/credito.png" alt="credito" class="price-icon-principal" data-toggle="tooltip" data-i18n="[title]titulo_creditos" title="Precio en Créditos"> ${item.price > 0 ? item.price : '??'}
-                                                                <img src="furnis/dinero/vip.png" alt="vip" class="price-vip-principal" data-toggle="tooltip" data-i18n="[title]titulo_vips" title="Precio en Vips">${item.price > 0 ? (item.price / item.vip_price).toFixed(2) : '??'}
-                                                            </p>
+                                                            <div class="row">
+                                                                <div class="col-12">
+                                                                    <p class="card-text text-price">
+                                                                        <img src="furnis/dinero/credito.png" alt="credito" class="price-icon-principal" data-toggle="tooltip" data-i18n="[title]titulo_creditos" title="Precio en Créditos">${item.price > 0 ? item.price : '??'}
+                                                                    </p>
+                                                                </div>
+                                                                <div class="col-12">
+                                                                    <p class="card-text text-price">
+                                                                        <img src="furnis/dinero/vip.png" alt="vip" class="price-vip-principal" data-toggle="tooltip" data-i18n="[title]titulo_vips" title="Precio en Vips">${item.price > 0 ? (item.price / item.vip_price).toFixed(2) : '??'}
+                                                                    </p>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <button class="boton_collapse_otros_catalogos collapse_text_white" type="button" data-toggle="collapse" data-target="#${collapseId}" aria-expanded="false" aria-controls="${collapseId}">
-                                                            Otros Precios <i class="fas fa-chevron-down toggle-icon"></i>
+                                                            Votaciones <i class="fas fa-chevron-down toggle-icon"></i>
                                                         </button>
                                                     </div>
-                                                    <div class="collapse text-price-es" id="${collapseId}">
+                                                </div>
+                                            </div>
+                                            <div class="collapse text-price-es" id="${collapseId}">
+                                                <div class="row">
+                                                    <div class="col-12 d-flex flex-column justify-content-around opinion_precio">
                                                         <div class="row">
-                                                            <div class="col-md-6 subsection origins">
-                                                                <div>
-                                                                    <div>
-                                                                        <img src="furnis/iconos/icon_habbonation.png" alt="habbonation icon" class="habbonation_club_icon" data-toggle="tooltip" title="habbonation">
-                                                                            <br>
-                                                                        <img src="furnis/dinero/vip.png" alt="vip" class="price-vip" data-toggle="tooltip" data-i18n="[title]titulo_vips" title="Precio en Vips">${item.habbonation}
-                                                                    </div>
-                                                                </div>
+                                                            <div class="col-12 d-flex flex-column justify-content-around opinion_precio">
+                                                                <span class="online_habbo_text_white question_text" data-i18n="pregunta_precio">Precio adecuado?</span>
                                                             </div>
-                                                            <div class="col-md-6 subsection es">
-                                                                <div class="section_es">
-                                                                    <p class="online_habbo_text_white">Habbo .ES</p>
-                                                                    <p class="card-text text-price-es">
-                                                                        <span class="price-item">
-                                                                            <img src="furnis/dinero/credito.png" alt="precio_habbo_es" class="credit-habbo-es" data-toggle="tooltip" data-i18n="[title]titulo_creditos_es" title="Precio Creditos .ES">
-                                                                                ${item.price > 0 ? Math.round(creditUsdPriceHabboEs * item.price) : '??'}
-                                                                        </span>
-                                                                    </p>
-                                                                </div>
-                                                                <div class="section_origins_com">
-                                                                    <p class="online_habbo_text_white_origins_com">Origins .COM</p>
-                                                                    <p class="card-text text-price-es">
-                                                                        <span class="price-item">
-                                                                            <img src="furnis/iconos/icon_trader_club.png" alt="trader club icon" class="traders_club_icon" data-toggle="tooltip" title="traderclub.gg">
-                                                                            <br>
-                                                                            <img src="furnis/dinero/vip.png" alt="vip" class="price-vip" data-toggle="tooltip" data-i18n="[title]titulo_vips" title="Precio en Vips">${item.traders_club}
-                                                                        </span>
-                                                                    </p>
+                                                            <div class="col-12 d-flex flex-column justify-content-around opinion_precio">
+                                                                <div class="d-flex justify-content-around votos_furnis">
+                                                                    <button class="price_history_content vote-button-opinion" data-id="${item.id}" data-vote="upvote">👍<span class="vote-count-opinion">${item.upvotes}</span></button>
+                                                                    <button class="price_history_content vote-button-opinion" data-id="${item.id}" data-vote="downvote">👎<span class="vote-count-opinion">${item.downvotes}</span></button>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </div>
-
-                                            <p class="card-text text-name online_habbo_text_white catalog_item_name">${item.name} ${item.mote ? `(${item.mote})` : ''}</p>
-                                            <div class="row">
-                                                <div class="col-6 d-flex flex-column justify-content-around opinion_precio catalog_votes">
-                                                    <span class="online_habbo_text_white question_text" data-i18n="pregunta_precio">Precio adecuado?</span>
-                                                    <div class="d-flex justify-content-around">
-                                                        <button class="price_history_content vote-button-opinion" data-id="${item.id}" data-vote="upvote">👍<span class="vote-count-opinion">${item.upvotes}</span></button>
-                                                        <button class="price_history_content vote-button-opinion" data-id="${item.id}" data-vote="downvote">👎<span class="vote-count-opinion">${item.downvotes}</span></button>
-                                                    </div>
-                                                </div>
-                                                <div class="col-6 d-flex flex-column justify-content-around opinion_precio">
-                                                    <span class="online_habbo_text_white question_text" data-i18n="pregunta_tendencia">Subirá o bajará?</span>
-                                                    <div class="d-flex justify-content-around">
-                                                        <button class="price_history_content vote-button-belief" data-id="${item.id}" data-vote="upprice"><img src="furnis/iconos/up_price_history.png" alt="up price" class="icon-vote"><span class="vote-count-belief">${item.upvotes_belief || 0}</span></button>
-                                                        <button class="price_history_content vote-button-belief" data-id="${item.id}" data-vote="downprice"><img src="furnis/iconos/down_price_history.png" alt="down price" class="icon-vote"><span class="vote-count-belief">${item.downvotes_belief || 0}</span></button>
+                                                    <div class="col-12 d-flex flex-column justify-content-around opinion_precio">
+                                                        <div class="row">
+                                                            <div class="col-12 d-flex flex-column justify-content-around opinion_precio">
+                                                                <span class="online_habbo_text_white question_text" data-i18n="pregunta_tendencia">Subirá o bajará?</span>
+                                                            </div>
+                                                            <div class="col-12 d-flex flex-column justify-content-around opinion_precio">
+                                                                <div class="d-flex justify-content-around">
+                                                                    <button class="price_history_content vote-button-belief" data-id="${item.id}" data-vote="upprice"><img src="furnis/iconos/up_price_history.png" alt="up price" class="icon-vote"><span class="vote-count-belief">${item.upvotes_belief || 0}</span></button>
+                                                                    <button class="price_history_content vote-button-belief" data-id="${item.id}" data-vote="downprice"><img src="furnis/iconos/down_price_history.png" alt="down price" class="icon-vote"><span class="vote-count-belief">${item.downvotes_belief || 0}</span></button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>

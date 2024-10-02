@@ -625,5 +625,49 @@
     "alt_imagen_resumida": "Imagen resumen de correcciones y actualizaciones en Habbo Hotel",
     "descripcion_resumida": "<p class='noticia_descripcion'>Habbo Hotel anuncia importantes correcciones y actualizaciones para mejorar la experiencia de juego. ¡No te pierdas los detalles de estas mejoras que llegarán pronto!</p>",
     "fecha_noticia": "2024-09-26T16:05:54.000Z"
+  },
+  {
+    "id": 92,
+    "titulo": "¡Es Funky Friday en Habbo Hotel!",
+    "imagen_completa": "funky_friday_27_09_2024",
+    "alt_imagen_completa": "Funky Friday en Habbo Hotel",
+    "descripcion_completa": "<p><strong>Hoy es Funky Friday en Habbo Hotel!</strong></p><p>Hoy Habbo Hotel está celebrando Funky Friday regalando una gran variedad de items desde su cuenta de X/Twitter. Pero eso no es todo, también estarán disponibles en el Catálogo durante 24 horas. ¡No te pierdas esta oportunidad de conseguir increíbles items!</p>Este es un resumen de la noticia oficial <a href=\"https://origins.habbo.es/community/article/321/es-funky-friday-15\" target=\"_blank\">Link</a><br>Esta noticia ha sido generada con IA por lo mismo puede tener errores gramaticales o hablar como si fuera parte del equipo de habbo",
+    "imagen_resumida": "funky_friday",
+    "alt_imagen_resumida": "Imagen representativa de Funky Friday",
+    "descripcion_resumida": "<p class='noticia_descripcion'><strong>Hoy es Funky Friday en Habbo Hotel!</strong> Habbo Hotel está regalando y poniendo a la venta items especiales desde su cuenta de X/Twitter. ¡Aprovecha esta oportunidad única!</p>",
+    "fecha_noticia": "2024-09-27T13:38:03.000Z"
+  },
+  {
+    "id": 93,
+    "titulo": "¡Celebra Habboween en Habbo Hotel: Orígenes!",
+    "imagen_completa": "habboween_origins",
+    "alt_imagen_completa": "Habboween en Habbo Hotel: Orígenes",
+    "descripcion_completa": "<p><strong>Habboween ha llegado a Habbo Hotel: Orígenes por primera vez este año, y viene cargado de actividades escalofriantemente divertidas para todos los ciudadanos!</strong></p><p>Prepárate para participar en un concurso creativo de arte IRL, una competición retro de dibujo en pixel art, eventos especiales como 'El Regreso de los Raros Muertos' y 'La Fiesta de Terror del Año', además de un emocionante desfile en el juego el día de Habboween.</p><p>Además, Habbo Hotel: Orígenes ha mejorado los premios para Habboween, incluyendo cantidades de artículos raros y de Funky Friday, distribuidos como premios en diversas competiciones.</p>Este es un resumen de la noticia oficial <a href=\"https://origins.habbo.es/community/article/388/habboween-en-habbo-hotel-origins\" target=\"_blank\">Link</a><br>Esta noticia ha sido generada con IA por lo mismo puede tener errores gramaticales o hablar como si fuera parte del equipo de habbo",
+    "imagen_resumida": "staff",
+    "alt_imagen_resumida": "Habboween en Habbo Hotel: Orígenes",
+    "descripcion_resumida": "<p class='noticia_descripcion'><strong>¡Habboween ha llegado a Habbo Hotel: Orígenes con actividades espeluznantes y emocionantes para todos los ciudadanos!</strong></p><p class='noticia_descripcion'>Concursos creativos, competiciones retro, eventos especiales y premios mejorados te esperan este mes.</p>",
+    "fecha_noticia": "2024-10-01T15:23:20.000Z"
+  },
+  {
+    "id": 94,
+    "titulo": "¡Nuevo raro añadido al Catálogo: Fontana Gótica!",
+    "imagen_completa": "catalogo_fuente_gotica",
+    "alt_imagen_completa": "Catálogo Fontana Gótica",
+    "descripcion_completa": "<p><strong>¡Atención ciudadanos de Habbo Hotel: Orígenes!</strong></p><p>Desde el <strong>1 de octubre</strong> hasta el <strong>3 de octubre</strong>, estará disponible en el catálogo la impresionante <strong>Fontana Gótica</strong> a un precio de <strong>35 créditos</strong>.</p><p>¡No te pierdas la oportunidad de añadir este raro a tu colección! La Fontana Gótica es un objeto exclusivo que no estará disponible por mucho tiempo, así que asegúrate de hacerte con ella antes de que desaparezca.</p><p>Mantente al tanto de más novedades y eventos en Habbo Hotel: Orígenes.</p>",
+    "imagen_resumida": "rares_martes",
+    "alt_imagen_resumida": "Fontana Gótica en Habbo Hotel: Orígenes",
+    "descripcion_resumida": "<p class='noticia_descripcion'><strong>¡La Fontana Gótica ha llegado al catálogo de Habbo Hotel: Orígenes!</strong></p><p class='noticia_descripcion'>Disponible desde el 1 de octubre hasta el 3 de octubre por 35 créditos. ¡No te lo pierdas!</p>",
+    "fecha_noticia": "2024-10-01T15:24:32.000Z"
+  },
+  {
+    "id": 95,
+    "titulo": "¡Habboween ha llegado con el calendario de eventos de octubre!",
+    "imagen_completa": "calendario_habboween_octubre",
+    "alt_imagen_completa": "Calendario de eventos Habboween octubre",
+    "descripcion_completa": "<p><strong>¡Buenos días a todos los Habbos!</strong></p><p>Como parte de las celebraciones de Habboween, el equipo de THO se complace en presentarles el <strong>calendario de eventos</strong> para el mes de octubre.</p><p>Confirmamos al 100% la llegada de los <strong>furnis Freaky Friday</strong>, ¡prepárense para decorar sus habitaciones con un toque espeluznante!</p><p>Respecto a los raros, hemos realizado una <strong>predicción basada en los emojis</strong> de la noticia oficial. Les recomendamos tomar esta información como una posible guía, ya que los detalles finales podrían variar.</p><p>¡Manténganse atentos a nuestras redes sociales para más novedades!</p>",
+    "imagen_resumida": "THO",
+    "alt_imagen_resumida": "Calendario habboween THO",
+    "descripcion_resumida": "<p class='noticia_descripcion'><strong>¡Llega el calendario de eventos para Habboween en octubre!</strong></p><p class='noticia_descripcion'>Confirmada la llegada de los furnis Freaky Friday y una predicción sobre los raros basados en emojis. ¡Mantente atento para más detalles!</p>",
+    "fecha_noticia": "2024-10-01T15:27:14.000Z"
   }
 ]
