@@ -1137,7 +1137,10 @@ const getImageChoices = () => {
     const coleccionImages = fs.readdirSync(coleccionDir).map(file => ({ name: file.replace('.png', ''), value: `coleccion/${file}` }));
     const deportesImages = fs.readdirSync(deportesDir).map(file => ({ name: file.replace('.png', ''), value: `deportes/${file}` }));
     const cabinImages = fs.readdirSync(cabinDir).map(file => ({ name: file.replace('.png', ''), value: `cabin/${file}` })); 
-    const habboweenImages = fs.readdirSync(habboweenDir).map(file => ({ name: file.replace('.png', ''), value: `habboween/${file}` }));
+    const habboweenImages = fs.readdirSync(habboweenDir).map(file => ({
+        name: file.replace(/\.(png|gif)$/, ''), // Reemplaza .png o .gif
+        value: `habboween/${file}`
+    }));
     const goticoImages = fs.readdirSync(goticoDir).map(file => ({ name: file.replace('.png', ''), value: `gotico/${file}` }));
 
     return [
