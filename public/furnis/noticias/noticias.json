@@ -669,5 +669,27 @@
     "alt_imagen_resumida": "Calendario habboween THO",
     "descripcion_resumida": "<p class='noticia_descripcion'><strong>¡Llega el calendario de eventos para Habboween en octubre!</strong></p><p class='noticia_descripcion'>Confirmada la llegada de los furnis Freaky Friday y una predicción sobre los raros basados en emojis. ¡Mantente atento para más detalles!</p>",
     "fecha_noticia": "2024-10-01T15:27:14.000Z"
+  },
+  {
+    "id": 96,
+    "titulo": "Participa en nuestra sesión de recogida de opiniones sobre funcionalidades en Discord",
+    "imagen_completa": "sesion_recogida_opiniones",
+    "alt_imagen_completa": "Sesión de recogida de opiniones en Discord",
+    "descripcion_completa": "<p><strong>Habbo Hotel invita a la comunidad a participar en una sesión de recogida de opiniones sobre nuevas funcionalidades.</strong></p><p>Los interesados pueden unirse a Discord y revisar los últimos avisos para obtener más información sobre esta actividad. Es importante tener en cuenta que se requiere que todos los participantes se comuniquen en inglés, pero todos son bienvenidos a participar. ¡No te pierdas esta oportunidad de compartir tus ideas y contribuir al desarrollo de Habbo Hotel!</p>Este es un resumen de la noticia oficial <a href=\"https://origins.habbo.es/community/article/397/participa-en-nuestra-sesion-de-recogida-de-opiniones-sobre-funcionalidades\" target=\"_blank\">Link</a><br>Esta noticia ha sido generada con IA por lo mismo puede tener errores gramaticales o hablar como si fuera parte del equipo de habbo",
+    "imagen_resumida": "staff",
+    "alt_imagen_resumida": "sesión de recogida de opiniones",
+    "descripcion_resumida": "<p class='noticia_descripcion'><strong>Participa en la sesión de recogida de opiniones sobre funcionalidades en Discord de Habbo Hotel!</strong> Únete a la comunidad para compartir tus ideas y contribuir al futuro del juego.</p>",
+    "fecha_noticia": "2024-10-02T13:07:42.000Z"
+  },
+  {
+    "id": 97,
+    "titulo": "¡Es Funky Friday en Habbo Hotel!",
+    "imagen_completa": "funky_friday_04_10_2024",
+    "alt_imagen_completa": "Catálogo Funky Friday",
+    "descripcion_completa": "<p><strong>Habbo Hotel trae el evento Funky Friday!</strong></p><p>Disfruta de un día lleno de sorpresas y regalos en Habbo Hotel. Durante 24 horas, podrás encontrar una variedad de artículos especiales en el Catálogo y en nuestras redes sociales. No te pierdas la oportunidad de participar en esta celebración única. ¡Corre la voz y únete a la diversión!</p>Este es un resumen de la noticia oficial <a href=\"https://origins.habbo.es/community/article/367/es-funky-friday-16\" target=\"_blank\">Link</a><br>Esta noticia ha sido generada con IA por lo mismo puede tener errores gramaticales o hablar como si fuera parte del equipo de habbo",
+    "imagen_resumida": "funky_friday",
+    "alt_imagen_resumida": "Evento Funky Friday",
+    "descripcion_resumida": "<p class='noticia_descripcion'><strong>Llega el Funky Friday a Habbo Hotel!</strong> Disfruta de regalos y sorpresas durante 24 horas. ¡No te lo pierdas!</p>",
+    "fecha_noticia": "2024-10-04T13:42:47.000Z"
   }
 ]

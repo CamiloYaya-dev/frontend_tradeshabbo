@@ -1133,7 +1133,10 @@ const getImageChoices = () => {
         name: file.replace(/\.(png|gif)$/, ''), // Reemplaza .png o .gif
         value: `rares/${file}`
     }));
-    const funkyImages = fs.readdirSync(funkyDir).map(file => ({ name: file.replace('.png', ''), value: `funky/${file}` }));
+    const funkyImages = fs.readdirSync(funkyDir).map(file => ({
+        name: file.replace(/\.(png|gif)$/, ''), // Reemplaza .png o .gif
+        value: `funky/${file}`
+    }));
     const coleccionImages = fs.readdirSync(coleccionDir).map(file => ({ name: file.replace('.png', ''), value: `coleccion/${file}` }));
     const deportesImages = fs.readdirSync(deportesDir).map(file => ({ name: file.replace('.png', ''), value: `deportes/${file}` }));
     const cabinImages = fs.readdirSync(cabinDir).map(file => ({ name: file.replace('.png', ''), value: `cabin/${file}` })); 
