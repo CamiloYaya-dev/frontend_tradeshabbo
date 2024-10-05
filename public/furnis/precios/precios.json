@@ -1842,7 +1842,7 @@
   {
     "id": 117,
     "name": "Maquina_De_Escribir",
-    "price": "20000.00",
+    "price": "16000.00",
     "icon": "mega_rare",
     "highlight": 1,
     "hot": 1,
@@ -1916,7 +1916,7 @@
     "upvotes": 0,
     "downvotes": 0,
     "upvotes_belief": 1,
-    "downvotes_belief": 7,
+    "downvotes_belief": 8,
     "mote": ""
   },
   {
@@ -1932,7 +1932,7 @@
     "upvotes": 0,
     "downvotes": 0,
     "upvotes_belief": 2,
-    "downvotes_belief": 8,
+    "downvotes_belief": 9,
     "mote": ""
   },
   {
@@ -1948,7 +1948,7 @@
     "upvotes": 1,
     "downvotes": 2,
     "upvotes_belief": 4,
-    "downvotes_belief": 17,
+    "downvotes_belief": 18,
     "mote": ""
   },
   {

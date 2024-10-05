@@ -2348,3 +2348,7 @@ h5 {
 .furni_imagen:hover .info-popup {
     display: block; /* Mostrar el div cuando se pasa el cursor sobre el .furni_historico */
 }
+
+.fotos_ampliadas{
+    max-width: 100%;
+}

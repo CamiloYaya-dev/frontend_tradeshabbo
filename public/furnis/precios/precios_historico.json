@@ -5140,5 +5140,11 @@
     "product_id": 277,
     "fecha_precio": "2024-10-04T08:37:31.000Z",
     "precio": "5.00"
+  },
+  {
+    "id": 941,
+    "product_id": 117,
+    "fecha_precio": "2024-10-05T09:21:08.000Z",
+    "precio": "16000.00"
   }
 ]
