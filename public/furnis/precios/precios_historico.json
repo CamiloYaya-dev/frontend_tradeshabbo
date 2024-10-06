@@ -5146,5 +5146,29 @@
     "product_id": 117,
     "fecha_precio": "2024-10-05T09:21:08.000Z",
     "precio": "16000.00"
+  },
+  {
+    "id": 942,
+    "product_id": 284,
+    "fecha_precio": "2024-10-06T18:24:03.000Z",
+    "precio": "30.00"
+  },
+  {
+    "id": 947,
+    "product_id": 275,
+    "fecha_precio": "2024-10-06T18:25:22.000Z",
+    "precio": "10.00"
+  },
+  {
+    "id": 948,
+    "product_id": 276,
+    "fecha_precio": "2024-10-06T18:25:22.000Z",
+    "precio": "10.00"
+  },
+  {
+    "id": 949,
+    "product_id": 277,
+    "fecha_precio": "2024-10-06T18:25:31.000Z",
+    "precio": "10.00"
   }
 ]

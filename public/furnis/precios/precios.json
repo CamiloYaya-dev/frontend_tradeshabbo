@@ -204,7 +204,7 @@
     "upvotes": 44,
     "downvotes": 25,
     "upvotes_belief": 50,
-    "downvotes_belief": 2,
+    "downvotes_belief": 3,
     "mote": "HC"
   },
   {
@@ -699,7 +699,7 @@
     "descripcion": "Este rare salio el 25 de junio de 2024 y fue el segundo rare en salir, su precio en catalogo era de 35 creditos, duro un total de 7 dias.",
     "upvotes": 32,
     "downvotes": 7,
-    "upvotes_belief": 40,
+    "upvotes_belief": 41,
     "downvotes_belief": 16,
     "mote": "Vivo"
   },
@@ -1819,7 +1819,7 @@
     "descripcion": "Este rare salio el 6 de agosto de 2024 a un precio de 50 creditos en catalogo, fue el primer rare en salir solo por 48 horas.",
     "upvotes": 37,
     "downvotes": 63,
-    "upvotes_belief": 72,
+    "upvotes_belief": 73,
     "downvotes_belief": 12,
     "mote": ""
   },
@@ -3515,7 +3515,7 @@
     "descripcion": "Este rare salio el 24 de septiembre a un precio de 75 creditos en catalogo, solo duro disponible para su compra 24 horas.",
     "upvotes": 11,
     "downvotes": 1,
-    "upvotes_belief": 42,
+    "upvotes_belief": 43,
     "downvotes_belief": 1,
     "mote": "Drako Azul Cielo"
   },
@@ -4322,7 +4322,7 @@
   {
     "id": 275,
     "name": "La_Calabaza_Blanca",
-    "price": "5.00",
+    "price": "10.00",
     "icon": "funky",
     "highlight": 1,
     "hot": 1,
@@ -4338,7 +4338,7 @@
   {
     "id": 276,
     "name": "La_Calabaza_Negra",
-    "price": "5.00",
+    "price": "10.00",
     "icon": "funky",
     "highlight": 1,
     "hot": 1,
@@ -4354,7 +4354,7 @@
   {
     "id": 277,
     "name": "La_Calabaza_Roja",
-    "price": "5.00",
+    "price": "10.00",
     "icon": "funky",
     "highlight": 1,
     "hot": 1,
@@ -4458,6 +4458,22 @@
     "fecha_creacion": "2024-09-26T21:30:11.000Z",
     "descripcion": "",
     "upvotes": 1,
+    "downvotes": 0,
+    "upvotes_belief": 0,
+    "downvotes_belief": 0,
+    "mote": ""
+  },
+  {
+    "id": 284,
+    "name": "Coleccion_Calabazas",
+    "price": "30.00",
+    "icon": "coleccion",
+    "highlight": 1,
+    "hot": 1,
+    "status": "0",
+    "fecha_creacion": "2024-10-06T23:23:45.000Z",
+    "descripcion": "Esta coleccion se compone se 3 calabazas funky, una blanca, negra y roja.",
+    "upvotes": 0,
     "downvotes": 0,
     "upvotes_belief": 0,
     "downvotes_belief": 0,
