@@ -1160,53 +1160,6 @@
     ]
   },
   {
-    "id": "1281183046799982726",
-    "name": "VENDO VIPS",
-    "createdTimestamp": 1725528241587,
-    "url": "https://discord.com/channels/1257448055050080297/1269826801396482158/1281183046799982726",
-    "appliedTags": [
-      "1284690542315438110"
-    ],
-    "messages": [
-      {
-        "author": "nautik5",
-        "content": "A cómo vendes tus vips ?",
-        "createdTimestamp": 1725576315185
-      },
-      {
-        "author": "noname999_.",
-        "content": "Ofertas DM",
-        "createdTimestamp": 1725528241587
-      }
-    ]
-  },
-  {
-    "id": "1279879705918570598",
-    "name": "VENDO 100 VIVOS Y 14 TRONOS",
-    "createdTimestamp": 1725217500906,
-    "url": "https://discord.com/channels/1257448055050080297/1269826801396482158/1279879705918570598",
-    "appliedTags": [
-      "1284690542315438110"
-    ],
-    "messages": [
-      {
-        "author": "mkfatulo",
-        "content": "cuantos tronos o vivos me das por un tronito del .es",
-        "createdTimestamp": 1725577425711
-      },
-      {
-        "author": "nautik5",
-        "content": "Tengo algunas cosas del .es",
-        "createdTimestamp": 1725576405899
-      },
-      {
-        "author": "lynzori",
-        "content": "A Creditos del .es",
-        "createdTimestamp": 1725217500906
-      }
-    ]
-  },
-  {
     "id": "1279785196333432934",
     "name": "Compro lasers doy VIPs",
     "createdTimestamp": 1725194968065,
@@ -1310,27 +1263,6 @@
         "author": "swannie8722",
         "content": "",
         "createdTimestamp": 1724536279517
-      }
-    ]
-  },
-  {
-    "id": "1276912940448223345",
-    "name": "Vendo todos mis rares, ofrece por privado",
-    "createdTimestamp": 1724510168898,
-    "url": "https://discord.com/channels/1257448055050080297/1269826801396482158/1276912940448223345",
-    "appliedTags": [
-      "1284690542315438110"
-    ],
-    "messages": [
-      {
-        "author": "nautik5",
-        "content": "Cuánto ?",
-        "createdTimestamp": 1725576508879
-      },
-      {
-        "author": "noname999_.",
-        "content": "",
-        "createdTimestamp": 1724510168898
       }
     ]
   }

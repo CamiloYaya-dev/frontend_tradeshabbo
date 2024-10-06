@@ -1128,7 +1128,10 @@ const getImageChoices = () => {
     const habboweenDir = path.join(__dirname, 'public', 'furnis', 'habboween');
     const goticoDir = path.join(__dirname, 'public', 'furnis', 'gotico');
 
-    const hcImages = fs.readdirSync(hcDir).map(file => ({ name: file.replace('.png', ''), value: `hc/${file}` }));
+    const hcImages = fs.readdirSync(hcDir).map(file => ({
+        name: file.replace(/\.(png|gif)$/, ''), // Reemplaza .png o .gif
+        value: `hc/${file}`
+    }));
     const raresImages = fs.readdirSync(raresDir).map(file => ({
         name: file.replace(/\.(png|gif)$/, ''), // Reemplaza .png o .gif
         value: `rares/${file}`
@@ -1144,7 +1147,10 @@ const getImageChoices = () => {
         name: file.replace(/\.(png|gif)$/, ''), // Reemplaza .png o .gif
         value: `habboween/${file}`
     }));
-    const goticoImages = fs.readdirSync(goticoDir).map(file => ({ name: file.replace('.png', ''), value: `gotico/${file}` }));
+    const goticoImages = fs.readdirSync(goticoDir).map(file => ({
+        name: file.replace(/\.(png|gif)$/, ''), // Reemplaza .png o .gif
+        value: `gotico/${file}`
+    }));
 
     return [
         ...hcImages,
