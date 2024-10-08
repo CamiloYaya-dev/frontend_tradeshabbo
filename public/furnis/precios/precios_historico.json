@@ -4758,12 +4758,6 @@
     "precio": "40.00"
   },
   {
-    "id": 831,
-    "product_id": 228,
-    "fecha_precio": "2024-09-26T14:45:35.000Z",
-    "precio": "0.00"
-  },
-  {
     "id": 832,
     "product_id": 229,
     "fecha_precio": "2024-09-26T14:45:35.000Z",
@@ -4830,12 +4824,6 @@
     "precio": "6.00"
   },
   {
-    "id": 852,
-    "product_id": 249,
-    "fecha_precio": "2024-09-26T15:14:07.000Z",
-    "precio": "0.00"
-  },
-  {
     "id": 853,
     "product_id": 250,
     "fecha_precio": "2024-09-26T15:14:07.000Z",
@@ -4858,12 +4846,6 @@
     "product_id": 253,
     "fecha_precio": "2024-10-01T15:14:07.000Z",
     "precio": "4.00"
-  },
-  {
-    "id": 857,
-    "product_id": 254,
-    "fecha_precio": "2024-09-26T15:14:07.000Z",
-    "precio": "0.00"
   },
   {
     "id": 858,
@@ -4900,12 +4882,6 @@
     "product_id": 260,
     "fecha_precio": "2024-10-01T15:14:07.000Z",
     "precio": "8.00"
-  },
-  {
-    "id": 864,
-    "product_id": 261,
-    "fecha_precio": "2024-09-26T15:14:07.000Z",
-    "precio": "0.00"
   },
   {
     "id": 865,
@@ -5170,5 +5146,29 @@
     "product_id": 277,
     "fecha_precio": "2024-10-06T18:25:31.000Z",
     "precio": "10.00"
+  },
+  {
+    "id": 950,
+    "product_id": 249,
+    "fecha_precio": "2024-10-08T08:51:47.000Z",
+    "precio": "6.00"
+  },
+  {
+    "id": 951,
+    "product_id": 254,
+    "fecha_precio": "2024-10-08T08:51:47.000Z",
+    "precio": "4.00"
+  },
+  {
+    "id": 952,
+    "product_id": 261,
+    "fecha_precio": "2024-10-08T08:51:47.000Z",
+    "precio": "8.00"
+  },
+  {
+    "id": 953,
+    "product_id": 228,
+    "fecha_precio": "2024-10-08T08:51:57.000Z",
+    "precio": "35.00"
   }
 ]

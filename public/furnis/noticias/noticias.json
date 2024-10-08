@@ -691,5 +691,27 @@
     "alt_imagen_resumida": "Evento Funky Friday",
     "descripcion_resumida": "<p class='noticia_descripcion'><strong>Llega el Funky Friday a Habbo Hotel!</strong> Disfruta de regalos y sorpresas durante 24 horas. ¡No te lo pierdas!</p>",
     "fecha_noticia": "2024-10-04T13:42:47.000Z"
+  },
+  {
+    "id": 98,
+    "titulo": "Elección de Miss Vamp y Mister Cerebro en Habboween",
+    "imagen_completa": "habboween_miss_vamp_mister_cerebro",
+    "alt_imagen_completa": "Elección de Miss Vamp y Mister Cerebro en Habboween",
+    "descripcion_completa": "<p><strong>El evento más esperado de Habboween: Miss Vamp y Mister Cerebro</strong></p><p>En el mes de octubre, Habboween trae de vuelta la glamurosa y horrorosa ceremonia de coronar a la reina y rey de la temporada con la elección de Miss Vamp y Mister Cerebro. Este concurso individual invita a los participantes a crear dos personajes terroríficos relacionados con Habboween. Los aspirantes pueden dibujar desde cero o vestir a sus avatares en el juego y capturar la imagen para enviarla. Los premios incluyen trofeos, la Máquina de escribir, el Raro de la semana y créditos. ¡Anímate a participar y descubre quiénes serán los ganadores el 17 de octubre!</p>Este es un resumen de la noticia oficial <a href=\"https://origins.habbo.es/community/article/410/elegimos-a-miss-vamp-y-a-mister-cerebro\" target=\"_blank\">Link</a><br>Esta noticia ha sido generada con IA por lo mismo puede tener errores gramaticales o hablar como si fuera parte del equipo de habbo",
+    "imagen_resumida": "staff",
+    "alt_imagen_resumida": "Elección de Miss Vamp y Mister Cerebro en Habboween",
+    "descripcion_resumida": "<p class='noticia_descripcion'><strong>Miss Vamp y Mister Cerebro: Concurso terrorífico de Habboween</strong> Los participantes deben crear dos personajes relacionados con Habboween para ser coronados como la pareja más aterradora. Premios especiales esperan a los ganadores. ¡No te pierdas esta emocionante competencia en Habbo!</p>",
+    "fecha_noticia": "2024-10-07T11:04:04.000Z"
+  },
+  {
+    "id": 99,
+    "titulo": "Nuevo raro disponible: Césped Habboween",
+    "imagen_completa": "catalogo_cesped_habboween",
+    "alt_imagen_completa": "Catálogo Césped Habboween",
+    "descripcion_completa": "<p><strong>Habbo Hotel: Orígenes presenta un nuevo raro: ¡Césped Habboween!</strong></p><p>Por tiempo limitado, podrás adquirir un Césped Habboween en el Catálogo por 35 créditos. Esta oferta estará disponible hasta el 15/10 a las 5am CST / 1pm CEST, ¡así que asegúrate de conseguir el tuyo antes de que desaparezca!</p>Este es un resumen de la noticia oficial <a href=\"https://origins.habbo.es/community/article/350/raro-anadido-al-catalogo-fontana-gotica\" target=\"_blank\">Link</a><br>Esta noticia ha sido generada con IA por lo mismo puede tener errores gramaticales o hablar como si fuera parte del equipo de habbo",
+    "imagen_resumida": "rares_martes",
+    "alt_imagen_resumida": "nuevo raro Césped Habboween",
+    "descripcion_resumida": "<p class='noticia_descripcion'><strong>Habbo Hotel: Orígenes presenta: Césped Habboween</strong>. Adquiere este raro por tiempo limitado por 35 créditos. ¡No te lo pierdas!</p>",
+    "fecha_noticia": "2024-10-08T13:54:39.000Z"
   }
 ]
