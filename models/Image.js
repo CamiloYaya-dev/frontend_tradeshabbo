@@ -19,6 +19,10 @@ const Image = sequelize.define('Image', {
         type: DataTypes.INTEGER,
         allowNull: false
     },
+    usa_price: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
     icon: {
         type: DataTypes.STRING,
         allowNull: true

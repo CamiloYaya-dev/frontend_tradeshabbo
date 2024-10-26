@@ -713,5 +713,126 @@
     "alt_imagen_resumida": "nuevo raro Césped Habboween",
     "descripcion_resumida": "<p class='noticia_descripcion'><strong>Habbo Hotel: Orígenes presenta: Césped Habboween</strong>. Adquiere este raro por tiempo limitado por 35 créditos. ¡No te lo pierdas!</p>",
     "fecha_noticia": "2024-10-08T13:54:39.000Z"
+  },
+  {
+    "id": 100,
+    "titulo": "¡Es Funky Friday en Habbo Hotel!",
+    "imagen_completa": "funky_friday_11_10_2024",
+    "alt_imagen_completa": "Imagen Funky Friday Habbo Hotel",
+    "descripcion_completa": "<p><strong>Habbo Hotel anuncia la llegada de Funky Friday!</strong></p><p>En el día de hoy, Habbo Hotel celebrará el Funky Friday regalando una variedad de artículos desde su cuenta de Twitter/X. Además, estos artículos estarán disponibles en el Catálogo por tiempo limitado durante 24 horas. No te pierdas esta oportunidad única de conseguir fantásticos regalos y artículos exclusivos en Habbo Hotel!</p>Este es un resumen de la noticia oficial <a href=\"https://origins.habbo.es/community/article/369/es-funky-friday-13\" target=\"_blank\">Link</a><br>Esta noticia ha sido generada con IA por lo mismo puede tener errores gramaticales o hablar como si fuera parte del equipo de habbo",
+    "imagen_resumida": "funky_friday",
+    "alt_imagen_resumida": "Imagen Staff Habbo Hotel",
+    "descripcion_resumida": "<p class='noticia_descripcion'><strong>Llega el Funky Friday a Habbo Hotel!</strong> Aprovecha la oportunidad de obtener regalos exclusivos a través de la cuenta de Twitter/X y en el Catálogo durante 24 horas. ¡No te lo pierdas!</p>",
+    "fecha_noticia": "2024-10-11T14:04:30.000Z"
+  },
+  {
+    "id": 101,
+    "titulo": "¡ABRIMOS LA VOTACIÓN a Miss Vamp y Míster Cerebro!",
+    "imagen_completa": "votacion_miss_vamp_mister_cerebro",
+    "alt_imagen_completa": "Votación Miss Vamp y Míster Cerebro",
+    "descripcion_completa": "<p><strong>Habbo Hotel ha anunciado la apertura de la votación para Miss Vamp y Míster Cerebro.</strong></p><p>Los finalistas son Mateplata, dos, Nautik, Vaig, y Spirit-sea. ¡No te pierdas la oportunidad de elegir a tu favorito votando en el formulario de Google disponible en el enlace proporcionado!</p>Este es un resumen de la noticia oficial <a href=\"https://origins.habbo.es/community/article/429/abrimos-la-votacion-a-miss-vamp-y-mister-cerebro\" target=\"_blank\">Link</a><br>Esta noticia ha sido generada con IA por lo mismo puede tener errores gramaticales o hablar como si fuera parte del equipo de habbo",
+    "imagen_resumida": "staff",
+    "alt_imagen_resumida": "Personal de Habbo Hotel",
+    "descripcion_resumida": "<p class='noticia_descripcion'><strong>¡Participa en la votación de Miss Vamp y Míster Cerebro en Habbo Hotel!</strong> Elige a tu finalista favorito y vota en el formulario de Google disponible. ¡No te quedes sin dar tu opinión!</p>",
+    "fecha_noticia": "2024-10-14T11:04:13.000Z"
+  },
+  {
+    "id": 102,
+    "titulo": "Nuevo raro disponible: Fontana Gótica!",
+    "imagen_completa": "catalogo_fontana_gotica",
+    "alt_imagen_completa": "Catalogo Fontana Gótica",
+    "descripcion_completa": "<p><strong>Habbo Hotel: Orígenes presenta un nuevo raro: Fontana Gótica!</strong></p><p>Hasta el 17 de octubre, los jugadores pueden adquirir esta pieza única por 35 créditos en la sección de raros del Catálogo. ¡No te pierdas esta oportunidad exclusiva!</p>Este es un resumen de la noticia oficial <a href=\"https://origins.habbo.es/community/article/353/raro-anadido-al-catalogo-cesped-habboween\" target=\"_blank\">Link</a><br>Esta noticia ha sido generada con IA por lo mismo puede tener errores gramaticales o hablar como si fuera parte del equipo de habbo",
+    "imagen_resumida": "rares_martes",
+    "alt_imagen_resumida": "Nuevo raro Fontana Gótica",
+    "descripcion_resumida": "<p><strong>Nuevo raro en Habbo Hotel: Orígenes!</strong> Se ha añadido al Catálogo la Fontana Gótica, disponible por tiempo limitado. ¡Aprovecha esta oportunidad única!</p>",
+    "fecha_noticia": "2024-10-15T14:38:00.000Z"
+  },
+  {
+    "id": 103,
+    "titulo": "Hoja de ruta para Origins: nuevas funcionalidades en camino",
+    "imagen_completa": "hoja_de_ruta_origins",
+    "alt_imagen_completa": "Hoja de ruta para Origins",
+    "descripcion_completa": "<p><strong>Habbo Hotel: Orígenes presenta su hoja de ruta para futuras actualizaciones</strong></p><p>Después de un lanzamiento exitoso y un verano de consolidación, Habbo Hotel: Orígenes revela las nuevas funcionalidades que estarán llegando al juego en los próximos seis meses. Los jugadores tendrán la oportunidad de votar por las características que desean ver implementadas, siguiendo las preferencias expresadas en el Discord oficial del juego.</p>Este es un resumen de la noticia oficial <a href=\"https://origins.habbo.es/community/article/446/una-hoja-de-ruta-para-origins\" target=\"_blank\">Link</a><br>Esta noticia ha sido generada con IA por lo mismo puede tener errores gramaticales o hablar como si fuera parte del equipo de habbo",
+    "imagen_resumida": "staff",
+    "alt_imagen_resumida": "Imagen de staff",
+    "descripcion_resumida": "<p class='noticia_descripcion'><strong>Habbo Hotel: Orígenes traza su ruta de desarrollo futuro</strong> Descubre las próximas funcionalidades que se agregarán al juego y participa votando por tus preferencias. ¡Mantente atento a las actualizaciones!</p>",
+    "fecha_noticia": "2024-10-16T11:22:00.000Z"
+  },
+  {
+    "id": 104,
+    "titulo": "RESULTADOS de Miss Vamp y Míster Cerebro",
+    "imagen_completa": "resultados_miss_vamp_mister_cerebro",
+    "alt_imagen_completa": "Resultados Miss Vamp y Míster Cerebro",
+    "descripcion_completa": "<p><strong>¡Gracias a todo el mundo que ha votado en el concurso de Miss Vamp y Míster Cerebro!</strong></p><p>Los ganadores son: <br>🥇 Mateplata <br>🥈 dos <br>🥉 Nautik</p>Este es un resumen de la noticia oficial <a href=\"https://origins.habbo.es/community/article/453/resultados-de-miss-vamp-y-mister-cerebro\" target=\"_blank\">Link</a><br>Esta noticia ha sido generada con IA por lo mismo puede tener errores gramaticales o hablar como si fuera parte del equipo de habbo",
+    "imagen_resumida": "staff",
+    "alt_imagen_resumida": "resultados concurso Miss Vamp y Míster Cerebro",
+    "descripcion_resumida": "<p class='noticia_descripcion'><strong>Se han anunciado los ganadores del concurso de Miss Vamp y Míster Cerebro en Habbo Hotel.</strong> ¡Descubre quiénes se llevaron los primeros puestos!</p>",
+    "fecha_noticia": "2024-10-17T14:15:26.000Z"
+  },
+  {
+    "id": 105,
+    "titulo": "Encuesta Infobus: ¡Trax regresa a Habbo Hotel: Origins!",
+    "imagen_completa": "trax_encuesta",
+    "alt_imagen_completa": "Imagen de la encuesta sobre la vuelta de Trax a Habbo Hotel: Origins",
+    "descripcion_completa": "<p><strong>Habbo Hotel: Origins desea traer de vuelta la icónica funcionalidad Trax a su juego.</strong></p><p>Los jugadores tendrán la oportunidad de decidir si desean que Trax regrese al juego y en qué condiciones. La encuesta estará disponible desde el 21/10 por una semana, y los resultados serán publicados poco después. Los usuarios podrán votar sobre diferentes aspectos de Trax, como la posibilidad de crear CDs intercambiables, límites de listas de reproducción para miembros HC, y la introducción de la Jukebox.</p>Este es un resumen de la noticia oficial <a href=\"https://origins.habbo.es/community/article/458/encuesta-infobus-trax\" target=\"_blank\">Link</a><br>Esta noticia ha sido generada con IA por lo mismo puede tener errores gramaticales o hablar como si fuera parte del equipo de habbo",
+    "imagen_resumida": "staff",
+    "alt_imagen_resumida": "Imagen de una noticia sobre Habbo Hotel: Origins",
+    "descripcion_resumida": "<p class='noticia_descripcion'><strong>Encuesta Infobus: Trax regresa a Habbo Hotel: Origins!</strong> Los jugadores tendrán la oportunidad de votar sobre el regreso de Trax y su funcionamiento en el juego. ¡Participa en la encuesta y haz escuchar tu voz!</p>",
+    "fecha_noticia": "2024-10-18T13:57:27.000Z"
+  },
+  {
+    "id": 106,
+    "titulo": "Nuevo raro añadido al Catálogo: Almohadón Verde Oscuro",
+    "imagen_completa": "almohadon_verde_oscuro",
+    "alt_imagen_completa": "Almohadón Verde Oscuro",
+    "descripcion_completa": "<p><strong>Habbo Hotel: Orígenes añade un nuevo raro al Catálogo: Almohadón Verde Oscuro!</strong></p><p>Disponible por tiempo limitado hasta el 29/10 a las 6am CST / 1pm CET, este raro tiene un costo de 50 créditos. Aprovecha esta oportunidad única para adquirir esta exclusiva pieza.</p>Este es un resumen de la noticia oficial <a href=\"https://origins.habbo.es/community/article/358/raro-anadido-al-catalogo-fontana-gotica-2\" target=\"_blank\">Link</a><br>Esta noticia ha sido generada con IA por lo mismo puede tener errores gramaticales o hablar como si fuera parte del equipo de habbo",
+    "imagen_resumida": "rares_martes",
+    "alt_imagen_resumida": "nuevo raro Almohadón Verde Oscuro",
+    "descripcion_resumida": "<p class='noticia_descripcion'><strong>¡Se agrega un nuevo raro al Catálogo de Habbo Hotel: Orígenes!</strong> Adquiere el Almohadón Verde Oscuro por tiempo limitado a un precio especial. ¡No te lo pierdas!</p>",
+    "fecha_noticia": "2024-10-22T16:29:46.000Z"
+  },
+  {
+    "id": 107,
+    "titulo": "GANADORES del concurso de cuentas de colores de Habboween",
+    "imagen_completa": "concurso_habboween_colores",
+    "alt_imagen_completa": "Concurso Habboween de cuentas de colores",
+    "descripcion_completa": "<p><strong>Los ganadores del concurso de cuentas de colores de Habboween han sido anunciados por Habbo Hotel.</strong></p><p>En primer lugar, felicidades a Gyar por obtener el primer puesto, seguido por Valito en segundo lugar y Spirit-sea en tercer lugar. Asimismo, Dinosaurio, Mastodon, ChoroMota y otaku ocupan los lugares del 4º al 7º. Los finalistas son invitados a reclamar sus premios poniéndose en contacto con la mesa de ayuda. A pesar de no recibir muchas participaciones, los ganadores demuestran su creatividad y dedicación en el concurso.</p>Este es un resumen de la noticia oficial <a href=\"https://origins.habbo.es/community/article/477/ganadores-del-concurso-de-cuentas-de-colores-de-habboween\" target=\"_blank\">Link</a><br>Esta noticia ha sido generada con IA por lo mismo puede tener errores gramaticales o hablar como si fuera parte del equipo de habbo",
+    "imagen_resumida": "staff",
+    "alt_imagen_resumida": "staff de Habbo Hotel",
+    "descripcion_resumida": "<p class='noticia_descripcion'><strong>Habbo Hotel ha anunciado los ganadores del concurso de cuentas de colores de Habboween.</strong> Descubre quiénes se destacaron en este evento y cómo reclamar tus premios.</p>",
+    "fecha_noticia": "2024-10-23T14:42:35.000Z"
+  },
+  {
+    "id": 108,
+    "titulo": "Actividad sorpresa con Aleksander",
+    "imagen_completa": "actividad_sorpresa_aleksander",
+    "alt_imagen_completa": "Actividad sorpresa con Aleksander",
+    "descripcion_completa": "<p><strong>Habbo Hotel presenta una actividad sorpresa con Aleksander!</strong></p><p>¡Mañana a las 8am CST / 4pm CEST, únete a la diversión en Trap Doors en la sala propiedad de Aleksander! Participa en la actividad sorpresa y podrías ganar un premio especial. ¡No te lo pierdas!</p>Este es un resumen de la noticia oficial <a href=\"https://origins.habbo.es/community/article/493/actividad-sorpresa\" target=\"_blank\">Link</a><br>Esta noticia ha sido generada con IA por lo mismo puede tener errores gramaticales o hablar como si fuera parte del equipo de habbo",
+    "imagen_resumida": "staff",
+    "alt_imagen_resumida": "Actividad sorpresa con Aleksander",
+    "descripcion_resumida": "<p class='noticia_descripcion'><strong>No te pierdas la actividad sorpresa de Habbo Hotel con Aleksander!</strong> Mañana a las 8am CST / 4pm CEST en Trap Doors. ¡Ven y diviértete!</p>",
+    "fecha_noticia": "2024-10-23T15:12:50.000Z"
+  },
+  {
+    "id": 109,
+    "titulo": "Freaky Friday en Habbo Hotel",
+    "imagen_completa": "funky_24_10_2024",
+    "alt_imagen_completa": "Catálogo Freaky Friday",
+    "descripcion_completa": "<p><strong>Habbo Hotel presenta: ¡Freaky Friday!</strong></p><p>En este evento especial, Habbo estará regalando una variedad de objetos exclusivos a través de su cuenta de X/Twitter y también los pondrá disponibles en el Catálogo durante 24 horas. ¡No te pierdas esta oportunidad única para obtener artículos increíbles!</p>Este es un resumen de la noticia oficial <a href=\"https://origins.habbo.es/community/article/373/es-freaky-friday\" target=\"_blank\">Link</a><br>Esta noticia ha sido generada con IA por lo mismo puede tener errores gramaticales o hablar como si fuera parte del equipo de habbo",
+    "imagen_resumida": "funky_friday",
+    "alt_imagen_resumida": "nuevo evento en Habbo Hotel",
+    "descripcion_resumida": "<p class='noticia_descripcion'><strong>Habbo Hotel celebra el Freaky Friday!</strong> Descubre los regalos exclusivos que Habbo está ofreciendo a través de su cuenta de X/Twitter y en el Catálogo durante 24 horas. ¡No te lo puedes perder!</p>",
+    "fecha_noticia": "2024-10-25T13:40:12.000Z"
+  },
+  {
+    "id": 110,
+    "titulo": "Encuesta Infobus: ¡ventana de juego de pantalla más ancha!",
+    "imagen_completa": "ventana_juego_mas_ancha",
+    "alt_imagen_completa": "Ventana de juego más ancha en Origins",
+    "descripcion_completa": "<p><strong>El lunes se lanzará una encuesta en el Infobus de Habbo Hotel sobre la posibilidad de ampliar la ventana de juego de Origins.</strong></p><p>Los usuarios podrán votar a favor o en contra de esta actualización que permitiría una pantalla más amplia para la jugabilidad. Habrá que esperar los resultados de la votación para conocer cuál será la decisión final. ¡Permanece atento a las novedades!</p>Este es un resumen de la noticia oficial <a href=\"https://origins.habbo.es/community/article/472/encuesta-infobus-ventana-juego-pantalla-mas-ancha\" target=\"_blank\">Link</a><br>Esta noticia ha sido generada con IA por lo mismo puede tener errores gramaticales o hablar como si fuera parte del equipo de habbo",
+    "imagen_resumida": "staff",
+    "alt_imagen_resumida": "Imagen de staff",
+    "descripcion_resumida": "<p class='noticia_descripcion'><strong>Se realizará una encuesta sobre la ventana de juego de Origins.</strong> Los usuarios tendrán la oportunidad de opinar sobre la posibilidad de ampliar la ventana de juego. ¡Participa y haz escuchar tu voz!</p>",
+    "fecha_noticia": "2024-10-25T18:52:26.000Z"
   }
 ]

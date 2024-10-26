@@ -271,6 +271,7 @@ main.container.master-trades-bg {
 
 .card-body {
     background-color: #626262;
+    padding-bottom: 20px;
 }
 
 .text-name {
@@ -473,7 +474,7 @@ main.container.master-trades-bg {
     border: 1px solid #050a0e;
     box-shadow: 0 2px 3px rgba(6, 19, 25, .7);
     font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
-    width: 100%;
+    width: 90%;
 }
 
 .collapse_text_white{
@@ -482,6 +483,7 @@ main.container.master-trades-bg {
     color: white;
     margin-top: 10px;
     margin-bottom: 10px;
+    margin-left: 5%;
 }
 
 .table th {
@@ -1130,7 +1132,6 @@ audio::-webkit-media-controls-panel {
 .ingame{
     margin-bottom: 15px;
     padding-bottom: 15px;
-    border-bottom: 1px solid #000;
 }
 
 .origins{
@@ -1240,6 +1241,12 @@ audio::-webkit-media-controls-panel {
 
 .price_trades_habbo_origins{
     place-content: center;
+    text-align: -webkit-center;
+    position: relative;
+    right: 10px;
+    border-left: 1px solid;
+    padding-left: 10%;
+    padding-top: 10px;
 }
 
 .section_dolares{
@@ -2351,4 +2358,32 @@ h5 {
 
 .fotos_ampliadas{
     max-width: 100%;
+}
+
+.spain_icon{
+    width: 30px;
+}
+
+.usa_icon{
+    width: 30px;
+}
+
+.prices_spain {
+    position: relative; /* Necesario para que el pseudo-elemento se posicione correctamente */
+    margin-bottom: 5px;
+}
+
+.prices_spain::after {
+    content: ""; /* Esto asegura que el pseudo-elemento sea visible */
+    position: absolute;
+    bottom: 0;
+    left: 10px; /* Ajusta para centrar el borde */
+    width: 90%; /* Ancho del borde */
+    height: 1px; /* Grosor del borde */
+    background-color: black; /* Color del borde */
+}
+
+.prices_usa {
+    position: relative; /* Necesario para que el pseudo-elemento se posicione correctamente */
+    margin-top: 5px;
 }

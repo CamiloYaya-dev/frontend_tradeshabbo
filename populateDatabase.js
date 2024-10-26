@@ -33,6 +33,7 @@ async function populateDatabase() {
                     name: name,
                     src: `/secure-image/${file}`,
                     price: priceInfo.price,
+                    usa_price: priceInfo.usa_price,
                     icon: priceInfo.icon,
                     highlight: priceInfo.highlight,
                     hot: priceInfo.hot,
