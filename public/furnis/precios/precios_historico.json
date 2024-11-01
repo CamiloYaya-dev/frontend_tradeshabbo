@@ -8834,24 +8834,304 @@
     "hotel": "ES"
   },
   {
-    "id": 1590,
-    "product_id": 288,
-    "fecha_precio": "2024-10-31T23:46:30.000Z",
+    "id": 1593,
+    "product_id": 290,
+    "fecha_precio": "2024-11-01T15:22:19.000Z",
+    "precio": "5.00",
+    "hotel": "ES"
+  },
+  {
+    "id": 1594,
+    "product_id": 290,
+    "fecha_precio": "2024-11-01T15:22:19.000Z",
+    "precio": "5.00",
+    "hotel": "COM"
+  },
+  {
+    "id": 1595,
+    "product_id": 291,
+    "fecha_precio": "2024-11-01T15:22:37.000Z",
+    "precio": "3.00",
+    "hotel": "ES"
+  },
+  {
+    "id": 1596,
+    "product_id": 291,
+    "fecha_precio": "2024-11-01T15:22:37.000Z",
+    "precio": "3.00",
+    "hotel": "COM"
+  },
+  {
+    "id": 1597,
+    "product_id": 292,
+    "fecha_precio": "2024-11-01T15:22:55.000Z",
+    "precio": "3.00",
+    "hotel": "ES"
+  },
+  {
+    "id": 1598,
+    "product_id": 292,
+    "fecha_precio": "2024-11-01T15:22:55.000Z",
+    "precio": "3.00",
+    "hotel": "COM"
+  },
+  {
+    "id": 1599,
+    "product_id": 293,
+    "fecha_precio": "2024-11-01T15:23:06.000Z",
+    "precio": "3.00",
+    "hotel": "ES"
+  },
+  {
+    "id": 1600,
+    "product_id": 293,
+    "fecha_precio": "2024-11-01T15:23:06.000Z",
+    "precio": "3.00",
+    "hotel": "COM"
+  },
+  {
+    "id": 1601,
+    "product_id": 294,
+    "fecha_precio": "2024-11-01T15:23:21.000Z",
+    "precio": "3.00",
+    "hotel": "ES"
+  },
+  {
+    "id": 1602,
+    "product_id": 294,
+    "fecha_precio": "2024-11-01T15:23:21.000Z",
+    "precio": "3.00",
+    "hotel": "COM"
+  },
+  {
+    "id": 1603,
+    "product_id": 295,
+    "fecha_precio": "2024-11-01T15:23:34.000Z",
+    "precio": "3.00",
+    "hotel": "ES"
+  },
+  {
+    "id": 1604,
+    "product_id": 295,
+    "fecha_precio": "2024-11-01T15:23:34.000Z",
+    "precio": "3.00",
+    "hotel": "COM"
+  },
+  {
+    "id": 1605,
+    "product_id": 296,
+    "fecha_precio": "2024-11-01T15:23:51.000Z",
+    "precio": "20.00",
+    "hotel": "ES"
+  },
+  {
+    "id": 1606,
+    "product_id": 296,
+    "fecha_precio": "2024-11-01T15:23:51.000Z",
+    "precio": "20.00",
+    "hotel": "COM"
+  },
+  {
+    "id": 1607,
+    "product_id": 257,
+    "fecha_precio": "2024-11-01T15:28:04.000Z",
+    "precio": "8.00",
+    "hotel": "ES"
+  },
+  {
+    "id": 1608,
+    "product_id": 257,
+    "fecha_precio": "2024-11-01T15:28:04.000Z",
+    "precio": "8.00",
+    "hotel": "COM"
+  },
+  {
+    "id": 1609,
+    "product_id": 258,
+    "fecha_precio": "2024-11-01T15:28:04.000Z",
+    "precio": "8.00",
+    "hotel": "ES"
+  },
+  {
+    "id": 1610,
+    "product_id": 258,
+    "fecha_precio": "2024-11-01T15:28:04.000Z",
+    "precio": "8.00",
+    "hotel": "COM"
+  },
+  {
+    "id": 1611,
+    "product_id": 259,
+    "fecha_precio": "2024-11-01T15:28:04.000Z",
+    "precio": "8.00",
+    "hotel": "ES"
+  },
+  {
+    "id": 1612,
+    "product_id": 259,
+    "fecha_precio": "2024-11-01T15:28:04.000Z",
+    "precio": "8.00",
+    "hotel": "COM"
+  },
+  {
+    "id": 1613,
+    "product_id": 262,
+    "fecha_precio": "2024-11-01T15:28:31.000Z",
+    "precio": "8.00",
+    "hotel": "ES"
+  },
+  {
+    "id": 1614,
+    "product_id": 262,
+    "fecha_precio": "2024-11-01T15:28:31.000Z",
+    "precio": "8.00",
+    "hotel": "COM"
+  },
+  {
+    "id": 1615,
+    "product_id": 287,
+    "fecha_precio": "2024-11-01T15:29:27.000Z",
+    "precio": "67.00",
+    "hotel": "COM"
+  },
+  {
+    "id": 1616,
+    "product_id": 245,
+    "fecha_precio": "2024-11-01T15:31:17.000Z",
+    "precio": "6.00",
+    "hotel": "ES"
+  },
+  {
+    "id": 1617,
+    "product_id": 245,
+    "fecha_precio": "2024-11-01T15:31:17.000Z",
+    "precio": "6.00",
+    "hotel": "COM"
+  },
+  {
+    "id": 1618,
+    "product_id": 246,
+    "fecha_precio": "2024-11-01T15:31:17.000Z",
+    "precio": "6.00",
+    "hotel": "ES"
+  },
+  {
+    "id": 1619,
+    "product_id": 246,
+    "fecha_precio": "2024-11-01T15:31:17.000Z",
+    "precio": "6.00",
+    "hotel": "COM"
+  },
+  {
+    "id": 1620,
+    "product_id": 247,
+    "fecha_precio": "2024-11-01T15:31:17.000Z",
+    "precio": "6.00",
+    "hotel": "ES"
+  },
+  {
+    "id": 1621,
+    "product_id": 247,
+    "fecha_precio": "2024-11-01T15:31:17.000Z",
+    "precio": "6.00",
+    "hotel": "COM"
+  },
+  {
+    "id": 1622,
+    "product_id": 250,
+    "fecha_precio": "2024-11-01T15:31:17.000Z",
+    "precio": "6.00",
+    "hotel": "ES"
+  },
+  {
+    "id": 1623,
+    "product_id": 250,
+    "fecha_precio": "2024-11-01T15:31:17.000Z",
+    "precio": "6.00",
+    "hotel": "COM"
+  },
+  {
+    "id": 1624,
+    "product_id": 251,
+    "fecha_precio": "2024-11-01T15:32:41.000Z",
+    "precio": "4.00",
+    "hotel": "ES"
+  },
+  {
+    "id": 1625,
+    "product_id": 251,
+    "fecha_precio": "2024-11-01T15:32:41.000Z",
+    "precio": "4.00",
+    "hotel": "COM"
+  },
+  {
+    "id": 1626,
+    "product_id": 252,
+    "fecha_precio": "2024-11-01T15:32:41.000Z",
+    "precio": "4.00",
+    "hotel": "ES"
+  },
+  {
+    "id": 1627,
+    "product_id": 252,
+    "fecha_precio": "2024-11-01T15:32:41.000Z",
+    "precio": "4.00",
+    "hotel": "COM"
+  },
+  {
+    "id": 1628,
+    "product_id": 255,
+    "fecha_precio": "2024-11-01T15:32:41.000Z",
+    "precio": "4.00",
+    "hotel": "ES"
+  },
+  {
+    "id": 1629,
+    "product_id": 255,
+    "fecha_precio": "2024-11-01T15:32:41.000Z",
+    "precio": "4.00",
+    "hotel": "COM"
+  },
+  {
+    "id": 1630,
+    "product_id": 256,
+    "fecha_precio": "2024-11-01T15:32:41.000Z",
+    "precio": "4.00",
+    "hotel": "ES"
+  },
+  {
+    "id": 1631,
+    "product_id": 256,
+    "fecha_precio": "2024-11-01T15:32:41.000Z",
+    "precio": "4.00",
+    "hotel": "COM"
+  },
+  {
+    "id": 1632,
+    "product_id": 224,
+    "fecha_precio": "2024-11-01T15:34:21.000Z",
+    "precio": "75.00",
+    "hotel": "ES"
+  },
+  {
+    "id": 1633,
+    "product_id": 289,
+    "fecha_precio": "2024-11-01T15:34:46.000Z",
+    "precio": "100.00",
+    "hotel": "ES"
+  },
+  {
+    "id": 1634,
+    "product_id": 289,
+    "fecha_precio": "2024-11-01T15:34:46.000Z",
+    "precio": "100.00",
+    "hotel": "COM"
+  },
+  {
+    "id": 1637,
+    "product_id": 220,
+    "fecha_precio": "2024-11-01T15:38:37.000Z",
     "precio": "50.00",
-    "hotel": "COM"
-  },
-  {
-    "id": 1591,
-    "product_id": 288,
-    "fecha_precio": "2024-10-31T23:47:56.000Z",
-    "precio": "55.00",
-    "hotel": "COM"
-  },
-  {
-    "id": 1592,
-    "product_id": 288,
-    "fecha_precio": "2024-11-01T00:43:03.000Z",
-    "precio": "200.00",
     "hotel": "COM"
   }
 ]

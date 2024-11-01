@@ -911,5 +911,27 @@
     "alt_imagen_resumida": "Nuevo raro en Habbo Hotel: Orígenes",
     "descripcion_resumida": "<p class=\"noticia_descripcion\"><strong>Nuevo raro disponible en Habbo Hotel: Orígenes!</strong> Consigue el exclusivo Caldero de Habboween por tiempo limitado. ¡No te lo pierdas!</p>",
     "fecha_noticia": "2024-11-01T03:49:43.000Z"
+  },
+  {
+    "id": 118,
+    "titulo": "¡Es Funky Friday en Habbo Hotel!",
+    "imagen_completa": "catalogo_funkyfriday",
+    "alt_imagen_completa": "Catalogo Funky Friday",
+    "descripcion_completa": "<p><strong>Habbo Hotel celebra el Funky Friday!</strong></p><p>En el día de hoy, Habbo Hotel está regalando una gran variedad de objetos exclusivos a través de su cuenta de X/Twitter, los cuales también estarán disponibles por 24 horas en el Catálogo. No te pierdas esta oportunidad única de conseguir increíbles regalos y disfrutar del Funky Friday en Habbo Hotel!</p>Este es un resumen de la noticia oficial <a href=\"https://origins.habbo.es/community/article/375/es-funky-friday-17\" target=\"_blank\">Link</a><br>Esta noticia ha sido generada con IA por lo mismo puede tener errores gramaticales o hablar como si fuera parte del equipo de habbo",
+    "imagen_resumida": "funky_friday",
+    "alt_imagen_resumida": "nuevo raro jueves 08 de agosto del 2024",
+    "descripcion_resumida": "<p class=\"noticia_descripcion\"><strong>Habbo Hotel celebra el Funky Friday!</strong> No te pierdas la oportunidad de conseguir regalos exclusivos durante 24 horas. ¡Es una experiencia que no te puedes perder!</p>",
+    "fecha_noticia": "2024-11-01T20:35:34.000Z"
+  },
+  {
+    "id": 119,
+    "titulo": "Los muebles de Habboween dejan el Catálogo mañana",
+    "imagen_completa": "catálogo_habboween",
+    "alt_imagen_completa": "Catálogo Habboween",
+    "descripcion_completa": "<p>¡Atención Traders! Habbo Hotel ha anunciado que los muebles de Habboween se retirarán del Catálogo a partir de mañana. Se informa que los raros y los artículos de Freaky Friday no regresarán, pero existe la posibilidad de que otros elementos regresen en el futuro.</p>Este es un resumen de la noticia oficial <a href=\"https://origins.habbo.es/community/article/538/los-muebles-de-habboween-se-van-del-catalogo-manana\" target=\"_blank\">Link</a><br>Esta noticia ha sido generada con IA por lo mismo puede tener errores gramaticales o hablar como si fuera parte del equipo de habbo",
+    "imagen_resumida": "staff",
+    "alt_imagen_resumida": "imagen staff",
+    "descripcion_resumida": "<p class='noticia_descripcion'>¡Importante noticia! Los muebles de Habboween se despiden del Catálogo de Habbo mañana. ¡No te lo pierdas!</p>",
+    "fecha_noticia": "2024-11-01T13:08:28.000Z"
   }
 ]
