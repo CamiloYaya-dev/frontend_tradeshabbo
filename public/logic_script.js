@@ -321,6 +321,17 @@ function initialize() {
                         products.forEach(function(item) {
                             var borderClass = item.highlight == 1 ? 'highlight-border' : '';
                             var collapseId = `collapse${item.id}`;
+                            var parts = item.status.split('_');
+                            var firstStatus = '';
+                            var secondStatus = '';
+                            if (parts.length >= 5) {
+                                // Unimos las primeras tres partes
+                                firstStatus = parts.slice(0, 3).join('_');
+                                // Unimos el resto de las partes a partir del cuarto guion
+                                secondStatus = parts.slice(3).join('_');
+                            } else {
+                                firstStatus = item.status;
+                            }
                             var productCard = `
                                 <div class="col-md-4 col-sm-6 mb-4 product-item catalog_item_div">
                                     <div class="card h-100 position-relative ${borderClass}">
@@ -346,9 +357,19 @@ function initialize() {
                                                             <img src="${item.src}" class="${item.icon == "coleccion" ? "card-img-coleccion" : "card-img-top"}" alt="${item.name}">
                                                         </div>
                                                         <div class="col-12 furni_tendencia">
-                                                            ${item.hot == 1 ? `<img src="furnis/iconos/hot_sale.png" class="iconos-hot-sale" alt="icon">` : ''}
-                                                            ${item.status == "arrow_trend_up" ? `<img src="furnis/iconos/arrow_trend_up.png" class="iconos-arrow-trend-up" alt="icon">` : ''}
-                                                            ${item.status == "arrow_trend_down" ? `<img src="furnis/iconos/arrow_trend_down.png" class="iconos-arrow-trend-down" alt="icon">` : ''}
+                                                            <div class="row">
+                                                                <div class="col-9">
+                                                                    ${item.hot == 1 ? `<img src="furnis/iconos/hot_sale.png" class="iconos-hot-sale" alt="icon">` : ''}
+                                                                </div>
+                                                                <div class="col-3">
+                                                                    ${firstStatus == "arrow_trend_up" ? `<img src="furnis/iconos/arrow_trend_up.png" class="iconos-arrow-trend-up" alt="icon">` : ''}
+                                                                    ${firstStatus == "arrow_trend_down" ? `<img src="furnis/iconos/arrow_trend_down.png" class="iconos-arrow-trend-down" alt="icon">` : ''}
+                                                                    ${firstStatus == "com_arrow_up" ? `<img src="furnis/iconos/arrow_trend_up_com.png" class="iconos-arrow-trend-up" alt="icon">` : ''}
+                                                                    ${firstStatus == "com_arrow_down" ? `<img src="furnis/iconos/arrow_trend_down_com.png" class="iconos-arrow-trend-down" alt="icon">` : ''}
+                                                                    ${secondStatus == "com_arrow_up" ? `<img src="furnis/iconos/arrow_trend_up_com.png" class="iconos-arrow-trend-up" alt="icon">` : ''}
+                                                                    ${secondStatus == "com_arrow_down" ? `<img src="furnis/iconos/arrow_trend_down_com.png" class="iconos-arrow-trend-down" alt="icon">` : ''}
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                         <div class="col-12 furni_historico">
                                                             <img src="furnis/iconos/locales/historial_es.png" class="history_price_icon" alt="icon" data-i18n="[src]historial_precios_img">
@@ -529,7 +550,7 @@ function initialize() {
                                         return (item.precio / item.vip_price).toFixed(2);
                                     });
                                     // Llamar a la función para mostrar la tabla por defecto
-                                    showTable(decryptedData);
+                                    showTable(decryptedData, "ES");
 
                                     searchContainer.hide();
                                     row_explanation_trends.hide();
@@ -539,7 +560,7 @@ function initialize() {
                                     productHistoryContainer.show();
                                     backButton.show();
 
-                                    $('#toggle-view-btn').on('click', function() {
+                                    $(document).on('click', '.toggle-view-btn', function() {
                                         if ($(this).text() === 'Mostrar Gráfica') {
                                             $('#price-history-table').hide();
                                             $('#div_grafica_item').show();
@@ -551,21 +572,28 @@ function initialize() {
                                             $(this).text('Mostrar Gráfica');
                                         }
                                     });
+
+                                    $(document).on('click', '.toggle-hotel-btn', function() {
+                                        let currentHotel = $(this).text().includes("COM") ? "COM" : "ES";
+                                        showTable(decryptedData, currentHotel);
+                                    });
                                 }
                             });
                         });
                     });
 
-                    function showTable(decryptedData) {
-                        var firstRecord = decryptedData[0];
-        
+                    function showTable(decryptedData, hotel = "ES") {
+                        let filteredData = decryptedData.filter(record => record.hotel === hotel);
+
+                        var firstRecord = filteredData[0];
+                        console.log(firstRecord);
                         var historyContent = `
                             <h3 class="price_history_content habbo_text_blue h3_historial_precios" data-i18n="historial_precios">Historial de Precios</h3>
                             <div class="price-history-image">
                                 <img src="${firstRecord.src}" alt="${firstRecord.name}" class="price-history-img">
                             </div>
-                            <div>
-                                <button id="toggle-view-btn" class="button_price_history_dinamic price_history_content online_habbo_text_white">Mostrar Gráfica</button>
+                            <div class="row">
+                                <button class="toggle-hotel-btn button_price_history_dinamic price_history_content online_habbo_text_white">Mostrar ${hotel === "ES" ? "COM" : "ES"} Precios</button>
                             </div>
                             <div class="grafic_item" id="div_grafica_item" style="display: none;">
                                 <canvas id="price-history-chart"></canvas>
@@ -582,10 +610,10 @@ function initialize() {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        ${decryptedData.map((record, index) => {
+                                        ${filteredData.map((record, index) => {
                                             const actualPrice = record.precio;
-                                            const previousPrice = index > 0 ? decryptedData[index - 1].precio : null;
-                                            const nextPrice = index < decryptedData.length - 1 ? decryptedData[index + 1].precio : null;
+                                            const previousPrice = index > 0 ? filteredData[index - 1].precio : null;
+                                            const nextPrice = index < filteredData.length - 1 ? filteredData[index + 1].precio : null;
                                             var trendIcon = '';
                                             
                                             if (previousPrice === null || nextPrice === null) {

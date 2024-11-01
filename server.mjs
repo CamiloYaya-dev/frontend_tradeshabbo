@@ -416,36 +416,60 @@ app.get('/images', async (req, res) => {
         const vip_price = await getVipPrice();
 
         const imagesWithDetails = images.map(image => {
-            const priceHistory = priceHistories.filter(ph => ph.productId === image.id);
-            let status = '';
-            if (priceHistory.length > 1) {
-                const actualPrice = priceHistory[0].precio;
-                const previousPrice = priceHistory[1].precio;
-
-                if (actualPrice > previousPrice) {
-                    status = 'arrow_trend_up';
-                } else {
-                    status = 'arrow_trend_down';
+            const priceHistoryES = priceHistories.filter(ph => ph.productId === image.id && ph.hotel === 'ES');
+            let statusES = '';
+            if (priceHistoryES.length > 1) {
+                const actualPrice = priceHistoryES[0].precio;
+                const previousPrice = priceHistoryES[1].precio;
+                if(previousPrice != 0){
+                    if (actualPrice > previousPrice && previousPrice != 0) {
+                        statusES = 'arrow_trend_up';
+                    } else {
+                        statusES = 'arrow_trend_down';
+                    }
                 }
             }
 
+            const priceHistoryCOM = priceHistories.filter(ph => ph.productId === image.id && ph.hotel === 'COM');
+            let statusCOM = '';
+            if (priceHistoryES.length > 1) {
+                const actualPrice = priceHistoryCOM[0].precio;
+
+                const previousPrice = priceHistoryCOM[1] ? priceHistoryCOM[1].precio : 0;
+
+                if(previousPrice != 0){
+                    if (actualPrice > previousPrice) {
+                        statusCOM = 'com_arrow_up';
+                    } else {
+                        statusCOM = 'com_arrow_down';
+                    }
+                }
+            }
+
+            let statusFinal = statusES != '' && statusCOM != '' ? statusES+'_'+statusCOM : statusES != '' ? statusES : statusCOM != '' ? statusCOM : '';
+            
             return {
                 ...image.toJSON(),
                 vip_price: vip_price,
-                status: status,
-                fecha_precio: priceHistory[0] ? priceHistory[0].fecha_precio : null,
-                precio: priceHistory[0] ? priceHistory[0].precio : null
+                status: statusFinal,
+                fecha_precio: priceHistoryES[0] ? priceHistoryES[0].fecha_precio : null,
+                fecha_precio_com: priceHistoryCOM[0] ? priceHistoryCOM[0].fecha_precio : null
             };
         });
 
         imagesWithDetails.sort((a, b) => {
+            // Prioridad para el campo `hot`
             if (a.hot == 1 && b.hot != 1) return -1;
             if (a.hot != 1 && b.hot == 1) return 1;
-
-            const dateA = a.fecha_precio ? new Date(a.fecha_precio) : new Date(0);
-            const dateB = b.fecha_precio ? new Date(b.fecha_precio) : new Date(0);
-            return dateB - dateA;
+        
+            // Tomamos la fecha más reciente entre `fecha_precio` y `fecha_precio_com` para cada item
+            const maxDateA = new Date(Math.max(new Date(a.fecha_precio), new Date(a.fecha_precio_com)));
+            const maxDateB = new Date(Math.max(new Date(b.fecha_precio), new Date(b.fecha_precio_com)));
+        
+            // Ordenamos en función de la fecha más reciente
+            return maxDateB - maxDateA;
         });
+        
         res.json({ token: encryptData(imagesWithDetails) });
     } catch (error) {
         console.error('Error retrieving images:', error);
@@ -476,6 +500,7 @@ app.get('/price-history/:productId', async (req, res) => {
                 src: record.image ? record.image.src : null,
                 icon: record.image ? record.image.icon : null,
                 descripcion: record.image ? record.image.descripcion : null,
+                hotel: record.hotel,
                 vip_price: vipPriceOnDate
             };
         }));

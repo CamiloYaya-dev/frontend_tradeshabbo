@@ -24,7 +24,11 @@ const PriceHistory = sequelize.define('PriceHistory', {
     precio: {
         type: DataTypes.DECIMAL(10, 2),
         allowNull: false
-    }
+    },
+    hotel: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
 }, {
     tableName: 'price_history',
     timestamps: false
