@@ -432,7 +432,7 @@ app.get('/images', async (req, res) => {
 
             const priceHistoryCOM = priceHistories.filter(ph => ph.productId === image.id && ph.hotel === 'COM');
             let statusCOM = '';
-            if (priceHistoryES.length > 1) {
+            if (priceHistoryCOM.length > 1) {
                 const actualPrice = priceHistoryCOM[0].precio;
 
                 const previousPrice = priceHistoryCOM[1] ? priceHistoryCOM[1].precio : 0;
