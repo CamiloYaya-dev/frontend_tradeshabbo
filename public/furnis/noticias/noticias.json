@@ -933,5 +933,60 @@
     "alt_imagen_resumida": "imagen staff",
     "descripcion_resumida": "<p class='noticia_descripcion'>¡Importante noticia! Los muebles de Habboween se despiden del Catálogo de Habbo mañana. ¡No te lo pierdas!</p>",
     "fecha_noticia": "2024-11-01T13:08:28.000Z"
+  },
+  {
+    "id": 120,
+    "titulo": "Aprobada la ventana de juego panorámica",
+    "imagen_completa": "ventana_panoramica",
+    "alt_imagen_completa": "Ventana de juego panorámica",
+    "descripcion_completa": "<p><strong>Habbo Hotel introduce la nueva ventana de juego panorámica</strong></p><p>Con un apoyo del 90.6% a nivel mundial, Habbo Hotel ha decidido implementar una versión panorámica de la ventana del juego. Esta actualización permitirá a los usuarios disfrutar de una experiencia de juego más inmersiva. ¡Pronto estará disponible para todos los jugadores!</p>Este es un resumen de la noticia oficial <a href=\"https://origins.habbo.es/community/article/474/aprobada-la-ventana-de-juego-panoramica\" target=\"_blank\">Link</a><br>Esta noticia ha sido generada con IA por lo mismo puede tener errores gramaticales o hablar como si fuera parte del equipo de habbo",
+    "imagen_resumida": "staff",
+    "alt_imagen_resumida": "ventana panorámica",
+    "descripcion_resumida": "<p><strong>Habbo Hotel aprueba la ventana de juego panorámica</strong></p><p>Tras una votación abrumadoramente positiva, Habbo Hotel anuncia la introducción de la ventana de juego panorámica. ¡Prepárate para una nueva experiencia en el hotel!</p>",
+    "fecha_noticia": "2024-11-04T14:14:33.000Z"
+  },
+  {
+    "id": 121,
+    "titulo": "¡Nuevos Sample Packs y Habbo Tocadiscos raros llegan a Origins!",
+    "imagen_completa": "sample_packs",
+    "alt_imagen_completa": "Sample Packs y Habbo Tocadiscos raros",
+    "descripcion_completa": "<p>Habbo Hotel Origins se complace en anunciar la llegada de dos nuevos paquetes de artículos a su tienda web. Estos incluirán una variedad de samples de Trax, una Traxmachine y un exclusivo y raro Habbo Tocadiscos. Las fechas de lanzamiento son las siguientes: 06/11, 13/11, 20/11 y 27/11. ¡No te pierdas esta oportunidad de adquirir estos fabulosos artículos!</p>Este es un resumen de la noticia oficial <a href=\"https://origins.habbo.es/community/article/541/541\" target=\"_blank\">Link</a><br>Esta noticia ha sido generada con IA por lo mismo puede tener errores gramaticales o hablar como si fuera parte del equipo de habbo",
+    "imagen_resumida": "staff",
+    "alt_imagen_resumida": "descripción de la noticia",
+    "descripcion_resumida": "<p class='noticia_descripcion'>Habbo Hotel Origins anuncia la llegada de nuevos Sample Packs y un Habbo Tocadiscos raro a su tienda web. Aprovecha esta oportunidad exclusiva en las fechas mencionadas. ¡Imperdible!</p>",
+    "fecha_noticia": "2024-11-04T20:07:39.000Z"
+  },
+  {
+    "id": 122,
+    "titulo": "Nuevo raro añadido al Catálogo: El Hablador",
+    "imagen_completa": "catalogo_hablador",
+    "alt_imagen_completa": "Catálogo El Hablador",
+    "descripcion_completa": "<p><strong>Habbo Hotel: Orígenes presenta un nuevo raro: El Hablador!</strong></p><p>Disponible en el Catálogo por tiempo limitado hasta el 06/11 a las 6am CST / 1pm CEST por 50 créditos. ¡Aprovecha esta oportunidad única para agregar esta pieza a tu colección!</p>Este es un resumen de la noticia oficial <a href=\"https://origins.habbo.es/community/article/549/raro-anadido-al-catalogo-xxxxx\" target=\"_blank\">Link</a><br>Esta noticia ha sido generada con IA por lo mismo puede tener errores gramaticales o hablar como si fuera parte del equipo de habbo",
+    "imagen_resumida": "staff",
+    "alt_imagen_resumida": "nuevo raro añadido al Catálogo",
+    "descripcion_resumida": "<p class='noticia_descripcion'><strong>El Hablador llega al Catálogo de Habbo Hotel: Orígenes!</strong> Adquiere este raro por tiempo limitado. ¡No te lo pierdas!</p>",
+    "fecha_noticia": "2024-11-05T12:15:33.000Z"
+  },
+  {
+    "id": 123,
+    "titulo": "Ganadores del caldero de la Parada de Habboween",
+    "imagen_completa": "caldero_habboween",
+    "alt_imagen_completa": "Caldero de Habboween",
+    "descripcion_completa": "<p><strong>Los Habbos Vaig, Bala, Dinosaurio, Roni y Pululador ganaron un Caldero de Habboween </strong> por ser los primeros en encontrar el raro en el Desfile de Habboween la semana pasada. ¡Felicidades a los afortunados ganadores!</p>Este es un resumen de la noticia oficial <a href=\"https://origins.habbo.es/community/article/566/ganadores-del-caldero-de-la-parada-de-habboween\" target=\"_blank\">Link</a><br>Esta noticia ha sido generada con IA por lo mismo puede tener errores gramaticales o hablar como si fuera parte del equipo de habbo",
+    "imagen_resumida": "staff",
+    "alt_imagen_resumida": "Imagen de personal",
+    "descripcion_resumida": "<p class='noticia_descripcion'><strong>Los Habbos Vaig, Bala, Dinosaurio, Roni y Pululador fueron los afortunados ganadores del Caldero de Habboween en la Parada de Habboween. </strong> ¡Enhorabuena a los afortunados!</p>",
+    "fecha_noticia": "2024-11-06T16:29:39.000Z"
+  },
+  {
+    "id": 124,
+    "titulo": "Nuevo raro disponible: Hologirl",
+    "imagen_completa": "catalogo_hologirl",
+    "alt_imagen_completa": "Catalogo Hologirl",
+    "descripcion_completa": "<p><strong>El nuevo raro de Habbo Hotel: Orígenes: Hologirl!</strong></p><p>El 8 de agosto de 2024, se lanza un nuevo raro mítico en el catálogo de Habbo Hotel: Orígenes. La <strong>Hologirl</strong> ya está disponible por tiempo limitado a un precio especial de 50 créditos. Este es el primer raro que sale un jueves y estará disponible solo por 48 horas en el catálogo. ¡No pierdas la oportunidad de agregar esta pieza única a tu colección!</p>Este es un resumen de la noticia oficial <a href=\"https://origins.habbo.es/community/article/558/es-el-mes-de-la-traxmachine\" target=\"_blank\">Link</a><br>Esta noticia ha sido generada con IA por lo mismo puede tener errores gramaticales o hablar como si fuera parte del equipo de habbo",
+    "imagen_resumida": "staff",
+    "alt_imagen_resumida": "nuevo raro jueves 08 de agosto del 2024",
+    "descripcion_resumida": "<p class='noticia_descripcion'><strong>Llega un nuevo raro a Habbo Hotel: Orígenes!</strong> Descubre y adquiere el nuevo raro, <strong>RARO Hologirl</strong>, disponible solo por 48 horas. ¡No te lo pierdas!</p>",
+    "fecha_noticia": "2024-11-07T23:08:01.000Z"
   }
 ]
