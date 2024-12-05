@@ -34,7 +34,7 @@ export async function postTweet(content, messageUrl) {
 async function generateSummary(text) {
     try {
         const response = await openaiClient.chat.completions.create({
-            messages: [{ role: "user", content: `Eres el dueño o reportero de una fansite de Habbo Origins. Resume el siguiente contenido en menos de 200 caracteres manteniendo el contexto de ser una fansite, omitiendo cualquier referencia a links u otros medios, debido a que estas referencias ya estas cubiertas: \n\n"${text}"` }],
+            messages: [{ role: "user", content: `Eres el dueño o reportero de una fansite de Habbo Origins. Resume el siguiente contenido en menos de 1000 caracteres manteniendo el contexto de ser una fansite, omitiendo cualquier referencia a links u otros medios, debido a que estas referencias ya estas cubiertas: \n\n"${text}"` }],
             model: "gpt-3.5-turbo",
             max_tokens: 60,
         });
@@ -45,25 +45,53 @@ async function generateSummary(text) {
     }
 }
 
-export async function postTweetOficial(content, messageUrl) {
-    const hashtags = "#HabboHotelOrigins #Habbo #THOFansite";
-    content = await generateSummaryOfficial(content);
-    let tweetContent = `${content}\nMás información en nuestra fansite: https://www.tradeshabbo.com o en nuestro Discord: ${messageUrl}\n${hashtags}`;
+export async function postTweetOficial(content, messageUrl, lenguage) {
+    const hashtags = "#HabboHotelOrigins #Habbo #OriginsKingdom";
+    content = await generateSummaryOfficial(content, lenguage);
+
+    let additionalText;
+    switch (lenguage.toLowerCase()) {
+        case 'español':
+            additionalText = `Más información en nuestra fansite: https://www.tradeshabbo.com o en nuestro Discord: ${messageUrl}`;
+            break;
+        case 'inglés':
+            additionalText = `More information on our fansite: https://www.tradeshabbo.com or in our Discord: ${messageUrl}`;
+            break;
+        case 'portugués':
+            additionalText = `Mais informações em nosso fansite: https://www.tradeshabbo.com ou no nosso Discord: ${messageUrl}`;
+            break;
+        default:
+            console.error('Idioma no reconocido, usando texto predeterminado en inglés.');
+            additionalText = `More information on our fansite: https://www.tradeshabbo.com or in our Discord: ${messageUrl}`;
+            break;
+    }
+
+    let tweetContent = `${content}\n${additionalText}\n${hashtags}`;
 
     try {
         await rwClient.v2.tweet(tweetContent);
-        console.log('Tweet publicado exitosamente en Twitter.');
+        console.log(`Tweet publicado exitosamente en ${lenguage.toUpperCase()}.`);
     } catch (error) {
-        console.error('Error al publicar el tweet:', error);
+        console.error(`Error al publicar el tweet en ${lenguage.toUpperCase()}:`, error);
     }
 }
 
-async function generateSummaryOfficial(text) {
+
+export async function postMultilingualTweets(content, messageUrl) {
+    const languages = ['español', 'inglés', 'portugués'];
+    for (const language of languages) {
+        await postTweetOficial(content, messageUrl, language);
+    }
+}
+
+
+async function generateSummaryOfficial(text, lenguage) {
     try {
         const response = await openaiClient.chat.completions.create({
-            messages: [{ role: "user", content: `Eres el dueño o reportero de una fansite de Habbo Origins. Resume el siguiente contenido en menos de 200 caracteres manteniendo el contexto de ser una fansite, omitiendo cualquier referencia a links u otros medios, debido a que estas referencias ya están cubiertas. Usa correctamente los saltos de línea, IMPORTANTE que SIEMPRE hables como si fueras un reportero de la fansite 'Trades Habbo (THO)', refiriéndote a las acciones de Habbo en tercera persona. No utilices pronombres posesivos como 'nuestro' o 'nosotros'. Si no cumples con estas condiciones esta noticia se habrá generado para nada, el resumen tiene que iniciar con Trades Habbo (THO) informa y culminar con (Este es un resumen de una noticia oficial de habbo hotel origins):
+            messages: [{ role: "user", content: `Eres el dueño o reportero de una fansite de Habbo Origins. Resume el siguiente contenido en menos de 1000 caracteres manteniendo el contexto de ser una fansite, omitiendo cualquier referencia a links u otros medios, debido a que estas referencias ya están cubiertas. Usa correctamente los saltos de línea, IMPORTANTE que SIEMPRE hables como si fueras un reportero de la fansite 'Origins Kingdom', refiriéndote a las acciones de Habbo en tercera persona. No utilices pronombres posesivos como 'nuestro' o 'nosotros', respeta el orden gramatical de las cosas y redacta todo como si fuera un reportaje. Si no cumples con estas condiciones esta noticia se habrá generado para nada, el resumen tiene que iniciar con Origins Kingdom informa y culminar con (Este es un resumen de una noticia oficial de habbo hotel origins):
                 ${text}
-                Recuerda mencionar explícitamente que la información proviene de un anuncio oficial de Habbo Hotel Origins."` }],
+                Recuerda mencionar explícitamente que la información proviene de un anuncio oficial de Habbo Hotel Origins.
+                Esta noticia debe estar redacta en el lenguaje: ${lenguage} "` }],
             model: "gpt-3.5-turbo",
             max_tokens: 100,
         });

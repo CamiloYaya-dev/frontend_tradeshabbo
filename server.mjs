@@ -22,7 +22,7 @@ import cheerio from 'cheerio';
 import { Client, GatewayIntentBits, REST, Routes, Collection } from 'discord.js';
 import { ActionRowBuilder, ButtonBuilder, ButtonStyle, ApplicationCommandOptionType, AttachmentBuilder } from 'discord.js';
 import dotenv from 'dotenv';
-import { postTweet, postTweetOficial } from './twitterClient.mjs';
+import { postTweet, postMultilingualTweets } from './twitterClient.mjs';
 import { generateSummaryWeb } from './openaiClient.mjs';
 import { format } from 'date-fns';
 import jwt from 'jsonwebtoken';
@@ -1678,8 +1678,8 @@ client.on('messageCreate', async (message) => {
                         "imagen_resumida": "rares_martes",
                         "alt_imagen_resumida": "nuevo raro jueves 08 de agosto del 2024",
                         "descripcion_resumida": "<p class=\"noticia_descripcion\"><strong>Llega un nuevo raro a Habbo Hotel: Orígenes!</strong> Descubre y adquiere el nuevo raro, <strong>RARO Hologirl</strong>, disponible solo por 48 horas. ¡No te lo pierdas!</p>"
-                    } los posibles valores de la imagen_resumida son rares_martes (para cuando la noticia habla de un rare), funky_friday (para cuando la noticia habla de un funky, es decir, tiene la palabra FUNKY en algun lado), THO (para cuando la noticia habla de tradeshabbo o tradeshabboorigins o explicitamente de THO), staff (cuando la noticia es de oficial de habbo o explicitamente tiene la palabra staff o hobba), IMPORTANTE NINGUNO DE LOS ANTERIORES CAMPOS PEUDE QUEDAR VACIO,
-                     si la noticia es OFICIAL DE HABBO la imagen_resumida SIEMPRE TIENE QUE SER STAFF, la imagen_completa tiene que ser acorde al contexto de la noticia y al titulo de la noticia, si por alguna razon viene un link agregalo a la descripcion completa de la noticia.`
+                    } los posibles valores de la imagen_resumida son rares_martes (para cuando la noticia habla de un rare, es decir, tiene la palabra RARE o RARO), funky_friday (para cuando la noticia habla de un funky, es decir, tiene la palabra FUNKY en algun lado), THO (para cuando la noticia habla de tradeshabbo o tradeshabboorigins o explicitamente de THO), staff (cuando la noticia es de oficial de habbo o explicitamente tiene la palabra staff o hobba), IMPORTANTE NINGUNO DE LOS ANTERIORES CAMPOS PUEDE QUEDAR VACIO,
+                     si la noticia es OFICIAL DE HABBO la imagen_resumida SIEMPRE TIENE QUE SER STAFF, la imagen_completa tiene que ser acorde al contexto de la noticia y al titulo de la noticia, si por alguna razon viene un link agregalo a la descripcion completa de la noticia. El cuerpo del JSON que te pase de ejemplo es eso un ejemplo, nunca puede ser los valores que estan en dicho ejemplo, exceptuando el campo imagen_resumida.`
                     let summaryData = await generateSummaryWeb(prompWeb);
                     summaryData = JSON.parse(summaryData);
 
@@ -1972,7 +1972,7 @@ async function fetchAndExtractNoticias() {
                     newsChannel.send(`@everyone 📰 **Resumen nueva noticia oficial**\n\nHola Traders, tengo una nueva noticia para ustedes.\n\n${summaryData}\n\nComo siempre, les mantendremos al tanto de cualquier novedad. Muchas gracias por leer la noticia, en esta la mejor comunidad de todas.\n\nLink oficial: ${url}\n\n***Esta noticia a sido generada con AI***`).then(async (sentMessage) => {
                         const messageUrl = `https://discord.com/channels/${sentMessage.guildId}/${sentMessage.channelId}/${sentMessage.id}`;
                         console.log(`Mensaje publicado en: ${messageUrl}`);
-                        await postTweetOficial(summaryData, messageUrl);
+                        await postMultilingualTweets(summaryData, messageUrl);
                         const prompWeb = `Tengo esta noticia: ${contenidoNoticia}. Necesito que la generes y la resumas en el siguiente formato JSON (el json que es un ejemplo del formato que necesito):
                             (formato json de ejemplo: {
                                 "titulo": "Nuevo raro disponible! La Hologirl",
