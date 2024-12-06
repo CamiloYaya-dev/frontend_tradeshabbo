@@ -141,16 +141,6 @@ function initialize() {
         });
     }
 
-    /*function discordInfo(){
-        $.getJSON('../discordInfo.json', function(data) {
-            $('#discord_title').text(data.name);
-            $('#discord_invitation').attr('href', "https://discord.gg/tradeshabbo");
-            $('#discord_members_online').text(data.presence_count + " Usuarios Online");
-        }).fail(function() {
-            $('#discord_title').text('En mantenimiento');
-        });
-    }*/
-
     loadOnlineCount();
     setInterval(loadOnlineCount, 3600000);
 
@@ -299,7 +289,6 @@ function initialize() {
                 headers: { 'x-api-key': apiKey },
                 success: function(data) {
                     loadContador();
-                    //discordInfo();
                     loadLastThreeNoticias();
                     obtenerPlacas();
                     const decryptedData = decryptData(data.token);
