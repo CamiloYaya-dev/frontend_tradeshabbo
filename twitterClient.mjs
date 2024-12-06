@@ -52,19 +52,19 @@ export async function postTweetOficial(content, messageUrl, lenguage) {
     let additionalText;
     switch (lenguage.toLowerCase()) {
         case 'español':
-            additionalText = `Más información en nuestra fansite: https://www.tradeshabbo.com o en nuestro Discord: ${messageUrl}`;
+            additionalText = `🌐 Más información en nuestra fansite:\n👉 https://tradeshabbo.com\n\n💬 Únete a nuestro Discord:\n👉 ${messageUrl}`;
             break;
         case 'inglés':
-            additionalText = `More information on our fansite: https://www.tradeshabbo.com or in our Discord: ${messageUrl}`;
+            additionalText = `🌐 More information on our fansite:\n👉 https://tradeshabbo.com\n\n💬 Join our Discord:\n👉 ${messageUrl}`;
             break;
         case 'portugués':
-            additionalText = `Mais informações em nosso fansite: https://www.tradeshabbo.com ou no nosso Discord: ${messageUrl}`;
+            additionalText = `🌐 Mais informações em nosso fansite:\n👉 https://tradeshabbo.com\n\n💬 Entre no nosso Discord:\n👉 ${messageUrl}`;
             break;
         default:
             console.error('Idioma no reconocido, usando texto predeterminado en inglés.');
-            additionalText = `More information on our fansite: https://www.tradeshabbo.com or in our Discord: ${messageUrl}`;
+            additionalText = `🌐 More information on our fansite:\n👉 https://tradeshabbo.com\n\n💬 Join our Discord:\n👉 ${messageUrl}`;
             break;
-    }
+    }    
 
     let tweetContent = `${content}\n${additionalText}\n${hashtags}`;
 
@@ -88,12 +88,26 @@ export async function postMultilingualTweets(content, messageUrl) {
 async function generateSummaryOfficial(text, lenguage) {
     try {
         const response = await openaiClient.chat.completions.create({
-            messages: [{ role: "user", content: `Eres el dueño o reportero de una fansite de Habbo Origins. Resume el siguiente contenido en menos de 1000 caracteres manteniendo el contexto de ser una fansite, omitiendo cualquier referencia a links u otros medios, debido a que estas referencias ya están cubiertas. Usa correctamente los saltos de línea, IMPORTANTE que SIEMPRE hables como si fueras un reportero de la fansite 'Origins Kingdom', refiriéndote a las acciones de Habbo en tercera persona. No utilices pronombres posesivos como 'nuestro' o 'nosotros', respeta el orden gramatical de las cosas y redacta todo como si fuera un reportaje. Si no cumples con estas condiciones esta noticia se habrá generado para nada, el resumen tiene que iniciar con Origins Kingdom informa y culminar con (Este es un resumen de una noticia oficial de habbo hotel origins):
-                ${text}
-                Recuerda mencionar explícitamente que la información proviene de un anuncio oficial de Habbo Hotel Origins.
-                Esta noticia debe estar redacta en el lenguaje: ${lenguage} "` }],
+            messages: [
+                {
+                  role: "user",
+                  content: `Eres el dueño o reportero de una fansite de Habbo Origins. Resume el siguiente contenido en menos de 1000 caracteres manteniendo el contexto de ser una fansite, omitiendo cualquier referencia a links u otros medios, debido a que estas referencias ya están cubiertas. Usa correctamente los saltos de línea y añade emojis relacionados con el tema para darle un estilo más dinámico y atractivo. 
+
+                    IMPORTANTE:
+                    1. SIEMPRE habla como si fueras un reportero de la fansite 'Origins Kingdom', refiriéndote a las acciones de Habbo en tercera persona.
+                    2. No utilices pronombres posesivos como 'nuestro' o 'nosotros'.
+                    3. Respetar el orden gramatical de las cosas y redactar todo como si fuera un reportaje.
+                    4. El resumen tiene que iniciar con "✨ Origins Kingdom informa" y culminar con "🏨🌟 *(Este es un resumen de una noticia oficial de Habbo Hotel Origins)*".
+                    5. Asegúrate de mencionar explícitamente que la información proviene de un anuncio oficial de Habbo Hotel Origins.
+                    
+                    Contenido a resumir:  
+                    ${text}  
+                    
+                    La noticia debe redactarse en el lenguaje: ${lenguage}`
+                }
+              ],
             model: "gpt-3.5-turbo",
-            max_tokens: 100,
+            max_tokens: 300,
         });
         return response.choices[0].message.content.trim();
     } catch (error) {
