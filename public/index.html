@@ -84,6 +84,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.16/mediaelementplayer.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <script async="async" data-cfasync="false" src="//pl24315304.cpmrevenuegate.com/279851a8090fae3bf5e009cac2e5558b/invoke.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
     <header class="bg-dark text-white text-center py-3 header-page">
@@ -123,15 +124,25 @@
                 <img src="furnis/iconos/trades_habbo_origins.png" class="sprite_trades_habbo_origins" alt="Logo de Trades Habbo Origins">
             </div>
             <div class="col-md-4 col-sm-12 d-none d-md-flex text-center mb-3 mb-md-0 row_contador">
-                <a href="https://discord.gg/FsZcP2h8" target="_blank" class="rainbow-border margin-right-10px">
-                    <i class="fab fa-discord fa-2x habbo-text-white mx-2"></i>
-                </a>
-                <a href="https://www.tiktok.com/@tradeshabbofansite" target="_blank" class="rainbow-border margin-right-10px">
-                    <i class="fab fa-tiktok fa-2x habbo-text-white mx-2"></i>
-                </a>
-                <a href="https://x.com/TradesHabbo" target="_blank" class="rainbow-border">
-                    <i class="fab fa-twitter fa-2x habbo-text-white mx-2"></i>
-                </a>
+                <div class="row">
+                    <div class="col-md-5 text-center row_contador">
+                        <a href="https://discord.gg/originskingdom" target="_blank" class="rainbow-border margin-right-10px">
+                            <i class="fab fa-discord fa-2x habbo-text-white mx-2"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@tradeshabbofansite" target="_blank" class="rainbow-border margin-right-10px">
+                            <i class="fab fa-tiktok fa-2x habbo-text-white mx-2"></i>
+                        </a>
+                        <a href="https://x.com/TradesHabbo" target="_blank" class="rainbow-border">
+                            <i class="fab fa-twitter fa-2x habbo-text-white mx-2"></i>
+                        </a>
+                    </div>
+                    <div class="col-md-7 text-center row_contador">
+                        <button class="price_history_content online_habbo_text_white menu-link" data-i18n="inicio_sesion" data-section="login">
+                        </button>
+                        <button class="price_history_content online_habbo_text_white menu-link" data-i18n="registrarse" data-section="register">
+                        </button>
+                    </div>
+                </div>
             </div> 
         </div>
         <div class="row mt-3 row_menu">
@@ -741,6 +752,47 @@
             </div>
             <div class="col-md-8 column" id="marketplace-section" style="display: none;">
             </div>
+            <div class="col-md-8 column" id="login-section" style="display: none;">
+
+            </div>
+            <div class="col-md-8 column" id="register-section" style="display: none;">
+                <h3 class="text-center">Registro de Usuario</h3>
+                <form id="register-form">
+                    <div class="form-group position-relative">
+                        <label for="username">Nombre de Usuario:
+                            <span class="info-icon" data-toggle="tooltip" data-placement="right" title="Este es el nombre de cómo quieres aparecer en la página, por ejemplo, Emo. , el nombre solo puede tener carácteres especiales como (!, @, #, $, %, ^, &, *, -, _, =, +).">
+                                <i class="fas fa-question-circle"></i>
+                            </span>
+                        </label>
+                        <input type="text" class="form-control" id="username" name="username" placeholder="Ejemplo: Emo." required>
+                    </div>
+                    <div class="form-group position-relative">
+                        <label for="email">Correo Electrónico:
+                            <span class="info-icon" data-toggle="tooltip" data-placement="right" title="El correo electrónico solo se utiliza para confirmar que el usuario es real y permitir recuperar la contraseña.">
+                                <i class="fas fa-question-circle"></i>
+                            </span>
+                        </label>
+                        <input type="email" class="form-control" id="email" name="email" 
+                            placeholder="Ingrese su correo electrónico" required>
+                    </div>
+                    <div class="form-group position-relative">
+                        <label for="password">Contraseña:
+                            <span class="info-icon" data-toggle="tooltip" data-placement="right" title="La contraseña debe tener al menos 1 letra mayúscula, 1 letra minúscula, 1 número y 1 carácter especial como (!, @, #, $, %, ^, &, *, -, _, =, +).">
+                                <i class="fas fa-question-circle"></i>
+                            </span>
+                        </label>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Ingrese su contraseña" required>
+                    </div>
+                    <div class="form-group position-relative">
+                        <label for="confirm-password">Confirmar Contraseña:</label>
+                        <input type="password" class="form-control" id="confirm-password" name="confirm-password" placeholder="Confirme su contraseña" required>
+                    </div>
+                    <!-- ReCaptcha de Google -->
+                    <div class="g-recaptcha mb-3" data-sitekey="6Lcvhc4ZAAAAAAPMvUDwQ8yvLetUarwazNfCr4D8"></div>
+                    <button type="button" id="register-button" class="btn btn-primary btn-block">Registrar</button>
+                </form>
+            </div>            
+            
             <div class="col-1 d-block d-md-none column-right">
                 <!-- Contenido de la columna derecha -->
             </div>
@@ -945,7 +997,7 @@
     <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.16/mediaelement-and-player.min.js"></script>
-    <script src="6fed2773-1c83-47b7-9bd2-9523c348d7df.js"></script>
+    <script src="script.js"></script>
     <!-- Incluir i18next -->
     <script src="https://unpkg.com/i18next@20.6.1/i18next.min.js"></script>
     <script src="https://unpkg.com/i18next-browser-languagedetector@6.1.2/i18nextBrowserLanguageDetector.min.js"></script>

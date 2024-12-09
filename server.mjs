@@ -28,6 +28,7 @@ import { format } from 'date-fns';
 import jwt from 'jsonwebtoken';
 import puppeteer from 'puppeteer';
 import FormData from 'form-data';
+import bcrypt from 'bcrypt';
 
 dotenv.config();
 
@@ -967,6 +968,52 @@ app.get('/secure-image/:imageName', async (req, res) => {
         res.sendFile(imagePath); // Envía el archivo de imagen encontrado
     } else {
         res.status(404).json({ error: 'Image not found' });
+    }
+});
+
+app.post('/register-user', [
+    check('username').isString().withMessage('Username is required'),
+    check('email').isEmail().withMessage('Invalid email format'),
+    check('password').isLength({ min: 6 }).withMessage('Password must be at least 6 characters long')
+], async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+
+    try {
+        
+        const { username, email, password } = req.body;
+
+        // Genera un token JWT para autorización
+        const token = generateJWT();
+
+        // Envía la solicitud POST a la API externa
+        const response = await axios.post('https://nearby-kindly-lemming.ngrok-free.app/register-user', {
+            username,
+            email,
+            password
+        }, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+
+        // Devuelve exactamente la respuesta de la API externa
+        res.status(response.status).json(response.data);
+
+    } catch (error) {
+        console.error('Error al registrar el usuario:', error.message);
+
+        // Manejo de error específico de la API externa
+        if (error.response && error.response.data && error.response.data.error) {
+            return res.status(400).json({ 
+                error: error.response.data.error 
+            });
+        }
+
+        // Error general del servidor
+        res.status(500).json({ error: 'Error al registrar el usuario' });
     }
 });
 

@@ -50,6 +50,7 @@ $(document).ready(function() {
     $.getScript('salas.js', function() {});
     $.getScript('marketplace.js', function() {});
     $.getScript('placas.js', function() {});
+    $.getScript('register.js', function() {});
 
     $('#button_options').on('click', function(e) {
         var content = document.getElementById("toggle-content");
@@ -225,6 +226,42 @@ $(document).ready(function() {
             $('#comunidad_salas').hide();
             $('#equipo-section').hide();
             $('#marketplace-section').show();
+        } else if (section === 'login'){
+            loadOtherClass();
+            renderThreads();
+            $('#catalogo-section').hide();
+            $('#column-explications-catalogo').hide();
+            $('#noticias-section').hide();
+            $('#calculador-section').hide();
+            $('#sorteos-section').hide();
+            $('#master-trades-section').hide();
+            $('#sort-options').hide();
+            $('#footer').show();
+            $('#column-explications-master-trades').hide();
+            $('#habbo-generator-section').hide();
+            $('#comunidad_salas').hide();
+            $('#equipo-section').hide();
+            $('#marketplace-section').hide();
+            $('#login-section').show();
+            $('#register-section').hide();
+        } else if (section === 'register'){
+            loadOtherClass();
+            renderThreads();
+            $('#catalogo-section').hide();
+            $('#column-explications-catalogo').hide();
+            $('#noticias-section').hide();
+            $('#calculador-section').hide();
+            $('#sorteos-section').hide();
+            $('#master-trades-section').hide();
+            $('#sort-options').hide();
+            $('#footer').show();
+            $('#column-explications-master-trades').hide();
+            $('#habbo-generator-section').hide();
+            $('#comunidad_salas').hide();
+            $('#equipo-section').hide();
+            $('#marketplace-section').hide();
+            $('#login-section').hide();
+            $('#register-section').show();
         }
         updateContent();
     });
