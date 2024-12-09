@@ -51,6 +51,7 @@ $(document).ready(function() {
     $.getScript('marketplace.js', function() {});
     $.getScript('placas.js', function() {});
     $.getScript('register.js', function() {});
+    $.getScript('login.js', function() {});
 
     $('#button_options').on('click', function(e) {
         var content = document.getElementById("toggle-content");

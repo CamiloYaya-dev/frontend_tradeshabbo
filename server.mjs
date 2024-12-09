@@ -1017,6 +1017,64 @@ app.post('/register-user', [
     }
 });
 
+app.post('/login', [
+    check('email').isEmail().withMessage('Formato de email inválido'),
+    check('password').notEmpty().withMessage('La contraseña es obligatoria'),
+], async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+
+    try {
+        const { email, password } = req.body;
+        // Genera un token JWT para autorización
+        const tokenAut = generateJWT();
+        // Petición a Gods_Bot
+        const response = await axios.post('https://nearby-kindly-lemming.ngrok-free.app/login', {
+            email,
+            password
+        },{
+            headers: {
+                'Authorization': `Bearer ${tokenAut}`
+            }
+        });
+
+        // Si el login es exitoso, genera el JWT en Nexus
+        if (response.status === 200 && response.data.user) {
+            const { id, username, email, permissions } = response.data.user;
+
+            // Generar el JWT en Nexus
+            const token = jwt.sign(
+                { id, username, email, permissions },
+                apiRestJWTKey,
+                { expiresIn: '1h' }
+            );
+
+            // Configura la cookie segura
+            res.cookie('session_token', token, {
+                httpOnly: true,
+                secure: process.env.NODE_ENV === 'production', // Solo HTTPS en producción
+                sameSite: 'Strict'
+            });
+
+            res.status(200).json({
+                message: 'Inicio de sesión exitoso'
+            });
+        } else {
+            res.status(response.status).json(response.data);
+        }
+    } catch (error) {
+        console.error('Error al iniciar sesión:', error.message);
+
+        if (error.response && error.response.data && error.response.data.error) {
+            return res.status(400).json({ error: error.response.data.error });
+        }
+
+        res.status(500).json({ error: 'Error al iniciar sesión' });
+    }
+});
+
 function findImage(directory, imageName) {
     const files = fs.readdirSync(directory);
 
