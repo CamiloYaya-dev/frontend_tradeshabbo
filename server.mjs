@@ -1053,7 +1053,7 @@ app.post('/login', [
 
             // Configura la cookie segura
             res.cookie('session_token', token, {
-                httpOnly: true,
+                httpOnly: false,
                 secure: process.env.NODE_ENV === 'production', // Solo HTTPS en producción
                 sameSite: 'Strict'
             });

@@ -2387,3 +2387,20 @@ h5 {
     position: relative; /* Necesario para que el pseudo-elemento se posicione correctamente */
     margin-top: 5px;
 }
+
+.swal-title-success {
+    font-size: 1em; /* Cambia el tamaño de la fuente del título */
+    color: #4caf50; /* Cambia el color del título (opcional) */
+    font-weight: bold;
+}
+
+.swal-title-error {
+    font-size: 1em; /* Cambia el tamaño de la fuente del título */
+    color: red; /* Cambia el color del título (opcional) */
+    font-weight: bold;
+}
+
+.swal-popup-custom {
+    font-family: 'Arial', sans-serif; /* Cambia la fuente del popup */
+    padding: 1em; /* Ajusta el espacio alrededor del contenido */
+}

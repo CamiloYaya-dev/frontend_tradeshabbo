@@ -82,6 +82,8 @@ $(document).ready(function() {
             $('#comunidad_salas').hide();
             $('#equipo-section').hide();
             $('#marketplace-section').hide();
+            $('#login-section').hide();
+            $('#register-section').hide();
         } else if (section === 'noticias') {
             loadOtherClass();
             loadNoticias();
@@ -99,6 +101,8 @@ $(document).ready(function() {
             $('#comunidad_salas').hide();
             $('#equipo-section').hide();
             $('#marketplace-section').hide();
+            $('#login-section').hide();
+            $('#register-section').hide();
         } else if (section === 'calculador') {
             loadOtherClass();
             $('#catalogo-section').hide();
@@ -115,6 +119,8 @@ $(document).ready(function() {
             $('#comunidad_salas').hide();
             $('#equipo-section').hide();
             $('#marketplace-section').hide();
+            $('#login-section').hide();
+            $('#register-section').hide();
         } else if (section === 'sorteos') {
             loadOtherClass();
             loadSorteos();
@@ -132,6 +138,8 @@ $(document).ready(function() {
             $('#comunidad_salas').hide();
             $('#equipo-section').hide();
             $('#marketplace-section').hide();
+            $('#login-section').hide();
+            $('#register-section').hide();
         } else if (section === 'master_trades') {
             loadMasterTrades();
             $('#catalogo-section').hide();
@@ -148,6 +156,8 @@ $(document).ready(function() {
             $('#comunidad_salas').hide();
             $('#equipo-section').hide();
             $('#marketplace-section').hide();
+            $('#login-section').hide();
+            $('#register-section').hide();
         } else if (section === 'habbo_generator_section'){
             loadOtherClass();
             $('#catalogo-section').hide();
@@ -164,6 +174,8 @@ $(document).ready(function() {
             $('#comunidad_salas').hide();
             $('#equipo-section').hide();
             $('#marketplace-section').hide();
+            $('#login-section').hide();
+            $('#register-section').hide();
         } else if (section === 'text_generator_section'){
             loadOtherClass();
             $('#catalogo-section').hide();
@@ -180,6 +192,8 @@ $(document).ready(function() {
             $('#comunidad_salas').hide();
             $('#equipo-section').hide();
             $('#marketplace-section').hide();
+            $('#login-section').hide();
+            $('#register-section').hide();
         } else if (section === 'comunidad_salas'){
             loadOtherClass();
             loadSalaImages();
@@ -196,6 +210,8 @@ $(document).ready(function() {
             $('#comunidad_salas').show();
             $('#equipo-section').hide();
             $('#marketplace-section').hide();
+            $('#login-section').hide();
+            $('#register-section').hide();
         } else if (section === 'equipo'){
             loadOtherClass();
             $('#catalogo-section').hide();
@@ -211,6 +227,8 @@ $(document).ready(function() {
             $('#comunidad_salas').hide();
             $('#equipo-section').show();
             $('#marketplace-section').hide();
+            $('#login-section').hide();
+            $('#register-section').hide();
         } else if (section === 'compro_vendo'){
             loadOtherClass();
             renderThreads();
@@ -227,6 +245,8 @@ $(document).ready(function() {
             $('#comunidad_salas').hide();
             $('#equipo-section').hide();
             $('#marketplace-section').show();
+            $('#login-section').hide();
+            $('#register-section').hide();
         } else if (section === 'login'){
             loadOtherClass();
             renderThreads();
@@ -268,4 +288,5 @@ $(document).ready(function() {
     });
 
     $('[data-toggle="tooltip"]').tooltip(); 
+
 });

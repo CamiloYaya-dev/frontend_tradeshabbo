@@ -52,6 +52,7 @@
     "request": "^2.88.2",
     "sequelize": "^6.37.3",
     "sqlite3": "^5.1.7",
+    "sweetalert2": "^11.14.5",
     "twitter-api-v2": "^1.17.2",
     "uuid": "^10.0.0"
   },

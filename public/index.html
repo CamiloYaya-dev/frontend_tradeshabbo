@@ -85,6 +85,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <script async="async" data-cfasync="false" src="//pl24315304.cpmrevenuegate.com/279851a8090fae3bf5e009cac2e5558b/invoke.js"></script>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
 </head>
 <body>
     <header class="bg-dark text-white text-center py-3 header-page">
@@ -136,11 +141,17 @@
                             <i class="fab fa-twitter fa-2x habbo-text-white mx-2"></i>
                         </a>
                     </div>
-                    <div class="col-md-7 text-center row_contador">
+                    <!-- Botones visibles solo cuando NO está logeado -->
+                    <div class="col-md-7 text-center row_contador no_login">
                         <button class="price_history_content online_habbo_text_white menu-link" data-i18n="inicio_sesion" data-section="login">
                         </button>
                         <button class="price_history_content online_habbo_text_white menu-link" data-i18n="registrarse" data-section="register">
                         </button>
+                    </div>
+                    <!-- Contenedor del usuario logueado -->
+                    <div class="col-md-7 text-center row_contador usuario_logeado" style="display: none;">
+                        <p class="username_display">Bienvenido, <span id="username_display"></span></p>
+                        <button class="btn btn-danger" id="logout_button">Cerrar Sesión</button>
                     </div>
                 </div>
             </div> 
@@ -770,6 +781,7 @@
         
                     <button type="button" id="login-button" class="btn btn-primary btn-block">Iniciar Sesión</button>
                 </form>
+                
             </div>
             <div class="col-md-8 column" id="register-section" style="display: none;">
                 <h3 class="text-center">Registro de Usuario</h3>
