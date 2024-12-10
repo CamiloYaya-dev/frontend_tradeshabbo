@@ -2404,3 +2404,27 @@ h5 {
     font-family: 'Arial', sans-serif; /* Cambia la fuente del popup */
     padding: 1em; /* Ajusta el espacio alrededor del contenido */
 }
+
+.register_div {
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 18px;
+    color: white;
+}
+
+.login_div{
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 18px;
+    color: white;
+}
+
+.recaptcha{
+    text-align: -webkit-center;
+}

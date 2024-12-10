@@ -972,9 +972,9 @@ app.get('/secure-image/:imageName', async (req, res) => {
 });
 
 app.post('/register-user', [
-    check('username').isString().withMessage('Username is required'),
+    check('usernameRegister').isString().withMessage('Username is required'),
     check('email').isEmail().withMessage('Invalid email format'),
-    check('password').isLength({ min: 6 }).withMessage('Password must be at least 6 characters long')
+    check('passwordRegister').isLength({ min: 6 }).withMessage('Password must be at least 6 characters long')
 ], async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -983,16 +983,16 @@ app.post('/register-user', [
 
     try {
         
-        const { username, email, password } = req.body;
+        const { usernameRegister, email, passwordRegister } = req.body;
 
         // Genera un token JWT para autorización
         const token = generateJWT();
 
         // Envía la solicitud POST a la API externa
         const response = await axios.post('https://nearby-kindly-lemming.ngrok-free.app/register-user', {
-            username,
+            username: usernameRegister,
             email,
-            password
+            password: passwordRegister
         }, {
             headers: {
                 'Authorization': `Bearer ${token}`

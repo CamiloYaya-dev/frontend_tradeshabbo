@@ -1,87 +1,143 @@
+let registerRecaptchaWidget;
+
+// Función de inicialización de reCAPTCHA (ámbito global)
+function initializeRegisterRecaptcha() {
+    console.log("Entre a inicializar reCAPTCHA");
+    if (typeof grecaptcha !== "undefined" && $('#register-recaptcha').length) {
+        registerRecaptchaWidget = grecaptcha.render('register-recaptcha', {
+            sitekey: '6Lcvhc4ZAAAAAAPMvUDwQ8yvLetUarwazNfCr4D8'
+        });
+    } else {
+        console.error("reCAPTCHA no está disponible o el contenedor no existe.");
+    }
+}
+
 $(document).ready(function () {
     // Inicializar tooltips
     $('[data-toggle="tooltip"]').tooltip();
 
     // Escuchar el evento click del botón registrar
     $('#register-button').on('click', async function () {
-        // Obtener los datos del formulario
-        const username = $('#username').val().trim();
+        const usernameRegister = $('#usernameRegister').val().trim();
         const email = $('#email').val().trim();
-        const password = $('#password').val();
+        const passwordRegister = $('#passwordRegister').val();
         const confirmPassword = $('#confirm-password').val();
+        const recaptchaResponse = grecaptcha.getResponse(registerRecaptchaWidget);
 
         // Validaciones de nombre de usuario
-        const usernameRegex = /^[a-zA-Z0-9!@#$%^&*()_+\-=]+$/;
-        if (!username || !usernameRegex.test(username)) {
-            alert(
-                'El nombre de usuario solo puede contener letras, números y caracteres especiales permitidos (!, @, #, $, %, ^, &, *, -, _, =, +).'
-            );
+        const usernameRegisterRegex = /^[a-zA-Z0-9!@#$%^&*()_+\-=]+$/;
+        if (!usernameRegister || !usernameRegisterRegex.test(usernameRegister)) {
+            mostrarAlertaError('El nombre de usuario solo puede contener letras, números y caracteres especiales permitidos.');
             return;
         }
 
-        if (username.length < 3 || username.length > 30) {
-            alert('El nombre de usuario debe tener entre 3 y 30 caracteres. Por favor, verifica.');
+        if (usernameRegister.length < 3 || usernameRegister.length > 30) {
+            mostrarAlertaError('El nombre de usuario debe tener entre 3 y 30 caracteres.');
             return;
         }
 
         // Validaciones de correo electrónico
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!email || !emailRegex.test(email)) {
-            alert('Por favor, ingresa un correo electrónico válido.');
+            mostrarAlertaError('Por favor, ingresa un correo electrónico válido.');
             return;
         }
 
         // Validaciones de contraseña
-        const passwordRegex =
-            /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=]).{8,}$/;
-        if (!password || !passwordRegex.test(password)) {
-            alert(
-                'La contraseña debe tener al menos 8 caracteres, incluyendo 1 letra mayúscula, 1 letra minúscula, 1 número y 1 carácter especial (!, @, #, $, %, ^, &, *, -, _, =, +).'
-            );
+        const passwordRegisterRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=]).{8,}$/;
+        if (!passwordRegister || !passwordRegisterRegex.test(passwordRegister)) {
+            mostrarAlertaError('La contraseña debe tener al menos 8 caracteres, incluyendo 1 letra mayúscula, 1 letra minúscula, 1 número y 1 carácter especial.');
             return;
         }
 
-        // Validar que las contraseñas coincidan
-        if (password !== confirmPassword) {
-            alert('Las contraseñas no coinciden. Por favor, verifica.');
+        if (passwordRegister !== confirmPassword) {
+            mostrarAlertaError('Las contraseñas no coinciden. Por favor, verifica.');
+            return;
+        }
+
+        if (!recaptchaResponse) {
+            mostrarAlertaError('Por favor, completa el reCAPTCHA.');
             return;
         }
 
         try {
-            // Ejecutar reCAPTCHA y obtener el token
-            const recaptchaToken = await grecaptcha.enterprise.execute(
-                '6Lff1ZYqAAAAAGXTMx_xDCDKzPNfs6uWNuGt8JlW', 
-                { action: 'register' }
-            );
-
-            // Preparar el payload para enviar
             const payload = {
-                username,
+                usernameRegister,
                 email,
-                password,
-                recaptchaToken,
+                passwordRegister,
+                recaptchaToken: recaptchaResponse
             };
 
-            console.log('Datos listos para enviar:', payload);
-
-            // Enviar los datos al backend mediante AJAX
+            // Enviar datos al backend
             $.ajax({
                 url: '/register-user',
                 type: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify(payload),
                 success: function (response) {
-                    alert(response.message);
-                    $('#register-form')[0].reset(); // Limpiar el formulario
+                    if(response.message === "El usuario o correo ya está registrado."){
+                        mostrarAlertaError(response.message);
+                    } else {
+                        mostrarAlertaExito(response.message || 'Usuario registrado correctamente');
+                        $('#register-form')[0].reset(); // Limpiar formulario
+                        grecaptcha.reset(); // Resetear reCAPTCHA
+                    }
                 },
                 error: function (xhr) {
                     const errorMessage = xhr.responseJSON?.error || 'Error al registrar el usuario.';
-                    alert(`Ocurrió un error: ${errorMessage}`);
-                },
+                    mostrarAlertaError(errorMessage);
+                    grecaptcha.reset(); // Resetear reCAPTCHA
+                }
             });
         } catch (error) {
             console.error('Error ejecutando reCAPTCHA:', error);
-            alert('Error ejecutando reCAPTCHA. Intenta de nuevo.');
+            mostrarAlertaError('Error ejecutando reCAPTCHA. Intenta de nuevo.');
         }
     });
+
+    // Función para mostrar alertas de error
+    function mostrarAlertaError(mensaje) {
+        Swal.fire({
+            title: mensaje,
+            icon: 'error',
+            position: 'bottom-start',
+            showClass: {
+                popup: 'animate__animated animate__backInLeft animate__faster'
+            },
+            hideClass: {
+                popup: 'animate__animated animate__fadeOutDown animate__faster'
+            },
+            showConfirmButton: false,
+            timer: 2000,
+            timerProgressBar: true,
+            width: "20em",
+            customClass: {
+                title: 'swal-title-error',
+                popup: 'swal-popup-custom'
+            }
+        });
+    }
+
+    // Función para mostrar alertas de éxito
+    function mostrarAlertaExito(mensaje) {
+        Swal.fire({
+            title: mensaje,
+            icon: 'success',
+            position: 'bottom-start',
+            showClass: {
+                popup: 'animate__animated animate__backInLeft animate__faster'
+            },
+            hideClass: {
+                popup: 'animate__animated animate__fadeOutDown animate__faster'
+            },
+            showConfirmButton: false,
+            timer: 2000,
+            timerProgressBar: true,
+            width: "20em",
+            customClass: {
+                title: 'swal-title-success',
+                popup: 'swal-popup-custom'
+            }
+        });
+    }
 });

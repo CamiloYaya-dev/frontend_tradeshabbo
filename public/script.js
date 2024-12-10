@@ -289,4 +289,13 @@ $(document).ready(function() {
 
     $('[data-toggle="tooltip"]').tooltip(); 
 
+    window.onload = function () {
+        // Inicializa ambos recaptchas
+        if ($('#register-recaptcha').length) {
+            initializeRegisterRecaptcha();
+        }
+        if ($('#login-recaptcha').length) {
+            initializeLoginRecaptcha();
+        }
+    };
 });

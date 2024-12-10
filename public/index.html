@@ -84,7 +84,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.16/mediaelementplayer.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <script async="async" data-cfasync="false" src="//pl24315304.cpmrevenuegate.com/279851a8090fae3bf5e009cac2e5558b/invoke.js"></script>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=explicit" async defer></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link
         rel="stylesheet"
@@ -150,9 +150,23 @@
                     </div>
                     <!-- Contenedor del usuario logueado -->
                     <div class="col-md-7 text-center row_contador usuario_logeado" style="display: none;">
-                        <p class="username_display">Bienvenido, <span id="username_display"></span></p>
-                        <button class="btn btn-danger" id="logout_button">Cerrar Sesión</button>
-                    </div>
+                        <!-- Menú desplegable -->
+                        <div class="dropdown navbar_item">
+                            <button class="btn btn-primary dropdown-toggle" type="button" id="userMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Menú de <span id="username_display"></span>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="userMenuButton">
+                                <a class="dropdown-item navbar_item habbo_text_blue menu-link" href="#" id="edit-profile">Editar Perfil</a>
+                                <a class="dropdown-item navbar_item habbo_text_blue menu-link" href="#" id="manage-catalog">Administrar Catálogo</a>
+                                <a class="dropdown-item navbar_item habbo_text_blue menu-link" href="#" id="manage-news">Administrar Noticias</a>
+                                <a class="dropdown-item navbar_item habbo_text_blue menu-link" href="#" id="manage-raffles">Administrar Sorteos</a>
+                                <a class="dropdown-item navbar_item habbo_text_blue menu-link" href="#" id="manage-users">Administrar Usuarios</a>
+                                <a class="dropdown-item navbar_item habbo_text_blue menu-link" href="#" id="manage-badges">Administrar Placas</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item navbar_item habbo_text_blue menu-link text-danger" href="#" id="logout_button">Cerrar Sesión</a>
+                            </div>
+                        </div>
+                    </div>                    
                 </div>
             </div> 
         </div>
@@ -763,62 +777,65 @@
             </div>
             <div class="col-md-8 column" id="marketplace-section" style="display: none;">
             </div>
-            <div class="col-md-8 column" id="login-section">
-                <h3 class="text-center">Inicio de Sesión</h3>
-                <form id="login-form">
-                    <div class="form-group position-relative">
-                        <label for="username">Usuario:</label>
-                        <input type="username" class="form-control" id="username" name="username" placeholder="Ingrese su usuario" required>
-                    </div>
-        
-                    <div class="form-group position-relative mt-3">
-                        <label for="password">Contraseña:</label>
-                        <input type="password" class="form-control" id="password" name="password" placeholder="Ingrese su contraseña" required>
-                    </div>
-        
-                    <!-- ReCaptcha de Google -->
-                    <div class="g-recaptcha mb-3" data-sitekey="6Lcvhc4ZAAAAAAPMvUDwQ8yvLetUarwazNfCr4D8"></div>
-        
-                    <button type="button" id="login-button" class="btn btn-primary btn-block">Iniciar Sesión</button>
-                </form>
-                
+            <div class="col-md-8 column" id="login-section" style="display: none;">
+                <div class="login_div">
+                    <h3 class="text-center">Inicio de Sesión</h3>
+                    <form id="login-form">
+                        <div class="form-group position-relative">
+                            <label for="username">Usuario:</label>
+                            <input type="username" class="form-control" id="username" name="username" placeholder="Ingrese su usuario" required>
+                        </div>
+            
+                        <div class="form-group position-relative mt-3">
+                            <label for="password">Contraseña:</label>
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Ingrese su contraseña" required>
+                        </div>
+            
+                        <!-- ReCaptcha de Google -->
+                        <div class="g-recaptcha mb-3 recaptcha" id="login-recaptcha"></div>
+            
+                        <button type="button" id="login-button" class="btn btn-primary btn-block">Iniciar Sesión</button>
+                    </form>
+                </div>
             </div>
             <div class="col-md-8 column" id="register-section" style="display: none;">
-                <h3 class="text-center">Registro de Usuario</h3>
-                <form id="register-form">
-                    <div class="form-group position-relative">
-                        <label for="username">Nombre de Usuario:
-                            <span class="info-icon" data-toggle="tooltip" data-placement="right" title="Este es el nombre de cómo quieres aparecer en la página, por ejemplo, Emo. , el nombre solo puede tener carácteres especiales como (!, @, #, $, %, ^, &, *, -, _, =, +).">
-                                <i class="fas fa-question-circle"></i>
-                            </span>
-                        </label>
-                        <input type="text" class="form-control" id="username" name="username" placeholder="Ejemplo: Emo." required>
-                    </div>
-                    <div class="form-group position-relative">
-                        <label for="email">Correo Electrónico:
-                            <span class="info-icon" data-toggle="tooltip" data-placement="right" title="El correo electrónico solo se utiliza para confirmar que el usuario es real y permitir recuperar la contraseña.">
-                                <i class="fas fa-question-circle"></i>
-                            </span>
-                        </label>
-                        <input type="email" class="form-control" id="email" name="email" 
-                            placeholder="Ingrese su correo electrónico" required>
-                    </div>
-                    <div class="form-group position-relative">
-                        <label for="password">Contraseña:
-                            <span class="info-icon" data-toggle="tooltip" data-placement="right" title="La contraseña debe tener al menos 1 letra mayúscula, 1 letra minúscula, 1 número y 1 carácter especial como (!, @, #, $, %, ^, &, *, -, _, =, +).">
-                                <i class="fas fa-question-circle"></i>
-                            </span>
-                        </label>
-                        <input type="password" class="form-control" id="password" name="password" placeholder="Ingrese su contraseña" required>
-                    </div>
-                    <div class="form-group position-relative">
-                        <label for="confirm-password">Confirmar Contraseña:</label>
-                        <input type="password" class="form-control" id="confirm-password" name="confirm-password" placeholder="Confirme su contraseña" required>
-                    </div>
-                    <!-- ReCaptcha de Google -->
-                    <div class="g-recaptcha mb-3" data-sitekey="6Lcvhc4ZAAAAAAPMvUDwQ8yvLetUarwazNfCr4D8"></div>
-                    <button type="button" id="register-button" class="btn btn-primary btn-block">Registrar</button>
-                </form>
+                <div class="register_div">
+                    <h3 class="text-center">Registro de Usuario</h3>
+                    <form id="register-form">
+                        <div class="form-group position-relative">
+                            <label for="usernameRegister">Nombre de Usuario:
+                                <span class="info-icon" data-toggle="tooltip" data-placement="right" title="Este es el nombre de cómo quieres aparecer en la página, por ejemplo, Emo. , el nombre solo puede tener carácteres especiales como (!, @, #, $, %, ^, &, *, -, _, =, +).">
+                                    <i class="fas fa-question-circle"></i>
+                                </span>
+                            </label>
+                            <input type="text" class="form-control" id="usernameRegister" name="usernameRegister" placeholder="Ejemplo: Emo." required>
+                        </div>
+                        <div class="form-group position-relative">
+                            <label for="email">Correo Electrónico:
+                                <span class="info-icon" data-toggle="tooltip" data-placement="right" title="El correo electrónico solo se utiliza para confirmar que el usuario es real y permitir recuperar la contraseña.">
+                                    <i class="fas fa-question-circle"></i>
+                                </span>
+                            </label>
+                            <input type="email" class="form-control" id="email" name="email" 
+                                placeholder="Ingrese su correo electrónico" required>
+                        </div>
+                        <div class="form-group position-relative">
+                            <label for="passwordRegister">Contraseña:
+                                <span class="info-icon" data-toggle="tooltip" data-placement="right" title="La contraseña debe tener al menos 1 letra mayúscula, 1 letra minúscula, 1 número y 1 carácter especial como (!, @, #, $, %, ^, &, *, -, _, =, +).">
+                                    <i class="fas fa-question-circle"></i>
+                                </span>
+                            </label>
+                            <input type="password" class="form-control" id="passwordRegister" name="passwordRegister" placeholder="Ingrese su contraseña" required>
+                        </div>
+                        <div class="form-group position-relative">
+                            <label for="confirm-password">Confirmar Contraseña:</label>
+                            <input type="password" class="form-control" id="confirm-password" name="confirm-password" placeholder="Confirme su contraseña" required>
+                        </div>
+                        <!-- ReCaptcha de Google -->
+                        <div class="g-recaptcha mb-3 recaptcha" id="register-recaptcha"></div>
+                        <button type="button" id="register-button" class="btn btn-primary btn-block">Registrar</button>
+                    </form>
+                </div>
             </div>            
             
             <div class="col-1 d-block d-md-none column-right">
@@ -1025,14 +1042,14 @@
     <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.16/mediaelement-and-player.min.js"></script>
-    <script src="script.js"></script>
+    <script src="e1507f55-20d1-47f2-be35-0d879b1808f4.js"></script>
     <!-- Incluir i18next -->
     <script src="https://unpkg.com/i18next@20.6.1/i18next.min.js"></script>
     <script src="https://unpkg.com/i18next-browser-languagedetector@6.1.2/i18nextBrowserLanguageDetector.min.js"></script>
     <script src="https://unpkg.com/i18next-xhr-backend@3.2.2/i18nextXHRBackend.min.js"></script>
 
     <!-- Configuración de i18next -->
-    <script src="4b9de65d-e128-4da4-b7ac-50addd1b69ed.js"></script>
+    <script src="9e933654-604a-48f8-b254-f13a562ff160.js"></script>
     
     <footer class="col-md-12 col-12 text-center d-none d-md-block" id="footer">
         <div class="image-animation-container">
