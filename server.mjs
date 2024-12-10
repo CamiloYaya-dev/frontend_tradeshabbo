@@ -29,6 +29,8 @@ import jwt from 'jsonwebtoken';
 import puppeteer from 'puppeteer';
 import FormData from 'form-data';
 import bcrypt from 'bcrypt';
+import cookieParser from 'cookie-parser';
+
 
 dotenv.config();
 
@@ -61,6 +63,9 @@ app.use(session({
     saveUninitialized: true,
     cookie: { secure: false }
 }));
+
+// Middleware para parsear cookies
+app.use(cookieParser());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -1043,6 +1048,7 @@ app.post('/login', [
         // Si el login es exitoso, genera el JWT en Nexus
         if (response.status === 200 && response.data.user) {
             const { id, username, email, permissions } = response.data.user;
+            console.log(permissions);
 
             // Generar el JWT en Nexus
             const token = jwt.sign(
@@ -1074,6 +1080,74 @@ app.post('/login', [
         res.status(500).json({ error: 'Error al iniciar sesión' });
     }
 });
+
+app.post('/update-catalog', [
+    check('product_id').notEmpty().isNumeric().withMessage('El ID del producto es obligatorio y debe ser un número'),
+    check('lang').notEmpty().isIn(['es', 'us']).withMessage('El idioma es obligatorio y debe ser "es" o "us"'),
+    check('price').notEmpty().isNumeric().withMessage('El precio es obligatorio y debe ser un número'),
+], async (req, res) => {
+    // Validación de errores en la solicitud
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+
+    try {
+        const { product_id, lang, price } = req.body;
+
+        // Obtener el session_token de las cookies
+        const sessionToken = req.cookies.session_token;
+
+        if (!sessionToken) {
+            return res.status(401).json({ error: 'Sesión no válida. Inicie sesión nuevamente.' });
+        }
+
+        // Decodificar el token JWT
+        const decodedToken = jwt.verify(sessionToken, apiRestJWTKey);
+
+        // Extraer el `id` del usuario desde el token
+        const user_id = decodedToken.id;
+
+        if (!user_id) {
+            return res.status(401).json({ error: 'No se pudo identificar al usuario.' });
+        }
+
+
+        // Token de autorización para la API externa
+        const tokenAut = generateJWT();
+
+        // Llamada a la API externa
+        const response = await axios.post('https://nearby-kindly-lemming.ngrok-free.app/habbo-update-catalog', {
+            id: product_id,
+            lang,
+            price,
+            user_id
+        }, {
+            headers: {
+                'Authorization': `Bearer ${tokenAut}`
+            }
+        });
+
+        // Responder al cliente si la API externa responde con éxito
+        if (response.status === 200) {
+            return res.status(200).json({
+                message: 'Precio actualizado correctamente',
+                data: response.data
+            });
+        } else {
+            return res.status(response.status).json(response.data);
+        }
+    } catch (error) {
+        console.error('Error al actualizar el precio:', error.message);
+
+        if (error.response && error.response.data && error.response.data.error) {
+            return res.status(400).json({ error: error.response.data.error });
+        }
+
+        res.status(500).json({ error: 'Error al actualizar el precio' });
+    }
+});
+
 
 function findImage(directory, imageName) {
     const files = fs.readdirSync(directory);

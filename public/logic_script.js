@@ -385,7 +385,7 @@ function initialize() {
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-12">
-                                                                                <p class="card-text text-price">
+                                                                                <p class="card-text text-price credits">
                                                                                     <img src="furnis/dinero/credito.png" alt="credito" class="price-icon-principal" data-toggle="tooltip" data-i18n="[title]titulo_creditos" title="Precio en Créditos">${item.price > 0 ? item.price : '??'}
                                                                                 </p>
                                                                             </div>
@@ -407,7 +407,7 @@ function initialize() {
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-12">
-                                                                                <p class="card-text text-price">
+                                                                                <p class="card-text text-price credits">
                                                                                     <img src="furnis/dinero/credito.png" alt="credito" class="price-icon-principal" data-toggle="tooltip" data-i18n="[title]titulo_creditos" title="Precio en Créditos">${item.usa_price > 0 ? item.usa_price : '??'}
                                                                                 </p>
                                                                             </div>

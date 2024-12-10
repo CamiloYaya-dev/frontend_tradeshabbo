@@ -152,16 +152,16 @@
                     <div class="col-md-7 text-center row_contador usuario_logeado" style="display: none;">
                         <!-- Menú desplegable -->
                         <div class="dropdown navbar_item">
-                            <button class="btn btn-primary dropdown-toggle" type="button" id="userMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <button class="btn dropdown-toggle" type="button" id="userMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Menú de <span id="username_display"></span>
                             </button>
                             <div class="dropdown-menu" aria-labelledby="userMenuButton">
-                                <a class="dropdown-item navbar_item habbo_text_blue menu-link" href="#" id="edit-profile">Editar Perfil</a>
-                                <a class="dropdown-item navbar_item habbo_text_blue menu-link" href="#" id="manage-catalog">Administrar Catálogo</a>
-                                <a class="dropdown-item navbar_item habbo_text_blue menu-link" href="#" id="manage-news">Administrar Noticias</a>
-                                <a class="dropdown-item navbar_item habbo_text_blue menu-link" href="#" id="manage-raffles">Administrar Sorteos</a>
-                                <a class="dropdown-item navbar_item habbo_text_blue menu-link" href="#" id="manage-users">Administrar Usuarios</a>
-                                <a class="dropdown-item navbar_item habbo_text_blue menu-link" href="#" id="manage-badges">Administrar Placas</a>
+                                <a class="dropdown-item navbar_item habbo_text_blue menu-link" href="#" id="edit-profile" data-permission="2">Editar Perfil</a>
+                                <a class="dropdown-item navbar_item habbo_text_blue menu-link" href="#" id="manage-catalog" data-permission="1">Administrar Catálogo</a>
+                                <a class="dropdown-item navbar_item habbo_text_blue menu-link" href="#" id="manage-news" data-permission="3">Administrar Noticias</a>
+                                <a class="dropdown-item navbar_item habbo_text_blue menu-link" href="#" id="manage-raffles" data-permission="4">Administrar Sorteos</a>
+                                <a class="dropdown-item navbar_item habbo_text_blue menu-link" href="#" id="manage-users" data-permission="5">Administrar Usuarios</a>
+                                <a class="dropdown-item navbar_item habbo_text_blue menu-link" href="#" id="manage-badges" data-permission="6">Administrar Placas</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item navbar_item habbo_text_blue menu-link text-danger" href="#" id="logout_button">Cerrar Sesión</a>
                             </div>
