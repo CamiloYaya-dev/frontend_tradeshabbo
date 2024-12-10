@@ -1,13 +1,15 @@
 $(document).ready(function () {
     $('#login-button').on('click', function () {
-        const email = $('#email').val().trim();
+        const username = $('#username').val().trim();
         const password = $('#password').val().trim();
         const recaptchaResponse = grecaptcha.getResponse();
 
         // Validaciones de correo electrónico
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!email || !emailRegex.test(email)) {
-            alert('Por favor, ingresa un correo electrónico válido.');
+        const usernameRegex = /^[a-zA-Z0-9!@#$%^&*()_+\-=]+$/;
+        if (!username || !usernameRegex.test(username)) {
+            alert(
+                'El nombre de usuario solo puede contener letras, números y caracteres especiales permitidos (!, @, #, $, %, ^, &, *, -, _, =, +).'
+            );
             return;
         }
 
@@ -27,7 +29,7 @@ $(document).ready(function () {
 
         // Preparar el payload para enviar
         const payload = {
-            email,
+            username,
             password,
             recaptchaToken: recaptchaResponse
         };

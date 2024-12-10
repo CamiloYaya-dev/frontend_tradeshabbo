@@ -1018,7 +1018,7 @@ app.post('/register-user', [
 });
 
 app.post('/login', [
-    check('email').isEmail().withMessage('Formato de email inválido'),
+    check('username').notEmpty().withMessage('El usuario es obligatorio'),
     check('password').notEmpty().withMessage('La contraseña es obligatoria'),
 ], async (req, res) => {
     const errors = validationResult(req);
@@ -1027,12 +1027,12 @@ app.post('/login', [
     }
 
     try {
-        const { email, password } = req.body;
+        const { username, password } = req.body;
         // Genera un token JWT para autorización
         const tokenAut = generateJWT();
         // Petición a Gods_Bot
         const response = await axios.post('https://nearby-kindly-lemming.ngrok-free.app/login', {
-            email,
+            username,
             password
         },{
             headers: {
