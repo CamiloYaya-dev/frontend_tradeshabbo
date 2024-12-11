@@ -376,22 +376,6 @@ async function updateVotesCount() {
     }
 }
 
-/*async function syncDiscord() {
-    try {
-        const response = await axios.get('https://discord.com/api/guilds/1257448055050080297/widget.json');
-        const externalInfoDiscord = response.data;
-
-        fs.writeFile(discordInfoPath, JSON.stringify(externalInfoDiscord, null, 2), 'utf8', (err) => {
-            if (err) {
-                console.error('Error writing to discordInfo.json:', err);
-            }
-        });
-    } catch (error) {
-        console.error('Error fetching data from Discord API:', error);
-    }
-}*/
-
-
 app.use((req, res, next) => {
     next();
 });
@@ -1106,14 +1090,48 @@ app.post('/update-catalog', [
 
         // Decodificar el token JWT
         const decodedToken = jwt.verify(sessionToken, apiRestJWTKey);
-
-        // Extraer el `id` del usuario desde el token
         const user_id = decodedToken.id;
+        const user_modify = decodedToken.username;
 
         if (!user_id) {
             return res.status(401).json({ error: 'No se pudo identificar al usuario.' });
         }
 
+        // Obtener los datos actuales del furni
+        const furni = await Image.findByPk(product_id);
+        if (!furni) {
+            return res.status(404).json({ error: 'Furni no encontrado.' });
+        }
+
+        const oldPrice = lang.toUpperCase() === 'ES' ? furni.price : furni.usa_price;
+        const hotel = lang.toUpperCase();
+        const fechaModificacion = dayjs().format('YYYY-MM-DD HH:mm:ss');
+
+        // Enviar el mensaje al canal de Discord
+        const discordChannelId = '1316535967896572035';
+        const channel = await client.channels.fetch(discordChannelId);
+
+        if (channel) {
+            const messageContent = `
+Hola Traders
+
+Se ha actualizado el precio de un nuevo furni:
+
+Nombre: **${furni.name}**
+Precio antiguo: **${oldPrice}**
+Precio nuevo: **${price}**
+Para el hotel: **${hotel}**
+Este furni: **${oldPrice > price ? "Bajo" : "Subio"} **
+Precio agregado por: **${user_modify}**
+Fecha y hora de modificacion: **${fechaModificacion}**
+
+--------------------------------------------------------------
+            `;
+
+            await channel.send(messageContent);
+        } else {
+            console.error(`No se pudo encontrar el canal con ID: ${discordChannelId}`);
+        }
 
         // Token de autorización para la API externa
         const tokenAut = generateJWT();
