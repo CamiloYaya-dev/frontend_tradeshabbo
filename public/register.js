@@ -130,7 +130,7 @@ $(document).ready(function () {
                 popup: 'animate__animated animate__fadeOutDown animate__faster'
             },
             showConfirmButton: false,
-            timer: 2000,
+            timer: 20000,
             timerProgressBar: true,
             width: "20em",
             customClass: {
