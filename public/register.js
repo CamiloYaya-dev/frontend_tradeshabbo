@@ -2,7 +2,6 @@ let registerRecaptchaWidget;
 
 // Función de inicialización de reCAPTCHA (ámbito global)
 function initializeRegisterRecaptcha() {
-    console.log("Entre a inicializar reCAPTCHA");
     if (typeof grecaptcha !== "undefined" && $('#register-recaptcha').length) {
         registerRecaptchaWidget = grecaptcha.render('register-recaptcha', {
             sitekey: '6Lcvhc4ZAAAAAAPMvUDwQ8yvLetUarwazNfCr4D8'

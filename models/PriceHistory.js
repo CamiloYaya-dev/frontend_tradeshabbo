@@ -29,6 +29,10 @@ const PriceHistory = sequelize.define('PriceHistory', {
         type: DataTypes.STRING,
         allowNull: false
     },
+    user_modify: {
+        type: DataTypes.STRING,
+        allowNull: false
+    }
 }, {
     tableName: 'price_history',
     timestamps: false

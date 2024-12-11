@@ -30,6 +30,7 @@ import puppeteer from 'puppeteer';
 import FormData from 'form-data';
 import bcrypt from 'bcrypt';
 import cookieParser from 'cookie-parser';
+import dayjs from 'dayjs';
 
 
 dotenv.config();
@@ -507,7 +508,8 @@ app.get('/price-history/:productId', async (req, res) => {
                 icon: record.image ? record.image.icon : null,
                 descripcion: record.image ? record.image.descripcion : null,
                 hotel: record.hotel,
-                vip_price: vipPriceOnDate
+                vip_price: vipPriceOnDate,
+                user_modify: record.user_modify
             };
         }));
         res.json({ token: encryptData(historyWithProductName) });
@@ -1130,6 +1132,42 @@ app.post('/update-catalog', [
 
         // Responder al cliente si la API externa responde con éxito
         if (response.status === 200) {
+            // Actualizar el precio en la base de datos local con Sequelize
+            const fechaPrecio = dayjs().format('YYYY-MM-DD HH:mm:ss');
+            const hotel = lang.toUpperCase() === 'ES' ? 'ES' : 'USA';
+            const userModify = decodedToken.username; // Extraer el nombre de usuario desde el token
+        
+            // Determinar qué campo actualizar según el hotel
+            const updateData = hotel === 'ES' 
+            ? { price, upvotes: 0, downvotes: 0, upvotes_belief: 0, downvotes_belief: 0 }
+            : { usa_price: price, upvotes: 0, downvotes: 0, upvotes_belief: 0, downvotes_belief: 0 };
+
+            // Actualizar el precio en la tabla Image
+            await Image.update(updateData, {
+            where: {
+                id: product_id
+            }
+            });
+
+            // Crear registro en PriceHistory
+            const newPriceHistory = await PriceHistory.create({
+                productId: product_id,
+                precio: price,
+                fecha_precio: fechaPrecio,
+                hotel,
+                user_modify: userModify
+            });
+
+             // Buscar y mostrar el registro recién creado
+            const createdRecord = await PriceHistory.findOne({
+                where: {
+                    id: newPriceHistory.id
+                }
+            });
+        
+            console.log('Registro creado en PriceHistory:', createdRecord.toJSON());
+
+
             return res.status(200).json({
                 message: 'Precio actualizado correctamente',
                 data: response.data

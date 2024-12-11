@@ -385,7 +385,7 @@ function initialize() {
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-12">
-                                                                                <p class="card-text text-price credits">
+                                                                                <p class="card-text text-price credits spain">
                                                                                     <img src="furnis/dinero/credito.png" alt="credito" class="price-icon-principal" data-toggle="tooltip" data-i18n="[title]titulo_creditos" title="Precio en Créditos">${item.price > 0 ? item.price : '??'}
                                                                                 </p>
                                                                             </div>
@@ -407,7 +407,7 @@ function initialize() {
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-12">
-                                                                                <p class="card-text text-price credits">
+                                                                                <p class="card-text text-price credits usa">
                                                                                     <img src="furnis/dinero/credito.png" alt="credito" class="price-icon-principal" data-toggle="tooltip" data-i18n="[title]titulo_creditos" title="Precio en Créditos">${item.usa_price > 0 ? item.usa_price : '??'}
                                                                                 </p>
                                                                             </div>
@@ -596,6 +596,7 @@ function initialize() {
                                             <th class="habbo_text_blue" data-i18n="historial_precio_credito">Precio <img src="furnis/dinero/credito.png" alt="credito" class="price-icon"></th>
                                             <th class="habbo_text_blue" data-i18n="historial_precios_vip">Precio <img src="furnis/dinero/vip.png" alt="vip" class="price-vip"></th>
                                             <th class="habbo_text_blue" data-i18n="historial_tendencia">Tendencia</th>
+                                            <th class="habbo_text_blue">Agregado por:</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -689,6 +690,21 @@ function initialize() {
                                                         </div>
                                                         <div class="td-no-mobile">
                                                             ${trendIcon}
+                                                        </div>
+                                                    </td>
+                                                    <td class="online_habbo_text_white">
+                                                        <div class="td-in-mobile">
+                                                            <div class="row">
+                                                                <div class="col-6">
+                                                                    <p class="consola_history_pricehabbo_text_blue">Agregado por:</p>
+                                                                </div>
+                                                                <div class="col-6">
+                                                                    ${record.user_modify}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="td-no-mobile">
+                                                            ${record.user_modify}
                                                         </div>
                                                     </td>
                                                 </tr>

@@ -2,7 +2,6 @@ let loginRecaptchaWidget;
 
 // Inicialización de reCAPTCHA
 function initializeLoginRecaptcha() {
-    console.log("Inicializando reCAPTCHA de login");
     if (typeof grecaptcha !== "undefined" && $('#login-recaptcha').length) {
         loginRecaptchaWidget = grecaptcha.render('login-recaptcha', {
             sitekey: '6Lcvhc4ZAAAAAAPMvUDwQ8yvLetUarwazNfCr4D8'
@@ -12,7 +11,7 @@ function initializeLoginRecaptcha() {
     }
 }
 
-$(document).ready(function () {
+$(document).ready(async function () {
     $('#login-button').on('click', function () {
         // Sanitizar entradas
         const username = $('#username').val().trim().replace(/[^a-zA-Z0-9!@#$%^&*()_+\-=]+/g, '');
@@ -43,7 +42,6 @@ $(document).ready(function () {
                 $('#login-form')[0].reset(); // Limpiar el formulario
                 grecaptcha.reset(); // Resetear reCAPTCHA
                 await validationToken(); // Validar token de sesión
-                agregarBotonesEdicion();
             },
             error: function (xhr) {
                 const errorMessage = xhr.responseJSON?.error || 'Error al iniciar sesión.';
@@ -59,14 +57,25 @@ $(document).ready(function () {
         mostrarAlertaExito('Sesión cerrada correctamente.');
         setTimeout(() => location.reload(), 1500); // Recargar la página después de la alerta
     });
+    await validationToken();
 });
 
 // Validar token de sesión
 async function validationToken() {
     const sessionToken = document.cookie.split('; ').find(row => row.startsWith('session_token='));
+    
     if (sessionToken) {
         const tokenValue = sessionToken.split('=')[1];
         const payload = JSON.parse(atob(tokenValue.split('.')[1]));
+
+        // Validar expiración del token
+        const currentTime = Math.floor(Date.now() / 1000); // Tiempo actual en segundos
+        if (payload.exp && payload.exp < currentTime) {
+            document.cookie = "session_token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC; Secure; HttpOnly; SameSite=Strict";
+            $('.no_login').show();
+            $('.usuario_logeado').hide();
+            return;
+        }
 
         // Mostrar nombre de usuario y ocultar botones de login
         $('#username_display').text(payload.username);
@@ -77,20 +86,23 @@ async function validationToken() {
         // Mostrar/Ocultar secciones relevantes
         $('#catalogo-section, #column-explications-catalogo, #sort-options, #footer').show();
         $('#noticias-section, #calculador-section, #sorteos-section, #master-trades-section, #column-explications-master-trades, #habbo-generator-section, #text-generator-section, #comunidad_salas, #equipo-section, #marketplace-section, #login-section, #register-section').hide();
-         // Extraer los IDs de permisos
-         const userPermissions = (payload.permissions || []).map(p => p.permission_id);
 
-         console.log('Permisos extraídos:', userPermissions);
- 
-         // Mostrar solo opciones permitidas
-         $('.dropdown-item[data-permission]').each(function () {
-             const requiredPermission = parseInt($(this).data('permission'));
-             if (userPermissions.includes(requiredPermission)) {
-                 $(this).show();
-             } else {
-                 $(this).hide();
-             }
-         });
+        // Extraer los IDs de permisos
+        const userPermissions = (payload.permissions || []).map(p => p.permission_id);
+
+        // Mostrar solo opciones permitidas
+        $('.dropdown-item[data-permission]').each(function () {
+            const requiredPermission = parseInt($(this).data('permission'));
+            if (userPermissions.includes(requiredPermission)) {
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
+        });
+
+        window.onload = function () {
+            agregarBotonesEdicion();
+        };
     } else {
         $('.no_login').show();
         $('.usuario_logeado').hide();
@@ -175,11 +187,9 @@ function agregarBotonesEdicion() {
         });
 
         // Acción para los botones
-        $('.edit-button').on('click', async function () {
+        $(document).on('click', '.edit-button', async function () {
             const productId = $(this).data('id');
             const lang = $(this).data('lang');
-        
-            console.log(`Editando producto con ID: ${productId}, Idioma: ${lang}`);
         
             // Mostrar SweetAlert para capturar el precio
             const { value: price } = await Swal.fire({
@@ -225,6 +235,22 @@ function agregarBotonesEdicion() {
                     }
         
                     const responseData = await response.json();
+
+                    // Actualizar visualmente el precio
+                    const priceSelector = lang === 'es' ? '.text-price.credits.spain' : '.text-price.credits.usa';
+                    const priceElement = $(`.product-item .product-link[data-id="${productId}"]`).closest('.product-item').find(priceSelector);
+
+                    if (priceElement.length) {
+                        priceElement.html(`
+                            <img src="furnis/dinero/credito.png" alt="credito" class="price-icon-principal" 
+                                data-toggle="tooltip" data-i18n="[title]titulo_creditos" title="Precio en Créditos">${price}
+                            <button class="btn btn-sm btn-outline-primary edit-button ml-2" 
+                                data-id="${productId}" data-lang="${lang}" title="Editar precio (${lang.toUpperCase()})">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                        `);
+                    }
+
                     Swal.fire({
                         title: 'Precio actualizado',
                         text: responseData.message || 'El precio se actualizó correctamente',
