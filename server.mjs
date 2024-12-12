@@ -1104,7 +1104,7 @@ app.post('/update-catalog', [
         }
 
         const oldPrice = lang.toUpperCase() === 'ES' ? furni.price : furni.usa_price;
-        const hotel = lang.toUpperCase();
+        const hotel = lang.toUpperCase() === 'ES' ? "ES" : "COM";
         const fechaModificacion = dayjs().format('YYYY-MM-DD HH:mm:ss');
 
         // Enviar el mensaje al canal de Discord
@@ -1139,7 +1139,7 @@ Fecha y hora de modificacion: **${fechaModificacion}**
         // Llamada a la API externa
         const response = await axios.post('https://nearby-kindly-lemming.ngrok-free.app/habbo-update-catalog', {
             id: product_id,
-            lang,
+            lang: hotel,
             price,
             user_id
         }, {
