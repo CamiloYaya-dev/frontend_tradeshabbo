@@ -563,7 +563,7 @@ function initialize() {
                                     });
 
                                     $(document).on('click', '.toggle-hotel-btn', function() {
-                                        let currentHotel = $(this).text().includes("COM") ? "COM" : "ES";
+                                        let currentHotel = $(this).text().includes("US") ? "US" : "ES";
                                         showTable(decryptedData, currentHotel);
                                     });
                                 }
@@ -582,7 +582,7 @@ function initialize() {
                                 <img src="${firstRecord.src}" alt="${firstRecord.name}" class="price-history-img">
                             </div>
                             <div class="row">
-                                <button class="toggle-hotel-btn button_price_history_dinamic price_history_content online_habbo_text_white">Mostrar ${hotel === "ES" ? "COM" : "ES"} Precios</button>
+                                <button class="toggle-hotel-btn button_price_history_dinamic price_history_content online_habbo_text_white">Mostrar ${hotel === "ES" ? "US" : "ES"} Precios</button>
                             </div>
                             <div class="grafic_item" id="div_grafica_item" style="display: none;">
                                 <canvas id="price-history-chart"></canvas>

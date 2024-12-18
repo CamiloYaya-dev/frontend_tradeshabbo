@@ -421,7 +421,7 @@ app.get('/images', async (req, res) => {
                 }
             }
 
-            const priceHistoryCOM = priceHistories.filter(ph => ph.productId === image.id && ph.hotel === 'COM');
+            const priceHistoryCOM = priceHistories.filter(ph => ph.productId === image.id && ph.hotel === 'US');
             let statusCOM = '';
             if (priceHistoryCOM.length > 1) {
                 const actualPrice = priceHistoryCOM[0].precio;
@@ -1104,7 +1104,7 @@ app.post('/update-catalog', [
         }
 
         const oldPrice = lang.toUpperCase() === 'ES' ? furni.price : furni.usa_price;
-        const hotel = lang.toUpperCase() === 'ES' ? "ES" : "COM";
+        const hotel = lang.toUpperCase() === 'ES' ? "ES" : "US";
         const fechaModificacion = dayjs().format('YYYY-MM-DD HH:mm:ss');
 
         // Enviar el mensaje al canal de Discord
