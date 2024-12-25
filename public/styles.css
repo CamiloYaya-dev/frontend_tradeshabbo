@@ -2216,6 +2216,14 @@ h5 {
     height: 30px;
 }
 
+.iconos-xmas-rares{
+    top: 10px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    height: 25px;
+}
+
 .threads_p{
     color: white;
 }

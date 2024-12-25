@@ -338,6 +338,7 @@ function initialize() {
                                                             ${item.icon == "cabin" ? `<img src="furnis/iconos/catalogo_cabin.png" class="iconos-cabin" alt="icon">` : ''}
                                                             ${item.icon == "habboween" ? `<img src="furnis/iconos/catalogo_habboween.png" class="iconos-habboween" alt="icon">` : ''}
                                                             ${item.icon == "gotico" ? `<img src="furnis/iconos/catalogo_gotico.png" class="iconos-gotico" alt="icon">` : ''}
+                                                            ${item.icon == "xmas_rares" ? `<img src="furnis/iconos/xmas_rares.png" class="iconos-xmas-rares" alt="icon">` : ''}
                                                         </div>
                                                         <div class="col-12 furni_imagen">
                                                             <div class="info-popup">
