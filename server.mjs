@@ -183,6 +183,16 @@ async function getVipPrice() {
     }
 }
 
+async function getVipPriceUsa() {
+    try {
+        const vipItemUsa = await Image.findOne({ where: { name: 'El Club Sofa' } });
+        return vipItemUsa ? vipItemUsa.usa_price : null;
+    } catch (error) {
+        console.error('Error retrieving VIP price:', error);
+        return null;
+    }
+}
+
 async function getPetalPrice() {
     try {
         const petalItem = await Image.findOne({ where: { name: 'El Cesped' } });
@@ -427,6 +437,7 @@ app.get('/images', async (req, res) => {
         const vip_price = await getVipPrice();
         const petal_price = await getPetalPrice();
         const dino_price = await getDinoPrice();
+        const vip_usa_price = await getVipPriceUsa();
 
         const imagesWithDetails = images.map(image => {
             const priceHistoryES = priceHistories.filter(ph => ph.productId === image.id && ph.hotel === 'ES');
@@ -466,6 +477,7 @@ app.get('/images', async (req, res) => {
                 vip_price: vip_price,
                 petal_price: petal_price,
                 dino_price: dino_price,
+                vip_usa_price: vip_usa_price,
                 status: statusFinal,
                 fecha_precio: priceHistoryES[0] ? priceHistoryES[0].fecha_precio : null,
                 fecha_precio_com: priceHistoryCOM[0] ? priceHistoryCOM[0].fecha_precio : null

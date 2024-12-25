@@ -418,7 +418,7 @@ function initialize() {
                                                                             </div>
                                                                             <div class="col-12">
                                                                                 <p class="card-text text-price">
-                                                                                    <img src="furnis/dinero/vip.png" alt="vip" class="price-vip-principal" data-toggle="tooltip" data-i18n="[title]titulo_vips" title="Precio en Vips">${item.usa_price > 0 ? (item.usa_price / item.vip_price).toFixed(1) : '??'}
+                                                                                    <img src="furnis/dinero/vip.png" alt="vip" class="price-vip-principal" data-toggle="tooltip" data-i18n="[title]titulo_vips" title="Precio en Vips">${item.usa_price > 0 ? (item.usa_price / item.vip_usa_price).toFixed(1) : '??'}
                                                                                 </p>
                                                                             </div>
                                                                             <div class="col-12">
