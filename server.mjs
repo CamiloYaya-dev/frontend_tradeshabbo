@@ -183,6 +183,26 @@ async function getVipPrice() {
     }
 }
 
+async function getPetalPrice() {
+    try {
+        const petalItem = await Image.findOne({ where: { name: 'El Cesped' } });
+        return petalItem ? petalItem.price : null;
+    } catch (error) {
+        console.error('Error retrieving VIP price:', error);
+        return null;
+    }
+}
+
+async function getDinoPrice() {
+    try {
+        const dinoItem = await Image.findOne({ where: { name: 'Huevo De Dragon' } });
+        return dinoItem ? dinoItem.usa_price : null;
+    } catch (error) {
+        console.error('Error retrieving VIP price:', error);
+        return null;
+    }
+}
+
 async function getVipPriceOnDate(date) {
     try {
         const endOfDay = new Date(date);
@@ -405,6 +425,8 @@ app.get('/images', async (req, res) => {
 
         const images = await Image.findAll();
         const vip_price = await getVipPrice();
+        const petal_price = await getPetalPrice();
+        const dino_price = await getDinoPrice();
 
         const imagesWithDetails = images.map(image => {
             const priceHistoryES = priceHistories.filter(ph => ph.productId === image.id && ph.hotel === 'ES');
@@ -442,6 +464,8 @@ app.get('/images', async (req, res) => {
             return {
                 ...image.toJSON(),
                 vip_price: vip_price,
+                petal_price: petal_price,
+                dino_price: dino_price,
                 status: statusFinal,
                 fecha_precio: priceHistoryES[0] ? priceHistoryES[0].fecha_precio : null,
                 fecha_precio_com: priceHistoryCOM[0] ? priceHistoryCOM[0].fecha_precio : null

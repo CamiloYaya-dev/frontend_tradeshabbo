@@ -394,6 +394,11 @@ function initialize() {
                                                                                     <img src="furnis/dinero/vip.png" alt="vip" class="price-vip-principal" data-toggle="tooltip" data-i18n="[title]titulo_vips" title="Precio en Vips">${item.price > 0 ? (item.price / item.vip_price).toFixed(1) : '??'}
                                                                                 </p>
                                                                             </div>
+                                                                            <div class="col-12">
+                                                                                <p class="card-text text-price">
+                                                                                    <img src="furnis/dinero/vivo.png" alt="vivo" class="price-vivo-principal" data-toggle="tooltip">${item.price > 0 ? (item.price / item.petal_price).toFixed(1) : '??'}
+                                                                                </p>
+                                                                            </div>
                                                                         </div>
                                                                         <div class="prices_usa">
                                                                             <div class="col-12">
@@ -414,6 +419,11 @@ function initialize() {
                                                                             <div class="col-12">
                                                                                 <p class="card-text text-price">
                                                                                     <img src="furnis/dinero/vip.png" alt="vip" class="price-vip-principal" data-toggle="tooltip" data-i18n="[title]titulo_vips" title="Precio en Vips">${item.usa_price > 0 ? (item.usa_price / item.vip_price).toFixed(1) : '??'}
+                                                                                </p>
+                                                                            </div>
+                                                                            <div class="col-12">
+                                                                                <p class="card-text text-price">
+                                                                                    <img src="furnis/dinero/egg_lila.png" alt="egg lila" class="price-egg-principal" data-toggle="tooltip">${item.usa_price > 0 ? (item.usa_price / item.dino_price).toFixed(1) : '??'}
                                                                                 </p>
                                                                             </div>
                                                                         </div>

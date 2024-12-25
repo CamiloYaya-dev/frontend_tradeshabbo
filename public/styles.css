@@ -75,6 +75,17 @@ main.container.master-trades-bg {
     margin-right: 5px;
 }
 
+.price-vivo-principal {
+    width: 45px;
+    margin-right: 5px;
+    padding-bottom: 10px;
+}
+
+.price-egg-principal {
+    width: 30px;
+    margin-right: 5px;
+}
+
 .price-habbo {
     width: 20px;
     margin-right: 5px;
