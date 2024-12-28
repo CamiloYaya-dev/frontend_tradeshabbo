@@ -40,6 +40,7 @@ $(document).ready(function() {
     // Actualizar el contenido al cargar la página
     updateContent();
 
+    $.getScript('login.js', function() {});
     $.getScript('songs.js', function() {});
     $.getScript('modal.js', function() {});
     $.getScript('noticias.js', function() {});
@@ -51,7 +52,6 @@ $(document).ready(function() {
     $.getScript('marketplace.js', function() {});
     $.getScript('placas.js', function() {});
     $.getScript('register.js', function() {});
-    $.getScript('login.js', function() {});
 
     $('#button_options').on('click', function(e) {
         var content = document.getElementById("toggle-content");

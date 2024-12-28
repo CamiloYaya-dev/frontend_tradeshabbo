@@ -41,7 +41,7 @@ $(document).ready(async function () {
                 mostrarAlertaExito(response.message || 'Inicio de sesión exitoso.');
                 $('#login-form')[0].reset(); // Limpiar el formulario
                 grecaptcha.reset(); // Resetear reCAPTCHA
-                await validationToken(); // Validar token de sesión
+                window.location.reload();
             },
             error: function (xhr) {
                 const errorMessage = xhr.responseJSON?.error || 'Error al iniciar sesión.';
@@ -152,7 +152,7 @@ function mostrarAlertaExito(mensaje) {
     });
 }
 
-function agregarBotonesEdicion() {
+window.agregarBotonesEdicion = function() {
     const sessionToken = document.cookie.split('; ').find(row => row.startsWith('session_token='));
 
     if (sessionToken) {

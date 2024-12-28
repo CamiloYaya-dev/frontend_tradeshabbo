@@ -493,6 +493,9 @@ function initialize() {
                             return item.name.toLowerCase().includes(searchValue);
                         });
                         renderProducts(filteredProducts);
+                        if (typeof agregarBotonesEdicion === 'function') {
+                            agregarBotonesEdicion();
+                        }
                     });
 
                     $('.filter-button').on('click', function() {
@@ -508,6 +511,9 @@ function initialize() {
                                 }
                             });
                             renderProducts(filteredProducts);
+                        }
+                        if (typeof agregarBotonesEdicion === 'function') {
+                            agregarBotonesEdicion();
                         }
                     });
 

@@ -154,6 +154,25 @@ app.use((req, res, next) => {
     next();
 });
 
+// Middleware para desactivar cache del index.html
+app.use((req, res, next) => {
+    if (req.url === '/' || req.url.endsWith('index.html')) {
+        res.set('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
+        res.set('Pragma', 'no-cache');
+        res.set('Expires', '0'); // Opcional, para navegadores más antiguos
+    }
+    next();
+});
+
+app.use(express.static('public', {
+    setHeaders: (res, path) => {
+      if (path.endsWith('.js') || path.endsWith('.css')) {
+        res.set('Cache-Control', 'max-age=31536000'); // Caché largo para recursos estáticos versionados
+      }
+    }
+}));
+  
+
 app.get('/api-key', (req, res) => {
     const newKeyData = generateApiKey();
     apiKey = newKeyData.apiKey;
@@ -409,6 +428,10 @@ async function updateVotesCount() {
 app.use((req, res, next) => {
     next();
 });
+
+
+  
+
 
 app.get('/images', async (req, res) => {
     try {
