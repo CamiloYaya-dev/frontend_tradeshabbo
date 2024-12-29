@@ -1647,7 +1647,7 @@ client.on('interactionCreate', async interaction => {
         }
 
         // Validación del nombre de Habbo
-        const habboNameRegex = /^[a-zA-Z0-9\-=?!@.,]+$/;
+        const habboNameRegex = /^[a-zA-Z0-9\-=?!@.:,]+$/;
         if (!habboNameRegex.test(habboName)) {
             await interaction.reply({ 
                 content: 'El nombre de Habbo contiene caracteres no permitidos. Solo se permiten letras minúsculas, números y los caracteres: -=?!@.,', 
