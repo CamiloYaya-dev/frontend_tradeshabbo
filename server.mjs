@@ -1327,7 +1327,7 @@ const client = new Client({
     intents: [
         GatewayIntentBits.Guilds,
         GatewayIntentBits.GuildMembers,
-        GatewayIntentBits.GuildInvites, // Asegúrate de incluir esta línea
+        GatewayIntentBits.GuildInvites,
         GatewayIntentBits.GuildMessages,
         GatewayIntentBits.MessageContent
     ],
@@ -1515,7 +1515,7 @@ const getImageChoices = () => {
 };
 
 const commands = [
-    {
+    /*{
         name: 'crear-encuesta',
         description: 'Crear una encuesta en el canal actual',
         options: [
@@ -1561,6 +1561,23 @@ const commands = [
                 required: true,
             },
         ],
+    },*/
+    {
+        name: 'verify',
+        description: 'Solicitud para vincular tu usuario de habbo con tu usuario de discord',
+        options: [
+            {
+                name: 'nombre',
+                type: ApplicationCommandOptionType.String,
+                description: 'Tu nombre dentro del juego',
+                required: true,
+            },
+        ],
+    },
+    {
+        name: 'confirm-verify',
+        description: 'Valida el codigo OTP en tu mision/motto dentro del juego',
+        options: [],
     },
 ];
 
@@ -1580,6 +1597,9 @@ const commands = [
 let activePolls = new Map();
 let lock = false;
 
+// Map para almacenar los códigos de verificación temporalmente
+const verificationRequests = new Map();
+
 client.on('interactionCreate', async interaction => {
     if (interaction.isAutocomplete()) {
         const focusedValue = interaction.options.getFocused();
@@ -1592,16 +1612,185 @@ client.on('interactionCreate', async interaction => {
 
     if (!interaction.isCommand()) return;
 
-    const { commandName, options, member } = interaction;
+    const { commandName, options, member, channelId } = interaction;
 
-    const hasRole = member.roles.cache.some(role => ALLOWED_ROLES.includes(role.id));
+    if (commandName === 'verify') {
+        const allowedChannelId = '1322976517780799680';
+        const restrictedRoleId = '1322984756593557514';
+
+        // Verifica si el comando se ejecuta en el canal permitido
+        if (channelId !== allowedChannelId) {
+            await interaction.reply({ 
+                content: 'Este comando solo se puede usar en el canal específico.', 
+                ephemeral: true 
+            });
+            return;
+        }
+
+        // Verifica si el usuario ya tiene el rol restringido
+        if (member.roles.cache.has(restrictedRoleId)) {
+            await interaction.reply({ 
+                content: 'No puedes usar este comando porque ya tienes el rol correspondiente.', 
+                ephemeral: true 
+            });
+            return;
+        }
+        // Obtiene el nombre de Habbo proporcionado
+        const habboName = options.getString('nombre');
+
+        if (!habboName) {
+            await interaction.reply({ 
+                content: 'Por favor, proporciona un nombre válido de Habbo.', 
+                ephemeral: true 
+            });
+            return;
+        }
+
+        // Validación del nombre de Habbo
+        const habboNameRegex = /^[a-zA-Z0-9\-=?!@.,]+$/;
+        if (!habboNameRegex.test(habboName)) {
+            await interaction.reply({ 
+                content: 'El nombre de Habbo contiene caracteres no permitidos. Solo se permiten letras minúsculas, números y los caracteres: -=?!@.,', 
+                ephemeral: true 
+            });
+            return;
+        }
+
+        const habboApiUrl = `https://origins.habbo.es/api/public/users?name=${encodeURIComponent(habboName)}`;
+        let habboData;
+
+        try {
+            const response = await axios.get(habboApiUrl);
+            habboData = response.data;
+
+            if (!habboData || habboData.error === 'not-found') {
+                await interaction.reply({
+                    content: `No se encontró un usuario en Habbo con el nombre "${habboName}". Por favor, verifica que el nombre sea correcto.`,
+                    ephemeral: true
+                });
+                return;
+            }
+        } catch (error) {
+            await interaction.reply({
+                content: 'Este habbo no existe, intenta con otro',
+                ephemeral: true
+            });
+            return;
+        }
+
+        // Genera un código de verificación de 6 caracteres alfanuméricos
+        const verificationCode = await generateVerificationCode();
+
+        // Almacena la información en el Map con un tiempo de vida de 2 horas
+        verificationRequests.set(member.id, {
+            discordId: member.id,
+            habboName: habboName,
+            verificationCode: verificationCode,
+            timestamp: Date.now()
+        });
+
+        // Configura la eliminación automática después de 2 horas
+        setTimeout(() => {
+            verificationRequests.delete(member.id);
+        }, 2 * 60 * 60 * 1000); // 2 horas en milisegundos
+
+        // Responde al usuario con el código de verificación
+        await interaction.reply({
+            content: `¡Hola ${member.user.tag}! Tu código de verificación es: **${verificationCode}**. Este código es válido por 2 horas. \n\n **Escribe el codigo en tu "motto/mision" dentro de habbo y luego utiliza el comando /confirm-verify**`,
+            ephemeral: true
+        });
+    }
+
+    if (commandName === 'confirm-verify') {
+        const allowedChannelId = '1322976517780799680';
+        const restrictedRoleId = '1322984756593557514';
+    
+        // Verifica si el comando se ejecuta en el canal permitido
+        if (channelId !== allowedChannelId) {
+            await interaction.reply({ 
+                content: 'Este comando solo se puede usar en el canal específico.', 
+                ephemeral: true 
+            });
+            return;
+        }
+    
+        // Verifica si el usuario ya tiene el rol restringido
+        if (member.roles.cache.has(restrictedRoleId)) {
+            await interaction.reply({ 
+                content: 'No puedes usar este comando porque ya tienes el rol correspondiente.', 
+                ephemeral: true 
+            });
+            return;
+        }
+        
+        const userRequest = verificationRequests.get(member.id);
+    
+        // Verifica si el usuario tiene una solicitud de verificación activa
+        if (!userRequest) {
+            await interaction.reply({
+                content: 'No tienes ninguna solicitud de verificación activa. Por favor, usa el comando `/verify` para generar un código de verificación.',
+                ephemeral: true
+            });
+            return;
+        }
+    
+        const { habboName, verificationCode } = userRequest;
+    
+        try {
+            // Consulta la API de Habbo para obtener los datos del usuario
+            const habboApiUrl = `https://origins.habbo.es/api/public/users?name=${encodeURIComponent(habboName)}`;
+            const response = await axios.get(habboApiUrl);
+            const habboData = response.data;
+    
+            // Verifica si el *motto* del usuario coincide con el código de verificación
+            if (habboData.motto === verificationCode) {
+                // Si el *motto* coincide, se considera verificado
+                await interaction.reply({
+                    content: `¡Felicidades! Tu cuenta de Habbo con el nombre **${habboName}** ha sido verificada exitosamente.`,
+                    ephemeral: true
+                });
+    
+                // Asigna el rol al usuario en Discord
+                const verifiedRoleId = '1322984756593557514'; // ID del rol de verificado
+                await member.roles.add(verifiedRoleId);
+    
+                // Cambia el apodo del usuario al nombre de Habbo
+                await member.setNickname(habboName).catch(error => {
+                    console.error('Error al cambiar el apodo:', error.message);
+                    interaction.followUp({
+                        content: 'No se pudo cambiar tu apodo. Por favor, contacta a un administrador.',
+                        ephemeral: true
+                    });
+                });
+    
+                // Elimina la solicitud de verificación después de la confirmación
+                verificationRequests.delete(member.id);
+            } else {
+                // Si el *motto* no coincide, envía un mensaje de error
+                await interaction.reply({
+                    content: `El *motto* de tu cuenta de Habbo no coincide con el código de verificación. Por favor, asegúrate de haber configurado correctamente tu código en el *motto* y vuelve a intentarlo.`,
+                    ephemeral: true
+                });
+            }
+        } catch (error) {
+            console.error('Error al consultar la API de Habbo:', error.message);
+    
+            // Responde con un mensaje de error si la consulta a la API falla
+            await interaction.reply({
+                content: `Hubo un problema al verificar tu cuenta. Por favor, intenta nuevamente más tarde.`,
+                ephemeral: true
+            });
+        }
+    }
+
+    /*const hasRole = member.roles.cache.some(role => ALLOWED_ROLES.includes(role.id));
 
     if (!hasRole) {
         await interaction.reply({ content: 'No tienes permiso para usar este comando.', ephemeral: true });
         return;
-    }
+    }*/
 
-    if (commandName === 'crear-encuesta') {
+    /*if (commandName === 'crear-encuesta') {
         await interaction.deferReply({ ephemeral: true });
 
         const imagen = options.getString('imagen');
@@ -1954,11 +2143,12 @@ client.on('interactionCreate', async interaction => {
         } else {
             await interaction.reply({ content: 'No se encontró una encuesta activa con ese ID.', ephemeral: true });
         }
-    }
+    }*/
+
 });
 
 client.on('messageCreate', async (message) => {
-    if (message.content.startsWith('/publicar-noticia')) {
+    /*if (message.content.startsWith('/publicar-noticia')) {
         const hasPermission = message.member.roles.cache.some(role => ALLOWED_ROLES.includes(role.id));
 
         if (!hasPermission) {
@@ -2059,7 +2249,7 @@ client.on('messageCreate', async (message) => {
         } else {
             message.reply('No se pudo encontrar el canal de noticias.');
         }
-    }
+    }*/
     if (message.channelId === '1263260299012603945' && message.attachments.size > 0) {
         const member = message.guild.members.cache.get(message.author.id);
 
@@ -2437,4 +2627,13 @@ async function tradesForo(forumChannelId) {
     } finally {
         setTimeout(() => tradesForo('1269826801396482158'), 600000); // Pasar una función de flecha a setTimeout
     }
+}
+
+async function generateVerificationCode() {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    let code = '';
+    for (let i = 0; i < 6; i++) {
+        code += characters.charAt(Math.floor(Math.random() * characters.length));
+    }
+    return code;
 }
