@@ -293,6 +293,7 @@ function initialize() {
                     obtenerPlacas();
                     const decryptedData = decryptData(data.token);
                     console.log(decryptedData);
+                    const lastUpdateFurnis = decryptData(data.lastUpdateFurnis);
                     var productContainer = $('#product-container');
                     var productHistoryContainer = $('#product-history-container');
                     var backButton = $('#back-button');
@@ -301,9 +302,6 @@ function initialize() {
                     var row_explanation_votes = $('#row_explanation_votes');
                     var filtros_filas = $('.filtros_filas');
                     var sortSelect = $('#sort-options');
-                    var creditUsdPriceHabbo = 0.06899;
-                    var creditUsdPriceIlegal = 0.06;
-                    var creditUsdPriceHabboEs = 1.19;
 
                     function renderProducts(products) {
                         productContainer.empty();
@@ -483,6 +481,26 @@ function initialize() {
                     
                         fillItemOptions(products);
                     }
+
+                    const lastUpdatedContainer = $('.furnis_min_actualizados');
+                    lastUpdatedContainer.empty();
+    
+                    lastUpdateFurnis.forEach(furni => {
+                        const furniImage = `
+                            <div class="last_items_update" data-toggle="tooltip" title="${furni.name} - ${furni.hotel}">
+                                <img 
+                                    src="furnis/min/${furni.name.replace(/ /g, '_')}_min.gif" 
+                                    alt="${furni.name}"
+                                />
+                                <img 
+                                    src="furnis/iconos/${furni.hotel.replace(/ /g, '_')}_min.png" 
+                                    alt="icono min ${furni.hotel}" 
+                                    class="icon_country_min" 
+                                />
+                            </div>
+                        `;
+                        lastUpdatedContainer.append(furniImage);
+                    });
                     mapTradersClub(decryptedData, itemData);
                     mapHabbonation(decryptedData, firebaseData);
                     renderProducts(decryptedData);

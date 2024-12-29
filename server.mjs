@@ -481,7 +481,6 @@ app.get('/images', async (req, res) => {
             let statusCOM = '';
             if (priceHistoryCOM.length > 1) {
                 const actualPrice = priceHistoryCOM[0].precio;
-
                 const previousPrice = priceHistoryCOM[1] ? priceHistoryCOM[1].precio : 0;
 
                 if(previousPrice != 0){
@@ -519,13 +518,45 @@ app.get('/images', async (req, res) => {
             // Ordenamos en función de la fecha más reciente
             return maxDateB - maxDateA;
         });
-        
-        res.json({ token: encryptData(imagesWithDetails) });
+
+        // Obtener los 40 furnis más recientemente modificados considerando ES y US como registros separados
+        const ultimosfurnismodificados = [];
+
+        imagesWithDetails.forEach(image => {
+            if (image.fecha_precio) { // Si tiene precio en ES
+                ultimosfurnismodificados.push({
+                    id: image.id,
+                    name: image.name,
+                    hotel: 'ES',
+                    fecha_precio: image.fecha_precio // Agregar para ordenar por fecha
+                });
+            }
+            if (image.fecha_precio_com) { // Si tiene precio en US
+                ultimosfurnismodificados.push({
+                    id: image.id,
+                    name: image.name,
+                    hotel: 'US',
+                    fecha_precio: image.fecha_precio_com // Agregar para ordenar por fecha
+                });
+            }
+        });
+
+        // Ordenar los registros por fecha de precio más reciente (independientemente del hotel)
+        ultimosfurnismodificados.sort((a, b) => new Date(b.fecha_precio) - new Date(a.fecha_precio));
+
+        // Limitar a los 40 más recientes
+        const topUltimosFurnis = ultimosfurnismodificados.slice(0, 40);
+
+        res.json({ 
+            token: encryptData(imagesWithDetails), 
+            lastUpdateFurnis:  encryptData(topUltimosFurnis) 
+        });
     } catch (error) {
         console.error('Error retrieving images:', error);
         res.status(500).send('Error retrieving images');
     }
 });
+
 
 app.get('/price-history/:productId', async (req, res) => {
     try {

@@ -2447,3 +2447,46 @@ h5 {
 .recaptcha{
     text-align: -webkit-center;
 }
+
+.last_items_update{
+    background: #bdbdbd;
+    background-position: 50%;
+    margin: 0 5px 5px 0;
+    border-radius: 3px;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.ultimos_precios_actualizados{
+    padding-left: 0px;
+    padding-right: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    /* border: 1px solid rgba(255, 255, 255, 0.3); */
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 18px;
+    color: white;
+}
+
+.furnis_min_actualizados{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon_country_min{
+    position: absolute;
+    right: 5px;
+    width: 8px;
+    height: auto;
+    z-index: 10;
+    top: 5px;
+}
