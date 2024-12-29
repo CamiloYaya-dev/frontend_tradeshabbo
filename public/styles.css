@@ -2222,6 +2222,7 @@ h5 {
     left: 50%;
     transform: translate(-50%);
     height: 25px;
+    width: 60%;
 }
 
 .threads_p{
