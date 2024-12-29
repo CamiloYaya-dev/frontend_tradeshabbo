@@ -98,7 +98,7 @@
                 <div class="row">
                     <div class="col-md-6 d-flex justify-content-center">
                         <div class="contador_div font-habbo-class d-none d-md-block">
-                            <div class="contador_title">
+                            <div class="contador_title" data-i18n="contador_visitas">
                                 Contador de Visitas
                             </div>
                             <p class="contador_text" id="contador">En mantenimiento</p>
@@ -106,7 +106,7 @@
                     </div>
                     <div class="col-md-6 d-flex justify-content-center">
                         <div class="contador_div font-habbo-class d-none d-md-block">
-                            <div class="contador_title">
+                            <div class="contador_title" data-i18n="contador_votos">
                                 Contador de Votos
                             </div>
                             <p class="contador_text" id="contador_votos">En mantenimiento</p>
@@ -180,27 +180,29 @@
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav mx-auto">
                             <li class="nav-item navbar_item">
-                                <a class="habbo_text_blue menu-link" href="#" data-section="catalogo">
+                                <a class="habbo_text_blue menu-link" href="#" data-section="catalogo" data-i18n="catalogo_navbar">
                                     <img src="furnis/iconos/catalogo_icon.png" class="iconos-menu" alt="icon">
                                     Catálogo
                                 </a>
                             </li>
                             <li class="nav-item navbar_item">
-                                <a class="habbo_text_blue menu-link" href="#" data-section="noticias">
+                                <a class="habbo_text_blue menu-link" href="#" data-section="noticias" data-i18n="noticias_navbar">
                                     <img src="furnis/iconos/noticias_icon.png" class="iconos-menu" alt="icon">
                                     Noticias
                                 </a>
                             </li>
                             <li class="nav-item navbar_item">
-                                <a class="habbo_text_blue menu-link" href="#" data-section="sorteos">
+                                <a class="habbo_text_blue menu-link" href="#" data-section="sorteos" data-i18n="sorteos_navbar">
                                     <img src="furnis/iconos/sorteos_icon.png" class="iconos-menu" alt="icon">
                                     Sorteos
                                 </a>
                             </li>
                             <li class="nav-item navbar_item">
                                 <a class="habbo_text_blue menu-link" href="#" data-section="calculador">
-                                    <img src="furnis/iconos/calculador_de_trades_icon.png" class="iconos-menu" alt="icon">
-                                    Calculador de Tradeos
+                                    <div data-i18n="calculador_tradeos_navbar">
+                                        <img src="furnis/iconos/calculador_de_trades_icon.png" class="iconos-menu" alt="icon">
+                                        Calculador de Tradeos
+                                    </div>
                                     <img src="furnis/iconos/habboween/baba2.png" class="baba-2-image-contador-1" alt="Baba verde">
                                     <img src="furnis/iconos/habboween/baba1.png" class="baba-1-image-contador-1" alt="Baba verde">
                                     <img src="furnis/iconos/habboween/gota1.png" class="gota-image-contador-2-1-1" alt="Gota verde">
@@ -212,21 +214,23 @@
                                 </a>
                             </li>
                             <li class="nav-item navbar_item">
-                                <a class="habbo_text_blue menu-link" href="#" data-section="comunidad_salas">
+                                <a class="habbo_text_blue menu-link" href="#" data-section="comunidad_salas" data-i18n="fotos_navbar">
                                     <img src="furnis/iconos/fotos_icon.png" class="iconos-menu" alt="icon">
                                     Fotos
                                 </a>
                             </li>
                             <li class="nav-item navbar_item">
-                                <a class="habbo_text_blue menu-link" href="#" data-section="equipo">
+                                <a class="habbo_text_blue menu-link" href="#" data-section="equipo" data-i18n="equipo_navbar">
                                     <img src="furnis/iconos/equipo_icon.png" class="iconos-menu" alt="icon">
                                     Equipo
                                 </a>
                             </li>
                             <li class="nav-item navbar_item">
                                 <a class="habbo_text_blue menu-link" href="#" data-section="compro_vendo">
-                                    <img src="furnis/iconos/marketplace_icon.png" class="iconos-menu" alt="icon">
-                                    Marketplace
+                                    <div data-i18n="marketplace_navbar">
+                                        <img src="furnis/iconos/marketplace_icon.png" class="iconos-menu" alt="icon">
+                                        Marketplace
+                                    </div>
                                     <img src="furnis/iconos/habboween/baba2.png" class="baba-2-image-contador-1" alt="Baba verde">
                                     <img src="furnis/iconos/habboween/baba1.png" class="baba-1-image-contador-1" alt="Baba verde">
                                     <img src="furnis/iconos/habboween/gota1.png" class="gota-image-contador-2-1-3" alt="Gota verde">
@@ -238,29 +242,29 @@
                                 </a>
                             </li>
                             <li class="nav-item navbar_item">
-                                <a class="habbo_text_blue menu-link" href="#" data-section="inventario">
+                                <a class="habbo_text_blue menu-link" href="#" data-section="inventario" data-i18n="inventario_navbar">
                                     <img src="furnis/iconos/mi_inventario_icon.png" class="iconos-menu" alt="icon">
                                     Mi inventario
                                 </a>
                             </li>
                             <div class="dropdown show navbar_item">
-                                <a class="habbo_text_blue menu-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <a class="habbo_text_blue menu-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-i18n="utilidades_navbar">
                                     Utilidades
-                                    <img src="furnis/iconos/habboween/baba2.png" class="baba-2-navbar" alt="Baba verde">
+                                    <!--<img src="furnis/iconos/habboween/baba2.png" class="baba-2-navbar" alt="Baba verde">
                                     <img src="furnis/iconos/habboween/baba1.png" class="baba-1-image-contador-2" alt="Baba verde">
                                     <img src="furnis/iconos/habboween/gota1.png" class="gota-image-contador-2-1-2" alt="Gota verde">
                                     <img src="furnis/iconos/habboween/gota2.png" class="gota-image-contador-2-2-1" alt="Gota verde">
                                     <img src="furnis/iconos/habboween/gota3.png" class="gota-image-contador-2-3-1" alt="Gota verde">
                                     <img src="furnis/iconos/habboween/gota4.png" class="gota-image-contador-2-4-3" alt="Gota verde">
                                     <img src="furnis/iconos/habboween/gota3.png" class="gota-image-contador-2-5-3" alt="Gota verde">
-                                    <img src="furnis/iconos/habboween/gota2.png" class="gota-image-contador-2-6-2" alt="Gota verde">
+                                    <img src="furnis/iconos/habboween/gota2.png" class="gota-image-contador-2-6-2" alt="Gota verde">-->
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                    <a class="dropdown-item navbar_item habbo_text_blue menu-link" href="#" data-section="habbo_generator_section">
+                                    <a class="dropdown-item navbar_item habbo_text_blue menu-link" href="#" data-section="habbo_generator_section" data-i18n="generador_habbos_navbar">
                                         <img src="furnis/iconos/generador_de_habbos_icon.png" class="iconos-menu" alt="icon">
                                         Generador de Habbos
                                     </a>
-                                    <a class="dropdown-item navbar_item habbo_text_blue menu-link" href="#" data-section="text_generator_section">
+                                    <a class="dropdown-item navbar_item habbo_text_blue menu-link" href="#" data-section="text_generator_section" data-i18n="generador_textos_navbar">
                                         <img src="furnis/iconos/generador_de_textos_icon.png" class="iconos-menu" alt="icon">
                                         Generador de Textos
                                     </a>
@@ -380,9 +384,9 @@
             </div>          
             <div class="col-10 col-md-8 column colum-catalog" id="catalogo-section">
                 <div class="row mb-4">
-                    <div class="row col-10 col-md-12 ultimos_precios_actualizados">
-                        <h5 class="text-center">Ultimos Precios Actualizados</h5>
-                        <div class="row col-10 col-md-12 furnis_min_actualizados">
+                    <div class="row col-md-12 d-none d-md-block ultimos_precios_actualizados">
+                        <h5 class="text-center" data-i18n="ultimos_precios_actualizados">Ultimos Precios Actualizados</h5>
+                        <div class="row col-md-12 furnis_min_actualizados">
                         
                         </div>
                     </div>
@@ -398,56 +402,56 @@
                 <div class="filtros_filas">
                     <div class="row mb-4">
                         <div class="col-md-3 col-12 text-center d-none d-md-block">
-                            <button class="price_history_content online_habbo_text_white filter-button furnis-temporada" data-category="deportes">
+                            <button class="price_history_content online_habbo_text_white filter-button furnis-temporada" data-category="deportes" data-i18n="filter_deportes">
                                 <img src="furnis/iconos/deportes.png" alt="icon">
                                 Deportes
                             </button>
-                            <button class="price_history_content online_habbo_text_white filter-button furnis-temporada" data-category="cabin">
+                            <button class="price_history_content online_habbo_text_white filter-button furnis-temporada" data-category="cabin" data-i18n="filter_cabin">
                                 <img src="furnis/iconos/cabin.png" alt="icon" class="cabin-icon">
                                 Cabin
                             </button>
-                            <button class="price_history_content online_habbo_text_white filter-button furnis-temporada rainbow-border" data-category="habboween">
+                            <button class="price_history_content online_habbo_text_white filter-button furnis-temporada rainbow-border" data-category="habboween" data-i18n="filter_habboween">
                                 <img src="furnis/iconos/habboween.png" alt="icon" class="habboween-icon">
                                 Habboween
                             </button>
-                            <button class="price_history_content online_habbo_text_white filter-button furnis-temporada rainbow-border" data-category="gotico">
+                            <button class="price_history_content online_habbo_text_white filter-button furnis-temporada rainbow-border" data-category="gotico" data-i18n="filter_gotico">
                                 <img src="furnis/iconos/gotico.png" alt="icon" class="gotico-icon">
-                                Gotico
+                                Gótico
                             </button>
                         </div>
                         <div class="col-md-7 col-12 text-center" id="filter_tags">
-                            <button class="price_history_content online_habbo_text_white filter-button all_filtro" data-category="all" data-i18n="filter_tag_todos">
+                            <button class="price_history_content online_habbo_text_white filter-button all_filtro" data-category="all" data-i18n="filter_todos">
                                 Todos
                             </button>
-                            <button class="price_history_content online_habbo_text_white filter-button" data-category="hc">
+                            <button class="price_history_content online_habbo_text_white filter-button" data-category="hc" data-i18n="filter_hc">
                                 <img src="furnis/iconos/icon_hc.png" class="iconos-hc-filtro" alt="icon">
                                 HC
                             </button>
-                            <button class="price_history_content online_habbo_text_white filter-button" data-category="rare">
+                            <button class="price_history_content online_habbo_text_white filter-button" data-category="rare" data-i18n="filter_rare">
                                 <img src="furnis/rares/Habbocola.png" class="iconos-rare-filtro" alt="icon">
                                 Rare
                             </button>
-                            <button class="price_history_content online_habbo_text_white filter-button" data-category="funky">
+                            <button class="price_history_content online_habbo_text_white filter-button" data-category="funky" data-i18n="filter_funky">
                                 <img src="furnis/iconos/Luz_Roja_Bouncer.png" class="iconos-rare-filtro" alt="icon">
                                 Funky
                             </button>
-                            <button class="price_history_content online_habbo_text_white filter-button" data-category="hot">
+                            <button class="price_history_content online_habbo_text_white filter-button" data-category="hot" data-i18n="filter_hot_trades">
                                 <img src="furnis/iconos/hot_icon.png" class="iconos-hot-filtro" alt="icon">
                                 Hot Trades
                             </button>
-                            <button class="price_history_content online_habbo_text_white filter-button" data-category="mega_rare">   
+                            <button class="price_history_content online_habbo_text_white filter-button" data-category="mega_rare" data-i18n="filter_mega_rares">   
                                 <img src="furnis/iconos/Dragon_De_Fuego_Oro.png" class="iconos-megarares-filtro" alt="icon">
                                 Mega Rares
                             </button>
-                            <button class="price_history_content online_habbo_text_white filter-button coleccion_filtro" data-category="coleccion">    
+                            <button class="price_history_content online_habbo_text_white filter-button coleccion_filtro" data-category="coleccion" data-i18n="filter_colecciones">    
                                 <img src="furnis/iconos/coleccion.png" class="iconos-coleccion-filtro" alt="icon">
                                 Colecciones
                             </button>
-                            <button class="price_history_content online_habbo_text_white filter-button" data-category="xmas_rares">    
+                            <button class="price_history_content online_habbo_text_white filter-button" data-category="xmas_rares" data-i18n="filter_xmas_rares">    
                                 <img src="furnis/iconos/icon_xmas_rares.png" class="iconos-coleccion-filtro" alt="icon">
                                 Xmas Rares
                             </button>
-                        </div>
+                        </div>                        
                         <div class="col-md-2 col-12 text-center d-md-block div_filtros">
                             <select id="sort-options" class="form-control w-auto ml-3 select_order">
                                 <option value="default" data-i18n="select_order_op1">Ordenar por</option>
@@ -466,12 +470,6 @@
                                 <option value="es">Español</option>
                                 <option value="en">English</option>
                                 <option value="pt">Português</option>
-                                <option value="fn">Finlandes</option>
-                                <option value="it">Italiano</option>
-                                <option value="fr">Frances</option>
-                                <option value="de">Aleman</option>
-                                <option value="nl">Neerlandés</option>
-                                <option value="tk">Turco</option>
                             </select>
                         </div>
                     </div>
@@ -789,61 +787,68 @@
             </div>
             <div class="col-md-8 column" id="login-section" style="display: none;">
                 <div class="login_div">
-                    <h3 class="text-center">Inicio de Sesión</h3>
+                    <h3 class="text-center" data-i18n="login_title">Inicio de Sesión</h3>
                     <form id="login-form">
                         <div class="form-group position-relative">
-                            <label for="username">Usuario:</label>
-                            <input type="username" class="form-control" id="username" name="username" placeholder="Ingrese su usuario" required>
+                            <label for="username" data-i18n="login_username_label">Usuario:</label>
+                            <input type="text" class="form-control" id="username" name="username" required>
                         </div>
-            
+                
                         <div class="form-group position-relative mt-3">
-                            <label for="password">Contraseña:</label>
-                            <input type="password" class="form-control" id="password" name="password" placeholder="Ingrese su contraseña" required>
+                            <label for="password" data-i18n="login_password_label">Contraseña:</label>
+                            <input type="password" class="form-control" id="password" name="password" required>
                         </div>
-            
+                
                         <!-- ReCaptcha de Google -->
                         <div class="g-recaptcha mb-3 recaptcha" id="login-recaptcha"></div>
-            
-                        <button type="button" id="login-button" class="btn btn-primary btn-block">Iniciar Sesión</button>
+                
+                        <button type="button" id="login-button" class="btn btn-primary btn-block" data-i18n="login_button">
+                            Iniciar Sesión
+                        </button>
                     </form>
-                </div>
+                </div>                
             </div>
             <div class="col-md-8 column" id="register-section" style="display: none;">
                 <div class="register_div">
-                    <h3 class="text-center">Registro de Usuario</h3>
+                    <h3 class="text-center" data-i18n="register_title">Registro de Usuario</h3>
                     <form id="register-form">
                         <div class="form-group position-relative">
-                            <label for="usernameRegister">Nombre de Usuario:
+                            <label for="usernameRegister" data-i18n="register_username_label">
+                                Nombre de Usuario:
                                 <span class="info-icon" data-toggle="tooltip" data-placement="right" title="Este es el nombre de cómo quieres aparecer en la página, por ejemplo, Emo. , el nombre solo puede tener carácteres especiales como (!, @, #, $, %, ^, &, *, -, _, =, +).">
                                     <i class="fas fa-question-circle"></i>
                                 </span>
                             </label>
-                            <input type="text" class="form-control" id="usernameRegister" name="usernameRegister" placeholder="Ejemplo: Emo." required>
+                            <input type="text" class="form-control" id="usernameRegister" name="usernameRegister" required>
                         </div>
                         <div class="form-group position-relative">
-                            <label for="email">Correo Electrónico:
+                            <label for="email" data-i18n="register_email_label">
+                                Correo Electrónico:
                                 <span class="info-icon" data-toggle="tooltip" data-placement="right" title="El correo electrónico solo se utiliza para confirmar que el usuario es real y permitir recuperar la contraseña.">
                                     <i class="fas fa-question-circle"></i>
                                 </span>
                             </label>
-                            <input type="email" class="form-control" id="email" name="email" 
-                                placeholder="Ingrese su correo electrónico" required>
+                            <input type="email" class="form-control" id="email" name="email" required>
                         </div>
                         <div class="form-group position-relative">
-                            <label for="passwordRegister">Contraseña:
+                            <label for="passwordRegister" data-i18n="register_password_label">
+                                Contraseña:
                                 <span class="info-icon" data-toggle="tooltip" data-placement="right" title="La contraseña debe tener al menos 1 letra mayúscula, 1 letra minúscula, 1 número y 1 carácter especial como (!, @, #, $, %, ^, &, *, -, _, =, +).">
                                     <i class="fas fa-question-circle"></i>
                                 </span>
                             </label>
-                            <input type="password" class="form-control" id="passwordRegister" name="passwordRegister" placeholder="Ingrese su contraseña" required>
+                            <input type="password" class="form-control" id="passwordRegister" name="passwordRegister" required>
                         </div>
                         <div class="form-group position-relative">
-                            <label for="confirm-password">Confirmar Contraseña:</label>
-                            <input type="password" class="form-control" id="confirm-password" name="confirm-password" placeholder="Confirme su contraseña" required>
+                            <label for="confirm-password" data-i18n="register_confirm_password_label">
+                                Confirmar Contraseña:
+                            </label>
+                            <input type="password" class="form-control" id="confirm-password" name="confirm-password" required>
                         </div>
-                        <!-- ReCaptcha de Google -->
                         <div class="g-recaptcha mb-3 recaptcha" id="register-recaptcha"></div>
-                        <button type="button" id="register-button" class="btn btn-primary btn-block">Registrar</button>
+                        <button type="button" id="register-button" class="btn btn-primary btn-block" data-i18n="register_button">
+                            Registrar
+                        </button>
                     </form>
                 </div>
             </div>            
@@ -858,12 +863,6 @@
                             <option value="es">Español</option>
                             <option value="en">English</option>
                             <option value="pt">Português</option>
-                            <option value="fn">Finlandes</option>
-                            <option value="it">Italiano</option>
-                            <option value="fr">Frances</option>
-                            <option value="de">Aleman</option>
-                            <option value="nl">Neerlandés</option>
-                            <option value="tk">Turco</option>
                         </select>
                     </div>
                 </div>

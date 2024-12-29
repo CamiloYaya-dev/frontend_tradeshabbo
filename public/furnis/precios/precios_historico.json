@@ -14374,5 +14374,45 @@
     "precio": "75.00",
     "hotel": "US",
     "user_modify": "emo"
+  },
+  {
+    "id": 2154,
+    "product_id": 339,
+    "fecha_precio": "2024-12-28T23:34:24.000Z",
+    "precio": "950.00",
+    "hotel": "US",
+    "user_modify": "Dake"
+  },
+  {
+    "id": 2155,
+    "product_id": 314,
+    "fecha_precio": "2024-12-28T23:48:47.000Z",
+    "precio": "100.00",
+    "hotel": "US",
+    "user_modify": "Dake"
+  },
+  {
+    "id": 2156,
+    "product_id": 331,
+    "fecha_precio": "2024-12-29T09:38:54.000Z",
+    "precio": "400.00",
+    "hotel": "US",
+    "user_modify": "Dake"
+  },
+  {
+    "id": 2157,
+    "product_id": 335,
+    "fecha_precio": "2024-12-29T13:01:26.000Z",
+    "precio": "500.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2158,
+    "product_id": 322,
+    "fecha_precio": "2024-12-29T13:01:49.000Z",
+    "precio": "3000.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
   }
 ]

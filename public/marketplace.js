@@ -6,18 +6,18 @@ function renderThreads(filterTag = null, mode = 'any') {
     const buttonsHTML = `
         <div class="row mb-3">
             <div class="col-12 d-flex justify-content-center div_marketplace">
-                <button id="todoBtn" class="btn navbar_item habbo_text_blue">
+                <button id="todoBtn" class="btn navbar_item habbo_text_blue" data-i18n="todoBtn">
                     Todos
                 </button>
-                <button id="comproBtn" class="btn navbar_item habbo_text_blue">
+                <button id="comproBtn" class="btn navbar_item habbo_text_blue" data-i18n="comproBtn">
                     <img src="furnis/iconos/marketplace_icon.png" class="marketplace_icons_button" alt="compro icono">
                     Compro
                 </button>
-                <button id="vendoBtn" class="btn navbar_item habbo_text_blue">
+                <button id="vendoBtn" class="btn navbar_item habbo_text_blue" data-i18n="vendoBtn">
                     <img src="furnis/iconos/vendo.png" class="marketplace_icons_button" alt="vendo icono">
                     Vendo
                 </button>
-                <button id="cambioBtn" class="btn navbar_item habbo_text_blue">
+                <button id="cambioBtn" class="btn navbar_item habbo_text_blue" data-i18n="cambioBtn">
                     <img src="furnis/iconos/calculador_de_trades_icon.png" class="marketplace_icons_button" alt="cambio icono">
                     Cambio
                 </button>

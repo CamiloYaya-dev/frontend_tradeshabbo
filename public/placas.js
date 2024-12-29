@@ -7,7 +7,7 @@ function obtenerPlacas() {
         success: function(imageFiles) {
             const divPlacas = $('.div_placas'); // Asegúrate de que tienes este contenedor en tu HTML
             let rowHTML = `
-            <p class="habbo_text_blue p_titulo_placas">
+            <p class="habbo_text_blue p_titulo_placas" data-i18n="placas_alojadas">
                 Placas alojadas
             </p>
             <div class="row">
