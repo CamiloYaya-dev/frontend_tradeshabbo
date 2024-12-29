@@ -1464,7 +1464,7 @@ client.on('inviteCreate', async invite => {
     }
 });
 
-//client.login(DISCORD_TOKEN);
+client.login(DISCORD_TOKEN);
 
 const rest = new REST({ version: '10' }).setToken(DISCORD_TOKEN);
 
