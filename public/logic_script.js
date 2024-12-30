@@ -55,41 +55,41 @@ $(document).ready(function() {
     }
 
     // Función para seleccionar un pato aleatorio
-    function showRandomDuck() {
-        // Oculta todos los patos
+    function showRandomLamp() {
+        // Oculta todos los elementos anteriores y reinicia
         images.forEach(image => {
             image.style.display = 'none';
-            image.style.animation = ''; // Elimina cualquier animación activa
-            image.style.left = ''; // Resetea el valor de 'left'
-            image.style.right = ''; // Resetea el valor de 'right'
+            image.style.animation = ''; // Elimina la animación previa
+        });
+    
+        // Selecciona una imagen aleatoria
+        const randomIndex = Math.floor(Math.random() * images.length);
+        const selectedLamp = images[randomIndex];
+    
+        // Duración y posición aleatoria
+        const randomDuration = getRandom(10, 30); // Duración entre 10 y 30 segundos
+        const randomHorizontalPosition = getRandom(0, window.innerWidth - 100); // Posición horizontal
+    
+        selectedLamp.style.position = 'absolute';
+        selectedLamp.style.left = `${randomHorizontalPosition}px`;
+        selectedLamp.style.bottom = '0'; // Inicia desde la parte inferior
+    
+        // Aplica la animación
+        selectedLamp.style.display = 'block';
+        selectedLamp.style.animation = `subirSerpiente ${randomDuration}s linear`;
+    
+        // Detecta el final de la animación
+        selectedLamp.addEventListener('animationend', () => {
+            selectedLamp.style.display = 'none'; // Oculta al llegar al tope
         });
 
-        // Selecciona un pato aleatorio
-        const randomIndex = Math.floor(Math.random() * images.length);
-        const selectedDuck = images[randomIndex];
-
-        // Genera una duración aleatoria
-        const randomDuration = getRandom(20, 60); // Duración entre 10 y 120 segundos
-
-        // Asigna una posición horizontal aleatoria
-        const randomSide = Math.random() > 0.5 ? 'left' : 'right'; // Elige aleatoriamente entre 'left' y 'right'
-        const randomPosition = getRandom(0, 700); // Genera un valor aleatorio para la posición en la pantalla
-
-        selectedDuck.style.position = 'relative';
-        selectedDuck.style[randomSide] = `${randomPosition}px`; // Asigna el valor aleatorio a 'left' o 'right'
-
-        // Muestra el pato seleccionado y asigna la animación
-        selectedDuck.style.display = 'block';
-        selectedDuck.style.animation = `asomarse ${randomDuration}s ease-in-out`;
-
-        // Al final de la animación, oculta el pato y selecciona otro
         setTimeout(() => {
-            showRandomDuck();
+            showRandomLamp();
         }, randomDuration * 1000); // Multiplicamos por 1000 para convertir segundos a milisegundos
     }
-
+    
     // Inicia el ciclo mostrando el primer pato aleatorio
-    showRandomDuck();
+    showRandomLamp();
 
     document.addEventListener('contextmenu', function(event) {
         event.preventDefault();
@@ -322,7 +322,7 @@ function initialize() {
                             var productCard = `
                                 <div class="col-md-4 col-sm-6 mb-4 product-item catalog_item_div">
                                     <div class="card h-100 position-relative ${borderClass}">
-                                        <div class="row">
+                                        <div class="row furnis_row_new_year_scale">
                                             <div class="col-8">
                                                 <a href="#" class="text-decoration-none product-link" data-id="${item.id}">
                                                     <div class="row">
@@ -433,15 +433,16 @@ function initialize() {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-12">
+                                            <!--<div class="col-12">
                                                 <div class="row col_no_padding">
                                                     <button class="boton_collapse_otros_catalogos collapse_text_white" type="button" data-toggle="collapse" data-target="#${collapseId}" aria-expanded="false" aria-controls="${collapseId}">
                                                         Votaciones <i class="fas fa-chevron-down toggle-icon"></i>
                                                     </button>
                                                 </div>
-                                            </div>
+                                            </div>-->
                                         </div>
-                                        <div class="card-body text-center">
+                                        <!--
+                                        <div class="card-body text-center furnis_row_new_year_scale no_padding_all">
                                             <div class="collapse text-price-es" id="${collapseId}">
                                                 <div class="row">
                                                     <div class="col-12 d-flex flex-column justify-content-around opinion_precio">
@@ -472,7 +473,8 @@ function initialize() {
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div>-->
+                                        <img src="furnis/iconos/chino/marco_furnis_catalogo.png" class="marco_furnis_year_china" alt="marco año nuevo chino habbo">
                                     </div>
                                 </div>
                             `;
@@ -631,7 +633,7 @@ function initialize() {
                                             <th class="habbo_text_blue" data-i18n="historial_precio_credito">Precio <img src="furnis/dinero/credito.png" alt="credito" class="price-icon"></th>
                                             <th class="habbo_text_blue" data-i18n="historial_precios_vip">Precio <img src="furnis/dinero/vip.png" alt="vip" class="price-vip"></th>
                                             <th class="habbo_text_blue" data-i18n="historial_tendencia">Tendencia</th>
-                                            <th class="habbo_text_blue">Agregado por:</th>
+                                            <th class="habbo_text_blue" data-i18n="historial_agregado_por">Agregado por:</th>
                                         </tr>
                                     </thead>
                                     <tbody>

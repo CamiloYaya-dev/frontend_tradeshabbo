@@ -105,5 +105,6 @@
     "login_title": "Login",
     "login_username_label": "Username:",
     "login_password_label": "Password:",
-    "login_button": "Login"
+    "login_button": "Login",
+    "historial_agregado_por": "Added by:"
 }

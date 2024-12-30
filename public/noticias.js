@@ -168,9 +168,9 @@ $('#noticiaModal').on('shown.bs.modal', function () {
     });
 });
 
-$('#toggle-button').on('click', function() {
+/*$('#toggle-button').on('click', function() {
     $('#music-player-container').toggleClass('minimized');
-});
+});*/
 
 // Inicializar noticias y campo de búsqueda
 $(document).ready(function() {

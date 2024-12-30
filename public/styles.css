@@ -6,13 +6,13 @@
 body {
     font-family: Arial, sans-serif;
     background-size: cover;
-    background: url('./fondo_hb1.png');
+    background: url('./fondo_ano_chino.png') no-repeat center center fixed;
 }
 
 main.container.other-class {
     font-family: Arial, sans-serif;
     background-size: cover;
-    background: url('./fondo_hb1.png');
+    background: url('./fondo_ano_chino.png') no-repeat center center fixed;
 }
 
 main.container.master-trades-bg {
@@ -252,7 +252,7 @@ main.container.master-trades-bg {
 }
 
 .sprite_trades_habbo_origins{
-    width: auto;
+    width: 100%;
 }
 
 .header, .main, .footer {
@@ -277,11 +277,14 @@ main.container.master-trades-bg {
 }
 
 .card {
-    background-color: #626262;
+    /* habboween 
+    background-color: #626262; */
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
 }
 
 .card-body {
-    background-color: #626262;
+    /* habboween
+    background-color: #626262;*/
     padding-bottom: 20px;
 }
 
@@ -304,9 +307,9 @@ main.container.master-trades-bg {
 .header-page {
     font-family: Arial, sans-serif;
     background-size: cover;
-    background-color: #626262 !important;
+    background-color: transparent !important;
     border: 1px solid #050a0e;
-    background: url(./fondo_habboween.png);
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9));
 }
 
 .header-page-master-trades{
@@ -318,32 +321,32 @@ main.container.master-trades-bg {
 
 .highlight-border {
     border: 3px solid;
-    border-image: linear-gradient(45deg, #006400, #228B22, #32CD32, #7CFC00) 1; /* Escala de verdes */
-    animation: border-animation 5s infinite;
+    /*border-image: linear-gradient(45deg, #006400, #228B22, #32CD32, #7CFC00) 1; Escala de verdes */
+    animation: fire-border 5s infinite;
 }
 
 .buscar-furnis{
-    background-color: #626262;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
     border-color: #2C2930;
     color: white;
 }
 
 .buscar-furnis:focus {
-    background-color: #626262;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
     border-color: #626262;
     color: white;
     outline: none;
 }
 
 .buscar-noticias{
-    background-color: #626262;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
     border-color: #2C2930;
     color: white;
     margin-top: 20px;
 }
 
 .buscar-noticias:focus {
-    background-color: #626262;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
     color: white;
     outline: none;
 }
@@ -388,7 +391,9 @@ main.container.master-trades-bg {
 }
 
 .div_text_column_left_content {
-    background-color: #626262;
+    /* habboween
+    background-color: #626262;*/
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
     border: 1px solid #050a0e;
     border-radius: 15px;
     box-shadow: 0 2px 3px rgba(6, 19, 25, .7);
@@ -472,7 +477,7 @@ main.container.master-trades-bg {
 }
 
 .price_history_content {
-    background-color: #626262;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
     border: 1px solid #050a0e;
     border-radius: 15px;
     box-shadow: 0 2px 3px rgba(6, 19, 25, .7);
@@ -537,7 +542,7 @@ main.container.master-trades-bg {
 }
 
 footer {
-    background-color: #626262;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
     color: white;
     text-align: center;
     padding: 1rem;
@@ -578,7 +583,7 @@ footer {
 }
 
 .navbar_item {
-    background-color: #626262;
+    background-color: #222;
     border: 1px solid #050a0e;
     border-radius: 15px;
     box-shadow: 0 2px 3px rgba(6, 19, 25, .7);
@@ -611,7 +616,7 @@ footer {
 }
 
 .item_calculador_tradeos {
-    background-color: #626262;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
     border: 1px solid #050a0e;
     border-radius: 15px;
     box-shadow: 0 2px 3px rgba(6, 19, 25, .7);
@@ -659,7 +664,9 @@ footer {
 }
 
 .noticia_div{
-    background-color: #626262;
+    /*habboween
+    background-color: #626262;*/
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
     border: 1px solid #050a0e;
     border-radius: 15px;
     box-shadow: 0 2px 3px rgba(6, 19, 25, .7);
@@ -684,7 +691,9 @@ footer {
 }
 
 .noticia_title_last_three{
-    color: #33D500;
+    /* habboween
+    color: #33D500;*/
+    color: #FFD700;
     font-size: 12px;
     text-align: center;
 }
@@ -945,13 +954,14 @@ audio::-webkit-media-controls-panel {
 .select_order{
     bottom: 0px;
     right: 10px;
-    background: #333;
     color: #fff;
     padding: 10px;
     border-radius: 5px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
     z-index: 1000;
-    background-color: #626262;
+    /*habboween
+    background-color: #626262;*/
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
     border: 1px solid #050a0e;
     width: 100% !important;
     float: inline-end;
@@ -960,13 +970,12 @@ audio::-webkit-media-controls-panel {
 .select_order:focus{
     bottom: 0px;
     right: 10px;
-    background: #333;
     color: #fff;
     padding: 10px;
     border-radius: 5px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
     z-index: 1000;
-    background-color: #626262;
+    background: #333;
     border: 1px solid #050a0e;
     width: 100% !important;
 }
@@ -979,13 +988,12 @@ audio::-webkit-media-controls-panel {
 .select_lenguage{
     bottom: 0px;
     right: 10px;
-    background: #333;
     color: #fff;
     padding: 10px;
     border-radius: 5px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
     z-index: 1000;
-    background-color: #626262;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
     border: 1px solid #050a0e;
     width: 250px !important;
     height: 50px;
@@ -1000,7 +1008,6 @@ audio::-webkit-media-controls-panel {
     border-radius: 5px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
     z-index: 1000;
-    background-color: #626262;
     border: 1px solid #050a0e;
     width: 250px !important;
     height: 50px;
@@ -1267,11 +1274,11 @@ audio::-webkit-media-controls-panel {
 
 .contador_div {
     position: relative;
-    background: #626262;
+    background: #222;
     padding: 5px;
     text-align: center;
     font-weight: bold;
-    color: #33D500;
+    color: #FFD700;
     border: 2px solid #2C2930;
     width: 100%; /* Ajustado a 100% para que sea responsivo */
     max-width: 200px; /* Mantiene el tamaño máximo */
@@ -1615,16 +1622,23 @@ audio::-webkit-media-controls-panel {
     position: relative;
     width: 50px;
     height: 112px;
+    /* habboween 
     top: 119px;
-    left: 20px;
+    left: 20px;*/
+    top: 130px;
+    left: 12px;
 }
 
 .flame-container-2 {
     position: relative;
     width: 50px;
     height: 112px;
+    /*habboween*/
+    /*
     top: 42px;
-    left: 121px;
+    left: 121px;*/
+    top: 60px;
+    left: 113px;
 }
 
 .flame {
@@ -1692,6 +1706,7 @@ audio::-webkit-media-controls-panel {
     margin-top: 30px;
 }
 
+/*habboween*/
 @keyframes flameAnimation {
     0%, 33.3% {
         opacity: 1; /* Imagen visible */
@@ -1834,7 +1849,7 @@ audio::-webkit-media-controls-panel {
 }
 
 .contador_title{
-    background-color: #626262;
+    background-color: #222;
 }
 
 .contador_title_master_trades{
@@ -1842,7 +1857,7 @@ audio::-webkit-media-controls-panel {
 }
 
 .contador_text{
-    background-color: #626262;
+    background-color: #222;
     color: white;
     margin-bottom: 0px;
 }
@@ -1880,21 +1895,21 @@ audio::-webkit-media-controls-panel {
 }
 
 #item-a{
-    background-color: #626262;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
     color: white;
 }
 
 #item-a option{
-    background-color: #626262;
+    background-color: #333;
 }
 
 #item-b{
-    background-color: #626262;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
     color: white;
 }
 
 #item-b option{
-    background-color: #626262;
+    background-color: #333;
 }
 
 .history_price_icon{
@@ -2222,7 +2237,7 @@ h5 {
     left: 50%;
     transform: translate(-50%);
     height: 25px;
-    width: 60%;
+    width: 70%;
 }
 
 .threads_p{
@@ -2241,7 +2256,13 @@ h5 {
     .habbo_text_blue{
         font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
         font-size: 13px;
-        color: #33D500;
+        color: #B5FD86;
+    }
+
+    .habbo_text_gold{
+        font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+        font-size: 13px;
+        color: #FFD700;
     }
 }
 
@@ -2255,7 +2276,7 @@ h5 {
 }
 
 .div_placas{
-    background-color: #626262;
+    background-color: #222;
     border: 1px solid #050a0e;
     border-radius: 15px;
     box-shadow: 0 2px 3px rgba(6, 19, 25, .7);
@@ -2450,7 +2471,7 @@ h5 {
 }
 
 .last_items_update{
-    background: #bdbdbd;
+    background: #333;
     background-position: 50%;
     margin: 0 5px 5px 0;
     border-radius: 3px;
@@ -2490,4 +2511,96 @@ h5 {
     height: auto;
     z-index: 10;
     top: 5px;
+}
+
+.chino_dragon{
+    position: relative;
+    left: -6px;
+    top: 132px;
+}
+
+.marco_precio_year_china{
+    width: 101%;
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    height: 101%;
+}
+
+.padding_last_prices_new_year_chine{
+    padding-top: 25px;
+}
+
+.dragon_cabeza_new_year_chine{
+    position: absolute;
+    top: -21px;
+    left: 45%;
+    width: 30px;
+}
+
+.marco_furnis_year_china{
+    position: absolute; /* Hace que el marco esté posicionado respecto a .card */
+    top: 0; /* Alinea la imagen al borde superior */
+    left: 0; /* Alinea la imagen al borde izquierdo */
+    width: 100%; /* Asegura que el marco ocupe todo el ancho */
+    height: 100%; /* Asegura que el marco ocupe toda la altura */
+    pointer-events: none; /* Esto evita que interfiera con los clics del contenido */
+    z-index: 1; /* Asegura que esté debajo del contenido dentro de la tarjeta */
+}
+
+.furnis_row_new_year_scale{
+    transform: scale(0.8);
+    transform-origin: center;
+}
+
+.no_padding_all{
+    padding: 0px 0px 0px 0px !important;
+}
+
+@keyframes fire-border {
+    0%, 100% {
+        border-color: red;
+    }
+    25% {
+        border-color: orange;
+    }
+    50% {
+        border-color: yellow;
+    }
+    75% {
+        border-color: darkorange;
+    }
+}
+
+.asomandose_lampara_china_1 {
+    width: auto;
+    height: auto;
+    position: fixed; /* Fija la posición respecto a la ventana */
+    bottom: 0; /* Empieza desde la parte inferior */
+    z-index: 9999; /* Asegura que esté por encima de todo */
+    pointer-events: none; /* Permite hacer clic en elementos debajo de la imagen */
+}
+
+@keyframes subirSerpiente {
+    0% {
+        transform: translateX(-50%) translateY(0) rotate(0deg);
+    }
+    10% {
+        transform: translateX(-130%) translateY(-100px) rotate(10deg); /* Movimiento más a la derecha */
+    }
+    25% {
+        transform: translateX(70%) translateY(-250px) rotate(-10deg); /* Movimiento más a la izquierda */
+    }
+    40% {
+        transform: translateX(-135%) translateY(-400px) rotate(8deg); /* Movimiento hacia la derecha */
+    }
+    60% {
+        transform: translateX(65%) translateY(-550px) rotate(-8deg); /* Movimiento hacia la izquierda */
+    }
+    80% {
+        transform: translateX(-145%) translateY(-700px) rotate(5deg); /* Movimiento hacia el centro */
+    }
+    100% {
+        transform: translateX(50%) translateY(-100vh) rotate(0deg); /* Sale del viewport */
+    }
 }

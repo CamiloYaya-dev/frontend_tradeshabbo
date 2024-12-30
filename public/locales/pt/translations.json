@@ -105,5 +105,6 @@
     "login_title": "Início de Sessão",
     "login_username_label": "Usuário:",
     "login_password_label": "Senha:",
-    "login_button": "Entrar"
+    "login_button": "Entrar",
+    "historial_agregado_por": "Adicionado por:"
 }
