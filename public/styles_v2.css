@@ -1954,10 +1954,10 @@ audio::-webkit-media-controls-panel {
     border: none;
 }
 
-.dropdown-menu{
+/*.dropdown-menu{
     background-color:transparent;
     border: none;
-}
+}*/
 
 .dropdown-item{
     margin-bottom: 5px;
@@ -2603,4 +2603,37 @@ h5 {
     100% {
         transform: translateX(50%) translateY(-100vh) rotate(0deg); /* Sale del viewport */
     }
+}
+
+.search-select {
+    position: relative; /* Posición relativa para que los elementos hijos puedan posicionarse respecto a este contenedor */
+    width: 100%; /* Asegura que el contenedor ocupe todo el ancho disponible */
+}
+
+.search-select .dropdown-menu {
+    position: relative; /* Permite posicionar la lista respecto al contenedor */
+    top: 100%; /* Coloca la lista justo debajo del input */
+    left: 0; /* Alinea la lista con el borde izquierdo del contenedor */
+    z-index: 1000; /* Asegura que la lista esté encima de otros elementos */
+    background: #fff; /* Fondo blanco para la lista */
+    border: 1px solid #ccc; /* Borde gris claro */
+    border-radius: 4px; /* Bordes redondeados */
+    width: 100%; /* Asegura que el ancho de la lista coincida con el del input */
+    max-height: 200px; /* Limita la altura para que no se extienda demasiado */
+    overflow-y: auto; /* Habilita el scroll si hay demasiadas opciones */
+    padding: 0; /* Elimina el padding interno */
+    margin: 0; /* Elimina el margen externo */
+    list-style: none; /* Elimina los puntos o números de la lista */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Añade una sombra para resaltar la lista */
+}
+
+.search-select .dropdown-menu li {
+    padding: 8px 12px; /* Espaciado interno para las opciones */
+    cursor: pointer; /* Cambia el cursor a una mano al pasar el mouse */
+    font-size: 14px; /* Tamaño de fuente adecuado */
+}
+
+.search-select .dropdown-menu li:hover {
+    background-color: #f1f1f1; /* Cambia el fondo al pasar el mouse */
+    color: #000; /* Asegura que el texto sea visible */
 }

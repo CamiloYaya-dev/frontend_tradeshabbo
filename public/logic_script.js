@@ -292,7 +292,6 @@ function initialize() {
                     loadLastThreeNoticias();
                     obtenerPlacas();
                     const decryptedData = decryptData(data.token);
-                    console.log(decryptedData);
                     const lastUpdateFurnis = decryptData(data.lastUpdateFurnis);
                     var productContainer = $('#product-container');
                     var productHistoryContainer = $('#product-history-container');
@@ -879,65 +878,101 @@ function initialize() {
 verifyIP(initialize);
 
 function fillItemOptions(products) {
-    var itemASelect = $('#item-a');
-    var itemBSelect = $('#item-b');
-    itemASelect.empty();
-    itemBSelect.empty();
+    // Inicializar los elementos para item A y B
+    const itemAInput = $('#item-a-search');
+    const itemAOptions = $('#item-a-options');
+    const itemBInput = $('#item-b-search');
+    const itemBOptions = $('#item-b-options');
 
-    let optionNull = '<option value="0" data-src="" data-name="" data-i18n="calculadora_op1">Seleccione un item....</option>';
-    itemASelect.append(optionNull);
-    itemBSelect.append(optionNull);
+    function setupSearchableSelect(input, options, selectId) {
+        // Limpiar las opciones previas
+        options.empty();
 
-    products.forEach(function(product) {
-        var option = `<option value="${product.price}" data-src="${product.src}" data-name="${product.name}">${product.name}</option>`;
-        itemASelect.append(option);
-        itemBSelect.append(option);
-    });
+        // Rellenar las opciones dinámicamente
+        products.forEach(product => {
+            const option = `<li data-value="${product.price}" data-src="${product.src}" data-name="${product.name}">${product.name}</li>`;
+            options.append(option);
+        });
 
-    $('#item-a').on('change', function() {
-        updateImage('item-a');
-        calculateEquivalent();
-    });
+        // Filtro dinámico en el input
+        input.on('input', function () {
+            const searchText = $(this).val().toLowerCase();
+            const filteredProducts = products.filter(product => product.name.toLowerCase().includes(searchText));
 
-    $('#item-b').on('change', function() {
-        updateImage('item-b');
-        calculateEquivalent();
-    });
+            options.empty();
+            if (filteredProducts.length === 0) {
+                options.hide();
+            } else {
+                filteredProducts.forEach(product => {
+                    const option = `<li data-value="${product.price}" data-src="${product.src}" data-name="${product.name}">${product.name}</li>`;
+                    options.append(option);
+                });
+                options.show();
+            }
+        });
+
+        // Selección de una opción
+        options.on('click', 'li', function () {
+            const selectedName = $(this).data('name');
+            const selectedValue = $(this).data('value');
+            const selectedSrc = $(this).data('src');
+
+            // Actualizar input con el nombre seleccionado
+            input.val(selectedName);
+            options.hide();
+
+            // Actualizar imagen y calcular equivalentes
+            updateImage(selectId, selectedSrc, selectedName);
+            calculateEquivalent();
+        });
+
+        // Ocultar opciones al hacer clic fuera
+        $(document).on('click', function (e) {
+            if (!$(e.target).closest('.search-select').length) {
+                options.hide();
+            }
+        });
+    }
+
+    // Configurar para ambos selects
+    setupSearchableSelect(itemAInput, itemAOptions, 'item-a');
+    setupSearchableSelect(itemBInput, itemBOptions, 'item-b');
 }
 
-function updateImage(selectId) {
-    var select = $('#' + selectId);
-    var imageSrc = select.find('option:selected').data('src');
-    if (imageSrc) {
-        $('#' + selectId + '-image').html(`<img src="${imageSrc}" alt="${select.find('option:selected').text()}" class="img-fluid">`);
+function updateImage(selectId, src, alt) {
+    const imageContainer = $(`#${selectId}-image`);
+    if (src) {
+        imageContainer.html(`<img src="${src}" alt="${alt}" class="img-fluid">`);
     } else {
-        $('#' + selectId + '-image').html(''); // Clear the image if no item is selected
+        imageContainer.html(''); // Vaciar si no hay imagen
     }
 }
 
 function calculateEquivalent() {
-    var itemASelect = $('#item-a');
-    var itemBSelect = $('#item-b');
+    const itemAInput = $('#item-a-search');
+    const itemBInput = $('#item-b-search');
+    const itemAOptions = $('#item-a-options');
+    const itemBOptions = $('#item-b-options');
 
-    var itemAPrice = parseFloat(itemASelect.val());
-    var itemBPrice = parseFloat(itemBSelect.val());
-
-    var itemNameA = itemASelect.find('option:selected').data('name');
-    var itemNameB = itemBSelect.find('option:selected').data('name');
+    const itemAPrice = parseFloat(itemAOptions.find('li:contains("' + itemAInput.val() + '")').data('value'));
+    const itemBPrice = parseFloat(itemBOptions.find('li:contains("' + itemBInput.val() + '")').data('value'));
 
     if (itemAPrice && itemBPrice) {
-        var equivalentAtoB = (itemAPrice / itemBPrice).toFixed(2);
-        var equivalentBtoA = (itemBPrice / itemAPrice).toFixed(2);
-        const textoTraducido = i18next.t('equivalente_text', { itemNameA, equivalentAtoB, itemNameB, equivalentBtoA });
-        $('#equivalente').html(`<p class="online_habbo_text_white_fz_20">${textoTraducido}</p>`);
+        const equivalentAtoB = (itemAPrice / itemBPrice).toFixed(2);
+        const equivalentBtoA = (itemBPrice / itemAPrice).toFixed(2);
+        const itemNameA = itemAInput.val();
+        const itemNameB = itemBInput.val();
+
+        $('#equivalente').html(`<p class="online_habbo_text_white_fz_20">1 ${itemNameA} equivale a ${equivalentAtoB} ${itemNameB}, esto es lo mismo que decir, 1 ${itemNameB} equivale a ${equivalentBtoA} ${itemNameA}.</p>`);
         $('#item-a-price').html(`<p class="text-price"><img src="furnis/dinero/credito.png" alt="credito" class="price-icon">${itemAPrice}</p>`);
         $('#item-b-price').html(`<p class="text-price"><img src="furnis/dinero/credito.png" alt="credito" class="price-icon">${itemBPrice}</p>`);
     } else {
-        $('#equivalente').text('');
-        $('#item-a-price').text('');
-        $('#item-b-price').text('');
+        $('#equivalente').html('');
+        $('#item-a-price').html('');
+        $('#item-b-price').html('');
     }
 }
+
 
 function isMobileDevice() {
     return /Mobi|Android/i.test(navigator.userAgent);
