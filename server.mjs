@@ -1157,6 +1157,24 @@ app.post('/login', [
     }
 });
 
+app.post('/logout', (req, res) => {
+    try {
+        // Eliminar la cookie session_token
+        res.clearCookie('session_token', {
+            httpOnly: false,
+            secure: process.env.NODE_ENV === 'production', // Solo HTTPS en producción
+            sameSite: 'Strict'
+        });
+
+        // Enviar respuesta de éxito
+        res.status(200).json({ message: 'Sesión cerrada correctamente' });
+    } catch (error) {
+        console.error('Error al cerrar sesión:', error.message);
+        res.status(500).json({ error: 'Error al cerrar sesión' });
+    }
+});
+
+
 app.post('/update-catalog', [
     check('product_id').notEmpty().isNumeric().withMessage('El ID del producto es obligatorio y debe ser un número'),
     check('lang').notEmpty().isIn(['es', 'us']).withMessage('El idioma es obligatorio y debe ser "es" o "us"'),

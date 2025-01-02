@@ -1,4 +1,5 @@
 let loginRecaptchaWidget;
+let isTokenValid = false; // Variable global para evitar ciclos infinitos
 
 // Inicialización de reCAPTCHA
 function initializeLoginRecaptcha() {
@@ -53,61 +54,88 @@ $(document).ready(async function () {
 
     // Manejar cierre de sesión
     $('#logout_button').on('click', function () {
-        document.cookie = "session_token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC; Secure; HttpOnly; SameSite=Strict";
-        mostrarAlertaExito('Sesión cerrada correctamente.');
-        setTimeout(() => location.reload(), 1500); // Recargar la página después de la alerta
+        // Realizar la solicitud AJAX al servidor para cerrar sesión
+        $.ajax({
+            url: '/logout', // Ruta del servidor para eliminar la cookie
+            type: 'POST', // Tipo de solicitud
+            success: function (response) {
+                // Mostrar mensaje de éxito
+                mostrarAlertaExito(response.message || 'Sesión cerrada correctamente.');
+                
+                // Recargar la página después de un tiempo
+                setTimeout(() => window.location.reload(), 1500);
+            },
+            error: function (xhr) {
+                // Mostrar mensaje de error si algo falla
+                const errorMessage = xhr.responseJSON?.error || 'Error al cerrar la sesión.';
+                mostrarAlertaError(errorMessage);
+            }
+        });
     });
-    await validationToken();
+    window.onload = async function () {
+        await validationToken();
+        agregarBotonesEdicion();
+    }
 });
 
 // Validar token de sesión
 async function validationToken() {
     const sessionToken = document.cookie.split('; ').find(row => row.startsWith('session_token='));
-    
+
     if (sessionToken) {
-        const tokenValue = sessionToken.split('=')[1];
-        const payload = JSON.parse(atob(tokenValue.split('.')[1]));
+        try {
+            const tokenValue = sessionToken.split('=')[1];
+            const payload = JSON.parse(atob(tokenValue.split('.')[1]));
 
-        // Validar expiración del token
-        const currentTime = Math.floor(Date.now() / 1000); // Tiempo actual en segundos
-        if (payload.exp && payload.exp < currentTime) {
-            document.cookie = "session_token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC; Secure; HttpOnly; SameSite=Strict";
-            $('.no_login').show();
-            $('.usuario_logeado').hide();
-            return;
-        }
-
-        // Mostrar nombre de usuario y ocultar botones de login
-        $('#username_display').text(payload.username);
-        // Mostrar menú de usuario
-        $('.no_login').hide();
-        $('.usuario_logeado').show();
-
-        // Mostrar/Ocultar secciones relevantes
-        $('#catalogo-section, #column-explications-catalogo, #sort-options, #footer').show();
-        $('#noticias-section, #calculador-section, #sorteos-section, #master-trades-section, #column-explications-master-trades, #habbo-generator-section, #text-generator-section, #comunidad_salas, #equipo-section, #marketplace-section, #login-section, #register-section').hide();
-
-        // Extraer los IDs de permisos
-        const userPermissions = (payload.permissions || []).map(p => p.permission_id);
-
-        // Mostrar solo opciones permitidas
-        $('.dropdown-item[data-permission]').each(function () {
-            const requiredPermission = parseInt($(this).data('permission'));
-            if (userPermissions.includes(requiredPermission)) {
-                $(this).show();
-            } else {
-                $(this).hide();
+            // Validar expiración del token
+            const currentTime = Math.floor(Date.now() / 1000);
+            if (payload.exp && payload.exp < currentTime) {
+                // Eliminar token expirado
+                document.cookie = "session_token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC; Secure; HttpOnly; SameSite=Strict";
+                $('.no_login').show();
+                $('.usuario_logeado').hide();
+                isTokenValid = false; // Token inválido
+                return false;
             }
-        });
 
-        window.onload = function () {
-            agregarBotonesEdicion();
-        };
+            // Mostrar nombre de usuario y ocultar botones de login
+            $('#username_display').text(payload.username);
+            $('.no_login').hide();
+            $('.usuario_logeado').show();
+
+            // Mostrar/Ocultar secciones relevantes
+            $('#catalogo-section, #column-explications-catalogo, #sort-options, #footer').show();
+            $('#noticias-section, #calculador-section, #sorteos-section, #master-trades-section, #column-explications-master-trades, #habbo-generator-section, #text-generator-section, #comunidad_salas, #equipo-section, #marketplace-section, #login-section, #register-section').hide();
+
+            // Extraer los IDs de permisos
+            const userPermissions = (payload.permissions || []).map(p => p.permission_id);
+
+            // Mostrar solo opciones permitidas
+            $('.dropdown-item[data-permission]').each(function () {
+                const requiredPermission = parseInt($(this).data('permission'));
+                if (userPermissions.includes(requiredPermission)) {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
+            });
+
+            isTokenValid = true; // Token válido
+            return true;
+        } catch (error) {
+            console.error('Error al procesar el token:', error);
+            isTokenValid = false; // Token inválido o corrupto
+            return false;
+        }
     } else {
         $('.no_login').show();
         $('.usuario_logeado').hide();
+        isTokenValid = false; // No hay token
+        return false;
     }
 }
+
+
 
 // Funciones de alerta
 function mostrarAlertaError(mensaje) {
@@ -152,10 +180,8 @@ function mostrarAlertaExito(mensaje) {
     });
 }
 
-window.agregarBotonesEdicion = function() {
-    const sessionToken = document.cookie.split('; ').find(row => row.startsWith('session_token='));
-
-    if (sessionToken) {
+window.agregarBotonesEdicion = async function() {
+    if (isTokenValid) {
         $('.text-price.credits').each(function () {
             const productoDiv = $(this).closest('.product-item');
             const productId = productoDiv.find('.product-link').data('id');
