@@ -1599,8 +1599,17 @@ let lock = false;
 
 // Map para almacenar los códigos de verificación temporalmente
 const verificationRequests = new Map();
+const handledInteractions = new Set();
 
 client.on('interactionCreate', async interaction => {
+
+    if (handledInteractions.has(interaction.id)) {
+        console.log('Interacción ya manejada por otra instancia.');
+        return;
+    }
+
+    handledInteractions.add(interaction.id);
+
     if (interaction.isAutocomplete()) {
         const focusedValue = interaction.options.getFocused();
         const choices = getImageChoices();
@@ -1702,59 +1711,50 @@ client.on('interactionCreate', async interaction => {
     }
 
     if (commandName === 'confirm-verify') {
-        const allowedChannelId = '1322976517780799680';
-        const restrictedRoleId = '1322984756593557514';
-    
-        // Verifica si el comando se ejecuta en el canal permitido
-        if (channelId !== allowedChannelId) {
-            await interaction.reply({ 
-                content: 'Este comando solo se puede usar en el canal específico.', 
-                ephemeral: true 
-            });
-            return;
-        }
-    
-        // Verifica si el usuario ya tiene el rol restringido
-        if (member.roles.cache.has(restrictedRoleId)) {
-            await interaction.reply({ 
-                content: 'No puedes usar este comando porque ya tienes el rol correspondiente.', 
-                ephemeral: true 
-            });
-            return;
-        }
-        
-        const userRequest = verificationRequests.get(member.id);
-    
-        // Verifica si el usuario tiene una solicitud de verificación activa
-        if (!userRequest) {
-            await interaction.reply({
-                content: 'No tienes ninguna solicitud de verificación activa. Por favor, usa el comando `/verify` para generar un código de verificación.',
-                ephemeral: true
-            });
-            return;
-        }
-    
-        const { habboName, verificationCode } = userRequest;
-    
         try {
-            // Consulta la API de Habbo para obtener los datos del usuario
+            const allowedChannelId = '1322976517780799680';
+            const restrictedRoleId = '1322984756593557514';
+    
+            // Diferir la respuesta inicial
+            await interaction.deferReply({ ephemeral: true });
+    
+            // Verifica si el comando se ejecuta en el canal permitido
+            if (channelId !== allowedChannelId) {
+                await interaction.editReply({
+                    content: 'Este comando solo se puede usar en el canal específico.'
+                });
+                return;
+            }
+    
+            // Verifica si el usuario ya tiene el rol restringido
+            if (member.roles.cache.has(restrictedRoleId)) {
+                await interaction.editReply({
+                    content: 'No puedes usar este comando porque ya tienes el rol correspondiente.'
+                });
+                return;
+            }
+    
+            const userRequest = verificationRequests.get(member.id);
+    
+            // Verifica si el usuario tiene una solicitud de verificación activa
+            if (!userRequest) {
+                await interaction.editReply({
+                    content: 'No tienes ninguna solicitud de verificación activa. Por favor, usa el comando `/verify` para generar un código de verificación.'
+                });
+                return;
+            }
+    
+            const { habboName, verificationCode } = userRequest;
+    
+            // Consulta la API de Habbo
             const habboApiUrl = `https://origins.habbo.es/api/public/users?name=${encodeURIComponent(habboName)}`;
             const response = await axios.get(habboApiUrl);
             const habboData = response.data;
     
-            // Verifica si el *motto* del usuario coincide con el código de verificación
             if (habboData.motto === verificationCode) {
-                // Si el *motto* coincide, se considera verificado
-                await interaction.reply({
-                    content: `¡Felicidades! Tu cuenta de Habbo con el nombre **${habboName}** ha sido verificada exitosamente.`,
-                    ephemeral: true
-                });
-    
-                // Asigna el rol al usuario en Discord
-                const verifiedRoleId = '1322984756593557514'; // ID del rol de verificado
+                // Verificación exitosa
+                const verifiedRoleId = '1322984756593557514';
                 await member.roles.add(verifiedRoleId);
-    
-                // Cambia el apodo del usuario al nombre de Habbo
                 await member.setNickname(habboName).catch(error => {
                     console.error('Error al cambiar el apodo:', error.message);
                     interaction.followUp({
@@ -1763,25 +1763,34 @@ client.on('interactionCreate', async interaction => {
                     });
                 });
     
-                // Elimina la solicitud de verificación después de la confirmación
                 verificationRequests.delete(member.id);
-            } else {
-                // Si el *motto* no coincide, envía un mensaje de error
-                await interaction.reply({
-                    content: `El *motto* de tu cuenta de Habbo no coincide con el código de verificación. Por favor, asegúrate de haber configurado correctamente tu código en el *motto* y vuelve a intentarlo.`,
+    
+                await interaction.editReply({
+                    content: `¡Felicidades! Tu cuenta de Habbo con el nombre **${habboName}** ha sido verificada exitosamente.`
+                });
+    
+                // Mensaje adicional
+                await interaction.followUp({
+                    content: 'Tu cuenta ha sido vinculada correctamente. ¡Disfruta de los beneficios del servidor!',
                     ephemeral: true
+                });
+            } else {
+                await interaction.editReply({
+                    content: `El *motto* de tu cuenta de Habbo no coincide con el código de verificación. Por favor, asegúrate de haber configurado correctamente tu código en el *motto* y vuelve a intentarlo.`
                 });
             }
         } catch (error) {
-            console.error('Error al consultar la API de Habbo:', error.message);
+            console.error('Error en confirm-verify:', error);
     
-            // Responde con un mensaje de error si la consulta a la API falla
-            await interaction.reply({
-                content: `Hubo un problema al verificar tu cuenta. Por favor, intenta nuevamente más tarde.`,
+            // Mensaje de error adicional
+            await interaction.followUp({
+                content: 'Hubo un problema al verificar tu cuenta. Por favor, intenta nuevamente más tarde.',
                 ephemeral: true
             });
         }
     }
+    
+    
 
     /*const hasRole = member.roles.cache.some(role => ALLOWED_ROLES.includes(role.id));
 
