@@ -1397,7 +1397,7 @@ client.once('ready', async () => {
 
 });
 
-client.on('guildMemberAdd', async member => {
+/*client.on('guildMemberAdd', async member => {
     console.log('entre al guildMemberAdd');
     const token = generateJWT();
     try {
@@ -1456,7 +1456,7 @@ client.on('guildMemberAdd', async member => {
     } catch (error) {
         console.error('Error comparando invitaciones:', error);
     }
-});
+});*/
 
 client.on('inviteCreate', async invite => {
     const guildInvites = invites.get(invite.guild.id) || new Collection();
