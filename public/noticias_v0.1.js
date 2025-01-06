@@ -156,7 +156,6 @@ function loadNoticias() {
 
 // Filtrar noticias según la búsqueda
 function filterNoticias(keyword) {
-    console.log(noticiasData);
     let selectedLanguage = $('.language-select-pc').val();
     let languageToHotelMap = {
         "en": "com",

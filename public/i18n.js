@@ -92,7 +92,6 @@ $(document).ready(function() {
 
     // Manejar el cambio de idioma desde el select
     $('.language-select-pc').change(function() {
-        console.log("entre aca");
         const newLanguage = $(this).val();
         changeLanguage(newLanguage);
 

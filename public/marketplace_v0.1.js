@@ -47,13 +47,11 @@ function renderThreads(filterTag = null, mode = 'any') {
         data.forEach(thread => {
             // Verificar si el primer mensaje tiene un autor
             if (!thread.messages[0] || !thread.messages[0].author) {
-                console.log(`Hilo ${thread.id} ignorado debido a que no tiene autor en el primer mensaje.`);
                 return; // Ignora este hilo si el autor está vacío
             }
 
             // Verificar si el hilo tiene al menos una de las etiquetas requeridas
             if (!thread.appliedTags.includes('1284690542315438110') && !thread.appliedTags.includes('1284690495997739070')) {
-                console.log(`Hilo ${thread.id} ignorado debido a que no contiene ninguna de las etiquetas requeridas.`);
                 return; // Ignora este hilo si no tiene las etiquetas requeridas
             }
 

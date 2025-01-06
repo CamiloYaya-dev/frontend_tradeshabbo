@@ -276,7 +276,6 @@ function initialize() {
                     loadLastThreeNoticias();
                     obtenerPlacas();
                     const decryptedData = decryptData(data.token);
-                    console.log(decryptedData);
                     const lastUpdateFurnis = decryptData(data.lastUpdateFurnis);
                     var productContainer = $('#product-container');
                     var productHistoryContainer = $('#product-history-container');
@@ -475,7 +474,6 @@ function initialize() {
                     lastUpdatedContainer.empty();
     
                     lastUpdateFurnis.forEach(furni => {
-                        console.log(furni);
                         const isMobile = window.matchMedia("(max-width: 768px)").matches;
                         var selectedLanguage = isMobile ? $('.language-select-mobile').val() : $('.language-select-pc').val();
                         const furniImage = `
@@ -629,7 +627,6 @@ function initialize() {
                         var selectedLanguage = isMobile ? $('.language-select-mobile').val() : $('.language-select-pc').val();
                         let filteredData = decryptedData.filter(record => record.hotel === hotel);
                         var firstRecord = filteredData[0];
-                        console.log(firstRecord);
                         var historyContent = `
                             <h3 class="price_history_content habbo_text_blue h3_historial_precios" data-i18n="historial_precios">Historial de Precios</h3>
                             <div class="price-history-image">

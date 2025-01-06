@@ -31,7 +31,7 @@ $(document).ready(function() {
     $.getScript(`logic_script_v${version}.js`, function() {});
     $.getScript(`mts_v${version}.js`, function() {});
     $.getScript(`salas_v${version}.js`, function() {});
-    $.getScript(`marketplace.js`, function() {});
+    $.getScript(`marketplace_v${version}.js`, function() {});
     $.getScript(`placas_v${version}.js`, function() {});
     $.getScript(`register_v${version}.js`, function() {});
 
