@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    let version = '0.1'
     // Función para actualizar el contenido traducido
     function updateContent() {
         $('[data-i18n]').each(function() {
@@ -22,18 +23,17 @@ $(document).ready(function() {
         });
     }
 
-    $.getScript('login.js', function() {});
-    $.getScript('songs.js', function() {});
-    $.getScript('modal.js', function() {});
-    $.getScript('noticias.js', function() {});
-    $.getScript('sorteos.js', function() {});
-    $.getScript('logic_script.js', function() {});
-    $.getScript('mts.js', function() {});
-    $.getScript('grafics.js', function() {});
-    $.getScript('salas.js', function() {});
-    $.getScript('marketplace.js', function() {});
-    $.getScript('placas.js', function() {});
-    $.getScript('register.js', function() {});
+    $.getScript(`login_v${version}.js`, function() {});
+    $.getScript(`songs_v${version}.js`, function() {});
+    $.getScript(`modal_v${version}.js`, function() {});
+    $.getScript(`noticias_v${version}.js`, function() {});
+    $.getScript(`sorteos_v${version}.js`, function() {});
+    $.getScript(`logic_script_v${version}.js`, function() {});
+    $.getScript(`mts_v${version}.js`, function() {});
+    $.getScript(`salas_v${version}.js`, function() {});
+    $.getScript(`marketplace.js`, function() {});
+    $.getScript(`placas_v${version}.js`, function() {});
+    $.getScript(`register_v${version}.js`, function() {});
 
     $('#button_options').on('click', function(e) {
         var content = document.getElementById("toggle-content");

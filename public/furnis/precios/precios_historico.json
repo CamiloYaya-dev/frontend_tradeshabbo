@@ -15926,5 +15926,21 @@
     "precio": "50.00",
     "hotel": "ES",
     "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2348,
+    "product_id": 332,
+    "fecha_precio": "2025-01-05T22:19:24.000Z",
+    "precio": "1500.00",
+    "hotel": "US",
+    "user_modify": "emo"
+  },
+  {
+    "id": 2349,
+    "product_id": 322,
+    "fecha_precio": "2025-01-05T22:20:15.000Z",
+    "precio": "5000.00",
+    "hotel": "US",
+    "user_modify": "emo"
   }
 ]
