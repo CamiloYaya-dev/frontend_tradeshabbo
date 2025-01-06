@@ -164,18 +164,32 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use(express.static('public', {
-    setHeaders: (res, path) => {
-        if (path.endsWith('.js')) {
-            res.set('Content-Type', 'application/javascript');
-        } else if (path.endsWith('.css')) {
-            res.set('Content-Type', 'text/css');
-        }
-        res.set('Cache-Control', 'max-age=31536000'); // Caché largo para recursos estáticos versionados
+app.use((req, res, next) => {
+    if (
+        req.url === '/' || 
+        req.url.endsWith('index.html') || 
+        req.url.endsWith('.js') ||
+        req.url.endsWith('.json')
+    ) {
+        res.set('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
+        res.set('Pragma', 'no-cache');
+        res.set('Expires', '0');
     }
-}));
-  
+    next();
+});
 
+app.use((req, res, next) => {
+    if (
+        req.url.includes('?v=') || 
+        req.url.includes('&_=')
+    ) {
+        res.set('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
+        res.set('Pragma', 'no-cache');
+        res.set('Expires', '0');
+    }
+    next();
+});
+  
 app.get('/api-key', (req, res) => {
     const newKeyData = generateApiKey();
     apiKey = newKeyData.apiKey;
