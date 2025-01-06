@@ -75,6 +75,12 @@ $(document).ready(async function () {
     window.onload = async function () {
         await validationToken();
         agregarBotonesEdicion();
+        if ($('#register-recaptcha').length) {
+            initializeRegisterRecaptcha();
+        }
+        if ($('#login-recaptcha').length) {
+            initializeLoginRecaptcha();
+        }
     }
 });
 
