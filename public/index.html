@@ -108,7 +108,7 @@
                             <p class="contador_text" id="contador">En mantenimiento</p>
                         </div>
                     </div>
-                    <div class="col-md-6 d-flex justify-content-center">
+                    <div class="col-md-6 d-flex justify-content-center" style="display: none !important;">
                         <div class="contador_div font-habbo-class d-none d-md-block">
                             <div class="contador_title" data-i18n="contador_votos">
                                 Contador de Votos
@@ -126,17 +126,8 @@
                             -->
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-md-4 d-none d-md-block d-flex justify-content-center mb-3 mb-md-0">
-                <img src="furnis/iconos/trades_habbo_origins_new_year_chine.png" class="sprite_trades_habbo_origins" alt="Logo de Trades Habbo Origins">
-            </div>
-            <div class="col-sm-12 d-block d-md-none d-flex justify-content-center mb-3 mb-md-0">
-                <img src="furnis/iconos/trades_habbo_origins.png" class="sprite_trades_habbo_origins" alt="Logo de Trades Habbo Origins">
-            </div>
-            <div class="col-md-4 col-sm-12 d-none d-md-flex text-center mb-3 mb-md-0 row_contador">
-                <div class="row">
-                    <div class="col-md-5 text-center row_contador">
+                    
+                    <div class="col-md-6 text-center row_contador">
                         <a href="https://discord.gg/dh4FMNrfTT" target="_blank" class="rainbow-border margin-right-10px">
                             <i class="fab fa-discord fa-2x habbo-text-white mx-2"></i>
                         </a>
@@ -147,33 +138,43 @@
                             <i class="fab fa-twitter fa-2x habbo-text-white mx-2"></i>
                         </a>
                     </div>
-                    <!-- Botones visibles solo cuando NO está logeado -->
-                    <div class="col-md-7 text-center row_contador no_login">
-                        <button class="price_history_content online_habbo_text_white menu-link boton contador_div" data-i18n="inicio_sesion" data-section="login">
-                        </button>
-                        <button class="price_history_content online_habbo_text_white menu-link contador_div" data-i18n="registrarse" data-section="register">
-                        </button>
-                    </div>
-                    <!-- Contenedor del usuario logueado -->
-                    <div class="col-md-7 text-center row_contador usuario_logeado" style="display: none;">
-                        <!-- Menú desplegable -->
-                        <div class="dropdown navbar_item">
-                            <button class="btn dropdown-toggle" type="button" id="userMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Menú de <span id="username_display"></span>
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="userMenuButton">
-                                <a class="dropdown-item navbar_item habbo_text_blue menu-link" href="#" id="edit-profile" data-permission="2">Editar Perfil</a>
-                                <a class="dropdown-item navbar_item habbo_text_blue menu-link" href="#" id="manage-catalog" data-permission="1">Administrar Catálogo</a>
-                                <a class="dropdown-item navbar_item habbo_text_blue menu-link" href="#" id="manage-news" data-permission="3">Administrar Noticias</a>
-                                <a class="dropdown-item navbar_item habbo_text_blue menu-link" href="#" id="manage-raffles" data-permission="4">Administrar Sorteos</a>
-                                <a class="dropdown-item navbar_item habbo_text_blue menu-link" href="#" id="manage-users" data-permission="5">Administrar Usuarios</a>
-                                <a class="dropdown-item navbar_item habbo_text_blue menu-link" href="#" id="manage-badges" data-permission="6">Administrar Placas</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item navbar_item habbo_text_blue menu-link text-danger" href="#" id="logout_button">Cerrar Sesión</a>
-                            </div>
-                        </div>
-                    </div>                    
                 </div>
+            </div>
+            <div class="col-md-4 d-none d-md-block d-flex justify-content-center mb-3 mb-md-0">
+                <img src="furnis/iconos/trades_habbo_origins_new_year_chine.png" class="sprite_trades_habbo_origins" alt="Logo de Trades Habbo Origins">
+            </div>
+            <div class="col-sm-12 d-block d-md-none d-flex justify-content-center mb-3 mb-md-0">
+                <img src="furnis/iconos/trades_habbo_origins.png" class="sprite_trades_habbo_origins" alt="Logo de Trades Habbo Origins">
+            </div>
+            <div class="col-md-4 col-sm-12 d-none d-md-flex text-center mb-3 mb-md-0 row_contador">
+                <!-- Botones visibles solo cuando NO está logeado -->
+                <div class="col-md-6 text-center row_contador no_login">
+                    <button class="price_history_content online_habbo_text_white menu-link boton contador_div" data-i18n="inicio_sesion" data-section="login">
+                    </button>
+                </div>
+                <div class="col-md-6 text-center row_contador no_login">
+                    <button class="price_history_content online_habbo_text_white menu-link contador_div" data-i18n="registrarse" data-section="register">
+                    </button>
+                </div>
+                <!-- Contenedor del usuario logueado -->
+                <div class="col-md-12 text-center row_contador usuario_logeado" style="display: none;">
+                    <!-- Menú desplegable -->
+                    <div class="dropdown navbar_item">
+                        <button class="btn dropdown-toggle" type="button" id="userMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Menú de <span id="username_display"></span>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="userMenuButton">
+                            <a class="dropdown-item navbar_item habbo_text_blue menu-link" href="#" id="edit-profile" data-permission="2">Editar Perfil</a>
+                            <a class="dropdown-item navbar_item habbo_text_blue menu-link" href="#" id="manage-catalog" data-permission="1">Administrar Catálogo</a>
+                            <a class="dropdown-item navbar_item habbo_text_blue menu-link" href="#" id="manage-news" data-permission="3">Administrar Noticias</a>
+                            <a class="dropdown-item navbar_item habbo_text_blue menu-link" href="#" id="manage-raffles" data-permission="4">Administrar Sorteos</a>
+                            <a class="dropdown-item navbar_item habbo_text_blue menu-link" href="#" id="manage-users" data-permission="5">Administrar Usuarios</a>
+                            <a class="dropdown-item navbar_item habbo_text_blue menu-link" href="#" id="manage-badges" data-permission="6">Administrar Placas</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item navbar_item habbo_text_blue menu-link text-danger" href="#" id="logout_button">Cerrar Sesión</a>
+                        </div>
+                    </div>
+                </div> 
             </div> 
         </div>
         <div class="row mt-3 row_menu">
@@ -1080,14 +1081,14 @@
     <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.16/mediaelement-and-player.min.js"></script>
-    <script src="fc74eab2-731f-4d13-bead-b3c4ab777144.js"></script>
+    <script src="03d4aded-801d-42b8-a5c1-4d30322b5e5e.js"></script>
     <!-- Incluir i18next -->
     <script src="https://unpkg.com/i18next@20.6.1/i18next.min.js"></script>
     <script src="https://unpkg.com/i18next-browser-languagedetector@6.1.2/i18nextBrowserLanguageDetector.min.js"></script>
     <script src="https://unpkg.com/i18next-xhr-backend@3.2.2/i18nextXHRBackend.min.js"></script>
 
     <!-- Configuración de i18next -->
-    <script src="25185ea3-ee98-4312-bdf7-2118b116b8e1.js"></script>
+    <script src="da3d29b6-a402-47dd-8137-1a5edce6d72a.js"></script>
     
     <footer class="col-md-12 col-12 text-center d-none d-md-block" id="footer">
         <div class="image-animation-container">
@@ -1101,9 +1102,9 @@
             <img src="furnis/iconos/chino/nube_china.png" class="asomandose_lampara_china_1 patos_imagenes" alt="Imagen 1">
             <img src="furnis/iconos/chino/nube_china.png" class="asomandose_lampara_china_1 patos_imagenes" alt="Imagen 1">
         </div>
-        <p>© TradesHabbo 2024</p>
-        <p>Este sitio de fans no tiene ninguna afiliación, respaldo, promoción ni aprobación específica por parte de Sulake Corporation Oy o sus asociados. Según la Política de sitios de fans de Habbo, se permite el uso de marcas registradas y otros derechos de propiedad intelectual de Habbo en este sitio.</p>
-        <p>El sitio web, su diseño y todos sus sistemas han sido creados y desarrollados por Pagina creada por <a href="https://www.linkedin.com/in/camiloandresyayapoveda/" target="_blank">Camilo Andres Yaya Poveda</a></p>
+        <p data-i18n="footer_parte_1">© TradesHabbo 2024</p>
+        <p data-i18n="footer_parte_2">Este sitio de fans no tiene ninguna afiliación, respaldo, promoción ni aprobación específica por parte de Sulake Corporation Oy o sus asociados. Según la Política de sitios de fans de Habbo, se permite el uso de marcas registradas y otros derechos de propiedad intelectual de Habbo en este sitio.</p>
+        <p data-i18n="footer_parte_3">El sitio web, su diseño y todos sus sistemas han sido creados y desarrollados por Pagina creada por <a href="https://www.linkedin.com/in/camiloandresyayapoveda/" target="_blank">Camilo Andres Yaya Poveda</a></p>
     </footer>
 </body>
 </html>

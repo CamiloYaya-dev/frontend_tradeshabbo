@@ -52,7 +52,6 @@ $(document).ready(function() {
 
     // Manejar el cambio de idioma desde el select
     $('.language-select-mobile').change(function() {
-        console.log("entre aca");
         const newLanguage = $(this).val();
         changeLanguage(newLanguage);
 
@@ -62,16 +61,30 @@ $(document).ready(function() {
         $('.name-item-history-es').hide();
         $('.name-item-history-en').hide();
         $('.name-item-history-pt').hide();
-
+        $('.ultimas_tres_noticias_es').hide();
+        $('.ultimas_tres_noticias_com').hide();
+        $('.ultimas_tres_noticias_com_br').hide();
+        $('.noticia_es').hide();
+        $('.noticia_com').hide();
+        $('.noticia_com_br').hide();
         if (newLanguage === 'es') {
             $('.name-item-es').show();
             $('.name-item-history-es').show();
+            $('.last_items_update_es').show();
+            $('.ultimas_tres_noticias_es').show();
+            $('.noticia_es').show();
         } else if (newLanguage === 'en') {
             $('.name-item-en').show();
             $('.name-item-history-en').show();
+            $('.last_items_update_en').show();
+            $('.ultimas_tres_noticias_com').show();
+            $('.noticia_com').show();
         } else if (newLanguage === 'pt') {
             $('.name-item-pt').show();
             $('.name-item-history-pt').show();
+            $('.last_items_update_pt').show();
+            $('.ultimas_tres_noticias_com_br').show();
+            $('.noticia_com_br').show();
         }
     });
 
@@ -92,19 +105,31 @@ $(document).ready(function() {
         $('.last_items_update_es').hide();
         $('.last_items_update_en').hide();
         $('.last_items_update_pt').hide();
+        $('.ultimas_tres_noticias_es').hide();
+        $('.ultimas_tres_noticias_com').hide();
+        $('.ultimas_tres_noticias_com_br').hide();
+        $('.noticia_es').hide();
+        $('.noticia_com').hide();
+        $('.noticia_com_br').hide();
 
         if (newLanguage === 'es') {
             $('.name-item-es').show();
             $('.name-item-history-es').show();
             $('.last_items_update_es').show();
+            $('.ultimas_tres_noticias_es').show();
+            $('.noticia_es').show();
         } else if (newLanguage === 'en') {
             $('.name-item-en').show();
             $('.name-item-history-en').show();
             $('.last_items_update_en').show();
+            $('.ultimas_tres_noticias_com').show();
+            $('.noticia_com').show();
         } else if (newLanguage === 'pt') {
             $('.name-item-pt').show();
             $('.name-item-history-pt').show();
             $('.last_items_update_pt').show();
+            $('.ultimas_tres_noticias_com_br').show();
+            $('.noticia_com_br').show();
         }
     });
     

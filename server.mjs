@@ -22,7 +22,7 @@ import cheerio from 'cheerio';
 import { Client, GatewayIntentBits, REST, Routes, Collection } from 'discord.js';
 import { ActionRowBuilder, ButtonBuilder, ButtonStyle, ApplicationCommandOptionType, AttachmentBuilder } from 'discord.js';
 import dotenv from 'dotenv';
-import { postTweet, postMultilingualTweets } from './twitterClient.mjs';
+import { postTweet, postTweetOficial } from './twitterClient.mjs';
 import { generateSummaryWeb } from './openaiClient.mjs';
 import { format } from 'date-fns';
 import jwt from 'jsonwebtoken';
@@ -2443,6 +2443,10 @@ function parseDuration(duration) {
     return totalMilliseconds;
 }
 
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 async function fetchAndExtractNoticias() {
     const browser = await puppeteer.launch({
         headless: true,
@@ -2450,6 +2454,7 @@ async function fetchAndExtractNoticias() {
     });
     const page = await browser.newPage();
     await page.setRequestInterception(true);
+
     page.on('request', (request) => {
         const resourceType = request.resourceType();
         if (['image', 'stylesheet', 'font', 'media'].includes(resourceType)) {
@@ -2459,159 +2464,286 @@ async function fetchAndExtractNoticias() {
         }
     });
 
+    const hotelDomains = ['es', 'com', 'com.br']; // Lista de dominios a procesar
+    const noticiasNoRegistradasGlobal = [];
+
     try {
-        await page.goto('https://origins.habbo.es/community/category/all/1', { waitUntil: 'load', timeout: 120000 });
+        for (const domain of hotelDomains) {
+            const urlBase = `https://origins.habbo.${domain}/community/category/all/1`;
+            console.log(`Procesando noticias para el hotel: .${domain}`);
+            await page.goto(urlBase, { waitUntil: 'load', timeout: 120000 });
 
-        const html = await page.content();
+            const html = await page.content();
+            const $ = cheerio.load(html);
 
-        const $ = cheerio.load(html);
+            const section = $('section.ng-scope');
+            const articles = section.find('article.news-header');
+            const nuevasNoticias = [];
 
-        const section = $('section.ng-scope');
+            articles.each((index, element) => {
+                const anchor = $(element).find('a').first().attr('href');
+                const title = $(element).find('h2').first().text().trim();
 
-        const articles = section.find('article.news-header');
+                nuevasNoticias.push({
+                    titulo: title,
+                    link: anchor,
+                    hotel: domain
+                });
+            });
 
-        const nuevasNoticias = [];
+            const token = generateJWT();
+            const response = await axios.get('https://nearby-kindly-lemming.ngrok-free.app/noticias-oficiales', {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+            const noticiasRegistradas = response.data.data;
 
-        articles.each((index, element) => {
-            const anchor = $(element).find('a').first().attr('href');
-            const title = $(element).find('h2').first().text().trim();
+            const noticiasNoRegistradas = nuevasNoticias.filter(nuevaNoticia => {
+                return !noticiasRegistradas.some(noticia =>
+                    noticia.link.trim() === nuevaNoticia.link.trim() &&
+                    noticia.title.trim() === nuevaNoticia.titulo.trim() &&
+                    noticia.hotel === nuevaNoticia.hotel
+                );
+            });
 
-            nuevasNoticias.push({ titulo: title, link: anchor });
-        });
-        const token = generateJWT();
-        const response = await axios.get('https://nearby-kindly-lemming.ngrok-free.app/noticias-oficiales', {
-            headers: {
-                'Authorization': `Bearer ${token}`
-            }
-        });
-        const noticiasRegistradas = response.data.data;
+            noticiasNoRegistradasGlobal.push(...noticiasNoRegistradas);
+        }
 
-        const noticiasNoRegistradas = nuevasNoticias.filter(nuevaNoticia => {
-            return !noticiasRegistradas.some(noticia => 
-                noticia.link.trim() === nuevaNoticia.link.trim() && noticia.title.trim() === nuevaNoticia.titulo.trim()
-            );
-        });
+        noticiasNoRegistradasGlobal.reverse();
 
-        for (const noticia of noticiasNoRegistradas) {
-            try { 
-                let tokenNewsOficial = generateJWT();
+        const savePath = path.join(__dirname, 'public', 'furnis', 'noticias', 'imagenes', 'completas');
+
+        // Procesar las noticias no registradas globales
+        for (const noticia of noticiasNoRegistradasGlobal) {
+            try {
+                const tokenNewsOficial = generateJWT();
                 const noticiaResponse = await axios.post('https://nearby-kindly-lemming.ngrok-free.app/nueva-noticia-oficial', noticia, {
                     headers: {
                         'Authorization': `Bearer ${tokenNewsOficial}`
                     }
                 });
-                const url = 'https://origins.habbo.es' + noticia.link;
+
+                const url = `https://origins.habbo.${noticia.hotel}${noticia.link}`;
                 await page.goto(url, { waitUntil: 'load', timeout: 120000 });
+
+                // Esperar a que el selector '.news-article' esté disponible
+                await page.waitForSelector('.news-article', { timeout: 120000 }).catch(() => {
+                    console.warn("No se encontró el selector '.news-article' en:", url);
+                    return;
+                });
 
                 const noticiaHtml = await page.content();
                 const $noticia = cheerio.load(noticiaHtml);
 
-                const contenidoNoticia = $noticia('.news-article').text().trim();
-                const promp = `Hola Traders, tengo una nueva noticia para ustedes. Según la información oficial de Habbo, ${contenidoNoticia}. Como siempre, les mantendremos al tanto de cualquier novedad. Muchas gracias por leer la noticia, en esta la mejor comunidad de todas."
-
-                Instrucciones adicionales:
-
-                Evita el uso de pronombres posesivos: No uses palabras como "nuestro" o "nosotros".
-                Referencia en tercera persona: Habla siempre como si estuvieras reportando sobre acciones realizadas por un tercero (Habbo) y no por ti mismo o por el equipo de Trades Habbo.
-                No asumas agradecimientos ni explicaciones: No incluyas frases que impliquen una relación directa con la audiencia, como "agradecemos su paciencia" o "valdrá la pena la espera".
-                Mantén el tono imparcial: Limítate a reportar lo que se anunció sin interpretar o añadir comentarios personales.
-                Lo que tienes que resumir es lo que esta entre Según la información oficial de Habbo, y  Como siempre, les mantendremos al tanto de cualquier novedad.`
-                let summaryData = await generateSummaryWeb(promp);
-                const newsChannel = client.channels.cache.get('1258417994543927338');
+                let contenidoNoticia = $noticia('.news-article').text().trim();
+                let promp = `Resumen generado de: ${contenidoNoticia}`;
+                const imageUrl = $noticia('.news-article img').attr('src');
+                let nombreImagenJson = "";
+                if (!imageUrl) {
+                    console.warn("No se encontró ninguna imagen dentro de '.news-article'.");
+                } else {
+                    try {
+                        // Obtener la fecha y hora actuales para el nombre del archivo
+                        const now = new Date();
+                        const formattedDate = now.toISOString().replace(/:/g, '-').replace('T', '-').split('.')[0]; // Formato: 2025-01-05-06-00-12
+                        const imageName = `${formattedDate}.png`;
+                        const fullPath = path.join(savePath, imageName);
                 
+                        // Descargar y guardar la imagen
+                        const imageResponse = await axios({
+                            url: imageUrl,
+                            method: 'GET',
+                            responseType: 'stream'
+                        });
+                
+                        await new Promise((resolve, reject) => {
+                            const writer = fs.createWriteStream(fullPath);
+                            imageResponse.data.pipe(writer);
+                            writer.on('finish', resolve);
+                            writer.on('error', reject);
+                        });
+                        console.log(`Imagen descargada y guardada como: ${fullPath}`);
+                        nombreImagenJson = formattedDate;
+                    } catch (error) {
+                        console.error("Error al descargar la imagen:", error.message);
+                    }
+                }
+                console.log("Esperando 5 segundos antes de generar el resumen con OpenAI... 1");
+                await sleep(5000); // Pausa de 5 segundos
+
+                let summaryData = await generateSummaryWeb(promp, noticia.hotel);
+                // Validar y limpiar el resumen
+                if (!summaryData || summaryData.includes("generated summary") || summaryData.length < 20) {
+                    console.warn("El resumen generado no es válido, reintentando...");
+                    await sleep(5000); // Esperar antes de reintentar
+                    summaryData = await generateSummaryWeb(promp, noticia.hotel);
+                }
+
+                if (!summaryData || summaryData.includes("generated summary") || summaryData.length < 20) {
+                    summaryData = `⚠️ No se pudo generar un resumen válido. Consulta el link oficial: ${url}`;
+                }
+                let newsChannel = "";
+                const newsChannelES = client.channels.cache.get('1258417994543927338');
+                const newsChannelCOM = client.channels.cache.get('1325504834245230682');
+                const newsChannelBR = client.channels.cache.get('1325504875861377064');
+                let newsDiscordBody = "";
+                const imageFileName = `${nombreImagenJson}.png`;
+                const attachmentPath = path.join(savePath, imageFileName);
+                if(noticia.hotel == "es"){
+                    newsChannel = newsChannelES;
+                    newsDiscordBody = `@everyone <@&1325498284122308668> \n\n 📰 **Resumen nueva noticia oficial**\n\nHola Comunidad de Origins Kingdom, tengo una nueva noticia para ustedes.\n\n${summaryData}\n\nLink oficial: <${url}>`;
+                } else if(noticia.hotel == "com"){
+                    newsChannel = newsChannelCOM;
+                    newsDiscordBody = `<@&1325496257610911814> \n\n 📰 **Summary of new official news**\n\nHello Origins Kingdom Community, I have some news for you.\n\n${summaryData}\n\nOfficial link: <${url}>`;
+                } else if(noticia.hotel == "com.br"){
+                    newsChannel = newsChannelBR;
+                    newsDiscordBody = `<@&1325498407904874517> \n\n 📰 **Resumo de uma nova notícia oficial**\n\nOlá Comunidade de Origins Kingdom, tenho uma nova notícia para vocês.\n\n${summaryData}\n\nLink oficial: <${url}>`;
+                }
+                let idioma = '';
+                switch (noticia.hotel) {
+                    case 'es':
+                        idioma = 'Español';
+                        break;
+                    case 'com':
+                        idioma = 'Inglés';
+                        break;
+                    case 'com.br':
+                        idioma = 'Portugués de Brasil';
+                        break;
+                    default:
+                        console.warn('Hotel no reconocido, usando Inglés por defecto: '+noticia.hotel);
+                        idioma = 'Inglés';
+                }
                 if (newsChannel) {
-                    newsChannel.send(`@everyone 📰 **Resumen nueva noticia oficial**\n\nHola Traders, tengo una nueva noticia para ustedes.\n\n${summaryData}\n\nComo siempre, les mantendremos al tanto de cualquier novedad. Muchas gracias por leer la noticia, en esta la mejor comunidad de todas.\n\nLink oficial: ${url}\n\n***Esta noticia a sido generada con AI***`).then(async (sentMessage) => {
+                    const attachment = {
+                        files: [{
+                            attachment: attachmentPath,
+                            name: imageFileName
+                        }],
+                        allowedMentions: {
+                            parse: ['roles']
+                        }
+                    };
+                    newsChannel.send({
+                        content: newsDiscordBody,
+                        ...attachment
+                    }).then(async (sentMessage) => {
                         const messageUrl = `https://discord.com/channels/${sentMessage.guildId}/${sentMessage.channelId}/${sentMessage.id}`;
                         console.log(`Mensaje publicado en: ${messageUrl}`);
-                        await postMultilingualTweets(summaryData, messageUrl);
-                        const prompWeb = `Tengo esta noticia: ${contenidoNoticia}. Necesito que la generes y la resumas en el siguiente formato JSON (el json que es un ejemplo del formato que necesito):
+                        await postTweetOficial(summaryData, messageUrl, idioma);
+                        
+                        // Generar y enviar formato JSON a la web
+                        let prompWeb = `Tengo esta noticia: ${contenidoNoticia}. Necesito que la generes y la resumas en el siguiente formato JSON (el json que es un ejemplo del formato que necesito) en el idioma ${idioma}:
                             (formato json de ejemplo: {
                                 "titulo": "Nuevo raro disponible! La Hologirl",
-                                "imagen_completa": "catalogo_hologirl",
+                                "imagen_completa": "${nombreImagenJson}",
                                 "alt_imagen_completa": "Catalogo Hologirl",
                                 "descripcion_completa": "<p><strong>El nuevo raro de Habbo Hotel: Orígenes: Hologirl!</strong></p><p>El 8 de agosto de 2024, se lanza un nuevo raro mítico en el catálogo de Habbo Hotel: Orígenes. La <strong>Hologirl</strong> ya está disponible por tiempo limitado a un precio especial de 50 créditos. Este es el primer raro que sale un jueves y estará disponible solo por 48 horas en el catálogo. ¡No pierdas la oportunidad de agregar esta pieza única a tu colección!</p>",
                                 "imagen_resumida": "staff",
                                 "alt_imagen_resumida": "nuevo raro jueves 08 de agosto del 2024",
-                                "descripcion_resumida": "<p class=\"noticia_descripcion\"><strong>Llega un nuevo raro a Habbo Hotel: Orígenes!</strong> Descubre y adquiere el nuevo raro, <strong>RARO Hologirl</strong>, disponible solo por 48 horas. ¡No te lo pierdas!</p>"
+                                "descripcion_resumida": "<p class=\"noticia_descripcion\"><strong>Llega un nuevo raro a Habbo Hotel: Orígenes!</strong> Descubre y adquiere el nuevo raro, <strong>RARO Hologirl</strong>, disponible solo por 48 horas. ¡No te lo pierdas!</p>",
+                                "hotel": "${noticia.hotel}"
                             })
                             
                         Instrucciones adicionales:
 
                             Imágenes y Títulos:
 
-                            imagen_resumida: Siempre debe ser "staff".
+                            imagen_resumida: Si la noticia dice funky debe ser "funky_friday" si dice rare o raro debe ser "rares_martes", si no dice ninguna de las dos debe ser "staff", aca es la unica parte del json donde no se debe traducir nada debe ser explicitamente alguno de los 3 valores mencionados segun la informacion de la noticia.
                             imagen_completa: Debe ser acorde al contexto y título de la noticia.
                             alt_imagen_completa y alt_imagen_resumida: Deben describir correctamente las imágenes en el contexto del evento o noticia.
                             Formato de las Descripciones:
 
                             descripcion_completa: Proporciona un resumen detallado de la noticia oficial publicada por Habbo.
-                            descripcion_resumida: Debe ser un resumen más breve y directo, pero diferente a la descripción completa.
+                            descripcion_resumida: Debe ser un resumen más breve y directo, pero diferente a la descripción completa. Todas las etiquetas p deben tener class=\"noticia_descripcion\"
                             Condiciones para ambas descripciones:
 
-                            Importante: SIEMPRE debes hablar como si fueras un reportero de la fansite "Trades Habbo (THO)", refiriéndote a las acciones de Habbo en tercera persona. No utilices pronombres posesivos como "nuestro" o "nosotros". No uses frases que impliquen pertenencia al equipo de Habbo, como "estamos trabajando" o "nuestro equipo". Si no cumples con estas condiciones, la noticia se habrá generado incorrectamente.
+                            Importante: SIEMPRE debes hablar como si fueras un reportero de la fansite "Origins Kingdom", refiriéndote a las acciones de Habbo en tercera persona. No utilices pronombres posesivos como "nuestro" o "nosotros". No uses frases que impliquen pertenencia al equipo de Habbo, como "estamos trabajando" o "nuestro equipo". Si no cumples con estas condiciones, la noticia se habrá generado incorrectamente.
                             Tono y Estilo:
 
                             Saludo: Comienza con "Hola Traders, tengo una nueva noticia, la cual generé con IA para ustedes."
-                            Referencia en tercera persona: Siempre habla como si fueras un reportero de la fansite "Trades Habbo (THO)", refiriéndote a las acciones de Habbo en tercera persona. No utilices pronombres posesivos como "nuestro" o "nosotros".
+                            Referencia en tercera persona: Siempre habla como si fueras un reportero de la fansite "Origins Kingdom", refiriéndote a las acciones de Habbo en tercera persona. No utilices pronombres posesivos como "nuestro" o "nosotros".
                             Imparcialidad: Mantén un tono neutral y no incluyas opiniones, agradecimientos personales, ni explicaciones que sugieran una relación directa con la audiencia.
                             Contenido:
 
                             Resumenes: Asegúrate de que ambos resúmenes (completo y resumido) reflejen el hecho de que la noticia fue publicada por Habbo, y que tú como reportero de THO estás simplemente reportando lo que fue anunciado.
                             Evita ciertas expresiones: No uses frases que impliquen que eres parte del equipo de Habbo, como "estamos trabajando" o "nuestro equipo".
 
-                            Advertencia: Si incluyes cualquier pronombre posesivo o hablas en primera persona del plural (ejemplo: "estamos", "nuestro equipo"), la noticia se considerará incorrecta."
-                        `
-                        let summaryDataWeb = await generateSummaryWeb(prompWeb);
-                        summaryDataWeb = JSON.parse(summaryDataWeb);
-                        summaryDataWeb.descripcion_completa += `Este es un resumen de la noticia oficial <a href="${url}" target="_blank">Link</a><br>Esta noticia ha sido generada con IA por lo mismo puede tener errores gramaticales o hablar como si fuera parte del equipo de habbo`
+                            Advertencia: Si incluyes cualquier pronombre posesivo o hablas en primera persona del plural (ejemplo: "estamos", "nuestro equipo"), la noticia se considerará incorrecta.
+                            
+                            Advertencias generales: Si el json que generas no esta en el idioma ${idioma} sera considerada como incorrecta. El campo hotel y imagen_completa del json de ejemplo que te pase no se deben modificar, deben ser exactamente los mismos para el json que generas., ninguno de los campos del json pueden ser nulos o dañaras el aplicativo."
+                        `;
+                        console.log("Esperando 5 segundos antes de generar el resumen con OpenAI... 2");
+                        await sleep(5000); // Pausa de 5 segundos
 
+                        let summaryDataWeb = await generateSummaryWeb(prompWeb, noticia.hotel);
+
+                        if (summaryDataWeb) {
+                            // Eliminar cualquier marcador de código como ```json o ```
+                            summaryDataWeb = summaryDataWeb.replace(/```json|```/g, '').trim();
+                            
+                            try {
+                                summaryDataWeb = JSON.parse(summaryDataWeb);
+                            } catch (error) {
+                                console.error("Error al analizar el JSON generado:", error);
+                                throw new Error("No se pudo analizar el JSON generado por OpenAI.");
+                            }
+                        }
+
+                        if (
+                            !summaryDataWeb || 
+                            !summaryDataWeb.titulo || 
+                            !summaryDataWeb.descripcion_completa || 
+                            JSON.stringify(summaryDataWeb).toLowerCase().includes("hologirl")
+                        ) {
+                            console.warn("El JSON generado no es válido o contiene contenido no deseado, reintentando...");
+                            await sleep(5000); // Esperar antes de reintentar
+                            summaryDataWeb = await generateSummaryWeb(prompWeb, noticia.hotel);
+                            summaryDataWeb = JSON.parse(summaryDataWeb);
+                        }
+                        
+                        if (
+                            !summaryDataWeb || 
+                            !summaryDataWeb.titulo || 
+                            !summaryDataWeb.descripcion_completa || 
+                            JSON.stringify(summaryDataWeb).toLowerCase().includes("hologirl")
+                        ) {
+                            throw new Error("No se pudo generar un JSON válido para la noticia. Contiene contenido no deseado.");
+                        }
+                        
                         try {
-                            let tokenNews = generateJWT();
-                            const response = await axios.post('https://nearby-kindly-lemming.ngrok-free.app/nueva-noticia', summaryDataWeb, {
+                            const tokenNews = generateJWT();
+                            await axios.post('https://nearby-kindly-lemming.ngrok-free.app/nueva-noticia', summaryDataWeb, {
                                 headers: {
                                     'Authorization': `Bearer ${tokenNews}`
                                 }
                             });
-                            console.log('Datos enviados a la web exitosamente.');
-                            
-                            const noticiaId = response.data['noticia_id'];
-                            const fechaActual = format(new Date(), 'dd-MM-yyyy');
-
-                            const noticiasPath = path.join('public', 'furnis', 'noticias', 'noticias.json');
-                            const noticias = JSON.parse(fs.readFileSync(noticiasPath, 'utf8'));
-
-                            const nuevaNoticia = {
-                                id: noticiaId,
-                                ...summaryDataWeb,
-                                fecha_noticia: fechaActual
-                            };
-                            noticias.push(nuevaNoticia);
-
-                            fs.writeFileSync(noticiasPath, JSON.stringify(noticias, null, 2), 'utf8');
-                            console.log('Nueva noticia agregada al archivo noticias.json.');
+                            console.log('Noticia enviada a la web exitosamente.');
                         } catch (error) {
-                            console.error('Error al enviar los datos a la web:', error);
+                            console.error('Error al enviar la noticia a la web:', error);
                         }
                     }).catch(err => {
-                        console.error('Error al enviar el resumen al canal de Discord:', err);
+                        console.error('Error al enviar la noticia al canal de Discord:', err);
                     });
                 } else {
-                    console.error('No se pudo encontrar el canal de Discord con el ID proporcionado.');
+                    console.error('No se encontró el canal de Discord.');
                 }
             } catch (error) {
-                console.error('Error al enviar la noticia o al extraer la información:', error);
+                console.error('Error al procesar la noticia:', error);
             }
-
+            console.log("Esperando 1 minuto antes de procesar la siguiente noticia...");
+            await sleep(60000); // Espera de 60 segundos
         }
-        
-    } catch(error){
+    } catch (error) {
         console.error('Error en fetchAndExtractNoticias:', error);
-        console.error("Se produjo un error al intentar acceder a la página:", error.message);
     } finally {
         await browser.close();
-        setTimeout(fetchAndExtractNoticias, 600000);
+        setTimeout(fetchAndExtractNoticias, 600000); // Reintentar cada 10 minutos
     }
 }
+
+
 
 async function tradesForo(forumChannelId) {
     try {

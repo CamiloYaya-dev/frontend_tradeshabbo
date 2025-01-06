@@ -35,7 +35,7 @@ async function generateSummary(text) {
     try {
         const response = await openaiClient.chat.completions.create({
             messages: [{ role: "user", content: `Eres el dueño o reportero de una fansite de Habbo Origins. Resume el siguiente contenido en menos de 1000 caracteres manteniendo el contexto de ser una fansite, omitiendo cualquier referencia a links u otros medios, debido a que estas referencias ya estas cubiertas: \n\n"${text}"` }],
-            model: "gpt-3.5-turbo",
+            model: "gpt-4o-mini",
             max_tokens: 60,
         });
         return response.choices[0].message.content.trim();
@@ -51,13 +51,13 @@ export async function postTweetOficial(content, messageUrl, lenguage) {
 
     let additionalText;
     switch (lenguage.toLowerCase()) {
-        case 'español':
+        case 'Español':
             additionalText = `🌐 Más información en nuestra fansite:\n👉 https://tradeshabbo.com\n\n💬 Únete a nuestro Discord:\n👉 ${messageUrl}`;
             break;
-        case 'inglés':
+        case 'Ingles':
             additionalText = `🌐 More information on our fansite:\n👉 https://tradeshabbo.com\n\n💬 Join our Discord:\n👉 ${messageUrl}`;
             break;
-        case 'portugués':
+        case 'Portugues de brasil':
             additionalText = `🌐 Mais informações em nosso fansite:\n👉 https://tradeshabbo.com\n\n💬 Entre no nosso Discord:\n👉 ${messageUrl}`;
             break;
         default:
@@ -76,22 +76,13 @@ export async function postTweetOficial(content, messageUrl, lenguage) {
     }
 }
 
-
-export async function postMultilingualTweets(content, messageUrl) {
-    const languages = ['español', 'inglés', 'portugués'];
-    for (const language of languages) {
-        await postTweetOficial(content, messageUrl, language);
-    }
-}
-
-
 async function generateSummaryOfficial(text, lenguage) {
     try {
         const response = await openaiClient.chat.completions.create({
             messages: [
                 {
                   role: "user",
-                  content: `Eres el dueño o reportero de una fansite de Habbo Origins. Resume el siguiente contenido en menos de 1000 caracteres manteniendo el contexto de ser una fansite, omitiendo cualquier referencia a links u otros medios, debido a que estas referencias ya están cubiertas. Usa correctamente los saltos de línea y añade emojis relacionados con el tema para darle un estilo más dinámico y atractivo. 
+                  content: `Eres el dueño o reportero de una fansite de Habbo Origins. Resume el siguiente contenido en menos de 100 caracteres manteniendo el contexto de ser una fansite, omitiendo cualquier referencia a links u otros medios, debido a que estas referencias ya están cubiertas. Usa correctamente los saltos de línea y añade emojis relacionados con el tema para darle un estilo más dinámico y atractivo. 
 
                     IMPORTANTE:
                     1. SIEMPRE habla como si fueras un reportero de la fansite 'Origins Kingdom', refiriéndote a las acciones de Habbo en tercera persona.
