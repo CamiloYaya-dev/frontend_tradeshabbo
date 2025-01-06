@@ -76,7 +76,8 @@ function renderNoticias() {
 }
 
 function loadLastThreeNoticias() {
-    $.getJSON('furnis/noticias/noticias.json', function(data) {
+    const timestamp = new Date().getTime();
+    $.getJSON(`furnis/noticias/noticias.json?v=${timestamp}`, function(data) {
         // Filtrar y renderizar noticias para cada hotel
         const hoteles = ['es', 'com', 'com.br'];
         const lastThreeContainer = $('#last_three_noticies');
@@ -141,7 +142,8 @@ function loadLastThreeNoticias() {
 
 
 function loadNoticias() {
-    $.getJSON('furnis/noticias/noticias.json', function(data) {
+    const timestamp = new Date().getTime();
+    $.getJSON(`furnis/noticias/noticias.json?v=${timestamp}`, function(data) {
         // Ordenar las noticias por ID de manera descendente
         noticiasData = data.sort(function(a, b) {
             return b.id - a.id;

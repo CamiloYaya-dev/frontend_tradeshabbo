@@ -189,6 +189,11 @@ app.use((req, res, next) => {
     }
     next();
 });
+
+app.set('etag', true); // Habilitar ETag para todos los archivos estáticos
+app.use(express.static('public', {
+    etag: true
+}));
   
 app.get('/api-key', (req, res) => {
     const newKeyData = generateApiKey();
@@ -206,8 +211,6 @@ app.use('/images/:id/vote', apiKeyMiddleware);
 function encryptData(data) {
     return CryptoJS.AES.encrypt(JSON.stringify(data), SECRET_KEY).toString();
 }
-
-app.use(express.static('public'));
 
 async function getVipPrice() {
     try {

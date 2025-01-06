@@ -98,7 +98,8 @@ function initialize() {
     }
 
     function loadOnlineCount() {
-        $.getJSON('furnis/precios/habbo_online.json', function(data) {
+        const timestamp = new Date().getTime();
+        $.getJSON(`furnis/precios/habbo_online.json?v=${timestamp}`, function(data) {
             const habboEsCount = data[0].habbo_es;
             const habboBrCount = data[0].habbo_br;
             const habboComCount = data[0].habbo_com;
@@ -113,12 +114,13 @@ function initialize() {
     }
 
     function loadContador(){
-        $.getJSON('../visitCount.json', function(data) {
+        const timestamp = new Date().getTime();
+        $.getJSON(`../visitCount.json?v=${timestamp}`, function(data) {
             $('#contador').text(data.visits);
         }).fail(function() {
             $('#contador').text('En mantenimiento');
         });
-        $.getJSON('../votesCount.json', function(data) {
+        $.getJSON(`../votesCount.json?v=${timestamp}`, function(data) {
             $('#contador_votos').text(data.votes);
         }).fail(function() {
             $('#contador_votos').text('En mantenimiento');

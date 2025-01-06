@@ -1,10 +1,12 @@
+let timestamp = new Date().getTime();
+
 i18next
     .use(i18nextXHRBackend)
     .use(i18nextBrowserLanguageDetector)
     .init({
         fallbackLng: 'en',
         backend: {
-            loadPath: '/locales/{{lng}}/{{ns}}.json'
+            loadPath: `/locales/{{lng}}/{{ns}}.json?v=${timestamp}`
         },
         debug: true,
         ns: ['translations'],
