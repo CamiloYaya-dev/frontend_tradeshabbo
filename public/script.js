@@ -23,17 +23,17 @@ $(document).ready(function() {
         });
     }
 
-    $.getScript(`login_v${version}.js`, function() {});
-    $.getScript(`songs_v${version}.js`, function() {});
-    $.getScript(`modal_v${version}.js`, function() {});
-    $.getScript(`noticias_v${version}.js`, function() {});
-    $.getScript(`sorteos_v${version}.js`, function() {});
-    $.getScript(`logic_script_v${version}.js`, function() {});
-    $.getScript(`mts_v${version}.js`, function() {});
-    $.getScript(`salas_v${version}.js`, function() {});
-    $.getScript(`marketplace_v${version}.js`, function() {});
-    $.getScript(`placas_v${version}.js`, function() {});
-    $.getScript(`register_v${version}.js`, function() {});
+    $.getScript(`login_v${version}.js?v=${version}`, function() {});
+    $.getScript(`songs_v${version}.js?v=${version}`, function() {});
+    $.getScript(`modal_v${version}.js?v=${version}`, function() {});
+    $.getScript(`noticias_v${version}.js?v=${version}`, function() {});
+    $.getScript(`sorteos_v${version}.js?v=${version}`, function() {});
+    $.getScript(`logic_script_v${version}.js?v=${version}`, function() {});
+    $.getScript(`mts_v${version}.js?v=${version}`, function() {});
+    $.getScript(`salas_v${version}.js?v=${version}`, function() {});
+    $.getScript(`marketplace_v${version}.js?v=${version}`, function() {});
+    $.getScript(`placas_v${version}.js?v=${version}`, function() {});
+    $.getScript(`register_v${version}.js?v=${version}`, function() {});
 
     $('#button_options').on('click', function(e) {
         var content = document.getElementById("toggle-content");
