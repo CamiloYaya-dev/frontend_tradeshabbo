@@ -166,9 +166,12 @@ app.use((req, res, next) => {
 
 app.use(express.static('public', {
     setHeaders: (res, path) => {
-      if (path.endsWith('.js') || path.endsWith('.css')) {
+        if (path.endsWith('.js')) {
+            res.set('Content-Type', 'application/javascript');
+        } else if (path.endsWith('.css')) {
+            res.set('Content-Type', 'text/css');
+        }
         res.set('Cache-Control', 'max-age=31536000'); // Caché largo para recursos estáticos versionados
-      }
     }
 }));
   
