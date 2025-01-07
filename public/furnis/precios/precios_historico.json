@@ -14414,5 +14414,1517 @@
     "precio": "3000.00",
     "hotel": "ES",
     "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2159,
+    "product_id": 332,
+    "fecha_precio": "2024-12-30T10:19:50.000Z",
+    "precio": "2000.00",
+    "hotel": "US",
+    "user_modify": "emo"
+  },
+  {
+    "id": 2160,
+    "product_id": 154,
+    "fecha_precio": "2024-12-30T10:20:09.000Z",
+    "precio": "2000.00",
+    "hotel": "US",
+    "user_modify": "emo"
+  },
+  {
+    "id": 2161,
+    "product_id": 22,
+    "fecha_precio": "2024-12-30T10:21:20.000Z",
+    "precio": "250.00",
+    "hotel": "US",
+    "user_modify": "emo"
+  },
+  {
+    "id": 2162,
+    "product_id": 23,
+    "fecha_precio": "2024-12-30T10:21:24.000Z",
+    "precio": "250.00",
+    "hotel": "US",
+    "user_modify": "emo"
+  },
+  {
+    "id": 2163,
+    "product_id": 20,
+    "fecha_precio": "2024-12-30T10:21:34.000Z",
+    "precio": "400.00",
+    "hotel": "US",
+    "user_modify": "emo"
+  },
+  {
+    "id": 2164,
+    "product_id": 21,
+    "fecha_precio": "2024-12-30T10:22:26.000Z",
+    "precio": "650.00",
+    "hotel": "US",
+    "user_modify": "emo"
+  },
+  {
+    "id": 2165,
+    "product_id": 157,
+    "fecha_precio": "2024-12-30T10:23:05.000Z",
+    "precio": "10500.00",
+    "hotel": "US",
+    "user_modify": "emo"
+  },
+  {
+    "id": 2166,
+    "product_id": 224,
+    "fecha_precio": "2024-12-30T10:23:55.000Z",
+    "precio": "25.00",
+    "hotel": "US",
+    "user_modify": "emo"
+  },
+  {
+    "id": 2167,
+    "product_id": 289,
+    "fecha_precio": "2024-12-30T10:24:07.000Z",
+    "precio": "100.00",
+    "hotel": "US",
+    "user_modify": "emo"
+  },
+  {
+    "id": 2168,
+    "product_id": 339,
+    "fecha_precio": "2024-12-31T17:03:34.000Z",
+    "precio": "750.00",
+    "hotel": "US",
+    "user_modify": "emo"
+  },
+  {
+    "id": 2169,
+    "product_id": 322,
+    "fecha_precio": "2024-12-31T17:03:43.000Z",
+    "precio": "5500.00",
+    "hotel": "US",
+    "user_modify": "emo"
+  },
+  {
+    "id": 2170,
+    "product_id": 327,
+    "fecha_precio": "2024-12-31T17:03:57.000Z",
+    "precio": "400.00",
+    "hotel": "US",
+    "user_modify": "emo"
+  },
+  {
+    "id": 2171,
+    "product_id": 326,
+    "fecha_precio": "2024-12-31T17:04:22.000Z",
+    "precio": "250.00",
+    "hotel": "US",
+    "user_modify": "emo"
+  },
+  {
+    "id": 2172,
+    "product_id": 321,
+    "fecha_precio": "2025-01-01T12:23:56.000Z",
+    "precio": "500.00",
+    "hotel": "US",
+    "user_modify": "Dake"
+  },
+  {
+    "id": 2173,
+    "product_id": 311,
+    "fecha_precio": "2025-01-01T12:24:21.000Z",
+    "precio": "75.00",
+    "hotel": "US",
+    "user_modify": "Dake"
+  },
+  {
+    "id": 2174,
+    "product_id": 281,
+    "fecha_precio": "2025-01-01T12:38:31.000Z",
+    "precio": "50.00",
+    "hotel": "US",
+    "user_modify": "Dake"
+  },
+  {
+    "id": 2175,
+    "product_id": 340,
+    "fecha_precio": "2025-01-01T17:11:40.000Z",
+    "precio": "150.00",
+    "hotel": "US",
+    "user_modify": "Dake"
+  },
+  {
+    "id": 2176,
+    "product_id": 1,
+    "fecha_precio": "2025-01-02T12:31:27.000Z",
+    "precio": "35.00",
+    "hotel": "ES",
+    "user_modify": "emo"
+  },
+  {
+    "id": 2177,
+    "product_id": 44,
+    "fecha_precio": "2025-01-02T12:32:33.000Z",
+    "precio": "70.00",
+    "hotel": "ES",
+    "user_modify": "emo"
+  },
+  {
+    "id": 2178,
+    "product_id": 321,
+    "fecha_precio": "2025-01-02T13:26:35.000Z",
+    "precio": "1400.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2179,
+    "product_id": 326,
+    "fecha_precio": "2025-01-02T13:26:52.000Z",
+    "precio": "1750.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2180,
+    "product_id": 327,
+    "fecha_precio": "2025-01-02T13:27:07.000Z",
+    "precio": "1400.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2181,
+    "product_id": 322,
+    "fecha_precio": "2025-01-02T13:27:21.000Z",
+    "precio": "4900.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2182,
+    "product_id": 339,
+    "fecha_precio": "2025-01-02T13:27:43.000Z",
+    "precio": "3360.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2183,
+    "product_id": 340,
+    "fecha_precio": "2025-01-02T13:28:01.000Z",
+    "precio": "1260.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2184,
+    "product_id": 332,
+    "fecha_precio": "2025-01-02T13:28:38.000Z",
+    "precio": "8400.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2185,
+    "product_id": 335,
+    "fecha_precio": "2025-01-02T13:28:56.000Z",
+    "precio": "560.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2186,
+    "product_id": 331,
+    "fecha_precio": "2025-01-02T13:29:11.000Z",
+    "precio": "1750.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2187,
+    "product_id": 334,
+    "fecha_precio": "2025-01-02T13:29:27.000Z",
+    "precio": "105.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2188,
+    "product_id": 336,
+    "fecha_precio": "2025-01-02T13:29:46.000Z",
+    "precio": "420.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2189,
+    "product_id": 325,
+    "fecha_precio": "2025-01-02T13:29:53.000Z",
+    "precio": "560.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2190,
+    "product_id": 323,
+    "fecha_precio": "2025-01-02T13:29:59.000Z",
+    "precio": "210.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2191,
+    "product_id": 337,
+    "fecha_precio": "2025-01-02T13:30:10.000Z",
+    "precio": "1400.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2192,
+    "product_id": 281,
+    "fecha_precio": "2025-01-02T13:30:21.000Z",
+    "precio": "70.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2193,
+    "product_id": 311,
+    "fecha_precio": "2025-01-02T13:30:31.000Z",
+    "precio": "280.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2194,
+    "product_id": 289,
+    "fecha_precio": "2025-01-02T13:30:44.000Z",
+    "precio": "490.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2195,
+    "product_id": 224,
+    "fecha_precio": "2025-01-02T13:30:52.000Z",
+    "precio": "140.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2196,
+    "product_id": 324,
+    "fecha_precio": "2025-01-02T13:31:06.000Z",
+    "precio": "70.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2197,
+    "product_id": 54,
+    "fecha_precio": "2025-01-02T13:31:30.000Z",
+    "precio": "95.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2198,
+    "product_id": 287,
+    "fecha_precio": "2025-01-02T13:31:42.000Z",
+    "precio": "280.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2199,
+    "product_id": 283,
+    "fecha_precio": "2025-01-02T13:31:46.000Z",
+    "precio": "140.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2200,
+    "product_id": 282,
+    "fecha_precio": "2025-01-02T13:31:53.000Z",
+    "precio": "140.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2201,
+    "product_id": 158,
+    "fecha_precio": "2025-01-02T13:32:01.000Z",
+    "precio": "350.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2202,
+    "product_id": 318,
+    "fecha_precio": "2025-01-02T13:32:17.000Z",
+    "precio": "210.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2203,
+    "product_id": 317,
+    "fecha_precio": "2025-01-02T13:32:22.000Z",
+    "precio": "210.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2204,
+    "product_id": 313,
+    "fecha_precio": "2025-01-02T13:32:27.000Z",
+    "precio": "210.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2205,
+    "product_id": 309,
+    "fecha_precio": "2025-01-02T13:32:40.000Z",
+    "precio": "70.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2206,
+    "product_id": 315,
+    "fecha_precio": "2025-01-02T13:32:50.000Z",
+    "precio": "210.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2207,
+    "product_id": 316,
+    "fecha_precio": "2025-01-02T13:32:55.000Z",
+    "precio": "210.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2208,
+    "product_id": 304,
+    "fecha_precio": "2025-01-02T13:33:01.000Z",
+    "precio": "210.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2209,
+    "product_id": 307,
+    "fecha_precio": "2025-01-02T13:33:08.000Z",
+    "precio": "210.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2210,
+    "product_id": 115,
+    "fecha_precio": "2025-01-02T13:33:20.000Z",
+    "precio": "105.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2211,
+    "product_id": 50,
+    "fecha_precio": "2025-01-02T13:33:35.000Z",
+    "precio": "2240.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2212,
+    "product_id": 303,
+    "fecha_precio": "2025-01-02T13:33:47.000Z",
+    "precio": "40.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2213,
+    "product_id": 124,
+    "fecha_precio": "2025-01-02T13:35:39.000Z",
+    "precio": "28000.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2214,
+    "product_id": 125,
+    "fecha_precio": "2025-01-02T13:36:03.000Z",
+    "precio": "56000.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2215,
+    "product_id": 126,
+    "fecha_precio": "2025-01-02T13:36:12.000Z",
+    "precio": "112000.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2216,
+    "product_id": 295,
+    "fecha_precio": "2025-01-02T13:37:41.000Z",
+    "precio": "10.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2217,
+    "product_id": 292,
+    "fecha_precio": "2025-01-02T13:37:45.000Z",
+    "precio": "10.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2218,
+    "product_id": 291,
+    "fecha_precio": "2025-01-02T13:37:49.000Z",
+    "precio": "10.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2219,
+    "product_id": 290,
+    "fecha_precio": "2025-01-02T13:37:57.000Z",
+    "precio": "20.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2220,
+    "product_id": 320,
+    "fecha_precio": "2025-01-02T13:38:03.000Z",
+    "precio": "15.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2221,
+    "product_id": 273,
+    "fecha_precio": "2025-01-02T13:38:09.000Z",
+    "precio": "15.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2222,
+    "product_id": 272,
+    "fecha_precio": "2025-01-02T13:38:12.000Z",
+    "precio": "15.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2223,
+    "product_id": 299,
+    "fecha_precio": "2025-01-02T13:38:27.000Z",
+    "precio": "15.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2224,
+    "product_id": 298,
+    "fecha_precio": "2025-01-02T13:38:34.000Z",
+    "precio": "10.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2225,
+    "product_id": 319,
+    "fecha_precio": "2025-01-02T13:38:43.000Z",
+    "precio": "5.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2226,
+    "product_id": 4,
+    "fecha_precio": "2025-01-02T13:38:54.000Z",
+    "precio": "140.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2227,
+    "product_id": 119,
+    "fecha_precio": "2025-01-02T13:39:03.000Z",
+    "precio": "150.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2228,
+    "product_id": 332,
+    "fecha_precio": "2025-01-02T17:27:25.000Z",
+    "precio": "14000.00",
+    "hotel": "ES",
+    "user_modify": "emo"
+  },
+  {
+    "id": 2229,
+    "product_id": 223,
+    "fecha_precio": "2025-01-02T19:26:05.000Z",
+    "precio": "50.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2230,
+    "product_id": 199,
+    "fecha_precio": "2025-01-02T19:26:19.000Z",
+    "precio": "10.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2231,
+    "product_id": 217,
+    "fecha_precio": "2025-01-02T19:26:39.000Z",
+    "precio": "5.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2232,
+    "product_id": 217,
+    "fecha_precio": "2025-01-02T19:26:43.000Z",
+    "precio": "35.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2233,
+    "product_id": 174,
+    "fecha_precio": "2025-01-02T19:26:54.000Z",
+    "precio": "10.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2234,
+    "product_id": 173,
+    "fecha_precio": "2025-01-02T19:26:58.000Z",
+    "precio": "10.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2235,
+    "product_id": 172,
+    "fecha_precio": "2025-01-02T19:27:00.000Z",
+    "precio": "10.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2236,
+    "product_id": 171,
+    "fecha_precio": "2025-01-02T19:27:03.000Z",
+    "precio": "10.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2237,
+    "product_id": 169,
+    "fecha_precio": "2025-01-02T19:27:12.000Z",
+    "precio": "50.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2238,
+    "product_id": 170,
+    "fecha_precio": "2025-01-02T19:27:21.000Z",
+    "precio": "10.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2239,
+    "product_id": 148,
+    "fecha_precio": "2025-01-02T19:27:38.000Z",
+    "precio": "50.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2240,
+    "product_id": 134,
+    "fecha_precio": "2025-01-02T19:27:46.000Z",
+    "precio": "10.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2241,
+    "product_id": 133,
+    "fecha_precio": "2025-01-02T19:27:50.000Z",
+    "precio": "10.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2242,
+    "product_id": 132,
+    "fecha_precio": "2025-01-02T19:27:53.000Z",
+    "precio": "10.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2243,
+    "product_id": 131,
+    "fecha_precio": "2025-01-02T19:27:57.000Z",
+    "precio": "10.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2244,
+    "product_id": 105,
+    "fecha_precio": "2025-01-02T19:28:39.000Z",
+    "precio": "20.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2245,
+    "product_id": 280,
+    "fecha_precio": "2025-01-02T19:28:56.000Z",
+    "precio": "35.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2246,
+    "product_id": 46,
+    "fecha_precio": "2025-01-02T19:29:44.000Z",
+    "precio": "210.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2247,
+    "product_id": 48,
+    "fecha_precio": "2025-01-02T19:29:55.000Z",
+    "precio": "210.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2248,
+    "product_id": 49,
+    "fecha_precio": "2025-01-02T19:30:00.000Z",
+    "precio": "210.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2249,
+    "product_id": 56,
+    "fecha_precio": "2025-01-02T19:30:25.000Z",
+    "precio": "25.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2250,
+    "product_id": 9,
+    "fecha_precio": "2025-01-02T19:30:36.000Z",
+    "precio": "140.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2251,
+    "product_id": 297,
+    "fecha_precio": "2025-01-02T19:30:42.000Z",
+    "precio": "140.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2252,
+    "product_id": 2,
+    "fecha_precio": "2025-01-02T19:30:51.000Z",
+    "precio": "20.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2253,
+    "product_id": 3,
+    "fecha_precio": "2025-01-02T19:30:55.000Z",
+    "precio": "35.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2254,
+    "product_id": 7,
+    "fecha_precio": "2025-01-02T19:31:03.000Z",
+    "precio": "20.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2255,
+    "product_id": 8,
+    "fecha_precio": "2025-01-02T19:31:07.000Z",
+    "precio": "20.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2256,
+    "product_id": 11,
+    "fecha_precio": "2025-01-02T19:31:19.000Z",
+    "precio": "5.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2257,
+    "product_id": 13,
+    "fecha_precio": "2025-01-02T19:31:40.000Z",
+    "precio": "85.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2258,
+    "product_id": 51,
+    "fecha_precio": "2025-01-02T19:31:55.000Z",
+    "precio": "70.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2259,
+    "product_id": 104,
+    "fecha_precio": "2025-01-02T19:32:10.000Z",
+    "precio": "25.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2260,
+    "product_id": 116,
+    "fecha_precio": "2025-01-02T19:32:28.000Z",
+    "precio": "70.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2261,
+    "product_id": 120,
+    "fecha_precio": "2025-01-02T19:32:37.000Z",
+    "precio": "70.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2262,
+    "product_id": 118,
+    "fecha_precio": "2025-01-02T19:32:46.000Z",
+    "precio": "75.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2263,
+    "product_id": 135,
+    "fecha_precio": "2025-01-02T19:33:01.000Z",
+    "precio": "75.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2264,
+    "product_id": 175,
+    "fecha_precio": "2025-01-02T19:33:21.000Z",
+    "precio": "95.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2265,
+    "product_id": 176,
+    "fecha_precio": "2025-01-02T19:33:25.000Z",
+    "precio": "10.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2266,
+    "product_id": 177,
+    "fecha_precio": "2025-01-02T19:33:28.000Z",
+    "precio": "10.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2267,
+    "product_id": 178,
+    "fecha_precio": "2025-01-02T19:33:38.000Z",
+    "precio": "10.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2268,
+    "product_id": 179,
+    "fecha_precio": "2025-01-02T19:33:46.000Z",
+    "precio": "10.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2269,
+    "product_id": 180,
+    "fecha_precio": "2025-01-02T19:33:50.000Z",
+    "precio": "10.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2270,
+    "product_id": 181,
+    "fecha_precio": "2025-01-02T19:33:56.000Z",
+    "precio": "10.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2271,
+    "product_id": 182,
+    "fecha_precio": "2025-01-02T19:34:02.000Z",
+    "precio": "10.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2272,
+    "product_id": 183,
+    "fecha_precio": "2025-01-02T19:34:06.000Z",
+    "precio": "10.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2273,
+    "product_id": 184,
+    "fecha_precio": "2025-01-02T19:34:10.000Z",
+    "precio": "10.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2274,
+    "product_id": 185,
+    "fecha_precio": "2025-01-02T19:34:25.000Z",
+    "precio": "5.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2275,
+    "product_id": 186,
+    "fecha_precio": "2025-01-02T19:34:28.000Z",
+    "precio": "5.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2276,
+    "product_id": 187,
+    "fecha_precio": "2025-01-02T19:34:31.000Z",
+    "precio": "5.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2277,
+    "product_id": 188,
+    "fecha_precio": "2025-01-02T19:34:35.000Z",
+    "precio": "5.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2278,
+    "product_id": 189,
+    "fecha_precio": "2025-01-02T19:34:38.000Z",
+    "precio": "5.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2279,
+    "product_id": 190,
+    "fecha_precio": "2025-01-02T19:34:41.000Z",
+    "precio": "5.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2280,
+    "product_id": 191,
+    "fecha_precio": "2025-01-02T19:34:45.000Z",
+    "precio": "5.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2281,
+    "product_id": 192,
+    "fecha_precio": "2025-01-02T19:34:48.000Z",
+    "precio": "5.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2282,
+    "product_id": 193,
+    "fecha_precio": "2025-01-02T19:34:52.000Z",
+    "precio": "5.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2283,
+    "product_id": 194,
+    "fecha_precio": "2025-01-02T19:34:56.000Z",
+    "precio": "10.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2284,
+    "product_id": 196,
+    "fecha_precio": "2025-01-02T19:35:11.000Z",
+    "precio": "5.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2285,
+    "product_id": 197,
+    "fecha_precio": "2025-01-02T19:35:15.000Z",
+    "precio": "5.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2286,
+    "product_id": 198,
+    "fecha_precio": "2025-01-02T19:35:19.000Z",
+    "precio": "5.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2287,
+    "product_id": 200,
+    "fecha_precio": "2025-01-02T19:35:23.000Z",
+    "precio": "5.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2288,
+    "product_id": 201,
+    "fecha_precio": "2025-01-02T19:35:27.000Z",
+    "precio": "5.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2289,
+    "product_id": 203,
+    "fecha_precio": "2025-01-02T19:35:38.000Z",
+    "precio": "3.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2290,
+    "product_id": 204,
+    "fecha_precio": "2025-01-02T19:35:41.000Z",
+    "precio": "5.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2291,
+    "product_id": 205,
+    "fecha_precio": "2025-01-02T19:35:49.000Z",
+    "precio": "5.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2292,
+    "product_id": 206,
+    "fecha_precio": "2025-01-02T19:35:52.000Z",
+    "precio": "5.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2293,
+    "product_id": 207,
+    "fecha_precio": "2025-01-02T19:36:00.000Z",
+    "precio": "10.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2294,
+    "product_id": 209,
+    "fecha_precio": "2025-01-02T19:36:04.000Z",
+    "precio": "5.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2295,
+    "product_id": 210,
+    "fecha_precio": "2025-01-02T19:36:08.000Z",
+    "precio": "5.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2296,
+    "product_id": 211,
+    "fecha_precio": "2025-01-02T19:36:11.000Z",
+    "precio": "5.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2297,
+    "product_id": 218,
+    "fecha_precio": "2025-01-02T19:36:16.000Z",
+    "precio": "3.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2298,
+    "product_id": 219,
+    "fecha_precio": "2025-01-02T19:36:27.000Z",
+    "precio": "50.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2299,
+    "product_id": 225,
+    "fecha_precio": "2025-01-02T19:36:47.000Z",
+    "precio": "5.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2300,
+    "product_id": 226,
+    "fecha_precio": "2025-01-02T19:36:52.000Z",
+    "precio": "5.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2301,
+    "product_id": 227,
+    "fecha_precio": "2025-01-02T19:36:59.000Z",
+    "precio": "5.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2302,
+    "product_id": 228,
+    "fecha_precio": "2025-01-02T19:37:04.000Z",
+    "precio": "70.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2303,
+    "product_id": 229,
+    "fecha_precio": "2025-01-02T19:37:08.000Z",
+    "precio": "5.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2304,
+    "product_id": 230,
+    "fecha_precio": "2025-01-02T19:37:12.000Z",
+    "precio": "5.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2305,
+    "product_id": 231,
+    "fecha_precio": "2025-01-02T19:37:21.000Z",
+    "precio": "3.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2306,
+    "product_id": 233,
+    "fecha_precio": "2025-01-02T19:37:26.000Z",
+    "precio": "3.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2307,
+    "product_id": 232,
+    "fecha_precio": "2025-01-02T19:37:30.000Z",
+    "precio": "5.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2308,
+    "product_id": 234,
+    "fecha_precio": "2025-01-02T19:37:33.000Z",
+    "precio": "5.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2309,
+    "product_id": 235,
+    "fecha_precio": "2025-01-02T19:37:38.000Z",
+    "precio": "3.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2310,
+    "product_id": 236,
+    "fecha_precio": "2025-01-02T19:37:41.000Z",
+    "precio": "5.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2311,
+    "product_id": 237,
+    "fecha_precio": "2025-01-02T19:37:47.000Z",
+    "precio": "5.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2312,
+    "product_id": 238,
+    "fecha_precio": "2025-01-02T19:37:51.000Z",
+    "precio": "5.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2313,
+    "product_id": 239,
+    "fecha_precio": "2025-01-02T19:37:58.000Z",
+    "precio": "20.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2314,
+    "product_id": 240,
+    "fecha_precio": "2025-01-02T19:38:09.000Z",
+    "precio": "10.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2315,
+    "product_id": 241,
+    "fecha_precio": "2025-01-02T19:38:19.000Z",
+    "precio": "15.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2316,
+    "product_id": 244,
+    "fecha_precio": "2025-01-02T19:38:29.000Z",
+    "precio": "10.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2317,
+    "product_id": 245,
+    "fecha_precio": "2025-01-02T19:38:55.000Z",
+    "precio": "10.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2318,
+    "product_id": 246,
+    "fecha_precio": "2025-01-02T19:38:59.000Z",
+    "precio": "10.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2319,
+    "product_id": 247,
+    "fecha_precio": "2025-01-02T19:39:03.000Z",
+    "precio": "10.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2320,
+    "product_id": 248,
+    "fecha_precio": "2025-01-02T19:39:06.000Z",
+    "precio": "10.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2321,
+    "product_id": 249,
+    "fecha_precio": "2025-01-02T19:39:09.000Z",
+    "precio": "10.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2322,
+    "product_id": 250,
+    "fecha_precio": "2025-01-02T19:39:13.000Z",
+    "precio": "10.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2323,
+    "product_id": 251,
+    "fecha_precio": "2025-01-02T19:39:16.000Z",
+    "precio": "10.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2324,
+    "product_id": 252,
+    "fecha_precio": "2025-01-02T19:39:23.000Z",
+    "precio": "5.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2325,
+    "product_id": 251,
+    "fecha_precio": "2025-01-02T19:39:26.000Z",
+    "precio": "5.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2326,
+    "product_id": 253,
+    "fecha_precio": "2025-01-02T19:39:30.000Z",
+    "precio": "5.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2327,
+    "product_id": 254,
+    "fecha_precio": "2025-01-02T19:39:33.000Z",
+    "precio": "5.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2328,
+    "product_id": 255,
+    "fecha_precio": "2025-01-02T19:39:36.000Z",
+    "precio": "5.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2329,
+    "product_id": 256,
+    "fecha_precio": "2025-01-02T19:39:56.000Z",
+    "precio": "5.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2330,
+    "product_id": 257,
+    "fecha_precio": "2025-01-02T19:40:01.000Z",
+    "precio": "10.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2331,
+    "product_id": 257,
+    "fecha_precio": "2025-01-02T19:40:07.000Z",
+    "precio": "15.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2332,
+    "product_id": 258,
+    "fecha_precio": "2025-01-02T19:40:11.000Z",
+    "precio": "15.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2333,
+    "product_id": 259,
+    "fecha_precio": "2025-01-02T19:40:14.000Z",
+    "precio": "15.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2334,
+    "product_id": 260,
+    "fecha_precio": "2025-01-02T19:40:19.000Z",
+    "precio": "15.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2335,
+    "product_id": 261,
+    "fecha_precio": "2025-01-02T19:40:22.000Z",
+    "precio": "15.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2336,
+    "product_id": 262,
+    "fecha_precio": "2025-01-02T19:40:27.000Z",
+    "precio": "15.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2337,
+    "product_id": 263,
+    "fecha_precio": "2025-01-02T19:40:30.000Z",
+    "precio": "10.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2338,
+    "product_id": 270,
+    "fecha_precio": "2025-01-02T19:40:50.000Z",
+    "precio": "95.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2339,
+    "product_id": 271,
+    "fecha_precio": "2025-01-02T19:40:54.000Z",
+    "precio": "95.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2340,
+    "product_id": 306,
+    "fecha_precio": "2025-01-02T19:41:05.000Z",
+    "precio": "50.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2341,
+    "product_id": 312,
+    "fecha_precio": "2025-01-02T19:43:16.000Z",
+    "precio": "280.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2342,
+    "product_id": 305,
+    "fecha_precio": "2025-01-02T19:43:20.000Z",
+    "precio": "210.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2343,
+    "product_id": 336,
+    "fecha_precio": "2025-01-04T14:06:18.000Z",
+    "precio": "280.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2344,
+    "product_id": 339,
+    "fecha_precio": "2025-01-04T14:06:47.000Z",
+    "precio": "3150.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2345,
+    "product_id": 327,
+    "fecha_precio": "2025-01-04T14:07:00.000Z",
+    "precio": "1050.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2346,
+    "product_id": 207,
+    "fecha_precio": "2025-01-04T14:07:20.000Z",
+    "precio": "15.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2347,
+    "product_id": 265,
+    "fecha_precio": "2025-01-04T14:07:41.000Z",
+    "precio": "50.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
   }
 ]
