@@ -1834,5 +1834,41 @@
     "descripcion_resumida": "<p class=\"noticia_descripcion\"><strong>Exciting updates for Habbo Hotel: Origins!</strong> A recent poll reveals that players overwhelmingly want new clothing options, preferring earnable items and seasonal collections. Stay tuned for more updates!</p>",
     "hotel": "com",
     "fecha_noticia": "2025-01-05T23:47:34.000Z"
+  },
+  {
+    "id": 222,
+    "titulo": "Item Raro adicionado ao catálogo: Chafariz Vermelho",
+    "imagen_completa": "2025-01-07-12-09-15",
+    "alt_imagen_completa": "Catalogo Chafariz Vermelho",
+    "descripcion_completa": "<p><strong>Um novo item raro chegou ao Habbo Hotel: Origens!</strong></p><p>O <strong>Chafariz Vermelho</strong> está disponível por tempo limitado no catálogo por apenas 75 créditos. Ele ficará disponível na seção de Raros até às 9h BR / 12h PT do dia 10/01. Não perca a oportunidade de garantir esse item exclusivo, pois não será lançado novamente!</p>",
+    "imagen_resumida": "rares_martes",
+    "alt_imagen_resumida": "novo raro Chafariz Vermelho",
+    "descripcion_resumida": "<p class=\"noticia_descripcion\"><strong>Um item raro chegou ao Habbo Hotel: Origens!</strong> Confira o <strong>Chafariz Vermelho</strong>, disponível por 75 créditos e apenas até o dia 10/01. Não fique de fora!</p>",
+    "hotel": "com.br",
+    "fecha_noticia": "2025-01-07T12:09:35.000Z"
+  },
+  {
+    "id": 223,
+    "titulo": "New Rare Available! The Red Bird Bath",
+    "imagen_completa": "2025-01-07-12-10-30",
+    "alt_imagen_completa": "Red Bird Bath Catalogue Item",
+    "descripcion_completa": "<p><strong>Introducing the latest rare item in Habbo Hotel: Origins: Red Bird Bath!</strong></p><p>The Red Bird Bath is now available in the rare section of the Catalogue for a limited time at a price of 75 credits. It can be purchased until 12pm GMT (4am PDT) on January 10th. Be sure to grab one while you can, as these items will never be made available in Habbo Hotel: Origins again!</p>",
+    "imagen_resumida": "rares_martes",
+    "alt_imagen_resumida": "New rare item Red Bird Bath January 2025",
+    "descripcion_resumida": "<p class=\"noticia_descripcion\"><strong>A new rare item arrives at Habbo Hotel: Origins!</strong> Discover and acquire the new rare item, <strong>Red Bird Bath</strong>, available for a limited time. Don't miss out!</p>",
+    "hotel": "com",
+    "fecha_noticia": "2025-01-07T12:10:47.000Z"
+  },
+  {
+    "id": 224,
+    "titulo": "Raro añadido al Catálogo: Fontana Roja",
+    "imagen_completa": "2025-01-07-12-11-43",
+    "alt_imagen_completa": "Catalogo Fontana Roja",
+    "descripcion_completa": "<p><strong>El nuevo raro de Habbo Hotel: Orígenes: Fontana Roja!</strong></p><p>Desde hoy, se ha añadido un nuevo raro al catálogo de Habbo Hotel: Orígenes. La <strong>Fontana Roja</strong> está disponible por 75 créditos y podrá adquirirse en la sección de raros hasta el 10 de enero a las 6 am CST / 1 pm CET. No pierdas la oportunidad de obtener esta pieza única, ya que no volverá a estar disponible en el catálogo.</p>",
+    "imagen_resumida": "rares_martes",
+    "alt_imagen_resumida": "nuevo raro Fontana Roja",
+    "descripcion_resumida": "<p class=\"noticia_descripcion\"><strong>Un nuevo raro llega a Habbo Hotel: Orígenes!</strong> Adquiere la <strong>Fontana Roja</strong>, disponible solo hasta el 10 de enero. ¡No te lo pierdas!</p>",
+    "hotel": "es",
+    "fecha_noticia": "2025-01-07T12:12:03.000Z"
   }
 ]

@@ -6344,5 +6344,43 @@
     "upvotes_belief": 0,
     "downvotes_belief": 0,
     "mote": ""
+  },
+  {
+    "id": 341,
+    "name": "La_Bola_De_Pato",
+    "name_us": "The Duck Ball",
+    "name_br": "Bola de Pato",
+    "price": "25.00",
+    "usa_price": "25",
+    "icon": "funky",
+    "highlight": 0,
+    "hot": 0,
+    "status": "0",
+    "fecha_creacion": "2025-01-07T18:08:59.000Z",
+    "descripcion": "Su precio en catalogo fue de 25 creditos.",
+    "upvotes": 0,
+    "downvotes": 0,
+    "upvotes_belief": 0,
+    "downvotes_belief": 0,
+    "mote": ""
+  },
+  {
+    "id": 342,
+    "name": "Fontana_Roja",
+    "name_us": "Red Fountain",
+    "name_br": "Fonte Vermelha",
+    "price": "75.00",
+    "usa_price": "75",
+    "icon": "rare",
+    "highlight": 1,
+    "hot": 1,
+    "status": "0",
+    "fecha_creacion": "2025-01-07T18:16:23.000Z",
+    "descripcion": "Su precio en catalogo fue de 75 creditos.",
+    "upvotes": 0,
+    "downvotes": 0,
+    "upvotes_belief": 0,
+    "downvotes_belief": 0,
+    "mote": ""
   }
 ]
