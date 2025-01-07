@@ -22,24 +22,6 @@ $(document).ready(function() {
         });
     }
 
-    // Verificar si hay un idioma seleccionado en localStorage
-    const selectedLanguage = localStorage.getItem('selectedLanguage') || 'en'; // Valor por defecto es 'en'
-    
-    // Cambiar el idioma al seleccionado
-    changeLanguage(selectedLanguage);
-    
-    // Actualizar el select del idioma
-    $('.language-select').val(selectedLanguage);
-
-    // Manejar el cambio de idioma desde el select
-    $('.language-select').change(function() {
-        const newLanguage = $(this).val();
-        changeLanguage(newLanguage);
-    });
-
-    // Actualizar el contenido al cargar la página
-    updateContent();
-
     $.getScript('login.js', function() {});
     $.getScript('songs.js', function() {});
     $.getScript('modal.js', function() {});

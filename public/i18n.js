@@ -48,12 +48,83 @@ $(document).ready(function() {
     changeLanguage(selectedLanguage);
     
     // Actualizar el select del idioma
-    $('.language-select').val(selectedLanguage);
+    $('.language-select-mobile').val(selectedLanguage);
 
     // Manejar el cambio de idioma desde el select
-    $('.language-select').change(function() {
+    $('.language-select-mobile').change(function() {
+        console.log("entre aca");
         const newLanguage = $(this).val();
         changeLanguage(newLanguage);
+
+        $('.name-item-es').hide();
+        $('.name-item-en').hide();
+        $('.name-item-pt').hide();
+        $('.name-item-history-es').hide();
+        $('.name-item-history-en').hide();
+        $('.name-item-history-pt').hide();
+
+        if (newLanguage === 'es') {
+            $('.name-item-es').show();
+            $('.name-item-history-es').show();
+        } else if (newLanguage === 'en') {
+            $('.name-item-en').show();
+            $('.name-item-history-en').show();
+        } else if (newLanguage === 'pt') {
+            $('.name-item-pt').show();
+            $('.name-item-history-pt').show();
+        }
     });
+
+    $('.language-select-pc').val(selectedLanguage);
+
+    // Manejar el cambio de idioma desde el select
+    $('.language-select-pc').change(function() {
+        console.log("entre aca");
+        const newLanguage = $(this).val();
+        changeLanguage(newLanguage);
+
+        $('.name-item-es').hide();
+        $('.name-item-en').hide();
+        $('.name-item-pt').hide();
+        $('.name-item-history-es').hide();
+        $('.name-item-history-en').hide();
+        $('.name-item-history-pt').hide();
+        $('.last_items_update_es').hide();
+        $('.last_items_update_en').hide();
+        $('.last_items_update_pt').hide();
+
+        if (newLanguage === 'es') {
+            $('.name-item-es').show();
+            $('.name-item-history-es').show();
+            $('.last_items_update_es').show();
+        } else if (newLanguage === 'en') {
+            $('.name-item-en').show();
+            $('.name-item-history-en').show();
+            $('.last_items_update_en').show();
+        } else if (newLanguage === 'pt') {
+            $('.name-item-pt').show();
+            $('.name-item-history-pt').show();
+            $('.last_items_update_pt').show();
+        }
+    });
+    
     updateContent();
+});
+
+$(document).on('productsRendered', function() {
+    // Configura el idioma según el valor guardado en localStorage
+    const selectedLanguage = localStorage.getItem('selectedLanguage') || 'en';
+    if (selectedLanguage === 'es') {
+        $('.name-item-es').show();
+        $('.name-item-en').hide();
+        $('.name-item-pt').hide();
+    } else if (selectedLanguage === 'en') {
+        $('.name-item-es').hide();
+        $('.name-item-en').show();
+        $('.name-item-pt').hide();
+    } else if (selectedLanguage === 'pt') {
+        $('.name-item-es').hide();
+        $('.name-item-en').hide();
+        $('.name-item-pt').show();
+    }
 });

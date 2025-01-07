@@ -2,6 +2,8 @@
   {
     "id": 1,
     "name": "El_Club_Sofa",
+    "name_us": "The Sofa Club",
+    "name_br": "O Clube Sofá",
     "price": "35.00",
     "usa_price": "50",
     "icon": "hc",
@@ -19,6 +21,8 @@
   {
     "id": 2,
     "name": "El_Jacuzzy",
+    "name_us": "The Jacuzzi",
+    "name_br": "O Jacuzi",
     "price": "20.00",
     "usa_price": "5",
     "icon": "hc",
@@ -36,6 +40,8 @@
   {
     "id": 3,
     "name": "Imperiales",
+    "name_us": "Imperials",
+    "name_br": "Imperiais",
     "price": "35.00",
     "usa_price": "20",
     "icon": "hc",
@@ -53,6 +59,8 @@
   {
     "id": 4,
     "name": "Sofa_Trono_HC",
+    "name_us": "HC Throne Sofa",
+    "name_br": "Sofá Trono HC",
     "price": "140.00",
     "usa_price": "50",
     "icon": "hc",
@@ -70,6 +78,8 @@
   {
     "id": 5,
     "name": "El_Super_Dado",
+    "name_us": "The Super Dice",
+    "name_br": "O Super Dado",
     "price": "82.00",
     "usa_price": "82",
     "icon": "hc",
@@ -87,6 +97,8 @@
   {
     "id": 6,
     "name": "La_Cafetera",
+    "name_us": "The Coffee Maker",
+    "name_br": "A Cafeteira",
     "price": "20.00",
     "usa_price": "20",
     "icon": "hc",
@@ -104,6 +116,8 @@
   {
     "id": 7,
     "name": "Escritorio_HC",
+    "name_us": "HC Desk",
+    "name_br": "Escrivaninha HC",
     "price": "20.00",
     "usa_price": "5",
     "icon": "hc",
@@ -121,6 +135,8 @@
   {
     "id": 8,
     "name": "Lampara_HC",
+    "name_us": "HC Lamp",
+    "name_br": "Lâmpada HC",
     "price": "20.00",
     "usa_price": "5",
     "icon": "hc",
@@ -138,6 +154,8 @@
   {
     "id": 9,
     "name": "Silla_Majestic",
+    "name_us": "Majestic Chair",
+    "name_br": "Cadeira Majestosa",
     "price": "140.00",
     "usa_price": "60",
     "icon": "hc",
@@ -155,6 +173,8 @@
   {
     "id": 10,
     "name": "Mesa_Nordica",
+    "name_us": "Nordic Table",
+    "name_br": "Mesa Nórdica",
     "price": "5.00",
     "usa_price": "5",
     "icon": "hc",
@@ -172,6 +192,8 @@
   {
     "id": 11,
     "name": "Mesa_HC",
+    "name_us": "HC Table",
+    "name_br": "Mesa HC",
     "price": "5.00",
     "usa_price": "1",
     "icon": "hc",
@@ -189,6 +211,8 @@
   {
     "id": 12,
     "name": "HC_Silla",
+    "name_us": "HC Chair",
+    "name_br": "Cadeira HC",
     "price": "1.00",
     "usa_price": "1",
     "icon": "hc",
@@ -206,6 +230,8 @@
   {
     "id": 13,
     "name": "Habbocola",
+    "name_us": "Habbocola",
+    "name_br": "Habbocola",
     "price": "85.00",
     "usa_price": "15",
     "icon": "rare",
@@ -223,6 +249,8 @@
   {
     "id": 14,
     "name": "Mesa_Cuadrada_Naranja_Mandarina",
+    "name_us": "Square Table Orange Mandarin",
+    "name_br": "Mesa Quadrada Laranja Mandarim",
     "price": "600.00",
     "usa_price": "600",
     "icon": "funky",
@@ -240,6 +268,8 @@
   {
     "id": 15,
     "name": "Mesa_Rectangular_Naranja_Mandarina",
+    "name_us": "Rectangular Table Orange Mandarin",
+    "name_br": "Mesa Retangular Laranja Mandarim",
     "price": "600.00",
     "usa_price": "600",
     "icon": "funky",
@@ -257,6 +287,8 @@
   {
     "id": 16,
     "name": "Mesa_Redonda_Naranja_Mandarina",
+    "name_us": "Round Table Orange Mandarin",
+    "name_br": "Mesa Redonda Laranja Mandarim",
     "price": "600.00",
     "usa_price": "600",
     "icon": "funky",
@@ -274,6 +306,8 @@
   {
     "id": 17,
     "name": "Mesita_Naranja_Mandarina",
+    "name_us": "Small Table Orange Mandarin",
+    "name_br": "Mesinha Laranja Mandarim",
     "price": "450.00",
     "usa_price": "450",
     "icon": "funky",
@@ -291,6 +325,8 @@
   {
     "id": 18,
     "name": "Silla_Naranja_Mandarina",
+    "name_us": "Chair Orange Mandarin",
+    "name_br": "Cadeira Laranja Mandarim",
     "price": "450.00",
     "usa_price": "450",
     "icon": "funky",
@@ -308,6 +344,8 @@
   {
     "id": 19,
     "name": "Pod_Naranja_Mandarina",
+    "name_us": "Pod Orange Mandarin",
+    "name_br": "Pod Laranja Mandarim",
     "price": "750.00",
     "usa_price": "750",
     "icon": "funky",
@@ -325,6 +363,8 @@
   {
     "id": 20,
     "name": "Pod_Amarillo_Girasol",
+    "name_us": "Pod Yellow Sunflower",
+    "name_br": "Pod Amarelo Girassol",
     "price": "400.00",
     "usa_price": "400",
     "icon": "funky",
@@ -342,6 +382,8 @@
   {
     "id": 21,
     "name": "Pod_Oro_Bronce",
+    "name_us": "Pod Gold Bronze",
+    "name_br": "Pod Ouro Bronze",
     "price": "650.00",
     "usa_price": "650",
     "icon": "funky",
@@ -359,6 +401,8 @@
   {
     "id": 22,
     "name": "Pod_Musgo_Oscuro",
+    "name_us": "Pod Dark Moss",
+    "name_br": "Pod Musgo Escuro",
     "price": "250.00",
     "usa_price": "250",
     "icon": "funky",
@@ -376,6 +420,8 @@
   {
     "id": 23,
     "name": "Pod_Verde_Bosque",
+    "name_us": "Pod Forest Green",
+    "name_br": "Pod Verde Floresta",
     "price": "250.00",
     "usa_price": "250",
     "icon": "funky",
@@ -393,6 +439,8 @@
   {
     "id": 24,
     "name": "Mesa_Rectangular_Amarillo_Girasol",
+    "name_us": "Rectangular Table Yellow Sunflower",
+    "name_br": "Mesa Retangular Amarelo Girassol",
     "price": "350.00",
     "usa_price": "350",
     "icon": "funky",
@@ -410,6 +458,8 @@
   {
     "id": 25,
     "name": "Mesa_Rectangular_Oro_Bronce",
+    "name_us": "Rectangular Table Gold Bronze",
+    "name_br": "Mesa Retangular Ouro Bronze",
     "price": "550.00",
     "usa_price": "550",
     "icon": "funky",
@@ -427,6 +477,8 @@
   {
     "id": 26,
     "name": "Mesa_Rectangular_Musgo_Oscuro",
+    "name_us": "Rectangular Table Dark Moss",
+    "name_br": "Mesa Retangular Musgo Escuro",
     "price": "250.00",
     "usa_price": "250",
     "icon": "funky",
@@ -444,6 +496,8 @@
   {
     "id": 27,
     "name": "Mesa_Rectangular_Verde_Bosque",
+    "name_us": "Rectangular Table Forest Green",
+    "name_br": "Mesa Retangular Verde Floresta",
     "price": "250.00",
     "usa_price": "250",
     "icon": "funky",
@@ -461,6 +515,8 @@
   {
     "id": 28,
     "name": "Silla_Amarillo_Girasol",
+    "name_us": "Chair Yellow Sunflower",
+    "name_br": "Cadeira Amarelo Girassol",
     "price": "300.00",
     "usa_price": "300",
     "icon": "funky",
@@ -478,6 +534,8 @@
   {
     "id": 29,
     "name": "Silla_Oro_Bronce",
+    "name_us": "Chair Gold Bronze",
+    "name_br": "Cadeira Ouro Bronze",
     "price": "400.00",
     "usa_price": "400",
     "icon": "funky",
@@ -495,6 +553,8 @@
   {
     "id": 30,
     "name": "Silla_Musgo_Oscuro",
+    "name_us": "Chair Dark Moss",
+    "name_br": "Cadeira Musgo Escuro",
     "price": "250.00",
     "usa_price": "250",
     "icon": "funky",
@@ -512,6 +572,8 @@
   {
     "id": 31,
     "name": "Silla_Verde_Bosque",
+    "name_us": "Chair Forest Green",
+    "name_br": "Cadeira Verde Floresta",
     "price": "250.00",
     "usa_price": "250",
     "icon": "funky",
@@ -529,6 +591,8 @@
   {
     "id": 32,
     "name": "Mesa_Cuadrada_Amarillo_Girasol",
+    "name_us": "Square Table Yellow Sunflower",
+    "name_br": "Mesa Quadrada Amarelo Girassol",
     "price": "350.00",
     "usa_price": "350",
     "icon": "funky",
@@ -546,6 +610,8 @@
   {
     "id": 33,
     "name": "Mesa_Cuadrada_Oro_Bronce",
+    "name_us": "Square Table Gold Bronze",
+    "name_br": "Mesa Quadrada Ouro Bronze",
     "price": "550.00",
     "usa_price": "550",
     "icon": "funky",
@@ -563,6 +629,8 @@
   {
     "id": 34,
     "name": "Mesa_Cuadrada_Musgo_Oscuro",
+    "name_us": "Square Table Dark Moss",
+    "name_br": "Mesa Quadrada Musgo Escuro",
     "price": "250.00",
     "usa_price": "250",
     "icon": "funky",
@@ -580,6 +648,8 @@
   {
     "id": 35,
     "name": "Mesa_Cuadrada_Verde_Bosque",
+    "name_us": "Square Table Forest Green",
+    "name_br": "Mesa Quadrada Verde Floresta",
     "price": "250.00",
     "usa_price": "250",
     "icon": "funky",
@@ -597,6 +667,8 @@
   {
     "id": 36,
     "name": "Mesa_Redonda_Amarillo_Girasol",
+    "name_us": "Round Table Yellow Sunflower",
+    "name_br": "Mesa Redonda Amarelo Girassol",
     "price": "350.00",
     "usa_price": "350",
     "icon": "funky",
@@ -614,6 +686,8 @@
   {
     "id": 37,
     "name": "Mesa_Redonda_Oro_Bronce",
+    "name_us": "Round Table Gold Bronze",
+    "name_br": "Mesa Redonda Ouro Bronze",
     "price": "550.00",
     "usa_price": "550",
     "icon": "funky",
@@ -631,6 +705,8 @@
   {
     "id": 38,
     "name": "Mesa_Redonda_Musgo_Oscuro",
+    "name_us": "Round Table Dark Moss",
+    "name_br": "Mesa Redonda Musgo Escuro",
     "price": "250.00",
     "usa_price": "250",
     "icon": "funky",
@@ -648,6 +724,8 @@
   {
     "id": 39,
     "name": "Mesa_Redonda_Verde_Bosque",
+    "name_us": "Round Table Forest Green",
+    "name_br": "Mesa Redonda Verde Floresta",
     "price": "250.00",
     "usa_price": "250",
     "icon": "funky",
@@ -665,6 +743,8 @@
   {
     "id": 40,
     "name": "Mesita_Amarillo_Girasol",
+    "name_us": "Small Table Yellow Sunflower",
+    "name_br": "Mesinha Amarelo Girassol",
     "price": "300.00",
     "usa_price": "300",
     "icon": "funky",
@@ -682,6 +762,8 @@
   {
     "id": 41,
     "name": "Mesita_Oro_Bronce",
+    "name_us": "Small Table Gold Bronze",
+    "name_br": "Mesinha Ouro Bronze",
     "price": "400.00",
     "usa_price": "400",
     "icon": "funky",
@@ -699,6 +781,8 @@
   {
     "id": 42,
     "name": "Mesita_Musgo_Oscuro",
+    "name_us": "Small Table Dark Moss",
+    "name_br": "Mesinha Musgo Escuro",
     "price": "250.00",
     "usa_price": "250",
     "icon": "funky",
@@ -716,6 +800,8 @@
   {
     "id": 43,
     "name": "Mesita_Verde_Bosque",
+    "name_us": "Small Table Forest Green",
+    "name_br": "Mesinha Verde Floresta",
     "price": "250.00",
     "usa_price": "250",
     "icon": "funky",
@@ -733,6 +819,8 @@
   {
     "id": 44,
     "name": "El_Cesped",
+    "name_us": "The Grass",
+    "name_br": "A Grama",
     "price": "70.00",
     "usa_price": "17",
     "icon": "rare",
@@ -750,6 +838,8 @@
   {
     "id": 46,
     "name": "Alfombra_Beige_Melocoton",
+    "name_us": "Beige Peach Carpet",
+    "name_br": "Tapete Bege Pêssego",
     "price": "210.00",
     "usa_price": "112",
     "icon": "funky",
@@ -767,6 +857,8 @@
   {
     "id": 47,
     "name": "Alfombra_Gris_Plata",
+    "name_us": "Silver Grey Carpet",
+    "name_br": "Tapete Cinza Prata",
     "price": "112.00",
     "usa_price": "112",
     "icon": "funky",
@@ -784,6 +876,8 @@
   {
     "id": 48,
     "name": "Alfombra_Coral_Suave",
+    "name_us": "Soft Coral Carpet",
+    "name_br": "Tapete Coral Suave",
     "price": "210.00",
     "usa_price": "112",
     "icon": "funky",
@@ -801,6 +895,8 @@
   {
     "id": 49,
     "name": "Alfombra_Crema_Menta",
+    "name_us": "Mint Cream Carpet",
+    "name_br": "Tapete Creme Menta",
     "price": "210.00",
     "usa_price": "112",
     "icon": "funky",
@@ -818,6 +914,8 @@
   {
     "id": 50,
     "name": "PH_Ticket",
+    "name_us": "PH Ticket",
+    "name_br": "PH Ticket",
     "price": "2240.00",
     "usa_price": "500",
     "icon": "mega_rare",
@@ -835,6 +933,8 @@
   {
     "id": 51,
     "name": "Almohadon_Purpura",
+    "name_us": "Purple Cushion",
+    "name_br": "Almofada Roxa",
     "price": "70.00",
     "usa_price": "25",
     "icon": "rare",
@@ -852,6 +952,8 @@
   {
     "id": 52,
     "name": "Guirnalda_Funky_Morada",
+    "name_us": "Funky Purple Garland",
+    "name_br": "Guirlanda Funky Roxa",
     "price": "25.00",
     "usa_price": "17",
     "icon": "funky",
@@ -869,6 +971,8 @@
   {
     "id": 53,
     "name": "Guirnalda_Funky_Verde",
+    "name_us": "Funky Green Garland",
+    "name_br": "Guirlanda Funky Verde",
     "price": "25.00",
     "usa_price": "17",
     "icon": "funky",
@@ -886,6 +990,8 @@
   {
     "id": 54,
     "name": "Huevo_De_Dragon",
+    "name_us": "Dragon Egg",
+    "name_br": "Ovo de Dragão",
     "price": "95.00",
     "usa_price": "25",
     "icon": "rare",
@@ -903,6 +1009,8 @@
   {
     "id": 55,
     "name": "Teleport_Britanico_Funky",
+    "name_us": "British Funky Teleport",
+    "name_br": "Teleporte Britânico Funky",
     "price": "37.00",
     "usa_price": "37",
     "icon": "funky",
@@ -920,6 +1028,8 @@
   {
     "id": 56,
     "name": "Heladera_Dorada",
+    "name_us": "Golden Fridge",
+    "name_br": "Geladeira Dourada",
     "price": "25.00",
     "usa_price": "12",
     "icon": "rare",
@@ -937,6 +1047,8 @@
   {
     "id": 57,
     "name": "Felpudo_Rosa_Peonia_Funky",
+    "name_us": "Funky Pink Peony Doormat",
+    "name_br": "Capacho Rosa Peônia Funky",
     "price": "10.00",
     "usa_price": "10",
     "icon": "funky",
@@ -954,6 +1066,8 @@
   {
     "id": 58,
     "name": "Felpudo_Rosa_Suave_Funky",
+    "name_us": "Funky Soft Pink Doormat",
+    "name_br": "Capacho Rosa Suave Funky",
     "price": "10.00",
     "usa_price": "10",
     "icon": "funky",
@@ -971,6 +1085,8 @@
   {
     "id": 59,
     "name": "Felpudo_Crema_Melocoton_Funky",
+    "name_us": "Funky Peach Cream Doormat",
+    "name_br": "Capacho Creme Pêssego Funky",
     "price": "10.00",
     "usa_price": "10",
     "icon": "funky",
@@ -988,6 +1104,8 @@
   {
     "id": 60,
     "name": "Felpudo_Rosa_Niebla_Funky",
+    "name_us": "Funky Misty Pink Doormat",
+    "name_br": "Capacho Rosa Neblina Funky",
     "price": "10.00",
     "usa_price": "10",
     "icon": "funky",
@@ -1005,6 +1123,8 @@
   {
     "id": 61,
     "name": "Felpudo_Gris_Claro_Funky",
+    "name_us": "Funky Light Grey Doormat",
+    "name_br": "Capacho Cinza Claro Funky",
     "price": "10.00",
     "usa_price": "10",
     "icon": "funky",
@@ -1022,6 +1142,8 @@
   {
     "id": 62,
     "name": "Felpudo_Azul_Gris_Funky",
+    "name_us": "Funky Grey Blue Doormat",
+    "name_br": "Capacho Azul Cinza Funky",
     "price": "10.00",
     "usa_price": "10",
     "icon": "funky",
@@ -1039,6 +1161,8 @@
   {
     "id": 63,
     "name": "Felpudo_Beige_Suave_Funky",
+    "name_us": "Funky Soft Beige Doormat",
+    "name_br": "Capacho Bege Suave Funky",
     "price": "10.00",
     "usa_price": "10",
     "icon": "funky",
@@ -1056,6 +1180,8 @@
   {
     "id": 64,
     "name": "Felpudo_Rosa_Palido_Funky",
+    "name_us": "Funky Pale Pink Doormat",
+    "name_br": "Capacho Rosa Pálido Funky",
     "price": "10.00",
     "usa_price": "10",
     "icon": "funky",
@@ -1073,6 +1199,8 @@
   {
     "id": 65,
     "name": "Felpudo_Alboricoque_Claro_Funky",
+    "name_us": "Funky Light Apricot Doormat",
+    "name_br": "Capacho Damasco Claro Funky",
     "price": "10.00",
     "usa_price": "10",
     "icon": "funky",
@@ -1090,6 +1218,8 @@
   {
     "id": 66,
     "name": "Felpudo_Rosa_Coral_Funky",
+    "name_us": "Funky Coral Pink Doormat",
+    "name_br": "Capacho Rosa Coral Funky",
     "price": "10.00",
     "usa_price": "10",
     "icon": "funky",
@@ -1107,6 +1237,8 @@
   {
     "id": 67,
     "name": "Felpudo_Purpura_Real_Funky",
+    "name_us": "Funky Royal Purple Doormat",
+    "name_br": "Capacho Roxo Real Funky",
     "price": "10.00",
     "usa_price": "10",
     "icon": "funky",
@@ -1124,6 +1256,8 @@
   {
     "id": 68,
     "name": "Felpudo_Azul_Pizarra_Funky",
+    "name_us": "Funky Slate Blue Doormat",
+    "name_br": "Capacho Azul Ardósia Funky",
     "price": "10.00",
     "usa_price": "10",
     "icon": "funky",
@@ -1141,6 +1275,8 @@
   {
     "id": 69,
     "name": "Felpudo_Azul_Cielo_Funky",
+    "name_us": "Funky Sky Blue Doormat",
+    "name_br": "Capacho Azul Céu Funky",
     "price": "10.00",
     "usa_price": "10",
     "icon": "funky",
@@ -1158,6 +1294,8 @@
   {
     "id": 70,
     "name": "Felpudo_Azul_Cielo_Claro_Funky",
+    "name_us": "Funky Light Sky Blue Doormat",
+    "name_br": "Capacho Azul Céu Claro Funky",
     "price": "10.00",
     "usa_price": "10",
     "icon": "funky",
@@ -1175,6 +1313,8 @@
   {
     "id": 71,
     "name": "Felpudo_Cielo_Claro_Funky",
+    "name_us": "Funky Clear Sky Doormat",
+    "name_br": "Capacho Céu Claro Funky",
     "price": "10.00",
     "usa_price": "10",
     "icon": "funky",
@@ -1192,6 +1332,8 @@
   {
     "id": 72,
     "name": "Felpudo_Azul_Turquesa_Funky",
+    "name_us": "Funky Turquoise Blue Doormat",
+    "name_br": "Capacho Azul Turquesa Funky",
     "price": "10.00",
     "usa_price": "10",
     "icon": "funky",
@@ -1209,6 +1351,8 @@
   {
     "id": 73,
     "name": "Felpudo_Aqua_Funky",
+    "name_us": "Funky Aqua Doormat",
+    "name_br": "Capacho Aqua Funky",
     "price": "10.00",
     "usa_price": "10",
     "icon": "funky",
@@ -1226,6 +1370,8 @@
   {
     "id": 74,
     "name": "Felpudo_Aqua_Claro_Funky",
+    "name_us": "Funky Light Aqua Doormat",
+    "name_br": "Capacho Aqua Claro Funky",
     "price": "10.00",
     "usa_price": "10",
     "icon": "funky",
@@ -1243,6 +1389,8 @@
   {
     "id": 75,
     "name": "Felpudo_Verde_Menta_Funky",
+    "name_us": "Funky Mint Green Doormat",
+    "name_br": "Capacho Verde Menta Funky",
     "price": "10.00",
     "usa_price": "10",
     "icon": "funky",
@@ -1260,6 +1408,8 @@
   {
     "id": 76,
     "name": "Felpudo_Azul_Teal_Funky",
+    "name_us": "Funky Teal Blue Doormat",
+    "name_br": "Capacho Azul Teal Funky",
     "price": "10.00",
     "usa_price": "10",
     "icon": "funky",
@@ -1277,6 +1427,8 @@
   {
     "id": 77,
     "name": "Felpudo_Verde_Fresa_Funky",
+    "name_us": "Funky Strawberry Green Doormat",
+    "name_br": "Capacho Verde Morango Funky",
     "price": "10.00",
     "usa_price": "10",
     "icon": "funky",
@@ -1294,6 +1446,8 @@
   {
     "id": 78,
     "name": "Felpudo_Cian_Claro_Funky",
+    "name_us": "Funky Light Cyan Doormat",
+    "name_br": "Capacho Ciano Claro Funky",
     "price": "10.00",
     "usa_price": "10",
     "icon": "funky",
@@ -1311,6 +1465,8 @@
   {
     "id": 79,
     "name": "Felpudo_Arena_Funky",
+    "name_us": "Funky Sand Doormat",
+    "name_br": "Capacho Areia Funky",
     "price": "10.00",
     "usa_price": "10",
     "icon": "funky",
@@ -1328,6 +1484,8 @@
   {
     "id": 80,
     "name": "Felpudo_Naranja_Funky",
+    "name_us": "Funky Orange Doormat",
+    "name_br": "Capacho Laranja Funky",
     "price": "10.00",
     "usa_price": "10",
     "icon": "funky",
@@ -1345,6 +1503,8 @@
   {
     "id": 81,
     "name": "Felpudo_Naranja_Quemado_Funky",
+    "name_us": "Funky Burnt Orange Doormat",
+    "name_br": "Capacho Laranja Queimado Funky",
     "price": "10.00",
     "usa_price": "10",
     "icon": "funky",
@@ -1362,6 +1522,8 @@
   {
     "id": 82,
     "name": "Felpudo_Oxido_Funky",
+    "name_us": "Funky Oxide Doormat",
+    "name_br": "Capacho Óxido Funky",
     "price": "10.00",
     "usa_price": "10",
     "icon": "funky",
@@ -1379,6 +1541,8 @@
   {
     "id": 83,
     "name": "Felpudo_Carmesi_Funky",
+    "name_us": "Funky Crimson Doormat",
+    "name_br": "Capacho Carmesim Funky",
     "price": "10.00",
     "usa_price": "10",
     "icon": "funky",
@@ -1396,6 +1560,8 @@
   {
     "id": 84,
     "name": "Felpudo_Rojo_Oscuro_Funky",
+    "name_us": "Funky Dark Red Doormat",
+    "name_br": "Capacho Vermelho Escuro Funky",
     "price": "10.00",
     "usa_price": "10",
     "icon": "funky",
@@ -1413,6 +1579,8 @@
   {
     "id": 85,
     "name": "Felpudo_Azul_Suave_Funky",
+    "name_us": "Funky Soft Blue Doormat",
+    "name_br": "Capacho Azul Suave Funky",
     "price": "10.00",
     "usa_price": "10",
     "icon": "funky",
@@ -1430,6 +1598,8 @@
   {
     "id": 86,
     "name": "Felpudo_Naranja_Brillante_Funky",
+    "name_us": "Funky Bright Orange Doormat",
+    "name_br": "Capacho Laranja Brilhante Funky",
     "price": "10.00",
     "usa_price": "10",
     "icon": "funky",
@@ -1447,6 +1617,8 @@
   {
     "id": 87,
     "name": "Felpudo_Rojo_Fuego_Funky",
+    "name_us": "Funky Fire Red Doormat",
+    "name_br": "Capacho Vermelho Fogo Funky",
     "price": "10.00",
     "usa_price": "10",
     "icon": "funky",
@@ -1464,6 +1636,8 @@
   {
     "id": 88,
     "name": "Felpudo_Verde_Lima_Funky",
+    "name_us": "Funky Lime Green Doormat",
+    "name_br": "Capacho Verde Limão Funky",
     "price": "10.00",
     "usa_price": "10",
     "icon": "funky",
@@ -1481,6 +1655,8 @@
   {
     "id": 89,
     "name": "Felpudo_Azul_Profundo_Funky",
+    "name_us": "Funky Deep Blue Doormat",
+    "name_br": "Capacho Azul Profundo Funky",
     "price": "10.00",
     "usa_price": "10",
     "icon": "funky",
@@ -1498,6 +1674,8 @@
   {
     "id": 90,
     "name": "Felpudo_Oro_Funky",
+    "name_us": "Funky Gold Doormat",
+    "name_br": "Capacho Ouro Funky",
     "price": "10.00",
     "usa_price": "10",
     "icon": "funky",
@@ -1515,6 +1693,8 @@
   {
     "id": 91,
     "name": "Felpudo_Marron_Oscuro_Funky",
+    "name_us": "Funky Dark Brown Doormat",
+    "name_br": "Capacho Marrom Escuro Funky",
     "price": "10.00",
     "usa_price": "10",
     "icon": "funky",
@@ -1532,6 +1712,8 @@
   {
     "id": 92,
     "name": "Felpudo_Magenta_Vivo_Funky",
+    "name_us": "Funky Vibrant Magenta Doormat",
+    "name_br": "Capacho Magenta Vivo Funky",
     "price": "10.00",
     "usa_price": "10",
     "icon": "funky",
@@ -1549,6 +1731,8 @@
   {
     "id": 93,
     "name": "Felpudo_Rosa_Palido_V2_Funky",
+    "name_us": "Funky Pale Pink V2 Doormat",
+    "name_br": "Capacho Rosa Pálido V2 Funky",
     "price": "10.00",
     "usa_price": "10",
     "icon": "funky",
@@ -1566,6 +1750,8 @@
   {
     "id": 94,
     "name": "Felpudo_Carbon_Funky",
+    "name_us": "Funky Carbon Doormat",
+    "name_br": "Capacho Carbono Funky",
     "price": "10.00",
     "usa_price": "10",
     "icon": "funky",
@@ -1583,6 +1769,8 @@
   {
     "id": 95,
     "name": "Felpudo_Bermellon_Funky",
+    "name_us": "Funky Vermilion Doormat",
+    "name_br": "Capacho Vermelho Funky",
     "price": "10.00",
     "usa_price": "10",
     "icon": "funky",
@@ -1600,6 +1788,8 @@
   {
     "id": 96,
     "name": "Felpudo_Verde_Hierba_Funky",
+    "name_us": "Funky Grass Green Doormat",
+    "name_br": "Capacho Verde Grama Funky",
     "price": "7.00",
     "usa_price": "7",
     "icon": "funky",
@@ -1617,6 +1807,8 @@
   {
     "id": 97,
     "name": "Felpudo_Verde_Esmeralda_Funky",
+    "name_us": "Funky Emerald Green Doormat",
+    "name_br": "Capacho Verde Esmeralda Funky",
     "price": "7.00",
     "usa_price": "7",
     "icon": "funky",
@@ -1634,6 +1826,8 @@
   {
     "id": 98,
     "name": "Felpudo_Mandarina_Funky",
+    "name_us": "Funky Mandarin Doormat",
+    "name_br": "Capacho Mandarim Funky",
     "price": "7.00",
     "usa_price": "7",
     "icon": "funky",
@@ -1651,6 +1845,8 @@
   {
     "id": 99,
     "name": "Felpudo_Lavanda_Funky",
+    "name_us": "Funky Lavender Doormat",
+    "name_br": "Capacho Lavanda Funky",
     "price": "7.00",
     "usa_price": "7",
     "icon": "funky",
@@ -1668,6 +1864,8 @@
   {
     "id": 100,
     "name": "Felpudo_Azul_Periwinkle_Funky",
+    "name_us": "Funky Periwinkle Blue Doormat",
+    "name_br": "Capacho Azul Periwinkle Funky",
     "price": "7.00",
     "usa_price": "7",
     "icon": "funky",
@@ -1685,6 +1883,8 @@
   {
     "id": 101,
     "name": "Felpudo_Amarillo_Canario_Funky",
+    "name_us": "Funky Canary Yellow Doormat",
+    "name_br": "Capacho Amarelo Canário Funky",
     "price": "7.00",
     "usa_price": "7",
     "icon": "funky",
@@ -1702,6 +1902,8 @@
   {
     "id": 102,
     "name": "Felpudo_Azul_Brillante_Funky",
+    "name_us": "Funky Bright Blue Doormat",
+    "name_br": "Capacho Azul Brilhante Funky",
     "price": "7.00",
     "usa_price": "7",
     "icon": "funky",
@@ -1719,6 +1921,8 @@
   {
     "id": 103,
     "name": "Felpudo_Blanco_Puro_Funky",
+    "name_us": "Funky Pure White Doormat",
+    "name_br": "Capacho Branco Puro Funky",
     "price": "7.00",
     "usa_price": "7",
     "icon": "funky",
@@ -1736,6 +1940,8 @@
   {
     "id": 104,
     "name": "La_Humareda_Roja",
+    "name_us": "The Red Smoke",
+    "name_br": "A Fumaça Vermelha",
     "price": "25.00",
     "usa_price": "17",
     "icon": "rare",
@@ -1753,6 +1959,8 @@
   {
     "id": 105,
     "name": "Pod_Sueño_Azul",
+    "name_us": "Blue Dream Pod",
+    "name_br": "Pod Sonho Azul",
     "price": "20.00",
     "usa_price": "15",
     "icon": "funky",
@@ -1770,6 +1978,8 @@
   {
     "id": 106,
     "name": "Mesita_Sueño_Azul",
+    "name_us": "Blue Dream Small Table",
+    "name_br": "Mesinha Sonho Azul",
     "price": "10.00",
     "usa_price": "10",
     "icon": "funky",
@@ -1787,6 +1997,8 @@
   {
     "id": 107,
     "name": "Mesa_Cuadrada_Sueño_Azul",
+    "name_us": "Blue Dream Square Table",
+    "name_br": "Mesa Quadrada Sonho Azul",
     "price": "10.00",
     "usa_price": "10",
     "icon": "funky",
@@ -1804,6 +2016,8 @@
   {
     "id": 108,
     "name": "Mesa_Rectangular_Sueño_Azul",
+    "name_us": "Blue Dream Rectangular Table",
+    "name_br": "Mesa Retangular Sonho Azul",
     "price": "10.00",
     "usa_price": "10",
     "icon": "funky",
@@ -1821,6 +2035,8 @@
   {
     "id": 109,
     "name": "Mesa_Redonda_Sueño_Azul",
+    "name_us": "Blue Dream Round Table",
+    "name_br": "Mesa Redonda Sonho Azul",
     "price": "10.00",
     "usa_price": "10",
     "icon": "funky",
@@ -1838,6 +2054,8 @@
   {
     "id": 110,
     "name": "Silla_Sueño_Azul",
+    "name_us": "Blue Dream Chair",
+    "name_br": "Cadeira Sonho Azul",
     "price": "10.00",
     "usa_price": "10",
     "icon": "funky",
@@ -1855,6 +2073,8 @@
   {
     "id": 111,
     "name": "Fontana_Azul",
+    "name_us": "Blue Fountain",
+    "name_br": "Fonte Azul",
     "price": "30.00",
     "usa_price": "30",
     "icon": "rare",
@@ -1872,6 +2092,8 @@
   {
     "id": 112,
     "name": "Bonsai_Arce_Funky",
+    "name_us": "Maple Bonsai Funky",
+    "name_br": "Bonsai de Bordo Funky",
     "price": "12.00",
     "usa_price": "12",
     "icon": "funky",
@@ -1889,6 +2111,8 @@
   {
     "id": 113,
     "name": "Bonsai_Flor_Cerezo_Funky",
+    "name_us": "Cherry Blossom Bonsai Funky",
+    "name_br": "Bonsai Flor de Cerejeira Funky",
     "price": "12.00",
     "usa_price": "12",
     "icon": "funky",
@@ -1906,6 +2130,8 @@
   {
     "id": 114,
     "name": "Bonsai_Loto_Blanco_Funky",
+    "name_us": "White Lotus Bonsai Funky",
+    "name_br": "Bonsai Lótus Branco Funky",
     "price": "12.00",
     "usa_price": "12",
     "icon": "funky",
@@ -1923,6 +2149,8 @@
   {
     "id": 115,
     "name": "Holoboy",
+    "name_us": "Holoboy",
+    "name_br": "Holoboy",
     "price": "105.00",
     "usa_price": "12",
     "icon": "rare",
@@ -1940,6 +2168,8 @@
   {
     "id": 116,
     "name": "Hologirl",
+    "name_us": "Hologirl",
+    "name_br": "Hologirl",
     "price": "70.00",
     "usa_price": "25",
     "icon": "rare",
@@ -1957,6 +2187,8 @@
   {
     "id": 117,
     "name": "Maquina_De_Escribir",
+    "name_us": "Typewriter",
+    "name_br": "Máquina de Escrever",
     "price": "20000.00",
     "usa_price": "20000",
     "icon": "mega_rare",
@@ -1974,6 +2206,8 @@
   {
     "id": 118,
     "name": "Puerta_Laser_Roja",
+    "name_us": "Red Laser Door",
+    "name_br": "Porta Laser Vermelha",
     "price": "75.00",
     "usa_price": "20",
     "icon": "rare",
@@ -1991,6 +2225,8 @@
   {
     "id": 119,
     "name": "La_Luciernaga_Amarilla",
+    "name_us": "The Yellow Firefly",
+    "name_br": "O Vaga-lume Amarelo",
     "price": "150.00",
     "usa_price": "80",
     "icon": "rare",
@@ -2008,6 +2244,8 @@
   {
     "id": 120,
     "name": "La_Hamaca",
+    "name_us": "The Hammock",
+    "name_br": "A Rede",
     "price": "70.00",
     "usa_price": "25",
     "icon": "rare",
@@ -2025,6 +2263,8 @@
   {
     "id": 121,
     "name": "Trofeo_Staff_Bronce_WaltzMatilda",
+    "name_us": "Bronze Staff Trophy",
+    "name_br": "Troféu de Staff Bronze",
     "price": "4000.00",
     "usa_price": "4000",
     "icon": "mega_rare",
@@ -2042,6 +2282,8 @@
   {
     "id": 122,
     "name": "Trofeo_Staff_Plata_WaltzMatilda",
+    "name_us": "Silver Staff Trophy",
+    "name_br": "Troféu de Staff Prata",
     "price": "4000.00",
     "usa_price": "4000",
     "icon": "mega_rare",
@@ -2059,6 +2301,8 @@
   {
     "id": 123,
     "name": "Trofeo_Staff_Oro_WaltzMatilda",
+    "name_us": "Gold Staff Trophy",
+    "name_br": "Troféu de Staff Ouro",
     "price": "4000.00",
     "usa_price": "4000",
     "icon": "mega_rare",
@@ -2076,6 +2320,8 @@
   {
     "id": 124,
     "name": "Dragon_De_Fuego_Bronce",
+    "name_us": "Bronze Fire Dragon",
+    "name_br": "Dragão de Fogo Bronze",
     "price": "28000.00",
     "usa_price": "20000",
     "icon": "mega_rare",
@@ -2093,6 +2339,8 @@
   {
     "id": 125,
     "name": "Dragon_De_Fuego_Plata",
+    "name_us": "Silver Fire Dragon",
+    "name_br": "Dragão de Fogo Prata",
     "price": "56000.00",
     "usa_price": "30000",
     "icon": "mega_rare",
@@ -2110,6 +2358,8 @@
   {
     "id": 126,
     "name": "Dragon_De_Fuego_Oro",
+    "name_us": "Gold Fire Dragon",
+    "name_br": "Dragão de Fogo Ouro",
     "price": "112000.00",
     "usa_price": "75000",
     "icon": "mega_rare",
@@ -2127,6 +2377,8 @@
   {
     "id": 127,
     "name": "Esquina_Azul_Ultramarino",
+    "name_us": "Ultramarine Blue Corner",
+    "name_br": "Esquina Azul Ultramar",
     "price": "15.00",
     "usa_price": "15",
     "icon": "funky",
@@ -2144,6 +2396,8 @@
   {
     "id": 128,
     "name": "Esquina_Lila",
+    "name_us": "Lilac Corner",
+    "name_br": "Esquina Lilás",
     "price": "15.00",
     "usa_price": "15",
     "icon": "funky",
@@ -2161,6 +2415,8 @@
   {
     "id": 129,
     "name": "Esquina_Oro",
+    "name_us": "Gold Corner",
+    "name_br": "Esquina Dourada",
     "price": "15.00",
     "usa_price": "15",
     "icon": "funky",
@@ -2178,6 +2434,8 @@
   {
     "id": 130,
     "name": "Esquina_Rosa",
+    "name_us": "Pink Corner",
+    "name_br": "Esquina Rosa",
     "price": "15.00",
     "usa_price": "15",
     "icon": "funky",
@@ -2195,6 +2453,8 @@
   {
     "id": 131,
     "name": "Luz_Roja_Bouncer",
+    "name_us": "Red Bouncer Light",
+    "name_br": "Luz Vermelha Bouncer",
     "price": "10.00",
     "usa_price": "6",
     "icon": "funky",
@@ -2212,6 +2472,8 @@
   {
     "id": 132,
     "name": "Luz_Verde_Bouncer",
+    "name_us": "Green Bouncer Light",
+    "name_br": "Luz Verde Bouncer",
     "price": "10.00",
     "usa_price": "6",
     "icon": "funky",
@@ -2229,6 +2491,8 @@
   {
     "id": 133,
     "name": "Luz_Azul_Bouncer",
+    "name_us": "Blue Bouncer Light",
+    "name_br": "Luz Azul Bouncer",
     "price": "10.00",
     "usa_price": "6",
     "icon": "funky",
@@ -2246,6 +2510,8 @@
   {
     "id": 134,
     "name": "Luz_Amarilla_Bouncer",
+    "name_us": "Yellow Bouncer Light",
+    "name_br": "Luz Amarela Bouncer",
     "price": "10.00",
     "usa_price": "6",
     "icon": "funky",
@@ -2263,6 +2529,8 @@
   {
     "id": 135,
     "name": "Maquina_De_Habbocola",
+    "name_us": "Habbocola Machine",
+    "name_br": "Máquina de Habbocola",
     "price": "75.00",
     "usa_price": "25",
     "icon": "funky",
@@ -2280,6 +2548,8 @@
   {
     "id": 136,
     "name": "Meta_Azul_Ultramarino",
+    "name_us": "Ultramarine Blue Goal",
+    "name_br": "Meta Azul Ultramar",
     "price": "15.00",
     "usa_price": "15",
     "icon": "funky",
@@ -2297,6 +2567,8 @@
   {
     "id": 137,
     "name": "Meta_Lila",
+    "name_us": "Lilac Goal",
+    "name_br": "Meta Lilás",
     "price": "15.00",
     "usa_price": "15",
     "icon": "funky",
@@ -2314,6 +2586,8 @@
   {
     "id": 138,
     "name": "Meta_Oro",
+    "name_us": "Gold Goal",
+    "name_br": "Meta Dourada",
     "price": "15.00",
     "usa_price": "15",
     "icon": "funky",
@@ -2331,6 +2605,8 @@
   {
     "id": 139,
     "name": "Meta_Rosa",
+    "name_us": "Pink Goal",
+    "name_br": "Meta Rosa",
     "price": "15.00",
     "usa_price": "15",
     "icon": "funky",
@@ -2348,6 +2624,8 @@
   {
     "id": 140,
     "name": "Pista_Azul_Ultramarino",
+    "name_us": "Ultramarine Blue Track",
+    "name_br": "Pista Azul Ultramar",
     "price": "15.00",
     "usa_price": "15",
     "icon": "funky",
@@ -2365,6 +2643,8 @@
   {
     "id": 141,
     "name": "Pista_Lila",
+    "name_us": "Lilac Track",
+    "name_br": "Pista Lilás",
     "price": "15.00",
     "usa_price": "15",
     "icon": "funky",
@@ -2382,6 +2662,8 @@
   {
     "id": 142,
     "name": "Pista_Oro",
+    "name_us": "Gold Track",
+    "name_br": "Pista Dourada",
     "price": "15.00",
     "usa_price": "15",
     "icon": "funky",
@@ -2399,6 +2681,8 @@
   {
     "id": 143,
     "name": "Pista_Rosa",
+    "name_us": "Pink Track",
+    "name_br": "Pista Rosa",
     "price": "15.00",
     "usa_price": "15",
     "icon": "funky",
@@ -2416,6 +2700,8 @@
   {
     "id": 145,
     "name": "Coleccion_Alfombras_Oso",
+    "name_us": "Bear Carpet Collection",
+    "name_br": "Coleção de Tapetes de Urso",
     "price": "450.00",
     "usa_price": "450",
     "icon": "coleccion",
@@ -2433,6 +2719,8 @@
   {
     "id": 146,
     "name": "Coleccion_Amarillo_Girasol_Plasto",
+    "name_us": "Sunflower Yellow Plasto Collection",
+    "name_br": "Coleção Amarelo Girassol Plasto",
     "price": "1650.00",
     "usa_price": "1650",
     "icon": "coleccion",
@@ -2450,6 +2738,8 @@
   {
     "id": 147,
     "name": "Coleccion_Bonsais",
+    "name_us": "Bonsai Collection",
+    "name_br": "Coleção de Bonsais",
     "price": "36.00",
     "usa_price": "36",
     "icon": "coleccion",
@@ -2467,6 +2757,8 @@
   {
     "id": 148,
     "name": "Coleccion_Bouncer",
+    "name_us": "Bouncer Collection",
+    "name_br": "Coleção Bouncer",
     "price": "50.00",
     "usa_price": "25",
     "icon": "coleccion",
@@ -2484,6 +2776,8 @@
   {
     "id": 149,
     "name": "Coleccion_Felpudos",
+    "name_us": "Doormat Collection",
+    "name_br": "Coleção de Capachos",
     "price": "470.00",
     "usa_price": "470",
     "icon": "coleccion",
@@ -2501,6 +2795,8 @@
   {
     "id": 150,
     "name": "Coleccion_Musgo_Oscuro_Plasto",
+    "name_us": "Dark Moss Plasto Collection",
+    "name_br": "Coleção Musgo Escuro Plasto",
     "price": "1250.00",
     "usa_price": "1250",
     "icon": "coleccion",
@@ -2518,6 +2814,8 @@
   {
     "id": 151,
     "name": "Coleccion_Naranja_Mandarina_Plasto",
+    "name_us": "Mandarin Orange Plasto Collection",
+    "name_br": "Coleção Laranja Mandarim Plasto",
     "price": "2700.00",
     "usa_price": "2700",
     "icon": "coleccion",
@@ -2535,6 +2833,8 @@
   {
     "id": 152,
     "name": "Coleccion_Oro_Bronce_Plasto",
+    "name_us": "Gold Bronze Plasto Collection",
+    "name_br": "Coleção Ouro Bronze Plasto",
     "price": "2450.00",
     "usa_price": "2450",
     "icon": "coleccion",
@@ -2552,6 +2852,8 @@
   {
     "id": 153,
     "name": "Coleccion_Pistas",
+    "name_us": "Track Collection",
+    "name_br": "Coleção de Pistas",
     "price": "140.00",
     "usa_price": "140",
     "icon": "coleccion",
@@ -2569,6 +2871,8 @@
   {
     "id": 154,
     "name": "Coleccion_Pods_Primera_Generacion",
+    "name_us": "First Generation Pods Collection",
+    "name_br": "Coleção de Pods Primeira Geração",
     "price": "2000.00",
     "usa_price": "2000",
     "icon": "coleccion",
@@ -2586,6 +2890,8 @@
   {
     "id": 155,
     "name": "Coleccion_Verde_Bosque_Plasto",
+    "name_us": "Forest Green Plasto Collection",
+    "name_br": "Coleção Verde Floresta Plasto",
     "price": "1250.00",
     "usa_price": "1250",
     "icon": "coleccion",
@@ -2603,6 +2909,8 @@
   {
     "id": 156,
     "name": "Coleccion_Semi_Completa_Plasto_Primera_Generacion",
+    "name_us": "Semi-Complete First Gen Plasto Collection",
+    "name_br": "Coleção Semi-Completa Plasto Primeira Geração",
     "price": "9300.00",
     "usa_price": "9300",
     "icon": "coleccion",
@@ -2620,6 +2928,8 @@
   {
     "id": 157,
     "name": "Coleccion_Completa_Plasto_Primera_Generacion",
+    "name_us": "Complete First Gen Plasto Collection",
+    "name_br": "Coleção Completa Plasto Primeira Geração",
     "price": "10500.00",
     "usa_price": "10500",
     "icon": "coleccion",
@@ -2637,6 +2947,8 @@
   {
     "id": 158,
     "name": "Aloe_Vera",
+    "name_us": "Aloe Vera",
+    "name_br": "Aloe Vera",
     "price": "350.00",
     "usa_price": "50",
     "icon": "rare",
@@ -2654,6 +2966,8 @@
   {
     "id": 159,
     "name": "Sofa_Doble_Verde_Fresa",
+    "name_us": "Double Green Strawberry Sofa",
+    "name_br": "Sofá Duplo Verde Morango",
     "price": "19.00",
     "usa_price": "19",
     "icon": "funky",
@@ -2671,6 +2985,8 @@
   {
     "id": 160,
     "name": "Sillon_Verde_Fresa",
+    "name_us": "Green Strawberry Armchair",
+    "name_br": "Poltrona Verde Morango",
     "price": "19.00",
     "usa_price": "19",
     "icon": "funky",
@@ -2688,6 +3004,8 @@
   {
     "id": 161,
     "name": "Sillon_Turquesa",
+    "name_us": "Turquoise Armchair",
+    "name_br": "Poltrona Turquesa",
     "price": "19.00",
     "usa_price": "19",
     "icon": "funky",
@@ -2705,6 +3023,8 @@
   {
     "id": 162,
     "name": "Sofa_Doble_Turquesa",
+    "name_us": "Double Turquoise Sofa",
+    "name_br": "Sofá Duplo Turquesa",
     "price": "19.00",
     "usa_price": "19",
     "icon": "funky",
@@ -2722,6 +3042,8 @@
   {
     "id": 163,
     "name": "Sofa_Doble_Lavanda",
+    "name_us": "Double Lavender Sofa",
+    "name_br": "Sofá Duplo Lavanda",
     "price": "19.00",
     "usa_price": "19",
     "icon": "funky",
@@ -2739,6 +3061,8 @@
   {
     "id": 164,
     "name": "Sillon_Lavanda",
+    "name_us": "Lavender Armchair",
+    "name_br": "Poltrona Lavanda",
     "price": "19.00",
     "usa_price": "19",
     "icon": "funky",
@@ -2756,6 +3080,8 @@
   {
     "id": 165,
     "name": "Sofa_Doble_Verde_Lima",
+    "name_us": "Double Lime Green Sofa",
+    "name_br": "Sofá Duplo Verde Lima",
     "price": "19.00",
     "usa_price": "19",
     "icon": "funky",
@@ -2773,6 +3099,8 @@
   {
     "id": 166,
     "name": "Sillon_Verde_Lima",
+    "name_us": "Lime Green Armchair",
+    "name_br": "Poltrona Verde Lima",
     "price": "19.00",
     "usa_price": "19",
     "icon": "funky",
@@ -2790,6 +3118,8 @@
   {
     "id": 167,
     "name": "Coleccion_Sueño_Azul",
+    "name_us": "Blue Dream Collection",
+    "name_br": "Coleção Sonho Azul",
     "price": "50.00",
     "usa_price": "50",
     "icon": "coleccion",
@@ -2807,6 +3137,8 @@
   {
     "id": 168,
     "name": "Coleccion_Mode",
+    "name_us": "Mode Collection",
+    "name_br": "Coleção Mode",
     "price": "150.00",
     "usa_price": "150",
     "icon": "coleccion",
@@ -2824,6 +3156,8 @@
   {
     "id": 169,
     "name": "Coleccion_TV",
+    "name_us": "TV Collection",
+    "name_br": "Coleção de TVs",
     "price": "50.00",
     "usa_price": "25",
     "icon": "coleccion",
@@ -2841,6 +3175,8 @@
   {
     "id": 170,
     "name": "TV_Amarilla",
+    "name_us": "Yellow TV",
+    "name_br": "TV Amarela",
     "price": "10.00",
     "usa_price": "5",
     "icon": "funky",
@@ -2858,6 +3194,8 @@
   {
     "id": 171,
     "name": "TV_Naranja",
+    "name_us": "Orange TV",
+    "name_br": "TV Laranja",
     "price": "10.00",
     "usa_price": "5",
     "icon": "funky",
@@ -2875,6 +3213,8 @@
   {
     "id": 172,
     "name": "TV_Azul",
+    "name_us": "Blue TV",
+    "name_br": "TV Azul",
     "price": "10.00",
     "usa_price": "5",
     "icon": "funky",
@@ -2892,6 +3232,8 @@
   {
     "id": 173,
     "name": "TV_Verde",
+    "name_us": "Green TV",
+    "name_br": "TV Verde",
     "price": "10.00",
     "usa_price": "5",
     "icon": "funky",
@@ -2909,6 +3251,8 @@
   {
     "id": 174,
     "name": "TV_Lila",
+    "name_us": "Lilac TV",
+    "name_br": "TV Lilás",
     "price": "10.00",
     "usa_price": "5",
     "icon": "funky",
@@ -2926,6 +3270,8 @@
   {
     "id": 175,
     "name": "Pilar_Dorico_Azul",
+    "name_us": "Blue Doric Pillar",
+    "name_br": "Pilar Dórico Azul",
     "price": "95.00",
     "usa_price": "50",
     "icon": "rare",
@@ -2943,6 +3289,8 @@
   {
     "id": 176,
     "name": "Alarma",
+    "name_us": "Alarm",
+    "name_br": "Alarme",
     "price": "10.00",
     "usa_price": "1",
     "icon": "deportes",
@@ -2960,6 +3308,8 @@
   {
     "id": 177,
     "name": "La_Canasta",
+    "name_us": "The Basket",
+    "name_br": "A Cesta",
     "price": "10.00",
     "usa_price": "4",
     "icon": "deportes",
@@ -2977,6 +3327,8 @@
   {
     "id": 178,
     "name": "El_Banquillo",
+    "name_us": "The Bench",
+    "name_br": "O Banco",
     "price": "10.00",
     "usa_price": "1",
     "icon": "deportes",
@@ -2994,6 +3346,8 @@
   {
     "id": 179,
     "name": "Trofeo_Basketball",
+    "name_us": "Basketball Trophy",
+    "name_br": "Troféu de Basquete",
     "price": "10.00",
     "usa_price": "5",
     "icon": "deportes",
@@ -3011,6 +3365,8 @@
   {
     "id": 180,
     "name": "El_Contador",
+    "name_us": "The Counter",
+    "name_br": "O Balcão",
     "price": "10.00",
     "usa_price": "3",
     "icon": "deportes",
@@ -3028,6 +3384,8 @@
   {
     "id": 181,
     "name": "El_Campo",
+    "name_us": "The Field",
+    "name_br": "O Campo",
     "price": "10.00",
     "usa_price": "3",
     "icon": "deportes",
@@ -3045,6 +3403,8 @@
   {
     "id": 182,
     "name": "Palo_De_Hockey_1",
+    "name_us": "Hockey Stick 1",
+    "name_br": "Taco de Hóquei 1",
     "price": "10.00",
     "usa_price": "2",
     "icon": "deportes",
@@ -3062,6 +3422,8 @@
   {
     "id": 183,
     "name": "Palo_De_Hockey_2",
+    "name_us": "Hockey Stick 2",
+    "name_br": "Taco de Hóquei 2",
     "price": "10.00",
     "usa_price": "2",
     "icon": "deportes",
@@ -3079,6 +3441,8 @@
   {
     "id": 184,
     "name": "Palo_De_Hockey_3",
+    "name_us": "Hockey Stick 3",
+    "name_br": "Taco de Hóquei 3",
     "price": "10.00",
     "usa_price": "2",
     "icon": "deportes",
@@ -3096,6 +3460,8 @@
   {
     "id": 185,
     "name": "Meta_Cemento",
+    "name_us": "Cement Goal",
+    "name_br": "Gol de Cimento",
     "price": "5.00",
     "usa_price": "2",
     "icon": "deportes",
@@ -3113,6 +3479,8 @@
   {
     "id": 186,
     "name": "Meta_Tartan",
+    "name_us": "Tartan Goal",
+    "name_br": "Gol de Tartan",
     "price": "5.00",
     "usa_price": "2",
     "icon": "deportes",
@@ -3130,6 +3498,8 @@
   {
     "id": 187,
     "name": "Meta_Hierba",
+    "name_us": "Grass Goal",
+    "name_br": "Gol de Grama",
     "price": "5.00",
     "usa_price": "2",
     "icon": "deportes",
@@ -3147,6 +3517,8 @@
   {
     "id": 188,
     "name": "Pista_Recta_Cemento",
+    "name_us": "Cement Straight Track",
+    "name_br": "Pista Reta de Cimento",
     "price": "5.00",
     "usa_price": "1",
     "icon": "deportes",
@@ -3164,6 +3536,8 @@
   {
     "id": 189,
     "name": "Pista_Recta_Tartan",
+    "name_us": "Tartan Straight Track",
+    "name_br": "Pista Reta de Tartan",
     "price": "5.00",
     "usa_price": "1",
     "icon": "deportes",
@@ -3181,6 +3555,8 @@
   {
     "id": 190,
     "name": "Pista_Recta_Hierba",
+    "name_us": "Grass Straight Track",
+    "name_br": "Pista Reta de Grama",
     "price": "5.00",
     "usa_price": "1",
     "icon": "deportes",
@@ -3198,6 +3574,8 @@
   {
     "id": 191,
     "name": "Corner_Cemento",
+    "name_us": "Cement Corner",
+    "name_br": "Esquina de Cimento",
     "price": "5.00",
     "usa_price": "1",
     "icon": "deportes",
@@ -3215,6 +3593,8 @@
   {
     "id": 192,
     "name": "Corner_Tartan",
+    "name_us": "Tartan Corner",
+    "name_br": "Esquina de Tartan",
     "price": "5.00",
     "usa_price": "1",
     "icon": "deportes",
@@ -3232,6 +3612,8 @@
   {
     "id": 193,
     "name": "Corner_Hierba",
+    "name_us": "Grass Corner",
+    "name_br": "Esquina de Grama",
     "price": "5.00",
     "usa_price": "1",
     "icon": "deportes",
@@ -3249,6 +3631,8 @@
   {
     "id": 194,
     "name": "Trofeo_Futbol",
+    "name_us": "Football Trophy",
+    "name_br": "Troféu de Futebol",
     "price": "10.00",
     "usa_price": "5",
     "icon": "deportes",
@@ -3266,6 +3650,8 @@
   {
     "id": 195,
     "name": "Vela_Pirata",
+    "name_us": "Pirate Sail",
+    "name_br": "Vela Pirata",
     "price": "5.00",
     "usa_price": "5",
     "icon": "cabin",
@@ -3283,6 +3669,8 @@
   {
     "id": 196,
     "name": "Camastro_De_Pirata",
+    "name_us": "Pirate Lounge Chair",
+    "name_br": "Espreguiçadeira Pirata",
     "price": "5.00",
     "usa_price": "3",
     "icon": "cabin",
@@ -3300,6 +3688,8 @@
   {
     "id": 197,
     "name": "Cama_Del_Señor_Pirata",
+    "name_us": "Pirate Lord's Bed",
+    "name_br": "Cama do Senhor Pirata",
     "price": "5.00",
     "usa_price": "3",
     "icon": "cabin",
@@ -3317,6 +3707,8 @@
   {
     "id": 198,
     "name": "Barra_De_Pirata",
+    "name_us": "Pirate Bar",
+    "name_br": "Bar dos Piratas",
     "price": "5.00",
     "usa_price": "3",
     "icon": "cabin",
@@ -3334,6 +3726,8 @@
   {
     "id": 199,
     "name": "Capitan_Colita_De_Algodon",
+    "name_us": "Captain Cotton Tail",
+    "name_br": "Capitão Rabo de Algodão",
     "price": "10.00",
     "usa_price": "5",
     "icon": "funky",
@@ -3351,6 +3745,8 @@
   {
     "id": 200,
     "name": "Mesa_De_Comedor_Del_Forajido",
+    "name_us": "Outlaw's Dining Table",
+    "name_br": "Mesa de Jantar do Fora da Lei",
     "price": "5.00",
     "usa_price": "3",
     "icon": "cabin",
@@ -3368,6 +3764,8 @@
   {
     "id": 201,
     "name": "Mesa_De_Pirata",
+    "name_us": "Pirate Table",
+    "name_br": "Mesa dos Piratas",
     "price": "5.00",
     "usa_price": "2",
     "icon": "cabin",
@@ -3385,6 +3783,8 @@
   {
     "id": 203,
     "name": "Taburete_De_Barril",
+    "name_us": "Barrel Stool",
+    "name_br": "Banco de Barril",
     "price": "3.00",
     "usa_price": "1",
     "icon": "cabin",
@@ -3402,6 +3802,8 @@
   {
     "id": 204,
     "name": "Estante_Del_Tesoro",
+    "name_us": "Treasure Shelf",
+    "name_br": "Estante do Tesouro",
     "price": "5.00",
     "usa_price": "3",
     "icon": "cabin",
@@ -3419,6 +3821,8 @@
   {
     "id": 205,
     "name": "Lampara_De_Pirata",
+    "name_us": "Pirate Lamp",
+    "name_br": "Lâmpada Pirata",
     "price": "5.00",
     "usa_price": "3",
     "icon": "cabin",
@@ -3436,6 +3840,8 @@
   {
     "id": 206,
     "name": "Minibar_De_Barril",
+    "name_us": "Barrel Minibar",
+    "name_br": "Frigobar de Barril",
     "price": "5.00",
     "usa_price": "3",
     "icon": "cabin",
@@ -3453,6 +3859,8 @@
   {
     "id": 207,
     "name": "Poste_De_Esquina",
+    "name_us": "Corner Post",
+    "name_br": "Poste de Esquina",
     "price": "15.00",
     "usa_price": "25",
     "icon": "cabin",
@@ -3470,6 +3878,8 @@
   {
     "id": 209,
     "name": "Banco_De_Pirata",
+    "name_us": "Pirate Bench",
+    "name_br": "Banco dos Piratas",
     "price": "5.00",
     "usa_price": "3",
     "icon": "cabin",
@@ -3487,6 +3897,8 @@
   {
     "id": 210,
     "name": "Divisor_Del_Corsario",
+    "name_us": "Corsair Divider",
+    "name_br": "Divisória do Corsário",
     "price": "5.00",
     "usa_price": "3",
     "icon": "cabin",
@@ -3504,6 +3916,8 @@
   {
     "id": 211,
     "name": "Porton_Viejo",
+    "name_us": "Old Gate",
+    "name_br": "Portão Velho",
     "price": "5.00",
     "usa_price": "4",
     "icon": "cabin",
@@ -3521,6 +3935,8 @@
   {
     "id": 212,
     "name": "Pato_Pirata_Verde",
+    "name_us": "Green Pirate Duck",
+    "name_br": "Pato Pirata Verde",
     "price": "5.00",
     "usa_price": "5",
     "icon": "funky",
@@ -3538,6 +3954,8 @@
   {
     "id": 213,
     "name": "Pato_Pirata_Rojo",
+    "name_us": "Red Pirate Duck",
+    "name_br": "Pato Pirata Vermelho",
     "price": "5.00",
     "usa_price": "5",
     "icon": "funky",
@@ -3555,6 +3973,8 @@
   {
     "id": 214,
     "name": "Pato_Pirata_Azul",
+    "name_us": "Blue Pirate Duck",
+    "name_br": "Pato Pirata Azul",
     "price": "5.00",
     "usa_price": "5",
     "icon": "funky",
@@ -3572,6 +3992,8 @@
   {
     "id": 215,
     "name": "Pato_Pirata_Morado",
+    "name_us": "Purple Pirate Duck",
+    "name_br": "Pato Pirata Roxo",
     "price": "5.00",
     "usa_price": "5",
     "icon": "funky",
@@ -3589,6 +4011,8 @@
   {
     "id": 216,
     "name": "Pato_Pirata_Negro",
+    "name_us": "Black Pirate Duck",
+    "name_br": "Pato Pirata Preto",
     "price": "5.00",
     "usa_price": "5",
     "icon": "funky",
@@ -3606,6 +4030,8 @@
   {
     "id": 217,
     "name": "Coleccion_Pirata_Funky",
+    "name_us": "Funky Pirate Collection",
+    "name_br": "Coleção Pirata Funky",
     "price": "35.00",
     "usa_price": "30",
     "icon": "coleccion",
@@ -3623,6 +4049,8 @@
   {
     "id": 218,
     "name": "Taburete_De_Pirata",
+    "name_us": "Pirate Stool",
+    "name_br": "Banco Pirata",
     "price": "3.00",
     "usa_price": "1",
     "icon": "cabin",
@@ -3640,6 +4068,8 @@
   {
     "id": 219,
     "name": "Alfombra_Playa",
+    "name_us": "Beach Carpet",
+    "name_br": "Tapete de Praia",
     "price": "50.00",
     "usa_price": "17",
     "icon": "rare",
@@ -3657,6 +4087,8 @@
   {
     "id": 220,
     "name": "Trofeo_Battle_Ball_Temporada_0",
+    "name_us": "Battle Ball Season 0 Trophy",
+    "name_br": "Troféu Battle Ball Temporada 0",
     "price": "50.00",
     "usa_price": "50",
     "icon": "rare",
@@ -3674,6 +4106,8 @@
   {
     "id": 221,
     "name": "Placa_Del_Oso_Bucanero",
+    "name_us": "Bear Buccaneer Badge",
+    "name_br": "Placa do Urso Bucaneiro",
     "price": "10.00",
     "usa_price": "10",
     "icon": "funky",
@@ -3691,6 +4125,8 @@
   {
     "id": 222,
     "name": "Placa_Del_Capitan_Croc",
+    "name_us": "Captain Croc Badge",
+    "name_br": "Placa do Capitão Croc",
     "price": "10.00",
     "usa_price": "10",
     "icon": "funky",
@@ -3708,6 +4144,8 @@
   {
     "id": 223,
     "name": "Mapa_De_La_Isla_Del_Tesoro",
+    "name_us": "Treasure Island Map",
+    "name_br": "Mapa da Ilha do Tesouro",
     "price": "50.00",
     "usa_price": "10",
     "icon": "funky",
@@ -3725,6 +4163,8 @@
   {
     "id": 224,
     "name": "Dragon_De_Fuego_Celeste",
+    "name_us": "Sky Blue Fire Dragon",
+    "name_br": "Dragão de Fogo Azul Celeste",
     "price": "140.00",
     "usa_price": "25",
     "icon": "rare",
@@ -3742,6 +4182,8 @@
   {
     "id": 225,
     "name": "Cactus_Habboween",
+    "name_us": "Halloween Cactus",
+    "name_br": "Cacto de Halloween",
     "price": "5.00",
     "usa_price": "3",
     "icon": "habboween",
@@ -3759,6 +4201,8 @@
   {
     "id": 226,
     "name": "Cadenas",
+    "name_us": "Chains",
+    "name_br": "Correntes",
     "price": "5.00",
     "usa_price": "4",
     "icon": "habboween",
@@ -3776,6 +4220,8 @@
   {
     "id": 227,
     "name": "Calavera",
+    "name_us": "Skull",
+    "name_br": "Crânio",
     "price": "5.00",
     "usa_price": "4",
     "icon": "habboween",
@@ -3793,6 +4239,8 @@
   {
     "id": 228,
     "name": "Cesped_Habboween",
+    "name_us": "Halloween Grass",
+    "name_br": "Grama de Halloween",
     "price": "70.00",
     "usa_price": "50",
     "icon": "rare",
@@ -3810,6 +4258,8 @@
   {
     "id": 229,
     "name": "El_Murcielago",
+    "name_us": "The Bat",
+    "name_br": "O Morcego",
     "price": "5.00",
     "usa_price": "3",
     "icon": "habboween",
@@ -3827,6 +4277,8 @@
   {
     "id": 230,
     "name": "Esqueleto",
+    "name_us": "Skeleton",
+    "name_br": "Esqueleto",
     "price": "5.00",
     "usa_price": "3",
     "icon": "habboween",
@@ -3844,6 +4296,8 @@
   {
     "id": 231,
     "name": "Hijo_Pato_De_Habboween",
+    "name_us": "Halloween Duckling",
+    "name_br": "Patinho de Halloween",
     "price": "3.00",
     "usa_price": "2",
     "icon": "habboween",
@@ -3861,6 +4315,8 @@
   {
     "id": 232,
     "name": "La_Calabaza",
+    "name_us": "The Pumpkin",
+    "name_br": "A Abóbora",
     "price": "5.00",
     "usa_price": "4",
     "icon": "habboween",
@@ -3878,6 +4334,8 @@
   {
     "id": 233,
     "name": "Mama_Pato_De_Habboween",
+    "name_us": "Halloween Mother Duck",
+    "name_br": "Mãe Pato de Halloween",
     "price": "3.00",
     "usa_price": "2",
     "icon": "habboween",
@@ -3895,6 +4353,8 @@
   {
     "id": 234,
     "name": "Momia",
+    "name_us": "Mummy",
+    "name_br": "Múmia",
     "price": "5.00",
     "usa_price": "4",
     "icon": "habboween",
@@ -3912,6 +4372,8 @@
   {
     "id": 235,
     "name": "Papa_Pato_De_Habboween",
+    "name_us": "Halloween Father Duck",
+    "name_br": "Pai Pato de Halloween",
     "price": "3.00",
     "usa_price": "2",
     "icon": "habboween",
@@ -3929,6 +4391,8 @@
   {
     "id": 236,
     "name": "Piña_Habboween",
+    "name_us": "Halloween Pineapple",
+    "name_br": "Abacaxi de Halloween",
     "price": "5.00",
     "usa_price": "3",
     "icon": "habboween",
@@ -3946,6 +4410,8 @@
   {
     "id": 237,
     "name": "Tela_De_Araña",
+    "name_us": "Spider Web",
+    "name_br": "Teia de Aranha",
     "price": "5.00",
     "usa_price": "3",
     "icon": "habboween",
@@ -3963,6 +4429,8 @@
   {
     "id": 238,
     "name": "Yukka_Habboween",
+    "name_us": "Halloween Yucca",
+    "name_br": "Yucca de Halloween",
     "price": "5.00",
     "usa_price": "3",
     "icon": "habboween",
@@ -3980,6 +4448,8 @@
   {
     "id": 239,
     "name": "Antorcha_Gotica",
+    "name_us": "Gothic Torch",
+    "name_br": "Tocha Gótica",
     "price": "20.00",
     "usa_price": "10",
     "icon": "gotico",
@@ -3997,6 +4467,8 @@
   {
     "id": 240,
     "name": "Camino_De_Adoquines",
+    "name_us": "Cobblestone Path",
+    "name_br": "Caminho de Paralelepípedos",
     "price": "10.00",
     "usa_price": "4",
     "icon": "gotico",
@@ -4014,6 +4486,8 @@
   {
     "id": 241,
     "name": "Candelabro_Gotico",
+    "name_us": "Gothic Chandelier",
+    "name_br": "Candelabro Gótico",
     "price": "15.00",
     "usa_price": "8",
     "icon": "gotico",
@@ -4031,6 +4505,8 @@
   {
     "id": 242,
     "name": "Desague_Gotico",
+    "name_us": "Gothic Drain",
+    "name_br": "Ralo Gótico",
     "price": "5.00",
     "usa_price": "5",
     "icon": "gotico",
@@ -4048,6 +4524,8 @@
   {
     "id": 243,
     "name": "Mesa_Gotica",
+    "name_us": "Gothic Table",
+    "name_br": "Mesa Gótica",
     "price": "10.00",
     "usa_price": "10",
     "icon": "gotico",
@@ -4065,6 +4543,8 @@
   {
     "id": 244,
     "name": "Porton_Gotico",
+    "name_us": "Gothic Gate",
+    "name_br": "Portão Gótico",
     "price": "10.00",
     "usa_price": "8",
     "icon": "gotico",
@@ -4082,6 +4562,8 @@
   {
     "id": 245,
     "name": "Sofa_Gotico_Azafran",
+    "name_us": "Saffron Gothic Sofa",
+    "name_br": "Sofá Gótico de Açafrão",
     "price": "10.00",
     "usa_price": "6",
     "icon": "gotico",
@@ -4099,6 +4581,8 @@
   {
     "id": 246,
     "name": "Sofa_Gotico_Azul",
+    "name_us": "Blue Gothic Sofa",
+    "name_br": "Sofá Gótico Azul",
     "price": "10.00",
     "usa_price": "6",
     "icon": "gotico",
@@ -4116,6 +4600,8 @@
   {
     "id": 247,
     "name": "Sofa_Gotico_Negro",
+    "name_us": "Black Gothic Sofa",
+    "name_br": "Sofá Gótico Preto",
     "price": "10.00",
     "usa_price": "6",
     "icon": "gotico",
@@ -4133,6 +4619,8 @@
   {
     "id": 248,
     "name": "Sofa_Gotico_Rojo",
+    "name_us": "Red Gothic Sofa",
+    "name_br": "Sofá Gótico Vermelho",
     "price": "10.00",
     "usa_price": "6",
     "icon": "gotico",
@@ -4150,6 +4638,8 @@
   {
     "id": 249,
     "name": "Sofa_Gotico_Rosa",
+    "name_us": "Pink Gothic Sofa",
+    "name_br": "Sofá Gótico Rosa",
     "price": "10.00",
     "usa_price": "6",
     "icon": "gotico",
@@ -4167,6 +4657,8 @@
   {
     "id": 250,
     "name": "Sofa_Gotico_Verde",
+    "name_us": "Green Gothic Sofa",
+    "name_br": "Sofá Gótico Verde",
     "price": "10.00",
     "usa_price": "6",
     "icon": "gotico",
@@ -4184,6 +4676,8 @@
   {
     "id": 251,
     "name": "Taburete_Gotico_Azafran",
+    "name_us": "Saffron Gothic Stool",
+    "name_br": "Banqueta Gótica de Açafrão",
     "price": "5.00",
     "usa_price": "4",
     "icon": "gotico",
@@ -4201,6 +4695,8 @@
   {
     "id": 252,
     "name": "Taburete_Gotico_Azul",
+    "name_us": "Blue Gothic Stool",
+    "name_br": "Banqueta Gótica Azul",
     "price": "5.00",
     "usa_price": "4",
     "icon": "gotico",
@@ -4218,6 +4714,8 @@
   {
     "id": 253,
     "name": "Taburete_Gotico_Rojo",
+    "name_us": "Red Gothic Stool",
+    "name_br": "Banqueta Gótica Vermelha",
     "price": "5.00",
     "usa_price": "4",
     "icon": "gotico",
@@ -4235,6 +4733,8 @@
   {
     "id": 254,
     "name": "Taburete_Gotico_Rosa",
+    "name_us": "Pink Gothic Stool",
+    "name_br": "Banqueta Gótica Rosa",
     "price": "5.00",
     "usa_price": "4",
     "icon": "gotico",
@@ -4252,6 +4752,8 @@
   {
     "id": 255,
     "name": "Taburete_Gotico_Negro",
+    "name_us": "Black Gothic Stool",
+    "name_br": "Banqueta Gótica Preta",
     "price": "5.00",
     "usa_price": "4",
     "icon": "gotico",
@@ -4269,6 +4771,8 @@
   {
     "id": 256,
     "name": "Taburete_Gotico_Verde",
+    "name_us": "Green Gothic Stool",
+    "name_br": "Banqueta Gótica Verde",
     "price": "5.00",
     "usa_price": "4",
     "icon": "gotico",
@@ -4286,6 +4790,8 @@
   {
     "id": 257,
     "name": "Trono_Gotico_Azafran",
+    "name_us": "Saffron Gothic Throne",
+    "name_br": "Trono Gótico de Açafrão",
     "price": "15.00",
     "usa_price": "8",
     "icon": "gotico",
@@ -4303,6 +4809,8 @@
   {
     "id": 258,
     "name": "Trono_Gotico_Azul",
+    "name_us": "Blue Gothic Throne",
+    "name_br": "Trono Gótico Azul",
     "price": "15.00",
     "usa_price": "8",
     "icon": "gotico",
@@ -4320,6 +4828,8 @@
   {
     "id": 259,
     "name": "Trono_Gotico_Negro",
+    "name_us": "Black Gothic Throne",
+    "name_br": "Trono Gótico Preto",
     "price": "15.00",
     "usa_price": "8",
     "icon": "gotico",
@@ -4337,6 +4847,8 @@
   {
     "id": 260,
     "name": "Trono_Gotico_Rojo",
+    "name_us": "Red Gothic Throne",
+    "name_br": "Trono Gótico Vermelho",
     "price": "15.00",
     "usa_price": "8",
     "icon": "gotico",
@@ -4354,6 +4866,8 @@
   {
     "id": 261,
     "name": "Trono_Gotico_Rosa",
+    "name_us": "Pink Gothic Throne",
+    "name_br": "Trono Gótico Rosa",
     "price": "15.00",
     "usa_price": "8",
     "icon": "gotico",
@@ -4371,6 +4885,8 @@
   {
     "id": 262,
     "name": "Trono_Gotico_Verde",
+    "name_us": "Green Gothic Throne",
+    "name_br": "Trono Gótico Verde",
     "price": "15.00",
     "usa_price": "8",
     "icon": "gotico",
@@ -4388,6 +4904,8 @@
   {
     "id": 263,
     "name": "Verja_Gotica",
+    "name_us": "Gothic Fence",
+    "name_br": "Cerca Gótica",
     "price": "10.00",
     "usa_price": "8",
     "icon": "gotico",
@@ -4405,6 +4923,8 @@
   {
     "id": 264,
     "name": "Habbocola_Naranja",
+    "name_us": "Orange Habbocola",
+    "name_br": "Habbocola Laranja",
     "price": "0.00",
     "usa_price": "0",
     "icon": "funky",
@@ -4422,6 +4942,8 @@
   {
     "id": 265,
     "name": "Habbocola_Lila",
+    "name_us": "Lilac Habbocola",
+    "name_br": "Habbocola Lilás",
     "price": "50.00",
     "usa_price": "0",
     "icon": "funky",
@@ -4439,6 +4961,8 @@
   {
     "id": 266,
     "name": "Conejo_Zombie",
+    "name_us": "Zombie Bunny",
+    "name_br": "Coelho Zumbi",
     "price": "5.00",
     "usa_price": "5",
     "icon": "funky",
@@ -4456,6 +4980,8 @@
   {
     "id": 267,
     "name": "Poster_Pato_Malefico",
+    "name_us": "Evil Duck Poster",
+    "name_br": "Pôster Pato Malévolo",
     "price": "10.00",
     "usa_price": "10",
     "icon": "funky",
@@ -4473,6 +4999,8 @@
   {
     "id": 268,
     "name": "Agujero_En_El_Castillo",
+    "name_us": "Castle Hole",
+    "name_br": "Buraco no Castelo",
     "price": "10.00",
     "usa_price": "10",
     "icon": "funky",
@@ -4490,6 +5018,8 @@
   {
     "id": 269,
     "name": "Placa_Arma_Homicida",
+    "name_us": "Homicide Weapon Badge",
+    "name_br": "Placa Arma Homicida",
     "price": "10.00",
     "usa_price": "10",
     "icon": "funky",
@@ -4507,6 +5037,8 @@
   {
     "id": 270,
     "name": "Fuente_De_Pato_Sangrienta",
+    "name_us": "Bloody Duck Fountain",
+    "name_br": "Fonte do Pato Sangrenta",
     "price": "95.00",
     "usa_price": "50",
     "icon": "funky",
@@ -4524,6 +5056,8 @@
   {
     "id": 271,
     "name": "Fuente_De_Pato_Enferma",
+    "name_us": "Sick Duck Fountain",
+    "name_br": "Fonte do Pato Doente",
     "price": "95.00",
     "usa_price": "50",
     "icon": "funky",
@@ -4541,6 +5075,8 @@
   {
     "id": 272,
     "name": "Guirnalda_Amarilla",
+    "name_us": "Yellow Garland",
+    "name_br": "Guirlanda Amarela",
     "price": "15.00",
     "usa_price": "10",
     "icon": "funky",
@@ -4558,6 +5094,8 @@
   {
     "id": 273,
     "name": "Guirnalda_Blanca",
+    "name_us": "White Garland",
+    "name_br": "Guirlanda Branca",
     "price": "15.00",
     "usa_price": "10",
     "icon": "funky",
@@ -4575,6 +5113,8 @@
   {
     "id": 274,
     "name": "Guirnalda_Celeste",
+    "name_us": "Sky Blue Garland",
+    "name_br": "Guirlanda Azul Celeste",
     "price": "0.00",
     "usa_price": "0",
     "icon": "funky",
@@ -4592,6 +5132,8 @@
   {
     "id": 275,
     "name": "La_Calabaza_Blanca",
+    "name_us": "White Pumpkin",
+    "name_br": "Abóbora Branca",
     "price": "10.00",
     "usa_price": "10",
     "icon": "funky",
@@ -4609,6 +5151,8 @@
   {
     "id": 276,
     "name": "La_Calabaza_Negra",
+    "name_us": "Black Pumpkin",
+    "name_br": "Abóbora Preta",
     "price": "10.00",
     "usa_price": "10",
     "icon": "funky",
@@ -4626,6 +5170,8 @@
   {
     "id": 277,
     "name": "La_Calabaza_Roja",
+    "name_us": "Red Pumpkin",
+    "name_br": "Abóbora Vermelha",
     "price": "10.00",
     "usa_price": "10",
     "icon": "funky",
@@ -4643,6 +5189,8 @@
   {
     "id": 278,
     "name": "Pato_Brujo",
+    "name_us": "Wizard Duck",
+    "name_br": "Pato Mago",
     "price": "5.00",
     "usa_price": "5",
     "icon": "funky",
@@ -4660,6 +5208,8 @@
   {
     "id": 279,
     "name": "Pato_Diablo",
+    "name_us": "Devil Duck",
+    "name_br": "Pato Diabo",
     "price": "5.00",
     "usa_price": "5",
     "icon": "funky",
@@ -4677,6 +5227,8 @@
   {
     "id": 280,
     "name": "Portaloo_Del_Capitan",
+    "name_us": "Captain's Portaloo",
+    "name_br": "Banheiro do Capitão",
     "price": "35.00",
     "usa_price": "25",
     "icon": "funky",
@@ -4694,6 +5246,8 @@
   {
     "id": 281,
     "name": "Fuente_Gotica",
+    "name_us": "Gothic Fountain",
+    "name_br": "Fonte Gótica",
     "price": "70.00",
     "usa_price": "50",
     "icon": "rare",
@@ -4711,6 +5265,8 @@
   {
     "id": 282,
     "name": "Fontana_Gotica",
+    "name_us": "Gothic Font",
+    "name_br": "Fonte Tipográfica Gótica",
     "price": "140.00",
     "usa_price": "50",
     "icon": "rare",
@@ -4728,6 +5284,8 @@
   {
     "id": 283,
     "name": "Caldero_De_Habboween",
+    "name_us": "Halloween Cauldron",
+    "name_br": "Caldeirão de Halloween",
     "price": "140.00",
     "usa_price": "50",
     "icon": "rare",
@@ -4745,6 +5303,8 @@
   {
     "id": 284,
     "name": "Coleccion_Calabazas",
+    "name_us": "Pumpkin Collection",
+    "name_br": "Coleção de Abóboras",
     "price": "30.00",
     "usa_price": "30",
     "icon": "coleccion",
@@ -4762,6 +5322,8 @@
   {
     "id": 285,
     "name": "Coleccion_Freaky_Funky",
+    "name_us": "Freaky Funky Collection",
+    "name_br": "Coleção Funky Maluca",
     "price": "15.00",
     "usa_price": "15",
     "icon": "coleccion",
@@ -4779,6 +5341,8 @@
   {
     "id": 286,
     "name": "Trofeo_Fantasma",
+    "name_us": "Ghost Trophy",
+    "name_br": "Troféu Fantasma",
     "price": "0.00",
     "usa_price": "0",
     "icon": "rare",
@@ -4796,6 +5360,8 @@
   {
     "id": 287,
     "name": "Almohadon_Verde_Oscuro",
+    "name_us": "Dark Green Cushion",
+    "name_br": "Almofada Verde Escura",
     "price": "280.00",
     "usa_price": "67",
     "icon": "rare",
@@ -4813,6 +5379,8 @@
   {
     "id": 288,
     "name": "Trofeo_Staff_Oro_Aleksander",
+    "name_us": "Gold Staff Trophy Aleksander",
+    "name_br": "Troféu Staff Ouro Aleksander",
     "price": "100.00",
     "usa_price": "50",
     "icon": "mega_rare",
@@ -4830,6 +5398,8 @@
   {
     "id": 289,
     "name": "Dragon_De_Fuego_Negro",
+    "name_us": "Black Fire Dragon",
+    "name_br": "Dragão de Fogo Preto",
     "price": "490.00",
     "usa_price": "100",
     "icon": "rare",
@@ -4847,6 +5417,8 @@
   {
     "id": 290,
     "name": "Pod_Sueño_Carbon",
+    "name_us": "Carbon Dream Pod",
+    "name_br": "Pod Sonho Carbono",
     "price": "20.00",
     "usa_price": "12",
     "icon": "funky",
@@ -4864,6 +5436,8 @@
   {
     "id": 291,
     "name": "Silla_Sueño_Carbon",
+    "name_us": "Carbon Dream Chair",
+    "name_br": "Cadeira Sonho Carbono",
     "price": "10.00",
     "usa_price": "12",
     "icon": "funky",
@@ -4881,6 +5455,8 @@
   {
     "id": 292,
     "name": "Mesita_Sueño_Carbon",
+    "name_us": "Carbon Dream Small Table",
+    "name_br": "Mesinha Sonho Carbono",
     "price": "10.00",
     "usa_price": "12",
     "icon": "funky",
@@ -4898,6 +5474,8 @@
   {
     "id": 293,
     "name": "Mesa_Cuadrada_Sueño_Carbon",
+    "name_us": "Carbon Dream Square Table",
+    "name_br": "Mesa Quadrada Sonho Carbono",
     "price": "10.00",
     "usa_price": "10",
     "icon": "funky",
@@ -4915,6 +5493,8 @@
   {
     "id": 294,
     "name": "Mesa_Redonda_Sueño_Carbon",
+    "name_us": "Carbon Dream Round Table",
+    "name_br": "Mesa Redonda Sonho Carbono",
     "price": "12.00",
     "usa_price": "12",
     "icon": "funky",
@@ -4932,6 +5512,8 @@
   {
     "id": 295,
     "name": "Mesa_Rectangular_Sueño_Carbon",
+    "name_us": "Carbon Dream Rectangular Table",
+    "name_br": "Mesa Retangular Sonho Carbono",
     "price": "10.00",
     "usa_price": "12",
     "icon": "funky",
@@ -4949,6 +5531,8 @@
   {
     "id": 296,
     "name": "Coleccion_Sueño_Carbon",
+    "name_us": "Carbon Dream Collection",
+    "name_br": "Coleção Sonho Carbono",
     "price": "72.00",
     "usa_price": "72",
     "icon": "funky",
@@ -4966,6 +5550,8 @@
   {
     "id": 297,
     "name": "Hablador",
+    "name_us": "Speaker",
+    "name_br": "Alto-falante",
     "price": "140.00",
     "usa_price": "40",
     "icon": "rare",
@@ -4983,6 +5569,8 @@
   {
     "id": 298,
     "name": "TV_Negro",
+    "name_us": "Black TV",
+    "name_br": "TV Preta",
     "price": "10.00",
     "usa_price": "10",
     "icon": "funky",
@@ -5000,6 +5588,8 @@
   {
     "id": 299,
     "name": "Bonsai_Negro",
+    "name_us": "Black Bonsai",
+    "name_br": "Bonsai Preto",
     "price": "15.00",
     "usa_price": "10",
     "icon": "funky",
@@ -5017,6 +5607,8 @@
   {
     "id": 300,
     "name": "Trax_Record_Oro",
+    "name_us": "Gold Trax Record",
+    "name_br": "Disco de Ouro Trax",
     "price": "80000.00",
     "usa_price": "80000",
     "icon": "mega_rare",
@@ -5034,6 +5626,8 @@
   {
     "id": 301,
     "name": "Trax_Record_Plata",
+    "name_us": "Silver Trax Record",
+    "name_br": "Disco de Prata Trax",
     "price": "40000.00",
     "usa_price": "40000",
     "icon": "mega_rare",
@@ -5051,6 +5645,8 @@
   {
     "id": 302,
     "name": "Trax_Record_Bronce",
+    "name_us": "Bronze Trax Record",
+    "name_br": "Disco de Bronze Trax",
     "price": "20000.00",
     "usa_price": "20000",
     "icon": "mega_rare",
@@ -5068,6 +5664,8 @@
   {
     "id": 303,
     "name": "Signo_De_Origins",
+    "name_us": "Origins Sign",
+    "name_br": "Placa de Origem",
     "price": "40.00",
     "usa_price": "25",
     "icon": "funky",
@@ -5085,6 +5683,8 @@
   {
     "id": 304,
     "name": "Tocadiscos_Habbo_Romantico",
+    "name_us": "Habbo Romantic Turntable",
+    "name_br": "Toca-discos Romântico Habbo",
     "price": "210.00",
     "usa_price": "175",
     "icon": "rare",
@@ -5102,6 +5702,8 @@
   {
     "id": 305,
     "name": "Tocadiscos_Habbo_Cerulean",
+    "name_us": "Habbo Cerulean Turntable",
+    "name_br": "Toca-discos Ceruleano Habbo",
     "price": "210.00",
     "usa_price": "200",
     "icon": "rare",
@@ -5119,6 +5721,8 @@
   {
     "id": 306,
     "name": "Lets_Disco",
+    "name_us": "Let's Disco",
+    "name_br": "Vamos Dançar",
     "price": "50.00",
     "usa_price": "25",
     "icon": "rare",
@@ -5136,6 +5740,8 @@
   {
     "id": 307,
     "name": "Habbo_Tocadiscos",
+    "name_us": "Habbo Turntable",
+    "name_br": "Toca-discos Habbo",
     "price": "210.00",
     "usa_price": "137",
     "icon": "rare",
@@ -5153,6 +5759,8 @@
   {
     "id": 308,
     "name": "Bola_De_Nieve",
+    "name_us": "Snowball",
+    "name_br": "Bola de Neve",
     "price": "50.00",
     "usa_price": "50",
     "icon": "rare",
@@ -5170,6 +5778,8 @@
   {
     "id": 309,
     "name": "Alfombra_De_Nieve",
+    "name_us": "Snow Carpet",
+    "name_br": "Tapete de Neve",
     "price": "70.00",
     "usa_price": "32",
     "icon": "rare",
@@ -5187,6 +5797,8 @@
   {
     "id": 310,
     "name": "La_Ventolera_Ocre",
+    "name_us": "The Ochre Gust",
+    "name_br": "A Rajada Ocre",
     "price": "50.00",
     "usa_price": "35",
     "icon": "rare",
@@ -5204,6 +5816,8 @@
   {
     "id": 311,
     "name": "Puerta_Espacial_Negra",
+    "name_us": "Black Space Door",
+    "name_br": "Porta Espacial Preta",
     "price": "280.00",
     "usa_price": "75",
     "icon": "rare",
@@ -5221,6 +5835,8 @@
   {
     "id": 312,
     "name": "Heladera_Negra",
+    "name_us": "Black Fridge",
+    "name_br": "Geladeira Preta",
     "price": "280.00",
     "usa_price": "50",
     "icon": "rare",
@@ -5238,6 +5854,8 @@
   {
     "id": 313,
     "name": "Tocadiscos_Habbo_Raver",
+    "name_us": "Habbo Raver Turntable",
+    "name_br": "Toca-discos Habbo Raver",
     "price": "210.00",
     "usa_price": "125",
     "icon": "rare",
@@ -5255,6 +5873,8 @@
   {
     "id": 314,
     "name": "Tocadiscos_Habbo_Rosa",
+    "name_us": "Habbo Pink Turntable",
+    "name_br": "Toca-discos Habbo Rosa",
     "price": "100.00",
     "usa_price": "100",
     "icon": "rare",
@@ -5272,6 +5892,8 @@
   {
     "id": 315,
     "name": "Tocadiscos_Lila",
+    "name_us": "Lilac Turntable",
+    "name_br": "Toca-discos Lilás",
     "price": "210.00",
     "usa_price": "125",
     "icon": "rare",
@@ -5289,6 +5911,8 @@
   {
     "id": 316,
     "name": "Tocadiscos_Platino",
+    "name_us": "Platinum Turntable",
+    "name_br": "Toca-discos Platina",
     "price": "210.00",
     "usa_price": "125",
     "icon": "rare",
@@ -5306,6 +5930,8 @@
   {
     "id": 317,
     "name": "Tocadiscos_Cafe",
+    "name_us": "Brown Turntable",
+    "name_br": "Toca-discos Marrom",
     "price": "210.00",
     "usa_price": "125",
     "icon": "rare",
@@ -5323,6 +5949,8 @@
   {
     "id": 318,
     "name": "Tocadiscos_Banana",
+    "name_us": "Banana Turntable",
+    "name_br": "Toca-discos Banana",
     "price": "210.00",
     "usa_price": "125",
     "icon": "rare",
@@ -5340,6 +5968,8 @@
   {
     "id": 319,
     "name": "Felpudo_BOBBA",
+    "name_us": "BOBBA Doormat",
+    "name_br": "Capacho BOBBA",
     "price": "5.00",
     "usa_price": "5",
     "icon": "funky",
@@ -5357,6 +5987,8 @@
   {
     "id": 320,
     "name": "Guirnalda_Negra",
+    "name_us": "Black Garland",
+    "name_br": "Guirlanda Preta",
     "price": "15.00",
     "usa_price": "10",
     "icon": "funky",
@@ -5374,6 +6006,8 @@
   {
     "id": 321,
     "name": "Samovar",
+    "name_us": "Samovar",
+    "name_br": "Samovar",
     "price": "1400.00",
     "usa_price": "500",
     "icon": "xmas_rares",
@@ -5391,6 +6025,8 @@
   {
     "id": 322,
     "name": "Throne",
+    "name_us": "Throne",
+    "name_br": "Trono",
     "price": "4900.00",
     "usa_price": "5500",
     "icon": "xmas_rares",
@@ -5408,6 +6044,8 @@
   {
     "id": 323,
     "name": "Trofeo_Duo_Firma_Staff",
+    "name_us": "Staff Duo Signature Trophy",
+    "name_br": "Troféu de Assinatura Duo Staff",
     "price": "210.00",
     "usa_price": "50",
     "icon": "xmas_rares",
@@ -5425,6 +6063,8 @@
   {
     "id": 324,
     "name": "Adivinas_Quien_Soy",
+    "name_us": "Guess Who I Am",
+    "name_br": "Adivinhe Quem Sou",
     "price": "70.00",
     "usa_price": "50",
     "icon": "rare",
@@ -5442,6 +6082,8 @@
   {
     "id": 325,
     "name": "Maquina_Fesh",
+    "name_us": "Fesh Machine",
+    "name_br": "Máquina Fesh",
     "price": "560.00",
     "usa_price": "500",
     "icon": "xmas_rares",
@@ -5459,6 +6101,8 @@
   {
     "id": 326,
     "name": "Holodave",
+    "name_us": "Holodave",
+    "name_br": "Holodave",
     "price": "1750.00",
     "usa_price": "250",
     "icon": "xmas_rares",
@@ -5476,6 +6120,8 @@
   {
     "id": 327,
     "name": "Submarino",
+    "name_us": "Submarine",
+    "name_br": "Submarino",
     "price": "1050.00",
     "usa_price": "400",
     "icon": "xmas_rares",
@@ -5493,6 +6139,8 @@
   {
     "id": 328,
     "name": "Trofeo_Martillo_De_Oro",
+    "name_us": "Gold Hammer Trophy",
+    "name_br": "Troféu Martelo de Ouro",
     "price": "100000.00",
     "usa_price": "100000",
     "icon": "mega_rare",
@@ -5510,6 +6158,8 @@
   {
     "id": 329,
     "name": "Trofeo_Martillo_De_Plata",
+    "name_us": "Silver Hammer Trophy",
+    "name_br": "Troféu Martelo de Prata",
     "price": "50000.00",
     "usa_price": "50000",
     "icon": "mega_rare",
@@ -5527,6 +6177,8 @@
   {
     "id": 330,
     "name": "Trofeo_Martillo_De_Bronce",
+    "name_us": "Bronze Hammer Trophy",
+    "name_br": "Troféu Martelo de Bronze",
     "price": "25000.00",
     "usa_price": "25000",
     "icon": "mega_rare",
@@ -5544,6 +6196,8 @@
   {
     "id": 331,
     "name": "Heladera_Dave",
+    "name_us": "Dave's Fridge",
+    "name_br": "Geladeira do Dave",
     "price": "1750.00",
     "usa_price": "400",
     "icon": "xmas_rares",
@@ -5561,6 +6215,8 @@
   {
     "id": 332,
     "name": "Dragon_Dave",
+    "name_us": "Dave's Dragon",
+    "name_br": "Dragão do Dave",
     "price": "14000.00",
     "usa_price": "2000",
     "icon": "xmas_rares",
@@ -5578,6 +6234,8 @@
   {
     "id": 334,
     "name": "Dragon_De_Fuego_Purpura",
+    "name_us": "Purple Fire Dragon",
+    "name_br": "Dragão de Fogo Roxo",
     "price": "105.00",
     "usa_price": "75",
     "icon": "rare",
@@ -5595,6 +6253,8 @@
   {
     "id": 335,
     "name": "Almohadon_Dave",
+    "name_us": "Dave's Cushion",
+    "name_br": "Almofada do Dave",
     "price": "560.00",
     "usa_price": "100",
     "icon": "xmas_rares",
@@ -5612,6 +6272,8 @@
   {
     "id": 336,
     "name": "Fontana_Dave",
+    "name_us": "Dave's Fountain",
+    "name_br": "Fonte do Dave",
     "price": "280.00",
     "usa_price": "50",
     "icon": "xmas_rares",
@@ -5629,6 +6291,8 @@
   {
     "id": 337,
     "name": "Parasol_Dave",
+    "name_us": "Dave's Parasol",
+    "name_br": "Guarda-sol do Dave",
     "price": "1400.00",
     "usa_price": "100",
     "icon": "xmas_rares",
@@ -5646,6 +6310,8 @@
   {
     "id": 339,
     "name": "Luciernaga_Dave",
+    "name_us": "Dave's Firefly",
+    "name_br": "Vaga-lume do Dave",
     "price": "3150.00",
     "usa_price": "750",
     "icon": "xmas_rares",
@@ -5663,6 +6329,8 @@
   {
     "id": 340,
     "name": "Regalo_Dave",
+    "name_us": "Dave's Gift",
+    "name_br": "Presente do Dave",
     "price": "1260.00",
     "usa_price": "150",
     "icon": "xmas_rares",

@@ -11,6 +11,14 @@ const Image = sequelize.define('Image', {
         type: DataTypes.STRING,
         allowNull: false
     },
+    name_us: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    name_br: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
     src: {
         type: DataTypes.STRING,
         allowNull: false

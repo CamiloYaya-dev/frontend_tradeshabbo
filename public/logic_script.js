@@ -30,22 +30,6 @@ function changeLanguage(lng) {
 }
 
 $(document).ready(function() {
-    // Verificar si hay un idioma seleccionado en localStorage
-    const selectedLanguage = localStorage.getItem('selectedLanguage') || 'en'; // Valor por defecto es 'en'
-    
-    // Cambiar el idioma al seleccionado
-    changeLanguage(selectedLanguage);
-    
-    // Actualizar el select del idioma
-    $('.language-select').val(selectedLanguage);
-
-    // Manejar el cambio de idioma desde el select
-    $('.language-select').change(function() {
-        const newLanguage = $(this).val();
-        changeLanguage(newLanguage);
-    });
-
-    updateContent();
 
     const images = document.querySelectorAll('.patos_imagenes');
 
@@ -292,6 +276,7 @@ function initialize() {
                     loadLastThreeNoticias();
                     obtenerPlacas();
                     const decryptedData = decryptData(data.token);
+                    console.log(decryptedData);
                     const lastUpdateFurnis = decryptData(data.lastUpdateFurnis);
                     var productContainer = $('#product-container');
                     var productHistoryContainer = $('#product-history-container');
@@ -339,7 +324,9 @@ function initialize() {
                                                         </div>
                                                         <div class="col-12 furni_imagen">
                                                             <div class="info-popup">
-                                                                <p class="card-text text-name online_habbo_text_white">${item.name} ${item.mote ? `(${item.mote})` : ''}</p>
+                                                                <p class="card-text text-name online_habbo_text_white name-item-es">${item.name} ${item.mote ? `(${item.mote})` : ''}</p>
+                                                                <p class="card-text text-name online_habbo_text_white name-item-en" style="display: none;">${item.name_us}</p>
+                                                                <p class="card-text text-name online_habbo_text_white name-item-pt" style="display: none;">${item.name_br}</p>
                                                             </div>
                                                             <img src="${item.src}" class="${item.icon == "coleccion" ? "card-img-coleccion" : "card-img-top"}" alt="${item.name}">
                                                         </div>
@@ -481,19 +468,45 @@ function initialize() {
                         });
                     
                         fillItemOptions(products);
+                        $(document).trigger('productsRendered');
                     }
 
                     const lastUpdatedContainer = $('.furnis_min_actualizados');
                     lastUpdatedContainer.empty();
     
                     lastUpdateFurnis.forEach(furni => {
+                        console.log(furni);
+                        const isMobile = window.matchMedia("(max-width: 768px)").matches;
+                        var selectedLanguage = isMobile ? $('.language-select-mobile').val() : $('.language-select-pc').val();
                         const furniImage = `
-                            <div class="last_items_update" data-toggle="tooltip" title="${furni.name} - ${furni.hotel}">
-                                <img 
+                            <div class="last_items_update last_items_update_es" data-toggle="tooltip" title="${furni.name} - ${furni.hotel}" style="display: ${selectedLanguage === 'es' ? 'flex' : 'none'};">
+                                <img
                                     src="furnis/min/${furni.name.replace(/ /g, '_')}_min.gif" 
                                     alt="${furni.name}"
                                 />
-                                <img 
+                                <img
+                                    src="furnis/iconos/${furni.hotel.replace(/ /g, '_')}_min.png" 
+                                    alt="icono min ${furni.hotel}" 
+                                    class="icon_country_min" 
+                                />
+                            </div>
+                            <div class="last_items_update last_items_update_en" data-toggle="tooltip" title="${furni.name_us} - ${furni.hotel}" style="display: ${selectedLanguage === 'en' ? 'flex' : 'none'};">
+                                <img
+                                    src="furnis/min/${furni.name.replace(/ /g, '_')}_min.gif" 
+                                    alt="${furni.name}"
+                                />
+                                <img
+                                    src="furnis/iconos/${furni.hotel.replace(/ /g, '_')}_min.png" 
+                                    alt="icono min ${furni.hotel}" 
+                                    class="icon_country_min" 
+                                />
+                            </div>
+                            <div class="last_items_update last_items_update_pt" data-toggle="tooltip" title="${furni.name_br} - ${furni.hotel}" style="display: ${selectedLanguage === 'pt' ? 'flex' : 'none'};">
+                                <img
+                                    src="furnis/min/${furni.name.replace(/ /g, '_')}_min.gif" 
+                                    alt="${furni.name}"
+                                />
+                                <img
                                     src="furnis/iconos/${furni.hotel.replace(/ /g, '_')}_min.png" 
                                     alt="icono min ${furni.hotel}" 
                                     class="icon_country_min" 
@@ -509,7 +522,11 @@ function initialize() {
                     $('#search-input').on('input', function() {
                         var searchValue = $(this).val().toLowerCase();
                         var filteredProducts = decryptedData.filter(function(item) {
-                            return item.name.toLowerCase().includes(searchValue);
+                            return (
+                                item.name.toLowerCase().includes(searchValue) ||
+                                (item.name_us && item.name_us.toLowerCase().includes(searchValue)) ||
+                                (item.name_br && item.name_br.toLowerCase().includes(searchValue))
+                            );
                         });
                         renderProducts(filteredProducts);
                         if (typeof agregarBotonesEdicion === 'function') {
@@ -608,8 +625,9 @@ function initialize() {
                     });
 
                     function showTable(decryptedData, hotel = "ES") {
+                        const isMobile = window.matchMedia("(max-width: 768px)").matches;
+                        var selectedLanguage = isMobile ? $('.language-select-mobile').val() : $('.language-select-pc').val();
                         let filteredData = decryptedData.filter(record => record.hotel === hotel);
-
                         var firstRecord = filteredData[0];
                         console.log(firstRecord);
                         var historyContent = `
@@ -675,12 +693,16 @@ function initialize() {
                                                                     <p class="consola_history_pricehabbo_text_blue">Nombre</p>
                                                                 </div>
                                                                 <div class="col-6">
-                                                                    ${record.name}
+                                                                    <p class="name-item-history-es" style="display: ${selectedLanguage === 'es' ? 'block' : 'none'};">${record.name}</p>
+                                                                    <p class="name-item-history-en" style="display: ${selectedLanguage === 'en' ? 'block' : 'none'};">${record.name_us}</p>
+                                                                    <p class="name-item-history-pt" style="display: ${selectedLanguage === 'pt' ? 'block' : 'none'};">${record.name_br}</p>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="td-no-mobile">
-                                                            ${record.name}
+                                                            <p class="name-item-history-es" style="display: ${selectedLanguage === 'es' ? 'block' : 'none'};">${record.name}</p>
+                                                            <p class="name-item-history-en" style="display: ${selectedLanguage === 'en' ? 'block' : 'none'};">${record.name_us}</p>
+                                                            <p class="name-item-history-pt" style="display: ${selectedLanguage === 'pt' ? 'block' : 'none'};">${record.name_br}</p>
                                                         </div>
                                                     </td>
                                                     <td class="online_habbo_text_white">
@@ -752,7 +774,9 @@ function initialize() {
                             <p class="price_history_content habbo_text_blue mobile_description">${firstRecord.descripcion == '' ? "Este furni aun no ha salido a la venta" : firstRecord.descripcion}</p>
                         `;
                         $('#product-history-container').html(historyContent);
+                        selectedLanguage
                         updateContent();
+                        
                     }
 
                     backButton.on('click', function() {

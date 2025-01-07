@@ -530,6 +530,8 @@ app.get('/images', async (req, res) => {
                 ultimosfurnismodificados.push({
                     id: image.id,
                     name: image.name,
+                    name_us: image.name_us,
+                    name_br: image.name_br,
                     hotel: 'ES',
                     fecha_precio: image.fecha_precio // Agregar para ordenar por fecha
                 });
@@ -538,6 +540,8 @@ app.get('/images', async (req, res) => {
                 ultimosfurnismodificados.push({
                     id: image.id,
                     name: image.name,
+                    name_us: image.name_us,
+                    name_br: image.name_br,
                     hotel: 'US',
                     fecha_precio: image.fecha_precio_com // Agregar para ordenar por fecha
                 });
@@ -570,7 +574,7 @@ app.get('/price-history/:productId', async (req, res) => {
             include: [{
                 model: Image,
                 as: 'image',
-                attributes: ['name', 'icon', 'descripcion', 'src']
+                attributes: ['name', 'name_us', 'name_br', 'icon', 'descripcion', 'src']
             }]
         });
         const historyWithProductName = await Promise.all(history.map(async (record) => {
@@ -581,6 +585,8 @@ app.get('/price-history/:productId', async (req, res) => {
                 fecha_precio: record.fecha_precio,
                 precio: record.precio,
                 name: record.image ? record.image.name : null,
+                name_us: record.image ? record.image.name_us : null,
+                name_br: record.image ? record.image.name_br : null,
                 src: record.image ? record.image.src : null,
                 icon: record.image ? record.image.icon : null,
                 descripcion: record.image ? record.image.descripcion : null,
