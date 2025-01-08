@@ -30,6 +30,21 @@ function changeLanguage(lng) {
 }
 
 $(document).ready(function() {
+    const toggleBtn = document.getElementById("toggle-btn");
+    const content = document.getElementById("content");
+
+    let isOpen = false;
+
+    toggleBtn.addEventListener("click", () => {
+        if (isOpen) {
+            content.style.display = "none";
+            toggleBtn.innerHTML = "▲"; // Cambia el ícono
+        } else {
+            content.style.display = "block";
+            toggleBtn.innerHTML = "▼"; // Cambia el ícono
+        }
+        isOpen = !isOpen;
+    });
 
     const images = document.querySelectorAll('.patos_imagenes');
 

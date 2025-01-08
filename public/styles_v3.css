@@ -6,13 +6,13 @@
 body {
     font-family: Arial, sans-serif;
     background-size: cover;
-    background: url('./fondo_ano_chino.png') no-repeat center center fixed;
+    background: url('./asia_fondo1.gif') repeat center center fixed;
 }
 
 main.container.other-class {
     font-family: Arial, sans-serif;
     background-size: cover;
-    background: url('./fondo_ano_chino.png') no-repeat center center fixed;
+    background: url('./asia_fondo1.gif') repeat center center fixed;
 }
 
 main.container.master-trades-bg {
@@ -2640,4 +2640,31 @@ h5 {
 
 .utilidades-menu{
     background: transparent;
+}
+
+.fixed-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 17%;
+    z-index: 1000;
+    padding-top: 0px !important;
+}
+
+.toggle-btn {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 3px 3px 0px 0px;
+    transition: bottom 0.5s;
+}
+
+.content {
+    background-color: black;
+    display: none;
+    box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.1);
+    text-align: -webkit-center;
+    padding-bottom: 5px;
 }
