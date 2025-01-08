@@ -2637,3 +2637,7 @@ h5 {
     background-color: #f1f1f1; /* Cambia el fondo al pasar el mouse */
     color: #000; /* Asegura que el texto sea visible */
 }
+
+.utilidades-menu{
+    background: transparent;
+}
