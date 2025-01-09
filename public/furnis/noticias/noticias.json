@@ -1870,5 +1870,17 @@
     "descripcion_resumida": "<p class=\"noticia_descripcion\"><strong>Un nuevo raro llega a Habbo Hotel: Orígenes!</strong> Adquiere la <strong>Fontana Roja</strong>, disponible solo hasta el 10 de enero. ¡No te lo pierdas!</p>",
     "hotel": "es",
     "fecha_noticia": "2025-01-07T12:12:03.000Z"
+  },
+  {
+    "id": 225,
+    "titulo": "Meet the .COM Origins Hobbas!",
+    "imagen_completa": "2025-01-10-12-08-29",
+    "alt_imagen_completa": "Hobbas Meet and Greet at Café Ole",
+    "descripcion_completa": "<p><strong>Exciting news from Habbo Hotel: Origins!</strong></p><p>From January 10-12, 2025, players are invited to meet the .COM Hobba team at Café Ole. This virtual gathering promises a weekend full of fun, with Hobbas stopping by to chat and answer questions about Habbo Origins. Whether you’re new to the game or a seasoned player, this event is the perfect opportunity to learn more about the Hobbas and their roles. Prepare to uncover some mysteries and enjoy a coffee-themed experience!</p>",
+    "imagen_resumida": "staff",
+    "alt_imagen_resumida": "Hobbas event announcement for January 2025",
+    "descripcion_resumida": "<p class=\"noticia_descripcion\"><strong>Get ready for a Hobba-tastic event!</strong> Meet the .COM Hobbas at Café Ole from January 10-12, 2025, where players can enjoy a fun-filled weekend and connect with the Hobba team!</p>",
+    "hotel": "com",
+    "fecha_noticia": "2025-01-08T12:08:52.000Z"
   }
 ]
