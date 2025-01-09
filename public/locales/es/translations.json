@@ -50,7 +50,7 @@
     "historial_nombre": "Nombre",
     "historial_precio_credito": "Precio <img src=\"furnis/dinero/credito.png\" alt=\"credito\" class=\"price-icon\">",
     "historial_precios_vip": "Precio <img src=\"furnis/dinero/vip.png\" alt=\"vip\" class=\"price-vip\">",
-    "historial_tendencia": "Tendencia",
+    "historial_tendencia": "Tendencia <img src=\"furnis/dinero/credito.png\" alt=\"credito\" class=\"price-icon\">",
     "alert_voto_precio": "Usted ya ha votado a favor o en contra del precio de este artículo.",
     "alert_error_voto_precio": "Error al votar. Por favor, inténtelo de nuevo.",
     "alert_voto_tendencia": "Usted ya voto si cree que subira o bajara el precio de este articulo.",

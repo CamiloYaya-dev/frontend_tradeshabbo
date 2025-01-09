@@ -644,7 +644,40 @@ function initialize() {
                         const isMobile = window.matchMedia("(max-width: 768px)").matches;
                         var selectedLanguage = isMobile ? $('.language-select-mobile').val() : $('.language-select-pc').val();
                         let filteredData = decryptedData.filter(record => record.hotel === hotel);
-                        var firstRecord = filteredData[0];
+                        console.log("filteredData1 (original):");
+                        console.log(filteredData);
+
+                        // Hacer una copia para ordenarla del más antiguo al más reciente
+                        let filteredDataAsc = [...filteredData].sort((a, b) => new Date(a.fecha_precio) - new Date(b.fecha_precio));
+                        console.log("filteredData2 (ordenado del más antiguo al más reciente):");
+                        console.log(filteredDataAsc);
+
+                        // Calcular las tendencias
+                        filteredDataAsc.forEach((record, index) => {
+                            const actualPrice = record.precio;
+                            const previousPrice = index > 0 ? filteredDataAsc[index - 1].precio : 0;
+                            let trendIcon = '';
+
+                            // Calcular la tendencia
+                            if (actualPrice === 0) {
+                                trendIcon = '<img class="equal_price_history" src="./furnis/iconos/equal_price_history.png" alt="equal price">';
+                            } else if (actualPrice > previousPrice) {
+                                trendIcon = '<img class="up_price_history" src="./furnis/iconos/up_price_history.png" alt="up price">';
+                            } else if (actualPrice < previousPrice) {
+                                trendIcon = '<img class="down_price_history" src="./furnis/iconos/down_price_history.png" alt="down price">';
+                            } else {
+                                trendIcon = '<img class="equal_price_history" src="./furnis/iconos/equal_price_history.png" alt="equal price">';
+                            }
+
+                            // Asignar el icono calculado al registro
+                            record.trendIcon = trendIcon;
+                        });
+
+                        // Si necesitas mostrar los datos nuevamente en orden descendente (más reciente al más antiguo)
+                        let filteredDataDesc = [...filteredDataAsc].sort((a, b) => new Date(b.fecha_precio) - new Date(a.fecha_precio));
+                        console.log("filteredData3 (ordenado del más reciente al más antiguo):");
+                        console.log(filteredDataDesc);
+                        var firstRecord = filteredDataDesc[0];
                         var historyContent = `
                             <h3 class="price_history_content habbo_text_blue h3_historial_precios" data-i18n="historial_precios">Historial de Precios</h3>
                             <div class="price-history-image">
@@ -663,27 +696,14 @@ function initialize() {
                                             <th class="habbo_text_blue" data-i18n="historial_fecha">Fecha</th>
                                             <th class="habbo_text_blue" data-i18n="historial_nombre">Nombre</th>
                                             <th class="habbo_text_blue" data-i18n="historial_precio_credito">Precio <img src="furnis/dinero/credito.png" alt="credito" class="price-icon"></th>
+                                            <th class="habbo_text_blue" data-i18n="historial_tendencia">Tendencia <img src="furnis/dinero/credito.png" alt="credito" class="price-icon"></th>
                                             <th class="habbo_text_blue" data-i18n="historial_precios_vip">Precio <img src="furnis/dinero/vip.png" alt="vip" class="price-vip"></th>
-                                            <th class="habbo_text_blue" data-i18n="historial_tendencia">Tendencia</th>
+                                            
                                             <th class="habbo_text_blue" data-i18n="historial_agregado_por">Agregado por:</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        ${filteredData.map((record, index) => {
-                                            const actualPrice = record.precio;
-                                            const previousPrice = index > 0 ? filteredData[index - 1].precio : null;
-                                            const nextPrice = index < filteredData.length - 1 ? filteredData[index + 1].precio : null;
-                                            var trendIcon = '';
-                                            
-                                            if (previousPrice === null || nextPrice === null) {
-                                                trendIcon = '<img class="equal_price_history" src="./furnis/iconos/equal_price_history.png" alt="equal price">';
-                                            } else if (actualPrice > previousPrice && actualPrice < nextPrice) {
-                                                trendIcon = '<img class="down_price_history" src="./furnis/iconos/down_price_history.png" alt="up down price">';
-                                            } else if (actualPrice < previousPrice && actualPrice > nextPrice) {
-                                                trendIcon = '<img class="up_price_history" src="./furnis/iconos/up_price_history.png" alt="up price">';
-                                            } else {
-                                                trendIcon = '<img class="up_price_history" src="./furnis/iconos/up_price_history.png" alt="up price">';
-                                            }
+                                        ${filteredDataDesc.map((record) => {
                                             return `
                                                 <tr>
                                                     <td class="online_habbo_text_white">
@@ -739,6 +759,21 @@ function initialize() {
                                                         <div class="td-in-mobile">
                                                             <div class="row">
                                                                 <div class="col-6">
+                                                                    <p class="consola_history_pricehabbo_text_blue">Tendencia <img src="furnis/dinero/credito.png" alt="credito" class="price-icon"></p>
+                                                                </div>
+                                                                <div class="col-6">
+                                                                    ${record.trendIcon}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="td-no-mobile">
+                                                            ${record.trendIcon}
+                                                        </div>
+                                                    </td>
+                                                    <td class="online_habbo_text_white">
+                                                        <div class="td-in-mobile">
+                                                            <div class="row">
+                                                                <div class="col-6">
                                                                     <p class="consola_history_pricehabbo_text_blue">Precio VIP</p>
                                                                 </div>
                                                                 <div class="col-6">
@@ -748,21 +783,6 @@ function initialize() {
                                                         </div>
                                                         <div class="td-no-mobile">
                                                             ${(record.precio / record.vip_price).toFixed(2)}
-                                                        </div>
-                                                    </td>
-                                                    <td class="online_habbo_text_white">
-                                                        <div class="td-in-mobile">
-                                                            <div class="row">
-                                                                <div class="col-6">
-                                                                    <p class="consola_history_pricehabbo_text_blue">Tendencia</p>
-                                                                </div>
-                                                                <div class="col-6">
-                                                                    ${trendIcon}
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="td-no-mobile">
-                                                            ${trendIcon}
                                                         </div>
                                                     </td>
                                                     <td class="online_habbo_text_white">
