@@ -806,7 +806,7 @@ function initialize() {
                                     </tbody>
                                 </table>
                             </div>
-                            <p class="price_history_content habbo_text_blue mobile_description">${firstRecord.descripcion == '' ? "Este furni aun no ha salido a la venta" : firstRecord.descripcion}</p>
+                            <p class="price_history_content habbo_text_blue mobile_description">${firstRecord.descripcion == '' ? "No ahi descripcion disponible" : firstRecord.descripcion}</p>
                         `;
                         $('#product-history-container').html(historyContent);
                         selectedLanguage
