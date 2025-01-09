@@ -96,6 +96,7 @@
     "filter_mega_rares": "<img src=\"furnis/iconos/Dragon_De_Fuego_Oro.png\" class=\"iconos-megarares-filtro\" alt=\"icon\"> Mega Raros",
     "filter_colecciones": "<img src=\"furnis/iconos/coleccion.png\" class=\"iconos-coleccion-filtro\" alt=\"icon\"> Coleções",
     "filter_xmas_rares": "<img src=\"furnis/iconos/icon_xmas_rares.png\" class=\"iconos-coleccion-filtro\" alt=\"icon\"> Xmas Rares",
+    "filter_unreleased": "<img src=\"furnis/iconos/icon_unrelased.png\" class=\"iconos-coleccion-filtro\" alt=\"icon\"> Não lançado",
     "register_title": "Registro de Usuário",
     "register_username_label": "Nome de Usuário: <span class='info-icon' data-toggle='tooltip' data-placement='right' title='Este é o nome que você quer aparecer na página, por exemplo, Emo. , o nome pode incluir apenas caracteres especiais como (!, @, #, $, %, ^, &, *, -, _, =, +).'><i class='fas fa-question-circle'></i></span>",
     "register_email_label": "Endereço de Email: <span class='info-icon' data-toggle='tooltip' data-placement='right' title='O email é usado apenas para confirmar que o usuário é real e para permitir a recuperação da senha.'><i class='fas fa-question-circle'></i></span>",

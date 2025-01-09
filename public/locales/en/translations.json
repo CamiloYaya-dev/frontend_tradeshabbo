@@ -96,6 +96,7 @@
     "filter_mega_rares": "<img src=\"furnis/iconos/Dragon_De_Fuego_Oro.png\" class=\"iconos-megarares-filtro\" alt=\"icon\"> Mega Rares",
     "filter_colecciones": "<img src=\"furnis/iconos/coleccion.png\" class=\"iconos-coleccion-filtro\" alt=\"icon\"> Collections",
     "filter_xmas_rares": "<img src=\"furnis/iconos/icon_xmas_rares.png\" class=\"iconos-coleccion-filtro\" alt=\"icon\"> Xmas Rares",
+    "filter_unreleased": "<img src=\"furnis/iconos/icon_unrelased.png\" class=\"iconos-coleccion-filtro\" alt=\"icon\"> UNRELEASED",
     "register_title": "User Registration",
     "register_username_label": "Username: <span class='info-icon' data-toggle='tooltip' data-placement='right' title='This is the name you want to appear as on the page, for example, Emo. , the name can only include special characters like (!, @, #, $, %, ^, &, *, -, _, =, +).'><i class='fas fa-question-circle'></i></span>",
     "register_email_label": "Email Address: <span class='info-icon' data-toggle='tooltip' data-placement='right' title='The email is only used to confirm that the user is real and to allow password recovery.'><i class='fas fa-question-circle'></i></span>",

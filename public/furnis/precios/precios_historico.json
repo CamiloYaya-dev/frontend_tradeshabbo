@@ -16630,5 +16630,37 @@
     "precio": "0.00",
     "hotel": "US",
     "user_modify": "emo."
+  },
+  {
+    "id": 2436,
+    "product_id": 350,
+    "fecha_precio": "2025-01-08T21:00:31.000Z",
+    "precio": "50.00",
+    "hotel": "US",
+    "user_modify": "emo"
+  },
+  {
+    "id": 2437,
+    "product_id": 350,
+    "fecha_precio": "2025-01-08T21:00:34.000Z",
+    "precio": "50.00",
+    "hotel": "ES",
+    "user_modify": "emo"
+  },
+  {
+    "id": 2438,
+    "product_id": 350,
+    "fecha_precio": "2025-01-08T21:16:35.000Z",
+    "precio": "70.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
+  },
+  {
+    "id": 2439,
+    "product_id": 337,
+    "fecha_precio": "2025-01-08T21:27:25.000Z",
+    "precio": "1050.00",
+    "hotel": "ES",
+    "user_modify": "ChoroMota"
   }
 ]
