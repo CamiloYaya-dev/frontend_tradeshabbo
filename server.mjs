@@ -539,11 +539,22 @@ app.get('/images', async (req, res) => {
             return maxDateB - maxDateA;
         });
 
+        imagesWithDetails.sort((a, b) => {
+            // Si `price` es igual a 0, muévelo al final
+            const priceA = a.price || 0; // Usar el campo `price` de cada imagen
+            const priceB = b.price || 0;
+        
+            if (priceA === 0 && priceB !== 0) return 1; // Mover `a` después de `b`
+            if (priceA !== 0 && priceB === 0) return -1; // Mover `b` después de `a`
+        
+            return 0; // Mantener el orden existente si ambos tienen valores válidos
+        });
+
         // Obtener los 40 furnis más recientemente modificados considerando ES y US como registros separados
         const ultimosfurnismodificados = [];
 
         imagesWithDetails.forEach(image => {
-            if (image.fecha_precio) { // Si tiene precio en ES
+            if (image.fecha_precio && image.price != 0) { // Si tiene precio en ES
                 ultimosfurnismodificados.push({
                     id: image.id,
                     name: image.name,
@@ -553,7 +564,7 @@ app.get('/images', async (req, res) => {
                     fecha_precio: image.fecha_precio // Agregar para ordenar por fecha
                 });
             }
-            if (image.fecha_precio_com) { // Si tiene precio en US
+            if (image.fecha_precio_com && image.usa_price != 0) { // Si tiene precio en US
                 ultimosfurnismodificados.push({
                     id: image.id,
                     name: image.name,
