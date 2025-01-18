@@ -64,7 +64,7 @@
     <meta name="mobile-web-app-capable" content="yes">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles_v4.css">
+    <link rel="stylesheet" href="styles_v5.css">
     <link rel="stylesheet" href="styles/index.css">
     <link rel="stylesheet" href="styles/col_izquierda_index.css">
     <link rel="stylesheet" href="styles/price-history.css">
@@ -178,10 +178,56 @@
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav mx-auto">
                             <li class="nav-item navbar_item">
-                                <a class="habbo_text_gold menu-link" href="#" data-section="catalogo" data-i18n="catalogo_navbar">
-                                    <img src="furnis/iconos/catalogo_icon.png" class="iconos-menu" alt="icon">
-                                    Catálogo
+                                <a class="habbo_text_gold menu-link dropdown-toggle" href="#" role="button" id="dropdownMenuLinkCatalog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-i18n="mercado_tradeos_navbar">
+                                    <img src="furnis/iconos/mercado_tradeos.png" class="iconos-menu" alt="icon">
+                                    Mercado y Tradeos
+                                    <!--<img src="furnis/iconos/habboween/baba2.png" class="baba-2-navbar" alt="Baba verde">
+                                    <img src="furnis/iconos/habboween/baba1.png" class="baba-1-image-contador-2" alt="Baba verde">
+                                    <img src="furnis/iconos/habboween/gota1.png" class="gota-image-contador-2-1-2" alt="Gota verde">
+                                    <img src="furnis/iconos/habboween/gota2.png" class="gota-image-contador-2-2-1" alt="Gota verde">
+                                    <img src="furnis/iconos/habboween/gota3.png" class="gota-image-contador-2-3-1" alt="Gota verde">
+                                    <img src="furnis/iconos/habboween/gota4.png" class="gota-image-contador-2-4-3" alt="Gota verde">
+                                    <img src="furnis/iconos/habboween/gota3.png" class="gota-image-contador-2-5-3" alt="Gota verde">
+                                    <img src="furnis/iconos/habboween/gota2.png" class="gota-image-contador-2-6-2" alt="Gota verde">-->
                                 </a>
+                                <div class="dropdown-menu utilidades-menu" aria-labelledby="dropdownMenuLinkCatalog">
+                                    <a class="dropdown-item navbar_item habbo_text_gold menu-link" href="#" data-section="catalogo" data-i18n="catalogo_navbar">
+                                        <img src="furnis/iconos/catalogo_icon.png" class="iconos-menu" alt="icon">
+                                        Catálogo
+                                    </a>
+                                    <a class="dropdown-item navbar_item habbo_text_gold menu-link" href="#" data-section="calculador">
+                                        <div data-i18n="calculador_tradeos_navbar">
+                                            <img src="furnis/iconos/calculador_de_trades_icon.png" class="iconos-menu" alt="icon">
+                                            Calculador de Tradeos
+                                        </div>
+                                        <!--
+                                        <img src="furnis/iconos/habboween/baba2.png" class="baba-2-image-contador-1" alt="Baba verde">
+                                        <img src="furnis/iconos/habboween/baba1.png" class="baba-1-image-contador-1" alt="Baba verde">
+                                        <img src="furnis/iconos/habboween/gota1.png" class="gota-image-contador-2-1-1" alt="Gota verde">
+                                        <img src="furnis/iconos/habboween/gota2.png" class="gota-image-contador-2-2-3" alt="Gota verde">
+                                        <img src="furnis/iconos/habboween/gota3.png" class="gota-image-contador-2-3-2" alt="Gota verde">
+                                        <img src="furnis/iconos/habboween/gota4.png" class="gota-image-contador-2-4-1" alt="Gota verde">
+                                        <img src="furnis/iconos/habboween/gota3.png" class="gota-image-contador-2-5-2" alt="Gota verde">
+                                        <img src="furnis/iconos/habboween/gota2.png" class="gota-image-contador-2-6-3" alt="Gota verde">
+                                        -->
+                                    </a>
+                                    <a class="dropdown-item navbar_item habbo_text_gold menu-link" href="#" data-section="compro_vendo">
+                                        <div data-i18n="marketplace_navbar">
+                                            <img src="furnis/iconos/marketplace_icon.png" class="iconos-menu" alt="icon">
+                                            Marketplace
+                                        </div>
+                                        <!--
+                                        <img src="furnis/iconos/habboween/baba2.png" class="baba-2-image-contador-1" alt="Baba verde">
+                                        <img src="furnis/iconos/habboween/baba1.png" class="baba-1-image-contador-1" alt="Baba verde">
+                                        <img src="furnis/iconos/habboween/gota1.png" class="gota-image-contador-2-1-3" alt="Gota verde">
+                                        <img src="furnis/iconos/habboween/gota2.png" class="gota-image-contador-2-2-3" alt="Gota verde">
+                                        <img src="furnis/iconos/habboween/gota3.png" class="gota-image-contador-2-3-1" alt="Gota verde">
+                                        <img src="furnis/iconos/habboween/gota4.png" class="gota-image-contador-2-4-2" alt="Gota verde">
+                                        <img src="furnis/iconos/habboween/gota3.png" class="gota-image-contador-2-5-1" alt="Gota verde">
+                                        <img src="furnis/iconos/habboween/gota2.png" class="gota-image-contador-2-6-2" alt="Gota verde">
+                                        -->
+                                    </a>
+                                </div>
                             </li>
                             <li class="nav-item navbar_item">
                                 <a class="habbo_text_gold menu-link" href="#" data-section="noticias" data-i18n="noticias_navbar">
@@ -190,29 +236,17 @@
                                 </a>
                             </li>
                             <li class="nav-item navbar_item">
+                                <a class="habbo_text_gold" href="https://www.onhabbo.es/" target="_blank" data-i18n="eventos_navbar">
+                                    <img src="furnis/iconos/eventos.png" class="iconos-menu" alt="icon">
+                                    Eventos
+                                </a>
+                            </li>
+                            <!--<li class="nav-item navbar_item">
                                 <a class="habbo_text_gold menu-link" href="#" data-section="sorteos" data-i18n="sorteos_navbar">
                                     <img src="furnis/iconos/sorteos_icon.png" class="iconos-menu" alt="icon">
                                     Sorteos
                                 </a>
-                            </li>
-                            <li class="nav-item navbar_item">
-                                <a class="habbo_text_gold menu-link" href="#" data-section="calculador">
-                                    <div data-i18n="calculador_tradeos_navbar">
-                                        <img src="furnis/iconos/calculador_de_trades_icon.png" class="iconos-menu" alt="icon">
-                                        Calculador de Tradeos
-                                    </div>
-                                    <!--
-                                    <img src="furnis/iconos/habboween/baba2.png" class="baba-2-image-contador-1" alt="Baba verde">
-                                    <img src="furnis/iconos/habboween/baba1.png" class="baba-1-image-contador-1" alt="Baba verde">
-                                    <img src="furnis/iconos/habboween/gota1.png" class="gota-image-contador-2-1-1" alt="Gota verde">
-                                    <img src="furnis/iconos/habboween/gota2.png" class="gota-image-contador-2-2-3" alt="Gota verde">
-                                    <img src="furnis/iconos/habboween/gota3.png" class="gota-image-contador-2-3-2" alt="Gota verde">
-                                    <img src="furnis/iconos/habboween/gota4.png" class="gota-image-contador-2-4-1" alt="Gota verde">
-                                    <img src="furnis/iconos/habboween/gota3.png" class="gota-image-contador-2-5-2" alt="Gota verde">
-                                    <img src="furnis/iconos/habboween/gota2.png" class="gota-image-contador-2-6-3" alt="Gota verde">
-                                    -->
-                                </a>
-                            </li>
+                            </li>-->
                             <li class="nav-item navbar_item">
                                 <a class="habbo_text_gold menu-link" href="#" data-section="comunidad_salas" data-i18n="fotos_navbar">
                                     <img src="furnis/iconos/fotos_icon.png" class="iconos-menu" alt="icon">
@@ -220,37 +254,14 @@
                                 </a>
                             </li>
                             <li class="nav-item navbar_item">
-                                <a class="habbo_text_gold menu-link" href="#" data-section="equipo" data-i18n="equipo_navbar">
-                                    <img src="furnis/iconos/equipo_icon.png" class="iconos-menu" alt="icon">
-                                    Equipo
-                                </a>
-                            </li>
-                            <li class="nav-item navbar_item">
-                                <a class="habbo_text_gold menu-link" href="#" data-section="compro_vendo">
-                                    <div data-i18n="marketplace_navbar">
-                                        <img src="furnis/iconos/marketplace_icon.png" class="iconos-menu" alt="icon">
-                                        Marketplace
-                                    </div>
-                                    <!--
-                                    <img src="furnis/iconos/habboween/baba2.png" class="baba-2-image-contador-1" alt="Baba verde">
-                                    <img src="furnis/iconos/habboween/baba1.png" class="baba-1-image-contador-1" alt="Baba verde">
-                                    <img src="furnis/iconos/habboween/gota1.png" class="gota-image-contador-2-1-3" alt="Gota verde">
-                                    <img src="furnis/iconos/habboween/gota2.png" class="gota-image-contador-2-2-3" alt="Gota verde">
-                                    <img src="furnis/iconos/habboween/gota3.png" class="gota-image-contador-2-3-1" alt="Gota verde">
-                                    <img src="furnis/iconos/habboween/gota4.png" class="gota-image-contador-2-4-2" alt="Gota verde">
-                                    <img src="furnis/iconos/habboween/gota3.png" class="gota-image-contador-2-5-1" alt="Gota verde">
-                                    <img src="furnis/iconos/habboween/gota2.png" class="gota-image-contador-2-6-2" alt="Gota verde">
-                                    -->
-                                </a>
-                            </li>
-                            <li class="nav-item navbar_item">
-                                <a class="habbo_text_gold menu-link" href="#" data-section="inventario" data-i18n="inventario_navbar">
-                                    <img src="furnis/iconos/mi_inventario_icon.png" class="iconos-menu" alt="icon">
-                                    Mi inventario
+                                <a class="habbo_text_gold menu-link" href="#" data-i18n="placas_navbar">
+                                    <img src="furnis/iconos/placas.png" class="iconos-menu" alt="icon">
+                                    Placas
                                 </a>
                             </li>
                             <div class="dropdown show navbar_item">
                                 <a class="habbo_text_gold menu-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-i18n="utilidades_navbar">
+                                    <img src="furnis/iconos/utilidades.png" class="iconos-menu" alt="icon">
                                     Utilidades
                                     <!--<img src="furnis/iconos/habboween/baba2.png" class="baba-2-navbar" alt="Baba verde">
                                     <img src="furnis/iconos/habboween/baba1.png" class="baba-1-image-contador-2" alt="Baba verde">
@@ -331,6 +342,54 @@
                                     </a>
                                 </div>
                             </div>
+                            <li class="nav-item navbar_item">
+                                <a class="habbo_text_gold menu-link dropdown-toggle" href="#" role="button" id="dropdownMenuLinkQuienesSomos" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-i18n="trades_habbo_navbar">
+                                    <img src="furnis/iconos/tradeshabbo_navbar_icon.png" class="iconos-menu" alt="icon">
+                                    TradesHabbo
+                                    <!--<img src="furnis/iconos/habboween/baba2.png" class="baba-2-navbar" alt="Baba verde">
+                                    <img src="furnis/iconos/habboween/baba1.png" class="baba-1-image-contador-2" alt="Baba verde">
+                                    <img src="furnis/iconos/habboween/gota1.png" class="gota-image-contador-2-1-2" alt="Gota verde">
+                                    <img src="furnis/iconos/habboween/gota2.png" class="gota-image-contador-2-2-1" alt="Gota verde">
+                                    <img src="furnis/iconos/habboween/gota3.png" class="gota-image-contador-2-3-1" alt="Gota verde">
+                                    <img src="furnis/iconos/habboween/gota4.png" class="gota-image-contador-2-4-3" alt="Gota verde">
+                                    <img src="furnis/iconos/habboween/gota3.png" class="gota-image-contador-2-5-3" alt="Gota verde">
+                                    <img src="furnis/iconos/habboween/gota2.png" class="gota-image-contador-2-6-2" alt="Gota verde">-->
+                                </a>
+                                <div class="dropdown-menu utilidades-menu" aria-labelledby="dropdownMenuLinkQuienesSomos">
+                                    <a class="dropdown-item navbar_item habbo_text_gold menu-link" href="#" data-section="equipo" data-i18n="equipo_navbar">
+                                        <img src="furnis/iconos/equipo_icon.png" class="iconos-menu" alt="icon">
+                                        Equipo
+                                    </a>
+                                    <a class="dropdown-item navbar_item habbo_text_gold menu-link" href="#" data-section="acerca_nosotros" data-i18n="acerca_nosotros_navbar">
+                                        <img src="furnis/iconos/sobre_nosotros.png" class="iconos-menu" alt="icon">
+                                        Acerca de Nosotros
+                                    </a>
+                                    <a class="dropdown-item navbar_item habbo_text_gold menu-link" href="#" data-section="preguntas_respuestas" data-i18n="preguntas_repuestas_navbar">
+                                        <img src="furnis/iconos/preguntas_y_respuestas.png" class="iconos-menu" alt="icon">
+                                        Pregunta y Respuestas
+                                    </a>
+                                    <a class="dropdown-item navbar_item habbo_text_gold menu-link" href="#" data-section="terminos_condiciones" data-i18n="terminas_condiciones_navbar">
+                                        <img src="furnis/iconos/terminos_y_condiciones.png" class="iconos-menu" alt="icon">
+                                        Terminos y Condiciones
+                                    </a>
+                                    <a class="dropdown-item navbar_item habbo_text_gold menu-link" href="#" data-section="politica_privacidad" data-i18n="politicas_privacidad_navbar">
+                                        <img src="furnis/iconos/politicas_privacidad.png" class="iconos-menu" alt="icon">
+                                        Politicas de Privacidad
+                                    </a>
+                                    <!--<a class="dropdown-item navbar_item habbo_text_gold menu-link" href="#" data-section="contactanos">
+                                        <img src="furnis/iconos/contactanos.png" class="iconos-menu" alt="icon">
+                                        Contactanos
+                                    </a>
+                                    -->
+                                </div>
+                            </li>
+                            <!--<li class="nav-item navbar_item">
+                                <a class="habbo_text_gold menu-link" href="#" data-section="inventario" data-i18n="inventario_navbar">
+                                    <img src="furnis/iconos/mi_inventario_icon.png" class="iconos-menu" alt="icon">
+                                    Mi inventario
+                                </a>
+                            </li>
+                            -->
                         </ul>
                     </div>
                 </nav>
@@ -930,8 +989,15 @@
                         </button>
                     </form>
                 </div>
-            </div>            
-            
+            </div>     
+            <div class="col-md-8 column" id="acerca-nosotros-section" style="display: none;" data-i18n="acerca_nosotros">         
+            </div>
+            <div class="col-md-8 column" id="terminos-condiciones-section" style="display: none;" data-i18n="terminos_condiciones">         
+            </div>
+            <div class="col-md-8 column" id="preguntas-respuestas-section" style="display: none;" data-i18n="preguntas_respuestas">         
+            </div>
+            <div class="col-md-8 column" id="politicas-privacidad-section" style="display: none;" data-i18n="politica_privacidad">         
+            </div>
             <div class="col-1 d-block d-md-none column-right">
                 <!-- Contenido de la columna derecha -->
             </div>
@@ -1147,14 +1213,14 @@
     <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.16/mediaelement-and-player.min.js"></script>
-    <script src="8931928d-024a-4d3f-9100-9a20c920cf96.js"></script>
+    <script src="c86818da-5ddf-4d10-ad3c-35bebcddf559.js"></script>
     <!-- Incluir i18next -->
     <script src="https://unpkg.com/i18next@20.6.1/i18next.min.js"></script>
     <script src="https://unpkg.com/i18next-browser-languagedetector@6.1.2/i18nextBrowserLanguageDetector.min.js"></script>
     <script src="https://unpkg.com/i18next-xhr-backend@3.2.2/i18nextXHRBackend.min.js"></script>
 
     <!-- Configuración de i18next -->
-    <script src="ef41c187-8fd5-4f99-89ea-7e9cf6f943dc.js"></script>
+    <script src="c7a9f8cf-f045-4958-832b-e9b7bb3a8a36.js"></script>
     
     <footer class="col-md-12 col-12 text-center d-none d-md-block" id="footer">
         <div class="image-animation-container">

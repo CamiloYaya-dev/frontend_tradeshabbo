@@ -66,6 +66,10 @@ $(document).ready(function() {
             $('#marketplace-section').hide();
             $('#login-section').hide();
             $('#register-section').hide();
+            $('#acerca-nosotros-section').hide();
+            $('#terminos-condiciones-section').hide();
+            $('#preguntas-respuestas-section').hide();
+            $('#politicas-privacidad-section').hide();
         } else if (section === 'noticias') {
             loadOtherClass();
             loadNoticias();
@@ -85,6 +89,10 @@ $(document).ready(function() {
             $('#marketplace-section').hide();
             $('#login-section').hide();
             $('#register-section').hide();
+            $('#acerca-nosotros-section').hide();
+            $('#terminos-condiciones-section').hide();
+            $('#preguntas-respuestas-section').hide();
+            $('#politicas-privacidad-section').hide();
         } else if (section === 'calculador') {
             loadOtherClass();
             $('#catalogo-section').hide();
@@ -103,6 +111,10 @@ $(document).ready(function() {
             $('#marketplace-section').hide();
             $('#login-section').hide();
             $('#register-section').hide();
+            $('#acerca-nosotros-section').hide();
+            $('#terminos-condiciones-section').hide();
+            $('#preguntas-respuestas-section').hide();
+            $('#politicas-privacidad-section').hide();
         } else if (section === 'sorteos') {
             loadOtherClass();
             loadSorteos();
@@ -122,6 +134,10 @@ $(document).ready(function() {
             $('#marketplace-section').hide();
             $('#login-section').hide();
             $('#register-section').hide();
+            $('#acerca-nosotros-section').hide();
+            $('#terminos-condiciones-section').hide();
+            $('#preguntas-respuestas-section').hide();
+            $('#politicas-privacidad-section').hide();
         } else if (section === 'master_trades') {
             loadMasterTrades();
             $('#catalogo-section').hide();
@@ -140,6 +156,10 @@ $(document).ready(function() {
             $('#marketplace-section').hide();
             $('#login-section').hide();
             $('#register-section').hide();
+            $('#acerca-nosotros-section').hide();
+            $('#terminos-condiciones-section').hide();
+            $('#preguntas-respuestas-section').hide();
+            $('#politicas-privacidad-section').hide();
         } else if (section === 'habbo_generator_section'){
             loadOtherClass();
             $('#catalogo-section').hide();
@@ -158,6 +178,10 @@ $(document).ready(function() {
             $('#marketplace-section').hide();
             $('#login-section').hide();
             $('#register-section').hide();
+            $('#acerca-nosotros-section').hide();
+            $('#terminos-condiciones-section').hide();
+            $('#preguntas-respuestas-section').hide();
+            $('#politicas-privacidad-section').hide();
         } else if (section === 'text_generator_section'){
             loadOtherClass();
             $('#catalogo-section').hide();
@@ -176,6 +200,10 @@ $(document).ready(function() {
             $('#marketplace-section').hide();
             $('#login-section').hide();
             $('#register-section').hide();
+            $('#acerca-nosotros-section').hide();
+            $('#terminos-condiciones-section').hide();
+            $('#preguntas-respuestas-section').hide();
+            $('#politicas-privacidad-section').hide();
         } else if (section === 'comunidad_salas'){
             loadOtherClass();
             loadSalaImages();
@@ -194,6 +222,10 @@ $(document).ready(function() {
             $('#marketplace-section').hide();
             $('#login-section').hide();
             $('#register-section').hide();
+            $('#acerca-nosotros-section').hide();
+            $('#terminos-condiciones-section').hide();
+            $('#preguntas-respuestas-section').hide();
+            $('#politicas-privacidad-section').hide();
         } else if (section === 'equipo'){
             loadOtherClass();
             $('#catalogo-section').hide();
@@ -211,6 +243,10 @@ $(document).ready(function() {
             $('#marketplace-section').hide();
             $('#login-section').hide();
             $('#register-section').hide();
+            $('#acerca-nosotros-section').hide();
+            $('#terminos-condiciones-section').hide();
+            $('#preguntas-respuestas-section').hide();
+            $('#politicas-privacidad-section').hide();
         } else if (section === 'compro_vendo'){
             loadOtherClass();
             renderThreads();
@@ -229,6 +265,10 @@ $(document).ready(function() {
             $('#marketplace-section').show();
             $('#login-section').hide();
             $('#register-section').hide();
+            $('#acerca-nosotros-section').hide();
+            $('#terminos-condiciones-section').hide();
+            $('#preguntas-respuestas-section').hide();
+            $('#politicas-privacidad-section').hide();
         } else if (section === 'login'){
             loadOtherClass();
             renderThreads();
@@ -247,6 +287,10 @@ $(document).ready(function() {
             $('#marketplace-section').hide();
             $('#login-section').show();
             $('#register-section').hide();
+            $('#acerca-nosotros-section').hide();
+            $('#terminos-condiciones-section').hide();
+            $('#preguntas-respuestas-section').hide();
+            $('#politicas-privacidad-section').hide();
         } else if (section === 'register'){
             loadOtherClass();
             renderThreads();
@@ -265,6 +309,98 @@ $(document).ready(function() {
             $('#marketplace-section').hide();
             $('#login-section').hide();
             $('#register-section').show();
+            $('#acerca-nosotros-section').hide();
+            $('#terminos-condiciones-section').hide();
+            $('#preguntas-respuestas-section').hide();
+            $('#politicas-privacidad-section').hide();
+        } else if (section === 'acerca_nosotros'){
+            loadOtherClass();
+            renderThreads();
+            $('#catalogo-section').hide();
+            $('#column-explications-catalogo').hide();
+            $('#noticias-section').hide();
+            $('#calculador-section').hide();
+            $('#sorteos-section').hide();
+            $('#master-trades-section').hide();
+            $('#sort-options').hide();
+            $('#footer').show();
+            $('#column-explications-master-trades').hide();
+            $('#habbo-generator-section').hide();
+            $('#comunidad_salas').hide();
+            $('#equipo-section').hide();
+            $('#marketplace-section').hide();
+            $('#login-section').hide();
+            $('#register-section').hide();
+            $('#acerca-nosotros-section').show();
+            $('#terminos-condiciones-section').hide();
+            $('#preguntas-respuestas-section').hide();
+            $('#politicas-privacidad-section').hide();
+        } else if (section === 'terminos_condiciones'){
+            loadOtherClass();
+            renderThreads();
+            $('#catalogo-section').hide();
+            $('#column-explications-catalogo').hide();
+            $('#noticias-section').hide();
+            $('#calculador-section').hide();
+            $('#sorteos-section').hide();
+            $('#master-trades-section').hide();
+            $('#sort-options').hide();
+            $('#footer').show();
+            $('#column-explications-master-trades').hide();
+            $('#habbo-generator-section').hide();
+            $('#comunidad_salas').hide();
+            $('#equipo-section').hide();
+            $('#marketplace-section').hide();
+            $('#login-section').hide();
+            $('#register-section').hide();
+            $('#acerca-nosotros-section').hide();
+            $('#terminos-condiciones-section').show();
+            $('#preguntas-respuestas-section').hide();
+            $('#politicas-privacidad-section').hide();
+        } else if (section === 'preguntas_respuestas'){
+            loadOtherClass();
+            renderThreads();
+            $('#catalogo-section').hide();
+            $('#column-explications-catalogo').hide();
+            $('#noticias-section').hide();
+            $('#calculador-section').hide();
+            $('#sorteos-section').hide();
+            $('#master-trades-section').hide();
+            $('#sort-options').hide();
+            $('#footer').show();
+            $('#column-explications-master-trades').hide();
+            $('#habbo-generator-section').hide();
+            $('#comunidad_salas').hide();
+            $('#equipo-section').hide();
+            $('#marketplace-section').hide();
+            $('#login-section').hide();
+            $('#register-section').hide();
+            $('#acerca-nosotros-section').hide();
+            $('#terminos-condiciones-section').hide();
+            $('#preguntas-respuestas-section').show();
+            $('#politicas-privacidad-section').hide();
+        } else if (section === 'politica_privacidad'){
+            loadOtherClass();
+            renderThreads();
+            $('#catalogo-section').hide();
+            $('#column-explications-catalogo').hide();
+            $('#noticias-section').hide();
+            $('#calculador-section').hide();
+            $('#sorteos-section').hide();
+            $('#master-trades-section').hide();
+            $('#sort-options').hide();
+            $('#footer').show();
+            $('#column-explications-master-trades').hide();
+            $('#habbo-generator-section').hide();
+            $('#comunidad_salas').hide();
+            $('#equipo-section').hide();
+            $('#marketplace-section').hide();
+            $('#login-section').hide();
+            $('#register-section').hide();
+            $('#acerca-nosotros-section').hide();
+            $('#terminos-condiciones-section').hide();
+            $('#preguntas-respuestas-section').hide();
+            $('#politicas-privacidad-section').show();
         }
         updateContent();
     });
