@@ -140,5 +140,6 @@
     "moderador": "Moderador",
     "redactor": "Redactor",
     "corrector": "Corrector",
-    "redes_sociales": "Redes Sociales"
+    "redes_sociales": "Redes Sociales",
+    "contactanos_navbar": "<img src=\"furnis/iconos/contactanos.png\" class=\"iconos-menu\" alt=\"icon\"> Contactanos"
 }
