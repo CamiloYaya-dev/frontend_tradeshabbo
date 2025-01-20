@@ -171,7 +171,8 @@ function initialize() {
     }
 
     function mapTradersClub(decryptedData, itemData) {
-        const manualMapping = {
+        //FURNIS HC - 19/01/2025
+        const manualMappingHC = {
             1: 1, //club sofa
             2: 7, //jacuzzy
             3: 5, //imperiales
@@ -183,10 +184,78 @@ function initialize() {
             9: 2, //majestic
             10: 10, //mesa nordica
             11: 11, //hc set - mesahc
-            12: 11, //hc set - mesahc
+            12: 11 //hc set - mesahc
+        };
+
+        //RARES - 19/01/2025
+        const manualMappingRares = {
             13: 4, //habbocola
             44: 6, //vivo
+            51: 17, //almo purpura
+            56: 24, //heladera dorada
+            104: 25, //humareda
+            54: 18, //egg lila
+            332: 122, //dragon dave
+            325: 97, //maquina fesh
+            326: 96, //holodave
+            339: 121, //lucy dave
+            331: 118, //hela dave
+            340: 123, //regalo dave
+            311: 105, //espacial negra
+            305: 60, //tocadiscos cerulean
+            304: 59, //tocadiscos romantico
+            289: 57, //drako negro
+            281: 52, //fontana gotica azul
+            337: 119, //parasol dave
+            315: 106, //tocadiscos lila
+            316: 107, //tocadiscos platino
+            318: 108, //tocadiscos banana
+            317: 109, //tocadiscos cafe
+            313: 110, //tocadiscos raver
+            287: 56, //almo negro
+            228: 51, //cesped de habboween
+            297: 58, //hablador
+            312: 104, //heladera negra
+            336: 117, //fonty dave
+            158: 47, //aloe vera
+            119: 39, //lucy dorada
+            335: 120, //almo dave
+            334: 116, //dragon purpura
+            175: 46, //pilar azul
+            342: 126, //fonty red
+            308: 115, //bola de nieve
+            350: 125, //almo red
+            309: 113, //alfombra nieve
+            224: 50, //dragon sky
+            324: 112, //adivina quien soy
+            111: 27, //fontana azul
+            118: 35, //laser red
+            219: 49, //alfombra playa
+            120: 41, //hamaca
+            116: 34, //holo girl
+            115: 31, //holo boy
+        };
+
+        //Megas - 19/01/2025
+        const manualMappingMegarares = {
             50: 14, //ph ticket
+            125: 44, //drako plata
+            117: 28, //typo
+            124: 43, //drako bronce
+            322: 93, //tronito
+            321: 94, //samovar
+            327: 95, //submarino
+            126: 45, //drako oro
+            328: 98, //martillo oro
+            329: 99, //martillo plata
+            330: 100, //martillo bronce
+            300: 101, //disco oro
+            301: 102, //disco plata
+            302: 103, //disco bronce
+        };
+
+        //FUNKY - pending
+        const manualMappingFunky = {
             23: 15, //pod funky
             22: 15, //pod funky
             21: 15, //pod funky
@@ -196,15 +265,12 @@ function initialize() {
             47: 16, //alfombra funky
             48: 16, //alfombra funky
             49: 16, //alfombra funky
-            51: 17, //almo purpura
             53: 22, //guirnalda morada
             52: 23, //guirnalda verde
-            54: 18, //egg lila
             55: 20, //teleport britanico funky
-            56: 24, // heladera dorada
-            104: 25 // humared
         };
-    
+
+        const manualMapping = Object.assign({}, manualMappingHC, manualMappingRares, manualMappingMegarares, manualMappingFunky);
         decryptedData.forEach(decryptedItem => {
             const itemId = manualMapping[decryptedItem.id];
             if (itemId) {
@@ -371,7 +437,7 @@ function initialize() {
                                             <div class="col-4">
                                                 <div class="row">
                                                     <div class="price-sections">
-                                                        <div class="section ingame">
+                                                        <div class="section">
                                                             <div class="row price_trades_habbo_origins">
                                                                 <div class="col-12 col_in_card">
                                                                     <div class="row">
@@ -426,6 +492,11 @@ function initialize() {
                                                                             <div class="col-12">
                                                                                 <p class="card-text text-price">
                                                                                     <img src="furnis/dinero/egg_lila.png" alt="egg lila" class="price-egg-principal" data-toggle="tooltip">${item.usa_price > 0 ? (item.usa_price / item.dino_price).toFixed(1) : '??'}
+                                                                                </p>
+                                                                            </div>
+                                                                            <div class="col-12 traderclub_section">
+                                                                                <p class="card-text text-price">
+                                                                                    <img src="furnis/iconos/icon_trader_club.png" alt="traders_club" class="price-egg-principal" data-toggle="tooltip" title="Traderclub.gg price">${item.traders_club > 0 ? item.traders_club : '??'}<img src="furnis/dinero/vip.png" alt="vip" class="price-vip-principal" data-toggle="tooltip" data-i18n="[title]titulo_vips" title="Precio en Vips">
                                                                                 </p>
                                                                             </div>
                                                                         </div>
@@ -532,7 +603,8 @@ function initialize() {
                         lastUpdatedContainer.append(furniImage);
                     });
                     mapTradersClub(decryptedData, itemData);
-                    mapHabbonation(decryptedData, firebaseData);
+                    //mapHabbonation(decryptedData, firebaseData);
+                    console.log(decryptedData);
                     renderProducts(decryptedData);
 
                     $('#search-input').on('input', function() {

@@ -2778,3 +2778,9 @@ h5 {
     background: rgba(0, 0, 0, 0.7); /* Fondo negro con 70% de opacidad */
     color: white;
 }
+
+.traderclub_section {
+    border-top: solid 1px;
+    margin-top: 10px;
+    padding-top: 10px;
+}
