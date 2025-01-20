@@ -78,13 +78,26 @@ function renderNoticias() {
 function loadLastThreeNoticias() {
     const timestamp = new Date().getTime();
     $.getJSON(`furnis/noticias/noticias.json?v=${timestamp}`, function(data) {
-        // Filtrar y renderizar noticias para cada hotel
         const hoteles = ['es', 'com', 'com.br'];
         const lastThreeContainer = $('#last_three_noticies');
         lastThreeContainer.empty();
 
+        let selectedLanguage = $('.language-select-pc').val();
+        let selectedHotel = "";
+
+        if (selectedLanguage == "es") {
+            selectedHotel = "es";
+        } else if (selectedLanguage == "en") {
+            selectedHotel = "com";
+        } else if (selectedLanguage == "pt") {
+            selectedHotel = "com.br";
+        }
+
         hoteles.forEach(function(hotel) {
-            // Filtrar noticias para el hotel actual
+            if (hotel !== selectedHotel) {
+                return; // Si el hotel no coincide con el seleccionado, no mostrar noticias de ese hotel
+            }
+
             const noticiasPorHotel = data.filter(function(noticia) {
                 return noticia.hotel === hotel;
             });
@@ -96,27 +109,15 @@ function loadLastThreeNoticias() {
 
             // Obtener las tres últimas noticias
             const lastThreeNoticias = noticiasOrdenadas.slice(0, 3);
-            let selectedLanguage = $('.language-select-pc').val();
-            let displayDiv = "";
-            if(selectedLanguage == "es" && hotel == "es"){
-                displayDiv = "block";
-            } else if (selectedLanguage == "en" && hotel == "com") {
-                displayDiv = "block";
-            } else if (selectedLanguage == "pt" && hotel == "com.br") {
-                displayDiv = "block";
-            } else {
-                displayDiv = "none";
-            }
-            let hotelDefine = "";
-            if(hotel == "com.br"){
-                hotelDefine = "com_br"
-            } else {
-                hotelDefine = hotel
-            }
-            // Renderizar las noticias
-            lastThreeNoticias.forEach(function(noticia) {
+
+            let hotelDefine = hotel === "com.br" ? "com_br" : hotel;
+
+            lastThreeNoticias.forEach(function(noticia, index) {
+                // La primera noticia tendrá la clase "active"
+                const isActive = index === 0 ? 'active' : '';
+
                 const noticiaHTML = `
-                    <div class="noticia_div noticia_div_last_three ultimas_tres_noticias_${hotelDefine}" data-toggle="modal" data-target="#noticiaModal" data-id="${noticia.id}" style="display: ${displayDiv};">
+                    <div class="carousel-item ${isActive} ultimas_tres_noticias_${hotelDefine} noticia_div noticia_div_last_three" data-toggle="modal" data-target="#noticiaModal" data-id="${noticia.id}">
                         <div class="row">
                             <div class="col-12">
                                 <div class="row">
@@ -137,9 +138,11 @@ function loadLastThreeNoticias() {
                 lastThreeContainer.append(noticiaHTML);
             });
         });
+
+        // Inicializar el carrusel después de cargar las noticias
+        $('#carouselNoticias').carousel();
     });
 }
-
 
 function loadNoticias() {
     const timestamp = new Date().getTime();

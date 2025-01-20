@@ -2074,5 +2074,17 @@
     "descripcion_resumida": "<p class=\"noticia_descripcion\"><strong>Habbo Hotel: Orígenes celebra San Valentín con una encuesta.</strong> Los usuarios podrán votar por nuevas líneas de furnis: <strong>Romántica</strong> y <strong>Norja</strong>. Recuerda que la votación es solo para miembros del Habbo Club.</p>",
     "hotel": "es",
     "fecha_noticia": "2025-01-17T16:30:00.000Z"
+  },
+  {
+    "id": 242,
+    "titulo": "Atividade surpresa com Cayde-6!",
+    "imagen_completa": "2025-01-20-16-36-01",
+    "alt_imagen_completa": "Atividade surpresa Cayde-6",
+    "descripcion_completa": "<p><strong>Prepare-se para uma atividade surpresa com Cayde-6!</strong></p><p>No dia 21 de janeiro, às 12h BR / 15h PT, e no dia 22 de janeiro, às 11h BR / 14h PT, os jogadores são convidados a participar de um evento divertido no Boom Game. A sala de Cayde-6 estará à espera de todos, onde é possível participar e concorrer a prêmios incríveis!</p>",
+    "imagen_resumida": "staff",
+    "alt_imagen_resumida": "atividade surpresa com Cayde-6",
+    "descripcion_resumida": "<p class=\"noticia_descripcion\"><strong>Surpresa a caminho!</strong> Participe de uma atividade com Cayde-6 nos dias 21 e 22 de janeiro no Boom Game. Venha se divertir e concorra a prêmios!</p>",
+    "hotel": "com.br",
+    "fecha_noticia": "2025-01-20T16:36:23.000Z"
   }
 ]

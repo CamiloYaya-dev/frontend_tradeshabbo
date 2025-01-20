@@ -16974,5 +16974,61 @@
     "precio": "70.00",
     "hotel": "ES",
     "user_modify": "Dake"
+  },
+  {
+    "id": 2480,
+    "product_id": 332,
+    "fecha_precio": "2025-01-19T22:50:46.000Z",
+    "precio": "1250.00",
+    "hotel": "US",
+    "user_modify": "emo"
+  },
+  {
+    "id": 2481,
+    "product_id": 331,
+    "fecha_precio": "2025-01-19T22:50:58.000Z",
+    "precio": "200.00",
+    "hotel": "US",
+    "user_modify": "emo"
+  },
+  {
+    "id": 2482,
+    "product_id": 339,
+    "fecha_precio": "2025-01-19T22:51:09.000Z",
+    "precio": "250.00",
+    "hotel": "US",
+    "user_modify": "emo"
+  },
+  {
+    "id": 2483,
+    "product_id": 337,
+    "fecha_precio": "2025-01-19T22:51:21.000Z",
+    "precio": "75.00",
+    "hotel": "US",
+    "user_modify": "emo"
+  },
+  {
+    "id": 2484,
+    "product_id": 335,
+    "fecha_precio": "2025-01-19T22:51:33.000Z",
+    "precio": "50.00",
+    "hotel": "US",
+    "user_modify": "emo"
+  },
+  {
+    "id": 2485,
+    "product_id": 325,
+    "fecha_precio": "2025-01-19T22:51:59.000Z",
+    "precio": "350.00",
+    "hotel": "US",
+    "user_modify": "emo"
+  },
+  {
+    "id": 2486,
+    "product_id": 327,
+    "fecha_precio": "2025-01-19T22:54:18.000Z",
+    "precio": "250.00",
+    "hotel": "US",
+    "user_modify": "emo"
   }
 ]

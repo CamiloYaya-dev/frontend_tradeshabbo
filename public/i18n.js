@@ -97,21 +97,10 @@ $(document).ready(function() {
         const newLanguage = $(this).val();
         changeLanguage(newLanguage);
 
-        $('.name-item-es').hide();
-        $('.name-item-en').hide();
-        $('.name-item-pt').hide();
-        $('.name-item-history-es').hide();
-        $('.name-item-history-en').hide();
-        $('.name-item-history-pt').hide();
-        $('.last_items_update_es').hide();
-        $('.last_items_update_en').hide();
-        $('.last_items_update_pt').hide();
-        $('.ultimas_tres_noticias_es').hide();
-        $('.ultimas_tres_noticias_com').hide();
-        $('.ultimas_tres_noticias_com_br').hide();
-        $('.noticia_es').hide();
-        $('.noticia_com').hide();
-        $('.noticia_com_br').hide();
+        $('.name-item-es, .name-item-en, .name-item-pt').hide();
+        $('.name-item-history-es, .name-item-history-en, .name-item-history-pt').hide();
+        $('.last_items_update_es, .last_items_update_en, .last_items_update_pt').hide();
+        $('.noticia_es, .noticia_com, .noticia_com_br').hide();
 
         if (newLanguage === 'es') {
             $('.name-item-es').show();
@@ -132,9 +121,16 @@ $(document).ready(function() {
             $('.ultimas_tres_noticias_com_br').show();
             $('.noticia_com_br').show();
         }
-    });
+
+        // Llamada a la función de otro archivo para recargar las noticias
+        if (typeof loadLastThreeNoticias === "function") {
+            loadLastThreeNoticias();
+        } else {
+            console.error("Error: loadLastThreeNoticias no está definida.");
+        }
     
-    updateContent();
+        ateContent();
+    });
 });
 
 $(document).on('productsRendered', function() {

@@ -272,8 +272,6 @@ main.container.master-trades-bg {
 
 .container {
     max-width: 100% !important;
-    margin: 0 !important;
-    padding: 0 15px;
 }
 
 .card {
@@ -1166,7 +1164,7 @@ audio::-webkit-media-controls-panel {
 }
 
 .carousel{
-   width: 40%;
+   width: 100%;
 }
 
 .shiny-box {
@@ -1210,12 +1208,6 @@ audio::-webkit-media-controls-panel {
 .sorteos-titulo{
     place-content: center;
     padding-bottom: 15px;
-}
-
-.carousel-item img {
-    width: 350px;
-    height: 350px;
-    object-fit: cover; /* Mantiene la relación de aspecto y rellena el cuadro */
 }
 
 .traders_club_icon{
@@ -2783,4 +2775,12 @@ h5 {
     border-top: solid 1px;
     margin-top: 10px;
     padding-top: 10px;
+}
+
+.carousel-control-prev {
+    left: -30px;
+}
+
+.carousel-control-next {
+    right: -30px;
 }
