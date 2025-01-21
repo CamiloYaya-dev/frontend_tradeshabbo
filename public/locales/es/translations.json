@@ -141,5 +141,8 @@
     "redactor": "Redactor",
     "corrector": "Corrector",
     "redes_sociales": "Redes Sociales",
-    "contactanos_navbar": "<img src=\"furnis/iconos/contactanos.png\" class=\"iconos-menu\" alt=\"icon\"> Contactanos"
+    "contactanos_navbar": "<img src=\"furnis/iconos/contactanos.png\" class=\"iconos-menu\" alt=\"icon\"> Contactanos",
+    "web_amigas_es": "Webs Amigas .ES",
+    "web_amigas_com": "Webs Amigas .COM",
+    "web_amigas_br": "Webs Amigas .BR"
 }

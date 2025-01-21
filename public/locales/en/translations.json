@@ -141,5 +141,8 @@
     "redactor": "Editor",
     "corrector": "Proofreader",
     "redes_sociales": "Social Media",
-    "contactanos_navbar": "<img src=\"furnis/iconos/contactanos.png\" class=\"iconos-menu\" alt=\"icon\"> Contact us"
+    "contactanos_navbar": "<img src=\"furnis/iconos/contactanos.png\" class=\"iconos-menu\" alt=\"icon\"> Contact us",
+    "web_amigas_es": "Friendly Webs .ES",
+    "web_amigas_com": "Friendly Webs .COM",
+    "web_amigas_br": "Friendly Webs .BR"
 }

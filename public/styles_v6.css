@@ -1198,6 +1198,7 @@ audio::-webkit-media-controls-panel {
 .fila_end{
     justify-content: end;
     padding-right: 15px;
+    text-align: -webkit-center;
 }
 
 .fila_discord{
@@ -2783,4 +2784,30 @@ h5 {
 
 .carousel-control-next {
     right: -30px;
+}
+
+.webs_amigas{
+    text-align-last: center;
+    width: 100%;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
+    border: 1px solid #050a0e;
+    border-radius: 15px;
+    box-shadow: 0 2px 3px rgba(6, 19, 25, .7);
+    padding: 12px;
+    font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    position: relative;
+}
+
+.imagen_webs_amigas{
+    width: 170px;
+    border-radius: 5px;
+}
+
+.webs_amigas_h5{
+    color: #FFD700;
+    text-align: center;
+}
+
+.container_last_three{
+    height: 320px;
 }
