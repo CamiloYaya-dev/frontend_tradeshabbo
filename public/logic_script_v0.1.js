@@ -377,6 +377,12 @@ function initialize() {
                             var parts = item.status.split('_');
                             var firstStatus = '';
                             var secondStatus = '';
+                            let fecha_precio_es = item.fecha_precio.split('T')[0];
+                            let partes_es = fecha_precio_es.split('-');
+                            fecha_precio_es = `${partes_es[2]}-${partes_es[1]}-${partes_es[0]}`;
+                            let fecha_precio_com = item.fecha_precio_com.split('T')[0];
+                            let partes_com = fecha_precio_com.split('-');
+                            fecha_precio_com = `${partes_com[2]}-${partes_com[1]}-${partes_com[0]}`;
                             if (parts.length >= 5) {
                                 // Unimos las primeras tres partes
                                 firstStatus = parts.slice(0, 3).join('_');
@@ -389,7 +395,7 @@ function initialize() {
                                 <div class="col-md-4 col-sm-6 mb-4 product-item catalog_item_div">
                                     <div class="card h-100 position-relative ${borderClass}">
                                         <div class="row furnis_row_new_year_scale">
-                                            <div class="col-8">
+                                            <div class="col-8 centrar_x">
                                                 <a href="#" class="text-decoration-none product-link" data-id="${item.id}">
                                                     <div class="row">
                                                         <div class="col-12 furni_tipo">
@@ -467,6 +473,11 @@ function initialize() {
                                                                                     <img src="furnis/dinero/vivo.png" alt="vivo" class="price-vivo-principal" data-toggle="tooltip">${item.price > 0 ? (item.price / item.petal_price).toFixed(1) : '??'}
                                                                                 </p>
                                                                             </div>
+                                                                            <div class="col-12 noticia_descripcion">
+                                                                                <p class="noticia_descripcion" data-toggle="tooltip" data-i18n="[title]fecha_actualizada_main" title="Precio Actualizado el:">
+                                                                                    🔄${fecha_precio_es}
+                                                                                </p>
+                                                                            </div>
                                                                         </div>
                                                                         <div class="prices_usa">
                                                                             <div class="col-12">
@@ -492,6 +503,11 @@ function initialize() {
                                                                             <div class="col-12">
                                                                                 <p class="card-text text-price">
                                                                                     <img src="furnis/dinero/egg_lila.png" alt="egg lila" class="price-egg-principal" data-toggle="tooltip">${item.usa_price > 0 ? (item.usa_price / item.dino_price).toFixed(1) : '??'}
+                                                                                </p>
+                                                                            </div>
+                                                                            <div class="col-12">
+                                                                                <p class="noticia_descripcion" data-toggle="tooltip" data-i18n="[title]fecha_actualizada_main" title="Precio Actualizado el:">
+                                                                                    🔄${fecha_precio_com}
                                                                                 </p>
                                                                             </div>
                                                                             <div class="col-12 traderclub_section">
@@ -604,7 +620,6 @@ function initialize() {
                     });
                     mapTradersClub(decryptedData, itemData);
                     //mapHabbonation(decryptedData, firebaseData);
-                    console.log(decryptedData);
                     renderProducts(decryptedData);
 
                     $('#search-input').on('input', function() {
@@ -716,13 +731,8 @@ function initialize() {
                         const isMobile = window.matchMedia("(max-width: 768px)").matches;
                         var selectedLanguage = isMobile ? $('.language-select-mobile').val() : $('.language-select-pc').val();
                         let filteredData = decryptedData.filter(record => record.hotel === hotel);
-                        console.log("filteredData1 (original):");
-                        console.log(filteredData);
-
                         // Hacer una copia para ordenarla del más antiguo al más reciente
                         let filteredDataAsc = [...filteredData].sort((a, b) => new Date(a.fecha_precio) - new Date(b.fecha_precio));
-                        console.log("filteredData2 (ordenado del más antiguo al más reciente):");
-                        console.log(filteredDataAsc);
 
                         // Calcular las tendencias
                         filteredDataAsc.forEach((record, index) => {
@@ -747,8 +757,6 @@ function initialize() {
 
                         // Si necesitas mostrar los datos nuevamente en orden descendente (más reciente al más antiguo)
                         let filteredDataDesc = [...filteredDataAsc].sort((a, b) => new Date(b.fecha_precio) - new Date(a.fecha_precio));
-                        console.log("filteredData3 (ordenado del más reciente al más antiguo):");
-                        console.log(filteredDataDesc);
                         var firstRecord = filteredDataDesc[0];
                         var historyContent = `
                             <h3 class="price_history_content habbo_text_blue h3_historial_precios" data-i18n="historial_precios">Historial de Precios</h3>

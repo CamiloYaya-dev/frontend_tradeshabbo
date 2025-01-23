@@ -467,12 +467,6 @@ app.get('/images', async (req, res) => {
         const startDate = today.clone().subtract(30, 'days');
 
         const priceHistories = await PriceHistory.findAll({
-            where: {
-                fecha_precio: {
-                    [Op.gte]: startDate,
-                    [Op.lt]: today
-                }
-            },
             order: [['productId'], ['fecha_precio', 'DESC']]
         });
 
@@ -498,6 +492,7 @@ app.get('/images', async (req, res) => {
             }
 
             const priceHistoryCOM = priceHistories.filter(ph => ph.productId === image.id && ph.hotel === 'US');
+
             let statusCOM = '';
             if (priceHistoryCOM.length > 1) {
                 const actualPrice = priceHistoryCOM[0].precio;

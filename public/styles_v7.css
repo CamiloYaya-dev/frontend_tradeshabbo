@@ -621,6 +621,7 @@ footer {
     padding: 12px;
     font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
     text-align: center;
+    color: white;
 }
 
 .div_calculador_tradeos{
@@ -2787,6 +2788,7 @@ h5 {
 }
 
 .webs_amigas{
+    margin-top: 60px;
     text-align-last: center;
     width: 100%;
     background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
@@ -2810,4 +2812,12 @@ h5 {
 
 .container_last_three{
     height: 320px;
+}
+
+.fecha_catalogo_main{
+    padding-top: 1px
+}
+
+.centrar_x{
+    align-self: anchor-center;
 }
