@@ -2821,3 +2821,9 @@ h5 {
 .centrar_x{
     align-self: anchor-center;
 }
+
+.web_dos{
+    padding-top: 10px;
+    width: 220px;
+    border-radius: 5px;
+}
