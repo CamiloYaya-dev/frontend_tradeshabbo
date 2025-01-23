@@ -115,7 +115,8 @@ function loadLastThreeNoticias() {
             lastThreeNoticias.forEach(function(noticia, index) {
                 // La primera noticia tendrá la clase "active"
                 const isActive = index === 0 ? 'active' : '';
-
+                const fechaNoticia = noticia.fecha_noticia;
+                const fechaFormateada = fechaNoticia.replace('T', ' ').replace('Z', '').replace('.000', '');
                 const noticiaHTML = `
                     <div class="carousel-item ${isActive} ultimas_tres_noticias_${hotelDefine} noticia_div noticia_div_last_three" data-toggle="modal" data-target="#noticiaModal" data-id="${noticia.id}">
                         <div class="row">
@@ -131,6 +132,9 @@ function loadLastThreeNoticias() {
                             </div>
                             <div class="col-12 d-flex justify-content-center align-items-center">
                                 <img src="furnis/noticias/imagenes/resumidas/${noticia.imagen_resumida}.png" alt="${noticia.alt_imagen_resumida}" class="noticia_imagen_resumida_last_three">
+                            </div>
+                            <div class="col-12 d-flex justify-content-center align-items-center">
+                                <h5 class="noticia_title_last_three">${fechaFormateada}</h5>
                             </div>
                         </div>
                     </div>
