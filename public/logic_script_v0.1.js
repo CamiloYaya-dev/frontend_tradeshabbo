@@ -986,8 +986,11 @@ function initialize() {
                                 headers: { 'x-api-key': apiKey },
                                 success: function(data) {
                                     const decryptedData = decryptData(data.token);
+                                    console.log(decryptedData);
                                     const latestDate = new Date(decryptedData.fecha_precio);
+                                    console.log(latestDate);
                                     const formattedDate = latestDate.toLocaleString();
+                                    console.log(formattedDate);
                                     $('#last_price_updated').text(formattedDate);
                                 },
                                 fail: function() {
