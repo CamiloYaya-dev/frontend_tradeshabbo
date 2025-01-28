@@ -985,20 +985,32 @@ function initialize() {
                                 type: 'GET',
                                 headers: { 'x-api-key': apiKey },
                                 success: function(data) {
-                                    const decryptedData = decryptData(data.token);
-                                    console.log(decryptedData);
-                                    const latestDate = new Date(decryptedData.fecha_precio);
-                                    console.log(latestDate);
-                                    const formattedDate = latestDate.toLocaleString();
-                                    console.log(formattedDate);
-                                    $('#last_price_updated').text(formattedDate);
+                                    try {
+                                        const decryptedData = decryptData(data.token);
+                                        console.log(decryptedData);
+                                        const latestDate = new Date(decryptedData.fecha_precio);
+                                        console.log(latestDate);
+                                        const formattedDate = latestDate.toLocaleString();
+                                        console.log(formattedDate);
+                                        $('#last_price_updated').text(formattedDate);
+                                    } catch (error) {
+                                        console.error('Error al procesar los datos:', error);
+                                        $('#last_price_updated').text('Error al procesar la fecha');
+                                    }
                                 },
-                                fail: function() {
-                                    $('#last_price_updated').text('No disponible');
+                                error: function(jqXHR) {
+                                    if (jqXHR.status === 403) {
+                                        console.error('Error 403: Acceso prohibido.');
+                                        $('#last_price_updated').text('Acceso prohibido');
+                                    } else {
+                                        console.error('Error en la solicitud:', jqXHR);
+                                        $('#last_price_updated').text('No disponible');
+                                    }
                                 }
                             });
                         });
                     }
+                    
                     updateContent();
                     loadLastPriceUpdate();
                 }

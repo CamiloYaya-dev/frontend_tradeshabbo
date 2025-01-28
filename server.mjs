@@ -203,7 +203,7 @@ app.get('/api-key', (req, res) => {
     res.json({ token: encryptData(response) });
 });
 
-app.use('/latest-price-update', apiKeyMiddleware);
+/*app.use('/latest-price-update', apiKeyMiddleware);*/
 app.use('/images', apiKeyMiddleware);
 app.use('/price-history/:productId', apiKeyMiddleware);
 app.use('/images/:id/vote', apiKeyMiddleware);
