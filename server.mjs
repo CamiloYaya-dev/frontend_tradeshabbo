@@ -275,7 +275,7 @@ async function getVipPriceOnDate(date) {
 async function getCatalog() {
     const token = generateJWT();
     try {
-        const response_catalog = await axios.get('https://nearby-kindly-lemming.ngrok-free.app/habbo-catalog', {
+        const response_catalog = await axios.get('https://airedale-summary-especially.ngrok-free.app/habbo-catalog', {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -290,7 +290,7 @@ async function getCatalog() {
             fs.writeFileSync(path.join(__dirname, 'public', 'furnis', 'precios', 'precios.json'), jsonContent_catalog, 'utf8');
         }
         const token2 = generateJWT();
-        const response_prices = await axios.get('https://nearby-kindly-lemming.ngrok-free.app/habbo-price-history', {
+        const response_prices = await axios.get('https://airedale-summary-especially.ngrok-free.app/habbo-price-history', {
             headers: {
                 'Authorization': `Bearer ${token2}`
             }
@@ -314,7 +314,7 @@ async function getCatalog() {
 async function fetchAndStoreHabboOnline() {
     const token = generateJWT();
     try {
-        const response_online = await axios.get('https://nearby-kindly-lemming.ngrok-free.app/habbo-online',{
+        const response_online = await axios.get('https://airedale-summary-especially.ngrok-free.app/habbo-online',{
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -336,7 +336,7 @@ async function fetchAndStoreHabboOnline() {
 async function fetchAndStoreNoticias() {
     const token = generateJWT();
     try {
-        const response_noticias = await axios.get('https://nearby-kindly-lemming.ngrok-free.app/noticias',{
+        const response_noticias = await axios.get('https://airedale-summary-especially.ngrok-free.app/noticias',{
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -360,7 +360,7 @@ async function fetchAndStoreNoticias() {
 async function updateVisitCount() {
     const token = generateJWT();
     try {
-        const response = await axios.get('https://nearby-kindly-lemming.ngrok-free.app/contador-visitas',{
+        const response = await axios.get('https://airedale-summary-especially.ngrok-free.app/contador-visitas',{
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -404,7 +404,7 @@ async function updateVisitCount() {
 async function updateVotesCount() {
     const token = generateJWT();
     try {
-        const response = await axios.get('https://nearby-kindly-lemming.ngrok-free.app/contador-votos',{
+        const response = await axios.get('https://airedale-summary-especially.ngrok-free.app/contador-votos',{
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -671,7 +671,7 @@ app.post('/images/:id/vote', [
         ipVotes[ip].push(imageId);
 
         const token = generateJWT();
-        const response = await axios.post('https://nearby-kindly-lemming.ngrok-free.app/habbo-votes', {
+        const response = await axios.post('https://airedale-summary-especially.ngrok-free.app/habbo-votes', {
             upvotes: image.upvotes,
             downvotes: image.downvotes,
             id: imageId
@@ -737,7 +737,7 @@ app.post('/images/:id/vote-belief', [
         }
         ipVotes_belief[ip].push(imageId);
         const token = generateJWT();
-        const response = await axios.post('https://nearby-kindly-lemming.ngrok-free.app/habbo-votes-belief', {
+        const response = await axios.post('https://airedale-summary-especially.ngrok-free.app/habbo-votes-belief', {
             upvotes_belief: image.upvotes_belief,
             downvotes_belief: image.downvotes_belief,
             id: imageId
@@ -807,7 +807,7 @@ app.get('/furnis/sorteos/pagos', (req, res) => {
 app.get('/salas', async (req, res) => {
     try {
         const token = generateJWT();
-        const response = await axios.get('https://nearby-kindly-lemming.ngrok-free.app/get-images', {
+        const response = await axios.get('https://airedale-summary-especially.ngrok-free.app/get-images', {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -1102,7 +1102,7 @@ app.post('/register-user', [
         const token = generateJWT();
 
         // Envía la solicitud POST a la API externa
-        const response = await axios.post('https://nearby-kindly-lemming.ngrok-free.app/register-user', {
+        const response = await axios.post('https://airedale-summary-especially.ngrok-free.app/register-user', {
             username: usernameRegister,
             email,
             password: passwordRegister
@@ -1144,7 +1144,7 @@ app.post('/login', [
         // Genera un token JWT para autorización
         const tokenAut = generateJWT();
         // Petición a Gods_Bot
-        const response = await axios.post('https://nearby-kindly-lemming.ngrok-free.app/login', {
+        const response = await axios.post('https://airedale-summary-especially.ngrok-free.app/login', {
             username,
             password
         },{
@@ -1277,7 +1277,7 @@ Fecha y hora de modificacion: **${fechaModificacion}**
         const tokenAut = generateJWT();
 
         // Llamada a la API externa
-        const response = await axios.post('https://nearby-kindly-lemming.ngrok-free.app/habbo-update-catalog', {
+        const response = await axios.post('https://airedale-summary-especially.ngrok-free.app/habbo-update-catalog', {
             id: product_id,
             lang: hotel,
             price,
@@ -1410,7 +1410,7 @@ client.once('ready', async () => {
     await Promise.all(fetchPromises);
     const token = generateJWT();
     try {
-        const response = await axios.post('https://nearby-kindly-lemming.ngrok-free.app/guardar_invitaciones', inviteData, {
+        const response = await axios.post('https://airedale-summary-especially.ngrok-free.app/guardar_invitaciones', inviteData, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -1433,7 +1433,7 @@ client.once('ready', async () => {
     console.log('entre al guildMemberAdd');
     const token = generateJWT();
     try {
-        const response = await axios.get('https://nearby-kindly-lemming.ngrok-free.app/invitaciones', {
+        const response = await axios.get('https://airedale-summary-especially.ngrok-free.app/invitaciones', {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -1461,7 +1461,7 @@ client.once('ready', async () => {
             };
             const token2 = generateJWT();
             try {
-                const competicionResponse = await axios.post('https://nearby-kindly-lemming.ngrok-free.app/competicion-invitacion', competicionData, {
+                const competicionResponse = await axios.post('https://airedale-summary-especially.ngrok-free.app/competicion-invitacion', competicionData, {
                     headers: {
                         'Authorization': `Bearer ${token2}`
                     }
@@ -1472,7 +1472,7 @@ client.once('ready', async () => {
             }
 
             const token3 = generateJWT();
-            await axios.post('https://nearby-kindly-lemming.ngrok-free.app/actualizar_uso_invitacion', {
+            await axios.post('https://airedale-summary-especially.ngrok-free.app/actualizar_uso_invitacion', {
                 code: usedInvite.code,
                 uses: usedInvite.uses + 1
             }, {
@@ -1504,7 +1504,7 @@ client.on('inviteCreate', async invite => {
     };
     const token = generateJWT();
     try {
-        const response = await axios.post('https://nearby-kindly-lemming.ngrok-free.app/guardar_invitaciones', [newInviteData], {
+        const response = await axios.post('https://airedale-summary-especially.ngrok-free.app/guardar_invitaciones', [newInviteData], {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -1894,7 +1894,7 @@ client.on('interactionCreate', async interaction => {
                 let opcionesExternas = [];
                 const token = generateJWT();
                 try {
-                    const response = await axios.post('https://nearby-kindly-lemming.ngrok-free.app/encuestas', nuevaEncuesta, {
+                    const response = await axios.post('https://airedale-summary-especially.ngrok-free.app/encuestas', nuevaEncuesta, {
                         headers: {
                             'Authorization': `Bearer ${token}`
                         }
@@ -1907,7 +1907,7 @@ client.on('interactionCreate', async interaction => {
                             opcion_discord_id: index
                         };
                         let tokenOpciones = generateJWT();
-                        const opcionResponse = await axios.post('https://nearby-kindly-lemming.ngrok-free.app/opciones', nuevaOpcion, {
+                        const opcionResponse = await axios.post('https://airedale-summary-especially.ngrok-free.app/opciones', nuevaOpcion, {
                             headers: {
                                 'Authorization': `Bearer ${tokenOpciones}`
                             }
@@ -1951,7 +1951,7 @@ client.on('interactionCreate', async interaction => {
                             while (!sent) {
                                 try {
                                     let tokenVotos = generateJWT();
-                                    await axios.post('https://nearby-kindly-lemming.ngrok-free.app/votos', {
+                                    await axios.post('https://airedale-summary-especially.ngrok-free.app/votos', {
                                         encuesta_id: encuestaMessage.id,
                                         opcion_id: selectedOptionId,
                                         usuario_id: userId
@@ -2045,7 +2045,7 @@ client.on('interactionCreate', async interaction => {
                             return;
                         }
                         const token = generateJWT();
-                        await axios.put(`https://nearby-kindly-lemming.ngrok-free.app/encuestas/${encuestaMessage.id}/inactivar`, {
+                        await axios.put(`https://airedale-summary-especially.ngrok-free.app/encuestas/${encuestaMessage.id}/inactivar`, {
                             headers: {
                                 'Authorization': `Bearer ${token}`
                             }
@@ -2132,7 +2132,7 @@ client.on('interactionCreate', async interaction => {
                                     price: resultadoFinal
                                 }];
                                 const token = generateJWT();
-                                await axios.post('https://nearby-kindly-lemming.ngrok-free.app/habbo-update-catalog', postData, {
+                                await axios.post('https://airedale-summary-especially.ngrok-free.app/habbo-update-catalog', postData, {
                                     headers: {
                                         'Authorization': `Bearer ${token}`
                                     }
@@ -2186,7 +2186,7 @@ client.on('interactionCreate', async interaction => {
             pollData.collector.stop();
             activePolls.delete(mensajeId);
             const token = generateJWT();
-            axios.put(`https://nearby-kindly-lemming.ngrok-free.app/encuestas/${mensajeId}/inactivar`, {
+            axios.put(`https://airedale-summary-especially.ngrok-free.app/encuestas/${mensajeId}/inactivar`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -2273,7 +2273,7 @@ client.on('messageCreate', async (message) => {
                     }
                     try {
                         const token = generateJWT();
-                        const response = await axios.post('https://nearby-kindly-lemming.ngrok-free.app/nueva-noticia', summaryData, {
+                        const response = await axios.post('https://airedale-summary-especially.ngrok-free.app/nueva-noticia', summaryData, {
                             headers: {
                                 'Authorization': `Bearer ${token}`
                             }
@@ -2351,7 +2351,7 @@ client.on('messageDelete', (message) => {
             'Authorization': `Bearer ${token}`
         };
         // Enviar la solicitud DELETE al endpoint remoto
-        axios.delete('https://nearby-kindly-lemming.ngrok-free.app/delete-image', {
+        axios.delete('https://airedale-summary-especially.ngrok-free.app/delete-image', {
             headers: headers,
             data: payload // Aquí es donde se envía el body con el messageid
         })
@@ -2413,7 +2413,7 @@ async function uploadImageToService(filePath, contentType) {
     };
 
     try {
-        const response = await axios.post('https://nearby-kindly-lemming.ngrok-free.app/upload-image', form, { headers });
+        const response = await axios.post('https://airedale-summary-especially.ngrok-free.app/upload-image', form, { headers });
         console.log('Imagen subida exitosamente:', response.data);
     } catch (err) {
         console.error('Error al subir la imagen:', err);
@@ -2515,7 +2515,7 @@ async function fetchAndExtractNoticias() {
             });
 
             const token = generateJWT();
-            const response = await axios.get('https://nearby-kindly-lemming.ngrok-free.app/noticias-oficiales', {
+            const response = await axios.get('https://airedale-summary-especially.ngrok-free.app/noticias-oficiales', {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -2541,7 +2541,7 @@ async function fetchAndExtractNoticias() {
         for (const noticia of noticiasNoRegistradasGlobal) {
             try {
                 const tokenNewsOficial = generateJWT();
-                const noticiaResponse = await axios.post('https://nearby-kindly-lemming.ngrok-free.app/nueva-noticia-oficial', noticia, {
+                const noticiaResponse = await axios.post('https://airedale-summary-especially.ngrok-free.app/nueva-noticia-oficial', noticia, {
                     headers: {
                         'Authorization': `Bearer ${tokenNewsOficial}`
                     }
@@ -2737,7 +2737,7 @@ async function fetchAndExtractNoticias() {
                         
                         try {
                             const tokenNews = generateJWT();
-                            await axios.post('https://nearby-kindly-lemming.ngrok-free.app/nueva-noticia', summaryDataWeb, {
+                            await axios.post('https://airedale-summary-especially.ngrok-free.app/nueva-noticia', summaryDataWeb, {
                                 headers: {
                                     'Authorization': `Bearer ${tokenNews}`
                                 }
