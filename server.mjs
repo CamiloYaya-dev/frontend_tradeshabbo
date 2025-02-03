@@ -1066,7 +1066,7 @@ app.get('/secure-image/:imageName', async (req, res) => {
     const referer = req.headers.referer;
 
     // Verifica el referer para asegurarte de que la imagen sea solicitada desde tu página web
-    if (!referer || (!referer.includes('localhost:3000') && !referer.includes('tradeshabbo.com') && !referer.includes('trades-habbo-origins.online'))) {
+    if (!referer || (!referer.includes('localhost:3000') && !referer.includes('tradeshabbo.com') && !referer.includes('trades-habbo-origins.online')  && !referer.includes('originskingdom.com'))) {
         return res.status(403).json({ error: 'Access forbidden' });
     }
 

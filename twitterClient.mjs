@@ -21,7 +21,7 @@ export async function postTweet(content, messageUrl) {
     const hashtags = "#HabboHotelOrigins #Habbo #THOFansite";
 
     content = await generateSummary(content);
-    let tweetContent = `${content}\nMás información en nuestra fansite: https://www.tradeshabbo.com o en nuestro Discord: ${messageUrl}\n${hashtags}`;
+    let tweetContent = `${content}\nMás información en nuestra fansite: https://www.originskingdom.com o en nuestro Discord: ${messageUrl}\n${hashtags}`;
 
     try {
         await rwClient.v2.tweet(tweetContent);
@@ -52,17 +52,17 @@ export async function postTweetOficial(content, messageUrl, lenguage) {
     let additionalText;
     switch (lenguage.toLowerCase()) {
         case 'Español':
-            additionalText = `🌐 Más información en nuestra fansite:\n👉 https://tradeshabbo.com\n\n💬 Únete a nuestro Discord:\n👉 ${messageUrl}`;
+            additionalText = `🌐 Más información en nuestra fansite:\n👉 https://originskingdom\n\n💬 Únete a nuestro Discord:\n👉 ${messageUrl}`;
             break;
         case 'Ingles':
-            additionalText = `🌐 More information on our fansite:\n👉 https://tradeshabbo.com\n\n💬 Join our Discord:\n👉 ${messageUrl}`;
+            additionalText = `🌐 More information on our fansite:\n👉 https://originskingdom\n\n💬 Join our Discord:\n👉 ${messageUrl}`;
             break;
         case 'Portugues de brasil':
-            additionalText = `🌐 Mais informações em nosso fansite:\n👉 https://tradeshabbo.com\n\n💬 Entre no nosso Discord:\n👉 ${messageUrl}`;
+            additionalText = `🌐 Mais informações em nosso fansite:\n👉 https://originskingdom\n\n💬 Entre no nosso Discord:\n👉 ${messageUrl}`;
             break;
         default:
             console.error('Idioma no reconocido, usando texto predeterminado en inglés.');
-            additionalText = `🌐 More information on our fansite:\n👉 https://tradeshabbo.com\n\n💬 Join our Discord:\n👉 ${messageUrl}`;
+            additionalText = `🌐 More information on our fansite:\n👉 https://originskingdom\n\n💬 Join our Discord:\n👉 ${messageUrl}`;
             break;
     }    
 

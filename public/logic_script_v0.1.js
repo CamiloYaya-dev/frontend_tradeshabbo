@@ -563,8 +563,8 @@ function initialize() {
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>-->
-                                        <img src="furnis/iconos/chino/marco_furnis_catalogo.png" class="marco_furnis_year_china" alt="marco año nuevo chino habbo">
+                                        </div>
+                                        <img src="furnis/iconos/san_valentin/marco_san_valentin.png" class="marco_furnis_year_china" alt="marco año nuevo chino habbo">-->
                                     </div>
                                 </div>
                             `;
@@ -1132,7 +1132,7 @@ function isMobileDevice() {
     return /Mobi|Android/i.test(navigator.userAgent);
 }
 
-Chart.defaults.backgroundColor = '#626262';
+Chart.defaults.backgroundColor = '#3B1C2A';
 Chart.defaults.borderColor = '#36A2EB';
 Chart.defaults.color = '#FFFFFF';
 
@@ -1242,7 +1242,7 @@ function drawChart(labels, creditsPrice, vipPrice) {
             beforeDraw: function(chart) {
                 const ctx = chart.ctx;
                 ctx.save();
-                ctx.fillStyle = isMobileDevice() ? '#555' : '#626262';
+                ctx.fillStyle = isMobileDevice() ? '#555' : '#3B1C2A';
                 ctx.globalCompositeOperation = 'destination-over';
                 ctx.fillRect(0, 0, chart.width, chart.height);
                 ctx.restore();
