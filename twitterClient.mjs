@@ -55,14 +55,14 @@ export async function postTweetOficial(content, messageUrl, lenguage) {
             additionalText = `🌐 Más información en nuestra fansite:\n👉 https://www.originskingdom.com\n\n💬 Únete a nuestro Discord:\n👉 ${messageUrl}`;
             break;
         case 'Ingles':
-            additionalText = `🌐 More information on our fansite:\n👉https://www.originskingdom.com\n\n💬 Join our Discord:\n👉 ${messageUrl}`;
+            additionalText = `🌐 More information on our fansite:\n👉 https://www.originskingdom.com\n\n💬 Join our Discord:\n👉 ${messageUrl}`;
             break;
         case 'Portugues de brasil':
-            additionalText = `🌐 Mais informações em nosso fansite:\n👉https://www.originskingdom.com\n\n💬 Entre no nosso Discord:\n👉 ${messageUrl}`;
+            additionalText = `🌐 Mais informações em nosso fansite:\n👉 https://www.originskingdom.com\n\n💬 Entre no nosso Discord:\n👉 ${messageUrl}`;
             break;
         default:
             console.error('Idioma no reconocido, usando texto predeterminado en inglés.');
-            additionalText = `🌐 More information on our fansite:\n👉https://www.originskingdom.com\n\n💬 Join our Discord:\n👉 ${messageUrl}`;
+            additionalText = `🌐 More information on our fansite:\n👉 https://www.originskingdom.com\n\n💬 Join our Discord:\n👉 ${messageUrl}`;
             break;
     }    
 
