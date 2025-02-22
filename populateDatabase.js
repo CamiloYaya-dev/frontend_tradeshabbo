@@ -78,7 +78,6 @@ async function populateDatabase() {
                 console.error(`Error al insertar la imagen con ID: ${image.id} y nombre: ${image.name}`, error);
             }
         }
-        console.log('Database populated with images');
 
         // Agregar productId a priceHistoryData
         const priceHistoryWithProductId = priceHistoryData.map(entry => {
@@ -92,7 +91,6 @@ async function populateDatabase() {
             return entry;
         });
         for (const priceHistory of priceHistoryWithProductId) {
-            //console.log(`Intentando insertar historial de precios para el producto ID: ${priceHistory.productId}`);
             try {
                 await PriceHistory.upsert(priceHistory); // Inserta o actualiza según sea necesario
             } catch (error) {

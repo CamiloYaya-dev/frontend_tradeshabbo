@@ -822,7 +822,6 @@ app.get('/salas', async (req, res) => {
 
         const images = response.data.images;
         const imagesPath = path.join(__dirname, 'public/salas');
-        console.log(imagesPath);
         // Obtén la lista de archivos locales en public/salas
         let localFiles = [];
         try {
@@ -2380,9 +2379,6 @@ client.on('threadCreate', async (thread) => {
         } catch (error) {
             console.error('Error al obtener el mensaje inicial:', error);
         }
-
-        // También puedes seguir imprimiendo el objeto thread como antes
-        console.log(JSON.stringify(thread, null, 2)); // Más legible y formateado
     }
 });
 
