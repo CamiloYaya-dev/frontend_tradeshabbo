@@ -1211,19 +1211,23 @@ app.post('/update-catalog', [
     check('lang').notEmpty().isIn(['es', 'us']).withMessage('El idioma es obligatorio y debe ser "es" o "us"'),
     check('price').notEmpty().isNumeric().withMessage('El precio es obligatorio y debe ser un número'),
 ], async (req, res) => {
+    console.log("entre a la peticion 1");
     // Validación de errores en la solicitud
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
+        console.log("entre a la peticion 2");
         return res.status(400).json({ errors: errors.array() });
     }
 
     try {
         const { product_id, lang, price } = req.body;
 
+        console.log("entre a la peticion 3");
         // Obtener el session_token de las cookies
         const sessionToken = req.cookies.session_token;
 
         if (!sessionToken) {
+            console.log("entre a la peticion 4");
             return res.status(401).json({ error: 'Sesión no válida. Inicie sesión nuevamente.' });
         }
 
@@ -1233,12 +1237,14 @@ app.post('/update-catalog', [
         const user_modify = decodedToken.username;
 
         if (!user_id) {
+            console.log("entre a la peticion 5");
             return res.status(401).json({ error: 'No se pudo identificar al usuario.' });
         }
 
         // Obtener los datos actuales del furni
         const furni = await Image.findByPk(product_id);
         if (!furni) {
+            console.log("entre a la peticion 6");
             return res.status(404).json({ error: 'Furni no encontrado.' });
         }
 
@@ -1251,6 +1257,7 @@ app.post('/update-catalog', [
         const channel = await client.channels.fetch(discordChannelId);
 
         if (channel) {
+            console.log("entre a la peticion 7");
             const messageContent = `
 Hola Traders
 
@@ -1275,9 +1282,11 @@ Fecha y hora de modificacion: **${fechaModificacion}**
                 files: fs.existsSync(furniImagePath) ? [{ attachment: furniImagePath, name: furni.name + '.png' }] : []
             });
         } else {
+            console.log("entre a la peticion 9");
             console.error(`No se pudo encontrar el canal con ID: ${discordChannelId}`);
         }
 
+        console.log("entre a la peticion 10");
         // Token de autorización para la API externa
         const tokenAut = generateJWT();
 
