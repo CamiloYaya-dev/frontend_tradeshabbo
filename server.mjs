@@ -1428,6 +1428,18 @@ client.once('ready', async () => {
 
 });
 
+client.on('error', error => {
+    console.error('Error en el bot de Discord:', error);
+});
+
+client.on('disconnect', event => {
+    console.warn(`El bot se ha desconectado: Código ${event.code}, Razón: ${event.reason}`);
+});
+
+client.on('reconnecting', () => {
+    console.log('Reconectando al servidor de Discord...');
+});
+
 /*client.on('guildMemberAdd', async member => {
     console.log('entre al guildMemberAdd');
     const token = generateJWT();
@@ -1513,7 +1525,9 @@ client.on('inviteCreate', async invite => {
     }
 });
 
-client.login(DISCORD_TOKEN);
+client.login(DISCORD_TOKEN).catch(error => {
+    console.error('Error al iniciar el bot de Discord:', error);
+});
 
 const rest = new REST({ version: '10' }).setToken(DISCORD_TOKEN);
 
