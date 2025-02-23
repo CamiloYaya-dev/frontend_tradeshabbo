@@ -73,7 +73,7 @@ app.use(express.urlencoded({ extended: true }));
 
 const limiter = rateLimit({
     windowMs: 5 * 60 * 1000, // 5 minutos
-    max: 5000, // Máximo de 5000 solicitudes
+    max: 15000, // Máximo de 5000 solicitudes
     message: "Too many requests from this IP, please try again later.",
 });
 app.use(limiter);
