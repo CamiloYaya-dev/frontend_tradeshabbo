@@ -2861,3 +2861,19 @@ h5 {
     left: 41%;
     width: 20%;
 }
+
+.dropdown-toggle{
+    color: white;
+}
+
+.dropdown-menu{
+    background-color: transparent;
+}
+
+.menu_user {
+    margin-bottom: 5px !important;
+}
+
+.btn:hover{
+    color: white !important;
+}
