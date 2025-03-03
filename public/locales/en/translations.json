@@ -146,5 +146,7 @@
     "web_amigas_com": "Friendly Webs .COM",
     "web_amigas_br": "Friendly Webs .BR",
     "web_amigas_legacy": "Friendly Webs Legacy",
-    "fecha_actualizada_main": "Price Updated on:"
+    "fecha_actualizada_main": "Price Updated on:",
+    "owner": "Owner",
+    "co_owner": "Co-owner"
 }

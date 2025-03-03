@@ -146,5 +146,7 @@
     "web_amigas_com": "Webs Amigas .COM",
     "web_amigas_br": "Webs Amigas .BR",
     "web_amigas_legacy": "Webs Amigas Legacy",
-    "fecha_actualizada_main": "Precio Actualizado el:"
+    "fecha_actualizada_main": "Precio Actualizado el:",
+    "owner": "Dueño",
+    "co_owner": "Codueño"
 }
