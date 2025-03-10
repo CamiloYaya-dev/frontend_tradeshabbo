@@ -18,6 +18,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
       - name: Add label to PRs that have no labels
         uses: actions/github-script@v6
         with:
@@ -29,13 +30,13 @@ jobs:
               state: 'open'
             });
 
-            const MINUTES_THRESHOLD = 1;
+            const DAYS_THRESHOLD = 14;
             const labelToAdd = "No reason stale";
 
             const now = new Date();
             for (const pr of pullRequests) {
               const createdAt = new Date(pr.created_at);
-              const diffMinutes = (now - createdAt) / (1000 * 60);
+              const diffDays = (now - createdAt) / (1000 * 60 * 60 * 24);
             
               const { data: labels } = await github.rest.issues.listLabelsOnIssue({
                 owner: context.repo.owner,
@@ -43,7 +44,7 @@ jobs:
                 issue_number: pr.number
               });
 
-              if (diffMinutes >= MINUTES_THRESHOLD && labels.length === 0) {
+              if (diffDays >= DAYS_THRESHOLD && labels.length === 0) {
                 await github.rest.issues.addLabels({
                   owner: context.repo.owner,
                   repo: context.repo.repo,
