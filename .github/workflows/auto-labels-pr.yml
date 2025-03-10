@@ -9,12 +9,15 @@ jobs:
   label-stale-prs:
     runs-on: ubuntu-latest
     permissions:
+      contents: read
+      issues: write
       pull-requests: write
 
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
-
+        with:
+          fetch-depth: 0
       - name: Add label to PRs that have no labels
         uses: actions/github-script@v6
         with:
