@@ -1,0 +1,53 @@
+name: Add label to PRs without labels
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+jobs:
+  label-stale-prs:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Add label to PRs that have no labels
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const { data: pullRequests } = await github.rest.pulls.list({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open'
+            });
+
+            const DAYS_THRESHOLD = 14;
+            const labelToAdd = "No reason stale";
+
+            const now = new Date();
+            for (const pr of pullRequests) {
+              const createdAt = new Date(pr.created_at);
+              const diffDays = (now - createdAt) / (1000 * 60 * 60 * 24);
+            
+              const { data: labels } = await github.rest.issues.listLabelsOnIssue({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: pr.number
+              });
+
+              if (diffDays >= DAYS_THRESHOLD && labels.length === 0) {
+                await github.rest.issues.addLabels({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: pr.number,
+                  labels: [labelToAdd]
+                });
+
+                console.log(Added label "${labelToAdd}" to PR #${pr.number});
+              }
+            }
