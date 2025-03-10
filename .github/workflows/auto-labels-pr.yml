@@ -26,13 +26,13 @@ jobs:
               state: 'open'
             });
 
-            const DAYS_THRESHOLD = 14;
+            const MINUTES_THRESHOLD = 1;
             const labelToAdd = "No reason stale";
 
             const now = new Date();
             for (const pr of pullRequests) {
               const createdAt = new Date(pr.created_at);
-              const diffDays = (now - createdAt) / (1000 * 60 * 60 * 24);
+              const diffMinutes = (now - createdAt) / (1000 * 60);
             
               const { data: labels } = await github.rest.issues.listLabelsOnIssue({
                 owner: context.repo.owner,
@@ -40,7 +40,7 @@ jobs:
                 issue_number: pr.number
               });
 
-              if (diffDays >= DAYS_THRESHOLD && labels.length === 0) {
+              if (diffMinutes >= MINUTES_THRESHOLD && labels.length === 0) {
                 await github.rest.issues.addLabels({
                   owner: context.repo.owner,
                   repo: context.repo.repo,
@@ -48,6 +48,6 @@ jobs:
                   labels: [labelToAdd]
                 });
 
-                console.log(Added label "${labelToAdd}" to PR #${pr.number});
+                console.log(`Added label "${labelToAdd}" to PR #${pr.number}`);
               }
             }
