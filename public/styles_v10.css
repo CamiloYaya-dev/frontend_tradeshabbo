@@ -1868,8 +1868,7 @@ audio::-webkit-media-controls-panel {
 }
 
 .modal_olimpiadas{
-    width: 715px;
-    max-width: 715px;
+    width: 100%;
 }
 
 .div_filtros{
