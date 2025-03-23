@@ -99,9 +99,7 @@ function loadLastThreeNoticias() {
             const noticiasPorHotel = data.filter(noticia => noticia.hotel === hotel);
             const noticiasOrdenadas = noticiasPorHotel.sort((a, b) => b.id - a.id);
             const lastThreeNoticias = noticiasOrdenadas.slice(0, 3);
-
             let hotelDefine = hotel === "com.br" ? "com_br" : hotel;
-
             lastThreeNoticias.forEach(function(noticia) {
                 const fechaFormateada = noticia.fecha_noticia.replace('T', ' ').replace('Z', '').replace('.000', '');
                 const noticiaHTML = `
@@ -123,7 +121,7 @@ function loadLastThreeNoticias() {
                                         </div>
                                     </div>
                                     <div class="col-12 noticia_descripcion_last_three col_noticias_home_descripcion">
-                                        <p>${noticia.descripcion_resumida}</p>
+                                        ${noticia.descripcion_resumida}
                                     </div>
                                 </div>
                             </div>
