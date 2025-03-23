@@ -2685,7 +2685,7 @@ async function fetchAndExtractNoticias() {
 
                 let summaryData = await generateSummaryWeb(promp, noticia.hotel);
                 // Validar y limpiar el resumen
-                if (!summaryData || summaryData.includes("generated summary") || summaryData.length < 20) {
+                if (!summaryData || summaryData.includes("generated summary") || summaryData.length < 20 || summaryData.length > 3000) {
                     console.warn("El resumen generado no es válido, reintentando...");
                     await sleep(5000); // Esperar antes de reintentar
                     summaryData = await generateSummaryWeb(promp, noticia.hotel);
