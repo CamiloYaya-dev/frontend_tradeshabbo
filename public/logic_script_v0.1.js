@@ -620,6 +620,33 @@ function initialize() {
                         `;
                         lastUpdatedContainer.append(furniImage);
                     });
+                    $(document).on('click', '.last_items_update', function(e) {
+                        console.log("entre")
+                        e.preventDefault();
+                        $('#ultimos_precios_actualizados').show();
+                        $('#home-section').hide();
+                        $('#catalogo-section').show();
+                        $('#column-explications-catalogo').hide();
+                        $('#noticias-section').hide();
+                        $('#calculador-section').hide();
+                        $('#sorteos-section').hide();
+                        $('#master-trades-section').hide();
+                        $('#sort-options').show();
+                        $('#footer').show();
+                        $('#column-explications-master-trades').hide();
+                        $('#habbo-generator-section').hide();
+                        $('#text-generator-section').hide();
+                        $('#comunidad_salas').hide();
+                        $('#equipo-section').hide();
+                        $('#marketplace-section').hide();
+                        $('#login-section').hide();
+                        $('#register-section').hide();
+                        $('#acerca-nosotros-section').hide();
+                        $('#terminos-condiciones-section').hide();
+                        $('#preguntas-respuestas-section').hide();
+                        $('#politicas-privacidad-section').hide();
+                        $('#contactanos-section').hide();
+                    });
                     mapTradersClub(decryptedData, itemData);
                     //mapHabbonation(decryptedData, firebaseData);
                     renderProducts(decryptedData);
