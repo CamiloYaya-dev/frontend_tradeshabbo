@@ -18,7 +18,7 @@ export async function generateSummaryWeb(text, hotel) {
     }
     try {
         const response = await openaiClient.chat.completions.create({
-            messages: [{ role: "user", content: `"${text} \n Es muy importante que el resumen esté en el idioma ${idioma}"` }],
+            messages: [{ role: "user", content: `"${text} \n Es muy importante que el resumen esté en el idioma ${idioma} .Esta totalemente prohibido usar el signo ¡ cualquier noticia resumen que generes con este signo no sera valido. El resumen no puede exceder bajo ninguna circustancia mas de 3000 caracteres incluyendo letras, numeros, espacios y signos"` }],
             model: "gpt-4o-mini",
             max_tokens: 600,
         });
