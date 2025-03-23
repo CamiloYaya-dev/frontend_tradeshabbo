@@ -54,7 +54,7 @@
     }
 
     .select_lenguage option {
-        background-color: #555; /* Color de fondo de las opciones */
+        background-color: rgba(0, 0, 0, 0.9) !important; /* Color de fondo de las opciones */
         color: #fff; /* Color del texto de las opciones */
     }
 

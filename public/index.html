@@ -64,7 +64,7 @@
     <meta name="mobile-web-app-capable" content="yes">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles_v10.css">
+    <link rel="stylesheet" href="styles_v11.css">
     <link rel="stylesheet" href="styles/index.css">
     <link rel="stylesheet" href="styles/col_izquierda_index.css">
     <link rel="stylesheet" href="styles/price-history.css">
@@ -96,344 +96,28 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/js/bootstrap-select.min.js"></script>
 </head>
 <body>
-    <header class="text-white text-center py-3 header-page">
-        <div class="row align-items-center header-container">
-            <div class="col-md-4 col-sm-12 mb-3 mb-md-0 d-none d-md-block">
-                <div class="row">
-                    <div class="col-md-6 d-flex justify-content-center">
-                        <div class="contador_div font-habbo-class d-none d-md-block">
-                            <div class="contador_title" data-i18n="contador_visitas">
-                                Contador de Visitas
-                            </div>
-                            <p class="contador_text" id="contador">En mantenimiento</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 d-flex justify-content-center" style="display: none !important;">
-                        <div class="contador_div font-habbo-class d-none d-md-block">
-                            <div class="contador_title" data-i18n="contador_votos">
-                                Contador de Votos
-                            </div>
-                            <p class="contador_text" id="contador_votos">En mantenimiento</p>
-                            <!--
-                            <img src="furnis/iconos/habboween/baba2.png" class="baba-2-image-contador-2" alt="Baba verde">
-                            <img src="furnis/iconos/habboween/baba1.png" class="baba-1-image-contador-2" alt="Baba verde">
-                            <img src="furnis/iconos/habboween/gota1.png" class="gota-image-contador-2-1-2" alt="Gota verde">
-                            <img src="furnis/iconos/habboween/gota2.png" class="gota-image-contador-2-2-2" alt="Gota verde">
-                            <img src="furnis/iconos/habboween/gota3.png" class="gota-image-contador-2-3-3" alt="Gota verde">
-                            <img src="furnis/iconos/habboween/gota4.png" class="gota-image-contador-2-4-1" alt="Gota verde">
-                            <img src="furnis/iconos/habboween/gota3.png" class="gota-image-contador-2-5-1" alt="Gota verde">
-                            <img src="furnis/iconos/habboween/gota2.png" class="gota-image-contador-2-6-1" alt="Gota verde">
-                            -->
-                        </div>
-                    </div>
-                    
-                    <div class="col-md-6 text-center row_contador">
-                    </div>
-                </div>
+    <header class="text-white text-center header-page">
+        <div class="row">
+            <div class="col-md-4 d-none d-md-block habbo-lido">
+                <img src="furnis/iconos/habbo_lido.png" alt="Logo de Origins Kingdom">
             </div>
-            <div class="col-md-4 d-none d-md-block d-flex justify-content-center mb-3 mb-md-0">
-                <img src="furnis/iconos/origins_kingdom.png" class="sprite_trades_habbo_origins" alt="Logo de Origins Kingdom">
+            <div class="col-md-4 d-none d-md-block d-flex justify-content-center mb-3 mb-md-0 title_web">
+                <img src="furnis/iconos/origins_kingdom_classic.gif" alt="Logo de Origins Kingdom">
             </div>
-            <div class="col-sm-12 d-block d-md-none d-flex justify-content-center mb-3 mb-md-0">
+            <div class="col-12 d-block d-md-none">
                 <img src="furnis/iconos/trades_habbo_origins.png" class="sprite_trades_habbo_origins" alt="Logo de Origins Kingdom">
             </div>
-            <div class="col-md-4 col-sm-12 d-none d-md-flex text-center mb-3 mb-md-0 row_contador">
-                <!-- Botones visibles solo cuando NO está logeado -->
-                <div class="col-md-6 text-center row_contador no_login">
-                    <button class="price_history_content online_habbo_text_white menu-link boton contador_div" data-i18n="inicio_sesion" data-section="login">
-                    </button>
-                </div>
-                <div class="col-md-6 text-center row_contador no_login">
-                    <button class="price_history_content online_habbo_text_white menu-link contador_div" data-i18n="registrarse" data-section="register">
-                    </button>
-                </div>
-                <!-- Contenedor del usuario logueado -->
-                <div class="col-md-12 text-center row_contador usuario_logeado" style="display: none;">
-                    <!-- Menú desplegable -->
-                    <div class="dropdown navbar_item menu_user">
-                        <button class="btn dropdown-toggle" type="button" id="userMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Menú de <span id="username_display"></span>
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="userMenuButton">
-                            <a class="dropdown-item navbar_item habbo_text_blue menu-link" href="#" id="edit-profile" data-permission="2">Editar Perfil</a>
-                            <a class="dropdown-item navbar_item habbo_text_blue menu-link" href="#" id="manage-catalog" data-permission="1">Administrar Catálogo</a>
-                            <a class="dropdown-item navbar_item habbo_text_blue menu-link" href="#" id="manage-news" data-permission="3">Administrar Noticias</a>
-                            <a class="dropdown-item navbar_item habbo_text_blue menu-link" href="#" id="manage-raffles" data-permission="4">Administrar Sorteos</a>
-                            <a class="dropdown-item navbar_item habbo_text_blue menu-link" href="#" id="manage-users" data-permission="5">Administrar Usuarios</a>
-                            <a class="dropdown-item navbar_item habbo_text_blue menu-link" href="#" id="manage-badges" data-permission="6">Administrar Placas</a>
-                            <a class="dropdown-item navbar_item habbo_text_blue menu-link text-danger" href="#" id="logout_button">Cerrar Sesión</a>
-                        </div>
-                    </div>
-                </div> 
-            </div> 
-        </div>
-        <div class="row mt-3 row_menu">
-            <div class="col-md-1 d-none d-md-block"></div>
-            <div class="col-md-9 d-none d-md-block">
-                <nav class="navbar navbar-expand-lg navbar-light">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav mx-auto">
-                            <li class="nav-item navbar_item">
-                                <a class="habbo_text_gold menu-link dropdown-toggle" href="#" role="button" id="dropdownMenuLinkCatalog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-i18n="mercado_tradeos_navbar">
-                                    <img src="furnis/iconos/mercado_tradeos.png" class="iconos-menu" alt="icon">
-                                    Mercado y Tradeos
-                                    <!--<img src="furnis/iconos/habboween/baba2.png" class="baba-2-navbar" alt="Baba verde">
-                                    <img src="furnis/iconos/habboween/baba1.png" class="baba-1-image-contador-2" alt="Baba verde">
-                                    <img src="furnis/iconos/habboween/gota1.png" class="gota-image-contador-2-1-2" alt="Gota verde">
-                                    <img src="furnis/iconos/habboween/gota2.png" class="gota-image-contador-2-2-1" alt="Gota verde">
-                                    <img src="furnis/iconos/habboween/gota3.png" class="gota-image-contador-2-3-1" alt="Gota verde">
-                                    <img src="furnis/iconos/habboween/gota4.png" class="gota-image-contador-2-4-3" alt="Gota verde">
-                                    <img src="furnis/iconos/habboween/gota3.png" class="gota-image-contador-2-5-3" alt="Gota verde">
-                                    <img src="furnis/iconos/habboween/gota2.png" class="gota-image-contador-2-6-2" alt="Gota verde">-->
-                                </a>
-                                <div class="dropdown-menu utilidades-menu" aria-labelledby="dropdownMenuLinkCatalog">
-                                    <a class="dropdown-item navbar_item habbo_text_gold menu-link" href="#" data-section="catalogo" data-i18n="catalogo_navbar">
-                                        <img src="furnis/iconos/catalogo_icon.png" class="iconos-menu" alt="icon">
-                                        Catálogo
-                                    </a>
-                                    <a class="dropdown-item navbar_item habbo_text_gold menu-link" href="#" data-section="calculador">
-                                        <div data-i18n="calculador_tradeos_navbar">
-                                            <img src="furnis/iconos/calculador_de_trades_icon.png" class="iconos-menu" alt="icon">
-                                            Calculador de Tradeos
-                                        </div>
-                                        <!--
-                                        <img src="furnis/iconos/habboween/baba2.png" class="baba-2-image-contador-1" alt="Baba verde">
-                                        <img src="furnis/iconos/habboween/baba1.png" class="baba-1-image-contador-1" alt="Baba verde">
-                                        <img src="furnis/iconos/habboween/gota1.png" class="gota-image-contador-2-1-1" alt="Gota verde">
-                                        <img src="furnis/iconos/habboween/gota2.png" class="gota-image-contador-2-2-3" alt="Gota verde">
-                                        <img src="furnis/iconos/habboween/gota3.png" class="gota-image-contador-2-3-2" alt="Gota verde">
-                                        <img src="furnis/iconos/habboween/gota4.png" class="gota-image-contador-2-4-1" alt="Gota verde">
-                                        <img src="furnis/iconos/habboween/gota3.png" class="gota-image-contador-2-5-2" alt="Gota verde">
-                                        <img src="furnis/iconos/habboween/gota2.png" class="gota-image-contador-2-6-3" alt="Gota verde">
-                                        -->
-                                    </a>
-                                    <a class="dropdown-item navbar_item habbo_text_gold menu-link" href="#" data-section="compro_vendo">
-                                        <div data-i18n="marketplace_navbar">
-                                            <img src="furnis/iconos/marketplace_icon.png" class="iconos-menu" alt="icon">
-                                            Marketplace
-                                        </div>
-                                        <!--
-                                        <img src="furnis/iconos/habboween/baba2.png" class="baba-2-image-contador-1" alt="Baba verde">
-                                        <img src="furnis/iconos/habboween/baba1.png" class="baba-1-image-contador-1" alt="Baba verde">
-                                        <img src="furnis/iconos/habboween/gota1.png" class="gota-image-contador-2-1-3" alt="Gota verde">
-                                        <img src="furnis/iconos/habboween/gota2.png" class="gota-image-contador-2-2-3" alt="Gota verde">
-                                        <img src="furnis/iconos/habboween/gota3.png" class="gota-image-contador-2-3-1" alt="Gota verde">
-                                        <img src="furnis/iconos/habboween/gota4.png" class="gota-image-contador-2-4-2" alt="Gota verde">
-                                        <img src="furnis/iconos/habboween/gota3.png" class="gota-image-contador-2-5-1" alt="Gota verde">
-                                        <img src="furnis/iconos/habboween/gota2.png" class="gota-image-contador-2-6-2" alt="Gota verde">
-                                        -->
-                                    </a>
-                                </div>
-                            </li>
-                            <li class="nav-item navbar_item">
-                                <a class="habbo_text_gold menu-link" href="#" data-section="noticias" data-i18n="noticias_navbar">
-                                    <img src="furnis/iconos/noticias_icon.png" class="iconos-menu" alt="icon">
-                                    Noticias
-                                </a>
-                            </li>
-                            <!--<li class="nav-item navbar_item">
-                                <a class="habbo_text_gold" href="https://www.onhabbo.es/" target="_blank" data-i18n="eventos_navbar">
-                                    <img src="furnis/iconos/eventos.png" class="iconos-menu" alt="icon">
-                                    Eventos
-                                </a>
-                            </li>
-                            <li class="nav-item navbar_item">
-                                <a class="habbo_text_gold menu-link" href="#" data-section="sorteos" data-i18n="sorteos_navbar">
-                                    <img src="furnis/iconos/sorteos_icon.png" class="iconos-menu" alt="icon">
-                                    Sorteos
-                                </a>
-                            </li>-->
-                            <li class="nav-item navbar_item">
-                                <a class="habbo_text_gold menu-link" href="#" data-section="comunidad_salas" data-i18n="fotos_navbar">
-                                    <img src="furnis/iconos/fotos_icon.png" class="iconos-menu" alt="icon">
-                                    Fotos
-                                </a>
-                            </li>
-                            <li class="nav-item navbar_item">
-                                <a class="habbo_text_gold menu-link" href="#" data-i18n="placas_navbar">
-                                    <img src="furnis/iconos/placas.png" class="iconos-menu" alt="icon">
-                                    Placas
-                                </a>
-                            </li>
-                            <div class="dropdown show navbar_item">
-                                <a class="habbo_text_gold menu-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-i18n="utilidades_navbar">
-                                    <img src="furnis/iconos/utilidades.png" class="iconos-menu" alt="icon">
-                                    Utilidades
-                                    <!--<img src="furnis/iconos/habboween/baba2.png" class="baba-2-navbar" alt="Baba verde">
-                                    <img src="furnis/iconos/habboween/baba1.png" class="baba-1-image-contador-2" alt="Baba verde">
-                                    <img src="furnis/iconos/habboween/gota1.png" class="gota-image-contador-2-1-2" alt="Gota verde">
-                                    <img src="furnis/iconos/habboween/gota2.png" class="gota-image-contador-2-2-1" alt="Gota verde">
-                                    <img src="furnis/iconos/habboween/gota3.png" class="gota-image-contador-2-3-1" alt="Gota verde">
-                                    <img src="furnis/iconos/habboween/gota4.png" class="gota-image-contador-2-4-3" alt="Gota verde">
-                                    <img src="furnis/iconos/habboween/gota3.png" class="gota-image-contador-2-5-3" alt="Gota verde">
-                                    <img src="furnis/iconos/habboween/gota2.png" class="gota-image-contador-2-6-2" alt="Gota verde">-->
-                                </a>
-                                <div class="dropdown-menu utilidades-menu" aria-labelledby="dropdownMenuLink">
-                                    <a class="dropdown-item navbar_item habbo_text_gold menu-link" href="#" data-section="habbo_generator_section" data-i18n="generador_habbos_navbar">
-                                        <img src="furnis/iconos/generador_de_habbos_icon.png" class="iconos-menu" alt="icon">
-                                        Generador de Habbos
-                                    </a>
-                                    <a class="dropdown-item navbar_item habbo_text_gold menu-link" href="#" data-section="text_generator_section" data-i18n="generador_textos_navbar">
-                                        <img src="furnis/iconos/generador_de_textos_icon.png" class="iconos-menu" alt="icon">
-                                        Generador de Textos
-                                    </a>
-                                    <a class="dropdown-item navbar_item habbo_text_gold" href="https://mega.nz/file/9msEAQ4D#ktKzw96h8mFp7ycZNfDEFq8kUpiOmP0H8p6sPNzGdjY" target="_blank">
-                                        <img src="furnis/iconos/flooder_icon.png" class="iconos-menu" alt="icon">
-                                        Flooder
-                                    </a>
-                                    <a class="dropdown-item navbar_item habbo_text_gold" href="https://origins.tools/" target="_blank">
-                                        <svg id="Capa_2" data-name="Capa 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2223.74 241">
-                                            <defs>
-                                              <style>
-                                                .cls-1 {
-                                                  fill: #696cff;
-                                                }
-                                          
-                                                .cls-1, .cls-2, .cls-3, .cls-4 {
-                                                  stroke-width: 0px;
-                                                }
-                                          
-                                                .cls-2 {
-                                                  fill: #14a085;
-                                                }
-                                          
-                                                .cls-3 {
-                                                  fill: #00d26a;
-                                                }
-                                          
-                                                .cls-4 {
-                                                  fill: #00f397;
-                                                }
-                                              </style>
-                                            </defs>
-                                            <g id="Capa_1-2" data-name="Capa 1">
-                                              <g>
-                                                <g>
-                                                  <path class="cls-3" d="m2013.92,29.11c40.86-20.42,74.44,4.38,87.58,21.89,13.14-17.52,46.72-42.32,87.58-21.89,52.55,26.27,39.41,91.96,0,131.37-19.23,19.23-53.1,53.1-77.87,71.94-5.69,4.34-13.62,4.19-19.14-.36-22.71-18.33-59.19-52.62-78.15-71.58-39.41-39.41-52.55-105.1,0-131.37"/>
-                                                  <path class="cls-2" d="m2101.5,51v26.7c11.12-23.51,38.75-54.9,84.58-50.03-39.5-17.78-71.77,6.24-84.58,23.32m-35.5-25.95c-14.77-5.14-32.59-5.69-52.07,4.05-52.55,26.27-39.41,91.96,0,131.37,18.96,18.96,55.44,53.25,78.15,71.58,5.53,4.55,13.46,4.69,19.14.35,2.22-1.69,4.52-3.5,6.88-5.42-25-18.76-60.08-48.33-79.13-65.35-43.41-38.8-57.89-103.47,0-129.34,8.55-3.89,17.69-6.34,27.04-7.24"/>
-                                                  <ellipse class="cls-4" cx="2166.99" cy="86.86" rx="41.87" ry="24.84" transform="translate(1008.27 1920.09) rotate(-60)"/>
-                                                </g>
-                                                <g>
-                                                  <path class="cls-1" d="m25.86,190.74v-24.98H0v-90.23h25.86v-25.28h89.35v25.28h26.16v90.23h-26.16v24.98H25.86Zm11.46-39.97h66.42v-60.54H37.33v60.54Z"/>
-                                                  <path class="cls-1" d="m177.22,190.74v-115.21h25.86v-25.28h89.35v25.28h26.16v39.68h-37.62v-24.98h-66.42v100.51h-37.33Z"/>
-                                                  <path class="cls-1" d="m354.44,40.27V0h37.33v40.27h-37.33Zm0,150.48V50.26h37.33v140.49h-37.33Z"/>
-                                                  <path class="cls-1" d="m447.61,241v-24.98h-25.86v-39.97h37.33v24.98h66.72v-35.27h-78.18v-25.28h-25.86v-64.95h25.86v-25.28h89.64v25.28h25.86v140.49h-25.86v24.98h-89.64Zm11.46-115.5h66.72v-35.27h-66.72v35.27Z"/>
-                                                  <path class="cls-1" d="m598.97,40.27V0h37.33v40.27h-37.33Zm0,150.48V50.26h37.33v140.49h-37.33Z"/>
-                                                  <path class="cls-1" d="m666.28,190.74V50.26h115.21v25.28h26.16v115.21h-37.62v-100.51h-66.42v100.51h-37.33Z"/>
-                                                  <path class="cls-1" d="m837.62,190.74v-39.97h103.75v-10.29h-77.88v-25.28h-25.86v-39.68h25.86v-25.28h115.5v39.97h-104.04v9.99h77.88v25.28h26.16v40.27h-26.16v24.98h-115.21Z"/>
-                                                  <path class="cls-1" d="m1014.84,187.51v-40.27h37.33v40.27h-37.33Z"/>
-                                                  <path class="cls-1" d="m1139.75,190.74v-24.98h-25.86v-75.53h-25.86v-39.97h25.86V0h37.33v50.26h78.18v39.97h-78.18v60.54h66.72v-25.28h37.62v40.27h-26.16v24.98h-89.64Z"/>
-                                                  <path class="cls-1" d="m1308.45,190.74v-24.98h-25.86v-90.23h25.86v-25.28h89.35v25.28h26.16v90.23h-26.16v24.98h-89.35Zm11.46-39.97h66.42v-60.54h-66.42v60.54Z"/>
-                                                  <path class="cls-1" d="m1485.67,190.74v-24.98h-25.86v-90.23h25.86v-25.28h89.35v25.28h26.16v90.23h-26.16v24.98h-89.35Zm11.46-39.97h66.42v-60.54h-66.42v60.54Z"/>
-                                                  <path class="cls-1" d="m1637.03,190.74V0h37.33v190.74h-37.33Z"/>
-                                                  <path class="cls-1" d="m1704.33,190.74v-39.97h103.75v-10.29h-77.88v-25.28h-25.86v-39.68h25.86v-25.28h115.5v39.97h-104.04v9.99h77.88v25.28h26.16v40.27h-26.16v24.98h-115.21Z"/>
-                                                </g>
-                                              </g>
-                                            </g>
-                                        </svg>
-                                    </a>
-                                    <a class="dropdown-item navbar_item habbo_text_gold" href="./Tradeshabbo.com-Translator.zip" download="Tradeshabbo.com-Translator.zip" target="_blank">
-                                        <img src="furnis/iconos/translator_icon.png" class="iconos-menu" alt="icon">
-                                        Translator.exe
-                                    </a>
-                                </div>
-                            </div>
-                            <li class="nav-item navbar_item">
-                                <a class="habbo_text_gold menu-link dropdown-toggle" href="#" role="button" id="dropdownMenuLinkQuienesSomos" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-i18n="trades_habbo_navbar">
-                                    <img src="furnis/iconos/tradeshabbo_navbar_icon.png" class="iconos-menu" alt="icon">
-                                    Origins Kingdom
-                                    <!--<img src="furnis/iconos/habboween/baba2.png" class="baba-2-navbar" alt="Baba verde">
-                                    <img src="furnis/iconos/habboween/baba1.png" class="baba-1-image-contador-2" alt="Baba verde">
-                                    <img src="furnis/iconos/habboween/gota1.png" class="gota-image-contador-2-1-2" alt="Gota verde">
-                                    <img src="furnis/iconos/habboween/gota2.png" class="gota-image-contador-2-2-1" alt="Gota verde">
-                                    <img src="furnis/iconos/habboween/gota3.png" class="gota-image-contador-2-3-1" alt="Gota verde">
-                                    <img src="furnis/iconos/habboween/gota4.png" class="gota-image-contador-2-4-3" alt="Gota verde">
-                                    <img src="furnis/iconos/habboween/gota3.png" class="gota-image-contador-2-5-3" alt="Gota verde">
-                                    <img src="furnis/iconos/habboween/gota2.png" class="gota-image-contador-2-6-2" alt="Gota verde">-->
-                                </a>
-                                <div class="dropdown-menu utilidades-menu" aria-labelledby="dropdownMenuLinkQuienesSomos">
-                                    <a class="dropdown-item navbar_item habbo_text_gold menu-link" href="#" data-section="equipo" data-i18n="equipo_navbar">
-                                        <img src="furnis/iconos/equipo_icon.png" class="iconos-menu" alt="icon">
-                                        Equipo
-                                    </a>
-                                    <a class="dropdown-item navbar_item habbo_text_gold menu-link" href="#" data-section="acerca_nosotros" data-i18n="acerca_nosotros_navbar">
-                                        <img src="furnis/iconos/sobre_nosotros.png" class="iconos-menu" alt="icon">
-                                        Acerca de Nosotros
-                                    </a>
-                                    <a class="dropdown-item navbar_item habbo_text_gold menu-link" href="#" data-section="preguntas_respuestas" data-i18n="preguntas_repuestas_navbar">
-                                        <img src="furnis/iconos/preguntas_y_respuestas.png" class="iconos-menu" alt="icon">
-                                        Pregunta y Respuestas
-                                    </a>
-                                    <a class="dropdown-item navbar_item habbo_text_gold menu-link" href="#" data-section="terminos_condiciones" data-i18n="terminas_condiciones_navbar">
-                                        <img src="furnis/iconos/terminos_y_condiciones.png" class="iconos-menu" alt="icon">
-                                        Terminos y Condiciones
-                                    </a>
-                                    <a class="dropdown-item navbar_item habbo_text_gold menu-link" href="#" data-section="politica_privacidad" data-i18n="politicas_privacidad_navbar">
-                                        <img src="furnis/iconos/politicas_privacidad.png" class="iconos-menu" alt="icon">
-                                        Politicas de Privacidad
-                                    </a>
-                                    <a class="dropdown-item navbar_item habbo_text_gold menu-link" href="#" data-section="contactanos" data-i18n="contactanos_navbar">
-                                        <img src="furnis/iconos/contactanos.png" class="iconos-menu" alt="icon">
-                                        Contactanos
-                                    </a>
-                                </div>
-                            </li>
-                            <!--<li class="nav-item navbar_item">
-                                <a class="habbo_text_gold menu-link" href="#" data-section="inventario" data-i18n="inventario_navbar">
-                                    <img src="furnis/iconos/mi_inventario_icon.png" class="iconos-menu" alt="icon">
-                                    Mi inventario
-                                </a>
-                            </li>
-                            -->
-                        </ul>
-                    </div>
-                </nav>
-            </div>
-            <div class="col-md-2 d-none d-md-block column_placas">
-                <div class="div_placas">
-
-                </div>
+            <div class="col-md-4 d-none d-md-block habbo-hotel">
+                <img src="furnis/iconos/habbo_hotel.png" alt="Logo de Origins Kingdom">
             </div>
         </div>
     </header>
-    <main class="container">
-        <div class="row">
-            <div class="col-md-2 column d-none d-md-block">
-                <!-- Esta sección no se mostrará en dispositivos móviles -->
-                <div class="row row_sprite_hotel_origins">
-                    <img src="furnis/iconos/sprite_hotel_origins.png" class="sprite_hotel_origins" alt="Icono del Hotel Origins">
-                    <div class="flame-container-1">
-                        <!-- Habboween -->
-                        <!--
-                        <img src="furnis/iconos/habboween/antorcha_1.png" class="flame frame1">
-                        <img src="furnis/iconos/habboween/antorcha_2.png" class="flame frame2">
-                        <img src="furnis/iconos/habboween/antorcha_3.png" class="flame frame3">
-                        <img src="furnis/iconos/chino/lampara_china.png">-->
-                        <img src="furnis/iconos/san_valentin/cupido.png">
-                    </div>
-                    <div class="flame-container-2">
-                        <!-- Habboween -->
-                        <!--
-                        <img src="furnis/iconos/habboween/antorcha_1.png" class="flame frame1">
-                        <img src="furnis/iconos/habboween/antorcha_2.png" class="flame frame2">
-                        <img src="furnis/iconos/habboween/antorcha_3.png" class="flame frame3">
-                        <img src="furnis/iconos/chino/lampara_china.png">-->
-                        <img src="furnis/iconos/san_valentin/cupido.png">
-                    </div>
-                    <div class="ducks-container">
-                        <!-- Habboween -->
-                        <!--
-                        <img src="furnis/funky/Pato_Brujo.png" class="pato-brujo">
-                        <img src="furnis/funky/Pato_Diablo.png" class="pato-diablo">
-                        <img src="furnis/habboween/Papa_Pato_De_Habboween.png" class="pato-muerto1">
-                        <img src="furnis/habboween/Hijo_Pato_De_Habboween.png" class="pato-muerto2">
-                        <img src="furnis/habboween/Mama_Pato_De_Habboween.png" class="pato-muerto3">-->
-                        <img src="furnis/iconos/san_valentin/Dragon_De_Fuego_Rosa.png" class="dragon_rosa">
-                    </div>
-                </div>
+    <div class="row mt-3 row_menu">
+        <div class="col-md-2 d-none d-md-block">
+            <div class="row row_sprite_hotel_origins">
+                <img src="furnis/iconos/sprite_hotel_origins.png" class="sprite_hotel_origins" alt="Icono del Hotel Origins">
+            </div>
+            <div class="col-md-12 column d-none d-md-block">
                 <div id="column-explications-catalogo" class="column-explications-catalogo">
                     <div class="row">
                         <div class="div_text_column_left example_row">
@@ -511,617 +195,988 @@
                     </div>
                 </div>
             </div>
-            <div class="col-1 d-block d-md-none column-left">
-                <!-- Contenido de la columna izquierda -->
-            </div>          
-            <div class="col-10 col-md-8 column colum-catalog" id="catalogo-section">
-                <div class="row mb-4">
-                    <div class="row col-md-12 d-none d-md-block ultimos_precios_actualizados">
-                        <h5 class="text-center" data-i18n="ultimos_precios_actualizados">Ultimos Precios Actualizados</h5>
-                        <div class="row col-md-12 furnis_min_actualizados">
+        </div>
+        <div class="col-1 d-block d-md-none column-left">
+            <!-- Contenido de la columna izquierda -->
+        </div>  
+        <div class="col-md-8 col-10 d-md-block">
+            <div class="row row_menu">
+                <div class="col-md-12 d-none d-md-block">
+                    <nav class="navbar navbar-expand-lg navbar-light">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                            <ul class="navbar-nav mx-auto">
+                                <li class="nav-item navbar_item">
+                                    <a class="habbo_text_gold menu-link" href="#" data-section="home">
+                                        <img src="furnis/iconos/placas.png" class="iconos-menu" alt="icon">
+                                        Inicio
+                                    </a>
+                                </li>
+                                <li class="nav-item navbar_item">
+                                    <a class="habbo_text_gold menu-link dropdown-toggle" href="#" role="button" id="dropdownMenuLinkCatalog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-i18n="mercado_tradeos_navbar">
+                                        <img src="furnis/iconos/mercado_tradeos.png" class="iconos-menu" alt="icon">
+                                        Mercado y Tradeos
+                                        <!--<img src="furnis/iconos/habboween/baba2.png" class="baba-2-navbar" alt="Baba verde">
+                                        <img src="furnis/iconos/habboween/baba1.png" class="baba-1-image-contador-2" alt="Baba verde">
+                                        <img src="furnis/iconos/habboween/gota1.png" class="gota-image-contador-2-1-2" alt="Gota verde">
+                                        <img src="furnis/iconos/habboween/gota2.png" class="gota-image-contador-2-2-1" alt="Gota verde">
+                                        <img src="furnis/iconos/habboween/gota3.png" class="gota-image-contador-2-3-1" alt="Gota verde">
+                                        <img src="furnis/iconos/habboween/gota4.png" class="gota-image-contador-2-4-3" alt="Gota verde">
+                                        <img src="furnis/iconos/habboween/gota3.png" class="gota-image-contador-2-5-3" alt="Gota verde">
+                                        <img src="furnis/iconos/habboween/gota2.png" class="gota-image-contador-2-6-2" alt="Gota verde">-->
+                                    </a>
+                                    <div class="dropdown-menu utilidades-menu" aria-labelledby="dropdownMenuLinkCatalog">
+                                        <a class="dropdown-item navbar_item habbo_text_gold menu-link" href="#" data-section="catalogo" data-i18n="catalogo_navbar">
+                                            <img src="furnis/iconos/catalogo_icon.png" class="iconos-menu" alt="icon">
+                                            Catálogo
+                                        </a>
+                                        <a class="dropdown-item navbar_item habbo_text_gold menu-link" href="#" data-section="calculador">
+                                            <div data-i18n="calculador_tradeos_navbar">
+                                                <img src="furnis/iconos/calculador_de_trades_icon.png" class="iconos-menu" alt="icon">
+                                                Calculador de Tradeos
+                                            </div>
+                                            <!--
+                                            <img src="furnis/iconos/habboween/baba2.png" class="baba-2-image-contador-1" alt="Baba verde">
+                                            <img src="furnis/iconos/habboween/baba1.png" class="baba-1-image-contador-1" alt="Baba verde">
+                                            <img src="furnis/iconos/habboween/gota1.png" class="gota-image-contador-2-1-1" alt="Gota verde">
+                                            <img src="furnis/iconos/habboween/gota2.png" class="gota-image-contador-2-2-3" alt="Gota verde">
+                                            <img src="furnis/iconos/habboween/gota3.png" class="gota-image-contador-2-3-2" alt="Gota verde">
+                                            <img src="furnis/iconos/habboween/gota4.png" class="gota-image-contador-2-4-1" alt="Gota verde">
+                                            <img src="furnis/iconos/habboween/gota3.png" class="gota-image-contador-2-5-2" alt="Gota verde">
+                                            <img src="furnis/iconos/habboween/gota2.png" class="gota-image-contador-2-6-3" alt="Gota verde">
+                                            -->
+                                        </a>
+                                        <a class="dropdown-item navbar_item habbo_text_gold menu-link" href="#" data-section="compro_vendo">
+                                            <div data-i18n="marketplace_navbar">
+                                                <img src="furnis/iconos/marketplace_icon.png" class="iconos-menu" alt="icon">
+                                                Marketplace
+                                            </div>
+                                            <!--
+                                            <img src="furnis/iconos/habboween/baba2.png" class="baba-2-image-contador-1" alt="Baba verde">
+                                            <img src="furnis/iconos/habboween/baba1.png" class="baba-1-image-contador-1" alt="Baba verde">
+                                            <img src="furnis/iconos/habboween/gota1.png" class="gota-image-contador-2-1-3" alt="Gota verde">
+                                            <img src="furnis/iconos/habboween/gota2.png" class="gota-image-contador-2-2-3" alt="Gota verde">
+                                            <img src="furnis/iconos/habboween/gota3.png" class="gota-image-contador-2-3-1" alt="Gota verde">
+                                            <img src="furnis/iconos/habboween/gota4.png" class="gota-image-contador-2-4-2" alt="Gota verde">
+                                            <img src="furnis/iconos/habboween/gota3.png" class="gota-image-contador-2-5-1" alt="Gota verde">
+                                            <img src="furnis/iconos/habboween/gota2.png" class="gota-image-contador-2-6-2" alt="Gota verde">
+                                            -->
+                                        </a>
+                                    </div>
+                                </li>
+                                <li class="nav-item navbar_item">
+                                    <a class="habbo_text_gold menu-link" href="#" data-section="noticias" data-i18n="noticias_navbar">
+                                        <img src="furnis/iconos/noticias_icon.png" class="iconos-menu" alt="icon">
+                                        Noticias
+                                    </a>
+                                </li>
+                                <!--<li class="nav-item navbar_item">
+                                    <a class="habbo_text_gold" href="https://www.onhabbo.es/" target="_blank" data-i18n="eventos_navbar">
+                                        <img src="furnis/iconos/eventos.png" class="iconos-menu" alt="icon">
+                                        Eventos
+                                    </a>
+                                </li>
+                                <li class="nav-item navbar_item">
+                                    <a class="habbo_text_gold menu-link" href="#" data-section="sorteos" data-i18n="sorteos_navbar">
+                                        <img src="furnis/iconos/sorteos_icon.png" class="iconos-menu" alt="icon">
+                                        Sorteos
+                                    </a>
+                                </li>-->
+                                <li class="nav-item navbar_item">
+                                    <a class="habbo_text_gold menu-link" href="#" data-section="comunidad_salas" data-i18n="fotos_navbar">
+                                        <img src="furnis/iconos/fotos_icon.png" class="iconos-menu" alt="icon">
+                                        Fotos
+                                    </a>
+                                </li>
+                                <li class="nav-item navbar_item">
+                                    <a class="habbo_text_gold menu-link" href="#" data-i18n="placas_navbar">
+                                        <img src="furnis/iconos/placas.png" class="iconos-menu" alt="icon">
+                                        Placas
+                                    </a>
+                                </li>
+                                <div class="dropdown show navbar_item">
+                                    <a class="habbo_text_gold menu-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-i18n="utilidades_navbar">
+                                        <img src="furnis/iconos/utilidades.png" class="iconos-menu" alt="icon">
+                                        Utilidades
+                                        <!--<img src="furnis/iconos/habboween/baba2.png" class="baba-2-navbar" alt="Baba verde">
+                                        <img src="furnis/iconos/habboween/baba1.png" class="baba-1-image-contador-2" alt="Baba verde">
+                                        <img src="furnis/iconos/habboween/gota1.png" class="gota-image-contador-2-1-2" alt="Gota verde">
+                                        <img src="furnis/iconos/habboween/gota2.png" class="gota-image-contador-2-2-1" alt="Gota verde">
+                                        <img src="furnis/iconos/habboween/gota3.png" class="gota-image-contador-2-3-1" alt="Gota verde">
+                                        <img src="furnis/iconos/habboween/gota4.png" class="gota-image-contador-2-4-3" alt="Gota verde">
+                                        <img src="furnis/iconos/habboween/gota3.png" class="gota-image-contador-2-5-3" alt="Gota verde">
+                                        <img src="furnis/iconos/habboween/gota2.png" class="gota-image-contador-2-6-2" alt="Gota verde">-->
+                                    </a>
+                                    <div class="dropdown-menu utilidades-menu" aria-labelledby="dropdownMenuLink">
+                                        <a class="dropdown-item navbar_item habbo_text_gold menu-link" href="#" data-section="habbo_generator_section" data-i18n="generador_habbos_navbar">
+                                            <img src="furnis/iconos/generador_de_habbos_icon.png" class="iconos-menu" alt="icon">
+                                            Generador de Habbos
+                                        </a>
+                                        <a class="dropdown-item navbar_item habbo_text_gold menu-link" href="#" data-section="text_generator_section" data-i18n="generador_textos_navbar">
+                                            <img src="furnis/iconos/generador_de_textos_icon.png" class="iconos-menu" alt="icon">
+                                            Generador de Textos
+                                        </a>
+                                        <a class="dropdown-item navbar_item habbo_text_gold" href="https://mega.nz/file/9msEAQ4D#ktKzw96h8mFp7ycZNfDEFq8kUpiOmP0H8p6sPNzGdjY" target="_blank">
+                                            <img src="furnis/iconos/flooder_icon.png" class="iconos-menu" alt="icon">
+                                            Flooder
+                                        </a>
+                                        <a class="dropdown-item navbar_item habbo_text_gold" href="https://origins.tools/" target="_blank">
+                                            <svg id="Capa_2" data-name="Capa 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2223.74 241">
+                                                <defs>
+                                                <style>
+                                                    .cls-1 {
+                                                    fill: #696cff;
+                                                    }
+                                            
+                                                    .cls-1, .cls-2, .cls-3, .cls-4 {
+                                                    stroke-width: 0px;
+                                                    }
+                                            
+                                                    .cls-2 {
+                                                    fill: #14a085;
+                                                    }
+                                            
+                                                    .cls-3 {
+                                                    fill: #00d26a;
+                                                    }
+                                            
+                                                    .cls-4 {
+                                                    fill: #00f397;
+                                                    }
+                                                </style>
+                                                </defs>
+                                                <g id="Capa_1-2" data-name="Capa 1">
+                                                <g>
+                                                    <g>
+                                                    <path class="cls-3" d="m2013.92,29.11c40.86-20.42,74.44,4.38,87.58,21.89,13.14-17.52,46.72-42.32,87.58-21.89,52.55,26.27,39.41,91.96,0,131.37-19.23,19.23-53.1,53.1-77.87,71.94-5.69,4.34-13.62,4.19-19.14-.36-22.71-18.33-59.19-52.62-78.15-71.58-39.41-39.41-52.55-105.1,0-131.37"/>
+                                                    <path class="cls-2" d="m2101.5,51v26.7c11.12-23.51,38.75-54.9,84.58-50.03-39.5-17.78-71.77,6.24-84.58,23.32m-35.5-25.95c-14.77-5.14-32.59-5.69-52.07,4.05-52.55,26.27-39.41,91.96,0,131.37,18.96,18.96,55.44,53.25,78.15,71.58,5.53,4.55,13.46,4.69,19.14.35,2.22-1.69,4.52-3.5,6.88-5.42-25-18.76-60.08-48.33-79.13-65.35-43.41-38.8-57.89-103.47,0-129.34,8.55-3.89,17.69-6.34,27.04-7.24"/>
+                                                    <ellipse class="cls-4" cx="2166.99" cy="86.86" rx="41.87" ry="24.84" transform="translate(1008.27 1920.09) rotate(-60)"/>
+                                                    </g>
+                                                    <g>
+                                                    <path class="cls-1" d="m25.86,190.74v-24.98H0v-90.23h25.86v-25.28h89.35v25.28h26.16v90.23h-26.16v24.98H25.86Zm11.46-39.97h66.42v-60.54H37.33v60.54Z"/>
+                                                    <path class="cls-1" d="m177.22,190.74v-115.21h25.86v-25.28h89.35v25.28h26.16v39.68h-37.62v-24.98h-66.42v100.51h-37.33Z"/>
+                                                    <path class="cls-1" d="m354.44,40.27V0h37.33v40.27h-37.33Zm0,150.48V50.26h37.33v140.49h-37.33Z"/>
+                                                    <path class="cls-1" d="m447.61,241v-24.98h-25.86v-39.97h37.33v24.98h66.72v-35.27h-78.18v-25.28h-25.86v-64.95h25.86v-25.28h89.64v25.28h25.86v140.49h-25.86v24.98h-89.64Zm11.46-115.5h66.72v-35.27h-66.72v35.27Z"/>
+                                                    <path class="cls-1" d="m598.97,40.27V0h37.33v40.27h-37.33Zm0,150.48V50.26h37.33v140.49h-37.33Z"/>
+                                                    <path class="cls-1" d="m666.28,190.74V50.26h115.21v25.28h26.16v115.21h-37.62v-100.51h-66.42v100.51h-37.33Z"/>
+                                                    <path class="cls-1" d="m837.62,190.74v-39.97h103.75v-10.29h-77.88v-25.28h-25.86v-39.68h25.86v-25.28h115.5v39.97h-104.04v9.99h77.88v25.28h26.16v40.27h-26.16v24.98h-115.21Z"/>
+                                                    <path class="cls-1" d="m1014.84,187.51v-40.27h37.33v40.27h-37.33Z"/>
+                                                    <path class="cls-1" d="m1139.75,190.74v-24.98h-25.86v-75.53h-25.86v-39.97h25.86V0h37.33v50.26h78.18v39.97h-78.18v60.54h66.72v-25.28h37.62v40.27h-26.16v24.98h-89.64Z"/>
+                                                    <path class="cls-1" d="m1308.45,190.74v-24.98h-25.86v-90.23h25.86v-25.28h89.35v25.28h26.16v90.23h-26.16v24.98h-89.35Zm11.46-39.97h66.42v-60.54h-66.42v60.54Z"/>
+                                                    <path class="cls-1" d="m1485.67,190.74v-24.98h-25.86v-90.23h25.86v-25.28h89.35v25.28h26.16v90.23h-26.16v24.98h-89.35Zm11.46-39.97h66.42v-60.54h-66.42v60.54Z"/>
+                                                    <path class="cls-1" d="m1637.03,190.74V0h37.33v190.74h-37.33Z"/>
+                                                    <path class="cls-1" d="m1704.33,190.74v-39.97h103.75v-10.29h-77.88v-25.28h-25.86v-39.68h25.86v-25.28h115.5v39.97h-104.04v9.99h77.88v25.28h26.16v40.27h-26.16v24.98h-115.21Z"/>
+                                                    </g>
+                                                </g>
+                                                </g>
+                                            </svg>
+                                        </a>
+                                        <a class="dropdown-item navbar_item habbo_text_gold" href="./Tradeshabbo.com-Translator.zip" download="Tradeshabbo.com-Translator.zip" target="_blank">
+                                            <img src="furnis/iconos/translator_icon.png" class="iconos-menu" alt="icon">
+                                            Translator.exe
+                                        </a>
+                                    </div>
+                                </div>
+                                <li class="nav-item navbar_item">
+                                    <a class="habbo_text_gold menu-link dropdown-toggle" href="#" role="button" id="dropdownMenuLinkQuienesSomos" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-i18n="trades_habbo_navbar">
+                                        <img src="furnis/iconos/tradeshabbo_navbar_icon.png" class="iconos-menu" alt="icon">
+                                        Origins Kingdom
+                                        <!--<img src="furnis/iconos/habboween/baba2.png" class="baba-2-navbar" alt="Baba verde">
+                                        <img src="furnis/iconos/habboween/baba1.png" class="baba-1-image-contador-2" alt="Baba verde">
+                                        <img src="furnis/iconos/habboween/gota1.png" class="gota-image-contador-2-1-2" alt="Gota verde">
+                                        <img src="furnis/iconos/habboween/gota2.png" class="gota-image-contador-2-2-1" alt="Gota verde">
+                                        <img src="furnis/iconos/habboween/gota3.png" class="gota-image-contador-2-3-1" alt="Gota verde">
+                                        <img src="furnis/iconos/habboween/gota4.png" class="gota-image-contador-2-4-3" alt="Gota verde">
+                                        <img src="furnis/iconos/habboween/gota3.png" class="gota-image-contador-2-5-3" alt="Gota verde">
+                                        <img src="furnis/iconos/habboween/gota2.png" class="gota-image-contador-2-6-2" alt="Gota verde">-->
+                                    </a>
+                                    <div class="dropdown-menu utilidades-menu" aria-labelledby="dropdownMenuLinkQuienesSomos">
+                                        <a class="dropdown-item navbar_item habbo_text_gold menu-link" href="#" data-section="equipo" data-i18n="equipo_navbar">
+                                            <img src="furnis/iconos/equipo_icon.png" class="iconos-menu" alt="icon">
+                                            Equipo
+                                        </a>
+                                        <a class="dropdown-item navbar_item habbo_text_gold menu-link" href="#" data-section="acerca_nosotros" data-i18n="acerca_nosotros_navbar">
+                                            <img src="furnis/iconos/sobre_nosotros.png" class="iconos-menu" alt="icon">
+                                            Acerca de Nosotros
+                                        </a>
+                                        <a class="dropdown-item navbar_item habbo_text_gold menu-link" href="#" data-section="preguntas_respuestas" data-i18n="preguntas_repuestas_navbar">
+                                            <img src="furnis/iconos/preguntas_y_respuestas.png" class="iconos-menu" alt="icon">
+                                            Pregunta y Respuestas
+                                        </a>
+                                        <a class="dropdown-item navbar_item habbo_text_gold menu-link" href="#" data-section="terminos_condiciones" data-i18n="terminas_condiciones_navbar">
+                                            <img src="furnis/iconos/terminos_y_condiciones.png" class="iconos-menu" alt="icon">
+                                            Terminos y Condiciones
+                                        </a>
+                                        <a class="dropdown-item navbar_item habbo_text_gold menu-link" href="#" data-section="politica_privacidad" data-i18n="politicas_privacidad_navbar">
+                                            <img src="furnis/iconos/politicas_privacidad.png" class="iconos-menu" alt="icon">
+                                            Politicas de Privacidad
+                                        </a>
+                                        <a class="dropdown-item navbar_item habbo_text_gold menu-link" href="#" data-section="contactanos" data-i18n="contactanos_navbar">
+                                            <img src="furnis/iconos/contactanos.png" class="iconos-menu" alt="icon">
+                                            Contactanos
+                                        </a>
+                                    </div>
+                                </li>
+                                <!--<li class="nav-item navbar_item">
+                                    <a class="habbo_text_gold menu-link" href="#" data-section="inventario" data-i18n="inventario_navbar">
+                                        <img src="furnis/iconos/mi_inventario_icon.png" class="iconos-menu" alt="icon">
+                                        Mi inventario
+                                    </a>
+                                </li>
+                                -->
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+                <div class="col-md-12 col-12 d-md-block">
+                    <div id="ultimos_precios_actualizados"> 
+                        <div class="col-md-12 d-none d-md-block ultimos_precios_actualizados">
+                            <h5 class="text-center" data-i18n="ultimos_precios_actualizados">Ultimos Precios Actualizados</h5>
+                            <div class="row col-md-12 furnis_min_actualizados">
+                            
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-12 column colum-catalog" id="home-section"> 
+                        <div class="row">
+                            <div class="col-md-8 d-none d-md-block">
+                                <div class="row row_noticias_home">
+                                    <div class="col-12">
+                                        <img src="furnis/iconos/noticias_home_header.png" alt="icon" class="ancho_imagen_100">
+                                    </div>
+                                    <div id="last_three_noticies" class="noticias_last_three_div col-12">
+                                    </div>
+                                    <div class="col-12">
+                                        <img src="furnis/iconos/noticias_home_footer.png" alt="icon" class="ancho_imagen_100">
+                                    </div>
+                                </div>
+                                <div class="row div_eventos_home">
+                                </div>
+                            </div>
+                            <div class="col-md-4 d-none d-md-block">
+                                <div class="row div_novedades_catalogo">
+                                    <div class="col-md-12 d-none d-md-block no_padding div_title_novedades_catalogo padding_top_5">
+                                        <div class="d-flex align-items-center">
+                                          <img src="furnis/iconos/icono_catalogo_origins.png" alt="icon" class="me-2">
+                                          <h5 class="mb-0 title_novedades_catalogo">Novedades en el catálogo</h5>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 d-none d-md-block no_padding">
+                                        <div class="row padding_top_5">
+                                            <div class="col-md-6 d-none d-md-block">
+                                                <img src="furnis/iconos/plantilla_habbo_new.png" alt="icon">
+                                                <img class="rare_novedades_catalogo" src="furnis/rares/Heladera_Verde.gif" alt="icon">
+                                            </div>
+                                            <div class="col-md-6 d-none d-md-block">
+                                                <img src="furnis/iconos/plantilla_habbo_new.png" alt="icon">
+                                                <img class="rare_novedades_catalogo" src="furnis/funky/Agujero_En_El_Castillo.png" alt="icon">
+                                            </div>
+                                        </div>
+                                        <div class="row padding_top_5">
+                                            <div class="col-md-6 d-none d-md-block">
+                                                <img class="image_novedades_catalogo" src="furnis/iconos/icon_rare.png" alt="icon">
+                                            </div>
+                                            <div class="col-md-6 d-none d-md-block">
+                                                <img class="image_novedades_catalogo" src="furnis/iconos/icon_funky.png" alt="icon">
+                                            </div>
+                                        </div>
+                                        <div class="row padding_top_5">
+                                            <div class="col-md-6 d-none d-md-block">
+                                                <div class="d-flex align-items-center">
+                                                    <img src="furnis/dinero/credito.png" alt="icon" class="me-2">
+                                                    <h5 class="mb-0 title_novedades_catalogo">50 Creditos</h5>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 d-none d-md-block">
+                                                <div class="d-flex align-items-center">
+                                                    <img src="furnis/dinero/credito.png" alt="icon" class="me-2">
+                                                    <h5 class="mb-0 title_novedades_catalogo">5 Creditos</h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row padding_top_5">
+                                            <div class="col-md-6 d-none d-md-block">
+                                                <div class="d-flex align-items-center">
+                                                    <img src="furnis/iconos/icono_fecha_estreno.png" alt="icon" class="me-2">
+                                                    <h5 class="mb-0 title_novedades_catalogo">17/03/2025</h5>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 d-none d-md-block">
+                                                <div class="d-flex align-items-center">
+                                                    <img src="furnis/iconos/icono_fecha_estreno.png" alt="icon" class="me-2">
+                                                    <h5 class="mb-0 title_novedades_catalogo">21/03/2025</h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row padding_top_5">
+                                            <div class="col-md-6 d-none d-md-block">
+                                                <div class="d-flex align-items-center">
+                                                    <img src="furnis/iconos/icon_disponibilidad.png" alt="icon" class="me-2">
+                                                    <h5 class="mb-0 title_novedades_catalogo">48 horas</h5>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 d-none d-md-block">
+                                                <div class="d-flex align-items-center">
+                                                    <img src="furnis/iconos/icon_disponibilidad.png" alt="icon" class="me-2">
+                                                    <h5 class="mb-0 title_novedades_catalogo">24 horas</h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row div_novedades_placas">
+                                    <div class="div_placas">
+
+                                    </div>
+                                </div>
+                                <div class="row div_premios_origins">
+                                    <div class="col-12">
+                                        <p class="habbo_text_gold p_titulo_placas">
+                                            Premios disponibles en Origins
+                                        </p>
+                                    </div>
+                                    <div class="row row_premios_render image_width_100"></div>
+                                </div>
+                                
+                                <div class="row div_novedades_placas">
+                                    <div class="col-12">
+                                        <p class="habbo_text_gold p_titulo_placas">
+                                            Redes Sociales
+                                        </p>
+                                    </div>
+                                    <div class="col-12">
+                                        <a href="https://discord.gg/dh4FMNrfTT" target="_blank">
+                                            <p class="habbo_text_gold p_titulo_placas discord_redes_sociales">
+                                                Ingresa a nuestra comunidad de Discord
+                                            </p>
+                                        </a>
+                                    </div>
+                                    <div class="col-12">
+                                        <a href="https://x.com/OriginsKingdom" target="_blank">
+                                            <p class="habbo_text_gold p_titulo_placas twitter_redes_sociales">
+                                                Siguenos en Twitter
+                                            </p>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-12 column colum-catalog" id="catalogo-section">
+                        <div class="row mb-4">
+                            <div class="col-12 col-md-12">
+                                <input type="text" id="search-input" class="form-control buscar-furnis" data-i18n="[placeholder]placeholder_search">
+                            </div>
+                            <div class="col-2 d-md-none colum_button_options">
+                                <button class="toggle-button" id="button_options">
+                                    <i class="fas fa-chevron-down toggle-icon"></i>
+                                </button>
+                            </div> 
+                        </div>
+                        <div class="filtros_filas">
+                            <div class="row mb-4">
+                                <div class="col-md-3 col-12 text-center d-none d-md-block">
+                                    <button class="price_history_content online_habbo_text_white filter-button furnis-temporada" data-category="deportes" data-i18n="filter_deportes">
+                                        <img src="furnis/iconos/deportes.png" alt="icon">
+                                        Deportes
+                                    </button>
+                                    <button class="price_history_content online_habbo_text_white filter-button furnis-temporada" data-category="cabin" data-i18n="filter_cabin">
+                                        <img src="furnis/iconos/cabin.png" alt="icon" class="cabin-icon">
+                                        Cabin
+                                    </button>
+                                    <button class="price_history_content online_habbo_text_white filter-button furnis-temporada" data-category="habboween" data-i18n="filter_habboween">
+                                        <img src="furnis/iconos/habboween.png" alt="icon" class="habboween-icon">
+                                        Habboween
+                                    </button>
+                                    <button class="price_history_content online_habbo_text_white filter-button furnis-temporada" data-category="gotico" data-i18n="filter_gotico">
+                                        <img src="furnis/iconos/gotico.png" alt="icon" class="gotico-icon">
+                                        Gótico
+                                    </button>
+                                </div>
+                                <div class="col-md-7 col-12 text-center" id="filter_tags">
+                                    <button class="price_history_content online_habbo_text_white filter-button all_filtro" data-category="all" data-i18n="filter_todos">
+                                        Todos
+                                    </button>
+                                    <button class="price_history_content online_habbo_text_white filter-button" data-category="hc" data-i18n="filter_hc">
+                                        <img src="furnis/iconos/icon_hc.png" class="iconos-hc-filtro" alt="icon">
+                                        HC
+                                    </button>
+                                    <button class="price_history_content online_habbo_text_white filter-button" data-category="rare" data-i18n="filter_rare">
+                                        <img src="furnis/rares/Habbocola.png" class="iconos-rare-filtro" alt="icon">
+                                        Rare
+                                    </button>
+                                    <button class="price_history_content online_habbo_text_white filter-button" data-category="funky" data-i18n="filter_funky">
+                                        <img src="furnis/iconos/Luz_Roja_Bouncer.png" class="iconos-rare-filtro" alt="icon">
+                                        Funky
+                                    </button>
+                                    <button class="price_history_content online_habbo_text_white filter-button" data-category="hot" data-i18n="filter_hot_trades">
+                                        <img src="furnis/iconos/hot_icon.png" class="iconos-hot-filtro" alt="icon">
+                                        Hot Trades
+                                    </button>
+                                    <button class="price_history_content online_habbo_text_white filter-button" data-category="mega_rare" data-i18n="filter_mega_rares">   
+                                        <img src="furnis/iconos/Dragon_De_Fuego_Oro.png" class="iconos-megarares-filtro" alt="icon">
+                                        Mega Rares
+                                    </button>
+                                    <button class="price_history_content online_habbo_text_white filter-button coleccion_filtro" data-category="coleccion" data-i18n="filter_colecciones">    
+                                        <img src="furnis/iconos/coleccion.png" class="iconos-coleccion-filtro" alt="icon">
+                                        Colecciones
+                                    </button>
+                                    <button class="price_history_content online_habbo_text_white filter-button" data-category="xmas_rares" data-i18n="filter_xmas_rares">    
+                                        <img src="furnis/iconos/icon_xmas_rares.png" class="iconos-coleccion-filtro" alt="icon">
+                                        Xmas Rares
+                                    </button>
+                                    <button class="price_history_content online_habbo_text_white filter-button" data-category="unreleased" data-i18n="filter_unreleased">    
+                                        <img src="furnis/iconos/icon_unrelased.png" class="iconos-coleccion-filtro" alt="icon">
+                                        UNRELEASED
+                                    </button>
+                                </div>                        
+                                <div class="col-md-2 col-12 text-center d-md-block div_filtros">
+                                    <select id="sort-options" class="form-control w-auto ml-3 select_order">
+                                        <option value="default" data-i18n="select_order_op1">Ordenar por</option>
+                                        <option value="price_desc" data-i18n="select_order_op2">Precio: Mayor a Menor</option>
+                                        <option value="price_asc" data-i18n="select_order_op3">Precio: Menor a Mayor</option>
+                                        <option value="date_desc" data-i18n="select_order_op4">Fecha Actualizacion: Reciente a Antigua</option>
+                                        <option value="date_asc" data-i18n="select_order_op5">Fecha Actualizacion: Antigua a Reciente</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="toggle-content" style="display: none;">
+                            <div class="row row_lenguage fila_end d-block d-md-none">
+                                <div id="language-switcher" class="text-right div_select_lenguage">
+                                    <select class="form-control select_lenguage language-select-mobile" style="display: inline-block; width: auto;">
+                                        <option value="es">Español</option>
+                                        <option value="en">English</option>
+                                        <option value="pt">Português</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row mb-4">
+                                <div class="col-md-3 col-12 text-center d-none d-md-block">
+                                    <!-- Esta columna no se mostrará en dispositivos móviles -->
+                                </div>
+                                <div class="col-md-6 col-12 text-center" id="filter_tags">
+                                    <button class="price_history_content online_habbo_text_white filter-button" data-category="all" data-i18n="filter_tag_todos">Todos</button>
+                                    <button class="price_history_content online_habbo_text_white filter-button" data-category="hc" data-i18n="filter_tag_hc">HC</button>
+                                    <button class="price_history_content online_habbo_text_white filter-button" data-category="rare" data-i18n="filter_tag_rare">Rare</button>
+                                    <button class="price_history_content online_habbo_text_white filter-button" data-category="funky" data-i18n="filter_tag_funky">Funky</button>
+                                    <button class="price_history_content online_habbo_text_white filter-button" data-category="hot" data-i18n="filter_tag_hot">Hot Trades</button>
+                                    <button class="price_history_content online_habbo_text_white filter-button" data-category="mega_rare" data-i18n="filter_tag_mega_rares">Mega Rares</button>
+                                    <button class="price_history_content online_habbo_text_white filter-button" data-category="coleccion">Colecciones</button>
+                                </div>
+                                <div class="col-md-3 col-12 text-center d-md-block div_filtros">
+                                    <select id="sort-options" class="form-control w-auto ml-3 select_order">
+                                        <option value="default" data-i18n="select_order_op1">Ordenar por</option>
+                                        <option value="price_desc" data-i18n="select_order_op2">Precio: Mayor a Menor</option>
+                                        <option value="price_asc" data-i18n="select_order_op3">Precio: Menor a Mayor</option>
+                                        <option value="date_desc" data-i18n="select_order_op4">Fecha Actualizacion: Reciente a Antigua</option>
+                                        <option value="date_asc" data-i18n="select_order_op5">Fecha Actualizacion: Antigua a Reciente</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" id="product-container">
+                            <!-- Los productos se cargarán aquí dinámicamente -->
+                        </div>
+                        <div id="product-history-container" class="price_history" style="display: none;">
+                            <!-- El historial de precios se cargará aquí dinámicamente -->
+                        </div>
+                        <button id="back-button" style="display: none;" class="price_history_content online_habbo_text_white" data-i18n="regresar">Regresar</button>
+                    </div>
+                    <div class="col-12 col-md-12 column" id="noticias-section" style="display: none;">
+                        <audio id="click-sound" src="sonidos/mensaje_conso.mp3"></audio>
+                        <div id="noticias-container">
+                            <div class="search-container mb-3">
+                                <input type="text" id="search-noticias" placeholder="Buscar noticias..." class="form-control buscar-noticias">
+                            </div>
+                            <div id="noticias-div">
+                                <!-- Las noticias se cargarán aquí dinámicamente -->
+                            </div>
+                        </div>
+                        <div class="pagination d-none">
+                            <a href="#">&laquo;</a>
+                            <a href="#">1</a>
+                            <a href="#">2</a>
+                            <a href="#">3</a>
+                            <a href="#">4</a>
+                            <a href="#">5</a>
+                            <a href="#">&raquo;</a>
+                        </div>    
+                    </div>
+                    <div class="col-12 col-md-12 column" id="calculador-section" style="display: none;">
+                        <div class="row body_calculadora">
+                            <div class="col-md-4">
+                                <div class="item_calculador_tradeos">
+                                    <div class="search-select">
+                                        <label for="item-a-search">Item A:</label>
+                                        <input type="text" id="item-a-search" class="form-control" placeholder="Busca un item para A...">
+                                        <ul id="item-a-options" class="dropdown-menu" style="display: none; max-height: 200px; overflow-y: auto;"></ul>
+                                        <div id="item-a-image" class="item-image"></div>
+                                    </div>    
+                                    <p id="item-a-price" class="item-price"></p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 text-center item_calculador_tradeos div_calculador_tradeos">
+                                <p id="equivalente" class="equivalent_result"></p>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="item_calculador_tradeos">
+                                    <div class="search-select">
+                                        <label for="item-b-search">Item B:</label>
+                                        <input type="text" id="item-b-search" class="form-control" placeholder="Busca un item para B...">
+                                        <ul id="item-b-options" class="dropdown-menu" style="display: none; max-height: 200px; overflow-y: auto;"></ul>
+                                        <div id="item-b-image" class="item-image"></div>
+                                    </div>
+                                    <p id="item-b-price" class="item-price"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-12 column" id="sorteos-section" style="display: none;">
+                        <div class="row" id="sorteos-container">
+                            <!-- Los sorteos se cargarán aquí dinámicamente -->
+                        </div>
+                        <div class="row sorteos-titulo d-none d-md-none">
+                            <img src="./furnis/sorteos/titulo.png">
+                        </div>
+                        <!-- Carousel -->
+                        <div class="row justify-content-center d-none d-md-none">
+                            <div id="sorteos-carousel" class="carousel slide" data-ride="carousel">
+                                <div class="carousel-inner" id="sorteos-carousel-inner"></div>
+                                <a class="carousel-control-prev" href="#sorteos-carousel" role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#sorteos-carousel" role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 column" id="master-trades-section" style="display: none;">
+                        <img src="./mt/fondo.png" class="image_mt">
+                    </div>
+                    <div class="col-md-12 column" id="habbo-generator-section" style="display: none;">
+                        <iframe src="/proxy" class="habbo-generator"></iframe>
+                    </div>
+                    <div class="col-md-12 column" id="text-generator-section" style="display: none;">
+                        <iframe src="/proxy-text" class="habbo-generator"></iframe>
+                    </div>
+                    <div class="col-md-12 column" id="comunidad_salas" style="display: none;">
+                    </div>
+                    <div class="col-md-12 column" id="equipo-section" style="display: none;">
+                        <!-- Sección de Administración -->
+                        <div class="card mb-4 card-equipo card-equipo-administracion">
+                            <div class="card-header administracion-title-card noticia_title" data-i18n="administracion_fansite">Administración fansite</div>
+                            <div class="card-body card-administracion">
+                                <div class="row">
+                                    <div class="col-md-2 text-center">
+                                        <img src="equipo/nautik.png" class="img-fluid" alt="Nautik habbo">
+                                        <h5 data-toggle="tooltip" data-placement="top" title="Discord - neverabackdown">
+                                            Nautik
+                                        </h5>
+                                        <p data-i18n="owner">Dueño</p>
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <img src="equipo/emo.png" class="img-fluid" alt="Emo. habbo">
+                                        <h5 data-toggle="tooltip" data-placement="top" title="Discord - camilopoveda708">
+                                            Emo.
+                                        </h5>
+                                        <p data-i18n="co_owner">Codueño</p>
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <img src="equipo/xl.png" class="img-fluid" alt="XL habbo">
+                                        <h5 data-toggle="tooltip" data-placement="top" title="Discord - xl_habbo">
+                                            XL
+                                        </h5>
+                                        <p data-i18n="co_owner">Codueño</p>
+                                    </div>
+                                    <!-- Más miembros... -->
+                                </div>
+                            </div>
+                        </div>
+        
+                        <!-- Sección de Administradores catalogo -->
+                        <div class="card mb-4 card-equipo">
+                            <div class="card-header master-trades-title-card noticia_title" data-i18n="adminstrador_catalogo">Administradores del catalogo</div>
+                            <div class="card-body card-master-trades">
+                                <div class="row">
+                                    <div class="col-md-2 text-center">
+                                        <img src="equipo/emo.png" class="img-fluid" alt="Emo. habbo">
+                                        <h5 data-toggle="tooltip" data-placement="top" title="Discord - camilopoveda708">
+                                            Emo.
+                                        </h5>
+                                        <p data-i18n="adminstrador_catalogo_precios_comes">Precios hotel .com y .es</p>
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <img src="equipo/dake.png" class="img-fluid">
+                                        <h5 data-toggle="tooltip" data-placement="top" title="Discord - dake3677">
+                                            Dake
+                                        </h5>
+                                        <p data-i18n="adminstrador_catalogo_precios_comes">Precios hotel .com y .es</p>
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <img src="equipo/choro.png" class="img-fluid">
+                                        <h5 data-toggle="tooltip" data-placement="top" title="Discord - choromotaaa">
+                                            Choromota
+                                        </h5>
+                                        <p data-i18n="adminstrador_catalogo_precios_es">Precios hotel .es</p>
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <img src="equipo/eseka.png" class="img-fluid">
+                                        <h5 data-toggle="tooltip" data-placement="top" title="Discord - esekajb">
+                                            Eseka
+                                        </h5>
+                                        <p data-i18n="adminstrador_catalogo_precios_es">Precios hotel .es</p>
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <img src="equipo/mateplata.png" class="img-fluid">
+                                        <h5 data-toggle="tooltip" data-placement="top" title="Discord - askemy54">
+                                            MatePlata
+                                        </h5>
+                                        <p data-i18n="adminstrador_catalogo_precios_es">Precios hotel .es</p>
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <img src="equipo/benji.png" class="img-fluid">
+                                        <h5 data-toggle="tooltip" data-placement="top" title="Discord - benjijr0854">
+                                            BenjiJr
+                                        </h5>
+                                        <p data-i18n="adminstrador_catalogo_precios_es">Precios hotel .es</p>
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <img src="equipo/vacante.png" class="img-fluid">
+                                        <h5 data-i18n="vacante_disponible">
+                                            Vacante disponible
+                                        </h5>
+                                        <p data-i18n="adminstrador_catalogo_precios_com">Precios hotel .com</p>
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <img src="equipo/vacante.png" class="img-fluid">
+                                        <h5 data-i18n="vacante_disponible">
+                                            Vacante disponible
+                                        </h5>
+                                        <p data-i18n="adminstrador_catalogo_precios_com">Precios hotel .com</p>
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <img src="equipo/vacante.png" class="img-fluid">
+                                        <h5 data-i18n="vacante_disponible">
+                                            Vacante disponible
+                                        </h5>
+                                        <p data-i18n="adminstrador_catalogo_precios_br">Precios hotel .br</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <!-- Sección de Desarrolladores -->
+                        <div class="card mb-4 card-equipo">
+                            <div class="card-header social-title-card noticia_title" data-i18n="desarrolladores">Desarrolladores</div>
+                            <div class="card-body card-programacion">
+                                <div class="row">
+                                    <div class="col-md-2 text-center">
+                                        <img src="equipo/emo.png" class="img-fluid" alt="Emo." data-toggle="tooltip" data-placement="top" title="Encargado de redes sociales de THO">
+                                        <h5 data-toggle="tooltip" data-placement="top" title="Discord - camilopoveda708">
+                                            Emo.
+                                        </h5>
+                                        <p data-i18n="desarrollador_lider">
+                                            Desarrollador lider
+                                        </p>
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <img src="equipo/javier.png" class="img-fluid">
+                                        <h5 data-toggle="tooltip" data-placement="top" title="Discord - jjavier">
+                                            Javier
+                                        </h5>
+                                        <p data-i18n="vacante_disponible_1">Desarrollador para integraciones dentro del juego</p>
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <img src="equipo/vacante.png" class="img-fluid">
+                                        <h5 data-i18n="vacante_disponible">
+                                            Vacante disponible
+                                        </h5>
+                                        <p>QA</p>
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <img src="equipo/vacante.png" class="img-fluid">
+                                        <h5 data-i18n="vacante_disponible">
+                                            Vacante disponible
+                                        </h5>
+                                        <p>UX/IX</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <!-- Sección de Discord -->
+                        <div class="card mb-4 card-equipo">
+                            <div class="card-header moderadores-discord-title-card noticia_title" data-i18n="moderadores_discord">Moderadores Discord</div>
+                            <div class="card-body card-moderadores-discord">
+                                <div class="row">
+                                    <div class="col-md-2 text-center">
+                                        <img src="equipo/nautik.png" class="img-fluid" alt="Nautik habbo">
+                                        <h5 data-toggle="tooltip" data-placement="top" title="Discord - neverabackdown">
+                                            Nautik
+                                        </h5>
+                                        <p data-i18n="owner">Dueño</p>
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <img src="equipo/emo.png" class="img-fluid" alt="Emo. habbo">
+                                        <h5 data-toggle="tooltip" data-placement="top" title="Discord - camilopoveda708">
+                                            Emo.
+                                        </h5>
+                                        <p data-i18n="co_owner">Codueño</p>
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <img src="equipo/xl.png" class="img-fluid" alt="XL habbo">
+                                        <h5 data-toggle="tooltip" data-placement="top" title="Discord - xl_habbo">
+                                            XL
+                                        </h5>
+                                        <p data-i18n="co_owner">Codueño</p>
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <img src="equipo/dake.png" class="img-fluid" alt="XL habbo">
+                                        <h5 data-toggle="tooltip" data-placement="top" title="Discord - dake3677">
+                                            Dake
+                                        </h5>
+                                        <p data-i18n="adminstrador">Administrador</p>
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <img src="equipo/choro.png" class="img-fluid">
+                                        <h5 data-toggle="tooltip" data-placement="top" title="Discord - choromotaaa">
+                                            Choromota
+                                        </h5>
+                                        <p data-i18n="adminstrador">Administrador</p>
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <img src="equipo/cristofer.png" class="img-fluid" alt="cristofer habbo">
+                                        <h5 data-toggle="tooltip" data-placement="top" title="Discord - cris6266">
+                                            cristofer
+                                        </h5>
+                                        <p data-i18n="moderador">Moderador</p>
+                                    </div>
+                                    <!-- Más miembros... -->
+                                </div>
+                            </div>
+                        </div>
+        
+                        <!-- Sección de Noticias -->
+                        <div class="card mb-4 card-equipo">
+                            <div class="card-header noticias-title-card noticia_title">Noticias</div>
+                            <div class="card-body card-noticias-equipo">
+                                <div class="row">
+                                    <div class="col-md-2 text-center">
+                                        <img src="equipo/tho_ia.png" class="img-fluid" alt="THO IA" data-toggle="tooltip" data-placement="top" title="Redactar noticias automaticamente">
+                                        <h5 data-toggle="tooltip" data-placement="top" title="discord.com/invite/dh4FMNrfTT">
+                                            THO IA
+                                        </h5>
+                                        <p data-i18n="redactor">
+                                            Redactor
+                                        </p>
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <img src="equipo/emo.png" class="img-fluid" alt="Emo." data-toggle="tooltip" data-placement="top" title="Corregir errores ortograficos y/o agregar imagenes">
+                                        <h5 data-toggle="tooltip" data-placement="top" title="Discord - camilopoveda708">
+                                            Emo.
+                                        </h5>
+                                        <p data-i18n="corrector">
+                                            Corrector
+                                        </p>
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <img src="equipo/vacante.png" class="img-fluid">
+                                        <h5 data-i18n="vacante_disponible">
+                                            Vacante disponible
+                                        </h5>
+                                        <p data-i18n="redactor">Redactor</p>
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <img src="equipo/vacante.png" class="img-fluid">
+                                        <h5 data-i18n="vacante_disponible">
+                                            Vacante disponible
+                                        </h5>
+                                        <p data-i18n="redactor">Redactor</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <!-- Sección de Social -->
+                        <div class="card mb-4 card-equipo">
+                            <div class="card-header social-title-card noticia_title">Redes Sociales</div>
+                            <div class="card-body card-social">
+                                <div class="row">
+                                    <div class="col-md-2 text-center">
+                                        <img src="equipo/tho_ia.png" class="img-fluid" alt="THO IA" data-toggle="tooltip" data-placement="top" title="Encargado de redes sociales de THO">
+                                        <h5 data-toggle="tooltip" data-placement="top" title="discord.com/invite/dh4FMNrfTT">
+                                            THO IA
+                                        </h5>
+                                        <p data-i18n="redes_sociales">
+                                            Redes Sociales
+                                        </p>
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <img src="equipo/emo.png" class="img-fluid" alt="Emo." data-toggle="tooltip" data-placement="top" title="Encargado de redes sociales de THO">
+                                        <h5 data-toggle="tooltip" data-placement="top" title="Discord - camilopoveda708">
+                                            Emo.
+                                        </h5>
+                                        <p data-i18n="redes_sociales">
+                                            Redes Sociales
+                                        </p>
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <img src="equipo/vacante.png" class="img-fluid">
+                                        <h5 data-i18n="vacante_disponible">
+                                            Vacante disponible
+                                        </h5>
+                                        <p>Twitter</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 column" id="marketplace-section" style="display: none;">
+                    </div>
+                    <div class="col-md-12 column" id="login-section" style="display: none;">
+                        <div class="login_div">
+                            <h3 class="text-center" data-i18n="login_title">Login</h3>
+                            <form id="login-form">
+                                <div class="form-group position-relative">
+                                    <label for="username" data-i18n="login_username_label">Usuario:</label>
+                                    <input type="text" class="form-control" id="username" name="username" required>
+                                </div>
                         
+                                <div class="form-group position-relative mt-3">
+                                    <label for="password" data-i18n="login_password_label">Contraseña:</label>
+                                    <input type="password" class="form-control" id="password" name="password" required>
+                                </div>
+                        
+                                <!-- ReCaptcha de Google -->
+                                <div class="g-recaptcha mb-3 recaptcha" id="login-recaptcha"></div>
+                        
+                                <button type="button" id="login-button" class="btn btn-primary btn-block" data-i18n="login_button">
+                                    Iniciar Sesión
+                                </button>
+                            </form>
+                        </div>                
+                    </div>
+                    <div class="col-md-12 column" id="register-section" style="display: none;">
+                        <div class="register_div">
+                            <h3 class="text-center" data-i18n="register_title">Registro de Usuario</h3>
+                            <form id="register-form">
+                                <div class="form-group position-relative">
+                                    <label for="usernameRegister" data-i18n="register_username_label">
+                                        Nombre de Usuario:
+                                        <span class="info-icon" data-toggle="tooltip" data-placement="right" title="Este es el nombre de cómo quieres aparecer en la página, por ejemplo, Emo. , el nombre solo puede tener carácteres especiales como (!, @, #, $, %, ^, &, *, -, _, =, +).">
+                                            <i class="fas fa-question-circle"></i>
+                                        </span>
+                                    </label>
+                                    <input type="text" class="form-control" id="usernameRegister" name="usernameRegister" required>
+                                </div>
+                                <div class="form-group position-relative">
+                                    <label for="email" data-i18n="register_email_label">
+                                        Correo Electrónico:
+                                        <span class="info-icon" data-toggle="tooltip" data-placement="right" title="El correo electrónico solo se utiliza para confirmar que el usuario es real y permitir recuperar la contraseña.">
+                                            <i class="fas fa-question-circle"></i>
+                                        </span>
+                                    </label>
+                                    <input type="email" class="form-control" id="email" name="email" required>
+                                </div>
+                                <div class="form-group position-relative">
+                                    <label for="passwordRegister" data-i18n="register_password_label">
+                                        Contraseña:
+                                        <span class="info-icon" data-toggle="tooltip" data-placement="right" title="La contraseña debe tener al menos 1 letra mayúscula, 1 letra minúscula, 1 número y 1 carácter especial como (!, @, #, $, %, ^, &, *, -, _, =, +).">
+                                            <i class="fas fa-question-circle"></i>
+                                        </span>
+                                    </label>
+                                    <input type="password" class="form-control" id="passwordRegister" name="passwordRegister" required>
+                                </div>
+                                <div class="form-group position-relative">
+                                    <label for="confirm-password" data-i18n="register_confirm_password_label">
+                                        Confirmar Contraseña:
+                                    </label>
+                                    <input type="password" class="form-control" id="confirm-password" name="confirm-password" required>
+                                </div>
+                                <div class="g-recaptcha mb-3 recaptcha" id="register-recaptcha"></div>
+                                <button type="button" id="register-button" class="btn btn-primary btn-block" data-i18n="register_button">
+                                    Registrar
+                                </button>
+                            </form>
                         </div>
+                    </div>     
+                    <div class="col-md-12 column" id="acerca-nosotros-section" style="display: none;" data-i18n="acerca_nosotros">
                     </div>
-                    <div class="col-10 col-md-12">
-                        <input type="text" id="search-input" class="form-control buscar-furnis" data-i18n="[placeholder]placeholder_search">
+                    <div class="col-md-12 column" id="terminos-condiciones-section" style="display: none;" data-i18n="terminos_condiciones">
                     </div>
-                    <div class="col-2 d-md-none colum_button_options">
-                        <button class="toggle-button" id="button_options">
-                            <i class="fas fa-chevron-down toggle-icon"></i>
+                    <div class="col-md-12 column" id="preguntas-respuestas-section" style="display: none;" data-i18n="preguntas_respuestas">
+                    </div>
+                    <div class="col-md-12 column" id="politicas-privacidad-section" style="display: none;" data-i18n="politica_privacidad">
+                    </div>
+                    <div class="col-md-12 column" id="contactanos-section" style="display: none;" data-i18n="contactanos">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-1 d-block d-md-none column-right">
+            <!-- Contenido de la columna derecha -->
+        </div>
+        <div class="col-md-2 d-none d-md-block">
+            <div class="row row_lenguage fila_end">
+                <div id="language-switcher" class="text-right">
+                    <select class="form-control select_lenguage language-select-pc" style="display: inline-block; width: auto;">
+                        <option value="es">Español</option>
+                        <option value="en">English</option>
+                        <option value="pt">Português</option>
+                    </select>
+                </div>
+            </div>
+            <div class="contador_div font-habbo-class d-none d-md-block">
+                <div class="contador_title" data-i18n="contador_visitas">
+                    Contador de Visitas
+                </div>
+                <p class="contador_text" id="contador">En mantenimiento</p>
+            </div>
+            <div class="col-md-12 col-sm-12 d-none d-md-flex text-center mb-3 mb-md-0 row_login">
+                <div class="row">
+                    <!-- Botones visibles solo cuando NO está logeado -->
+                    <div class="col-md-12 text-center no_login">
+                        <button class="price_history_content online_habbo_text_white menu-link boton contador_div" data-i18n="inicio_sesion" data-section="login">
                         </button>
-                    </div> 
-                </div>
-                <div class="filtros_filas">
-                    <div class="row mb-4">
-                        <div class="col-md-3 col-12 text-center d-none d-md-block">
-                            <button class="price_history_content online_habbo_text_white filter-button furnis-temporada" data-category="deportes" data-i18n="filter_deportes">
-                                <img src="furnis/iconos/deportes.png" alt="icon">
-                                Deportes
-                            </button>
-                            <button class="price_history_content online_habbo_text_white filter-button furnis-temporada" data-category="cabin" data-i18n="filter_cabin">
-                                <img src="furnis/iconos/cabin.png" alt="icon" class="cabin-icon">
-                                Cabin
-                            </button>
-                            <button class="price_history_content online_habbo_text_white filter-button furnis-temporada" data-category="habboween" data-i18n="filter_habboween">
-                                <img src="furnis/iconos/habboween.png" alt="icon" class="habboween-icon">
-                                Habboween
-                            </button>
-                            <button class="price_history_content online_habbo_text_white filter-button furnis-temporada" data-category="gotico" data-i18n="filter_gotico">
-                                <img src="furnis/iconos/gotico.png" alt="icon" class="gotico-icon">
-                                Gótico
-                            </button>
-                        </div>
-                        <div class="col-md-7 col-12 text-center" id="filter_tags">
-                            <button class="price_history_content online_habbo_text_white filter-button all_filtro" data-category="all" data-i18n="filter_todos">
-                                Todos
-                            </button>
-                            <button class="price_history_content online_habbo_text_white filter-button" data-category="hc" data-i18n="filter_hc">
-                                <img src="furnis/iconos/icon_hc.png" class="iconos-hc-filtro" alt="icon">
-                                HC
-                            </button>
-                            <button class="price_history_content online_habbo_text_white filter-button" data-category="rare" data-i18n="filter_rare">
-                                <img src="furnis/rares/Habbocola.png" class="iconos-rare-filtro" alt="icon">
-                                Rare
-                            </button>
-                            <button class="price_history_content online_habbo_text_white filter-button" data-category="funky" data-i18n="filter_funky">
-                                <img src="furnis/iconos/Luz_Roja_Bouncer.png" class="iconos-rare-filtro" alt="icon">
-                                Funky
-                            </button>
-                            <button class="price_history_content online_habbo_text_white filter-button" data-category="hot" data-i18n="filter_hot_trades">
-                                <img src="furnis/iconos/hot_icon.png" class="iconos-hot-filtro" alt="icon">
-                                Hot Trades
-                            </button>
-                            <button class="price_history_content online_habbo_text_white filter-button" data-category="mega_rare" data-i18n="filter_mega_rares">   
-                                <img src="furnis/iconos/Dragon_De_Fuego_Oro.png" class="iconos-megarares-filtro" alt="icon">
-                                Mega Rares
-                            </button>
-                            <button class="price_history_content online_habbo_text_white filter-button coleccion_filtro" data-category="coleccion" data-i18n="filter_colecciones">    
-                                <img src="furnis/iconos/coleccion.png" class="iconos-coleccion-filtro" alt="icon">
-                                Colecciones
-                            </button>
-                            <button class="price_history_content online_habbo_text_white filter-button" data-category="xmas_rares" data-i18n="filter_xmas_rares">    
-                                <img src="furnis/iconos/icon_xmas_rares.png" class="iconos-coleccion-filtro" alt="icon">
-                                Xmas Rares
-                            </button>
-                            <button class="price_history_content online_habbo_text_white filter-button" data-category="unreleased" data-i18n="filter_unreleased">    
-                                <img src="furnis/iconos/icon_unrelased.png" class="iconos-coleccion-filtro" alt="icon">
-                                UNRELEASED
-                            </button>
-                        </div>                        
-                        <div class="col-md-2 col-12 text-center d-md-block div_filtros">
-                            <select id="sort-options" class="form-control w-auto ml-3 select_order">
-                                <option value="default" data-i18n="select_order_op1">Ordenar por</option>
-                                <option value="price_desc" data-i18n="select_order_op2">Precio: Mayor a Menor</option>
-                                <option value="price_asc" data-i18n="select_order_op3">Precio: Menor a Mayor</option>
-                                <option value="date_desc" data-i18n="select_order_op4">Fecha Actualizacion: Reciente a Antigua</option>
-                                <option value="date_asc" data-i18n="select_order_op5">Fecha Actualizacion: Antigua a Reciente</option>
-                            </select>
-                        </div>
                     </div>
-                </div>
-                <div id="toggle-content" style="display: none;">
-                    <div class="row row_lenguage fila_end d-block d-md-none">
-                        <div id="language-switcher" class="text-right div_select_lenguage">
-                            <select class="form-control select_lenguage language-select-mobile" style="display: inline-block; width: auto;">
-                                <option value="es">Español</option>
-                                <option value="en">English</option>
-                                <option value="pt">Português</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row mb-4">
-                        <div class="col-md-3 col-12 text-center d-none d-md-block">
-                            <!-- Esta columna no se mostrará en dispositivos móviles -->
-                        </div>
-                        <div class="col-md-6 col-12 text-center" id="filter_tags">
-                            <button class="price_history_content online_habbo_text_white filter-button" data-category="all" data-i18n="filter_tag_todos">Todos</button>
-                            <button class="price_history_content online_habbo_text_white filter-button" data-category="hc" data-i18n="filter_tag_hc">HC</button>
-                            <button class="price_history_content online_habbo_text_white filter-button" data-category="rare" data-i18n="filter_tag_rare">Rare</button>
-                            <button class="price_history_content online_habbo_text_white filter-button" data-category="funky" data-i18n="filter_tag_funky">Funky</button>
-                            <button class="price_history_content online_habbo_text_white filter-button" data-category="hot" data-i18n="filter_tag_hot">Hot Trades</button>
-                            <button class="price_history_content online_habbo_text_white filter-button" data-category="mega_rare" data-i18n="filter_tag_mega_rares">Mega Rares</button>
-                            <button class="price_history_content online_habbo_text_white filter-button" data-category="coleccion">Colecciones</button>
-                        </div>
-                        <div class="col-md-3 col-12 text-center d-md-block div_filtros">
-                            <select id="sort-options" class="form-control w-auto ml-3 select_order">
-                                <option value="default" data-i18n="select_order_op1">Ordenar por</option>
-                                <option value="price_desc" data-i18n="select_order_op2">Precio: Mayor a Menor</option>
-                                <option value="price_asc" data-i18n="select_order_op3">Precio: Menor a Mayor</option>
-                                <option value="date_desc" data-i18n="select_order_op4">Fecha Actualizacion: Reciente a Antigua</option>
-                                <option value="date_asc" data-i18n="select_order_op5">Fecha Actualizacion: Antigua a Reciente</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="row" id="product-container">
-                    <!-- Los productos se cargarán aquí dinámicamente -->
-                </div>
-                <div id="product-history-container" class="price_history" style="display: none;">
-                    <!-- El historial de precios se cargará aquí dinámicamente -->
-                </div>
-                <button id="back-button" style="display: none;" class="price_history_content online_habbo_text_white" data-i18n="regresar">Regresar</button>
-            </div>
-            <div class="col-10 col-md-8 column" id="noticias-section" style="display: none;">
-                <audio id="click-sound" src="sonidos/mensaje_conso.mp3"></audio>
-                <div id="noticias-container">
-                    <div class="search-container mb-3">
-                        <input type="text" id="search-noticias" placeholder="Buscar noticias..." class="form-control buscar-noticias">
-                    </div>
-                    <div id="noticias-div">
-                        <!-- Las noticias se cargarán aquí dinámicamente -->
-                    </div>
-                </div>
-                <div class="pagination d-none">
-                    <a href="#">&laquo;</a>
-                    <a href="#">1</a>
-                    <a href="#">2</a>
-                    <a href="#">3</a>
-                    <a href="#">4</a>
-                    <a href="#">5</a>
-                    <a href="#">&raquo;</a>
-                </div>    
-            </div>
-            <div class="col-10 col-md-8 column" id="calculador-section" style="display: none;">
-                <div class="row body_calculadora">
-                    <div class="col-md-4">
-                        <div class="item_calculador_tradeos">
-                            <div class="search-select">
-                                <label for="item-a-search">Item A:</label>
-                                <input type="text" id="item-a-search" class="form-control" placeholder="Busca un item para A...">
-                                <ul id="item-a-options" class="dropdown-menu" style="display: none; max-height: 200px; overflow-y: auto;"></ul>
-                                <div id="item-a-image" class="item-image"></div>
-                            </div>    
-                            <p id="item-a-price" class="item-price"></p>
-                        </div>
-                    </div>
-                    <div class="col-md-4 text-center item_calculador_tradeos div_calculador_tradeos">
-                        <p id="equivalente" class="equivalent_result"></p>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="item_calculador_tradeos">
-                            <div class="search-select">
-                                <label for="item-b-search">Item B:</label>
-                                <input type="text" id="item-b-search" class="form-control" placeholder="Busca un item para B...">
-                                <ul id="item-b-options" class="dropdown-menu" style="display: none; max-height: 200px; overflow-y: auto;"></ul>
-                                <div id="item-b-image" class="item-image"></div>
-                            </div>
-                            <p id="item-b-price" class="item-price"></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-10 col-md-8 column" id="sorteos-section" style="display: none;">
-                <div class="row" id="sorteos-container">
-                    <!-- Los sorteos se cargarán aquí dinámicamente -->
-                </div>
-                <div class="row sorteos-titulo d-none d-md-none">
-                    <img src="./furnis/sorteos/titulo.png">
-                </div>
-                <!-- Carousel -->
-                <div class="row justify-content-center d-none d-md-none">
-                    <div id="sorteos-carousel" class="carousel slide" data-ride="carousel">
-                        <div class="carousel-inner" id="sorteos-carousel-inner"></div>
-                        <a class="carousel-control-prev" href="#sorteos-carousel" role="button" data-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="carousel-control-next" href="#sorteos-carousel" role="button" data-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Next</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-8 column" id="master-trades-section" style="display: none;">
-                <img src="./mt/fondo.png" class="image_mt">
-            </div>
-            <div class="col-md-8 column" id="habbo-generator-section" style="display: none;">
-                <iframe src="/proxy" class="habbo-generator"></iframe>
-            </div>
-            <div class="col-md-8 column" id="text-generator-section" style="display: none;">
-                <iframe src="/proxy-text" class="habbo-generator"></iframe>
-            </div>
-            <div class="col-md-8 column" id="comunidad_salas" style="display: none;">
-            </div>
-            <div class="col-md-8 column" id="equipo-section" style="display: none;">
-                <!-- Sección de Administración -->
-                <div class="card mb-4 card-equipo card-equipo-administracion">
-                    <div class="card-header administracion-title-card noticia_title" data-i18n="administracion_fansite">Administración fansite</div>
-                    <div class="card-body card-administracion">
-                        <div class="row">
-                            <div class="col-md-2 text-center">
-                                <img src="equipo/nautik.png" class="img-fluid" alt="Nautik habbo">
-                                <h5 data-toggle="tooltip" data-placement="top" title="Discord - neverabackdown">
-                                    Nautik
-                                </h5>
-                                <p data-i18n="owner">Dueño</p>
-                            </div>
-                            <div class="col-md-2 text-center">
-                                <img src="equipo/emo.png" class="img-fluid" alt="Emo. habbo">
-                                <h5 data-toggle="tooltip" data-placement="top" title="Discord - camilopoveda708">
-                                    Emo.
-                                </h5>
-                                <p data-i18n="co_owner">Codueño</p>
-                            </div>
-                            <div class="col-md-2 text-center">
-                                <img src="equipo/xl.png" class="img-fluid" alt="XL habbo">
-                                <h5 data-toggle="tooltip" data-placement="top" title="Discord - xl_habbo">
-                                    XL
-                                </h5>
-                                <p data-i18n="co_owner">Codueño</p>
-                            </div>
-                            <!-- Más miembros... -->
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Sección de Administradores catalogo -->
-                <div class="card mb-4 card-equipo">
-                    <div class="card-header master-trades-title-card noticia_title" data-i18n="adminstrador_catalogo">Administradores del catalogo</div>
-                    <div class="card-body card-master-trades">
-                        <div class="row">
-                            <div class="col-md-2 text-center">
-                                <img src="equipo/emo.png" class="img-fluid" alt="Emo. habbo">
-                                <h5 data-toggle="tooltip" data-placement="top" title="Discord - camilopoveda708">
-                                    Emo.
-                                </h5>
-                                <p data-i18n="adminstrador_catalogo_precios_comes">Precios hotel .com y .es</p>
-                            </div>
-                            <div class="col-md-2 text-center">
-                                <img src="equipo/dake.png" class="img-fluid">
-                                <h5 data-toggle="tooltip" data-placement="top" title="Discord - dake3677">
-                                    Dake
-                                </h5>
-                                <p data-i18n="adminstrador_catalogo_precios_comes">Precios hotel .com y .es</p>
-                            </div>
-                            <div class="col-md-2 text-center">
-                                <img src="equipo/choro.png" class="img-fluid">
-                                <h5 data-toggle="tooltip" data-placement="top" title="Discord - choromotaaa">
-                                    Choromota
-                                </h5>
-                                <p data-i18n="adminstrador_catalogo_precios_es">Precios hotel .es</p>
-                            </div>
-                            <div class="col-md-2 text-center">
-                                <img src="equipo/eseka.png" class="img-fluid">
-                                <h5 data-toggle="tooltip" data-placement="top" title="Discord - esekajb">
-                                    Eseka
-                                </h5>
-                                <p data-i18n="adminstrador_catalogo_precios_es">Precios hotel .es</p>
-                            </div>
-                            <div class="col-md-2 text-center">
-                                <img src="equipo/mateplata.png" class="img-fluid">
-                                <h5 data-toggle="tooltip" data-placement="top" title="Discord - askemy54">
-                                    MatePlata
-                                </h5>
-                                <p data-i18n="adminstrador_catalogo_precios_es">Precios hotel .es</p>
-                            </div>
-                            <div class="col-md-2 text-center">
-                                <img src="equipo/benji.png" class="img-fluid">
-                                <h5 data-toggle="tooltip" data-placement="top" title="Discord - benjijr0854">
-                                    BenjiJr
-                                </h5>
-                                <p data-i18n="adminstrador_catalogo_precios_es">Precios hotel .es</p>
-                            </div>
-                            <div class="col-md-2 text-center">
-                                <img src="equipo/vacante.png" class="img-fluid">
-                                <h5 data-i18n="vacante_disponible">
-                                    Vacante disponible
-                                </h5>
-                                <p data-i18n="adminstrador_catalogo_precios_com">Precios hotel .com</p>
-                            </div>
-                            <div class="col-md-2 text-center">
-                                <img src="equipo/vacante.png" class="img-fluid">
-                                <h5 data-i18n="vacante_disponible">
-                                    Vacante disponible
-                                </h5>
-                                <p data-i18n="adminstrador_catalogo_precios_com">Precios hotel .com</p>
-                            </div>
-                            <div class="col-md-2 text-center">
-                                <img src="equipo/vacante.png" class="img-fluid">
-                                <h5 data-i18n="vacante_disponible">
-                                    Vacante disponible
-                                </h5>
-                                <p data-i18n="adminstrador_catalogo_precios_br">Precios hotel .br</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Sección de Desarrolladores -->
-                <div class="card mb-4 card-equipo">
-                    <div class="card-header social-title-card noticia_title" data-i18n="desarrolladores">Desarrolladores</div>
-                    <div class="card-body card-programacion">
-                        <div class="row">
-                            <div class="col-md-2 text-center">
-                                <img src="equipo/emo.png" class="img-fluid" alt="Emo." data-toggle="tooltip" data-placement="top" title="Encargado de redes sociales de THO">
-                                <h5 data-toggle="tooltip" data-placement="top" title="Discord - camilopoveda708">
-                                    Emo.
-                                </h5>
-                                <p data-i18n="desarrollador_lider">
-                                    Desarrollador lider
-                                </p>
-                            </div>
-                            <div class="col-md-2 text-center">
-                                <img src="equipo/javier.png" class="img-fluid">
-                                <h5 data-toggle="tooltip" data-placement="top" title="Discord - jjavier">
-                                    Javier
-                                </h5>
-                                <p data-i18n="vacante_disponible_1">Desarrollador para integraciones dentro del juego</p>
-                            </div>
-                            <div class="col-md-2 text-center">
-                                <img src="equipo/vacante.png" class="img-fluid">
-                                <h5 data-i18n="vacante_disponible">
-                                    Vacante disponible
-                                </h5>
-                                <p>QA</p>
-                            </div>
-                            <div class="col-md-2 text-center">
-                                <img src="equipo/vacante.png" class="img-fluid">
-                                <h5 data-i18n="vacante_disponible">
-                                    Vacante disponible
-                                </h5>
-                                <p>UX/IX</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Sección de Discord -->
-                <div class="card mb-4 card-equipo">
-                    <div class="card-header moderadores-discord-title-card noticia_title" data-i18n="moderadores_discord">Moderadores Discord</div>
-                    <div class="card-body card-moderadores-discord">
-                        <div class="row">
-                            <div class="col-md-2 text-center">
-                                <img src="equipo/nautik.png" class="img-fluid" alt="Nautik habbo">
-                                <h5 data-toggle="tooltip" data-placement="top" title="Discord - neverabackdown">
-                                    Nautik
-                                </h5>
-                                <p data-i18n="owner">Dueño</p>
-                            </div>
-                            <div class="col-md-2 text-center">
-                                <img src="equipo/emo.png" class="img-fluid" alt="Emo. habbo">
-                                <h5 data-toggle="tooltip" data-placement="top" title="Discord - camilopoveda708">
-                                    Emo.
-                                </h5>
-                                <p data-i18n="co_owner">Codueño</p>
-                            </div>
-                            <div class="col-md-2 text-center">
-                                <img src="equipo/xl.png" class="img-fluid" alt="XL habbo">
-                                <h5 data-toggle="tooltip" data-placement="top" title="Discord - xl_habbo">
-                                    XL
-                                </h5>
-                                <p data-i18n="co_owner">Codueño</p>
-                            </div>
-                            <div class="col-md-2 text-center">
-                                <img src="equipo/dake.png" class="img-fluid" alt="XL habbo">
-                                <h5 data-toggle="tooltip" data-placement="top" title="Discord - dake3677">
-                                    Dake
-                                </h5>
-                                <p data-i18n="adminstrador">Administrador</p>
-                            </div>
-                            <div class="col-md-2 text-center">
-                                <img src="equipo/choro.png" class="img-fluid">
-                                <h5 data-toggle="tooltip" data-placement="top" title="Discord - choromotaaa">
-                                    Choromota
-                                </h5>
-                                <p data-i18n="adminstrador">Administrador</p>
-                            </div>
-                            <div class="col-md-2 text-center">
-                                <img src="equipo/cristofer.png" class="img-fluid" alt="cristofer habbo">
-                                <h5 data-toggle="tooltip" data-placement="top" title="Discord - cris6266">
-                                    cristofer
-                                </h5>
-                                <p data-i18n="moderador">Moderador</p>
-                            </div>
-                            <!-- Más miembros... -->
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Sección de Noticias -->
-                <div class="card mb-4 card-equipo">
-                    <div class="card-header noticias-title-card noticia_title">Noticias</div>
-                    <div class="card-body card-noticias-equipo">
-                        <div class="row">
-                            <div class="col-md-2 text-center">
-                                <img src="equipo/tho_ia.png" class="img-fluid" alt="THO IA" data-toggle="tooltip" data-placement="top" title="Redactar noticias automaticamente">
-                                <h5 data-toggle="tooltip" data-placement="top" title="discord.com/invite/dh4FMNrfTT">
-                                    THO IA
-                                </h5>
-                                <p data-i18n="redactor">
-                                    Redactor
-                                </p>
-                            </div>
-                            <div class="col-md-2 text-center">
-                                <img src="equipo/emo.png" class="img-fluid" alt="Emo." data-toggle="tooltip" data-placement="top" title="Corregir errores ortograficos y/o agregar imagenes">
-                                <h5 data-toggle="tooltip" data-placement="top" title="Discord - camilopoveda708">
-                                    Emo.
-                                </h5>
-                                <p data-i18n="corrector">
-                                    Corrector
-                                </p>
-                            </div>
-                            <div class="col-md-2 text-center">
-                                <img src="equipo/vacante.png" class="img-fluid">
-                                <h5 data-i18n="vacante_disponible">
-                                    Vacante disponible
-                                </h5>
-                                <p data-i18n="redactor">Redactor</p>
-                            </div>
-                            <div class="col-md-2 text-center">
-                                <img src="equipo/vacante.png" class="img-fluid">
-                                <h5 data-i18n="vacante_disponible">
-                                    Vacante disponible
-                                </h5>
-                                <p data-i18n="redactor">Redactor</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Sección de Social -->
-                <div class="card mb-4 card-equipo">
-                    <div class="card-header social-title-card noticia_title">Redes Sociales</div>
-                    <div class="card-body card-social">
-                        <div class="row">
-                            <div class="col-md-2 text-center">
-                                <img src="equipo/tho_ia.png" class="img-fluid" alt="THO IA" data-toggle="tooltip" data-placement="top" title="Encargado de redes sociales de THO">
-                                <h5 data-toggle="tooltip" data-placement="top" title="discord.com/invite/dh4FMNrfTT">
-                                    THO IA
-                                </h5>
-                                <p data-i18n="redes_sociales">
-                                    Redes Sociales
-                                </p>
-                            </div>
-                            <div class="col-md-2 text-center">
-                                <img src="equipo/emo.png" class="img-fluid" alt="Emo." data-toggle="tooltip" data-placement="top" title="Encargado de redes sociales de THO">
-                                <h5 data-toggle="tooltip" data-placement="top" title="Discord - camilopoveda708">
-                                    Emo.
-                                </h5>
-                                <p data-i18n="redes_sociales">
-                                    Redes Sociales
-                                </p>
-                            </div>
-                            <div class="col-md-2 text-center">
-                                <img src="equipo/vacante.png" class="img-fluid">
-                                <h5 data-i18n="vacante_disponible">
-                                    Vacante disponible
-                                </h5>
-                                <p>Twitter</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-8 column" id="marketplace-section" style="display: none;">
-            </div>
-            <div class="col-md-8 column" id="login-section" style="display: none;">
-                <div class="login_div">
-                    <h3 class="text-center" data-i18n="login_title">Login</h3>
-                    <form id="login-form">
-                        <div class="form-group position-relative">
-                            <label for="username" data-i18n="login_username_label">Usuario:</label>
-                            <input type="text" class="form-control" id="username" name="username" required>
-                        </div>
-                
-                        <div class="form-group position-relative mt-3">
-                            <label for="password" data-i18n="login_password_label">Contraseña:</label>
-                            <input type="password" class="form-control" id="password" name="password" required>
-                        </div>
-                
-                        <!-- ReCaptcha de Google -->
-                        <div class="g-recaptcha mb-3 recaptcha" id="login-recaptcha"></div>
-                
-                        <button type="button" id="login-button" class="btn btn-primary btn-block" data-i18n="login_button">
-                            Iniciar Sesión
+                    <div class="col-md-12 text-center no_login">
+                        <button class="price_history_content online_habbo_text_white menu-link contador_div" data-i18n="registrarse" data-section="register">
                         </button>
-                    </form>
-                </div>                
-            </div>
-            <div class="col-md-8 column" id="register-section" style="display: none;">
-                <div class="register_div">
-                    <h3 class="text-center" data-i18n="register_title">Registro de Usuario</h3>
-                    <form id="register-form">
-                        <div class="form-group position-relative">
-                            <label for="usernameRegister" data-i18n="register_username_label">
-                                Nombre de Usuario:
-                                <span class="info-icon" data-toggle="tooltip" data-placement="right" title="Este es el nombre de cómo quieres aparecer en la página, por ejemplo, Emo. , el nombre solo puede tener carácteres especiales como (!, @, #, $, %, ^, &, *, -, _, =, +).">
-                                    <i class="fas fa-question-circle"></i>
-                                </span>
-                            </label>
-                            <input type="text" class="form-control" id="usernameRegister" name="usernameRegister" required>
+                    </div>
+                    <!-- Contenedor del usuario logueado -->
+                    <div class="col-md-12 text-center usuario_logeado" style="display: none;">
+                        <!-- Menú desplegable -->
+                        <div class="dropdown navbar_item menu_user">
+                            <button class="btn dropdown-toggle" type="button" id="userMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Menú de <span id="username_display"></span>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="userMenuButton">
+                                <a class="dropdown-item navbar_item habbo_text_blue menu-link" href="#" id="edit-profile" data-permission="2">Editar Perfil</a>
+                                <a class="dropdown-item navbar_item habbo_text_blue menu-link" href="#" id="manage-catalog" data-permission="1">Administrar Catálogo</a>
+                                <a class="dropdown-item navbar_item habbo_text_blue menu-link" href="#" id="manage-news" data-permission="3">Administrar Noticias</a>
+                                <a class="dropdown-item navbar_item habbo_text_blue menu-link" href="#" id="manage-raffles" data-permission="4">Administrar Sorteos</a>
+                                <a class="dropdown-item navbar_item habbo_text_blue menu-link" href="#" id="manage-users" data-permission="5">Administrar Usuarios</a>
+                                <a class="dropdown-item navbar_item habbo_text_blue menu-link" href="#" id="manage-badges" data-permission="6">Administrar Placas</a>
+                                <a class="dropdown-item navbar_item habbo_text_blue menu-link text-danger" href="#" id="logout_button">Cerrar Sesión</a>
+                            </div>
                         </div>
-                        <div class="form-group position-relative">
-                            <label for="email" data-i18n="register_email_label">
-                                Correo Electrónico:
-                                <span class="info-icon" data-toggle="tooltip" data-placement="right" title="El correo electrónico solo se utiliza para confirmar que el usuario es real y permitir recuperar la contraseña.">
-                                    <i class="fas fa-question-circle"></i>
-                                </span>
-                            </label>
-                            <input type="email" class="form-control" id="email" name="email" required>
-                        </div>
-                        <div class="form-group position-relative">
-                            <label for="passwordRegister" data-i18n="register_password_label">
-                                Contraseña:
-                                <span class="info-icon" data-toggle="tooltip" data-placement="right" title="La contraseña debe tener al menos 1 letra mayúscula, 1 letra minúscula, 1 número y 1 carácter especial como (!, @, #, $, %, ^, &, *, -, _, =, +).">
-                                    <i class="fas fa-question-circle"></i>
-                                </span>
-                            </label>
-                            <input type="password" class="form-control" id="passwordRegister" name="passwordRegister" required>
-                        </div>
-                        <div class="form-group position-relative">
-                            <label for="confirm-password" data-i18n="register_confirm_password_label">
-                                Confirmar Contraseña:
-                            </label>
-                            <input type="password" class="form-control" id="confirm-password" name="confirm-password" required>
-                        </div>
-                        <div class="g-recaptcha mb-3 recaptcha" id="register-recaptcha"></div>
-                        <button type="button" id="register-button" class="btn btn-primary btn-block" data-i18n="register_button">
-                            Registrar
-                        </button>
-                    </form>
+                    </div>
                 </div>
-            </div>     
-            <div class="col-md-8 column" id="acerca-nosotros-section" style="display: none;" data-i18n="acerca_nosotros">
-            </div>
-            <div class="col-md-8 column" id="terminos-condiciones-section" style="display: none;" data-i18n="terminos_condiciones">
-            </div>
-            <div class="col-md-8 column" id="preguntas-respuestas-section" style="display: none;" data-i18n="preguntas_respuestas">
-            </div>
-            <div class="col-md-8 column" id="politicas-privacidad-section" style="display: none;" data-i18n="politica_privacidad">
-            </div>
-            <div class="col-md-8 column" id="contactanos-section" style="display: none;" data-i18n="contactanos">
-            </div>
+            </div> 
             
-            <div class="col-1 d-block d-md-none column-right">
-                <!-- Contenido de la columna derecha -->
-            </div>
-            <div class="col-md-2 column d-none d-md-block" id="columna_derecha">
-                <div class="row row_lenguage fila_end">
-                    <div id="language-switcher" class="text-right">
-                        <select class="form-control select_lenguage language-select-pc" style="display: inline-block; width: auto;">
-                            <option value="es">Español</option>
-                            <option value="en">English</option>
-                            <option value="pt">Português</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="container container_last_three">
-                    <div id="carouselNoticias" class="carousel slide" data-ride="carousel">
-                        <div class="carousel-inner" id="last_three_noticies">
-                        </div>
-                
-                        <!-- Controles de navegación -->
-                        <a class="carousel-control-prev" href="#carouselNoticias" role="button" data-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Anterior</span>
-                        </a>
-                        <a class="carousel-control-next" href="#carouselNoticias" role="button" data-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Siguiente</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="row row_lenguage fila_end">
-                    <div class="webs_amigas">
-                        <h5 class="webs_amigas_h5" data-i18n="web_amigas_es">Webs Amigas .ES</h5>
-                        <a href="https://www.doshabbo.com/" target="_blank">
-                            <img src="./furnis/iconos/doshabbo.png" alt="dos baner" class="web_dos"/>
-                        </a>
-                        <h5 class="webs_amigas_h5" data-i18n="web_amigas_com">Webs Amigas .COM</h5>
-                        <a href="https://www.traderclub.gg/" target="_blank">
-                            <img src="./furnis/iconos/traderclub.png" alt="traderclub banner" class="imagen_webs_amigas"/>
-                        </a>
-                        <h5 class="webs_amigas_h5" data-i18n="web_amigas_br">Webs Amigas .BR</h5>
-                        <a href="https://habbold.org" target="_blank">
-                            <img src="https://www.habbold.org/resources/banner.png" alt="Habbolt banner" class="imagen_webs_amigas"/>
-                        </a>
-                        <h5 class="webs_amigas_h5" data-i18n="web_amigas_legacy">Webs Amigas Legacy</h5>
-                        <a href="https://www.securehabbo.com/" target="_blank">
-                            <img src="./furnis/iconos/securehabbo.png" alt="securehabbo banner" class="imagen_webs_amigas"/>
-                        </a>
-                    </div>
-                </div>
+        </div>
+    </div>
+    <main class="container">
+        <div class="row">
+            <div class="col-md-2 column d-none d-md-block">
+            </div>      
+            <div class="col-md-2 column d-none d-md-block">
             </div>
         </div>
         <div class="row fixed-bottom">
@@ -1294,21 +1349,6 @@
           </div>
         </div>
     </div>
-    <div class="fixed-container rainbow-border">
-        <div class="toggle-btn" id="toggle-btn">▲</div>
-        <div class="content" id="content">
-            <a href="https://discord.gg/dh4FMNrfTT" target="_blank" class="margin-right-10px">
-                <i class="fab fa-discord fa-2x habbo-text-white mx-2"></i>
-            </a>
-            <a href="https://www.tiktok.com/@tradeshabbofansite" target="_blank" class="margin-right-10px">
-                <i class="fab fa-tiktok fa-2x habbo-text-white mx-2"></i>
-            </a>
-            <a href="https://x.com/OriginsKingdom" target="_blank" class="">
-                <i class="fab fa-twitter fa-2x habbo-text-white mx-2"></i>
-            </a>
-        </div>
-    </div>
-    
       
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
@@ -1321,33 +1361,42 @@
     <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.16/mediaelement-and-player.min.js"></script>
-    <script src="bdd54f4e-7c2c-4b28-80c4-67596a5e8f0e.js"></script>
+    <script src="baf2d03e-f18a-4157-82d2-ebfd3188b7f9.js"></script>
     <!-- Incluir i18next -->
     <script src="https://unpkg.com/i18next@20.6.1/i18next.min.js"></script>
     <script src="https://unpkg.com/i18next-browser-languagedetector@6.1.2/i18nextBrowserLanguageDetector.min.js"></script>
     <script src="https://unpkg.com/i18next-xhr-backend@3.2.2/i18nextXHRBackend.min.js"></script>
 
     <!-- Configuración de i18next -->
-    <script src="58c25794-87de-4b7f-8d72-530023a464a8.js"></script>
+    <script src="2b63419c-d58f-48a8-92e9-dbf92d93068e.js"></script>
     
     <footer class="col-md-12 col-12 text-center d-none d-md-block" id="footer">
-        <div class="image-animation-container">
-            <!-- habboween
-            <img src="furnis/iconos/habboween/Hijo_Pato_De_Habboween.png" class="asomandose-img-1 patos_imagenes" alt="Imagen 1">
-            <img src="furnis/iconos/habboween/Mama_Pato_De_Habboween.png" class="asomandose-img-2 patos_imagenes" alt="Imagen 2">
-            <img src="furnis/iconos/habboween/Papa_Pato_De_Habboween.png" class="asomandose-img-3 patos_imagenes" alt="Imagen 3">
-            <img src="furnis/iconos/habboween/Pato_Brujo.png" class="asomandose-img-4 patos_imagenes" alt="Imagen 4">
-            <img src="furnis/iconos/habboween/Pato_Diablo.png" class="asomandose-img-5 patos_imagenes" alt="Imagen 5">
-            <img src="furnis/iconos/chino/nube_china.png" class="asomandose_lampara_china_1 patos_imagenes" alt="Imagen 1">
-            <img src="furnis/iconos/chino/nube_china.png" class="asomandose_lampara_china_1 patos_imagenes" alt="Imagen 1">
-            <img src="furnis/iconos/chino/nube_china.png" class="asomandose_lampara_china_1 patos_imagenes" alt="Imagen 1">-->
-            <img src="furnis/iconos/san_valentin/corazon_volando.png" class="asomandose_lampara_china_1 patos_imagenes" alt="Imagen 1">
-            <img src="furnis/iconos/san_valentin/corazon_volando.png" class="asomandose_lampara_china_1 patos_imagenes" alt="Imagen 1">
-            <img src="furnis/iconos/san_valentin/corazon_volando.png" class="asomandose_lampara_china_1 patos_imagenes" alt="Imagen 1">
+        <div class="footer-content">
+            <div class="image-animation-container">
+                <!-- habboween
+                <img src="furnis/iconos/habboween/Hijo_Pato_De_Habboween.png" class="asomandose-img-1 patos_imagenes" alt="Imagen 1">
+                <img src="furnis/iconos/habboween/Mama_Pato_De_Habboween.png" class="asomandose-img-2 patos_imagenes" alt="Imagen 2">
+                <img src="furnis/iconos/habboween/Papa_Pato_De_Habboween.png" class="asomandose-img-3 patos_imagenes" alt="Imagen 3">
+                <img src="furnis/iconos/habboween/Pato_Brujo.png" class="asomandose-img-4 patos_imagenes" alt="Imagen 4">
+                <img src="furnis/iconos/habboween/Pato_Diablo.png" class="asomandose-img-5 patos_imagenes" alt="Imagen 5">
+                <img src="furnis/iconos/chino/nube_china.png" class="asomandose_lampara_china_1 patos_imagenes" alt="Imagen 1">
+                <img src="furnis/iconos/chino/nube_china.png" class="asomandose_lampara_china_1 patos_imagenes" alt="Imagen 1">
+                <img src="furnis/iconos/chino/nube_china.png" class="asomandose_lampara_china_1 patos_imagenes" alt="Imagen 1">
+                <img src="furnis/iconos/san_valentin/corazon_volando.png" class="asomandose_lampara_china_1 patos_imagenes" alt="Imagen 1">
+                <img src="furnis/iconos/san_valentin/corazon_volando.png" class="asomandose_lampara_china_1 patos_imagenes" alt="Imagen 1">
+                <img src="furnis/iconos/san_valentin/corazon_volando.png" class="asomandose_lampara_china_1 patos_imagenes" alt="Imagen 1">-->
+            </div>
+            <p class="footer-text" data-i18n="footer_parte_1">© Origins Kingdom 2025 - Fansite Exclusiva de Origins</p>
+            <p class="footer-text" data-i18n="footer_parte_2">
+                Este sitio de fans no tiene ninguna afiliación, respaldo, promoción ni aprobación específica por parte de Sulake Corporation Oy o sus asociados. 
+                Según la Política de sitios de fans de Habbo, se permite el uso de marcas registradas y otros derechos de propiedad intelectual de Habbo en este sitio.
+            </p>
+            <p class="footer-text" data-i18n="footer_parte_3">
+                El sitio web, su diseño y todos sus sistemas han sido creados y desarrollados por 
+                <a href="https://www.linkedin.com/in/camiloandresyayapoveda/" target="_blank" class="footer-link">Camilo Andres Yaya Poveda</a>
+            </p>
+            <img src="placas/badge_FAN.png" class="text" alt="Imagen 1">
         </div>
-        <p data-i18n="footer_parte_1">© Origins Kingdom 2025</p>
-        <p data-i18n="footer_parte_2">Este sitio de fans no tiene ninguna afiliación, respaldo, promoción ni aprobación específica por parte de Sulake Corporation Oy o sus asociados. Según la Política de sitios de fans de Habbo, se permite el uso de marcas registradas y otros derechos de propiedad intelectual de Habbo en este sitio.</p>
-        <p data-i18n="footer_parte_3">El sitio web, su diseño y todos sus sistemas han sido creados y desarrollados por Pagina creada por <a href="https://www.linkedin.com/in/camiloandresyayapoveda/" target="_blank">Camilo Andres Yaya Poveda</a></p>
     </footer>
 </body>
 </html>

@@ -1,44 +1,36 @@
 function obtenerPlacas() {
-
-    // Hacer la petición al servidor para obtener la lista de imágenes
     $.ajax({
-        url: '/obtener-placas',  // Endpoint que lista las imágenes
+        url: '/obtener-placas',
         method: 'GET',
         success: function(imageFiles) {
-            const divPlacas = $('.div_placas'); // Asegúrate de que tienes este contenedor en tu HTML
+            const divPlacas = $('.div_placas');
             let rowHTML = `
             <p class="habbo_text_gold p_titulo_placas" data-i18n="placas_alojadas">
-                Placas alojadas
+                Últimas Placas Alojadas
             </p>
             <div class="row">
             `;
-            
-            // Iterar sobre la lista de imágenes recibidas y crear los elementos <img>
-            imageFiles.forEach(function(fileName, index) {
-                let tooltipText1 = fileName.replace("badge_", "");
-                let tooltipText2 = tooltipText1.replace(".png", "");
-                // Crear la estructura HTML de la imagen con la columna
+
+            imageFiles.forEach(function(placa, index) {
+                const fileName = placa.nombre;
+                let tooltipText = fileName.replace("badge_", "").replace(".png", "");
+
                 const imageHTML = `
                     <div class="col-3 no_padding">
-                        <div class="placa" data-toggle="tooltip" title="${tooltipText2}">
+                        <div class="placa" data-toggle="tooltip" title="${tooltipText}">
                             <img src="/secure-image/${fileName}" alt="${fileName}">
                         </div>
                     </div>
                 `;
-        
-                // Agregar la imagen a la fila
+
                 rowHTML += imageHTML;
-        
-                // Cerrar y empezar una nueva fila cada 4 imágenes
+
                 if ((index + 1) % 4 === 0) {
                     rowHTML += '</div><div class="row">';
                 }
             });
-        
-            // Cerrar la última fila
+
             rowHTML += '</div>';
-        
-            // Insertar la fila en el contenedor
             divPlacas.append(rowHTML);
         },
         error: function() {
@@ -46,3 +38,46 @@ function obtenerPlacas() {
         }
     });
 }
+
+
+function obtenerPlacasLimit() {
+    $.ajax({
+        url: '/obtener-placas?limit=8',
+        method: 'GET',
+        success: function(imageFiles) {
+            const divPlacas = $('.div_placas');
+            let rowHTML = `
+            <p class="habbo_text_gold p_titulo_placas" data-i18n="placas_alojadas">
+                Últimas Placas Alojadas
+            </p>
+            <div class="row">
+            `;
+
+            imageFiles.forEach(function(placa, index) {
+                const fileName = placa.nombre;
+                let tooltipText = fileName.replace("badge_", "").replace(".png", "");
+
+                const imageHTML = `
+                    <div class="col-3 no_padding">
+                        <div class="placa" data-toggle="tooltip" title="${tooltipText}">
+                            <img src="/secure-image/${fileName}" alt="${fileName}">
+                        </div>
+                    </div>
+                `;
+
+                rowHTML += imageHTML;
+
+                if ((index + 1) % 4 === 0) {
+                    rowHTML += '</div><div class="row">';
+                }
+            });
+
+            rowHTML += '</div>';
+            divPlacas.append(rowHTML);
+        },
+        error: function() {
+            console.error('Error al cargar las placas limitadas');
+        }
+    });
+}
+

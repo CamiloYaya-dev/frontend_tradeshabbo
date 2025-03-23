@@ -110,7 +110,7 @@ async function validationToken() {
             $('.usuario_logeado').show();
 
             // Mostrar/Ocultar secciones relevantes
-            $('#catalogo-section, #column-explications-catalogo, #sort-options, #footer').show();
+            $('#catalogo-section, #column-explications-catalogo, #sort-options, #footer').hide();
             $('#noticias-section, #calculador-section, #sorteos-section, #master-trades-section, #column-explications-master-trades, #habbo-generator-section, #text-generator-section, #comunidad_salas, #equipo-section, #marketplace-section, #login-section, #register-section').hide();
 
             // Extraer los IDs de permisos

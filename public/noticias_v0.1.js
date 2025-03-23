@@ -50,7 +50,7 @@ function renderNoticias() {
         }
 
         const noticiaHTML = `
-            <div class="noticia_div noticia_${hotelDefine}" data-toggle="modal" data-target="#noticiaModal" data-id="${noticia.id}" style="display: ${displayDiv};">
+            <div class="noticia_div noticia_div_style noticia_${hotelDefine}" data-toggle="modal" data-target="#noticiaModal" data-id="${noticia.id}" style="display: ${displayDiv};">
                 <div class="row">
                     <div class="col-12 col-md-11">
                         <div class="row">
@@ -85,56 +85,47 @@ function loadLastThreeNoticias() {
         let selectedLanguage = $('.language-select-pc').val();
         let selectedHotel = "";
 
-        if (selectedLanguage == "es") {
+        if (selectedLanguage === "es") {
             selectedHotel = "es";
-        } else if (selectedLanguage == "en") {
+        } else if (selectedLanguage === "en") {
             selectedHotel = "com";
-        } else if (selectedLanguage == "pt") {
+        } else if (selectedLanguage === "pt") {
             selectedHotel = "com.br";
         }
 
         hoteles.forEach(function(hotel) {
-            if (hotel !== selectedHotel) {
-                return; // Si el hotel no coincide con el seleccionado, no mostrar noticias de ese hotel
-            }
+            if (hotel !== selectedHotel) return;
 
-            const noticiasPorHotel = data.filter(function(noticia) {
-                return noticia.hotel === hotel;
-            });
-
-            // Ordenar por ID de manera descendente
-            const noticiasOrdenadas = noticiasPorHotel.sort(function(a, b) {
-                return b.id - a.id;
-            });
-
-            // Obtener las tres últimas noticias
+            const noticiasPorHotel = data.filter(noticia => noticia.hotel === hotel);
+            const noticiasOrdenadas = noticiasPorHotel.sort((a, b) => b.id - a.id);
             const lastThreeNoticias = noticiasOrdenadas.slice(0, 3);
 
             let hotelDefine = hotel === "com.br" ? "com_br" : hotel;
 
-            lastThreeNoticias.forEach(function(noticia, index) {
-                // La primera noticia tendrá la clase "active"
-                const isActive = index === 0 ? 'active' : '';
-                const fechaNoticia = noticia.fecha_noticia;
-                const fechaFormateada = fechaNoticia.replace('T', ' ').replace('Z', '').replace('.000', '');
+            lastThreeNoticias.forEach(function(noticia) {
+                const fechaFormateada = noticia.fecha_noticia.replace('T', ' ').replace('Z', '').replace('.000', '');
                 const noticiaHTML = `
-                    <div class="carousel-item ${isActive} ultimas_tres_noticias_${hotelDefine} noticia_div noticia_div_last_three" data-toggle="modal" data-target="#noticiaModal" data-id="${noticia.id}">
+                    <div class="noticia_div ultimas_tres_noticias_${hotelDefine} noticia_div_last_three" data-toggle="modal" data-target="#noticiaModal" data-id="${noticia.id}">
                         <div class="row">
-                            <div class="col-12">
+                            <div class="col-2 justify-content-center align-items-center icon_noticias_home col_no_padding imagen_icon_news_home">
+                                <img src="furnis/noticias/imagenes/resumidas/${noticia.imagen_resumida}.png" alt="${noticia.alt_imagen_resumida}" class="noticia_imagen_resumida_last_three">
+                            </div>
+                            <div class="col-10 col_no_padding">
                                 <div class="row">
                                     <div class="col-12">
-                                        <h5 class="noticia_title_last_three">${noticia.titulo}</h5>
+                                        <div class="row">
+                                            <div class="col-8">
+                                                <h5 class="noticia_title_last_three">${noticia.titulo}</h5>
+                                            </div>
+                                            <div class="col-4 imagen_icon_news_home">
+                                                <h6 class="noticia_time_last_three">${fechaFormateada}</h6>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-12 noticia_descripcion_last_three">
+                                    <div class="col-12 noticia_descripcion_last_three col_noticias_home_descripcion">
                                         <p>${noticia.descripcion_resumida}</p>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-12 d-flex justify-content-center align-items-center">
-                                <img src="furnis/noticias/imagenes/resumidas/${noticia.imagen_resumida}.png" alt="${noticia.alt_imagen_resumida}" class="noticia_imagen_resumida_last_three">
-                            </div>
-                            <div class="col-12 d-flex justify-content-center align-items-center">
-                                <h5 class="noticia_title_last_three">${fechaFormateada}</h5>
                             </div>
                         </div>
                     </div>
@@ -142,11 +133,10 @@ function loadLastThreeNoticias() {
                 lastThreeContainer.append(noticiaHTML);
             });
         });
-
-        // Inicializar el carrusel después de cargar las noticias
-        $('#carouselNoticias').carousel();
     });
 }
+
+
 
 function loadNoticias() {
     const timestamp = new Date().getTime();

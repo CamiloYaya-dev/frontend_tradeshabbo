@@ -4,13 +4,14 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background-size: cover;
-    background: url('./fondo_san_valentin.png') no-repeat center center fixed;
+    font-family: 'DePixelKlein', sans-serif;
+    background: linear-gradient(to bottom, #87CEFA, #4682B4); /* Cielo claro a más oscuro */
+    background-attachment: fixed; /* Hace que el fondo no se mueva */
+    margin: 0;
 }
 
 main.container.other-class {
-    font-family: Arial, sans-serif;
+    font-family: 'DePixelKlein', sans-serif;
     background-size: cover;
     background: url('./fondo_san_valentin.png') no-repeat center center fixed;
 }
@@ -292,25 +293,27 @@ main.container.master-trades-bg {
 
 .text-price {
     font-size: 20px;
-    font-family: fantasy;
+    font-family: 'DePixelKlein', sans-serif;
     color: #229728;
 }
 
 .text-price-other-markets{
     font-size: 20px;
-    font-family: fantasy;
+    font-family: 'DePixelKlein', sans-serif;
     color: #229728;
 }
 
 .header-page {
-    font-family: Arial, sans-serif;
-    background-size: cover;
+    background: 
+    url("furnis/iconos/fondo_header_nubes.png") center/cover no-repeat,
+    linear-gradient(to bottom, #87CEFA, #4682B4);
+    background-size: cover, cover;
+    background-position: center, center;
     border: 1px solid #050a0e;
-    background: rgba(0, 0, 0, 0.6);
 }
 
 .header-page-master-trades{
-    font-family: Arial, sans-serif;
+    font-family: 'DePixelKlein', sans-serif;
     background-size: cover;
     background-color: #000 !important;
     border-bottom: 1px solid white;
@@ -363,7 +366,7 @@ main.container.master-trades-bg {
 
 .online_users {
     text-align: center;
-    font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    font-family: 'DePixelKlein', sans-serif;
     width: auto;
     max-width: 160px;
 }
@@ -383,7 +386,7 @@ main.container.master-trades-bg {
 .div_text_column_left {
     margin-top: 24px;
     text-align: center;
-    font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    font-family: 'DePixelKlein', sans-serif;
     width: 250px;
 }
 
@@ -395,7 +398,7 @@ main.container.master-trades-bg {
     border-radius: 15px;
     box-shadow: 0 2px 3px rgba(6, 19, 25, .7);
     padding: 12px;
-    font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    font-family: 'DePixelKlein', sans-serif;
     position: relative;
 }
 
@@ -410,49 +413,49 @@ main.container.master-trades-bg {
 }
 
 .habbo_text_blue{
-    font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    font-family: 'DePixelKlein', sans-serif;
     font-size: 15px;
     color: #FF94A4;
 }
 
 .habbo_text_blue_12{
-    font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    font-family: 'DePixelKlein', sans-serif;
     font-size: 12px;
     color: #FF94A4;
 }
 
 .habbo_text_gold{
-    font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    font-family: 'DePixelKlein', sans-serif;
     font-size: 15px;
-    color: #FF94A4;
+    color: white;
 }
 
 .online_habbo_text_white{
-    font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    font-family: 'DePixelKlein', sans-serif;
     font-size: 15px;
     color: white;
 }
 
 .online_habbo_text_white_origins_com{
-    font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    font-family: 'DePixelKlein', sans-serif;
     font-size: 14px;
     color: white;
 }
 
 .online_habbo_text_white_fz_12{
-    font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    font-family: 'DePixelKlein', sans-serif;
     font-size: 12px;
     color: white;
 }
 
 .online_habbo_text_white_fz_15{
-    font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    font-family: 'DePixelKlein', sans-serif;
     font-size: 15px;
     color: white;
 }
 
 .online_habbo_text_white_fz_20{
-    font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    font-family: 'DePixelKlein', sans-serif;
     font-size: 20px;
     color: white;
 }
@@ -470,7 +473,7 @@ main.container.master-trades-bg {
 .price_history {
     margin-top: 24px;
     text-align: center;
-    font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    font-family: 'DePixelKlein', sans-serif;
 }
 
 .price_history_content {
@@ -479,19 +482,19 @@ main.container.master-trades-bg {
     border-radius: 15px;
     box-shadow: 0 2px 3px rgba(6, 19, 25, .7);
     padding: 6px;
-    font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    font-family: 'DePixelKlein', sans-serif;
 }
 
 .boton_collapse_otros_catalogos {
     background-color: #3B1C2A;
     border: 1px solid #050a0e;
     box-shadow: 0 2px 3px rgba(6, 19, 25, .7);
-    font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    font-family: 'DePixelKlein', sans-serif;
     width: 90%;
 }
 
 .collapse_text_white{
-    font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    font-family: 'DePixelKlein', sans-serif;
     font-size: 15px;
     color: white;
     margin-top: 10px;
@@ -539,11 +542,28 @@ main.container.master-trades-bg {
 }
 
 footer {
-    background: rgba(0, 0, 0, 0.6);
+    background: url(./fondo_footer_1.webp) no-repeat center center;
+    background-size: cover; /* Hace que la imagen de fondo cubra todo el ancho del footer */
     color: white;
     text-align: center;
     padding: 1rem;
     margin-top: 30px;
+    width: 100%; /* Asegura que el footer ocupe todo el ancho disponible */
+}
+
+footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Ajusta la opacidad con el último valor (0.5 = 50%) */
+}
+
+.footer-content {
+    position: relative;
+    z-index: 1; /* Coloca el texto por encima del fondo */
 }
 
 .price-history-img-funky{
@@ -580,14 +600,15 @@ footer {
 }
 
 .navbar_item {
-    background-color: #3B1C2A;
-    border: 1px solid #FF94A4;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid #000000;
     border-radius: 15px;
     box-shadow: 0 2px 3px rgba(6, 19, 25, .7);
     padding: 12px;
-    font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    font-family: 'DePixelKlein', sans-serif;
     margin-left: 5px;
     position: relative;
+    color: #FFE000
 }
 
 .navbar_item a:hover,
@@ -602,7 +623,7 @@ footer {
     border-radius: 15px;
     box-shadow: 0 2px 3px rgba(6, 19, 25, .7);
     padding: 12px;
-    font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    font-family: 'DePixelKlein', sans-serif;
     margin-left: 5px;
 }
 
@@ -618,7 +639,7 @@ footer {
     border-radius: 15px;
     box-shadow: 0 2px 3px rgba(6, 19, 25, .7);
     padding: 12px;
-    font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    font-family: 'DePixelKlein', sans-serif;
     text-align: center;
     color: white;
 }
@@ -661,7 +682,7 @@ footer {
     padding-top: 100px;
 }
 
-.noticia_div{
+.noticia_div_style{
     /*habboween
     background-color: #3B1C2A;*/
     background: rgba(0, 0, 0, 0.6);
@@ -669,7 +690,7 @@ footer {
     border-radius: 15px;
     box-shadow: 0 2px 3px rgba(6, 19, 25, .7);
     padding: 12px;
-    font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    font-family: 'DePixelKlein', sans-serif;
     margin-top: 20px;
     margin-bottom: 20px;
 }
@@ -680,28 +701,44 @@ footer {
 
 }
 
-.noticia_div_last_three{
-    margin-bottom: 0px;
+.noticia_div_last_three {
+    position: relative;
+    font-family: 'DePixelKlein', sans-serif;
+    margin-bottom: 10px;
 }
+
+.noticia_div_last_three::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%; /* Cambiá esto al ancho que quieras */
+    border-bottom: 2px solid #999900;
+}
+
 
 .noticia_title{
     color: white;
 }
 
 .noticia_title_last_three{
-    /* habboween
-    color: #FF94A4;*/
-    color: #FF94A4;
-    font-size: 12px;
+    color: #CC0000;
     text-align: center;
 }
 
+.noticia_time_last_three{
+    color: #CC0000;
+    text-align: center;
+    margin-bottom: 0px;
+}
+
 .noticia_descripcion{
-    color: white;
+    color: black;
 }
 
 .noticia_descripcion_last_three{
-    color: white;
+    color: black;
     font-size: 12px;
     text-align: center;
 }
@@ -716,7 +753,7 @@ footer {
 }
 
 .noticia_fecha{
-    font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    font-family: 'DePixelKlein', sans-serif;
     color: white;
     font-size: 12px;
 }
@@ -730,7 +767,7 @@ footer {
     border: 1px solid #050a0e;
     box-shadow: 0 2px 3px rgba(6, 19, 25, .7);
     padding: 12px;
-    font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    font-family: 'DePixelKlein', sans-serif;
     margin-top: 20px;
     margin-bottom: 20px;
     color: white;
@@ -904,7 +941,7 @@ footer {
     border: 1px solid #050a0e;
     box-shadow: 0 2px 3px rgba(6, 19, 25, .7);
     padding: 12px;
-    font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    font-family: 'DePixelKlein', sans-serif;
     margin-top: 20px;
     margin-bottom: 20px;
     color: white;
@@ -918,14 +955,14 @@ footer {
 .track-list {
     margin-bottom: 10px;
     background-color: #3B1C2A;
-    font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    font-family: 'DePixelKlein', sans-serif;
     color: white;
 }
 
 .track-list-master-trades {
     margin-bottom: 10px;
     background-color: #000;
-    font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    font-family: 'DePixelKlein', sans-serif;
     color: white;
 }
 
@@ -989,9 +1026,9 @@ audio::-webkit-media-controls-panel {
     color: #fff;
     padding: 10px;
     border-radius: 5px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
     z-index: 1000;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.3);
     border: 1px solid #050a0e;
     width: 250px !important;
     height: 50px;
@@ -1009,6 +1046,11 @@ audio::-webkit-media-controls-panel {
     border: 1px solid #050a0e;
     width: 250px !important;
     height: 50px;
+}
+
+.select_lenguage option {
+    background-color: rgba(0, 0, 0, 0.9) !important; /* Color de fondo de las opciones */
+    color: #fff; /* Color del texto de las opciones */
 }
 
 .select_lenguage_master_trades{
@@ -1141,7 +1183,7 @@ audio::-webkit-media-controls-panel {
 .text-price-es{
     margin-bottom: 0px;
     font-size: 20px;
-    font-family: fantasy;
+    font-family: 'DePixelKlein', sans-serif;
     color: #229728;
 }
 
@@ -1180,7 +1222,7 @@ audio::-webkit-media-controls-panel {
     animation: shine 2s infinite;
     border-radius: 15px;
     padding: 12px;
-    font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    font-family: 'DePixelKlein', sans-serif;
 }
 
 @keyframes shine {
@@ -1268,15 +1310,14 @@ audio::-webkit-media-controls-panel {
 
 .contador_div {
     position: relative;
-    background: #3B1C2A;
+    background: rgba(0, 0, 0, 0.5);
     padding: 5px;
     text-align: center;
     font-weight: bold;
-    color: #FF94A4;
-    border: 2px solid #FF94A4;
-    width: 100%; /* Ajustado a 100% para que sea responsivo */
-    max-width: 200px; /* Mantiene el tamaño máximo */
+    border: 1px solid #000;
+    width: 100%;
     border-radius: 15px;
+    margin-top: 25px;
 }
 
 /*contador 1*/
@@ -1843,7 +1884,7 @@ audio::-webkit-media-controls-panel {
 }
 
 .contador_title{
-    background-color: #3B1C2A;
+    color: #FFE000;
 }
 
 .contador_title_master_trades{
@@ -1851,7 +1892,6 @@ audio::-webkit-media-controls-panel {
 }
 
 .contador_text{
-    background-color: #3B1C2A;
     color: white;
     margin-bottom: 0px;
 }
@@ -1954,11 +1994,12 @@ audio::-webkit-media-controls-panel {
 
 .dropdown-item{
     margin-bottom: 5px;
+    background: rgba(0, 0, 0, 0.9);
 }
 
 .dropdown-item:focus,
 .dropdown-item:hover {
-    background-color: #3B1C2A !important;
+    background-color: rgba(0, 0, 0, 0.9) !important;
     color: white !important;
     text-decoration: none !important;
     outline: none !important;
@@ -2243,15 +2284,15 @@ h5 {
 
 @media (max-width: 1600px) {
     .habbo_text_blue{
-        font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+        font-family: 'DePixelKlein', sans-serif;
         font-size: 13px;
         color: #FF94A4;
     }
 
     .habbo_text_gold{
-        font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+        font-family: 'DePixelKlein', sans-serif;
         font-size: 13px;
-        color: #FF94A4;
+        color: white;
     }
 }
 
@@ -2265,15 +2306,8 @@ h5 {
 }
 
 .div_placas{
-    background-color: #3B1C2A;
-    border: 1px solid #FF94A4;
-    border-radius: 15px;
-    box-shadow: 0 2px 3px rgba(6, 19, 25, .7);
-    padding: 12px;
-    font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
-    height: 110px; /* Establece la altura específica que desees */
-    overflow-y: auto; 
-    overflow-x: hidden;
+    width: 100%;
+    height: 140px;
 }
 
 /* Estilo para navegadores basados en WebKit (Chrome, Safari, Edge) */
@@ -2431,7 +2465,7 @@ h5 {
 }
 
 .swal-popup-custom {
-    font-family: 'Arial', sans-serif; /* Cambia la fuente del popup */
+    font-family: 'DePixelKlein', sans-serif; /* Cambia la fuente del popup */
     padding: 1em; /* Ajusta el espacio alrededor del contenido */
 }
 
@@ -2460,7 +2494,6 @@ h5 {
 }
 
 .last_items_update{
-    background: #3B1C2A;
     background-position: 50%;
     margin: 0 5px 5px 0;
     border-radius: 3px;
@@ -2470,6 +2503,21 @@ h5 {
     justify-content: center;
     align-items: center;
     position: relative;
+    background: url("furnis/iconos/furni_background.png");
+    background-size: 40px 25px;
+}
+
+.premios_disponibles{
+    background-position: 50%;
+    margin: 0 5px 5px 0;
+    border-radius: 3px;
+    width: 60px;
+    height: 70px;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background: url("furnis/iconos/furni_background.png");
+    background-size: 40px 25px;
 }
 
 .ultimos_precios_actualizados{
@@ -2478,9 +2526,9 @@ h5 {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.3);
     border-radius: 10px;
-    /* border: 1px solid rgba(255, 255, 255, 0.3); */
+    border: 1px solid black;
     padding: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     margin-bottom: 18px;
@@ -2491,6 +2539,9 @@ h5 {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-left: 0px;
+    padding-right: 0px;
+    place-self: anchor-center;
 }
 
 .icon_country_min{
@@ -2816,7 +2867,7 @@ h5 {
     border-radius: 15px;
     box-shadow: 0 2px 3px rgba(6, 19, 25, .7);
     padding: 12px;
-    font-family: Ubuntu, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    font-family: 'DePixelKlein', sans-serif;
     position: relative;
 }
 
@@ -2862,7 +2913,7 @@ h5 {
 }
 
 .dropdown-toggle{
-    color: #FF94A4;
+    color: white;
 }
 
 .dropdown-menu{
@@ -2875,4 +2926,165 @@ h5 {
 
 .btn:hover{
     color: white !important;
+}
+
+.footer-text{
+    font-family: 'DePixelKlein', sans-serif;
+}
+
+.habbo-hotel {
+    padding-right: 0px;
+    display: flex !important;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.habbo-lido {
+    padding-left: 0px;
+    text-align-last: left;
+}
+
+.title_web {
+    place-self: anchor-center;
+}
+
+.col-12 {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+
+.row_login{
+    padding-right: 0px;
+    padding-left: 0px;
+    place-content: center;
+}
+
+.div_novedades_catalogo{
+    position: relative;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 5px;
+    text-align: center;
+    font-weight: bold;
+    border: 1px solid #000;
+    width: 100%;
+    border-radius: 15px;
+    margin-top: 25px;
+}
+
+.div_novedades_placas{
+    position: relative;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 5px;
+    text-align: center;
+    font-weight: bold;
+    border: 1px solid #000;
+    width: 100%;
+    border-radius: 15px;
+    margin-top: 25px;
+}
+
+.div_premios_origins{
+    position: relative;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 5px;
+    text-align: center;
+    font-weight: bold;
+    border: 1px solid #000;
+    width: 100%;
+    border-radius: 15px;
+    margin-top: 25px;
+}
+
+.title_novedades_catalogo{
+    padding-left: 5px;
+    color: white;
+    margin-top: 0px;
+}
+
+.image_novedades_catalogo{
+    width: 90%;
+}
+
+.rare_novedades_catalogo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.div_title_novedades_catalogo{
+    place-items: anchor-center;
+}
+
+.row{
+    margin-right: 0px !important;
+    margin-left: 0px !important;
+}
+
+.imagen_icon_news_home{
+    text-align-last: center;
+    align-content: center;
+}
+
+.padding_top_5{
+    padding-top: 5px;
+}
+
+.ancho_imagen_100{
+    width: 100%;
+}
+
+.noticias_last_three_div{
+    background-color: #ffc;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+}
+
+.row_noticias_home{
+    margin-top: 25px;
+}
+
+.col_noticias_home_descripcion{
+    padding-right: 10px !important;
+}
+
+.discord_redes_sociales{
+    margin-top: 10px;
+    background: #4E62EE;
+    border-radius: 15px;
+}
+
+.twitter_redes_sociales{
+    margin-top: 10px;
+    background: #1C96E8;
+    border-radius: 15px;
+    margin-bottom: 10px;
+}
+
+.div_eventos_home_body{
+    position: relative;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    border: 1px solid #000;
+    border-radius: 15px;
+    margin-top: 25px;
+}
+
+.row_premios_render{
+    padding-top: 5px;
+}
+
+.cantidad_premio{
+    margin-bottom: 0px !important;
+}
+
+.evento_titulo{
+    padding-top: 5px;
+    color: #FFE000;
+}
+
+.evento_descripcion{
+    color: white;
 }

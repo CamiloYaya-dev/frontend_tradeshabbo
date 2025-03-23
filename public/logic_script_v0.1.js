@@ -357,7 +357,9 @@ function initialize() {
                 success: function(data) {
                     loadContador();
                     loadLastThreeNoticias();
-                    obtenerPlacas();
+                    obtenerPlacasLimit();
+                    obtenerPremios();
+                    obtenerEventos();
                     const decryptedData = decryptData(data.token);
                     const lastUpdateFurnis = decryptData(data.lastUpdateFurnis);
                     var productContainer = $('#product-container');

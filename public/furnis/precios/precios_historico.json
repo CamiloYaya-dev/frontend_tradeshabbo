@@ -23278,5 +23278,37 @@
     "precio": "50.00",
     "hotel": "US",
     "user_modify": "emo"
+  },
+  {
+    "id": 3784,
+    "product_id": 348,
+    "fecha_precio": "2025-03-17T12:23:27.000Z",
+    "precio": "80.00",
+    "hotel": "ES",
+    "user_modify": "emo"
+  },
+  {
+    "id": 3785,
+    "product_id": 460,
+    "fecha_precio": "2025-03-17T12:23:36.000Z",
+    "precio": "80.00",
+    "hotel": "ES",
+    "user_modify": "emo"
+  },
+  {
+    "id": 3786,
+    "product_id": 385,
+    "fecha_precio": "2025-03-17T12:23:53.000Z",
+    "precio": "50.00",
+    "hotel": "ES",
+    "user_modify": "emo"
+  },
+  {
+    "id": 3787,
+    "product_id": 385,
+    "fecha_precio": "2025-03-17T12:23:58.000Z",
+    "precio": "50.00",
+    "hotel": "US",
+    "user_modify": "emo"
   }
 ]

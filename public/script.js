@@ -34,6 +34,8 @@ $(document).ready(function() {
     $.getScript(`marketplace_v${version}.js?v=${version}`, function() {});
     $.getScript(`placas_v${version}.js?v=${version}`, function() {});
     $.getScript(`register_v${version}.js?v=${version}`, function() {});
+    $.getScript(`origins_premios_v${version}.js?v=${version}`, function() {});
+    $.getScript(`origins_eventos_v${version}.js?v=${version}`, function() {});
 
     $('#button_options').on('click', function(e) {
         var content = document.getElementById("toggle-content");
@@ -44,14 +46,17 @@ $(document).ready(function() {
         }
     });
 
+    $('#catalogo-section, #column-explications-catalogo, .container_last_three').hide();
+
     $('.menu-link').on('click', function(e) {
         e.preventDefault();
         var section = $(this).data('section');
         if (section === 'catalogo') {
             loadOtherClass();
-            loadLastThreeNoticias();
+            $('#ultimos_precios_actualizados').show();
+            $('#home-section').hide();
             $('#catalogo-section').show();
-            $('#column-explications-catalogo').show();
+            $('#column-explications-catalogo').hide();
             $('#noticias-section').hide();
             $('#calculador-section').hide();
             $('#sorteos-section').hide();
@@ -74,6 +79,8 @@ $(document).ready(function() {
         } else if (section === 'noticias') {
             loadOtherClass();
             loadNoticias();
+            $('#ultimos_precios_actualizados').hide();
+            $('#home-section').hide();
             $('#catalogo-section').hide();
             $('#column-explications-catalogo').hide();
             $('#noticias-section').show();
@@ -97,6 +104,8 @@ $(document).ready(function() {
             $('#contactanos-section').hide();
         } else if (section === 'calculador') {
             loadOtherClass();
+            $('#ultimos_precios_actualizados').hide();
+            $('#home-section').hide();
             $('#catalogo-section').hide();
             $('#column-explications-catalogo').hide();
             $('#noticias-section').hide();
@@ -121,6 +130,8 @@ $(document).ready(function() {
         } else if (section === 'sorteos') {
             loadOtherClass();
             loadSorteos();
+            $('#ultimos_precios_actualizados').hide();
+            $('#home-section').hide();
             $('#catalogo-section').hide();
             $('#column-explications-catalogo').hide();
             $('#noticias-section').hide();
@@ -144,6 +155,8 @@ $(document).ready(function() {
             $('#contactanos-section').hide();
         } else if (section === 'master_trades') {
             loadMasterTrades();
+            $('#ultimos_precios_actualizados').hide();
+            $('#home-section').hide();
             $('#catalogo-section').hide();
             $('#column-explications-catalogo').hide();
             $('#noticias-section').hide();
@@ -167,6 +180,8 @@ $(document).ready(function() {
             $('#contactanos-section').hide();
         } else if (section === 'habbo_generator_section'){
             loadOtherClass();
+            $('#ultimos_precios_actualizados').hide();
+            $('#home-section').hide();
             $('#catalogo-section').hide();
             $('#column-explications-catalogo').hide();
             $('#noticias-section').hide();
@@ -190,6 +205,8 @@ $(document).ready(function() {
             $('#contactanos-section').hide();
         } else if (section === 'text_generator_section'){
             loadOtherClass();
+            $('#ultimos_precios_actualizados').hide();
+            $('#home-section').hide();
             $('#catalogo-section').hide();
             $('#column-explications-catalogo').hide();
             $('#noticias-section').hide();
@@ -214,6 +231,8 @@ $(document).ready(function() {
         } else if (section === 'comunidad_salas'){
             loadOtherClass();
             loadSalaImages();
+            $('#ultimos_precios_actualizados').hide();
+            $('#home-section').hide();
             $('#catalogo-section').hide();
             $('#column-explications-catalogo').hide();
             $('#noticias-section').hide();
@@ -236,6 +255,8 @@ $(document).ready(function() {
             $('#contactanos-section').hide();
         } else if (section === 'equipo'){
             loadOtherClass();
+            $('#ultimos_precios_actualizados').hide();
+            $('#home-section').hide();
             $('#catalogo-section').hide();
             $('#column-explications-catalogo').hide();
             $('#noticias-section').hide();
@@ -259,6 +280,8 @@ $(document).ready(function() {
         } else if (section === 'compro_vendo'){
             loadOtherClass();
             renderThreads();
+            $('#ultimos_precios_actualizados').hide();
+            $('#home-section').hide();
             $('#catalogo-section').hide();
             $('#column-explications-catalogo').hide();
             $('#noticias-section').hide();
@@ -282,6 +305,8 @@ $(document).ready(function() {
         } else if (section === 'login'){
             loadOtherClass();
             renderThreads();
+            $('#ultimos_precios_actualizados').hide();
+            $('#home-section').hide();
             $('#catalogo-section').hide();
             $('#column-explications-catalogo').hide();
             $('#noticias-section').hide();
@@ -305,6 +330,8 @@ $(document).ready(function() {
         } else if (section === 'register'){
             loadOtherClass();
             renderThreads();
+            $('#ultimos_precios_actualizados').hide();
+            $('#home-section').hide();
             $('#catalogo-section').hide();
             $('#column-explications-catalogo').hide();
             $('#noticias-section').hide();
@@ -328,6 +355,8 @@ $(document).ready(function() {
         } else if (section === 'acerca_nosotros'){
             loadOtherClass();
             renderThreads();
+            $('#ultimos_precios_actualizados').hide();
+            $('#home-section').hide();
             $('#catalogo-section').hide();
             $('#column-explications-catalogo').hide();
             $('#noticias-section').hide();
@@ -351,6 +380,8 @@ $(document).ready(function() {
         } else if (section === 'terminos_condiciones'){
             loadOtherClass();
             renderThreads();
+            $('#ultimos_precios_actualizados').hide();
+            $('#home-section').hide();
             $('#catalogo-section').hide();
             $('#column-explications-catalogo').hide();
             $('#noticias-section').hide();
@@ -374,6 +405,8 @@ $(document).ready(function() {
         } else if (section === 'preguntas_respuestas'){
             loadOtherClass();
             renderThreads();
+            $('#ultimos_precios_actualizados').hide();
+            $('#home-section').hide();
             $('#catalogo-section').hide();
             $('#column-explications-catalogo').hide();
             $('#noticias-section').hide();
@@ -397,6 +430,8 @@ $(document).ready(function() {
         } else if (section === 'politica_privacidad'){
             loadOtherClass();
             renderThreads();
+            $('#ultimos_precios_actualizados').hide();
+            $('#home-section').hide();
             $('#catalogo-section').hide();
             $('#column-explications-catalogo').hide();
             $('#noticias-section').hide();
@@ -420,6 +455,8 @@ $(document).ready(function() {
         } else if (section === 'contactanos'){
             loadOtherClass();
             renderThreads();
+            $('#ultimos_precios_actualizados').hide();
+            $('#home-section').hide();
             $('#catalogo-section').hide();
             $('#column-explications-catalogo').hide();
             $('#noticias-section').hide();
@@ -440,6 +477,31 @@ $(document).ready(function() {
             $('#preguntas-respuestas-section').hide();
             $('#politicas-privacidad-section').hide();
             $('#contactanos-section').show();
+        } else if (section === 'home'){
+            loadOtherClass();
+            renderThreads();
+            $('#ultimos_precios_actualizados').show();
+            $('#home-section').show();
+            $('#catalogo-section').hide();
+            $('#column-explications-catalogo').hide();
+            $('#noticias-section').hide();
+            $('#calculador-section').hide();
+            $('#sorteos-section').hide();
+            $('#master-trades-section').hide();
+            $('#sort-options').hide();
+            $('#footer').show();
+            $('#column-explications-master-trades').hide();
+            $('#habbo-generator-section').hide();
+            $('#comunidad_salas').hide();
+            $('#equipo-section').hide();
+            $('#marketplace-section').hide();
+            $('#login-section').hide();
+            $('#register-section').hide();
+            $('#acerca-nosotros-section').hide();
+            $('#terminos-condiciones-section').hide();
+            $('#preguntas-respuestas-section').hide();
+            $('#politicas-privacidad-section').hide();
+            $('#contactanos-section').hide();
         }
         updateContent();
     });
