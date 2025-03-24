@@ -1,36 +1,45 @@
 $(document).ready(function () {
-    if (!localStorage.getItem('priceGuidelineModalSeen')) {
+    const today = new Date().toISOString().split('T')[0]; // formato YYYY-MM-DD
+    const lastSeen = localStorage.getItem('infoModalLastSeen');
+
+    if (lastSeen !== today) {
         $('body').append(`
             <div class="modal" id="priceGuidelineModal" tabindex="-1" role="dialog" aria-labelledby="priceGuidelineModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal_olimpiadas" role="document">
                     <div class="modal-content online_users_content">
                         <div class="modal-header">
-                            <h5 class="modal-title habbo_text_blue" id="priceGuidelineModalLabel">Un Nuevo evento se aproxima</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <h5 class="modal-title habbo_text_blue" id="priceGuidelineModalLabel">Actualización en TradesHabbo</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div class="modal-body text-center">
-                            <blockquote class="twitter-tweet">
-                                <p lang="es" dir="ltr">
-                                    Atención Comunidad de .ES<br><br>🚀 ¡Se viene Kingdom’s Lab! 🏆✨<br>El evento con la mayor premiación en juego 🎉<br><br>📅 22 de marzo<br>⏰ 17H<br><br>🔎 ¿Estás preparado? Pronto más información… 🔥<br><br>Nuestra web: <a href="https://t.co/7VAzVTKrGY">https://t.co/7VAzVTKrGY</a><br>Nuestro servidor de Discord: <a href="https://t.co/CL2D9aZrZF">https://t.co/CL2D9aZrZF</a>… <a href="https://t.co/4uht81WXPe">pic.twitter.com/4uht81WXPe</a>
-                                </p>&mdash; Origins Kingdom (@OriginsKingdom) <a href="https://twitter.com/OriginsKingdom/status/1901048068658905359?ref_src=twsrc%5Etfw">March 15, 2025</a>
-                            </blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                        <div class="modal-body text-left">
+                            <p>Buenos días, quería contarles que estaré 100% activo con la fansite y acabo de subir el primer refactor importante. Ahora TradesHabbo se sentirá más como una fansite y menos como un simple catálogo de precios.</p>
+                            <p>Es posible que algunos estilos se hayan roto, tanto en web como en mobile. Les pido disculpas por ello y les aseguro que serán corregidos con la mayor brevedad posible.</p>
+                            <p>Próximamente se añadirán nuevas funcionalidades como:</p>
+                            <ul>
+                                <li>Premios disponibles en Origins</li>
+                                <li>Alertas cuando un precio de tu interés cambie</li>
+                                <li>Calcular tu inventario automáticamente con base en nuestro catálogo</li>
+                                <li>Explorar la viabilidad de subastas tipo eBay automáticas</li>
+                                <li>Refactor visual por vista para adaptar todo a Habbo Origins</li>
+                            </ul>
+                            <p>Este mensaje es un pequeño spoiler de lo que viene. Les pido un poco de paciencia si encuentran estilos rotos o datos incorrectos. Si notan algo raro, por favor repórtenmelo. ¡Gracias por el apoyo! ❤️</p>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Entendido</button>
                         </div>
                     </div>
                 </div>
             </div>
-        `);
+        `);        
 
         // Mostrar el modal
         $('#priceGuidelineModal').modal('show');
 
-        // Guardar en localStorage cuando el modal se cierre
+        // Guardar la fecha actual al cerrar
         $('#priceGuidelineModal').on('hidden.bs.modal', function () {
-            localStorage.setItem('priceGuidelineModalSeen', 'true');
+            localStorage.setItem('infoModalLastSeen', today);
         });
     }
 });
