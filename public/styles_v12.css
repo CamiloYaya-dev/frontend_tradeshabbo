@@ -457,7 +457,9 @@ main.container.master-trades-bg {
 .online_habbo_text_white_fz_20{
     font-family: 'DePixelKlein', sans-serif;
     font-size: 20px;
-    color: white;
+    color: black;
+    margin-bottom: 0px;
+    margin-top: 20px;
 }
 
 .colum-catalog{
@@ -635,7 +637,7 @@ footer::before {
 }
 
 .item_calculador_tradeos {
-    background: rgba(0, 0, 0, 0.6);
+    background: #6794A7;
     border: 1px solid #050a0e;
     border-radius: 15px;
     box-shadow: 0 2px 3px rgba(6, 19, 25, .7);
@@ -646,10 +648,10 @@ footer::before {
 }
 
 .div_calculador_tradeos{
-    margin-left: 0px;
-    margin-right: 0px;
-    margin-top: 0px;
-    margin-bottom: 0px;
+    margin-left: 0px; 
+    border: 20px solid #6794A7;
+    padding: 0px 0px 0px 0px;
+    background: #6794A7;
 }
 
 .img_calculador_tradeos { 
@@ -667,8 +669,7 @@ footer::before {
     max-width: 100%;
     height: auto;
     display: block;
-    margin: 0 auto;
-    height: 250px;
+    padding-top: 5px;
 }
 
 .body_calculadora{
@@ -680,7 +681,11 @@ footer::before {
 }
 
 .equivalent_result{
-    padding-top: 100px;
+    border: 1px solid black;
+    height: auto;
+    margin-bottom: 0px;
+    border-radius: 8px;
+    background: white;
 }
 
 .noticia_div_style{
@@ -3075,4 +3080,15 @@ h5 {
 
 .evento_descripcion{
     color: white;
+}
+
+.imagen_calculador_tradeos{
+    border: 1px solid black;
+    margin-top: 10px;
+}
+
+.precio_items{
+    background: white;
+    border: 1px solid black;
+    border-radius: 5px;
 }

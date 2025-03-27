@@ -1136,24 +1136,162 @@ function calculateEquivalent() {
     const itemBInput = $('#item-b-search');
     const itemAOptions = $('#item-a-options');
     const itemBOptions = $('#item-b-options');
-
+    const imgAElement = document.querySelector('#item-a-image img');
+    const itemAImage = imgAElement ? imgAElement.src : "/secure-image/furni_buffer_min.gif";
+    console.log(itemAImage);
+    const imgBElement = document.querySelector('#item-b-image img');
+    const itemBImage = imgBElement ? imgBElement.src : "/secure-image/furni_buffer.gif";
+    const itemAImageMin = itemAImage ? itemAImage.replace(/\.(gif|png|jpg|jpeg|webp)$/i, '_min.gif') : null;
+    const itemBImageMin = itemBImage ? itemBImage.replace(/\.(gif|png|jpg|jpeg|webp)$/i, '_min.gif') : null;
+    
     const itemAPrice = parseFloat(itemAOptions.find('li:contains("' + itemAInput.val() + '")').data('value'));
     const itemBPrice = parseFloat(itemBOptions.find('li:contains("' + itemBInput.val() + '")').data('value'));
 
     if (itemAPrice && itemBPrice) {
-        const equivalentAtoB = (itemAPrice / itemBPrice).toFixed(2);
-        const equivalentBtoA = (itemBPrice / itemAPrice).toFixed(2);
+        const rawAtoB = itemAPrice / itemBPrice;
+        const rawBtoA = itemBPrice / itemAPrice;
+        const equivalentAtoB = Number.isInteger(rawAtoB) ? rawAtoB : rawAtoB.toFixed(2);
+        const equivalentBtoA = Number.isInteger(rawBtoA) ? rawBtoA : rawBtoA.toFixed(2);
         const itemNameA = itemAInput.val();
         const itemNameB = itemBInput.val();
 
-        $('#equivalente').html(`<p class="online_habbo_text_white_fz_20">1 ${itemNameA} equivale a ${equivalentAtoB} ${itemNameB}, esto es lo mismo que decir, 1 ${itemNameB} equivale a ${equivalentBtoA} ${itemNameA}.</p>`);
-        $('#item-a-price').html(`<p class="text-price"><img src="furnis/dinero/credito.png" alt="credito" class="price-icon">${itemAPrice}</p>`);
-        $('#item-b-price').html(`<p class="text-price"><img src="furnis/dinero/credito.png" alt="credito" class="price-icon">${itemBPrice}</p>`);
+        $('#equivalente').html(`
+            <div class="row">
+                <div class="col-4">
+                    <img src="${itemAImageMin}" class="imagen_calculador_tradeos">
+                </div>
+                <div class="col-4">
+                    <div class="row">
+                        <div class="col-12">
+                            <img src="furnis/iconos/flecha_izquierda.png" />
+                        </div>
+                        <div class="col-12">
+                            <img src="furnis/iconos/flecha_derecha.png" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <img src="${itemBImageMin}" class="imagen_calculador_tradeos">
+                </div>
+                <div class="col-12">
+                    <p class="online_habbo_text_white_fz_20">
+                        1 <strong>${itemNameA}</strong> equivale a ${equivalentAtoB} <strong>${itemNameB}</strong>, esto es lo mismo que decir, 1 <strong>${itemNameB}</strong> equivale a ${equivalentBtoA} <strong>${itemNameA}</strong>.
+                    </p>
+                </div>
+            </div>
+        `);
+        $('#item-a-price').html(`<p class="text-price precio_items"><img src="furnis/dinero/credito.png" alt="credito" class="price-icon">${itemAPrice}</p>`);
+        $('#item-b-price').html(`<p class="text-price precio_items"><img src="furnis/dinero/credito.png" alt="credito" class="price-icon">${itemBPrice}</p>`);
     } else {
         $('#equivalente').html('');
         $('#item-a-price').html('');
         $('#item-b-price').html('');
     }
+    let imgA = new Image();
+    let imgB = new Image();
+
+    imgA.src = itemAImageMin;
+    imgB.src = itemBImageMin;
+
+    imgA.onload = imgB.onload = function () {
+        let widthA = imgA.width;
+        let widthB = imgB.width;
+        let heightA = imgA.height;
+        let heightB = imgB.height;
+
+        let maxWidth = Math.max(widthA, widthB);
+        let maxHeight = Math.max(heightA, heightB);
+
+        let diffWidthA = maxWidth - widthA;
+        let diffWidthB = maxWidth - widthB;
+        let diffHeightA = maxHeight - heightA;
+        let diffHeightB = maxHeight - heightB;
+
+        let imgElements = document.querySelectorAll('#equivalente .col-4 > img');
+        let imgAElement = imgElements[0];
+        let imgBElement = imgElements[1];
+        console.log(widthA);
+        console.log(widthB);
+        console.log(heightA);
+        console.log(heightB);
+        console.log(imgAElement);
+        console.log(imgBElement);
+        console.log(diffWidthA);
+        console.log(diffWidthB);
+        console.log(diffHeightA);
+        console.log(diffHeightB);
+        if (
+            imgAElement &&
+            imgBElement &&
+            widthA > 0 &&
+            widthB > 0 &&
+            heightA > 0 &&
+            heightB > 0 &&
+            (widthA !== widthB || heightA !== heightB)
+        ) {
+            if (diffWidthA > 0) {
+                imgAElement.style.paddingLeft = (diffWidthA / 2) + 'px';
+                imgAElement.style.paddingRight = (diffWidthA / 2) + 'px';
+            }
+            if (diffWidthB > 0) {
+                imgBElement.style.paddingLeft = (diffWidthB / 2) + 'px';
+                imgBElement.style.paddingRight = (diffWidthB / 2) + 'px';
+            }
+
+            if (diffHeightA > 0) {
+                imgAElement.style.paddingTop = (diffHeightA / 2) + 'px';
+                imgAElement.style.paddingBottom = (diffHeightA / 2) + 'px';
+            }
+            if (diffHeightB > 0) {
+                imgBElement.style.paddingTop = (diffHeightB / 2) + 'px';
+                imgBElement.style.paddingBottom = (diffHeightB / 2) + 'px';
+            }
+        }
+    };
+
+    let fullImgA = new Image();
+    let fullImgB = new Image();
+
+    fullImgA.src = itemAImage;
+    fullImgB.src = itemBImage;
+
+    fullImgA.onload = fullImgB.onload = function () {
+        let widthA = fullImgA.width;
+        let widthB = fullImgB.width;
+        let heightA = fullImgA.height;
+        let heightB = fullImgB.height;
+
+        let maxWidth = Math.max(widthA, widthB);
+        let maxHeight = Math.max(heightA, heightB);
+
+        let diffWidthA = maxWidth - widthA;
+        let diffWidthB = maxWidth - widthB;
+        let diffHeightA = maxHeight - heightA;
+        let diffHeightB = maxHeight - heightB;
+
+        let fullImgAElement = document.querySelector('#item-a-image img');
+        let fullImgBElement = document.querySelector('#item-b-image img');
+
+        if (widthA !== widthB || heightA !== heightB) {
+            if (diffWidthA > 0) {
+                fullImgAElement.style.paddingLeft = (diffWidthA / 2) + 'px';
+                fullImgAElement.style.paddingRight = (diffWidthA / 2) + 'px';
+            }
+            if (diffWidthB > 0) {
+                fullImgBElement.style.paddingLeft = (diffWidthB / 2) + 'px';
+                fullImgBElement.style.paddingRight = (diffWidthB / 2) + 'px';
+            }
+
+            if (diffHeightA > 0) {
+                fullImgAElement.style.paddingTop = (diffHeightA / 2) + 'px';
+                fullImgAElement.style.paddingBottom = (diffHeightA / 2) + 'px';
+            }
+            if (diffHeightB > 0) {
+                fullImgBElement.style.paddingTop = (diffHeightB / 2) + 'px';
+                fullImgBElement.style.paddingBottom = (diffHeightB / 2) + 'px';
+            }
+        }
+    };
 }
 
 
