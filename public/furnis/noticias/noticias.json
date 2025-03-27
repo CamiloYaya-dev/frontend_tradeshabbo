@@ -3694,5 +3694,77 @@
     "descripcion_resumida": "<p><strong>Resultados de la competencia de pubs en Origins!</strong> Habbo ha anunciado a los ganadores del concurso, destacando la creatividad y mucho esfuerzo en las construcciones. El primer lugar fue para Padrino, seguido de mauror7 y karlos. ¡Felicidades a todos los participantes!</p>",
     "hotel": "es",
     "fecha_noticia": "2025-03-24T16:29:37.000Z"
+  },
+  {
+    "id": 377,
+    "titulo": "Actividades de la semana con Aleksander",
+    "imagen_completa": "2025-03-24-16-41-08",
+    "alt_imagen_completa": "Actividades con Aleksander en Lucky Shamrock",
+    "descripcion_completa": "<p><strong>¡Esta semana ven a divertirte con Aleksander en una actividad sorpresa!</strong></p><p>Se realizarán dos eventos: el primero el 26 de marzo a las 7hs MX / 14hs ES, y el segundo el 27 de marzo a las 3hs MX / 10hs ES. La actividad tendrá lugar en Lucky Shamrock, donde el usuario Flex de la comunidad BR ha ofrecido su juego para entretener a los participantes y entregar algunos premios. ¡No te lo pierdas y prepárate para llevarte alguna sorpresa!</p>",
+    "imagen_resumida": "staff",
+    "alt_imagen_resumida": "Actividades de la semana en Lucky Shamrock",
+    "descripcion_resumida": "<p><strong>Participa en las actividades de la semana con Aleksander.</strong> Disfruta de sorpresas y premios en Lucky Shamrock. ¡No faltes!</p>",
+    "hotel": "es",
+    "fecha_noticia": "2025-03-27T00:53:28.000Z"
+  },
+  {
+    "id": 378,
+    "titulo": "Atividades da semana com Naoki!",
+    "imagen_completa": "2025-03-24-16-46-25",
+    "alt_imagen_completa": "Atividades da semana com Naoki",
+    "descripcion_completa": "<p><strong>Aproveite a semana e divirta-se com Naoki em um jogo cheio de prêmios!</strong></p><p>No dia 25 de março, às 12h BR / 15h PT, todos estão convidados a participar no Lucky Shamrock, onde o usuário Flex da nossa comunidade proporcionará uma experiência divertida. As regras e formas de jogar o jogo serão explicadas durante o evento. Não perca a oportunidade de ganhar prêmios e se divertir com amigos!</p>",
+    "imagen_resumida": "staff",
+    "alt_imagen_resumida": "Atividades da semana com Naoki no Lucky Shamrock",
+    "descripcion_resumida": "<p><strong>Participe do evento com Naoki!</strong> No dia 25 de março, às 12h BR / 15h PT, o Lucky Shamrock vai receber um jogo divertido com prêmios. Junte-se a comunidade e não fique de fora!</p>",
+    "hotel": "com.br",
+    "fecha_noticia": "2025-03-27T00:53:28.000Z"
+  },
+  {
+    "id": 379,
+    "titulo": "Join Us for a New Game of Lucky Shamrock with Staff!",
+    "imagen_completa": "2025-03-24-16-57-50",
+    "alt_imagen_completa": "Lucky Shamrock Game Event",
+    "descripcion_completa": "<p><strong>Join the excitement of the new game Lucky Shamrock!</strong></p><p>Players are invited to participate in the Lucky Shamrock game hosted by staff. The event will take place on March 25th at 5 PM GMT, March 26th at 3 PM GMT, and March 28th at 1 PM GMT. Players should search for the room hosted by Caledon for the first two dates, and Aleksander’s room for the last date. Don't miss this chance to enjoy a fun and engaging game with fellow players!</p>",
+    "imagen_resumida": "staff",
+    "alt_imagen_resumida": "Lucky Shamrock Game Announcement",
+    "descripcion_resumida": "<p><strong>Exciting news for players!</strong> The Lucky Shamrock game is coming soon, with events scheduled on March 25th, 26th, and 28th. Join staff for an entertaining experience!</p>",
+    "hotel": "com",
+    "fecha_noticia": "2025-03-27T00:53:28.000Z"
+  },
+  {
+    "id": 380,
+    "titulo": "New Rare Available! The Blue Amber Lamp",
+    "imagen_completa": "2025-03-25-12-09-48",
+    "alt_imagen_completa": "Blue Amber Lamp in Catalogue",
+    "descripcion_completa": "<p><strong>The new rare item in Habbo Hotel: Origins: Blue Amber Lamp!</strong></p><p>Starting 27th March 2025 at 12pm GMT, the <strong>Blue Amber Lamp</strong> will be available in the rare section of the Catalogue for only 75 credits. This unique item will not be released again in Habbo Hotel: Origins, so players are encouraged to grab it while they can!</p>",
+    "imagen_resumida": "rares_martes",
+    "alt_imagen_resumida": "New rare Blue Amber Lamp on March 27, 2025",
+    "descripcion_resumida": "<p><strong>A new rare has arrived at Habbo Hotel: Origins!</strong> Discover and acquire the <strong>Blue Amber Lamp</strong>, available for a limited time. Don't miss out!</p>",
+    "hotel": "com",
+    "fecha_noticia": "2025-03-27T00:53:28.000Z"
+  },
+  {
+    "id": 381,
+    "titulo": "Raro añadido al Catálogo: Blue Amber Lamp",
+    "imagen_completa": "2025-03-25-12-10-56",
+    "alt_imagen_completa": "Catalogo Blue Amber Lamp",
+    "descripcion_completa": "<p><strong>Habbo Hotel: Orígenes ha añadido un nuevo raro al catálogo: la Blue Amber Lamp!</strong></p><p>A partir de hoy, esta lámpara azul ámbar está disponible a un precio de 75 créditos en la sección de raros del Catálogo. Los jugadores podrán adquirirla hasta el 27 de marzo a las 6 am CST / 1 pm CET. Se recuerda que estas piezas no volverán a estar disponibles en Habbo Hotel: Orígenes, por lo que es una oportunidad única para conseguirla.</p>",
+    "imagen_resumida": "rares_martes",
+    "alt_imagen_resumida": "nuevo raro Blue Amber Lamp",
+    "descripcion_resumida": "<p><strong>Nuevo raro en Habbo Hotel: Orígenes!</strong> Desde hoy, se puede conseguir la <strong>Blue Amber Lamp</strong> por 75 créditos hasta el 27 de marzo. No te pierdas la oportunidad de adquirir esta exclusiva pieza rara.</p>",
+    "hotel": "es",
+    "fecha_noticia": "2025-03-27T00:53:28.000Z"
+  },
+  {
+    "id": 382,
+    "titulo": "Winners Shamrock Did It Again!",
+    "imagen_completa": "2025-03-25-14-33-59",
+    "alt_imagen_completa": "Shamrock winners celebration",
+    "descripcion_completa": "<p><strong>Winners Shamrock Did It Again!</strong></p><p>On Saturday, the first players to find the 3 Four Leaf Clovers were announced. The lucky habbos are: Widowmaker, Wombat, Aelita, caya, xRoni, Dinosaurio, Priestly, Frenkie, D.va, and Shrimp. Each will receive one Green Ice Cream Machine and a trophy as a reward for their achievements. A special thank you goes to Spidercides for organizing this engaging event over the weekend!</p>",
+    "imagen_resumida": "staff",
+    "alt_imagen_resumida": "Shamrock event winners",
+    "descripcion_resumida": "<p><strong>Shamrock event winners announced!</strong> The first players to discover the 3 Four Leaf Clovers will receive prizes, including a Green Ice Cream Machine and a trophy. Congratulations!</p>",
+    "hotel": "com",
+    "fecha_noticia": "2025-03-27T00:53:28.000Z"
   }
 ]

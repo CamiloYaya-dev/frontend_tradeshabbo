@@ -322,7 +322,7 @@ main.container.master-trades-bg {
 .highlight-border {
     border: 3px solid;
     /*border-image: linear-gradient(45deg, #006400, #228B22, #32CD32, #7CFC00) 1; Escala de verdes */
-    animation: pink-border 5s infinite;
+    animation: rainbow-border 5s infinite;
 }
 
 .buscar-furnis{
@@ -376,7 +376,7 @@ main.container.master-trades-bg {
     padding: 5px;
     text-align: center;
     font-weight: bold;
-    color: #FF94A4;
+    color: #FFE000;
     border: 2px solid #2C2930;
     width: auto;
     border-radius: 15px;
@@ -415,13 +415,13 @@ main.container.master-trades-bg {
 .habbo_text_blue{
     font-family: 'DePixelKlein', sans-serif;
     font-size: 15px;
-    color: #FF94A4;
+    color: #FFE000;
 }
 
 .habbo_text_blue_12{
     font-family: 'DePixelKlein', sans-serif;
     font-size: 12px;
-    color: #FF94A4;
+    color: #FFE000;
 }
 
 .habbo_text_gold{
@@ -571,9 +571,8 @@ footer::before {
 }
 
 .price-history-img{
-    border: solid 1px black;
-    background-color: #3B1C2A;
     padding: 5px;
+    background: url(furnis/iconos/furni_background.png);
 }
 
 .example_row{
@@ -587,6 +586,8 @@ footer::before {
 
 .navbar {
     margin-top: 10px;
+    padding: 0px;
+    margin-bottom: 10px;
 }
 
 .nav-link {
@@ -1297,9 +1298,6 @@ audio::-webkit-media-controls-panel {
     place-content: center;
     text-align: -webkit-center;
     position: relative;
-    right: 10px;
-    border-left: 1px solid;
-    padding-left: 10%;
     padding-top: 10px;
 }
 
@@ -1963,7 +1961,7 @@ audio::-webkit-media-controls-panel {
     margin-left: 20px;
     max-width: 270px;
     border-radius: 15px;
-    color: #FF94A4;
+    color: #FFE000;
 }
 
 .discord_row_master_trades{
@@ -2033,7 +2031,7 @@ audio::-webkit-media-controls-panel {
 
 .modal_habbo_text_blue{
     font-family: 'DePixelKlein', sans-serif;
-    color: #FF94A4;
+    color: #FFE000;
 }
 
 .modal_habbo_text_white{
@@ -2286,7 +2284,7 @@ h5 {
     .habbo_text_blue{
         font-family: 'DePixelKlein', sans-serif;
         font-size: 13px;
-        color: #FF94A4;
+        color: #FFE000;
     }
 
     .habbo_text_gold{
@@ -2437,19 +2435,9 @@ h5 {
     margin-bottom: 5px;
 }
 
-.prices_spain::after {
-    content: ""; /* Esto asegura que el pseudo-elemento sea visible */
-    position: absolute;
-    bottom: 0;
-    left: 10px; /* Ajusta para centrar el borde */
-    width: 90%; /* Ancho del borde */
-    height: 1px; /* Grosor del borde */
-    background-color: black; /* Color del borde */
-}
-
 .prices_usa {
     position: relative; /* Necesario para que el pseudo-elemento se posicione correctamente */
-    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .swal-title-success {
@@ -2877,7 +2865,7 @@ h5 {
 }
 
 .webs_amigas_h5{
-    color: #FF94A4;
+    color: #FFE000;
     text-align: center;
 }
 

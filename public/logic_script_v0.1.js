@@ -397,7 +397,7 @@ function initialize() {
                                 <div class="col-md-4 col-sm-6 mb-4 product-item catalog_item_div">
                                     <div class="card h-100 position-relative ${borderClass}">
                                         <div class="row furnis_row_new_year_scale">
-                                            <div class="col-8 centrar_x">
+                                            <div class="col-12 centrar_x">
                                                 <a href="#" class="text-decoration-none product-link" data-id="${item.id}">
                                                     <div class="row">
                                                         <div class="col-12 furni_tipo">
@@ -415,9 +415,9 @@ function initialize() {
                                                         </div>
                                                         <div class="col-12 furni_imagen">
                                                             <div class="info-popup">
-                                                                <p class="card-text text-name online_habbo_text_white name-item-es">${item.name} ${item.mote ? `(${item.mote})` : ''}</p>
-                                                                <p class="card-text text-name online_habbo_text_white name-item-en" style="display: none;">${item.name_us}</p>
-                                                                <p class="card-text text-name online_habbo_text_white name-item-pt" style="display: none;">${item.name_br}</p>
+                                                                <p class="card-text text-name online_habbo_text_white cantidad_premio name-item-es">${item.name} ${item.mote ? `(${item.mote})` : ''}</p>
+                                                                <p class="card-text text-name online_habbo_text_white cantidad_premio name-item-en" style="display: none;">${item.name_us}</p>
+                                                                <p class="card-text text-name online_habbo_text_white cantidad_premio name-item-pt" style="display: none;">${item.name_br}</p>
                                                             </div>
                                                             <img src="${item.src}" class="${item.icon == "coleccion" ? "card-img-coleccion" : "card-img-top"}" alt="${item.name}">
                                                         </div>
@@ -442,14 +442,14 @@ function initialize() {
                                                     </div>
                                                 </a>
                                             </div>
-                                            <div class="col-4">
+                                            <div class="col-12">
                                                 <div class="row">
                                                     <div class="price-sections">
                                                         <div class="section">
                                                             <div class="row price_trades_habbo_origins">
                                                                 <div class="col-12 col_in_card">
                                                                     <div class="row">
-                                                                        <div class="prices_spain">
+                                                                        <div class="col-6 prices_spain">
                                                                             <div class="col-12">
                                                                                 <div class="row">
                                                                                     <div class="col-8">
@@ -475,13 +475,13 @@ function initialize() {
                                                                                     <img src="furnis/dinero/vivo.png" alt="vivo" class="price-vivo-principal" data-toggle="tooltip">${item.price > 0 ? (item.price / item.petal_price).toFixed(1) : '??'}
                                                                                 </p>
                                                                             </div>
-                                                                            <div class="col-12 noticia_descripcion">
+                                                                            <div class="col-12">
                                                                                 <p class="noticia_descripcion" data-toggle="tooltip" data-i18n="[title]fecha_actualizada_main" title="Precio Actualizado el:">
                                                                                     🔄${fecha_precio_es}
                                                                                 </p>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="prices_usa">
+                                                                        <div class="col-6 prices_usa">
                                                                             <div class="col-12">
                                                                                 <div class="row">
                                                                                     <div class="col-8">
@@ -508,11 +508,11 @@ function initialize() {
                                                                                 </p>
                                                                             </div>
                                                                             <div class="col-12">
-                                                                                <p class="noticia_descripcion" data-toggle="tooltip" data-i18n="[title]fecha_actualizada_main" title="Precio Actualizado el:">
+                                                                                <p class="noticia_descripcion cantidad_premio" data-toggle="tooltip" data-i18n="[title]fecha_actualizada_main" title="Precio Actualizado el:">
                                                                                     🔄${fecha_precio_com}
                                                                                 </p>
                                                                             </div>
-                                                                            <div class="col-12 traderclub_section">
+                                                                            <div class="col-12">
                                                                                 <p class="card-text text-price">
                                                                                     <img src="furnis/iconos/icon_trader_club.png" alt="traders_club" class="price-egg-principal" data-toggle="tooltip" title="Traderclub.gg price">${item.traders_club > 0 ? item.traders_club : '??'}<img src="furnis/dinero/vip.png" alt="vip" class="price-vip-principal" data-toggle="tooltip" data-i18n="[title]titulo_vips" title="Precio en Vips">
                                                                                 </p>
