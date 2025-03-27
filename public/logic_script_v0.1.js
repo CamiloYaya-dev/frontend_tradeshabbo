@@ -443,80 +443,78 @@ function initialize() {
                                                 </a>
                                             </div>
                                             <div class="col-12">
-                                                <div class="row">
-                                                    <div class="price-sections">
-                                                        <div class="section">
-                                                            <div class="row price_trades_habbo_origins">
-                                                                <div class="col-12 col_in_card">
-                                                                    <div class="row">
-                                                                        <div class="col-6 prices_spain">
-                                                                            <div class="col-12">
-                                                                                <div class="row">
-                                                                                    <div class="col-8">
-                                                                                        <img src="furnis/iconos/origins.png" alt="origins icono">
-                                                                                    </div>
-                                                                                    <div class="col-4 col_no_padding">
-                                                                                        <img src="furnis/iconos/spain.png" alt="spain icono" class="spain_icon">
-                                                                                    </div>
+                                                <div class="price-sections">
+                                                    <div class="section">
+                                                        <div class="row price_trades_habbo_origins">
+                                                            <div class="col-12 col_in_card">
+                                                                <div class="row">
+                                                                    <div class="col-6 prices_spain">
+                                                                        <div class="col-12">
+                                                                            <div class="row">
+                                                                                <div class="col-8">
+                                                                                    <img src="furnis/iconos/origins.png" alt="origins icono">
                                                                                 </div>
-                                                                            </div>
-                                                                            <div class="col-12">
-                                                                                <p class="card-text text-price credits spain">
-                                                                                    <img src="furnis/dinero/credito.png" alt="credito" class="price-icon-principal" data-toggle="tooltip" data-i18n="[title]titulo_creditos" title="Precio en Créditos">${item.price > 0 ? item.price : '??'}
-                                                                                </p>
-                                                                            </div>
-                                                                            <div class="col-12">
-                                                                                <p class="card-text text-price">
-                                                                                    <img src="furnis/dinero/vip.png" alt="vip" class="price-vip-principal" data-toggle="tooltip" data-i18n="[title]titulo_vips" title="Precio en Vips">${item.price > 0 ? (item.price / item.vip_price).toFixed(1) : '??'}
-                                                                                </p>
-                                                                            </div>
-                                                                            <div class="col-12">
-                                                                                <p class="card-text text-price">
-                                                                                    <img src="furnis/dinero/vivo.png" alt="vivo" class="price-vivo-principal" data-toggle="tooltip">${item.price > 0 ? (item.price / item.petal_price).toFixed(1) : '??'}
-                                                                                </p>
-                                                                            </div>
-                                                                            <div class="col-12">
-                                                                                <p class="noticia_descripcion" data-toggle="tooltip" data-i18n="[title]fecha_actualizada_main" title="Precio Actualizado el:">
-                                                                                    🔄${fecha_precio_es}
-                                                                                </p>
+                                                                                <div class="col-4 col_no_padding">
+                                                                                    <img src="furnis/iconos/spain.png" alt="spain icono" class="spain_icon">
+                                                                                </div>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="col-6 prices_usa">
-                                                                            <div class="col-12">
-                                                                                <div class="row">
-                                                                                    <div class="col-8">
-                                                                                        <img src="furnis/iconos/origins.png" alt="origins icono">
-                                                                                    </div>
-                                                                                    <div class="col-4 col_no_padding">
-                                                                                        <img src="furnis/iconos/usa.png" alt="usa icono" class="usa_icon">
-                                                                                    </div>
+                                                                        <div class="col-12">
+                                                                            <p class="card-text text-price credits spain">
+                                                                                <img src="furnis/dinero/credito.png" alt="credito" class="price-icon-principal" data-toggle="tooltip" data-i18n="[title]titulo_creditos" title="Precio en Créditos">${item.price > 0 ? item.price : '??'}
+                                                                            </p>
+                                                                        </div>
+                                                                        <div class="col-12">
+                                                                            <p class="card-text text-price">
+                                                                                <img src="furnis/dinero/vip.png" alt="vip" class="price-vip-principal" data-toggle="tooltip" data-i18n="[title]titulo_vips" title="Precio en Vips">${item.price > 0 ? (item.price / item.vip_price).toFixed(1) : '??'}
+                                                                            </p>
+                                                                        </div>
+                                                                        <div class="col-12">
+                                                                            <p class="card-text text-price">
+                                                                                <img src="furnis/dinero/vivo.png" alt="vivo" class="price-vivo-principal" data-toggle="tooltip">${item.price > 0 ? (item.price / item.petal_price).toFixed(1) : '??'}
+                                                                            </p>
+                                                                        </div>
+                                                                        <div class="col-12">
+                                                                            <p class="noticia_descripcion" data-toggle="tooltip" data-i18n="[title]fecha_actualizada_main" title="Precio Actualizado el:">
+                                                                                🔄${fecha_precio_es}
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-6 prices_usa">
+                                                                        <div class="col-12">
+                                                                            <div class="row">
+                                                                                <div class="col-8">
+                                                                                    <img src="furnis/iconos/origins.png" alt="origins icono">
+                                                                                </div>
+                                                                                <div class="col-4 col_no_padding">
+                                                                                    <img src="furnis/iconos/usa.png" alt="usa icono" class="usa_icon">
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="col-12">
-                                                                                <p class="card-text text-price credits usa">
-                                                                                    <img src="furnis/dinero/credito.png" alt="credito" class="price-icon-principal" data-toggle="tooltip" data-i18n="[title]titulo_creditos" title="Precio en Créditos">${item.usa_price > 0 ? item.usa_price : '??'}
-                                                                                </p>
-                                                                            </div>
-                                                                            <div class="col-12">
-                                                                                <p class="card-text text-price">
-                                                                                    <img src="furnis/dinero/vip.png" alt="vip" class="price-vip-principal" data-toggle="tooltip" data-i18n="[title]titulo_vips" title="Precio en Vips">${item.usa_price > 0 ? (item.usa_price / item.vip_usa_price).toFixed(1) : '??'}
-                                                                                </p>
-                                                                            </div>
-                                                                            <div class="col-12">
-                                                                                <p class="card-text text-price">
-                                                                                    <img src="furnis/dinero/egg_lila.png" alt="egg lila" class="price-egg-principal" data-toggle="tooltip">${item.usa_price > 0 ? (item.usa_price / item.dino_price).toFixed(1) : '??'}
-                                                                                </p>
-                                                                            </div>
-                                                                            <div class="col-12">
-                                                                                <p class="noticia_descripcion cantidad_premio" data-toggle="tooltip" data-i18n="[title]fecha_actualizada_main" title="Precio Actualizado el:">
-                                                                                    🔄${fecha_precio_com}
-                                                                                </p>
-                                                                            </div>
-                                                                            <div class="col-12">
-                                                                                <p class="card-text text-price">
-                                                                                    <img src="furnis/iconos/icon_trader_club.png" alt="traders_club" class="price-egg-principal" data-toggle="tooltip" title="Traderclub.gg price">${item.traders_club > 0 ? item.traders_club : '??'}<img src="furnis/dinero/vip.png" alt="vip" class="price-vip-principal" data-toggle="tooltip" data-i18n="[title]titulo_vips" title="Precio en Vips">
-                                                                                </p>
-                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-12">
+                                                                            <p class="card-text text-price credits usa">
+                                                                                <img src="furnis/dinero/credito.png" alt="credito" class="price-icon-principal" data-toggle="tooltip" data-i18n="[title]titulo_creditos" title="Precio en Créditos">${item.usa_price > 0 ? item.usa_price : '??'}
+                                                                            </p>
+                                                                        </div>
+                                                                        <div class="col-12">
+                                                                            <p class="card-text text-price">
+                                                                                <img src="furnis/dinero/vip.png" alt="vip" class="price-vip-principal" data-toggle="tooltip" data-i18n="[title]titulo_vips" title="Precio en Vips">${item.usa_price > 0 ? (item.usa_price / item.vip_usa_price).toFixed(1) : '??'}
+                                                                            </p>
+                                                                        </div>
+                                                                        <div class="col-12">
+                                                                            <p class="card-text text-price">
+                                                                                <img src="furnis/dinero/egg_lila.png" alt="egg lila" class="price-egg-principal" data-toggle="tooltip">${item.usa_price > 0 ? (item.usa_price / item.dino_price).toFixed(1) : '??'}
+                                                                            </p>
+                                                                        </div>
+                                                                        <div class="col-12">
+                                                                            <p class="noticia_descripcion cantidad_premio" data-toggle="tooltip" data-i18n="[title]fecha_actualizada_main" title="Precio Actualizado el:">
+                                                                                🔄${fecha_precio_com}
+                                                                            </p>
+                                                                        </div>
+                                                                        <div class="col-12">
+                                                                            <p class="card-text text-price">
+                                                                                <img src="furnis/iconos/icon_trader_club.png" alt="traders_club" class="price-egg-principal" data-toggle="tooltip" title="Traderclub.gg price">${item.traders_club > 0 ? item.traders_club : '??'}<img src="furnis/dinero/vip.png" alt="vip" class="price-vip-principal" data-toggle="tooltip" data-i18n="[title]titulo_vips" title="Precio en Vips">
+                                                                            </p>
                                                                         </div>
                                                                     </div>
                                                                 </div>
