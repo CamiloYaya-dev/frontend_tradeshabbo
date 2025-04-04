@@ -3003,6 +3003,7 @@ h5 {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    width: 75px;
 }
 
 .div_title_novedades_catalogo{

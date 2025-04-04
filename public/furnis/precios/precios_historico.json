@@ -23310,5 +23310,181 @@
     "precio": "50.00",
     "hotel": "US",
     "user_modify": "emo"
+  },
+  {
+    "id": 3788,
+    "product_id": 360,
+    "fecha_precio": "2025-03-26T22:18:21.000Z",
+    "precio": "75.00",
+    "hotel": "ES",
+    "user_modify": "emo"
+  },
+  {
+    "id": 3789,
+    "product_id": 360,
+    "fecha_precio": "2025-03-26T22:18:24.000Z",
+    "precio": "75.00",
+    "hotel": "US",
+    "user_modify": "emo"
+  },
+  {
+    "id": 3790,
+    "product_id": 348,
+    "fecha_precio": "2025-03-26T22:19:06.000Z",
+    "precio": "100.00",
+    "hotel": "ES",
+    "user_modify": "emo"
+  },
+  {
+    "id": 3791,
+    "product_id": 283,
+    "fecha_precio": "2025-03-26T22:19:40.000Z",
+    "precio": "320.00",
+    "hotel": "ES",
+    "user_modify": "emo"
+  },
+  {
+    "id": 3792,
+    "product_id": 325,
+    "fecha_precio": "2025-03-26T22:20:05.000Z",
+    "precio": "240.00",
+    "hotel": "ES",
+    "user_modify": "emo"
+  },
+  {
+    "id": 3793,
+    "product_id": 337,
+    "fecha_precio": "2025-03-26T22:20:21.000Z",
+    "precio": "480.00",
+    "hotel": "ES",
+    "user_modify": "emo"
+  },
+  {
+    "id": 3794,
+    "product_id": 289,
+    "fecha_precio": "2025-03-26T22:20:50.000Z",
+    "precio": "440.00",
+    "hotel": "ES",
+    "user_modify": "emo"
+  },
+  {
+    "id": 3795,
+    "product_id": 462,
+    "fecha_precio": "2025-03-27T20:34:03.000Z",
+    "precio": "0.00",
+    "hotel": "ES",
+    "user_modify": "emo"
+  },
+  {
+    "id": 3796,
+    "product_id": 462,
+    "fecha_precio": "2025-03-27T20:34:03.000Z",
+    "precio": "0.00",
+    "hotel": "US",
+    "user_modify": "emo"
+  },
+  {
+    "id": 3797,
+    "product_id": 462,
+    "fecha_precio": "2025-03-27T20:51:38.000Z",
+    "precio": "4000.00",
+    "hotel": "ES",
+    "user_modify": "emo"
+  },
+  {
+    "id": 3798,
+    "product_id": 312,
+    "fecha_precio": "2025-03-31T12:58:13.000Z",
+    "precio": "250.00",
+    "hotel": "US",
+    "user_modify": "emo"
+  },
+  {
+    "id": 3799,
+    "product_id": 272,
+    "fecha_precio": "2025-03-31T12:58:36.000Z",
+    "precio": "16.00",
+    "hotel": "US",
+    "user_modify": "emo"
+  },
+  {
+    "id": 3800,
+    "product_id": 272,
+    "fecha_precio": "2025-03-31T13:02:18.000Z",
+    "precio": "16.00",
+    "hotel": "US",
+    "user_modify": "emo"
+  },
+  {
+    "id": 3801,
+    "product_id": 9,
+    "fecha_precio": "2025-03-31T13:03:05.000Z",
+    "precio": "50.00",
+    "hotel": "US",
+    "user_modify": "emo"
+  },
+  {
+    "id": 3802,
+    "product_id": 463,
+    "fecha_precio": "2025-04-04T10:58:37.000Z",
+    "precio": "40.00",
+    "hotel": "ES",
+    "user_modify": "emo."
+  },
+  {
+    "id": 3803,
+    "product_id": 463,
+    "fecha_precio": "2025-04-04T10:58:37.000Z",
+    "precio": "40.00",
+    "hotel": "US",
+    "user_modify": "emo."
+  },
+  {
+    "id": 3804,
+    "product_id": 464,
+    "fecha_precio": "2025-04-04T11:01:16.000Z",
+    "precio": "5.00",
+    "hotel": "ES",
+    "user_modify": "emo."
+  },
+  {
+    "id": 3805,
+    "product_id": 464,
+    "fecha_precio": "2025-04-04T11:01:16.000Z",
+    "precio": "5.00",
+    "hotel": "US",
+    "user_modify": "emo."
+  },
+  {
+    "id": 3806,
+    "product_id": 465,
+    "fecha_precio": "2025-04-04T11:02:26.000Z",
+    "precio": "3.00",
+    "hotel": "ES",
+    "user_modify": "emo."
+  },
+  {
+    "id": 3807,
+    "product_id": 465,
+    "fecha_precio": "2025-04-04T11:02:26.000Z",
+    "precio": "3.00",
+    "hotel": "US",
+    "user_modify": "emo."
+  },
+  {
+    "id": 3808,
+    "product_id": 466,
+    "fecha_precio": "2025-04-04T11:03:09.000Z",
+    "precio": "3.00",
+    "hotel": "ES",
+    "user_modify": "emo."
+  },
+  {
+    "id": 3809,
+    "product_id": 466,
+    "fecha_precio": "2025-04-04T11:03:09.000Z",
+    "precio": "3.00",
+    "hotel": "US",
+    "user_modify": "emo."
   }
 ]
