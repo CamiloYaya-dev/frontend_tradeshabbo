@@ -148,5 +148,8 @@
     "web_amigas_legacy": "Friendly Webs Legacy",
     "fecha_actualizada_main": "Price Updated on:",
     "owner": "Owner",
-    "co_owner": "Co-owner"
+    "co_owner": "Co-owner",
+    "ALERTA_CATALOGO_TITULO": "⚠️ Important Notice ⚠️",
+    "ALERTA_CATALOGO_BODY_1": "The catalog has not been updated since April 4th, 2025.",
+    "ALERTA_CATALOGO_BODY_2": "There are currently no plans to keep it updated in the short or medium term, so please exercise caution when checking prices."
 }

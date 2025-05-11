@@ -2,29 +2,31 @@ $(document).ready(function () {
     const today = new Date().toISOString().split('T')[0]; // formato YYYY-MM-DD
     const lastSeen = localStorage.getItem('infoModalLastSeen');
 
-    if (lastSeen !== today) {
+    //if (lastSeen !== today) {
         $('body').append(`
             <div class="modal" id="priceGuidelineModal" tabindex="-1" role="dialog" aria-labelledby="priceGuidelineModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal_olimpiadas" role="document">
                     <div class="modal-content online_users_content">
                         <div class="modal-header">
-                            <h5 class="modal-title habbo_text_blue" id="priceGuidelineModalLabel">Actualización en TradesHabbo</h5>
+                            <h5 class="modal-title habbo_text_blue" id="priceGuidelineModalLabel">Despedida de TradesHabbo</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body text-left">
-                            <p>Buenos días, quería contarles que estaré 100% activo con la fansite y acabo de subir el primer refactor importante. Ahora TradesHabbo se sentirá más como una fansite y menos como un simple catálogo de precios.</p>
-                            <p>Es posible que algunos estilos se hayan roto, tanto en web como en mobile. Les pido disculpas por ello y les aseguro que serán corregidos con la mayor brevedad posible.</p>
-                            <p>Próximamente se añadirán nuevas funcionalidades como:</p>
-                            <ul>
-                                <li>Premios disponibles en Origins</li>
-                                <li>Alertas cuando un precio de tu interés cambie</li>
-                                <li>Calcular tu inventario automáticamente con base en nuestro catálogo</li>
-                                <li>Explorar la viabilidad de subastas tipo eBay automáticas</li>
-                                <li>Refactor visual por vista para adaptar todo a Habbo Origins</li>
-                            </ul>
-                            <p>Este mensaje es un pequeño spoiler de lo que viene. Les pido un poco de paciencia si encuentran estilos rotos o datos incorrectos. Si notan algo raro, por favor repórtenmelo. ¡Gracias por el apoyo! ❤️</p>
+                            <p>Quiero agradecer profundamente a todos los que confiaron en mí y dedicaron parte de su tiempo a acompañar este proyecto llamado TradesHabbo (OriginsKingdom). Desde el primer día estuve presente con toda la intención de seguir hasta el final, pero lamentablemente eso ya no será posible.</p>
+
+                            <p>Las decisiones actuales de la administración de Habbo Origins, sumadas a las constantes faltas de respeto en concursos, eventos y competiciones, han generado un ambiente completamente hostil e insostenible para seguir aportando con el mismo entusiasmo de siempre.</p>
+
+                            <p>La comunidad de .ES y .BR ha sido completamente ignorada, mientras solo se da voz y relevancia a la comunidad de .COM. A esto se suma la muerte del sistema de cambio, la moderación excesiva dentro y fuera del hotel, y una cultura absurda donde, a pesar de que el juego es +18, parece diseñado para niños de 2 años en cuanto a libertad de expresión.</p>
+
+                            <p>También está la intensa toxicidad generada por los pocos jugadores que aún quedan, las burlas hacia la comunidad y la total falta de integridad reflejada en situaciones como los "ganadores" de Battle Ball Season 1 (clones tramposos de realmadrid y morrt), entre muchísimas otras cosas que solo generan desgaste.</p>
+
+                            <p>Todo esto hace que, personalmente, ya no tenga sentido dedicar ni un segundo más de esfuerzo o apoyo a Habbo Origins.</p>
+
+                            <p>Gracias de corazón a quienes me acompañaron durante este tiempo. Siempre valoraré la confianza depositada. ❤️</p>
+
+                            <p>Los llevaré a todos en el corazón. Atentamente, Emo. ❤️</p>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-primary" data-dismiss="modal">Entendido</button>
@@ -41,5 +43,5 @@ $(document).ready(function () {
         $('#priceGuidelineModal').on('hidden.bs.modal', function () {
             localStorage.setItem('infoModalLastSeen', today);
         });
-    }
+    //}
 });

@@ -148,5 +148,8 @@
     "web_amigas_legacy": "Webs amigáveis Legacy",
     "fecha_actualizada_main": "Preço Atualizado em:",
     "owner": "Proprietário",
-    "co_owner": "Coproprietário"
+    "co_owner": "Coproprietário",
+    "ALERTA_CATALOGO_TITULO": "⚠️ Aviso importante ⚠️",
+    "ALERTA_CATALOGO_BODY_1": "O catálogo não é atualizado desde 04 de abril de 2025.",
+    "ALERTA_CATALOGO_BODY_2": "Atualmente não há intenção de mantê-lo atualizado a curto ou médio prazo, portanto, recomenda-se cautela ao consultar os preços."
 }
